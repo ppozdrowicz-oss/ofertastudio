@@ -25,7 +25,116 @@
 <meta name="twitter:description" content="Profesjonalne packshoty klasy studio i opisy zwiększające konwersję dla e-commerce.">
 <meta name="twitter:image" content="https://ofertastudio.pl/og-image.jpg">
 
-<!-- Favicon -->
+<!-- Schema.org Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://ofertastudio.pl/#business",
+      "name": "OfertaStudio.pl",
+      "url": "https://ofertastudio.pl",
+      "email": "kontakt@ofertastudio.pl",
+      "description": "Profesjonalne packshoty produktowe i opisy zwiększające konwersję dla sprzedawców e-commerce na Allegro i Amazon.",
+      "areaServed": "PL",
+      "currenciesAccepted": "PLN",
+      "priceRange": "$",
+      "inLanguage": "pl",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://ofertastudio.pl/og-image.jpg"
+      },
+      "sameAs": [
+        "https://www.instagram.com/ofertastudio"
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://ofertastudio.pl/#packshoty",
+      "name": "Packshoty produktowe",
+      "provider": { "@id": "https://ofertastudio.pl/#business" },
+      "description": "Profesjonalne zdjęcia produktowe klasy studio. Zamieniamy zwykłe zdjęcia w packshoty gotowe na Allegro i Amazon — białe tło, retusz, 2000x2000px.",
+      "areaServed": "PL",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "PLN",
+        "price": "149",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "149",
+          "priceCurrency": "PLN",
+          "unitText": "produkt"
+        }
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://ofertastudio.pl/#opisy",
+      "name": "Opisy produktów e-commerce",
+      "provider": { "@id": "https://ofertastudio.pl/#business" },
+      "description": "Profesjonalne opisy produktów zwiększające konwersję na Allegro i Amazon. Tytuł SEO, bullet points, opis długi A+.",
+      "areaServed": "PL",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "PLN",
+        "price": "149",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "149",
+          "priceCurrency": "PLN",
+          "unitText": "produkt"
+        }
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Jak dostarczyć zdjęcia do packshotów?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Wystarczą zdjęcia zrobione zwykłym aparatem lub smartfonem. Przesyłasz je e-mailem lub przez WeTransfer — nie potrzebujesz studia ani profesjonalnego sprzętu."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ile trwa realizacja packshotów?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Standardowy czas realizacji to 48 godzin od otrzymania materiałów. Tryb ekspresowy 24h dostępny na życzenie."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Czy mogę zamówić tylko opisy produktów bez packshotów?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tak, obie usługi dostępne są osobno lub w pakiecie z rabatem. Nie ma obowiązku zamawiania kompletu."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "W jakich formatach dostarczacie pliki?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "JPEG i PNG z przezroczystym tłem, 2000x2000px pod Allegro i Amazon. Na życzenie warianty dla WWW i social media."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Jakie formy płatności akceptujecie?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Akceptujemy przelew bankowy oraz BLIK. Przy pierwszym zamówieniu stosujemy przedpłatę 50–100%. Przy stałej współpracy warunki ustalamy indywidualnie."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%232563eb'/><text x='4' y='24' font-family='Inter' font-weight='800' font-size='20' fill='white'>OS</text></svg>">
 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -711,7 +820,6 @@ footer{border-top:1px solid var(--bs);padding:2.25rem 1.75rem}
           <span style="font-size:.75rem;color:var(--ok);background:var(--ok-bg);border:1px solid rgba(5,150,105,.2);padding:.2rem .625rem;border-radius:.375rem">✓ JPEG + PNG</span>
           <span style="font-size:.75rem;color:var(--ok);background:var(--ok-bg);border:1px solid rgba(5,150,105,.2);padding:.2rem .625rem;border-radius:.375rem">✓ 2 rundy poprawek</span>
           <span style="font-size:.75rem;color:var(--ok);background:var(--ok-bg);border:1px solid rgba(5,150,105,.2);padding:.2rem .625rem;border-radius:.375rem">✓ Zwrot kurierem</span>
-          <span style="font-size:.75rem;color:var(--ok);background:var(--ok-bg);border:1px solid rgba(5,150,105,.2);padding:.2rem .625rem;border-radius:.375rem">✓ Faktura VAT</span>
         </div>
       </div>
     </div>
@@ -741,6 +849,7 @@ footer{border-top:1px solid var(--bs);padding:2.25rem 1.75rem}
         <li>1 runda poprawek · Realizacja 48h</li>
       </ul>
       <a href="#kontakt" class="price-btn">Zamów Basic</a>
+
     </div>
     <div class="card price-card ft">
       <div class="price-rec">Najpopularniejszy</div>
@@ -770,7 +879,7 @@ footer{border-top:1px solid var(--bs);padding:2.25rem 1.75rem}
       <a href="#kontakt" class="price-btn">Zamów Premium</a>
     </div>
   </div>
-  <p style="text-align:center;font-size:.8125rem;color:var(--t3);margin-top:1.25rem">Faktura VAT standardowo. Stała współpraca — priorytetowy czas realizacji.</p>
+  <p style="text-align:center;font-size:.8125rem;color:var(--t3);margin-top:1.25rem">Przy seriach 10+ produktów — rabat do 30%. Skontaktuj się po indywidualną wycenę.</p>
 </div>
 
 <div class="divider"></div>
@@ -835,7 +944,7 @@ footer{border-top:1px solid var(--bs);padding:2.25rem 1.75rem}
     <div class="faq-item"><button class="faq-q" onclick="tFaq(this)"><span>Ile trwa realizacja? Czy jest tryb ekspresowy?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Standard: 48h. Ekspres: 24h — dostępny w pakiecie Premium lub za dopłatą. Serie 20+ produktów wyceniamy indywidualnie.</div></div></div>
     <div class="faq-item"><button class="faq-q" onclick="tFaq(this)"><span>W jakich formatach i rozmiarach dostarczacie pliki?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">JPEG (sRGB) + PNG z przezroczystym tłem, 2000×2000 px (Allegro i Amazon). Na życzenie: warianty dla WWW, social media, drukarni — bez dopłat.</div></div></div>
     <div class="faq-item"><button class="faq-q" onclick="tFaq(this)"><span>Co jeśli nie jestem zadowolony z efektów?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Dwie pełne rundy poprawek w każdym pakiecie — bez kosztów. W razie poważnych zastrzeżeń: dodatkowe ujęcia lub zwrot.</div></div></div>
-    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)"><span>Czy wystawiacie faktury VAT? Jakie formy płatności?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Tak — faktura VAT standardowo. Przelew, BLIK, PayU, karta. Przy pierwszym zamówieniu: przedpłata 50–100%. Stała współpraca: 14 dni od dostawy.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)"><span>Jakie formy płatności akceptujecie?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Akceptujemy przelew bankowy oraz BLIK. Przy pierwszym zamówieniu stosujemy przedpłatę 50%. Przy stałej współpracy warunki ustalamy indywidualnie.</div></div></div>
   </div>
 </div>
 
