@@ -28,7 +28,15 @@
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%232563eb'/><text x='4' y='24' font-family='Inter' font-weight='800' font-size='20' fill='white'>OS</text></svg>">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap"></noscript>
+<style>
+  /* System font fallbacks while web fonts load */
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif }
+  .mono-el { font-family: 'Courier New', Courier, monospace }
+</style>
 <style>
 *,::before,::after{box-sizing:border-box;margin:0;padding:0;border-width:0;border-style:solid}
 
@@ -600,11 +608,114 @@ footer{border-top:1px solid var(--bs);padding:2.25rem 1.75rem}
     <h2 class="s-title">Cztery kroki do gotowych plików</h2>
     <p class="s-sub">Prosty, transparentny proces — od pierwszego kontaktu do publikacji.</p>
   </div>
-  <div class="proc-grid">
-    <div class="proc-step"><div class="proc-num">01</div><div class="proc-h">Briefing</div><p class="proc-p">Opisujesz produkt, platformę i oczekiwania. Bezpłatna wycena w 24h — wystarczy e-mail.</p></div>
-    <div class="proc-step"><div class="proc-num">02</div><div class="proc-h">Materiały</div><p class="proc-p">Wysyłasz produkt kurierem lub dostarczasz zdjęcia referencyjne. Możesz też przesłać pliki do retuszu.</p></div>
-    <div class="proc-step"><div class="proc-num">03</div><div class="proc-h">Realizacja</div><p class="proc-p">Tworzymy packshoty i opisy w 48h. Tryb ekspresowy 24h dostępny na życzenie.</p></div>
-    <div class="proc-step"><div class="proc-num">04</div><div class="proc-h">Odbiór</div><p class="proc-p">Gotowe pliki do wgrania. Dwie rundy poprawek w cenie. Produkt odsyłamy na nasz koszt.</p></div>
+
+  <!-- TIMELINE -->
+  <div style="position:relative;display:flex;flex-direction:column;gap:0">
+
+    <!-- connector line -->
+    <div style="position:absolute;left:2.25rem;top:3rem;bottom:3rem;width:1px;background:linear-gradient(180deg,var(--brand),var(--cyan),rgba(37,99,235,.1));z-index:0"></div>
+
+    <!-- STEP 1 -->
+    <div style="display:grid;grid-template-columns:4.5rem 1fr;gap:1.5rem;align-items:flex-start;padding:1.5rem 0;position:relative;z-index:1">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:.5rem">
+        <div style="width:4.5rem;height:4.5rem;border-radius:1rem;background:var(--brand);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(37,99,235,.35);flex-shrink:0">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+      </div>
+      <div style="background:var(--s1);border:1px solid var(--bs);border-radius:var(--r);padding:1.75rem;box-shadow:var(--sh1);transition:box-shadow .2s,border-color .2s" onmouseenter="this.style.boxShadow='var(--sh3)';this.style.borderColor='rgba(37,99,235,.25)'" onmouseleave="this.style.boxShadow='var(--sh1)';this.style.borderColor='var(--bs)'">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem">
+          <div style="display:flex;align-items:center;gap:.75rem">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:.625rem;font-weight:700;letter-spacing:.15em;color:var(--brand);background:var(--brand-bg);border:1px solid rgba(37,99,235,.2);padding:.25rem .625rem;border-radius:.375rem">KROK 01</span>
+            <h3 style="font-size:1.0625rem;font-weight:700;letter-spacing:-.01em;color:var(--t1)">Briefing</h3>
+          </div>
+          <span style="font-size:.75rem;font-weight:600;color:var(--ok);background:var(--ok-bg);padding:.2rem .625rem;border-radius:999px">Bezpłatnie</span>
+        </div>
+        <p style="font-size:.9375rem;color:var(--t2);line-height:1.75;margin-bottom:1.25rem">Opisujesz produkt, platformę sprzedaży i oczekiwania. Odpiszemy z wyceną w ciągu <strong style="color:var(--t1);font-weight:600">24 godzin</strong> — wystarczy jeden e-mail lub krótka wiadomość.</p>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+          <span style="font-size:.75rem;color:var(--t3);background:var(--s2);border:1px solid var(--bs);padding:.2rem .625rem;border-radius:.375rem">📧 E-mail</span>
+          <span style="font-size:.75rem;color:var(--t3);background:var(--s2);border:1px solid var(--bs);padding:.2rem .625rem;border-radius:.375rem">💬 Wiadomość</span>
+          <span style="font-size:.75rem;color:var(--t3);background:var(--s2);border:1px solid var(--bs);padding:.2rem .625rem;border-radius:.375rem">⚡ Wycena 24h</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div style="display:grid;grid-template-columns:4.5rem 1fr;gap:1.5rem;align-items:flex-start;padding:1.5rem 0;position:relative;z-index:1">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:.5rem">
+        <div style="width:4.5rem;height:4.5rem;border-radius:1rem;background:var(--s1);border:2px solid var(--brand);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:var(--sh2)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14M5 8a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2M5 8V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v2"/></svg>
+        </div>
+      </div>
+      <div style="background:var(--s1);border:1px solid var(--bs);border-radius:var(--r);padding:1.75rem;box-shadow:var(--sh1);transition:box-shadow .2s,border-color .2s" onmouseenter="this.style.boxShadow='var(--sh3)';this.style.borderColor='rgba(37,99,235,.25)'" onmouseleave="this.style.boxShadow='var(--sh1)';this.style.borderColor='var(--bs)'">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem">
+          <div style="display:flex;align-items:center;gap:.75rem">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:.625rem;font-weight:700;letter-spacing:.15em;color:var(--brand);background:var(--brand-bg);border:1px solid rgba(37,99,235,.2);padding:.25rem .625rem;border-radius:.375rem">KROK 02</span>
+            <h3 style="font-size:1.0625rem;font-weight:700;letter-spacing:-.01em;color:var(--t1)">Materiały</h3>
+          </div>
+          <span style="font-size:.75rem;font-weight:600;color:var(--t3);background:var(--s2);border:1px solid var(--bs);padding:.2rem .625rem;border-radius:999px">Kurier lub pliki</span>
+        </div>
+        <p style="font-size:.9375rem;color:var(--t2);line-height:1.75;margin-bottom:1.25rem">Wystarczą zdjęcia zrobione zwykłym aparatem lub smartfonem — przesyłasz je e-mailem lub przez WeTransfer. <strong style="color:var(--t1);font-weight:600">Nie potrzebujesz studia ani profesjonalnego sprzętu.</strong></p>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+          <span style="font-size:.75rem;color:var(--t3);background:var(--s2);border:1px solid var(--bs);padding:.2rem .625rem;border-radius:.375rem">📱 Smartfon</span>
+          <span style="font-size:.75rem;color:var(--t3);background:var(--s2);border:1px solid var(--bs);padding:.2rem .625rem;border-radius:.375rem">📷 Aparat</span>
+          <span style="font-size:.75rem;color:var(--t3);background:var(--s2);border:1px solid var(--bs);padding:.2rem .625rem;border-radius:.375rem">📧 E-mail / WeTransfer</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div style="display:grid;grid-template-columns:4.5rem 1fr;gap:1.5rem;align-items:flex-start;padding:1.5rem 0;position:relative;z-index:1">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:.5rem">
+        <div style="width:4.5rem;height:4.5rem;border-radius:1rem;background:var(--s1);border:2px solid var(--brand);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:var(--sh2)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </div>
+      </div>
+      <div style="background:var(--s1);border:1px solid var(--bs);border-radius:var(--r);padding:1.75rem;box-shadow:var(--sh1);transition:box-shadow .2s,border-color .2s" onmouseenter="this.style.boxShadow='var(--sh3)';this.style.borderColor='rgba(37,99,235,.25)'" onmouseleave="this.style.boxShadow='var(--sh1)';this.style.borderColor='var(--bs)'">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem">
+          <div style="display:flex;align-items:center;gap:.75rem">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:.625rem;font-weight:700;letter-spacing:.15em;color:var(--brand);background:var(--brand-bg);border:1px solid rgba(37,99,235,.2);padding:.25rem .625rem;border-radius:.375rem">KROK 03</span>
+            <h3 style="font-size:1.0625rem;font-weight:700;letter-spacing:-.01em;color:var(--t1)">Realizacja</h3>
+          </div>
+          <div style="display:flex;gap:.375rem">
+            <span style="font-size:.75rem;font-weight:700;color:#fff;background:var(--brand);padding:.2rem .625rem;border-radius:999px">Standard 48h</span>
+            <span style="font-size:.75rem;font-weight:600;color:var(--amber);background:rgba(217,119,6,.1);border:1px solid rgba(217,119,6,.2);padding:.2rem .625rem;border-radius:999px">Ekspres 24h</span>
+          </div>
+        </div>
+        <p style="font-size:.9375rem;color:var(--t2);line-height:1.75;margin-bottom:1.25rem">Zamieniamy przeciętne zdjęcia w <strong style="color:var(--t1);font-weight:600">packshoty klasy studio</strong> — czyste tło, idealne oświetlenie, profesjonalny retusz. Zdjęcia, które same sprzedają towar. Realizacja w <strong style="color:var(--t1);font-weight:600">48 godzin</strong>.</p>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+          <span style="font-size:.75rem;color:var(--t3);background:var(--s2);border:1px solid var(--bs);padding:.2rem .625rem;border-radius:.375rem">📷 Packshoty</span>
+          <span style="font-size:.75rem;color:var(--t3);background:var(--s2);border:1px solid var(--bs);padding:.2rem .625rem;border-radius:.375rem">✍️ Opisy A+</span>
+          <span style="font-size:.75rem;color:var(--t3);background:var(--s2);border:1px solid var(--bs);padding:.2rem .625rem;border-radius:.375rem">🎨 Retusz</span>
+          <span style="font-size:.75rem;color:var(--t3);background:var(--s2);border:1px solid var(--bs);padding:.2rem .625rem;border-radius:.375rem">⚡ Ekspres 24h</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div style="display:grid;grid-template-columns:4.5rem 1fr;gap:1.5rem;align-items:flex-start;padding:1.5rem 0;position:relative;z-index:1">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:.5rem">
+        <div style="width:4.5rem;height:4.5rem;border-radius:1rem;background:linear-gradient(135deg,var(--ok),#059669);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 8px 24px rgba(5,150,105,.3)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+      </div>
+      <div style="background:var(--s1);border:1px solid rgba(5,150,105,.2);border-radius:var(--r);padding:1.75rem;box-shadow:var(--sh1);transition:box-shadow .2s,border-color .2s" onmouseenter="this.style.boxShadow='var(--sh3)';this.style.borderColor='rgba(5,150,105,.35)'" onmouseleave="this.style.boxShadow='var(--sh1)';this.style.borderColor='rgba(5,150,105,.2)'">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem">
+          <div style="display:flex;align-items:center;gap:.75rem">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:.625rem;font-weight:700;letter-spacing:.15em;color:var(--ok);background:var(--ok-bg);border:1px solid rgba(5,150,105,.2);padding:.25rem .625rem;border-radius:.375rem">KROK 04</span>
+            <h3 style="font-size:1.0625rem;font-weight:700;letter-spacing:-.01em;color:var(--t1)">Odbiór i publikacja</h3>
+          </div>
+          <span style="font-size:.75rem;font-weight:600;color:var(--ok);background:var(--ok-bg);padding:.2rem .625rem;border-radius:999px">✓ Gotowe do wgrania</span>
+        </div>
+        <p style="font-size:.9375rem;color:var(--t2);line-height:1.75;margin-bottom:1.25rem">Otrzymujesz pliki gotowe do wgrania — właściwe formaty, rozmiary i wagi dla każdej platformy. <strong style="color:var(--t1);font-weight:600">Dwie rundy poprawek w cenie.</strong> Produkt odsyłamy na nasz koszt.</p>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+          <span style="font-size:.75rem;color:var(--ok);background:var(--ok-bg);border:1px solid rgba(5,150,105,.2);padding:.2rem .625rem;border-radius:.375rem">✓ JPEG + PNG</span>
+          <span style="font-size:.75rem;color:var(--ok);background:var(--ok-bg);border:1px solid rgba(5,150,105,.2);padding:.2rem .625rem;border-radius:.375rem">✓ 2 rundy poprawek</span>
+          <span style="font-size:.75rem;color:var(--ok);background:var(--ok-bg);border:1px solid rgba(5,150,105,.2);padding:.2rem .625rem;border-radius:.375rem">✓ Zwrot kurierem</span>
+          <span style="font-size:.75rem;color:var(--ok);background:var(--ok-bg);border:1px solid rgba(5,150,105,.2);padding:.2rem .625rem;border-radius:.375rem">✓ Faktura VAT</span>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 
