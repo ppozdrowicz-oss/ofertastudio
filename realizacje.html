@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="pl" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Realizacje — OfertaStudio.pl | Packshoty produktowe które sprzedają</title>
+<meta name="description" content="Zobacz jak zamieniamy słabe zdjęcia referencyjne w profesjonalne packshoty klasy studio. Przykłady realizacji dla branży kosmetycznej, elektroniki, odzieży i więcej.">
+<link rel="canonical" href="https://ofertastudio.pl/realizacje">
+<meta property="og:title" content="Realizacje — OfertaStudio.pl">
+<meta property="og:description" content="Packshoty które sprzedają. Zamieniamy zwykłe zdjęcia w profesjonalne ujęcia klasy studio.">
+<meta property="og:url" content="https://ofertastudio.pl/realizacje">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%232563eb'/><text x='4' y='24' font-family='Inter' font-weight='800' font-size='20' fill='white'>OS</text></svg>">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
+<style>
+*,::before,::after{box-sizing:border-box;margin:0;padding:0;border-width:0;border-style:solid}
+:root{
+  --bg:#f6f8fc;--s1:#fff;--s2:#f0f4f9;--s3:#e8eef7;
+  --bs:#dce4f0;--b:#c8d4e8;
+  --t1:#0a1628;--t2:#3d5278;--t3:#8496b4;
+  --brand:#2563eb;--brand2:#1a4fc4;
+  --cyan:#0891b2;--green:#059669;
+  --brand-bg:rgba(37,99,235,.07);
+  --ok-bg:#ecfdf5;--ok:#047857;
+  --sh1:0 1px 3px rgba(10,22,40,.07),0 0 0 1px rgba(10,22,40,.04);
+  --sh2:0 4px 12px rgba(10,22,40,.09),0 0 0 1px rgba(10,22,40,.04);
+  --sh3:0 16px 40px rgba(10,22,40,.11),0 2px 6px rgba(10,22,40,.05);
+  --sh4:0 32px 64px rgba(10,22,40,.15),0 4px 12px rgba(10,22,40,.07);
+  --nav:rgba(246,248,252,.9);--r:0.875rem;
+  --grid:rgba(37,99,235,.055);
+}
+[data-theme="dark"]{
+  --bg:#050810;--s1:#0c1022;--s2:#111829;--s3:#172035;
+  --bs:#1e2d45;--b:#2a3e5c;
+  --t1:#eef2ff;--t2:#93afd4;--t3:#4a6080;
+  --brand:#3b82f6;--brand2:#60a5fa;
+  --brand-bg:rgba(59,130,246,.1);
+  --ok-bg:#064e3b;--ok:#6ee7b7;
+  --sh1:0 1px 3px rgba(0,0,0,.35),0 0 0 1px rgba(255,255,255,.04);
+  --sh2:0 4px 12px rgba(0,0,0,.42),0 0 0 1px rgba(255,255,255,.05);
+  --sh3:0 16px 40px rgba(0,0,0,.5),0 2px 6px rgba(0,0,0,.3);
+  --sh4:0 32px 64px rgba(0,0,0,.6),0 4px 12px rgba(0,0,0,.35);
+  --nav:rgba(5,8,16,.9);
+}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{min-height:100vh;font-family:'Inter',system-ui,sans-serif;font-size:1rem;line-height:1.65;color:var(--t1);
+  background:radial-gradient(ellipse 80% 40% at 50% -5%,rgba(37,99,235,.09),transparent),var(--bg);
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .3s,color .3s}
+[data-theme="dark"] body{background:radial-gradient(ellipse 80% 40% at 50% -5%,rgba(59,130,246,.11),transparent),var(--bg)}
+::selection{background:rgba(37,99,235,.25)}
+
+.grid-bg{position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:40px 40px;
+  -webkit-mask-image:radial-gradient(ellipse 100% 50% at 50% 0%,black,transparent);
+  mask-image:radial-gradient(ellipse 100% 50% at 50% 0%,black,transparent)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;border-bottom:1px solid var(--bs)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 1.75rem;height:3.75rem;
+  display:flex;align-items:center;justify-content:space-between;
+  background:var(--nav);backdrop-filter:blur(24px)}
+.nav-logo{text-decoration:none;display:flex;align-items:center}
+.nav-back{font-size:.875rem;font-weight:500;color:var(--t2);text-decoration:none;
+  display:flex;align-items:center;gap:.375rem;padding:.375rem .75rem;border-radius:.5rem;transition:all .15s}
+.nav-back:hover{color:var(--t1);background:var(--brand-bg)}
+.nav-right{display:flex;align-items:center;gap:.75rem}
+.btn-nav{font-size:.875rem;font-weight:600;color:#fff;background:var(--brand);
+  padding:.5rem 1.125rem;border-radius:.625rem;text-decoration:none;transition:all .2s}
+.btn-nav:hover{background:var(--brand2);transform:translateY(-1px)}
+.toggle-btn{width:2.25rem;height:2.25rem;border-radius:.625rem;background:transparent;
+  border:1px solid var(--bs);cursor:pointer;display:grid;place-items:center;
+  font-size:1rem;color:var(--t3);transition:all .15s}
+.toggle-btn:hover{background:var(--brand-bg);color:var(--t1)}
+
+/* LAYOUT */
+.page{position:relative;z-index:1}
+.wrap{max-width:1280px;margin:0 auto;padding:0 1.75rem}
+.section{max-width:1280px;margin:0 auto;padding:4rem 1.75rem}
+
+/* HERO */
+.hero{padding:8rem 1.75rem 4rem;max-width:1280px;margin:0 auto;text-align:center}
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:'JetBrains Mono',monospace;
+  font-size:.6875rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--brand);margin-bottom:1rem}
+.eyebrow::before,.eyebrow::after{content:'';width:1.25rem;height:1px;background:var(--brand)}
+.hero h1{font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:800;letter-spacing:-.03em;
+  line-height:1.1;color:var(--t1);margin-bottom:1rem}
+.hero h1 em{font-style:normal;color:var(--brand)}
+.hero p{font-size:1.0625rem;color:var(--t2);line-height:1.8;max-width:600px;margin:0 auto 2.5rem}
+
+/* CASE STUDY HERO */
+.case-hero{background:var(--s1);border:1px solid var(--bs);border-radius:1.25rem;
+  overflow:hidden;box-shadow:var(--sh3);margin-bottom:4rem}
+.case-hero-top{padding:2.5rem 3rem;border-bottom:1px solid var(--bs);
+  display:flex;align-items:flex-start;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.case-tag{font-family:'JetBrains Mono',monospace;font-size:.625rem;font-weight:700;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--brand);background:var(--brand-bg);
+  border:1px solid rgba(37,99,235,.2);padding:.25rem .75rem;border-radius:.375rem;margin-bottom:1rem;display:inline-block}
+.case-hero-top h2{font-size:1.75rem;font-weight:800;letter-spacing:-.025em;color:var(--t1);margin-bottom:.5rem}
+.case-hero-top p{font-size:.9375rem;color:var(--t2);line-height:1.75;max-width:520px}
+.case-stats{display:flex;gap:2rem;flex-wrap:wrap}
+.case-stat .n{font-size:1.75rem;font-weight:800;letter-spacing:-.03em;color:var(--brand)}
+.case-stat .l{font-size:.8125rem;color:var(--t3);margin-top:.125rem}
+
+/* BEFORE/AFTER COMPARISON */
+.ba-section{padding:0 3rem 3rem}
+.ba-label-row{display:flex;gap:1rem;margin-bottom:1rem}
+.ba-badge{font-family:'JetBrains Mono',monospace;font-size:.6875rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;padding:.3rem .875rem;border-radius:.375rem}
+.ba-badge.before{background:rgba(0,0,0,.07);color:var(--t3)}
+[data-theme="dark"] .ba-badge.before{background:rgba(255,255,255,.08);color:var(--t3)}
+.ba-badge.after{background:var(--brand);color:#fff}
+
+.ba-slider-wrap{position:relative;border-radius:1rem;overflow:hidden;
+  border:1px solid var(--bs);box-shadow:var(--sh2);cursor:ew-resize;user-select:none;height:420px;background:var(--s2)}
+.ba-before-side{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--s3)}
+.ba-after-side{position:absolute;inset:0;clip-path:inset(0 50% 0 0);display:flex;align-items:center;justify-content:center;background:#fff}
+.ba-img{width:100%;height:100%;object-fit:contain;padding:1.5rem}
+.ba-divline{position:absolute;top:0;bottom:0;left:50%;width:2px;background:var(--brand);z-index:10;transform:translateX(-50%)}
+.ba-handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:3rem;height:3rem;border-radius:50%;background:var(--brand);z-index:11;
+  display:flex;align-items:center;justify-content:center;color:#fff;font-size:.875rem;font-weight:700;
+  box-shadow:0 4px 20px rgba(37,99,235,.5),0 0 0 3px rgba(255,255,255,.3)}
+.ba-tag{position:absolute;top:1rem;font-family:'JetBrains Mono',monospace;
+  font-size:.6875rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  padding:.3rem .75rem;border-radius:.375rem;z-index:12}
+.ba-tag.b{left:1rem;background:rgba(0,0,0,.5);color:#fff}
+.ba-tag.a{right:1rem;background:var(--brand);color:#fff}
+
+/* SHOTS GRID */
+.shots-section{padding:0 3rem 3rem}
+.shots-section h3{font-size:1.25rem;font-weight:700;letter-spacing:-.015em;color:var(--t1);margin-bottom:.5rem}
+.shots-section .desc{font-size:.9375rem;color:var(--t2);margin-bottom:2rem;line-height:1.75}
+.shots-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.shot-card{background:var(--s1);border:1px solid var(--bs);border-radius:var(--r);
+  overflow:hidden;box-shadow:var(--sh1);transition:all .25s;cursor:pointer}
+.shot-card:hover{box-shadow:var(--sh3);transform:translateY(-3px);border-color:rgba(37,99,235,.3)}
+.shot-img-wrap{aspect-ratio:1;background:#fff;display:flex;align-items:center;justify-content:center;
+  border-bottom:1px solid var(--bs);overflow:hidden;position:relative}
+.shot-img-wrap img{width:100%;height:100%;object-fit:contain;padding:1rem;transition:transform .35s}
+.shot-card:hover .shot-img-wrap img{transform:scale(1.05)}
+.shot-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3rem;opacity:.15}
+.shot-info{padding:1rem}
+.shot-type{font-family:'JetBrains Mono',monospace;font-size:.625rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--brand);margin-bottom:.375rem}
+.shot-name{font-size:.875rem;font-weight:700;color:var(--t1);margin-bottom:.375rem}
+.shot-benefit{font-size:.8125rem;color:var(--t2);line-height:1.6}
+
+/* INSIGHT BOX */
+.insight{background:var(--brand-bg);border:1px solid rgba(37,99,235,.15);
+  border-radius:var(--r);padding:1.75rem;margin:0 3rem 3rem;display:flex;gap:1.25rem;align-items:flex-start}
+.insight-icon{font-size:1.5rem;flex-shrink:0;margin-top:.125rem}
+.insight-title{font-size:.9375rem;font-weight:700;color:var(--t1);margin-bottom:.375rem}
+.insight-text{font-size:.875rem;color:var(--t2);line-height:1.75}
+
+/* MORE CASES */
+.more-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.more-card{background:var(--s1);border:1px solid var(--bs);border-radius:var(--r);
+  overflow:hidden;box-shadow:var(--sh1);transition:all .2s;cursor:pointer}
+.more-card:hover{box-shadow:var(--sh3);transform:translateY(-2px);border-color:rgba(37,99,235,.25)}
+.more-img{aspect-ratio:4/3;background:var(--s2);display:flex;align-items:center;
+  justify-content:center;font-size:3rem;border-bottom:1px solid var(--bs);overflow:hidden}
+.more-img img{width:100%;height:100%;object-fit:contain;padding:.75rem}
+.more-body{padding:1.25rem}
+.more-cat{font-family:'JetBrains Mono',monospace;font-size:.625rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--brand);margin-bottom:.375rem}
+.more-title{font-size:.9375rem;font-weight:700;color:var(--t1);margin-bottom:.375rem}
+.more-desc{font-size:.8125rem;color:var(--t2);line-height:1.6}
+
+/* CTA */
+.cta-box{background:linear-gradient(135deg,#1a3a6e,var(--brand),#0891b2);
+  border-radius:1.25rem;padding:4rem 3rem;text-align:center;position:relative;overflow:hidden}
+.cta-box::before{content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(45deg,rgba(255,255,255,.03) 0,rgba(255,255,255,.03) 1px,transparent 0,transparent 50%);
+  background-size:20px 20px}
+.cta-box h2{font-size:clamp(1.75rem,3vw,2.5rem);font-weight:800;letter-spacing:-.025em;color:#fff;margin-bottom:.875rem;position:relative}
+.cta-box p{font-size:1rem;color:rgba(255,255,255,.75);margin-bottom:2rem;position:relative}
+.btn-white{display:inline-flex;align-items:center;gap:.5rem;font-size:.9375rem;font-weight:700;
+  color:var(--brand);background:#fff;padding:.75rem 2rem;border-radius:.75rem;
+  text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.2);transition:all .2s;position:relative}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,0,0,.25)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--bs);padding:2rem 1.75rem;position:relative;z-index:1}
+.foot-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;
+  justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.foot-logo{font-size:.9375rem;font-weight:700;color:var(--t2)}
+.foot-links{display:flex;gap:1.75rem}
+.foot-links a{font-size:.875rem;color:var(--t3);text-decoration:none;transition:color .2s}
+.foot-links a:hover{color:var(--t1)}
+
+@media(max-width:900px){
+  .shots-grid{grid-template-columns:1fr 1fr}
+  .more-grid{grid-template-columns:1fr 1fr}
+  .case-hero-top,.ba-section,.shots-section,.insight{padding-left:1.5rem;padding-right:1.5rem}
+  .insight{margin-left:1.5rem;margin-right:1.5rem}
+}
+@media(max-width:580px){
+  .shots-grid,.more-grid{grid-template-columns:1fr}
+  .case-hero-top{padding:1.5rem}
+  .ba-slider-wrap{height:280px}
+}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="/">
+      <svg viewBox="0 0 300 42" height="24" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;display:block">
+        <text y="34" font-family="Inter,sans-serif" font-weight="800" font-size="36" fill="#0f2d6e" letter-spacing="-1">Oferta<tspan fill="#2563eb">Studio</tspan><tspan font-weight="300" font-size="26" fill="#94a3b8" dy="1">.pl</tspan></text>
+      </svg>
+    </a>
+    <div class="nav-right">
+      <a href="/" class="nav-back">← Strona główna</a>
+      <button class="toggle-btn" id="themeToggle">☀</button>
+      <a href="/#kontakt" class="btn-nav">Zamów packshoty →</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="eyebrow">Realizacje</div>
+  <h1>Zdjęcia, które<br><em>same sprzedają</em></h1>
+  <p>Każde ujęcie tworzymy z jednego celu — żeby Twój produkt wygrywał z konkurencją na liście wyników. Zobacz jak to robimy.</p>
+</div>
+
+<!-- CASE STUDY: TABAIBA SUN -->
+<div class="wrap">
+<div class="case-hero">
+  <div class="case-hero-top">
+    <div>
+      <div class="case-tag">CASE STUDY #001 // KOSMETYKI</div>
+      <h2>Tabaiba Sun — Aloe Protective Sun Oil SPF 50+</h2>
+      <p>Z jednego słabego zdjęcia referencyjnego stworzyliśmy kompletną serię packshotów — frontalne, boczne, detal i lifestyle z kroplami wody. Każde ujęcie zaprojektowane z myślą o konkretnej korzyści sprzedażowej.</p>
+    </div>
+    <div class="case-stats">
+      <div class="case-stat"><div class="n">1</div><div class="l">zdjęcie referencyjne</div></div>
+      <div class="case-stat"><div class="n">4</div><div class="l">gotowe ujęcia</div></div>
+      <div class="case-stat"><div class="n">48H</div><div class="l">czas realizacji</div></div>
+    </div>
+  </div>
+
+  <!-- BEFORE/AFTER SLIDER -->
+  <div class="ba-section">
+    <div class="ba-label-row">
+      <span class="ba-badge before">← Zdjęcie referencyjne klienta</span>
+      <span class="ba-badge after">Packshot OfertaStudio →</span>
+    </div>
+    <div class="ba-slider-wrap" id="baSlider">
+      <div class="ba-before-side">
+        <img class="ba-img" src="tabaiba-przed.png" alt="Zdjęcie referencyjne Tabaiba Sun przed obróbką" onerror="this.parentElement.innerHTML='<div class=shot-placeholder>📷</div>'">
+      </div>
+      <div class="ba-after-side" id="baAfter">
+        <img class="ba-img" src="tabaiba-po-front.png" alt="Packshot Tabaiba Sun po obróbce OfertaStudio" onerror="this.parentElement.innerHTML='<div style=position:absolute;inset:0;background:#fff;display:flex;align-items:center;justify-content:center><div class=shot-placeholder>✨</div></div>'">
+      </div>
+      <div class="ba-divline" id="baDivline"></div>
+      <div class="ba-handle" id="baHandle">◀▶</div>
+      <div class="ba-tag b">PRZED</div>
+      <div class="ba-tag a">PO</div>
+    </div>
+  </div>
+
+  <!-- INSIGHT -->
+  <div class="insight">
+    <div class="insight-icon">💡</div>
+    <div>
+      <div class="insight-title">Skąd zaczęliśmy</div>
+      <div class="insight-text">Klient dostarczył jedno zdjęcie produktu wykonane smartfonem — płaskie oświetlenie, szare tło, brak głębi. Na jego podstawie stworzyliśmy cztery profesjonalne ujęcia, z których każde pełni inną funkcję sprzedażową na stronie produktu.</div>
+    </div>
+  </div>
+
+  <!-- SHOTS -->
+  <div class="shots-section">
+    <h3>Cztery ujęcia — cztery różne zadania sprzedażowe</h3>
+    <p class="desc">Każde zdjęcie w serii ma konkretny cel. Razem budują pełne zaufanie klienta do produktu — od pierwszego spojrzenia aż po decyzję zakupową.</p>
+    <div class="shots-grid">
+
+      <div class="shot-card">
+        <div class="shot-img-wrap">
+          <img src="tabaiba-po-front.png" alt="Packshot frontalny Tabaiba Sun" onerror="this.parentElement.innerHTML='<div class=shot-placeholder>📦</div>'">
+        </div>
+        <div class="shot-info">
+          <div class="shot-type">Ujęcie 01 // Frontalne</div>
+          <div class="shot-name">Białe tło, pełna ekspozycja</div>
+          <div class="shot-benefit">Pierwsze zdjęcie na liście Allegro/Amazon. Czyste białe tło i idealne oświetlenie sprawiają, że produkt wyróżnia się spośród dziesiątek konkurencyjnych ofert. To zdjęcie decyduje o kliknięciu.</div>
+        </div>
+      </div>
+
+      <div class="shot-card">
+        <div class="shot-img-wrap">
+          <img src="tabaiba-po-bok.png" alt="Packshot boczny Tabaiba Sun" onerror="this.parentElement.innerHTML='<div class=shot-placeholder>📦</div>'">
+        </div>
+        <div class="shot-info">
+          <div class="shot-type">Ujęcie 02 // Boczne / 3/4</div>
+          <div class="shot-name">Głębia i trójwymiarowość</div>
+          <div class="shot-benefit">Ujęcie pod kątem pokazuje kształt, proporcje i objętość produktu. Klient widzi, że to prawdziwy, solidny produkt — nie płaska grafika. Redukuje zwroty wynikające z rozczarowania wyglądem.</div>
+        </div>
+      </div>
+
+      <div class="shot-card">
+        <div class="shot-img-wrap">
+          <img src="tabaiba-po-detal.png" alt="Detal etykiety Tabaiba Sun" onerror="this.parentElement.innerHTML='<div class=shot-placeholder>🔍</div>'">
+        </div>
+        <div class="shot-info">
+          <div class="shot-type">Ujęcie 03 // Detal etykiety</div>
+          <div class="shot-name">Skład i certyfikaty widoczne</div>
+          <div class="shot-benefit">Zbliżenie na etykietę pokazuje SPF 50+, Vegan, Coral Safe, Aloe Vera — kluczowe argumenty zakupowe. Klient nie musi czytać opisu, widzi wszystko na zdjęciu. To buduje zaufanie i przyspiesza decyzję.</div>
+        </div>
+      </div>
+
+      <div class="shot-card">
+        <div class="shot-img-wrap">
+          <img src="tabaiba-po-lifestyle.png" alt="Lifestyle packshot Tabaiba Sun z kroplami wody" onerror="this.parentElement.innerHTML='<div class=shot-placeholder>💧</div>'">
+        </div>
+        <div class="shot-info">
+          <div class="shot-type">Ujęcie 04 // Lifestyle</div>
+          <div class="shot-name">Emocja i kontekst użycia</div>
+          <div class="shot-benefit">Krople wody na butelce natychmiast kojarzą się ze słońcem, plażą i ochroną. Klient wyobraża sobie produkt w użyciu. Zdjęcia lifestyle zwiększają konwersję o średnio 24% w porównaniu do samych packshotów.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /case-hero -->
+</div><!-- /wrap -->
+
+<!-- MORE CASES -->
+<div class="section">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;flex-wrap:wrap;gap:1rem">
+    <div>
+      <div class="eyebrow" style="margin-bottom:.5rem">Więcej realizacji</div>
+      <h2 style="font-size:1.75rem;font-weight:800;letter-spacing:-.02em;color:var(--t1)">Inne kategorie produktowe</h2>
+    </div>
+    <a href="/#kontakt" style="font-size:.875rem;font-weight:600;color:var(--brand);text-decoration:none;display:flex;align-items:center;gap:.375rem">Zamów swoją serię →</a>
+  </div>
+  <div class="more-grid">
+    <div class="more-card">
+      <div class="more-img">📱</div>
+      <div class="more-body">
+        <div class="more-cat">Elektronika</div>
+        <div class="more-title">Słuchawki bezprzewodowe</div>
+        <div class="more-desc">Refleksy na plastiku, ujęcia portów, zbliżenie na sterowniki. Portfolio dostępne po kontakcie.</div>
+      </div>
+    </div>
+    <div class="more-card">
+      <div class="more-img">👕</div>
+      <div class="more-body">
+        <div class="more-cat">Odzież</div>
+        <div class="more-title">Kolekcja sportowa</div>
+        <div class="more-desc">Flat lay, detal tkaniny i szwów, ujęcie metkowania. Neutralna korekta kolorów.</div>
+      </div>
+    </div>
+    <div class="more-card">
+      <div class="more-img">🏠</div>
+      <div class="more-body">
+        <div class="more-cat">Dom i ogród</div>
+        <div class="more-title">Akcesoria kuchenne</div>
+        <div class="more-desc">Zestawy produktów, ujęcia kompletów, białe tło gotowe na Allegro Smart!</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="wrap" style="padding-bottom:5rem">
+  <div class="cta-box">
+    <h2>Twój produkt zasługuje<br>na taką prezentację</h2>
+    <p>Wyślij nam zdjęcia zrobione smartfonem — wrócimy z profesjonalną serią w 48 godzin.</p>
+    <a href="/#kontakt" class="btn-white">Zapytaj o wycenę →</a>
+  </div>
+</div>
+
+</div><!-- /page -->
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-logo">OfertaStudio.pl © 2025</div>
+    <div class="foot-links">
+      <a href="/">Strona główna</a>
+      <a href="/#cennik">Cennik</a>
+      <a href="/#kontakt">Kontakt</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// THEME
+const root=document.documentElement,tb=document.getElementById('themeToggle');
+tb.addEventListener('click',()=>{const d=root.getAttribute('data-theme')==='dark';root.setAttribute('data-theme',d?'light':'dark');tb.textContent=d?'☀':'☾'});
+
+// B/A SLIDER
+const sl=document.getElementById('baSlider'),af=document.getElementById('baAfter'),ln=document.getElementById('baDivline'),hd=document.getElementById('baHandle');
+let drag=false;
+function setBA(x){const r=sl.getBoundingClientRect(),p=Math.min(Math.max((x-r.left)/r.width*100,4),96);af.style.clipPath=`inset(0 ${100-p}% 0 0)`;ln.style.left=hd.style.left=p+'%'}
+sl.addEventListener('mousedown',e=>{drag=true;setBA(e.clientX)});
+sl.addEventListener('touchstart',e=>{drag=true;setBA(e.touches[0].clientX)},{passive:true});
+window.addEventListener('mousemove',e=>{if(drag)setBA(e.clientX)});
+window.addEventListener('touchmove',e=>{if(drag)setBA(e.touches[0].clientX)},{passive:true});
+window.addEventListener('mouseup',()=>drag=false);
+window.addEventListener('touchend',()=>drag=false);
+</script>
+</body>
+</html>
