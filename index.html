@@ -648,9 +648,50 @@ footer{border-top:1px solid var(--bs);padding:2.25rem 1.75rem}
   </div>
 </div>
 
-<div class="divider"></div>
+<!-- PORTFOLIO PREVIEW -->
+<div class="section" id="realizacje">
+  <div class="s-head">
+    <div class="eyebrow">Realizacje</div>
+    <h2 class="s-title">Zdjęcia, które same sprzedają</h2>
+    <p class="s-sub">Z jednego zdjęcia referencyjnego tworzymy kompletną serię packshotów. Zobacz jak to wygląda w praktyce.</p>
+  </div>
 
-<!-- SERVICES -->
+  <!-- MINI B/A -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-bottom:3rem">
+    <div>
+      <div style="border-radius:var(--r);overflow:hidden;border:1px solid var(--bs);box-shadow:var(--sh3);position:relative;cursor:ew-resize;user-select:none;height:340px;background:var(--s2)" id="baSliderMain">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--s3)">
+          <img src="tabaiba-przed.png" alt="Przed" style="width:100%;height:100%;object-fit:contain;padding:1.5rem" onerror="this.style.display='none'">
+        </div>
+        <div id="baAfterMain" style="position:absolute;inset:0;clip-path:inset(0 50% 0 0);display:flex;align-items:center;justify-content:center;background:#fff">
+          <img src="tabaiba-po-front.png" alt="Po" style="width:100%;height:100%;object-fit:contain;padding:1.5rem" onerror="this.style.display='none'">
+        </div>
+        <div id="baDivMain" style="position:absolute;top:0;bottom:0;left:50%;width:2px;background:var(--brand);z-index:10;transform:translateX(-50%)"></div>
+        <div id="baHndMain" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:2.75rem;height:2.75rem;border-radius:50%;background:var(--brand);z-index:11;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.875rem;box-shadow:0 4px 16px rgba(37,99,235,.5)">◀▶</div>
+        <div style="position:absolute;top:.875rem;left:.875rem;font-family:'JetBrains Mono',monospace;font-size:.6875rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(0,0,0,.5);color:#fff;padding:.3rem .75rem;border-radius:.375rem;z-index:12">PRZED</div>
+        <div style="position:absolute;top:.875rem;right:.875rem;font-family:'JetBrains Mono',monospace;font-size:.6875rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--brand);color:#fff;padding:.3rem .75rem;border-radius:.375rem;z-index:12">PO</div>
+      </div>
+      <p style="font-size:.8125rem;color:var(--t3);text-align:center;margin-top:.75rem;font-family:'JetBrains Mono',monospace">// przeciągnij suwak aby porównać</p>
+    </div>
+    <div>
+      <div class="eyebrow" style="margin-bottom:1rem">Case Study #001</div>
+      <h3 style="font-size:1.5rem;font-weight:800;letter-spacing:-.02em;color:var(--t1);margin-bottom:.75rem">Tabaiba Sun — SPF 50+</h3>
+      <p style="font-size:.9375rem;color:var(--t2);line-height:1.8;margin-bottom:1.5rem">Z jednego słabego zdjęcia referencyjnego stworzyliśmy 4 profesjonalne ujęcia — frontalne, boczne, detal etykiety i lifestyle z kroplami wody.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1.75rem">
+        <img src="tabaiba-po-bok.png" alt="Ujęcie boczne" style="width:100%;border-radius:.625rem;border:1px solid var(--bs);background:#fff;object-fit:contain;aspect-ratio:1;padding:.5rem" onerror="this.style.display='none'">
+        <img src="tabaiba-po-detal.png" alt="Detal etykiety" style="width:100%;border-radius:.625rem;border:1px solid var(--bs);background:#fff;object-fit:contain;aspect-ratio:1;padding:.5rem" onerror="this.style.display='none'">
+        <img src="tabaiba-po-lifestyle.png" alt="Lifestyle" style="width:100%;border-radius:.625rem;border:1px solid var(--bs);background:#fff;object-fit:contain;aspect-ratio:1;padding:.5rem" onerror="this.style.display='none'">
+        <div style="border-radius:.625rem;border:1px solid var(--brand-bg);background:var(--brand-bg);display:flex;flex-direction:column;align-items:center;justify-content:center;aspect-ratio:1;padding:1rem;text-align:center">
+          <div style="font-size:1.5rem;font-weight:800;color:var(--brand)">4</div>
+          <div style="font-size:.75rem;color:var(--t3);font-family:'JetBrains Mono',monospace;letter-spacing:.06em">ujęcia z 1 ref.</div>
+        </div>
+      </div>
+      <a href="/realizacje" class="btn-p" style="display:inline-flex">Zobacz pełne case study →</a>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
 <div class="section" id="uslugi">
   <div class="s-head">
     <div class="eyebrow">Usługi</div>
@@ -1027,6 +1068,19 @@ if(window.location.search.includes('dziekujemy=1')){
 const root=document.documentElement,tb=document.getElementById('themeToggle');
 function setTheme(d){root.setAttribute('data-theme',d?'dark':'light');tb.textContent=d?'☾':'☀'}
 tb.addEventListener('click',()=>setTheme(root.getAttribute('data-theme')!=='dark'));
+
+// B/A SLIDER MAIN PAGE
+const slM=document.getElementById('baSliderMain'),afM=document.getElementById('baAfterMain'),lnM=document.getElementById('baDivMain'),hdM=document.getElementById('baHndMain');
+let dragM=false;
+function setBAM(x){if(!slM)return;const r=slM.getBoundingClientRect(),p=Math.min(Math.max((x-r.left)/r.width*100,4),96);afM.style.clipPath=`inset(0 ${100-p}% 0 0)`;lnM.style.left=hdM.style.left=p+'%'}
+if(slM){
+  slM.addEventListener('mousedown',e=>{dragM=true;setBAM(e.clientX)});
+  slM.addEventListener('touchstart',e=>{dragM=true;setBAM(e.touches[0].clientX)},{passive:true});
+}
+window.addEventListener('mousemove',e=>{if(dragM)setBAM(e.clientX)});
+window.addEventListener('touchmove',e=>{if(dragM)setBAM(e.touches[0].clientX)},{passive:true});
+window.addEventListener('mouseup',()=>dragM=false);
+window.addEventListener('touchend',()=>dragM=false);
 
 // B/A SLIDER
 const sl=document.getElementById('baSlider'),af=document.getElementById('baAfter'),ln=document.getElementById('baLine'),hd=document.getElementById('baHandle');
