@@ -128,7 +128,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;border-bottom:1px solid var(
 .ba-hint{font-size:.75rem;color:var(--t3);font-family:'JetBrains Mono',monospace;margin-left:auto}
 .ba-slider{border-radius:.75rem;overflow:hidden;border:1px solid var(--bs);box-shadow:var(--sh2);position:relative;cursor:ew-resize;user-select:none;height:360px;background:var(--s2)}
 .ba-before-side{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--s3)}
-.ba-after-side{position:absolute;inset:0;clip-path:inset(0 50% 0 0);display:flex;align-items:center;justify-content:center;background:#fff}
+.ba-after-side{position:absolute;inset:0;clip-path:inset(0 0 0 50%);display:flex;align-items:center;justify-content:center;background:#fff}
 .ba-img{width:100%;height:100%;object-fit:contain;padding:1.5rem}
 .ba-divline{position:absolute;top:0;bottom:0;left:50%;width:2px;background:var(--brand);z-index:10;transform:translateX(-50%)}
 .ba-handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:2.75rem;height:2.75rem;border-radius:50%;background:var(--brand);z-index:11;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.875rem;font-weight:700;box-shadow:0 4px 20px rgba(37,99,235,.5),0 0 0 3px rgba(255,255,255,.25)}
@@ -858,7 +858,7 @@ footer{border-top:1px solid var(--bs);padding:2rem 1.75rem;position:relative;z-i
         <div class="insight-icon">💡</div>
         <div>
           <div class="insight-title">Dom i ogród — kontekst użycia to argument sprzedażowy</div>
-          <div class="insight-text">Produkty ogrodowe sprzedają się lepiej gdy klient widzi je w kontekście użycia — nie tylko na białym tle. Dlatego łączymy klasyczny packshot z ujęciem lifestyle i detalami technicznymi. Kompletna galeria 9 ujęć odpowiada na wszystkie pytania kupującego zanim się pojawią.</div>
+          <div class="insight-text">Produkty ogrodowe sprzedają się lepiej gdy klient widzi je w kontekście użycia — nie tylko na białym tle. Dlatego łączymy klasyczny packshot z ujęciem lifestyle i detalami technicznymi. Kompletna galeria 7 ujęć odpowiada na wszystkie pytania kupującego zanim się pojawią.</div>
         </div>
       </div>
     </div>
@@ -883,19 +883,19 @@ footer{border-top:1px solid var(--bs);padding:2rem 1.75rem;position:relative;z-i
     <div class="case-header">
       <div class="case-meta">
         <div class="case-cat">CASE STUDY #006 · ELEKTRONARZĘDZIA</div>
-        <div class="case-h">Wiertarko-wkrętarka — pełna optymalizacja oferty Allegro</div>
-        <div class="case-sub">Elektronarzędzia to kategoria, gdzie klient porównuje kilka ofert jednocześnie. Wygrywa ta, która najszybciej odpowiada na pytania: jaka moc, ile biegów, co w zestawie, jakie ładowanie. Naszym zadaniem jest dać te odpowiedzi na zdjęciach.</div>
+        <div class="case-h">Metabo PowerMaxx BS 12 BL — pełna optymalizacja galerii</div>
+        <div class="case-sub">Kupujący wiertarko-wkrętarkę porównuje kilka ofert jednocześnie. Wygrywa ta, która najszybciej odpowiada na pytania: jaki silnik, ile akumulatorów, co w zestawie, jaka pojemność. Zorganizowaliśmy galerię tak, żeby każde z tych pytań miało odpowiedź na konkretnym zdjęciu.</div>
         <div class="case-badges">
-          <span class="case-badge">✓ Zdjęcie główne</span>
-          <span class="case-badge">✓ Galeria 6 ujęć</span>
-          <span class="case-badge">✓ Infografika parametrów</span>
-          <span class="case-badge">✓ Tytuł SEO</span>
+          <span class="case-badge">✓ Zdjęcie główne zestawu</span>
+          <span class="case-badge">✓ Detale techniczne</span>
+          <span class="case-badge">✓ Lifestyle w użyciu</span>
+          <span class="case-badge">✓ Infografika PL</span>
           <span class="case-badge neutral">Czas: 48h</span>
         </div>
       </div>
       <div class="case-nums">
-        <div class="case-num"><div class="n">3</div><div class="l">zdjęcia wejściowe</div></div>
-        <div class="case-num"><div class="n">8</div><div class="l">gotowych plików</div></div>
+        <div class="case-num"><div class="n">1</div><div class="l">zdjęcie wejściowe</div></div>
+        <div class="case-num"><div class="n">10</div><div class="l">gotowych ujęć</div></div>
       </div>
     </div>
 
@@ -907,11 +907,11 @@ footer{border-top:1px solid var(--bs);padding:2rem 1.75rem;position:relative;z-i
       </div>
       <div class="ba-slider" id="ba006">
         <div class="ba-before-side">
-          <div class="ph"><div class="ph-icon">🔌</div><div class="ph-text">Tu pojawi się zdjęcie przed<br><strong>elektronarzedzia-przed.jpg</strong></div></div>
+          <img class="ba-img" src="elektronarzedzia-przed.jpg" alt="Metabo zestaw przed" onerror="this.parentElement.innerHTML='<div class=ph><div class=ph-icon>🔌</div><div class=ph-text>elektronarzedzia-przed.jpg</div></div>'">
         </div>
         <div class="ba-after-side" id="ba006-after">
           <div style="position:absolute;inset:0;background:#fff;display:flex;align-items:center;justify-content:center">
-            <div class="ph"><div class="ph-icon">✨</div><div class="ph-text">Tu pojawi się zdjęcie po<br><strong>elektronarzedzia-po.jpg</strong></div></div>
+            <img class="ba-img" src="elektronarzedzia-po-zestaw.png" alt="Metabo PowerMaxx BS 12 BL zestaw" onerror="this.parentElement.innerHTML='<div class=ph><div class=ph-icon>✨</div></div>'">
           </div>
         </div>
         <div class="ba-divline" id="ba006-line"></div>
@@ -921,12 +921,127 @@ footer{border-top:1px solid var(--bs);padding:2rem 1.75rem;position:relative;z-i
       </div>
     </div>
 
+    <div class="shots-wrap">
+      <div class="shots-title">10 ujęć — każde odpowiada na inne pytanie kupującego</div>
+      <div class="shots-sub">Elektronarzędzia kupuje osoba, która wie czego szuka. Wygrywasz gdy odpowiadasz na jej pytania szybciej niż konkurencja.</div>
+      <div class="shots-grid">
+        <div class="shot-card">
+          <div class="shot-img" style="background:#fff">
+            <img src="elektronarzedzia-po-zestaw.png" alt="Zestaw 3/4 wszystkie elementy" onerror="this.parentElement.innerHTML='<div class=ph><div class=ph-icon>📦</div></div>'">
+          </div>
+          <div class="shot-body">
+            <div class="shot-type">Ujęcie 01 · Zdjęcie główne</div>
+            <div class="shot-name">Zestaw — wszystko widoczne</div>
+            <div class="shot-why">Wiertarka, 2 akumulatory LiHD 4Ah, ładowarka ASC 55 i walizka MetaBOX — wszystko na jednym zdjęciu. Klient widzi komplet bez czytania opisu.</div>
+          </div>
+        </div>
+        <div class="shot-card">
+          <div class="shot-img" style="background:#fff">
+            <img src="elektronarzedzia-po-front.png" alt="Wiertarka frontalnie" onerror="this.parentElement.innerHTML='<div class=ph><div class=ph-icon>🔌</div></div>'">
+          </div>
+          <div class="shot-body">
+            <div class="shot-type">Ujęcie 02 · Packshot czysty</div>
+            <div class="shot-name">Wiertarka z akumulatorem</div>
+            <div class="shot-why">Czyste ujęcie samej wiertarki z akumulatorem — do użycia jako zdjęcie główne na Allegro. Kompaktowa sylwetka BS 12 BL widoczna bez rozpraszaczy.</div>
+          </div>
+        </div>
+        <div class="shot-card">
+          <div class="shot-img" style="background:#fff">
+            <img src="elektronarzedzia-po-zestaw2.png" alt="Zestaw z innego kąta" onerror="this.parentElement.innerHTML='<div class=ph><div class=ph-icon>📦</div></div>'">
+          </div>
+          <div class="shot-body">
+            <div class="shot-type">Ujęcie 03 · Zestaw alternatywny</div>
+            <div class="shot-name">Przestrzenne ułożenie zestawu</div>
+            <div class="shot-why">Alternatywne ujęcie zestawu z innego kąta — walizka otwarta lub inny układ. Daje klientowi pełny obraz zawartości z różnych perspektyw.</div>
+          </div>
+        </div>
+        <div class="shot-card">
+          <div class="shot-img" style="background:#fff">
+            <img src="elektronarzedzia-po-glowica.png" alt="Detal głowicy i uchwytu wiertarskiego" onerror="this.parentElement.innerHTML='<div class=ph><div class=ph-icon>🔍</div></div>'">
+          </div>
+          <div class="shot-body">
+            <div class="shot-type">Ujęcie 04 · Detal głowicy</div>
+            <div class="shot-name">Uchwyt wiertarski i pierścień</div>
+            <div class="shot-why">Zbliżenie na precyzyjny uchwyt wiertarski z metalowym pierścieniem i widoczną skalą momentu 20 stopni. Jakość wykonania widoczna gołym okiem.</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:1rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem">
+        <div class="shot-card">
+          <div class="shot-img" style="background:#fff">
+            <img src="elektronarzedzia-po-uchwyt.png" alt="Detal uchwytu i przełącznika" onerror="this.parentElement.innerHTML='<div class=ph><div class=ph-icon>🎮</div></div>'">
+          </div>
+          <div class="shot-body">
+            <div class="shot-type">Ujęcie 05 · Uchwyt i hak</div>
+            <div class="shot-name">Przełącznik biegów i hak</div>
+            <div class="shot-why">Detal przełącznika kierunku obrotów, przełącznika biegów i metalowego haka do pasa — kluczowe cechy dla profesjonalisty szukającego narzędzia roboczego.</div>
+          </div>
+        </div>
+        <div class="shot-card">
+          <div class="shot-img" style="background:#fff">
+            <img src="elektronarzedzia-po-walizka.png" alt="Walizka MetaBOX" onerror="this.parentElement.innerHTML='<div class=ph><div class=ph-icon>🧳</div></div>'">
+          </div>
+          <div class="shot-body">
+            <div class="shot-type">Ujęcie 06 · Walizka MetaBOX</div>
+            <div class="shot-name">System transportu i przechowywania</div>
+            <div class="shot-why">Walizka MetaBOX z systemem stackowania — argument wartości zestawu. Dla profesjonalisty walizka to nie dodatek, to standard organizacji narzędzi.</div>
+          </div>
+        </div>
+        <div class="shot-card">
+          <div class="shot-img" style="background:#fff">
+            <img src="elektronarzedzia-po-brushless.png" alt="Detal korpusu BRUSHLESS" onerror="this.parentElement.innerHTML='<div class=ph><div class=ph-icon>⚡</div></div>'">
+          </div>
+          <div class="shot-body">
+            <div class="shot-type">Ujęcie 07 · Brushless</div>
+            <div class="shot-name">Silnik bezszczotkowy — widoczny znacznik</div>
+            <div class="shot-why">Zbliżenie na korpus z napisem BRUSHLESS — kluczowy argument dla znającego się kupującego. Silnik bezszczotkowy = dłuższa żywotność i wyższa sprawność.</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:1rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+        <div class="shot-card">
+          <div class="shot-img" style="background:#fff;aspect-ratio:1">
+            <img src="elektronarzedzia-po-wdloni.png" alt="Wiertarka w dłoni" style="width:100%;height:100%;object-fit:contain;padding:.75rem" onerror="this.parentElement.innerHTML='<div class=ph><div class=ph-icon>✋</div></div>'">
+          </div>
+          <div class="shot-body">
+            <div class="shot-type">Ujęcie 08 · W dłoni</div>
+            <div class="shot-name">Kompaktowość i waga</div>
+            <div class="shot-why">Wiertarka w dłoni pokazuje realną kompaktowość BS 12 BL — małe i lekkie, idealne do pracy w ciasnych miejscach i nad głową.</div>
+          </div>
+        </div>
+        <div class="shot-card">
+          <div class="shot-img" style="background:#f5f5f5;aspect-ratio:1">
+            <img src="elektronarzedzia-po-lifestyle.png" alt="Wiercenie w drewnie" style="width:100%;height:100%;object-fit:contain;padding:.75rem" onerror="this.parentElement.innerHTML='<div class=ph><div class=ph-icon>🪵</div></div>'">
+          </div>
+          <div class="shot-body">
+            <div class="shot-type">Ujęcie 09 · Lifestyle warsztat</div>
+            <div class="shot-name">Wiercenie w drewnie z zestawem w tle</div>
+            <div class="shot-why">Narzędzie w akcji — wiercenie w drewnie z walizką i ładowarką w tle. Klient widzi produkt w realnym środowisku pracy i wyobraża sobie siebie przy tej robocie.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Infografika -->
+      <div style="margin-top:1rem;background:var(--s1);border:1px solid var(--bs);border-radius:.75rem;overflow:hidden;box-shadow:var(--sh1);display:grid;grid-template-columns:1fr 1fr;gap:0">
+        <div style="background:#fff;display:flex;align-items:center;justify-content:center;border-right:1px solid var(--bs);overflow:hidden;min-height:220px">
+          <img src="elektronarzedzia-po-infografika.png" alt="Infografika parametrów Metabo PL" style="width:100%;height:100%;object-fit:contain;padding:1rem" onerror="this.parentElement.innerHTML='<div class=ph><div class=ph-icon>📊</div></div>'">
+        </div>
+        <div style="padding:1.5rem;display:flex;flex-direction:column;justify-content:center">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:.625rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brand);margin-bottom:.5rem">Ujęcie 10 · Infografika PL</div>
+          <div style="font-size:.9375rem;font-weight:700;color:var(--t1);margin-bottom:.5rem">Kluczowe cechy opisane po polsku</div>
+          <div style="font-size:.875rem;color:var(--t2);line-height:1.75">Infografika z opisanymi po polsku elementami zestawu: kompaktowa konstrukcja, ergonomiczny uchwyt, system akumulatorowy 12V, walizka MetaBOX i akumulator z ładowarką w komplecie. Klient rozumie wartość zestawu bez czytania specyfikacji technicznej.</div>
+        </div>
+      </div>
+    </div>
+
     <div class="insight-wrap">
       <div class="insight">
         <div class="insight-icon">💡</div>
         <div>
-          <div class="insight-title">Elektronarzędzia — wygrywasz infografiką, nie ceną</div>
-          <div class="insight-text">W tej kategorii konkurencja jest duża, a ceny podobne. Oferta, która wizualnie pokazuje parametry — moc, liczbę biegów, czas ładowania, zawartość zestawu — wygrywa kliknięcie bez konieczności obniżki ceny. Infografika to inwestycja, nie koszt.</div>
+          <div class="insight-title">Elektronarzędzia — wygrywasz infografiką i zestawem, nie ceną</div>
+          <div class="insight-text">W kategorii wiertarko-wkrętarek konkurencja jest duża, a ceny podobne. Oferta z kompletną galerią pokazującą silnik Brushless, akumulatory LiHD 4Ah, walizkę MetaBOX i narzędzie w użyciu wygrywa kliknięcie bez obniżki ceny. Kupujący widzi wartość zestawu — nie tylko cenę za szt.</div>
         </div>
       </div>
     </div>
@@ -969,7 +1084,7 @@ function initSlider(id){
   if(!sl)return;
   const af=document.getElementById(id+'-after'),ln=document.getElementById(id+'-line'),hd=document.getElementById(id+'-handle');
   let drag=false;
-  function set(x){const r=sl.getBoundingClientRect(),p=Math.min(Math.max((x-r.left)/r.width*100,4),96);if(af)af.style.clipPath=`inset(0 ${100-p}% 0 0)`;if(ln)ln.style.left=p+'%';if(hd)hd.style.left=p+'%'}
+  function set(x){const r=sl.getBoundingClientRect(),p=Math.min(Math.max((x-r.left)/r.width*100,4),96);if(af)af.style.clipPath=`inset(0 0 0 ${p}%)`;if(ln)ln.style.left=p+'%';if(hd)hd.style.left=p+'%'}
   sl.addEventListener('mousedown',e=>{drag=true;set(e.clientX)});
   sl.addEventListener('touchstart',e=>{drag=true;set(e.touches[0].clientX)},{passive:true});
   window.addEventListener('mousemove',e=>{if(drag)set(e.clientX)});
