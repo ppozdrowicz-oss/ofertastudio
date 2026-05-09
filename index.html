@@ -61,6 +61,20 @@ body{min-height:100vh;font-family:'Inter',system-ui,sans-serif;font-size:1rem;li
   -webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .3s,color .3s}
 [data-theme="dark"] body{background:radial-gradient(ellipse 80% 50% at 50% -10%,rgba(59,130,246,.12),transparent),var(--bg)}
 ::selection{background:rgba(37,99,235,.25)}
+
+/* ── FOCUS-VISIBLE (accessibility) ── */
+:focus{outline:none}
+:focus-visible{outline:2px solid var(--brand);outline-offset:3px;border-radius:4px}
+button:focus-visible,a:focus-visible{outline:2px solid var(--brand);outline-offset:3px;border-radius:6px}
+.toggle-btn:focus-visible,.ham-btn:focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:.625rem}
+.faq-q:focus-visible{outline:2px solid var(--brand);outline-offset:-2px;border-radius:0}
+#baSliderMain:focus-visible{outline:2px solid var(--brand);outline-offset:4px;border-radius:var(--r)}
+.price-btn:focus-visible,.btn-p:focus-visible,.btn-s:focus-visible,
+.btn-nav:focus-visible,.btn-hero-primary:focus-visible,
+.btn-hero-wa:focus-visible,.btn-hero-ghost:focus-visible,
+.sticky-btn:focus-visible,.ch-item:focus-visible,.wa-fab:focus-visible{
+  outline:2px solid var(--brand);outline-offset:3px;
+}
 .grid-bg{position:fixed;inset:0;pointer-events:none;z-index:0;
   background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
   background-size:40px 40px;
@@ -112,10 +126,23 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;border-bottom:1px solid var(
 
 /* ── LAYOUT ── */
 .page{position:relative;z-index:1}
-.section{max-width:1280px;margin:0 auto;padding:3.5rem 1.75rem}
+.section{max-width:1280px;margin:0 auto;padding:4rem 1.75rem}
 .divider{height:1px;background:var(--bs);max-width:1280px;margin:0 auto}
-.card{background:var(--s1);border:1px solid var(--bs);border-radius:var(--r);box-shadow:var(--sh1);transition:box-shadow .2s,border-color .2s}
-.card:hover{box-shadow:var(--sh2);border-color:rgba(37,99,235,.25)}
+.card{
+  background:var(--s1);
+  border:1px solid var(--bs);
+  border-radius:var(--r);
+  box-shadow:var(--sh1);
+  transition:box-shadow .25s ease,border-color .25s ease,transform .2s ease;
+}
+.card:hover{
+  box-shadow:var(--sh2);
+  border-color:rgba(37,99,235,.22);
+  transform:translateY(-1px);
+}
+/* card variants */
+.card-flat{background:var(--s2);border:1px solid var(--bs);border-radius:var(--r)}
+.card-accent{background:var(--s1);border:1px solid var(--bs);border-radius:var(--r);box-shadow:var(--sh1);border-top:2px solid var(--brand)}
 .glass{background:var(--glass),var(--s1);border:1px solid var(--bs);border-radius:var(--r);box-shadow:var(--sh2);backdrop-filter:blur(24px)}
 .eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:'JetBrains Mono',monospace;font-size:.6875rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brand);margin-bottom:1rem}
 .eyebrow::before,.eyebrow::after{content:'';width:1.25rem;height:1px;background:var(--brand)}
@@ -133,9 +160,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;border-bottom:1px solid var(
 .hero-h1{font-size:clamp(2.1rem,4.9vw,3.6rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;color:var(--t1);margin-bottom:1.25rem}
 .hero-sub{font-size:1rem;color:var(--t2);line-height:1.8;max-width:640px;margin-bottom:2rem}
 .hero-btns{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:1.5rem}
-.hero-trust{display:grid;grid-template-columns:repeat(2,1fr);gap:.5rem;max-width:560px}
-.hero-trust span{font-size:.8125rem;color:var(--t2);background:var(--s2);border:1px solid var(--bs);padding:.4rem .625rem;border-radius:.5rem;display:flex;align-items:center;gap:.375rem}
-.hero-trust span::before{content:'✓';color:var(--brand);font-weight:700;font-size:.75rem;flex-shrink:0}
+/* .hero-trust moved to bottom of styles */
 
 .metrics{display:flex;flex-direction:column;gap:.75rem}
 .mc{padding:1.25rem 1.5rem;position:relative;overflow:hidden}
@@ -185,7 +210,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;border-bottom:1px solid var(
 
 /* ── INDUSTRIES ── */
 .ind-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
-.ind-card{padding:1.25rem}
+.ind-card{padding:1.375rem 1.25rem}
 .ind-top{display:flex;align-items:center;gap:.7rem;margin-bottom:.45rem}
 .ind-icon-wrap{width:2.1rem;height:2.1rem;border-radius:.65rem;background:var(--brand-bg);border:1px solid rgba(37,99,235,.2);display:grid;place-items:center;flex-shrink:0;font-size:1rem}
 .ind-h{font-size:.9375rem;font-weight:700;color:var(--t1)}
@@ -193,7 +218,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;border-bottom:1px solid var(
 
 /* ── PROCESS ── */
 .proc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
-.proc-card{padding:1.5rem;position:relative}
+.proc-card{padding:1.75rem 1.5rem;position:relative}
 .proc-step{font-family:'JetBrains Mono',monospace;font-size:.625rem;font-weight:700;letter-spacing:.14em;color:var(--brand);margin-bottom:.75rem}
 .proc-title{font-size:1rem;font-weight:700;color:var(--t1);margin-bottom:.5rem}
 .proc-text{font-size:.875rem;color:var(--t2);line-height:1.7}
@@ -220,13 +245,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;border-bottom:1px solid var(
 .price-list li::before{content:'✓';color:var(--brand);font-weight:800;flex-shrink:0}
 .price-card.ft .price-list li{color:rgba(255,255,255,.86);border-color:rgba(255,255,255,.12)}
 .price-card.ft .price-list li::before{color:rgba(255,255,255,.92)}
-.price-btn{display:block;text-align:center;font-size:.9375rem;font-weight:700;padding:.6875rem 1.5rem;border-radius:.75rem;text-decoration:none;border:1px solid var(--b);color:var(--t1);background:var(--s1);box-shadow:var(--sh1);transition:all .2s}
+.price-btn{display:block;text-align:center;font-size:.9375rem;font-weight:700;padding:.8125rem 1.5rem;border-radius:.75rem;text-decoration:none;border:1px solid var(--b);color:var(--t1);background:var(--s1);box-shadow:var(--sh1);transition:all .2s;min-height:3rem}
 .price-btn:hover{border-color:rgba(37,99,235,.4);background:var(--brand-bg)}
 .price-card.ft .price-btn{background:rgba(255,255,255,.96);color:var(--brand2);border-color:transparent;box-shadow:0 4px 16px rgba(0,0,0,.2)}
 
 /* ── AUDIT / CHECKLIST ── */
 .audit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
-.audit-card{padding:1.5rem}
+.audit-card{padding:1.625rem 1.5rem}
 .audit-card h3{font-size:1rem;font-weight:700;color:var(--t1);margin-bottom:.5rem}
 .audit-card p{font-size:.875rem;color:var(--t2);line-height:1.7}
 
@@ -250,7 +275,7 @@ textarea.cta-input{min-height:110px;resize:vertical;flex:none;width:100%}
 .cta-note a{color:var(--t2);text-decoration:none}
 .cta-note a:hover{color:var(--t1)}
 .contact-channels{display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:1.25rem}
-.ch-item{display:flex;align-items:center;gap:.5rem;font-size:.875rem;font-weight:600;color:var(--t2);text-decoration:none;padding:.5rem 1rem;border-radius:.625rem;border:1px solid var(--bs);background:var(--s1);transition:all .2s;box-shadow:var(--sh1)}
+.ch-item{display:flex;align-items:center;gap:.5rem;font-size:.875rem;font-weight:600;color:var(--t2);text-decoration:none;padding:.6875rem 1.125rem;border-radius:.75rem;border:1px solid var(--bs);background:var(--s1);transition:all .2s;box-shadow:var(--sh1);min-height:2.75rem}
 .ch-item:hover{border-color:rgba(37,99,235,.3);background:var(--brand-bg);color:var(--t1)}
 .ch-item.wa{border-color:rgba(37,211,102,.3);background:rgba(37,211,102,.05)}
 .ch-item.wa:hover{background:rgba(37,211,102,.1);border-color:rgba(37,211,102,.5);color:#0a5c26}
@@ -260,7 +285,7 @@ textarea.cta-input{min-height:110px;resize:vertical;flex:none;width:100%}
 .faq-wrap{border:1px solid var(--bs);border-radius:1rem;overflow:hidden}
 .faq-item{border-bottom:1px solid var(--bs)}
 .faq-item:last-child{border-bottom:none}
-.faq-q{width:100%;background:none;border:none;padding:1.125rem 1.5rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;cursor:pointer;font-size:.9375rem;font-weight:600;color:var(--t1);text-align:left;transition:background .15s;font-family:inherit}
+.faq-q{width:100%;background:none;border:none;padding:1.25rem 1.5rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;cursor:pointer;font-size:.9375rem;font-weight:600;color:var(--t1);text-align:left;transition:background .15s;font-family:inherit;min-height:3.5rem}
 .faq-q:hover{background:var(--brand-bg)}
 .faq-icon{width:1.5rem;height:1.5rem;border-radius:50%;background:var(--brand-bg);border:1px solid rgba(37,99,235,.2);display:grid;place-items:center;flex-shrink:0;color:var(--brand);font-size:1rem;font-weight:700;transition:all .3s;line-height:1}
 .faq-item.open .faq-icon{transform:rotate(45deg);background:var(--brand);color:#fff;border-color:var(--brand)}
@@ -306,12 +331,9 @@ footer{border-top:1px solid var(--bs);padding:2.25rem 1.75rem;position:relative;
    RESPONSIVE — mobile
 ══════════════════════════════════════════ */
 @media(max-width:640px){
-  .section{padding:2.5rem 1rem}
+  .section{padding:3rem 1.125rem}
   .hero{padding:5.75rem 1rem 2.5rem;gap:2rem}
   .hero-h1{font-size:clamp(1.875rem,7.5vw,2.5rem)}
-  .hero-trust{grid-template-columns:1fr}
-  .hero-btns{flex-direction:column}
-  .hero-btns .btn-p,.hero-btns .btn-s,.hero-btns .btn-wa-inline{width:100%;justify-content:center}
   .metrics{grid-template-columns:1fr}
   .band-inner{grid-template-columns:1fr}
   .band-item{border-bottom:1px solid rgba(255,255,255,.12)}
@@ -332,13 +354,43 @@ footer{border-top:1px solid var(--bs);padding:2.25rem 1.75rem;position:relative;
   .foot-inner{flex-direction:column;gap:.75rem}
   .foot-links{gap:1rem}
   .ba-slider{height:260px;cursor:pointer}
-  .price-card{padding:1.5rem}
-  .svc-card{padding:1.5rem}
+  .price-card{padding:1.75rem 1.5rem}
+  .svc-card{padding:1.75rem 1.5rem}
 }
 
 @media(max-width:380px){
   .hero-h1{font-size:1.75rem}
   .nav-inner{padding:0 .875rem}
+}
+
+/* ── HERO PROOF BLOCK ── */
+.hero-proof{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.75rem;padding:1.125rem 1.25rem;background:var(--s2);border:1px solid var(--bs);border-radius:var(--r);border-left:3px solid var(--brand)}
+.proof-item{display:flex;align-items:center;gap:.625rem;flex-wrap:wrap;font-size:.875rem;line-height:1.4}
+.proof-before{color:var(--t3);font-style:italic}
+.proof-arrow{color:var(--brand);font-family:'JetBrains Mono',monospace;font-weight:700;font-size:.875rem;flex-shrink:0}
+.proof-after{color:var(--t1);font-weight:600}
+
+/* ── HERO CTA HIERARCHY ── */
+.hero-ctas{display:flex;flex-direction:column;gap:.625rem;margin-bottom:1.5rem}
+.btn-hero-primary{display:inline-flex;align-items:center;justify-content:center;gap:.75rem;font-size:1rem;font-weight:700;color:#fff;background:var(--brand);padding:.875rem 1.75rem;border-radius:.875rem;text-decoration:none;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(37,99,235,.35),var(--sh2);transition:all .2s;position:relative;overflow:hidden;width:100%}
+.btn-hero-primary::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.08),transparent);pointer-events:none}
+.btn-hero-primary:hover{background:var(--brand2);transform:translateY(-1px);box-shadow:0 8px 24px rgba(37,99,235,.45),var(--sh3)}
+.btn-badge{font-size:.6875rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:rgba(255,255,255,.2);color:rgba(255,255,255,.95);padding:.2rem .5rem;border-radius:.375rem;flex-shrink:0}
+.hero-ctas-row{display:flex;gap:.625rem;flex-wrap:wrap}
+.btn-hero-wa{display:inline-flex;align-items:center;gap:.5rem;font-size:.875rem;font-weight:600;color:#fff;background:var(--wa);padding:.625rem 1.125rem;border-radius:.75rem;text-decoration:none;box-shadow:0 2px 8px rgba(37,211,102,.25);transition:all .2s;flex:1;justify-content:center;min-width:0}
+.btn-hero-wa:hover{background:var(--wa2);transform:translateY(-1px)}
+.btn-hero-ghost{display:inline-flex;align-items:center;gap:.375rem;font-size:.875rem;font-weight:600;color:var(--t2);background:transparent;padding:.625rem 1.125rem;border-radius:.75rem;text-decoration:none;border:1px solid var(--bs);transition:all .2s;white-space:nowrap}
+.btn-hero-ghost:hover{color:var(--t1);border-color:var(--brand);background:var(--brand-bg)}
+
+/* ── HERO TRUST chips ── */
+.hero-trust{display:flex;flex-wrap:wrap;gap:.5rem}
+.hero-trust span{font-size:.75rem;font-weight:500;color:var(--t3);background:var(--s2);border:1px solid var(--bs);padding:.3rem .625rem;border-radius:999px;display:flex;align-items:center;gap:.3rem}
+.hero-trust span::before{content:'✓';color:var(--brand);font-weight:700;font-size:.6875rem;flex-shrink:0}
+
+@media(max-width:640px){
+  .hero-ctas-row{flex-direction:column}
+  .btn-hero-wa,.btn-hero-ghost{width:100%;justify-content:center}
+  .proof-item{font-size:.8125rem}
 }
 </style>
 </head>
@@ -374,9 +426,9 @@ footer{border-top:1px solid var(--bs);padding:2.25rem 1.75rem;position:relative;
     </div>
     <div class="nav-right">
       <div class="status-pill"><span class="sdot"></span>Przyjmujemy zlecenia</div>
-      <button class="toggle-btn" id="themeToggle" aria-label="Zmień motyw">☀</button>
+      <button class="toggle-btn" id="themeToggle" aria-label="Włącz tryb ciemny" aria-pressed="false">☀</button>
       <a href="#kontakt" class="btn-nav">Wyślij ofertę</a>
-      <button class="ham-btn" id="hamBtn" aria-label="Menu" aria-expanded="false">
+      <button class="ham-btn" id="hamBtn" aria-label="Otwórz menu nawigacji" aria-expanded="false" aria-controls="navDrawer">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -384,7 +436,7 @@ footer{border-top:1px solid var(--bs);padding:2.25rem 1.75rem;position:relative;
 </nav>
 
 <!-- Mobile drawer -->
-<div class="nav-drawer" id="navDrawer" role="dialog" aria-label="Menu mobilne">
+<div class="nav-drawer" id="navDrawer" role="navigation" aria-label="Menu mobilne" aria-hidden="true">
   <a href="/realizacje.html" class="nav-link" onclick="closeDrawer()">Realizacje przed/po</a>
   <a href="#uslugi" class="nav-link" onclick="closeDrawer()">Usługi</a>
   <a href="#specjalizacje" class="nav-link" onclick="closeDrawer()">Specjalizacje</a>
@@ -405,26 +457,57 @@ footer{border-top:1px solid var(--bs);padding:2.25rem 1.75rem;position:relative;
 <!-- ── HERO ── -->
 <div class="hero">
   <div>
-    <div class="hero-kicker"><span class="sdot"></span>Optymalizacja ofert marketplace</div>
-    <h1 class="hero-h1">Poprawiamy oferty Allegro i&nbsp;OLX, żeby wyglądały profesjonalnie i&nbsp;sprzedawały więcej</h1>
-    <p class="hero-sub">Zamieniamy zwykłe zdjęcia i słabe opisy w gotowe materiały sprzedażowe: packshoty, miniatury, tytuły SEO, opisy i infografiki produktowe — przygotowane pod Allegro, OLX, Amazon i sklep internetowy.</p>
-    <div class="hero-btns">
-      <a href="#kontakt" class="btn-p">Wyślij link — dostaniesz darmową analizę</a>
-      <a href="https://wa.me/48791162938?text=Cześć,%20chciałbym%20zapytać%20o%20optymalizację%20oferty%20Allegro." class="btn-wa-inline">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        WhatsApp
-      </a>
-      <a href="#realizacje-preview" class="btn-s">Zobacz realizacje →</a>
+    <div class="hero-kicker"><span class="sdot"></span>Optymalizacja ofert Allegro i OLX</div>
+
+    <!-- PROBLEM -->
+    <h1 class="hero-h1">Twoja oferta jest niewidoczna.<br><span style="color:var(--brand)">Zmieniamy to.</span></h1>
+
+    <!-- EFEKT -->
+    <p class="hero-sub">Słabe zdjęcie główne, tytuł bez fraz kluczowych, galeria bez zadania sprzedażowego — kupujący klika konkurencję. Zamieniamy to w gotowe materiały: packshoty, tytuły SEO, opisy i infografiki pod Allegro, OLX i Amazon.</p>
+
+    <!-- DOWÓD — problem→efekt inline -->
+    <div class="hero-proof">
+      <div class="proof-item">
+        <span class="proof-before">1 zdjęcie z telefonu</span>
+        <span class="proof-arrow">→</span>
+        <span class="proof-after">10 ujęć gotowych do wgrania</span>
+      </div>
+      <div class="proof-item">
+        <span class="proof-before">tytuł bez fraz</span>
+        <span class="proof-arrow">→</span>
+        <span class="proof-after">tytuł SEO pod wyszukiwarkę Allegro</span>
+      </div>
+      <div class="proof-item">
+        <span class="proof-before">galeria bez logiki</span>
+        <span class="proof-arrow">→</span>
+        <span class="proof-after">każde zdjęcie z zadaniem sprzedażowym</span>
+      </div>
     </div>
+
+    <!-- CTA — wyraźna hierarchia: primary > secondary > ghost -->
+    <div class="hero-ctas">
+      <a href="#kontakt" class="btn-hero-primary">
+        Wyślij link do oferty — darmowa analiza
+        <span class="btn-badge">bezpłatnie</span>
+      </a>
+      <div class="hero-ctas-row">
+        <a href="https://wa.me/48791162938?text=Cześć,%20chciałbym%20zapytać%20o%20optymalizację%20oferty%20Allegro." class="btn-hero-wa">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp · +48 791 162 938
+        </a>
+        <a href="#realizacje-preview" class="btn-hero-ghost">Zobacz realizacje →</a>
+      </div>
+    </div>
+
+    <!-- TRUST chips — drobne, pod CTA -->
     <div class="hero-trust">
-      <span>Zdjęcie główne pod Allegro</span>
-      <span>Galeria produktu</span>
-      <span>Opis + tytuł SEO</span>
-      <span>Gotowe pliki do publikacji</span>
       <span>Realizacja od 48h</span>
+      <span>Bez wysyłki produktu</span>
+      <span>Allegro · OLX · Amazon</span>
       <span>Produkty techniczne</span>
     </div>
   </div>
+
   <div class="metrics">
     <div class="glass mc">
       <div class="mc-lbl">Specjalizacja</div>
@@ -450,7 +533,7 @@ footer{border-top:1px solid var(--bs);padding:2.25rem 1.75rem;position:relative;
   <div class="band-inner">
     <div class="band-item"><div class="band-l">48h realizacja</div><div class="band-s">Standardowy czas od przesłania materiałów do gotowych plików.</div></div>
     <div class="band-item"><div class="band-l">6 kategorii produktowych</div><div class="band-s">Kosmetyki, narzędzia, spawalnictwo, BHP, dom i ogród, elektronarzędzia — i więcej.</div></div>
-    <div class="band-item"><div class="band-l">2000×2000 px</div><div class="band-s">Pliki gotowe pod wymagania Allegro, OLX, Amazon i sklepów internetowych.</div></div>
+    <div class="band-item"><div class="band-l">2560×2560 px</div><div class="band-s">Pliki gotowe pod wymagania Allegro, OLX, Amazon i sklepów internetowych.</div></div>
     <div class="band-item"><div class="band-l">Bez deklaracji bez pokrycia</div><div class="band-s">Pracujemy na realnych zdjęciach. Portfolio przed/po dostępne do wglądu.</div></div>
   </div>
 </div>
@@ -474,19 +557,19 @@ footer{border-top:1px solid var(--bs);padding:2.25rem 1.75rem;position:relative;
   <div class="s-head">
     <div class="eyebrow">Portfolio</div>
     <h2 class="s-title">Realizacje przed/po</h2>
-    <p class="s-sub">Od jednego słabego zdjęcia do kompletnej galerii gotowej na marketplace — bez studia fotograficznego, bez wysyłki produktu.</p>
+    <p class="s-sub">Od jednego zdjęcia zestawu do 10 gotowych ujęć — bez studia fotograficznego, bez wysyłki produktu. Przykład: Metabo PowerMaxx BS 12 BL.</p>
   </div>
   <div class="portfolio-grid">
     <div>
-      <div class="ba-slider" id="baSliderMain">
+      <div class="ba-slider" id="baSliderMain" role="img" aria-label="Porównanie zdjęcia przed i po optymalizacji — przeciągnij suwak" tabindex="0">
         <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--s3)">
-          <img src="tabaiba-przed.png" alt="Tabaiba Sun Oil przed optymalizacją" style="width:100%;height:100%;object-fit:contain;padding:1.5rem" onerror="this.style.display='none'">
+          <img src="elektronarzedzia-przed.jpg" alt="Metabo PowerMaxx BS 12 BL przed optymalizacją" style="width:100%;height:100%;object-fit:contain;padding:1.5rem" onerror="this.style.display='none'">
         </div>
         <div id="baAfterMain" style="position:absolute;inset:0;clip-path:inset(0 50% 0 0);display:flex;align-items:center;justify-content:center;background:#fff">
-          <img src="tabaiba-po-front.png" alt="Tabaiba Sun Oil po optymalizacji" style="width:100%;height:100%;object-fit:contain;padding:1.5rem" onerror="this.style.display='none'">
+          <img src="elektronarzedzia-po-zestaw.png" alt="Metabo PowerMaxx BS 12 BL po optymalizacji" style="width:100%;height:100%;object-fit:contain;padding:1.5rem" onerror="this.style.display='none'">
         </div>
         <div id="baDivMain" style="position:absolute;top:0;bottom:0;left:50%;width:2px;background:var(--brand);z-index:10;transform:translateX(-50%)"></div>
-        <div id="baHndMain" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:2.75rem;height:2.75rem;border-radius:50%;background:var(--brand);z-index:11;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.875rem;box-shadow:0 4px 16px rgba(37,99,235,.5)">◀▶</div>
+        <div id="baHndMain" role="slider" aria-label="Suwak porównania przed/po" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:2.75rem;height:2.75rem;border-radius:50%;background:var(--brand);z-index:11;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.875rem;box-shadow:0 4px 16px rgba(37,99,235,.5)">◀▶</div>
         <span class="ba-label before">PRZED</span>
         <span class="ba-label after">PO</span>
       </div>
@@ -494,16 +577,16 @@ footer{border-top:1px solid var(--bs);padding:2.25rem 1.75rem;position:relative;
     </div>
     <div class="case-cards">
       <div class="card case-card">
-        <div class="case-tag">Case #001 · Kosmetyki</div>
-        <h4>Tabaiba Sun — Aloe Protective Oil SPF 50+</h4>
-        <p>Z jednego płaskiego zdjęcia na szarym tle stworzyliśmy 4 ujęcia, każde z innym zadaniem sprzedażowym: frontalne, 3/4, detal etykiety z certyfikatami i lifestyle z kroplami wody.</p>
-        <div class="case-stat">1 zdjęcie wejściowe → 4 gotowe ujęcia</div>
+        <div class="case-tag">Case #006 · Elektronarzędzia</div>
+        <h4>Metabo PowerMaxx BS 12 BL — pełna optymalizacja galerii</h4>
+        <p>Z jednego zdjęcia zestawu stworzyliśmy 10 ujęć: komplet z walizką, czysty packshot, detal głowicy z uchwytem, silnik Brushless, walizka MetaBOX, lifestyle w warsztacie i infografika PL.</p>
+        <div class="case-stat">1 zdjęcie wejściowe → 10 gotowych ujęć</div>
       </div>
       <div class="card case-card">
         <div class="case-tag">Case #002 · Narzędzia</div>
         <h4>Klucz dynamometryczny — galeria techniczna</h4>
         <p>Białe tło, ujęcie z walizką transportową, zbliżenie głowicy grzechotkowej i skala momentu obrotowego. Klient widzi zakres Nm bez czytania specyfikacji.</p>
-        <div class="case-stat">3 zdjęcia → 6 gotowych plików</div>
+        <div class="case-stat">3 zdjęcia wejściowe → 6 gotowych plików</div>
       </div>
       <div class="card case-card">
         <div class="case-tag">Case #003 · Spawalnictwo</div>
@@ -537,7 +620,7 @@ footer{border-top:1px solid var(--bs);padding:2.25rem 1.75rem;position:relative;
         <li>Detale produktu, opakowanie i zastosowanie</li>
         <li>Infografiki produktowe z kluczowymi parametrami</li>
         <li>Ujęcia lifestyle budujące kontekst użycia</li>
-        <li>Format 2000×2000 px lub 2560×2560 px</li>
+        <li>Format 2560×2560 px</li>
       </ul>
     </div>
     <div class="card svc-card">
@@ -613,7 +696,7 @@ footer{border-top:1px solid var(--bs);padding:2.25rem 1.75rem;position:relative;
       <p class="price-desc">Podstawowe przygotowanie zdjęć produktu pod wymagania marketplace. Idealne na start.</p>
       <ul class="price-list">
         <li>3 zdjęcia produktu</li>
-        <li>Białe tło 2000×2000 px</li>
+        <li>Białe tło 2560×2560 px</li>
         <li>Format zgodny z Allegro/OLX</li>
         <li>Podstawowa korekta</li>
         <li>1 runda poprawek</li>
@@ -692,13 +775,13 @@ footer{border-top:1px solid var(--bs);padding:2.25rem 1.75rem;position:relative;
     <h2 class="s-title">Najczęstsze pytania</h2>
   </div>
   <div class="faq-wrap" style="max-width:760px;margin:0 auto">
-    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)"><span>Czy muszę wysyłać produkt do studia?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Nie zawsze. W większości przypadków wystarczy jedno zdjęcie produktu lub link do obecnej oferty. Na podstawie jednego zdjęcia jesteśmy w stanie przygotować kompletną galerię. Jeżeli produkt wymaga klasycznej sesji lub dokładnych ujęć detali — ustalimy to przed wyceną.</div></div></div>
-    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)"><span>Czy przygotowujecie materiały pod Allegro?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Tak. Przygotowujemy zdjęcie główne, galerię, tytuł SEO, opis produktu, bullet points i infografiki produktowe pod Allegro. Znamy aktualne wymagania platformy co do formatów, rozmiarów i zasad prezentacji produktu.</div></div></div>
-    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)"><span>Czy poprawiacie istniejącą ofertę?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Tak. Wystarczy wysłać link do obecnej oferty — wskażemy co warto poprawić w zdjęciu, tytule, opisie i galerii. Możemy poprawić pojedynczy element lub przebudować całość w ramach pakietu Standard lub Premium.</div></div></div>
-    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)"><span>Czy gwarantujecie wzrost sprzedaży?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Nie obiecujemy konkretnych liczb — sprzedaż zależy od wielu czynników: ceny, konkurencji, sezonu. Poprawiamy elementy, które mają udokumentowany wpływ na klikalność i decyzję zakupową: zdjęcia, miniaturę, tytuł, opis i galerię.</div></div></div>
-    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)"><span>Dla jakich produktów pracujecie?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Najczęściej dla produktów e-commerce i marketplace: narzędzia, BHP, spawalnictwo, dom i ogród, elektronarzędzia, motoryzacja, kosmetyki i akcesoria. Szczególnie dobrze rozumiemy produkty techniczne, gdzie kupujący szuka konkretnych parametrów na zdjęciach.</div></div></div>
-    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)"><span>Co otrzymam po realizacji?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">W zależności od pakietu: gotowe pliki graficzne w wymaganym formacie, tytuł SEO, opis produktu, bullet points, rekomendacje do galerii lub kompletny zestaw materiałów gotowych do wgrania bez żadnej dodatkowej obróbki.</div></div></div>
-    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)"><span>Jakie formy płatności akceptujecie?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Akceptujemy przelew bankowy oraz BLIK. Przy pierwszym zamówieniu stosujemy przedpłatę 50%. Przy stałej współpracy lub zamówieniach zbiorczych warunki ustalamy indywidualnie.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq1"><span>Czy muszę wysyłać produkt do studia?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq1" role="region"><div class="faq-a-inner">Nie zawsze. W większości przypadków wystarczy jedno zdjęcie produktu lub link do obecnej oferty. Na podstawie jednego zdjęcia jesteśmy w stanie przygotować kompletną galerię. Jeżeli produkt wymaga klasycznej sesji lub dokładnych ujęć detali — ustalimy to przed wyceną.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq2"><span>Czy przygotowujecie materiały pod Allegro?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq2" role="region"><div class="faq-a-inner">Tak. Przygotowujemy zdjęcie główne, galerię, tytuł SEO, opis produktu, bullet points i infografiki produktowe pod Allegro. Znamy aktualne wymagania platformy co do formatów, rozmiarów i zasad prezentacji produktu.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq3"><span>Czy poprawiacie istniejącą ofertę?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq3" role="region"><div class="faq-a-inner">Tak. Wystarczy wysłać link do obecnej oferty — wskażemy co warto poprawić w zdjęciu, tytule, opisie i galerii. Możemy poprawić pojedynczy element lub przebudować całość w ramach pakietu Standard lub Premium.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq4"><span>Czy gwarantujecie wzrost sprzedaży?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq4" role="region"><div class="faq-a-inner">Nie obiecujemy konkretnych liczb — sprzedaż zależy od wielu czynników: ceny, konkurencji, sezonu. Poprawiamy elementy, które mają udokumentowany wpływ na klikalność i decyzję zakupową: zdjęcia, miniaturę, tytuł, opis i galerię.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq5"><span>Dla jakich produktów pracujecie?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq5" role="region"><div class="faq-a-inner">Najczęściej dla produktów e-commerce i marketplace: narzędzia, BHP, spawalnictwo, dom i ogród, elektronarzędzia, motoryzacja, kosmetyki i akcesoria. Szczególnie dobrze rozumiemy produkty techniczne, gdzie kupujący szuka konkretnych parametrów na zdjęciach.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq6"><span>Co otrzymam po realizacji?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq6" role="region"><div class="faq-a-inner">W zależności od pakietu: gotowe pliki graficzne w wymaganym formacie, tytuł SEO, opis produktu, bullet points, rekomendacje do galerii lub kompletny zestaw materiałów gotowych do wgrania bez żadnej dodatkowej obróbki.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq7"><span>Jakie formy płatności akceptujecie?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq7" role="region"><div class="faq-a-inner">Akceptujemy przelew bankowy oraz BLIK. Przy pierwszym zamówieniu stosujemy przedpłatę 50%. Przy stałej współpracy lub zamówieniach zbiorczych warunki ustalamy indywidualnie.</div></div></div>
   </div>
 </div>
 
@@ -787,12 +870,19 @@ footer{border-top:1px solid var(--bs);padding:2.25rem 1.75rem;position:relative;
 /* Theme */
 const root=document.documentElement,tb=document.getElementById('themeToggle');
 const saved=localStorage.getItem('os-theme');
-if(saved){root.setAttribute('data-theme',saved);tb.textContent=saved==='dark'?'☾':'☀'}
+if(saved){
+  root.setAttribute('data-theme',saved);
+  tb.textContent=saved==='dark'?'☾':'☀';
+  tb.setAttribute('aria-pressed',saved==='dark'?'true':'false');
+  tb.setAttribute('aria-label',saved==='dark'?'Włącz tryb jasny':'Włącz tryb ciemny');
+}
 tb.addEventListener('click',()=>{
   const dark=root.getAttribute('data-theme')==='dark';
   const next=dark?'light':'dark';
   root.setAttribute('data-theme',next);
   tb.textContent=dark?'☀':'☾';
+  tb.setAttribute('aria-pressed',dark?'false':'true');
+  tb.setAttribute('aria-label',dark?'Włącz tryb ciemny':'Włącz tryb jasny');
   localStorage.setItem('os-theme',next);
 });
 
@@ -802,12 +892,16 @@ function closeDrawer(){
   hamBtn.classList.remove('open');
   drawer.classList.remove('open');
   hamBtn.setAttribute('aria-expanded','false');
+  hamBtn.setAttribute('aria-label','Otwórz menu nawigacji');
+  drawer.setAttribute('aria-hidden','true');
   document.body.style.overflow='';
 }
 hamBtn.addEventListener('click',()=>{
   const open=hamBtn.classList.toggle('open');
   drawer.classList.toggle('open',open);
-  hamBtn.setAttribute('aria-expanded',open);
+  hamBtn.setAttribute('aria-expanded',String(open));
+  hamBtn.setAttribute('aria-label',open?'Zamknij menu nawigacji':'Otwórz menu nawigacji');
+  drawer.setAttribute('aria-hidden',String(!open));
   document.body.style.overflow=open?'hidden':'';
 });
 document.addEventListener('click',e=>{
@@ -830,17 +924,26 @@ sections.forEach(s=>obs.observe(s));
 
 /* Before/After slider */
 const slM=document.getElementById('baSliderMain'),afM=document.getElementById('baAfterMain'),lnM=document.getElementById('baDivMain'),hdM=document.getElementById('baHndMain');
-let dragM=false;
+let dragM=false,curPct=50;
 function setBAM(x){
   if(!slM)return;
-  const r=slM.getBoundingClientRect(),p=Math.min(Math.max((x-r.left)/r.width*100,4),96);
-  afM.style.clipPath=`inset(0 ${100-p}% 0 0)`;
-  lnM.style.left=hdM.style.left=p+'%';
+  const r=slM.getBoundingClientRect();
+  curPct=Math.min(Math.max((x-r.left)/r.width*100,4),96);
+  afM.style.clipPath=`inset(0 ${100-curPct}% 0 0)`;
+  lnM.style.left=hdM.style.left=curPct+'%';
+  if(hdM)hdM.setAttribute('aria-valuenow',Math.round(curPct));
 }
 if(slM){
   slM.addEventListener('mousedown',e=>{dragM=true;setBAM(e.clientX)});
   slM.addEventListener('touchstart',e=>{dragM=true;setBAM(e.touches[0].clientX)},{passive:true});
   slM.addEventListener('click',e=>setBAM(e.clientX));
+  /* keyboard: arrow keys move slider */
+  slM.addEventListener('keydown',e=>{
+    if(e.key==='ArrowLeft'||e.key==='ArrowDown'){e.preventDefault();setBAM(slM.getBoundingClientRect().left+(curPct-5)/100*slM.getBoundingClientRect().width)}
+    if(e.key==='ArrowRight'||e.key==='ArrowUp'){e.preventDefault();setBAM(slM.getBoundingClientRect().left+(curPct+5)/100*slM.getBoundingClientRect().width)}
+    if(e.key==='Home'){e.preventDefault();setBAM(slM.getBoundingClientRect().left)}
+    if(e.key==='End'){e.preventDefault();setBAM(slM.getBoundingClientRect().right)}
+  });
 }
 window.addEventListener('mousemove',e=>{if(dragM)setBAM(e.clientX)});
 window.addEventListener('touchmove',e=>{if(dragM)setBAM(e.touches[0].clientX)},{passive:true});
@@ -850,8 +953,14 @@ window.addEventListener('touchend',()=>dragM=false);
 /* FAQ */
 function tFaq(btn){
   const it=btn.closest('.faq-item'),op=it.classList.contains('open');
-  document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
-  if(!op)it.classList.add('open');
+  document.querySelectorAll('.faq-item.open').forEach(i=>{
+    i.classList.remove('open');
+    i.querySelector('.faq-q').setAttribute('aria-expanded','false');
+  });
+  if(!op){
+    it.classList.add('open');
+    btn.setAttribute('aria-expanded','true');
+  }
 }
 
 /* Form */
