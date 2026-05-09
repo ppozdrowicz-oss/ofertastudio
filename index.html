@@ -490,6 +490,78 @@ select.cinput{cursor:pointer}
   .cpkg-grid{grid-template-columns:1fr 1fr 1fr}
   .contact-form-card{border-radius:.875rem}
 }
+
+/* ── PORTFOLIO SECTION ── */
+.portfolio-section{}
+
+/* BA slider — main hero slider */
+.pf-slider-wrap{position:relative;border-radius:1rem;overflow:hidden;border:1px solid var(--bs);box-shadow:var(--sh3);cursor:ew-resize;user-select:none;background:var(--s2);aspect-ratio:4/3;max-height:480px}
+.pf-slider-wrap:focus-visible{outline:2px solid var(--brand);outline-offset:4px;border-radius:1rem}
+.pf-side{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.pf-side-po{background:#fff}
+.pf-side-przed{background:var(--s3)}
+.pf-side img{width:100%;height:100%;object-fit:contain;padding:1.5rem}
+.pf-divline{position:absolute;top:0;bottom:0;width:2px;background:var(--brand);z-index:10;transform:translateX(-50%);left:50%}
+.pf-handle{position:absolute;top:50%;width:3rem;height:3rem;border-radius:50%;background:var(--brand);z-index:11;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.9375rem;font-weight:700;box-shadow:0 4px 20px rgba(37,99,235,.5),0 0 0 3px rgba(255,255,255,.25);transform:translate(-50%,-50%);left:50%;transition:transform .15s,box-shadow .15s}
+.pf-slider-wrap:hover .pf-handle{box-shadow:0 6px 28px rgba(37,99,235,.6),0 0 0 4px rgba(255,255,255,.3)}
+.pf-tag{position:absolute;top:.875rem;font-family:'JetBrains Mono',monospace;font-size:.6875rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .75rem;border-radius:.375rem;z-index:12}
+.pf-tag-b{left:.875rem;background:rgba(0,0,0,.52);color:#fff}
+.pf-tag-a{right:.875rem;background:var(--brand);color:#fff}
+.pf-hint{font-family:'JetBrains Mono',monospace;font-size:.6875rem;color:var(--t3);text-align:center;margin-top:.625rem;letter-spacing:.04em}
+
+/* Featured case (top row) */
+.pf-featured{display:grid;grid-template-columns:1fr 400px;gap:2.5rem;align-items:center;margin-bottom:3rem}
+.pf-featured-meta{}
+.pf-featured-eyebrow{font-family:'JetBrains Mono',monospace;font-size:.625rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--brand);background:var(--brand-bg);border:1px solid rgba(37,99,235,.18);padding:.25rem .75rem;border-radius:.375rem;display:inline-block;margin-bottom:1rem}
+.pf-featured-h{font-size:clamp(1.375rem,2.5vw,1.875rem);font-weight:800;letter-spacing:-.025em;color:var(--t1);line-height:1.2;margin-bottom:.75rem}
+.pf-featured-p{font-size:.9375rem;color:var(--t2);line-height:1.8;margin-bottom:1.25rem}
+.pf-stats{display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.5rem;padding:1rem 1.25rem;background:var(--s2);border:1px solid var(--bs);border-radius:var(--r)}
+.pf-stat .n{font-size:1.75rem;font-weight:800;letter-spacing:-.04em;color:var(--brand);line-height:1}
+.pf-stat .l{font-size:.75rem;color:var(--t3);margin-top:.2rem;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.08em}
+.pf-featured-tags{display:flex;flex-wrap:wrap;gap:.375rem;margin-bottom:1.5rem}
+.pf-tag-chip{font-size:.75rem;font-weight:600;color:var(--ok);background:var(--ok-bg);padding:.25rem .625rem;border-radius:999px}
+.pf-tag-chip.neutral{color:var(--t2);background:var(--s3)}
+
+/* Cases grid */
+.pf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.pf-card{border-radius:var(--r);overflow:hidden;position:relative;cursor:pointer;transition:all .25s}
+.pf-card:hover{box-shadow:var(--sh3);transform:translateY(-3px)}
+.pf-card-img{aspect-ratio:4/3;background:var(--s2);overflow:hidden;position:relative;border-bottom:1px solid var(--bs)}
+.pf-card-img img{width:100%;height:100%;object-fit:contain;padding:1rem;transition:transform .4s ease}
+.pf-card:hover .pf-card-img img{transform:scale(1.06)}
+.pf-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,22,40,.7) 0%,transparent 55%);opacity:0;transition:opacity .25s;display:flex;align-items:flex-end;padding:1rem}
+.pf-card:hover .pf-card-overlay{opacity:1}
+.pf-card-overlay-text{font-size:.8125rem;font-weight:600;color:#fff;font-family:'JetBrains Mono',monospace;letter-spacing:.06em}
+.pf-card-body{padding:1rem 1.125rem;background:var(--s1)}
+.pf-card-num{font-family:'JetBrains Mono',monospace;font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--brand);margin-bottom:.3rem}
+.pf-card-h{font-size:.9375rem;font-weight:700;color:var(--t1);line-height:1.35;margin-bottom:.375rem}
+.pf-card-p{font-size:.8125rem;color:var(--t2);line-height:1.6;margin-bottom:.5rem}
+.pf-card-stat{font-family:'JetBrains Mono',monospace;font-size:.6875rem;font-weight:700;color:var(--ok);background:var(--ok-bg);padding:.2rem .5rem;border-radius:.375rem;display:inline-block}
+
+/* CTA strip */
+.pf-cta-strip{margin-top:2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;padding:1.5rem 2rem;border-radius:var(--r);background:var(--s2);border:1px solid var(--bs)}
+.pf-cta-strip-text{}
+.pf-cta-strip-label{font-family:'JetBrains Mono',monospace;font-size:.625rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brand);margin-bottom:.35rem}
+.pf-cta-strip-h{font-size:1.0625rem;font-weight:800;color:var(--t1);letter-spacing:-.015em}
+.pf-cta-strip-sub{font-size:.875rem;color:var(--t2);margin-top:.25rem}
+.pf-cta-strip-btns{display:flex;gap:.625rem;flex-shrink:0;flex-wrap:wrap}
+
+/* Responsive */
+@media(max-width:960px){
+  .pf-featured{grid-template-columns:1fr}
+  .pf-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:580px){
+  .pf-grid{grid-template-columns:1fr 1fr}
+  .pf-featured-h{font-size:1.25rem}
+  .pf-stats{gap:1rem}
+  .pf-cta-strip{flex-direction:column;align-items:flex-start;padding:1.25rem}
+  .pf-cta-strip-btns{width:100%}
+  .pf-cta-strip-btns .btn-p,.pf-cta-strip-btns .btn-s{flex:1;justify-content:center}
+}
+@media(max-width:420px){
+  .pf-grid{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
@@ -650,55 +722,169 @@ select.cinput{cursor:pointer}
 
 <div class="divider"></div>
 
-<!-- ── PORTFOLIO PREVIEW ── -->
-<div class="section" id="realizacje-preview">
+<!-- ── PORTFOLIO ── -->
+<div class="section portfolio-section" id="realizacje-preview">
   <div class="s-head">
     <div class="eyebrow">Portfolio</div>
-    <h2 class="s-title">Realizacje przed/po</h2>
-    <p class="s-sub">Od jednego zdjęcia zestawu do 10 gotowych ujęć — bez studia fotograficznego, bez wysyłki produktu. Przykład: Metabo PowerMaxx BS 12 BL.</p>
+    <h2 class="s-title">Realizacje przed i po</h2>
+    <p class="s-sub">Każdy case zaczyna się od jednego słabego zdjęcia lub linku do oferty. Pokazujemy dokładnie co zmieniliśmy i dlaczego to ma znaczenie dla sprzedaży.</p>
   </div>
-  <div class="portfolio-grid">
+
+  <!-- FEATURED: Metabo #001 -->
+  <div class="pf-featured">
     <div>
-      <div class="ba-slider" id="baSliderMain" role="img" aria-label="Porównanie zdjęcia przed i po optymalizacji — przeciągnij suwak" tabindex="0">
-        <!-- PO: statyczne tło, zawsze widoczne pod spodem -->
-        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#fff">
-          <img src="elektronarzedzia-po-zestaw.png" alt="Metabo PowerMaxx BS 12 BL po optymalizacji" style="width:100%;height:100%;object-fit:contain;padding:1.5rem" onerror="this.style.display='none'">
+      <div class="pf-slider-wrap" id="pfSlider" tabindex="0"
+           role="img" aria-label="Porównanie przed i po — Metabo PowerMaxx BS 12 BL">
+        <div class="pf-side pf-side-po">
+          <img src="elektronarzedzia-po-zestaw.png"
+               alt="Metabo PowerMaxx BS 12 BL — po optymalizacji"
+               onerror="this.style.display='none'">
         </div>
-        <!-- PRZED: na wierzchu, clip-path zwęża się w prawo przy przesuwaniu suwaka -->
-        <div id="baAfterMain" style="position:absolute;inset:0;clip-path:inset(0 50% 0 0);display:flex;align-items:center;justify-content:center;background:var(--s3)">
-          <img src="elektronarzedzia-przed.jpg" alt="Metabo PowerMaxx BS 12 BL przed optymalizacją" style="width:100%;height:100%;object-fit:contain;padding:1.5rem" onerror="this.style.display='none'">
+        <div class="pf-side pf-side-przed" id="pfBefore" style="clip-path:inset(0 50% 0 0)">
+          <img src="elektronarzedzia-przed.jpg"
+               alt="Metabo PowerMaxx BS 12 BL — przed optymalizacją"
+               onerror="this.style.display='none'">
         </div>
-        <div id="baDivMain" style="position:absolute;top:0;bottom:0;left:50%;width:2px;background:var(--brand);z-index:10;transform:translateX(-50%)"></div>
-        <div id="baHndMain" role="slider" aria-label="Suwak porównania przed/po" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:2.75rem;height:2.75rem;border-radius:50%;background:var(--brand);z-index:11;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.875rem;box-shadow:0 4px 16px rgba(37,99,235,.5)">◀▶</div>
-        <span class="ba-label before">PRZED</span>
-        <span class="ba-label after">PO</span>
+        <div class="pf-divline" id="pfLine"></div>
+        <div class="pf-handle" id="pfHandle"
+             role="slider" aria-label="Suwak przed/po"
+             aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">◀▶</div>
+        <span class="pf-tag pf-tag-b">PRZED</span>
+        <span class="pf-tag pf-tag-a">PO</span>
       </div>
-      <p style="font-size:.75rem;color:var(--t3);text-align:center;margin-top:.625rem;font-family:'JetBrains Mono',monospace">// przeciągnij suwak lub dotknij aby porównać</p>
+      <p class="pf-hint">// przeciągnij suwak · klawiatura: ← →</p>
     </div>
-    <div class="case-cards">
-      <div class="card case-card">
-        <div class="case-tag">Case #006 · Elektronarzędzia</div>
-        <h4>Metabo PowerMaxx BS 12 BL — pełna optymalizacja galerii</h4>
-        <p>Z jednego zdjęcia zestawu stworzyliśmy 10 ujęć: komplet z walizką, czysty packshot, detal głowicy z uchwytem, silnik Brushless, walizka MetaBOX, lifestyle w warsztacie i infografika PL.</p>
-        <div class="case-stat">1 zdjęcie wejściowe → 10 gotowych ujęć</div>
+
+    <div class="pf-featured-meta">
+      <div class="pf-featured-eyebrow">Case #001 · Elektronarzędzia</div>
+      <h3 class="pf-featured-h">Metabo PowerMaxx BS 12 BL — pełna optymalizacja galerii</h3>
+      <p class="pf-featured-p">Z jednego zdjęcia zestawu stworzyliśmy 10 ujęć odpowiadających na każde pytanie kupującego: komplet z walizką, czysty packshot, silnik Brushless, MetaBOX, lifestyle w warsztacie i infografika po polsku.</p>
+      <div class="pf-featured-tags">
+        <span class="pf-tag-chip">✓ Zdjęcie główne</span>
+        <span class="pf-tag-chip">✓ Detale techniczne</span>
+        <span class="pf-tag-chip">✓ Lifestyle</span>
+        <span class="pf-tag-chip">✓ Infografika PL</span>
+        <span class="pf-tag-chip neutral">48h realizacja</span>
       </div>
-      <div class="card case-card">
-        <div class="case-tag">Case #002 · Narzędzia</div>
-        <h4>Klucz dynamometryczny — galeria techniczna</h4>
-        <p>Białe tło, ujęcie z walizką transportową, zbliżenie głowicy grzechotkowej i skala momentu obrotowego. Klient widzi zakres Nm bez czytania specyfikacji.</p>
-        <div class="case-stat">3 zdjęcia wejściowe → 6 gotowych plików</div>
+      <div class="pf-stats">
+        <div class="pf-stat"><div class="n">1</div><div class="l">zdjęcie wejściowe</div></div>
+        <div class="pf-stat"><div class="n">10</div><div class="l">gotowych ujęć</div></div>
+        <div class="pf-stat"><div class="n">2560px</div><div class="l">format plików</div></div>
       </div>
-      <div class="card case-card">
-        <div class="case-tag">Case #003 · Spawalnictwo</div>
-        <h4>Drut MIG/MAG — infografika „Wyprodukowano w Polsce"</h4>
-        <p>Galeria 5 ujęć z infografiką polskiego pochodzenia — realny wyróżnik w kategorii zdominowanej przez import z Azji.</p>
-        <div class="case-stat">1 zdjęcie wejściowe → 5 ujęć + infografika</div>
-      </div>
-      <div style="padding:.75rem 0">
-        <a href="/realizacje.html" class="btn-s" style="width:100%;justify-content:center">Zobacz wszystkie realizacje (6 kategorii) →</a>
-      </div>
+      <a href="/realizacje.html#elektronarzedzia" class="btn-s">Zobacz pełne case study →</a>
     </div>
   </div>
+
+  <!-- GRID: pozostałe 5 cases -->
+  <div class="pf-grid">
+
+    <div class="card pf-card">
+      <div class="pf-card-img">
+        <img src="dom-ogrod-po-front.png" alt="Pistolet Gardena — po"
+             onerror="this.parentElement.style.background='var(--s3)'">
+        <div class="pf-card-overlay">
+          <span class="pf-card-overlay-text">Zobacz case study →</span>
+        </div>
+      </div>
+      <div class="pf-card-body">
+        <div class="pf-card-num">Case #002 · Dom i ogród</div>
+        <div class="pf-card-h">Pistolet ogrodowy Gardena</div>
+        <p class="pf-card-p">7 ujęć: packshot, lifestyle w ogrodzie, detal złącza, uchwyt, seria głowicy. Każde zdjęcie odpowiada na inne pytanie kupującego.</p>
+        <div class="pf-card-stat">1 zdj. → 7 ujęć</div>
+      </div>
+    </div>
+
+    <div class="card pf-card">
+      <div class="pf-card-img">
+        <img src="spawalnictwo-po-front.png" alt="Drut MIG/MAG — po"
+             onerror="this.parentElement.style.background='var(--s3)'">
+        <div class="pf-card-overlay">
+          <span class="pf-card-overlay-text">Zobacz case study →</span>
+        </div>
+      </div>
+      <div class="pf-card-body">
+        <div class="pf-card-num">Case #003 · Spawalnictwo</div>
+        <div class="pf-card-h">Drut spawalniczy MIG/MAG</div>
+        <p class="pf-card-p">4 ujęcia produktu + infografika „Wyprodukowano w Polsce" — realny wyróżnik w kategorii zdominowanej przez import z Azji.</p>
+        <div class="pf-card-stat">1 zdj. → 5 ujęć + infografika</div>
+      </div>
+    </div>
+
+    <div class="card pf-card">
+      <div class="pf-card-img">
+        <img src="tabaiba-po-front.png" alt="Tabaiba Sun Oil — po"
+             onerror="this.parentElement.style.background='var(--s3)'">
+        <div class="pf-card-overlay">
+          <span class="pf-card-overlay-text">Zobacz case study →</span>
+        </div>
+      </div>
+      <div class="pf-card-body">
+        <div class="pf-card-num">Case #004 · Kosmetyki</div>
+        <div class="pf-card-h">Tabaiba Sun — Aloe Oil SPF 50+</div>
+        <p class="pf-card-p">Z szarego tła do 4 ujęć z konkretnym zadaniem: frontalne, 3/4, detal etykiety z certyfikatami i lifestyle z kroplami wody.</p>
+        <div class="pf-card-stat">1 zdj. → 4 ujęcia</div>
+      </div>
+    </div>
+
+    <div class="card pf-card">
+      <div class="pf-card-img">
+        <img src="bhp-po-front.png" alt="Rękawice BHP — po"
+             onerror="this.parentElement.style.background='var(--s3)'">
+        <div class="pf-card-overlay">
+          <span class="pf-card-overlay-text">Zobacz case study →</span>
+        </div>
+      </div>
+      <div class="pf-card-body">
+        <div class="pf-card-num">Case #005 · BHP</div>
+        <div class="pf-card-h">Rękawice Urgent 1011 — latex EN-388</div>
+        <p class="pf-card-p">Norma EN-388:2016, detal lateksu, wnętrze bawełniane, zastosowanie z narzędziem. Certyfikat CE widoczny bez szukania w opisie.</p>
+        <div class="pf-card-stat">1 zdj. → 5 ujęć</div>
+      </div>
+    </div>
+
+    <div class="card pf-card">
+      <div class="pf-card-img">
+        <img src="narzedzia-po-walizka.png" alt="Klucz dynamometryczny — po"
+             onerror="this.parentElement.style.background='var(--s3)'">
+        <div class="pf-card-overlay">
+          <span class="pf-card-overlay-text">Zobacz case study →</span>
+        </div>
+      </div>
+      <div class="pf-card-body">
+        <div class="pf-card-num">Case #006 · Narzędzia</div>
+        <div class="pf-card-h">Klucz dynamometryczny</div>
+        <p class="pf-card-p">Białe tło, ujęcie z walizką, zbliżenie głowicy grzechotkowej i skala Nm. Kupujący widzi zakres momentu bez czytania specyfikacji.</p>
+        <div class="pf-card-stat">1 zdj. → 4 gotowe pliki</div>
+      </div>
+    </div>
+
+    <!-- Teaser — więcej realizacji -->
+    <div class="card pf-card" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2rem;gap:1rem;background:var(--brand-bg);border-color:rgba(37,99,235,.2)">
+      <div style="font-size:2rem">📂</div>
+      <div style="font-size:.9375rem;font-weight:700;color:var(--t1)">Więcej kategorii</div>
+      <p style="font-size:.8125rem;color:var(--t2);line-height:1.6;margin:0">Motoryzacja, elektronika, produkty przemysłowe — pytaj o wycenę dla swojej kategorii.</p>
+      <a href="/realizacje.html" class="btn-p" style="font-size:.875rem;padding:.5rem 1.125rem">
+        Pełne portfolio →
+      </a>
+    </div>
+
+  </div>
+
+  <!-- CTA STRIP -->
+  <div class="pf-cta-strip">
+    <div class="pf-cta-strip-text">
+      <div class="pf-cta-strip-label">Następny krok</div>
+      <div class="pf-cta-strip-h">Twój produkt może wyglądać tak samo</div>
+      <div class="pf-cta-strip-sub">Wyślij link do oferty — dostaniesz bezpłatną analizę w 24h.</div>
+    </div>
+    <div class="pf-cta-strip-btns">
+      <a href="https://wa.me/48791162938?text=Cześć,%20chcę%20wysłać%20ofertę%20do%20analizy." class="btn-p">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp
+      </a>
+      <a href="#kontakt" class="btn-s">Formularz →</a>
+    </div>
+  </div>
+
 </div>
 
 <div class="divider"></div>
@@ -933,6 +1119,7 @@ select.cinput{cursor:pointer}
         <div class="cch-body">
           <div class="cch-label">Telefon</div>
           <div class="cch-value">+48 791 162 938</div>
+
         </div>
       </a>
     </div>
@@ -1129,33 +1316,37 @@ const obs=new IntersectionObserver(entries=>{
 },{threshold:.3,rootMargin:'-60px 0px -60px 0px'});
 sections.forEach(s=>obs.observe(s));
 
-/* Before/After slider */
-const slM=document.getElementById('baSliderMain'),afM=document.getElementById('baAfterMain'),lnM=document.getElementById('baDivMain'),hdM=document.getElementById('baHndMain');
-let dragM=false,curPct=50;
-function setBAM(x){
-  if(!slM)return;
-  const r=slM.getBoundingClientRect();
-  curPct=Math.min(Math.max((x-r.left)/r.width*100,4),96);
-  afM.style.clipPath=`inset(0 ${100-curPct}% 0 0)`;
-  lnM.style.left=hdM.style.left=curPct+'%';
-  if(hdM)hdM.setAttribute('aria-valuenow',Math.round(curPct));
-}
-if(slM){
-  slM.addEventListener('mousedown',e=>{dragM=true;setBAM(e.clientX)});
-  slM.addEventListener('touchstart',e=>{dragM=true;setBAM(e.touches[0].clientX)},{passive:true});
-  slM.addEventListener('click',e=>setBAM(e.clientX));
-  /* keyboard: arrow keys move slider */
-  slM.addEventListener('keydown',e=>{
-    if(e.key==='ArrowLeft'||e.key==='ArrowDown'){e.preventDefault();setBAM(slM.getBoundingClientRect().left+(curPct-5)/100*slM.getBoundingClientRect().width)}
-    if(e.key==='ArrowRight'||e.key==='ArrowUp'){e.preventDefault();setBAM(slM.getBoundingClientRect().left+(curPct+5)/100*slM.getBoundingClientRect().width)}
-    if(e.key==='Home'){e.preventDefault();setBAM(slM.getBoundingClientRect().left)}
-    if(e.key==='End'){e.preventDefault();setBAM(slM.getBoundingClientRect().right)}
+/* Portfolio slider */
+(function(){
+  const sl=document.getElementById('pfSlider'),
+        before=document.getElementById('pfBefore'),
+        ln=document.getElementById('pfLine'),
+        hd=document.getElementById('pfHandle');
+  if(!sl)return;
+  let drag=false,cur=50;
+  function set(x){
+    const r=sl.getBoundingClientRect();
+    cur=Math.min(Math.max((x-r.left)/r.width*100,4),96);
+    before.style.clipPath=`inset(0 ${100-cur}% 0 0)`;
+    ln.style.left=cur+'%';
+    hd.style.left=cur+'%';
+    hd.setAttribute('aria-valuenow',Math.round(cur));
+  }
+  sl.addEventListener('mousedown',e=>{drag=true;set(e.clientX);e.preventDefault()});
+  sl.addEventListener('touchstart',e=>{drag=true;set(e.touches[0].clientX)},{passive:true});
+  sl.addEventListener('click',e=>set(e.clientX));
+  sl.addEventListener('keydown',e=>{
+    const r=sl.getBoundingClientRect();
+    if(e.key==='ArrowLeft'||e.key==='ArrowDown'){e.preventDefault();set(r.left+(cur-5)/100*r.width)}
+    if(e.key==='ArrowRight'||e.key==='ArrowUp'){e.preventDefault();set(r.left+(cur+5)/100*r.width)}
+    if(e.key==='Home'){e.preventDefault();set(r.left)}
+    if(e.key==='End'){e.preventDefault();set(r.right)}
   });
-}
-window.addEventListener('mousemove',e=>{if(dragM)setBAM(e.clientX)});
-window.addEventListener('touchmove',e=>{if(dragM)setBAM(e.touches[0].clientX)},{passive:true});
-window.addEventListener('mouseup',()=>dragM=false);
-window.addEventListener('touchend',()=>dragM=false);
+  window.addEventListener('mousemove',e=>{if(drag)set(e.clientX)});
+  window.addEventListener('touchmove',e=>{if(drag)set(e.touches[0].clientX)},{passive:true});
+  window.addEventListener('mouseup',()=>drag=false);
+  window.addEventListener('touchend',()=>drag=false);
+})();
 
 /* FAQ */
 function tFaq(btn){
