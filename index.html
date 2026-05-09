@@ -224,30 +224,45 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;border-bottom:1px solid var(
 .proc-text{font-size:.875rem;color:var(--t2);line-height:1.7}
 
 /* ── PRICING ── */
-.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;align-items:start}
-.price-card{padding:2.25rem;position:relative;overflow:hidden}
-.price-card.ft{background:linear-gradient(145deg,#1a3a6e,var(--brand) 55%,#0891b2);border-color:transparent}
-.price-card.ft::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(255,255,255,.04) 0,rgba(255,255,255,.04) 1px,transparent 0,transparent 50%);background-size:20px 20px}
-.price-rec{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.6875rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(255,255,255,.2);color:#fff;padding:.25rem .625rem;border-radius:.375rem;margin-bottom:1rem}
-.price-name{font-family:'JetBrains Mono',monospace;font-size:.6875rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);margin-bottom:.5rem}
-.price-card.ft .price-name{color:rgba(255,255,255,.65)}
-.price-h{font-size:1.1rem;font-weight:800;color:var(--t1);margin-bottom:.5rem;line-height:1.35}
-.price-card.ft .price-h{color:#fff}
-.price-val{font-size:2.375rem;font-weight:800;letter-spacing:-.04em;color:var(--t1);line-height:1}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;align-items:stretch}
+.price-card{padding:2.25rem;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.price-card.ft{background:linear-gradient(160deg,#0f2040 0%,#1a3a6e 35%,var(--brand) 70%,#0891b2 100%);border-color:transparent}
+.price-card.ft::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(255,255,255,.03) 0,rgba(255,255,255,.03) 1px,transparent 0,transparent 50%);background-size:20px 20px;pointer-events:none}
+.price-card.ft::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent)}
+.price-rec{display:inline-flex;align-items:center;gap:.375rem;font-family:'JetBrains Mono',monospace;font-size:.625rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(255,255,255,.18);color:rgba(255,255,255,.95);padding:.3rem .75rem;border-radius:999px;margin-bottom:1.25rem;border:1px solid rgba(255,255,255,.2)}
+.price-name{font-family:'JetBrains Mono',monospace;font-size:.625rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--t3);margin-bottom:.625rem}
+.price-card.ft .price-name{color:rgba(255,255,255,.55)}
+.price-h{font-size:1.0625rem;font-weight:800;color:var(--t1);margin-bottom:.25rem;line-height:1.3;letter-spacing:-.01em}
+.price-card.ft .price-h{color:rgba(255,255,255,.9)}
+.price-val{font-size:2.75rem;font-weight:800;letter-spacing:-.05em;color:var(--t1);line-height:1;margin-top:.5rem}
 .price-card.ft .price-val{color:#fff}
-.price-from{font-size:.8125rem;color:var(--t3);margin-top:.25rem;margin-bottom:1rem}
-.price-card.ft .price-from{color:rgba(255,255,255,.55)}
-.price-desc{font-size:.875rem;color:var(--t2);line-height:1.6;margin-bottom:1rem}
-.price-card.ft .price-desc{color:rgba(255,255,255,.86)}
-.price-list{list-style:none;display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.5rem}
-.price-list li{font-size:.875rem;color:var(--t2);display:flex;align-items:flex-start;gap:.5rem;padding-bottom:.5rem;border-bottom:1px solid var(--bs);line-height:1.5}
+.price-val-free{font-size:2.75rem;font-weight:800;letter-spacing:-.05em;color:var(--ok);line-height:1;margin-top:.5rem}
+.price-val-custom{font-size:1.5rem;font-weight:700;letter-spacing:-.03em;color:var(--t1);line-height:1;margin-top:.5rem}
+.price-card.ft .price-val-custom{color:#fff}
+.price-from{font-size:.8125rem;color:var(--t3);margin-top:.375rem;margin-bottom:1.25rem;line-height:1.5}
+.price-card.ft .price-from{color:rgba(255,255,255,.5)}
+.price-divider{height:1px;background:var(--bs);margin-bottom:1.25rem}
+.price-card.ft .price-divider{background:rgba(255,255,255,.12)}
+.price-desc{font-size:.9375rem;color:var(--t2);line-height:1.7;margin-bottom:1.25rem}
+.price-card.ft .price-desc{color:rgba(255,255,255,.82)}
+.price-list{list-style:none;display:flex;flex-direction:column;gap:.5rem;margin-bottom:auto;padding-bottom:1.75rem}
+.price-list li{font-size:.875rem;color:var(--t2);display:flex;align-items:flex-start;gap:.625rem;padding-bottom:.5rem;border-bottom:1px solid var(--bs);line-height:1.55}
 .price-list li:last-child{border:none;padding-bottom:0}
-.price-list li::before{content:'✓';color:var(--brand);font-weight:800;flex-shrink:0}
-.price-card.ft .price-list li{color:rgba(255,255,255,.86);border-color:rgba(255,255,255,.12)}
-.price-card.ft .price-list li::before{color:rgba(255,255,255,.92)}
-.price-btn{display:block;text-align:center;font-size:.9375rem;font-weight:700;padding:.8125rem 1.5rem;border-radius:.75rem;text-decoration:none;border:1px solid var(--b);color:var(--t1);background:var(--s1);box-shadow:var(--sh1);transition:all .2s;min-height:3rem}
-.price-btn:hover{border-color:rgba(37,99,235,.4);background:var(--brand-bg)}
-.price-card.ft .price-btn{background:rgba(255,255,255,.96);color:var(--brand2);border-color:transparent;box-shadow:0 4px 16px rgba(0,0,0,.2)}
+.price-list li::before{content:'✓';color:var(--brand);font-weight:800;flex-shrink:0;font-size:.8125rem;margin-top:.15rem}
+.price-card.ft .price-list li{color:rgba(255,255,255,.82);border-color:rgba(255,255,255,.1)}
+.price-card.ft .price-list li::before{color:rgba(255,255,255,.9)}
+/* button group — stacked */
+.price-btns{display:flex;flex-direction:column;gap:.5rem;margin-top:auto}
+.price-btn{display:flex;align-items:center;justify-content:center;gap:.5rem;font-size:.9375rem;font-weight:700;padding:.8125rem 1.25rem;border-radius:.75rem;text-decoration:none;transition:all .2s;min-height:3rem;cursor:pointer;border:none}
+.price-btn-wa{background:var(--wa);color:#fff;box-shadow:0 2px 8px rgba(37,211,102,.2)}
+.price-btn-wa:hover{background:var(--wa2);transform:translateY(-1px);box-shadow:0 4px 14px rgba(37,211,102,.35)}
+.price-btn-ghost{background:transparent;color:var(--t2);border:1px solid var(--bs)!important;box-shadow:none}
+.price-btn-ghost:hover{border-color:rgba(37,99,235,.35)!important;background:var(--brand-bg);color:var(--t1)}
+.price-btn-primary{background:var(--brand);color:#fff;box-shadow:0 4px 14px rgba(37,99,235,.3)}
+.price-btn-primary:hover{background:var(--brand2);transform:translateY(-1px);box-shadow:0 6px 20px rgba(37,99,235,.4)}
+.price-card.ft .price-btn-ghost{background:rgba(255,255,255,.08)!important;color:rgba(255,255,255,.85);border-color:rgba(255,255,255,.2)!important}
+.price-card.ft .price-btn-ghost:hover{background:rgba(255,255,255,.16)!important;color:#fff}
+.price-card.ft .price-btn-wa{box-shadow:0 2px 12px rgba(0,0,0,.2)}
 
 /* ── AUDIT / CHECKLIST ── */
 .audit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
@@ -315,6 +330,7 @@ footer{border-top:1px solid var(--bs);padding:2.25rem 1.75rem;position:relative;
   .svc-grid{grid-template-columns:1fr}
   .price-grid{grid-template-columns:1fr}
   .price-card.ft{order:-1}
+  .price-card{display:flex;flex-direction:column}
   .audit-grid{grid-template-columns:1fr 1fr}
   .ind-grid{grid-template-columns:repeat(2,1fr)}
   .proc-grid{grid-template-columns:1fr 1fr}
@@ -392,6 +408,87 @@ footer{border-top:1px solid var(--bs);padding:2.25rem 1.75rem;position:relative;
   .hero-ctas-row{flex-direction:column}
   .btn-hero-wa,.btn-hero-ghost{width:100%;justify-content:center}
   .proof-item{font-size:.8125rem}
+}
+
+/* ── CONTACT SECTION ── */
+.contact-wrap{display:grid;grid-template-columns:1fr 420px;gap:3rem;align-items:start;max-width:1100px;margin:0 auto}
+.contact-left{}
+.contact-heading{font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;color:var(--t1);margin-bottom:.875rem}
+.contact-heading em{font-style:normal;color:var(--brand)}
+.contact-sub{font-size:1rem;color:var(--t2);line-height:1.8;margin-bottom:2rem}
+/* channel cards */
+.contact-channels-stack{display:flex;flex-direction:column;gap:.625rem;margin-bottom:2rem}
+.cch{display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;border-radius:var(--r);text-decoration:none;transition:all .2s;border:1px solid var(--bs);background:var(--s1);box-shadow:var(--sh1)}
+.cch:hover{transform:translateY(-1px);box-shadow:var(--sh2)}
+.cch-wa{border-color:rgba(37,211,102,.3);background:rgba(37,211,102,.04)}
+.cch-wa:hover{border-color:rgba(37,211,102,.55);background:rgba(37,211,102,.09)}
+.cch-icon{width:2.5rem;height:2.5rem;border-radius:.625rem;display:grid;place-items:center;flex-shrink:0;font-size:1.125rem}
+.cch-wa .cch-icon{background:var(--wa);box-shadow:0 2px 8px rgba(37,211,102,.3)}
+.cch-mail .cch-icon{background:var(--brand-bg);border:1px solid rgba(37,99,235,.2)}
+.cch-phone .cch-icon{background:var(--brand-bg);border:1px solid rgba(37,99,235,.2)}
+.cch-body{}
+.cch-label{font-size:.6875rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--t3);margin-bottom:.15rem;font-family:'JetBrains Mono',monospace}
+.cch-value{font-size:.9375rem;font-weight:700;color:var(--t1)}
+.cch-meta{font-size:.8125rem;color:var(--t3);margin-top:.1rem}
+/* trust strip */
+.contact-trust{display:flex;flex-direction:column;gap:.5rem}
+.contact-trust-item{display:flex;align-items:center;gap:.625rem;font-size:.875rem;color:var(--t2)}
+.contact-trust-item::before{content:'✓';color:var(--brand);font-weight:800;font-size:.75rem;flex-shrink:0}
+/* form card */
+.contact-form-card{background:var(--s1);border:1px solid var(--bs);border-radius:1.125rem;box-shadow:var(--sh3);overflow:hidden;position:relative}
+.contact-form-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--brand),var(--cyan))}
+.cform-head{padding:1.5rem 1.75rem 1.25rem;border-bottom:1px solid var(--bs)}
+.cform-title{font-size:1.0625rem;font-weight:800;color:var(--t1);letter-spacing:-.015em;margin-bottom:.25rem}
+.cform-sub{font-size:.8125rem;color:var(--t3);line-height:1.6}
+.cform-body{padding:1.5rem 1.75rem}
+/* field groups */
+.cfield{display:flex;flex-direction:column;gap:.375rem;margin-bottom:1rem}
+.cfield:last-of-type{margin-bottom:0}
+.cfield-label{font-size:.8125rem;font-weight:600;color:var(--t2);display:flex;align-items:center;gap:.375rem}
+.cfield-req{color:var(--brand);font-size:.75rem}
+.cfield-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.cinput{width:100%;background:var(--s2);border:1.5px solid var(--bs);color:var(--t1);padding:.6875rem .875rem;border-radius:.625rem;font-size:.9375rem;outline:none;transition:all .2s;font-family:inherit;line-height:1.5}
+.cinput:focus{border-color:var(--brand);background:var(--s1);box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+.cinput::placeholder{color:var(--t3)}
+.cinput.error{border-color:#e24b4a;box-shadow:0 0 0 3px rgba(226,75,74,.1)}
+textarea.cinput{min-height:90px;resize:vertical}
+select.cinput{cursor:pointer}
+/* package selector */
+.cpkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem}
+.cpkg{display:flex;flex-direction:column;align-items:center;gap:.25rem;padding:.625rem .5rem;border-radius:.625rem;border:1.5px solid var(--bs);background:var(--s2);cursor:pointer;transition:all .15s;text-align:center}
+.cpkg:hover{border-color:rgba(37,99,235,.35);background:var(--brand-bg)}
+.cpkg.sel{border-color:var(--brand);background:var(--brand-bg);box-shadow:0 0 0 2px rgba(37,99,235,.15)}
+.cpkg input{position:absolute;opacity:0;width:0;height:0}
+.cpkg-icon{font-size:1.125rem;line-height:1}
+.cpkg-name{font-size:.75rem;font-weight:700;color:var(--t1)}
+.cpkg-price{font-size:.6875rem;color:var(--t3);font-family:'JetBrains Mono',monospace}
+/* submit area */
+.cform-submit{padding:1.25rem 1.75rem;border-top:1px solid var(--bs);background:var(--s2);display:flex;flex-direction:column;gap:.75rem}
+.csubmit-btn{display:flex;align-items:center;justify-content:center;gap:.625rem;width:100%;padding:.9375rem 1.5rem;border-radius:.75rem;font-size:1rem;font-weight:700;color:#fff;background:var(--brand);border:none;cursor:pointer;box-shadow:0 4px 16px rgba(37,99,235,.3);transition:all .2s;min-height:3.25rem;font-family:inherit}
+.csubmit-btn:hover:not(:disabled){background:var(--brand2);transform:translateY(-1px);box-shadow:0 6px 22px rgba(37,99,235,.4)}
+.csubmit-btn:disabled{opacity:.65;cursor:not-allowed;transform:none}
+.csubmit-or{display:flex;align-items:center;gap:.75rem;color:var(--t3);font-size:.8125rem}
+.csubmit-or::before,.csubmit-or::after{content:'';flex:1;height:1px;background:var(--bs)}
+.csubmit-wa{display:flex;align-items:center;justify-content:center;gap:.625rem;width:100%;padding:.8125rem 1.5rem;border-radius:.75rem;font-size:.9375rem;font-weight:700;color:#fff;background:var(--wa);border:none;cursor:pointer;text-decoration:none;box-shadow:0 2px 10px rgba(37,211,102,.25);transition:all .2s;min-height:3rem;font-family:inherit}
+.csubmit-wa:hover{background:var(--wa2);transform:translateY(-1px);box-shadow:0 4px 16px rgba(37,211,102,.4)}
+.cform-note{font-size:.75rem;color:var(--t3);text-align:center;line-height:1.7;padding:0 1.75rem .875rem}
+.cform-note a{color:var(--t3);text-decoration:underline;text-underline-offset:2px}
+.cform-note a:hover{color:var(--t2)}
+/* success state */
+.cform-success{display:none;padding:2.5rem 1.75rem;text-align:center}
+.cform-success-icon{font-size:3rem;margin-bottom:1rem}
+.cform-success-title{font-size:1.125rem;font-weight:800;color:var(--t1);margin-bottom:.5rem}
+.cform-success-sub{font-size:.9375rem;color:var(--t2);line-height:1.7}
+/* responsive */
+@media(max-width:960px){
+  .contact-wrap{grid-template-columns:1fr}
+  .cfield-row{grid-template-columns:1fr}
+}
+@media(max-width:580px){
+  .cform-head,.cform-body,.cform-submit{padding-left:1.25rem;padding-right:1.25rem}
+  .cform-note{padding-left:1.25rem;padding-right:1.25rem}
+  .cpkg-grid{grid-template-columns:1fr 1fr 1fr}
+  .contact-form-card{border-radius:.875rem}
 }
 </style>
 </head>
@@ -687,61 +784,75 @@ footer{border-top:1px solid var(--bs);padding:2.25rem 1.75rem;position:relative;
 <div class="section" id="cennik">
   <div class="s-head c">
     <div class="eyebrow">Pakiety</div>
-    <h2 class="s-title">Pakiety poprawy oferty</h2>
-    <p class="s-sub">Wybierz zakres wsparcia dopasowany do etapu Twojej oferty. Przy większej liczbie produktów — zapytaj o wycenę zbiorczą.</p>
+    <h2 class="s-title">Wybierz zakres pod realny problem oferty.</h2>
+    <p class="s-sub">Możemy poprawić pojedynczą ofertę albo przygotować pełny zestaw materiałów dla serii produktów.</p>
   </div>
   <div class="price-grid">
+
+    <!-- START -->
     <div class="card price-card">
-      <div class="price-name">Basic</div>
-      <div class="price-h">Start zdjęciowy</div>
-      <div class="price-val">od 149 zł</div>
-      <div class="price-from">netto / produkt</div>
-      <p class="price-desc">Podstawowe przygotowanie zdjęć produktu pod wymagania marketplace. Idealne na start.</p>
+      <div class="price-name">Start</div>
+      <div class="price-h">Mini audyt oferty</div>
+      <div class="price-val-free">0 zł</div>
+      <div class="price-from">dla pierwszej analizy</div>
+      <div class="price-divider"></div>
+      <p class="price-desc">Szybka diagnoza, co najbardziej blokuje kliknięcia lub zaufanie.</p>
       <ul class="price-list">
-        <li>3 zdjęcia produktu</li>
-        <li>Białe tło 2560×2560 px</li>
-        <li>Format zgodny z Allegro/OLX</li>
-        <li>Podstawowa korekta</li>
-        <li>1 runda poprawek</li>
+        <li>ocena miniatury</li>
+        <li>ocena tytułu</li>
+        <li>krótka lista poprawek</li>
+        <li>rekomendacja kolejnego kroku</li>
       </ul>
-      <a href="#kontakt" class="price-btn">Wybieram Start zdjęciowy</a>
+      <div class="price-btns">
+        <a href="https://wa.me/48791162938?text=Cześć,%20chcę%20wysłać%20ofertę%20do%20mini%20audytu." class="price-btn price-btn-wa"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Wyślij link na WhatsApp</a>
+        <a href="#kontakt" class="price-btn price-btn-ghost">Formularz kontaktowy</a>
+      </div>
     </div>
+
+    <!-- OFERTA PRO -->
     <div class="card price-card ft">
-      <div class="price-rec">Rekomendowany</div>
-      <div class="price-name">Standard</div>
-      <div class="price-h">Oferta Allegro gotowa do publikacji</div>
-      <div class="price-val">od 299 zł</div>
-      <div class="price-from">netto / produkt</div>
-      <p class="price-desc">Najlepszy wybór dla sprzedawcy, który chce poprawić zdjęcia, tytuł i opis jednocześnie.</p>
+      <div class="price-rec">✦ Najczęściej wybierane</div>
+      <div class="price-name">Oferta Pro</div>
+      <div class="price-h">Zdjęcie + opis + SEO</div>
+      <div class="price-val">od 149 zł</div>
+      <div class="price-from">za jedną ofertę</div>
+      <div class="price-divider"></div>
+      <p class="price-desc">Komplet najważniejszych elementów pod marketplace.</p>
       <ul class="price-list">
-        <li>Zdjęcie główne + galeria</li>
-        <li>Do 6 materiałów graficznych</li>
-        <li>Tytuł SEO pod platformę</li>
-        <li>5 bulletów sprzedażowych</li>
-        <li>Opis produktu z układem korzyści</li>
-        <li>2 rundy poprawek</li>
+        <li>zdjęcie główne</li>
+        <li>tytuł SEO</li>
+        <li>opis sprzedażowy</li>
+        <li>układ bullet points</li>
+        <li>rekomendacje galerii</li>
       </ul>
-      <a href="#kontakt" class="price-btn">Wybieram Standard</a>
+      <div class="price-btns">
+        <a href="https://wa.me/48791162938?text=Cześć,%20chcę%20zamówić%20pakiet%20Oferta%20Pro." class="price-btn price-btn-wa"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Zamów na WhatsApp</a>
+        <a href="#kontakt" class="price-btn price-btn-ghost">Formularz kontaktowy</a>
+      </div>
     </div>
+
+    <!-- STUDIO -->
     <div class="card price-card">
-      <div class="price-name">Premium</div>
-      <div class="price-h">Pełna optymalizacja oferty</div>
-      <div class="price-val">od 499 zł</div>
-      <div class="price-from">netto / produkt</div>
-      <p class="price-desc">Kompletny pakiet dla oferty, która ma wygrywać z konkurencją i budować wiarygodność marki.</p>
+      <div class="price-name">Studio</div>
+      <div class="price-h">Pełna galeria produktu</div>
+      <div class="price-val-custom">indywidualnie</div>
+      <div class="price-from">dla serii produktów</div>
+      <div class="price-divider"></div>
+      <p class="price-desc">Dla sprzedawców, którzy chcą spójnego systemu ofert.</p>
       <ul class="price-list">
-        <li>Do 10 materiałów graficznych</li>
-        <li>Zdjęcie główne, detale, opakowanie, infografiki</li>
-        <li>Opis rozszerzony z analizą konkurencji</li>
-        <li>Pełna optymalizacja tytułu SEO</li>
-        <li>Rekomendacje CTR i miniatury</li>
-        <li>Nieograniczone rundy poprawek</li>
-        <li>Realizacja 24h</li>
+        <li>hero packshot</li>
+        <li>detale i zastosowanie</li>
+        <li>infografiki produktowe</li>
+        <li>szablon opisu</li>
+        <li>QA serii ofert</li>
       </ul>
-      <a href="#kontakt" class="price-btn">Wybieram Premium</a>
+      <div class="price-btns">
+        <a href="https://wa.me/48791162938?text=Cześć,%20chcę%20zapytać%20o%20pakiet%20Studio." class="price-btn price-btn-primary">Zapytaj na WhatsApp</a>
+        <a href="#kontakt" class="price-btn price-btn-ghost">Formularz kontaktowy</a>
+      </div>
     </div>
+
   </div>
-  <p style="text-align:center;font-size:.9375rem;color:var(--t2);margin-top:1.5rem;max-width:760px;margin-left:auto;margin-right:auto;line-height:1.75">To nie są tylko ładne zdjęcia. To komplet materiałów, które mają pomóc klientowi szybciej kliknąć, zrozumieć produkt i podjąć decyzję zakupową. <strong style="color:var(--t1)">Przy zamówieniu wielu produktów — zapytaj o rabat wolumenowy.</strong></p>
 </div>
 
 <div class="divider"></div>
@@ -790,68 +901,161 @@ footer{border-top:1px solid var(--bs);padding:2.25rem 1.75rem;position:relative;
 
 <div class="divider"></div>
 
-<!-- ── MINI AUDYT (anchor) ── -->
-<div class="section" id="mini-audyt" style="padding-bottom:0">
-  <div class="cta-box" style="padding:2.75rem 1.5rem">
-    <div class="eyebrow" style="justify-content:center">Darmowy mini audyt</div>
-    <h2>Wyślij link do oferty — oddzwonimy lub odpisujemy w 24h</h2>
-    <p>3 konkretne rekomendacje: zdjęcie główne, tytuł SEO oraz układ opisu lub galerii. Bez zobowiązań.</p>
-    <a href="#kontakt" class="btn-p">Wyślij ofertę do audytu →</a>
-  </div>
-</div>
-
 <!-- ── KONTAKT ── -->
-<div class="section" id="kontakt">
-  <div class="cta-box">
-    <div class="eyebrow" style="justify-content:center">Kontakt</div>
-    <h2>Wyślij link do oferty lub zdjęcie produktu</h2>
-    <p>Sprawdzimy, co można poprawić w zdjęciu głównym, tytule, opisie i galerii. Odpiszemy w ciągu 24 godzin.</p>
-    <form id="contactForm" name="kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="width:100%;max-width:720px;margin:0 auto">
-      <input type="hidden" name="form-name" value="kontakt">
-      <p style="display:none"><label>Nie wypełniaj: <input name="bot-field"></label></p>
-      <div class="cta-form">
-        <input class="cta-input" type="url" name="offer_link" placeholder="Link do oferty (Allegro, OLX, Amazon…)" required>
-        <select class="cta-select" name="platforma" required>
-          <option value="">Platforma sprzedaży</option>
-          <option>Allegro</option>
-          <option>OLX</option>
-          <option>Amazon</option>
-          <option>Sklep internetowy</option>
-          <option>Inne</option>
-        </select>
-        <div class="chk-wrap">
-          <div class="chk-title">Co chcesz poprawić?</div>
-          <div class="chk-grid">
-            <label><input type="checkbox" name="zakres_zdjecia" value="tak"> Zdjęcia</label>
-            <label><input type="checkbox" name="zakres_opis" value="tak"> Opis produktu</label>
-            <label><input type="checkbox" name="zakres_tytul" value="tak"> Tytuł SEO</label>
-            <label><input type="checkbox" name="zakres_calosc" value="tak"> Całość oferty</label>
-          </div>
+<div class="section" id="kontakt" id="mini-audyt">
+<div class="contact-wrap">
+
+  <!-- LEWA: nagłówek + kanały + trust -->
+  <div class="contact-left">
+    <div class="eyebrow">Kontakt</div>
+    <h2 class="contact-heading">Wyślij link<br>do oferty —<br><em>odpiszemy w 24h</em></h2>
+    <p class="contact-sub">Sprawdzimy miniaturę, tytuł i galerię. Dostaniesz 3 konkretne rekomendacje. Bez zobowiązań, bez opłat za pierwszą analizę.</p>
+
+    <div class="contact-channels-stack">
+      <a href="https://wa.me/48791162938?text=Cześć,%20chcę%20wysłać%20ofertę%20do%20analizy." class="cch cch-wa">
+        <div class="cch-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
+        <div class="cch-body">
+          <div class="cch-label">WhatsApp — najszybciej</div>
+          <div class="cch-value">+48 791 162 938</div>
+          <div class="cch-meta">Odpowiadamy zazwyczaj w ciągu godziny</div>
         </div>
-        <input class="cta-input" type="email" name="email" placeholder="E-mail" required>
-        <input class="cta-input" type="tel" name="telefon" placeholder="Telefon / WhatsApp (opcjonalnie)">
-        <textarea name="message" class="cta-input" placeholder="Wiadomość (opcjonalnie — np. kategoria produktu, liczba produktów)"></textarea>
-        <input type="hidden" name="_subject" value="Nowe zapytanie — OfertaStudio.pl">
-        <button type="submit" class="btn-p" style="width:100%;justify-content:center">Wyślij zapytanie →</button>
-      </div>
-      <p style="font-size:.75rem;color:var(--t3);margin-top:.875rem;text-align:center">Wysyłając formularz, wyrażasz zgodę na przetwarzanie danych w celu odpowiedzi na zapytanie. Szczegóły: <a href="/polityka-prywatnosci" style="color:var(--t3)">Polityka prywatności</a>.</p>
-    </form>
-    <div id="formSuccess" style="display:none;margin-top:1.25rem;color:var(--ok);font-weight:700;font-size:1rem">✓ Wiadomość wysłana! Odpiszemy w ciągu 24 godzin.</div>
-    <div class="contact-channels">
-      <a href="https://wa.me/48791162938?text=Cześć,%20chciałbym%20zapytać%20o%20optymalizację%20oferty%20Allegro." class="ch-item wa">
-        <svg class="ch-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        WhatsApp · +48 791 162 938
       </a>
-      <a href="tel:+48791162938" class="ch-item">
-        <svg class="ch-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        +48 791 162 938
+      <a href="mailto:kontakt@ofertastudio.pl" class="cch cch-mail">
+        <div class="cch-icon" style="color:var(--brand)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div class="cch-body">
+          <div class="cch-label">E-mail</div>
+          <div class="cch-value">kontakt@ofertastudio.pl</div>
+          <div class="cch-meta">Odpowiedź do 24h w dni robocze</div>
+        </div>
       </a>
-      <a href="mailto:kontakt@ofertastudio.pl" class="ch-item">
-        <svg class="ch-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        kontakt@ofertastudio.pl
+      <a href="tel:+48791162938" class="cch cch-phone">
+        <div class="cch-icon" style="color:var(--brand)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+        <div class="cch-body">
+          <div class="cch-label">Telefon</div>
+          <div class="cch-value">+48 791 162 938</div>
+          <div class="cch-meta">Pn–Pt, 9:00–17:00</div>
+        </div>
       </a>
     </div>
+
+    <div class="contact-trust">
+      <div class="contact-trust-item">Pierwszy mini audyt bezpłatnie — bez zobowiązań</div>
+      <div class="contact-trust-item">Odpowiedź w ciągu 24h w dni robocze</div>
+      <div class="contact-trust-item">Wycena bez ukrytych kosztów</div>
+      <div class="contact-trust-item">Dane chronione zgodnie z RODO</div>
+    </div>
   </div>
+
+  <!-- PRAWA: formularz -->
+  <div class="contact-form-card" id="mini-audyt">
+    <div id="contactFormWrap">
+      <div class="cform-head">
+        <div class="cform-title">Wyślij zapytanie</div>
+        <div class="cform-sub">Wypełnij formularz lub napisz na WhatsApp — odpiszemy z analizą i wyceną.</div>
+      </div>
+      <form id="contactForm" name="kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="kontakt">
+        <p style="display:none"><label>Nie wypełniaj: <input name="bot-field"></label></p>
+        <div class="cform-body">
+
+          <!-- Wybór pakietu -->
+          <div class="cfield">
+            <div class="cfield-label">Interesuje mnie</div>
+            <div class="cpkg-grid" id="pkgGrid">
+              <label class="cpkg sel" id="pkg-start">
+                <input type="radio" name="pakiet" value="Start — Mini audyt (0 zł)" checked>
+                <span class="cpkg-icon">🔍</span>
+                <span class="cpkg-name">Start</span>
+                <span class="cpkg-price">0 zł</span>
+              </label>
+              <label class="cpkg" id="pkg-pro">
+                <input type="radio" name="pakiet" value="Oferta Pro (od 149 zł)">
+                <span class="cpkg-icon">⚡</span>
+                <span class="cpkg-name">Oferta Pro</span>
+                <span class="cpkg-price">od 149 zł</span>
+              </label>
+              <label class="cpkg" id="pkg-studio">
+                <input type="radio" name="pakiet" value="Studio — seria produktów">
+                <span class="cpkg-icon">🏆</span>
+                <span class="cpkg-name">Studio</span>
+                <span class="cpkg-price">wycena</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Link + platforma -->
+          <div class="cfield">
+            <label class="cfield-label" for="offer_link">Link do oferty <span class="cfield-req">*</span></label>
+            <input class="cinput" id="offer_link" type="url" name="offer_link" placeholder="https://allegro.pl/oferta/…" required autocomplete="url">
+          </div>
+
+          <div class="cfield-row">
+            <div class="cfield">
+              <label class="cfield-label" for="platforma">Platforma <span class="cfield-req">*</span></label>
+              <select class="cinput" id="platforma" name="platforma" required>
+                <option value="">Wybierz…</option>
+                <option>Allegro</option>
+                <option>OLX</option>
+                <option>Amazon</option>
+                <option>Sklep internetowy</option>
+                <option>Inne</option>
+              </select>
+            </div>
+            <div class="cfield">
+              <label class="cfield-label" for="ilosc">Liczba produktów</label>
+              <select class="cinput" id="ilosc" name="ilosc_produktow">
+                <option value="">Wybierz…</option>
+                <option>1 produkt</option>
+                <option>2–5 produktów</option>
+                <option>6–20 produktów</option>
+                <option>Powyżej 20</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Dane kontaktowe -->
+          <div class="cfield-row">
+            <div class="cfield">
+              <label class="cfield-label" for="email">E-mail <span class="cfield-req">*</span></label>
+              <input class="cinput" id="email" type="email" name="email" placeholder="ty@firma.pl" required autocomplete="email">
+            </div>
+            <div class="cfield">
+              <label class="cfield-label" for="telefon">WhatsApp / tel.</label>
+              <input class="cinput" id="telefon" type="tel" name="telefon" placeholder="+48 000 000 000" autocomplete="tel">
+            </div>
+          </div>
+
+          <!-- Wiadomość -->
+          <div class="cfield">
+            <label class="cfield-label" for="message">Wiadomość <span style="color:var(--t3);font-weight:400">(opcjonalnie)</span></label>
+            <textarea class="cinput" id="message" name="message" placeholder="Kategoria produktu, co chcesz poprawić, szczegółowe pytania…"></textarea>
+          </div>
+
+          <input type="hidden" name="_subject" value="Nowe zapytanie — OfertaStudio.pl">
+        </div>
+
+        <div class="cform-submit">
+          <button type="submit" class="csubmit-btn" id="submitBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            Wyślij zapytanie
+          </button>
+          <div class="csubmit-or">lub napisz bezpośrednio</div>
+          <a href="https://wa.me/48791162938?text=Cześć,%20chcę%20zapytać%20o%20optymalizację%20oferty." class="csubmit-wa">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp · +48 791 162 938
+          </a>
+        </div>
+      </form>
+      <p class="cform-note">Wysyłając formularz wyrażasz zgodę na przetwarzanie danych w celu odpowiedzi na zapytanie. Szczegóły: <a href="/polityka-prywatnosci">Polityka prywatności</a>.</p>
+    </div>
+    <div class="cform-success" id="formSuccess">
+      <div class="cform-success-icon">✅</div>
+      <div class="cform-success-title">Wiadomość wysłana!</div>
+      <div class="cform-success-sub">Odpiszemy w ciągu 24 godzin.<br>Możesz też napisać na WhatsApp jeśli chcesz szybszej odpowiedzi.</div>
+    </div>
+  </div>
+
+</div>
 </div>
 
 </div><!-- /page -->
@@ -967,21 +1171,40 @@ function tFaq(btn){
   }
 }
 
-/* Form */
+/* Package selector */
+document.querySelectorAll('.cpkg').forEach(pkg=>{
+  pkg.addEventListener('click',()=>{
+    document.querySelectorAll('.cpkg').forEach(p=>p.classList.remove('sel'));
+    pkg.classList.add('sel');
+  });
+});
+
+/* Form validation + submit */
 const form=document.getElementById('contactForm');
 if(form){
+  function validateField(el){
+    if(el.required&&!el.value.trim()){el.classList.add('error');return false}
+    el.classList.remove('error');return true;
+  }
+  form.querySelectorAll('.cinput').forEach(el=>{
+    el.addEventListener('blur',()=>validateField(el));
+    el.addEventListener('input',()=>{if(el.classList.contains('error'))validateField(el)});
+  });
   form.addEventListener('submit',async function(e){
     e.preventDefault();
-    const btn=form.querySelector('button[type="submit"]');
-    const orig=btn.textContent;
-    btn.textContent='Wysyłanie…';btn.disabled=true;
+    let valid=true;
+    form.querySelectorAll('.cinput[required]').forEach(el=>{if(!validateField(el))valid=false});
+    if(!valid){form.querySelector('.cinput.error')?.focus();return}
+    const btn=document.getElementById('submitBtn');
+    btn.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Wysyłanie…';
+    btn.disabled=true;
     try{
       const res=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(form)).toString()});
       if(res.ok){
-        form.reset();form.style.display='none';
+        document.getElementById('contactFormWrap').style.display='none';
         document.getElementById('formSuccess').style.display='block';
-      }else{btn.textContent='Błąd — spróbuj ponownie';btn.disabled=false}
-    }catch{btn.textContent='Błąd — spróbuj ponownie';btn.disabled=false}
+      }else{btn.innerHTML='Błąd — spróbuj ponownie';btn.disabled=false}
+    }catch{btn.innerHTML='Błąd — spróbuj ponownie';btn.disabled=false}
   });
 }
 </script>
