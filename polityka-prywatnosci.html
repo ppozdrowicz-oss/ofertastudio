@@ -7,6 +7,8 @@
 <meta name="description" content="Polityka prywatności serwisu OfertaStudio.pl. Informacje o przetwarzaniu danych osobowych zgodnie z RODO.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://ofertastudio.pl/polityka-prywatnosci">
+<meta property="og:title" content="Polityka prywatności — OfertaStudio.pl">
+<meta property="og:url" content="https://ofertastudio.pl/polityka-prywatnosci">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%232563eb'/><text x='4' y='24' font-family='Inter' font-weight='800' font-size='20' fill='white'>OS</text></svg>">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
@@ -17,7 +19,7 @@
   --bg:#f6f8fc;--s1:#fff;--s2:#f0f4f9;--s3:#e8eef7;
   --bs:#dce4f0;--b:#c8d4e8;
   --t1:#0a1628;--t2:#3d5278;--t3:#8496b4;
-  --brand:#2563eb;--brand2:#1a4fc4;--cyan:#0891b2;
+  --brand:#2563eb;--brand2:#1a4fc4;--cyan:#0891b2;--green:#059669;
   --brand-bg:rgba(37,99,235,.07);--ok-bg:#ecfdf5;--ok:#047857;
   --sh1:0 1px 3px rgba(10,22,40,.07),0 0 0 1px rgba(10,22,40,.04);
   --sh2:0 4px 12px rgba(10,22,40,.09),0 0 0 1px rgba(10,22,40,.04);
@@ -37,84 +39,94 @@
 }
 html{scroll-behavior:smooth;background:var(--bg)}
 body{min-height:100vh;font-family:'Inter',system-ui,sans-serif;font-size:1rem;line-height:1.65;color:var(--t1);
-  background:radial-gradient(ellipse 80% 50% at 50% -10%,rgba(37,99,235,.08),transparent),var(--bg);
+  background:radial-gradient(ellipse 80% 40% at 50% -5%,rgba(37,99,235,.08),transparent),var(--bg);
   -webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .3s,color .3s}
-[data-theme="dark"] body{background:radial-gradient(ellipse 80% 50% at 50% -10%,rgba(59,130,246,.1),transparent),var(--bg)}
+[data-theme="dark"] body{background:radial-gradient(ellipse 80% 40% at 50% -5%,rgba(59,130,246,.1),transparent),var(--bg)}
 ::selection{background:rgba(37,99,235,.25)}
+
+/* FOCUS-VISIBLE */
+:focus{outline:none}
+:focus-visible{outline:2px solid var(--brand);outline-offset:3px;border-radius:4px}
+button:focus-visible,a:focus-visible{outline:2px solid var(--brand);outline-offset:3px;border-radius:6px}
+.toggle-btn:focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:.625rem}
+
+/* GRID BG */
 .grid-bg{position:fixed;inset:0;pointer-events:none;z-index:0;
   background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
   background-size:40px 40px;
-  -webkit-mask-image:radial-gradient(ellipse 100% 60% at 50% 0%,black,transparent);
-  mask-image:radial-gradient(ellipse 100% 60% at 50% 0%,black,transparent)}
+  -webkit-mask-image:radial-gradient(ellipse 100% 50% at 50% 0%,black,transparent);
+  mask-image:radial-gradient(ellipse 100% 50% at 50% 0%,black,transparent)}
 
-/* ── NAV (identyczny z index.html) ── */
+/* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:500;border-bottom:1px solid var(--bs)}
-.nav-inner{max-width:1280px;margin:0 auto;padding:0 1.75rem;height:3.75rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;background:var(--nav);backdrop-filter:blur(24px)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 1.25rem;height:3.75rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;background:var(--nav);backdrop-filter:blur(24px)}
 .nav-logo{display:flex;align-items:center;text-decoration:none;flex-shrink:0}
-.nav-right{display:flex;align-items:center;gap:.75rem;flex-shrink:0}
+.nav-right{display:flex;align-items:center;gap:.625rem;flex-shrink:0}
 .toggle-btn{width:2.25rem;height:2.25rem;border-radius:.625rem;background:transparent;border:1px solid var(--bs);cursor:pointer;display:grid;place-items:center;font-size:1rem;color:var(--t3);transition:all .15s}
 .toggle-btn:hover{background:var(--brand-bg);color:var(--t1)}
-.btn-nav{font-size:.875rem;font-weight:600;color:var(--t2);text-decoration:none;display:inline-flex;align-items:center;gap:.375rem;padding:.4375rem .875rem;border-radius:.625rem;border:1px solid var(--bs);box-shadow:var(--sh1);transition:all .15s}
-.btn-nav:hover{color:var(--t1);border-color:rgba(37,99,235,.35);background:var(--brand-bg)}
+.nav-back{font-size:.875rem;font-weight:500;color:var(--t2);text-decoration:none;display:flex;align-items:center;gap:.375rem;padding:.4375rem .875rem;border-radius:.625rem;border:1px solid var(--bs);box-shadow:var(--sh1);transition:all .15s;white-space:nowrap}
+.nav-back:hover{color:var(--t1);border-color:rgba(37,99,235,.35);background:var(--brand-bg)}
 
-/* ── PAGE ── */
-.page{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:5.5rem 1.75rem 5rem}
+/* PAGE */
+.page{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:6.5rem 1.75rem 5rem}
 
-/* eyebrow — identyczny z index.html */
+/* EYEBROW */
 .eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:'JetBrains Mono',monospace;font-size:.6875rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brand);margin-bottom:1rem}
 .eyebrow::before,.eyebrow::after{content:'';width:1.25rem;height:1px;background:var(--brand)}
 
-/* header */
-.doc-header{padding-top:2.5rem;padding-bottom:2rem;margin-bottom:2rem;border-bottom:1px solid var(--bs)}
-h1{font-size:clamp(2.1rem,4.5vw,3.25rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;color:var(--t1);margin-bottom:.875rem}
-.doc-meta{display:flex;flex-wrap:wrap;gap:.875rem}
-.doc-meta span{font-family:'JetBrains Mono',monospace;font-size:.6875rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--t3)}
+/* DOC HEADER */
+.doc-header{margin-bottom:2.5rem;padding-bottom:2rem;border-bottom:1px solid var(--bs)}
+h1{font-size:clamp(2rem,4.5vw,3rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;color:var(--t1);margin-bottom:.875rem}
+.doc-meta{display:flex;flex-wrap:wrap;gap:.5rem .875rem;align-items:center}
+.doc-meta-item{font-family:'JetBrains Mono',monospace;font-size:.6875rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--t3)}
+.doc-meta-sep{color:var(--bs);font-size:.75rem}
 
-/* summary — styl jak band/cta z index */
-.summary-card{position:relative;overflow:hidden;background:var(--brand-bg);border:1px solid rgba(37,99,235,.18);border-radius:var(--r);padding:1.375rem 1.625rem;margin-bottom:2.5rem}
+/* SUMMARY CARD */
+.summary-card{position:relative;overflow:hidden;background:var(--brand-bg);border:1px solid rgba(37,99,235,.16);border-radius:var(--r);padding:1.375rem 1.625rem;margin-bottom:2.5rem}
 .summary-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--brand),var(--cyan),transparent)}
 .summary-card p{font-size:.9375rem;font-weight:500;color:var(--t1);line-height:1.75;margin:0}
 
-/* typography */
-h2{font-size:1.1875rem;font-weight:800;letter-spacing:-.02em;color:var(--t1);margin:2.25rem 0 .875rem;display:flex;align-items:center;gap:.625rem}
+/* SECTIONS */
+h2{font-size:1.125rem;font-weight:800;letter-spacing:-.02em;color:var(--t1);margin:2.5rem 0 .875rem;display:flex;align-items:center;gap:.625rem}
 .sec-num{font-family:'JetBrains Mono',monospace;font-size:.625rem;font-weight:700;letter-spacing:.1em;color:var(--brand);background:var(--brand-bg);border:1px solid rgba(37,99,235,.18);padding:.25rem .5rem;border-radius:.375rem;flex-shrink:0}
 p{font-size:.9375rem;color:var(--t2);line-height:1.8;margin-bottom:.875rem}
 p:last-child{margin-bottom:0}
-ul{padding-left:1.25rem;margin-bottom:.875rem}
-li{font-size:.9375rem;color:var(--t2);line-height:1.75;margin-bottom:.375rem;padding-left:.25rem}
+ul,ol{padding-left:1.25rem;margin-bottom:.875rem}
+li{font-size:.9375rem;color:var(--t2);line-height:1.75;margin-bottom:.4rem;padding-left:.25rem}
 li::marker{color:var(--brand)}
 li strong{color:var(--t1);font-weight:600}
 a{color:var(--brand);text-decoration:none;transition:opacity .15s}
 a:hover{opacity:.75;text-decoration:underline}
+strong{color:var(--t1);font-weight:600}
 
-/* card — identyczny z index.html */
-.card{background:var(--s1);border:1px solid var(--bs);border-radius:var(--r);box-shadow:var(--sh1);transition:box-shadow .2s,border-color .2s}
+/* SECTION DIVIDER */
+.sdiv{height:1px;background:var(--bs);margin:0}
 
-/* provider grid */
-.provider-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.75rem;margin:1rem 0}
+/* CARD */
+.card{background:var(--s1);border:1px solid var(--bs);border-radius:var(--r);box-shadow:var(--sh1);transition:box-shadow .25s,border-color .25s,transform .2s}
+.card:hover{box-shadow:var(--sh2);border-color:rgba(37,99,235,.22);transform:translateY(-1px)}
+
+/* PROVIDER GRID */
+.provider-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0}
 .provider-card{padding:1.125rem 1.25rem}
 .provider-card strong{display:block;font-size:.9375rem;font-weight:700;color:var(--t1);margin-bottom:.3rem}
 .provider-card p{font-size:.8125rem;color:var(--t2);line-height:1.6;margin:0}
 
-/* rights grid */
-.rights-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:.625rem;margin:1rem 0}
+/* RIGHTS GRID */
+.rights-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.625rem;margin:1rem 0}
 .right-card{padding:1rem 1.125rem;display:flex;gap:.625rem;align-items:flex-start}
 .right-icon{font-size:1rem;flex-shrink:0;margin-top:.125rem}
 .right-card strong{display:block;font-size:.875rem;font-weight:700;color:var(--t1);margin-bottom:.2rem}
 .right-card span{font-size:.8125rem;color:var(--t2);line-height:1.55}
 
-/* contact cta — styl jak .cta-box z index */
+/* CONTACT CTA */
 .contact-cta{position:relative;overflow:hidden;background:var(--s1);border:1px solid var(--bs);border-radius:var(--r);box-shadow:var(--sh2);padding:1.5rem 1.75rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-top:1rem}
 .contact-cta::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--brand),var(--cyan),transparent)}
 .contact-cta p{font-size:.9375rem;color:var(--t2);margin:0;line-height:1.65}
-.contact-cta strong{color:var(--t1)}
 .btn-p{display:inline-flex;align-items:center;gap:.375rem;font-size:.875rem;font-weight:700;color:#fff;background:var(--brand);padding:.5625rem 1.25rem;border-radius:.75rem;text-decoration:none;box-shadow:var(--sh2);transition:all .2s;white-space:nowrap}
 .btn-p:hover{background:var(--brand2);transform:translateY(-1px);opacity:1;text-decoration:none}
 
-/* section dividers */
-.sdiv{height:1px;background:var(--bs);margin:2rem 0 0}
-
-/* ── FOOTER (identyczny z index.html) ── */
+/* FOOTER */
 footer{border-top:1px solid var(--bs);padding:2.25rem 1.75rem;position:relative;z-index:1}
 .foot-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
 .foot-logo{font-size:.9375rem;font-weight:700;color:var(--t2)}
@@ -123,10 +135,13 @@ footer{border-top:1px solid var(--bs);padding:2.25rem 1.75rem;position:relative;
 .foot-links a:hover{color:var(--t1)}
 .foot-copy{font-size:.8125rem;color:var(--t3)}
 
-@media(max-width:640px){
-  .page{padding:5rem 1rem 4rem}
-  .rights-grid,.provider-grid{grid-template-columns:1fr}
+@media(max-width:600px){
+  .page{padding:5.5rem 1rem 4rem}
+  .provider-grid,.rights-grid{grid-template-columns:1fr}
   .contact-cta{flex-direction:column;align-items:flex-start}
+  .nav-inner{padding:0 1rem}
+  .foot-inner{flex-direction:column;gap:.75rem}
+  .foot-links{gap:1rem}
 }
 </style>
 </head>
@@ -135,14 +150,14 @@ footer{border-top:1px solid var(--bs);padding:2.25rem 1.75rem;position:relative;
 
 <nav>
   <div class="nav-inner">
-    <a class="nav-logo" href="/">
-      <svg viewBox="0 0 300 42" height="26" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;display:block">
+    <a class="nav-logo" href="/" aria-label="OfertaStudio.pl – strona główna">
+      <svg viewBox="0 0 300 42" height="24" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;display:block">
         <text y="34" font-family="Inter,sans-serif" font-weight="800" font-size="36" fill="#0f2d6e" letter-spacing="-1">Oferta<tspan fill="#2563eb">Studio</tspan><tspan font-weight="300" font-size="26" fill="#94a3b8" dy="1">.pl</tspan></text>
       </svg>
     </a>
     <div class="nav-right">
-      <button class="toggle-btn" id="themeToggle" aria-label="Zmień motyw">☀</button>
-      <a href="/" class="btn-nav">← Strona główna</a>
+      <button class="toggle-btn" id="themeToggle" aria-label="Włącz tryb ciemny" aria-pressed="false">☀</button>
+      <a href="/" class="nav-back">← Strona główna</a>
     </div>
   </div>
 </nav>
@@ -153,11 +168,11 @@ footer{border-top:1px solid var(--bs);padding:2.25rem 1.75rem;position:relative;
     <div class="eyebrow">Dokument prawny</div>
     <h1>Polityka prywatności</h1>
     <div class="doc-meta">
-      <span>Maj 2026</span>
-      <span>·</span>
-      <span>RODO / GDPR</span>
-      <span>·</span>
-      <span>OfertaStudio.pl</span>
+      <span class="doc-meta-item">Maj 2026</span>
+      <span class="doc-meta-sep">·</span>
+      <span class="doc-meta-item">RODO / GDPR</span>
+      <span class="doc-meta-sep">·</span>
+      <span class="doc-meta-item">OfertaStudio.pl</span>
     </div>
   </div>
 
@@ -179,7 +194,7 @@ footer{border-top:1px solid var(--bs);padding:2.25rem 1.75rem;position:relative;
     <li>Imię i nazwisko</li>
     <li>Adres e-mail</li>
     <li>Treść wiadomości (opis produktu, link do oferty)</li>
-    <li>Opcjonalnie: nazwa platformy sprzedaży i zakres zlecenia</li>
+    <li>Opcjonalnie: nazwa platformy sprzedaży, zakres zlecenia, liczba produktów</li>
   </ul>
   <p>Nie zbieramy automatycznie żadnych danych technicznych (cookies, adresy IP) poza standardowymi logami serwera Netlify.</p>
 
@@ -257,7 +272,7 @@ footer{border-top:1px solid var(--bs);padding:2.25rem 1.75rem;position:relative;
   <div class="foot-inner">
     <div class="foot-logo">OfertaStudio.pl © 2026</div>
     <div class="foot-links">
-      <a href="/realizacje.html">Realizacje przed/po</a>
+      <a href="/realizacje.html">Realizacje</a>
       <a href="/#cennik">Pakiety</a>
       <a href="/#kontakt">Kontakt</a>
     </div>
@@ -268,12 +283,19 @@ footer{border-top:1px solid var(--bs);padding:2.25rem 1.75rem;position:relative;
 <script>
 const root=document.documentElement,tb=document.getElementById('themeToggle');
 const saved=localStorage.getItem('os-theme');
-if(saved){root.setAttribute('data-theme',saved);tb.textContent=saved==='dark'?'☾':'☀'}
+if(saved){
+  root.setAttribute('data-theme',saved);
+  tb.textContent=saved==='dark'?'☾':'☀';
+  tb.setAttribute('aria-pressed',saved==='dark'?'true':'false');
+  tb.setAttribute('aria-label',saved==='dark'?'Włącz tryb jasny':'Włącz tryb ciemny');
+}
 tb.addEventListener('click',()=>{
   const dark=root.getAttribute('data-theme')==='dark';
   const next=dark?'light':'dark';
   root.setAttribute('data-theme',next);
   tb.textContent=dark?'☀':'☾';
+  tb.setAttribute('aria-pressed',dark?'false':'true');
+  tb.setAttribute('aria-label',dark?'Włącz tryb ciemny':'Włącz tryb jasny');
   localStorage.setItem('os-theme',next);
 });
 </script>
