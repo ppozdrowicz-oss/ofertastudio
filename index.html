@@ -185,7 +185,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;border-bottom:1px solid var(
 .s-head.c .s-sub{margin:0 auto}
 
 /* ── SERVICES ── */
-.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
 .svc-card{padding:2.25rem}
 .svc-icon-wrap{width:3rem;height:3rem;border-radius:.875rem;background:var(--brand-bg);border:1px solid rgba(37,99,235,.2);display:grid;place-items:center;font-size:1.375rem;margin-bottom:1.375rem}
 .svc-h{font-size:1.1875rem;font-weight:800;letter-spacing:-.015em;margin-bottom:.5rem;color:var(--t1)}
@@ -265,7 +265,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;border-bottom:1px solid var(
 .price-card.ft .price-btn-wa{box-shadow:0 2px 12px rgba(0,0,0,.2)}
 
 /* ── AUDIT / CHECKLIST ── */
-.audit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.audit-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
 .audit-card{padding:1.625rem 1.5rem}
 .audit-card h3{font-size:1rem;font-weight:700;color:var(--t1);margin-bottom:.5rem}
 .audit-card p{font-size:.875rem;color:var(--t2);line-height:1.7}
@@ -627,37 +627,42 @@ select.cinput{cursor:pointer}
 <!-- ── HERO ── -->
 <div class="hero">
   <div>
-    <div class="hero-kicker"><span class="sdot"></span>Optymalizacja ofert Allegro i OLX</div>
+    <div class="hero-kicker"><span class="sdot"></span>Dla sprzedawców Allegro, OLX i Amazon</div>
 
     <!-- PROBLEM -->
-    <h1 class="hero-h1">Twoja oferta jest niewidoczna.<br><span style="color:var(--brand)">Zmieniamy to.</span></h1>
+    <h1 class="hero-h1">Kupujący widzi Twoją ofertę.<br><span style="color:var(--brand)">Ale nie klika?</span></h1>
 
     <!-- EFEKT -->
-    <p class="hero-sub">Słabe zdjęcie główne, tytuł bez fraz kluczowych, galeria bez zadania sprzedażowego — kupujący klika konkurencję. Zamieniamy to w gotowe materiały: packshoty, tytuły SEO, opisy i infografiki pod Allegro, OLX i Amazon.</p>
+    <p class="hero-sub">Zdjęcie bez charakteru, tytuł który nic nie mówi, opis który nie odpowiada na żadne pytanie — klient klika dalej. Robimy z tego kompletną, gotową ofertę: profesjonalne packshoty, tytuł który znajdzie algorytm i opis który zamknie sprzedaż.</p>
 
     <!-- DOWÓD — problem→efekt inline -->
     <div class="hero-proof">
       <div class="proof-item">
-        <span class="proof-before">1 zdjęcie z telefonu</span>
+        <span class="proof-before">jedno zdjęcie z telefonu</span>
         <span class="proof-arrow">→</span>
-        <span class="proof-after">10 ujęć gotowych do wgrania</span>
+        <span class="proof-after">galeria, która sprzedaje za Ciebie</span>
       </div>
       <div class="proof-item">
-        <span class="proof-before">tytuł bez fraz</span>
+        <span class="proof-before">tytuł, który nikt nie wyszukuje</span>
         <span class="proof-arrow">→</span>
-        <span class="proof-after">tytuł SEO pod wyszukiwarkę Allegro</span>
+        <span class="proof-after">tytuł, który Allegro pokazuje jako pierwsze</span>
       </div>
       <div class="proof-item">
-        <span class="proof-before">galeria bez logiki</span>
+        <span class="proof-before">galeria, na której nic nie widać</span>
         <span class="proof-arrow">→</span>
-        <span class="proof-after">każde zdjęcie z zadaniem sprzedażowym</span>
+        <span class="proof-after">każde zdjęcie odpowiada na inne pytanie klienta</span>
+      </div>
+      <div class="proof-item">
+        <span class="proof-before">opis, który klient pomija</span>
+        <span class="proof-arrow">→</span>
+        <span class="proof-after">opis, który rozbija obawy i domyka zakup</span>
       </div>
     </div>
 
     <!-- CTA — wyraźna hierarchia: primary > secondary > ghost -->
     <div class="hero-ctas">
       <a href="#kontakt" class="btn-hero-primary">
-        Wyślij link do oferty — darmowa analiza
+        Wyślij link — sprawdzimy co blokuje sprzedaż
         <span class="btn-badge">bezpłatnie</span>
       </a>
       <div class="hero-ctas-row">
@@ -675,25 +680,26 @@ select.cinput{cursor:pointer}
       <span>Bez wysyłki produktu</span>
       <span>Allegro · OLX · Amazon</span>
       <span>Produkty techniczne</span>
+      <span>Copywriting Allegro</span>
     </div>
   </div>
 
   <div class="metrics">
     <div class="glass mc">
-      <div class="mc-lbl">Specjalizacja</div>
-      <div class="mc-sub">Allegro, OLX, Amazon i sklepy internetowe. Znamy wymagania każdej platformy z praktyki.</div>
+      <div class="mc-lbl">Znamy te platformy od środka</div>
+      <div class="mc-sub">Allegro, OLX, Amazon, sklepy internetowe. Nie zgadujemy wymagań — pracujemy na nich na co dzień.</div>
     </div>
     <div class="glass mc">
-      <div class="mc-lbl">Kontrola jakości</div>
-      <div class="mc-sub">Ręczna weryfikacja każdego zdjęcia, opisu, tytułu SEO i czytelności miniatury przed oddaniem.</div>
+      <div class="mc-lbl">Każdy plik sprawdzamy ręcznie</div>
+      <div class="mc-sub">Zanim oddamy materiały, przeglądamy je tak jak robi to kupujący — na liście wyników, na telefonie, w powiększeniu.</div>
     </div>
     <div class="glass mc">
-      <div class="mc-lbl">Model pracy</div>
-      <div class="mc-sub">Technologia przyspiesza produkcję, człowiek odpowiada za selekcję i finalny efekt sprzedażowy.</div>
+      <div class="mc-lbl">Narzędzia + doświadczenie</div>
+      <div class="mc-sub">Technologia skraca czas, ale to człowiek decyduje co działa. Każdy element oceniamy pod jednym kątem: czy to skłoni do kliknięcia?</div>
     </div>
     <div class="glass mc">
-      <div class="mc-lbl">Bez wysyłki produktu</div>
-      <div class="mc-sub">W większości przypadków wystarczy jedno zdjęcie lub link do oferty. Resztę ogarniamy.</div>
+      <div class="mc-lbl">Bez wysyłania czegokolwiek</div>
+      <div class="mc-sub">Wystarczy link albo jedno zdjęcie. Efekt wygląda jak profesjonalna sesja — bez logistyki.</div>
     </div>
   </div>
 </div>
@@ -701,10 +707,10 @@ select.cinput{cursor:pointer}
 <!-- ── BAND ── -->
 <div class="band">
   <div class="band-inner">
-    <div class="band-item"><div class="band-l">48h realizacja</div><div class="band-s">Standardowy czas od przesłania materiałów do gotowych plików.</div></div>
-    <div class="band-item"><div class="band-l">6 kategorii produktowych</div><div class="band-s">Kosmetyki, narzędzia, spawalnictwo, BHP, dom i ogród, elektronarzędzia — i więcej.</div></div>
-    <div class="band-item"><div class="band-l">2560×2560 px</div><div class="band-s">Pliki gotowe pod wymagania Allegro, OLX, Amazon i sklepów internetowych.</div></div>
-    <div class="band-item"><div class="band-l">Bez deklaracji bez pokrycia</div><div class="band-s">Pracujemy na realnych zdjęciach. Portfolio przed/po dostępne do wglądu.</div></div>
+    <div class="band-item"><div class="band-l">Gotowe w 48h</div><div class="band-s">Od przesłania zdjęcia do plików gotowych do wgrania. Bez tygodni czekania.</div></div>
+    <div class="band-item"><div class="band-l">6 kategorii w portfolio</div><div class="band-s">Narzędzia, elektronarzędzia, BHP, spawalnictwo, ogród, kosmetyki — każda rządzi się innymi zasadami. Wiemy jakimi.</div></div>
+    <div class="band-item"><div class="band-l">Format 2560×2560 px</div><div class="band-s">Pliki gotowe pod wymagania Allegro, OLX, Amazon i sklepów internetowych.</div></div>
+    <div class="band-item"><div class="band-l">Portfolio przed/po — do wglądu</div><div class="band-s">Nie pokazujemy renderów ani stocków. Każda realizacja zaczęła się od prawdziwego, słabego zdjęcia — tak jak Twoje.</div></div>
   </div>
 </div>
 
@@ -714,9 +720,9 @@ select.cinput{cursor:pointer}
 <div class="section" id="mini-audyt-top" style="padding-top:2.5rem;padding-bottom:2.5rem">
   <div class="cta-box" style="padding:2.75rem 1.5rem">
     <div class="eyebrow" style="justify-content:center">Mini audyt</div>
-    <h2>Darmowy mini audyt 1 oferty Allegro/OLX</h2>
-    <p>Wyślij link do jednej oferty. Otrzymasz 3 konkretne rekomendacje: zdjęcie główne, tytuł SEO oraz układ opisu lub galerii. Bez zobowiązań, w ciągu 24h.</p>
-    <a href="#kontakt" class="btn-p">Wyślij ofertę do audytu →</a>
+    <h2>Zanim cokolwiek zamówisz — sprawdź co blokuje Twoją sprzedaż</h2>
+    <p>Wyślij link do jednej oferty. W ciągu 24h dostaniesz konkretną listę: co odpycha kupującego w miniaturze, co szwankuje w tytule i gdzie opis traci sprzedaż. Zero ogólników, zero zobowiązań.</p>
+    <a href="#kontakt" class="btn-p">Wyślij link do bezpłatnej analizy →</a>
   </div>
 </div>
 
@@ -726,8 +732,8 @@ select.cinput{cursor:pointer}
 <div class="section portfolio-section" id="realizacje-preview">
   <div class="s-head">
     <div class="eyebrow">Portfolio</div>
-    <h2 class="s-title">Realizacje przed i po</h2>
-    <p class="s-sub">Każdy case zaczyna się od jednego słabego zdjęcia lub linku do oferty. Pokazujemy dokładnie co zmieniliśmy i dlaczego to ma znaczenie dla sprzedaży.</p>
+    <h2 class="s-title">Tak wyglądają oferty po naszej pracy</h2>
+    <p class="s-sub">Każda realizacja zaczynała się tak samo — jedno słabe zdjęcie albo oferta, na którą nikt nie klikał. Poniżej zobaczysz co zmieniliśmy i dlaczego klient podejmuje inną decyzję.</p>
   </div>
 
   <!-- FEATURED: Metabo #001 -->
@@ -758,7 +764,7 @@ select.cinput{cursor:pointer}
     <div class="pf-featured-meta">
       <div class="pf-featured-eyebrow">Case #001 · Elektronarzędzia</div>
       <h3 class="pf-featured-h">Metabo PowerMaxx BS 12 BL — pełna optymalizacja galerii</h3>
-      <p class="pf-featured-p">Z jednego zdjęcia zestawu stworzyliśmy 10 ujęć odpowiadających na każde pytanie kupującego: komplet z walizką, czysty packshot, silnik Brushless, MetaBOX, lifestyle w warsztacie i infografika po polsku.</p>
+      <p class="pf-featured-p">Klient przysłał jedno zdjęcie zestawu. Kupujący widział produkt, ale nie rozumiał za co płaci. Stworzyliśmy 10 ujęć, które odpowiadają na każde pytanie przed zakupem — bez konieczności czytania opisu.</p>
       <div class="pf-featured-tags">
         <span class="pf-tag-chip">✓ Zdjęcie główne</span>
         <span class="pf-tag-chip">✓ Detale techniczne</span>
@@ -874,8 +880,8 @@ select.cinput{cursor:pointer}
   <div class="pf-cta-strip">
     <div class="pf-cta-strip-text">
       <div class="pf-cta-strip-label">Następny krok</div>
-      <div class="pf-cta-strip-h">Twój produkt może wyglądać tak samo</div>
-      <div class="pf-cta-strip-sub">Wyślij link do oferty — dostaniesz bezpłatną analizę w 24h.</div>
+      <div class="pf-cta-strip-h">Twój produkt też może tak wyglądać</div>
+      <div class="pf-cta-strip-sub">Wyślij link — powiemy co warto zmienić. Bezpłatnie, bez zobowiązań, w 24h.</div>
     </div>
     <div class="pf-cta-strip-btns">
       <a href="https://wa.me/48791162938?text=Cześć,%20chcę%20wysłać%20ofertę%20do%20analizy." class="btn-hero-wa">
@@ -893,14 +899,14 @@ select.cinput{cursor:pointer}
 <div class="section" id="uslugi">
   <div class="s-head">
     <div class="eyebrow">Usługi</div>
-    <h2 class="s-title">Co poprawiamy w ofercie</h2>
-    <p class="s-sub">To nie jest tylko produkcja grafik. Łączymy zdjęcia, miniatury, SEO i opis tak, żeby oferta była czytelna, profesjonalna i gotowa do publikacji na marketplace.</p>
+    <h2 class="s-title">Trzy rzeczy, przez które tracisz klientów każdego dnia</h2>
+    <p class="s-sub">Złe zdjęcie — klient nie klika. Zły tytuł — Allegro nie pokazuje oferty. Zły opis — klient klika, ale nie kupuje. Możemy poprawić każdy z tych elementów osobno albo wszystkie razem.</p>
   </div>
   <div class="svc-grid">
     <div class="card svc-card">
       <div class="svc-icon-wrap">🖼️</div>
-      <div class="svc-h">Zdjęcia i galeria pod marketplace</div>
-      <p class="svc-desc">Przygotowujemy zdjęcie główne, detale i warianty galerii zgodnie z wymaganiami platformy i specyfiką produktu. Każde ujęcie ma konkretny cel sprzedażowy.</p>
+      <div class="svc-h">Zdjęcia, które zatrzymują klienta na liście</div>
+      <p class="svc-desc">70% kupujących decyduje o kliknięciu na podstawie miniatury. Przygotowujemy zdjęcie główne i galerię tak, żeby każde ujęcie odpowiadało na inne pytanie kupującego — bez konieczności czytania opisu.</p>
       <ul class="feat-list">
         <li>Zdjęcie główne pod Allegro, OLX i Amazon</li>
         <li>Detale produktu, opakowanie i zastosowanie</li>
@@ -910,15 +916,28 @@ select.cinput{cursor:pointer}
       </ul>
     </div>
     <div class="card svc-card">
-      <div class="svc-icon-wrap">✍️</div>
-      <div class="svc-h">Tytuł SEO i opis sprzedażowy</div>
-      <p class="svc-desc">Budujemy tytuł, bullety i układ opisu pod wyszukiwalność i szybkie zrozumienie produktu. Spójność zdjęć z treścią to klucz do wyższej konwersji.</p>
+      <div class="svc-icon-wrap">🔍</div>
+      <div class="svc-h">Tytuł i opis, które Allegro pokazuje i klient kupuje</div>
+      <p class="svc-desc">Tytuł decyduje czy Allegro w ogóle wyświetli Twoją ofertę. Opis decyduje czy klient zostanie czy wyjdzie. Budujemy je razem — spójnie z galerią, pod algorytm i pod człowieka jednocześnie.</p>
       <ul class="feat-list">
         <li>Tytuł SEO pod Allegro, OLX, Amazon i sklep</li>
         <li>5 bulletów sprzedażowych z korzyściami</li>
         <li>Opis produktu z jasnym układem informacji</li>
-        <li>Analiza konkurencji w pakiecie Premium</li>
+        <li>Analiza konkurencji w pakiecie Studio</li>
         <li>Spójność zdjęcia, treści i miniatury</li>
+      </ul>
+    </div>
+    <div class="card svc-card">
+      <div class="svc-icon-wrap">✍️</div>
+      <div class="svc-h">Gotowy opis do wklejenia w Allegro</div>
+      <p class="svc-desc">Kompletny opis w strukturze 8 bloków — od pierwszego zdania, które zatrzymuje klienta, przez tabelę parametrów, po FAQ, które rozbija obawy zanim klient zdąży je zadać. Otwierasz, kopiujesz, wklejasz.</p>
+      <ul class="feat-list">
+        <li>Pierwsze zdanie z frazą, której szukają Twoi klienci</li>
+        <li>Korzyści zamiast suchych cech — klient rozumie za co płaci</li>
+        <li>Tabela parametrów gotowa do wklejenia</li>
+        <li>FAQ, który odpowiada na obawy zanim klient zrezygnuje</li>
+        <li>Checklist przed publikacją — żebyś nie pominął niczego</li>
+        <li>Zgodny z zasadami Allegro — bez ryzyka odrzucenia oferty</li>
       </ul>
     </div>
   </div>
@@ -930,20 +949,20 @@ select.cinput{cursor:pointer}
 <div class="section" id="specjalizacje">
   <div class="s-head">
     <div class="eyebrow">Specjalizacja</div>
-    <h2 class="s-title">Znamy produkty techniczne od środka</h2>
-    <p class="s-sub">Klient produktu technicznego kupuje parametry, nie estetykę. Jeśli zakres Nm, norma EN czy kompatybilność złącza nie są widoczne na zdjęciach — klient albo nie kupuje, albo zwraca.</p>
+    <h2 class="s-title">Twój klient szuka odpowiedzi, nie ładnych zdjęć</h2>
+    <p class="s-sub">Kupujący narzędzie chce wiedzieć jaki moment, kupujący rękawice BHP — jaką normę, kupujący drut spawalniczy — czy pasuje do jego spawarki. Robimy oferty, które odpowiadają na te pytania zanim klient zdąży je zadać.</p>
   </div>
   <div class="ind-grid">
-    <div class="card ind-card"><div class="ind-top"><div class="ind-icon-wrap">🔧</div><div class="ind-h">Narzędzia ręczne</div></div><p class="ind-p">Parametry robocze, uchwyt, zastosowanie i zakres momentu widoczny na zdjęciu.</p></div>
-    <div class="card ind-card"><div class="ind-top"><div class="ind-icon-wrap">⚙️</div><div class="ind-h">Spawalnictwo</div></div><p class="ind-p">Osprzęt, kompatybilność spawarek, specyfikacja drutu i infografiki "Wyprodukowano w Polsce".</p></div>
-    <div class="card ind-card"><div class="ind-top"><div class="ind-icon-wrap">🦺</div><div class="ind-h">BHP</div></div><p class="ind-p">Normy EN, certyfikaty CE, klasy ochrony i cechy bezpieczeństwa widoczne bez szukania w opisie.</p></div>
-    <div class="card ind-card"><div class="ind-top"><div class="ind-icon-wrap">🔩</div><div class="ind-h">Części i akcesoria</div></div><p class="ind-p">Dopasowanie, wymiary, zawartość zestawu i kompatybilność — odpowiedzi na pytania przed zakupem.</p></div>
-    <div class="card ind-card"><div class="ind-top"><div class="ind-icon-wrap">🔌</div><div class="ind-h">Elektronarzędzia</div></div><p class="ind-p">Wersje napięciowe, silnik Brushless, akumulatory, walizka i elementy zestawu w jednym spojrzeniu.</p></div>
-    <div class="card ind-card"><div class="ind-top"><div class="ind-icon-wrap">🏠</div><div class="ind-h">Dom i ogród</div></div><p class="ind-p">Funkcja, ergonomia, kompatybilność złącz i lifestyle w kontekście użycia — pistolet Gardena to dobry przykład.</p></div>
-    <div class="card ind-card"><div class="ind-top"><div class="ind-icon-wrap">🚗</div><div class="ind-h">Motoryzacja</div></div><p class="ind-p">Kompatybilność części, parametry techniczne i dopasowanie do modelu — bez pytań przed zakupem.</p></div>
-    <div class="card ind-card"><div class="ind-top"><div class="ind-icon-wrap">🏭</div><div class="ind-h">Produkty przemysłowe</div></div><p class="ind-p">Konstrukcja, skala i przeznaczenie — zrozumiałe dla kupującego B2B bez czytania dokumentacji.</p></div>
-    <div class="card ind-card"><div class="ind-top"><div class="ind-icon-wrap">🔬</div><div class="ind-h">Warsztat i garaż</div></div><p class="ind-p">Kontekst użycia, czytelna galeria i prezentacja zestawu w środowisku pracy.</p></div>
-    <div class="card ind-card"><div class="ind-top"><div class="ind-icon-wrap">💄</div><div class="ind-h">Kosmetyki i lifestyle</div></div><p class="ind-p">Spójna prezentacja, warianty, certyfikaty (Vegan, SPF, Coral Safe) i emocja w ujęciu lifestyle.</p></div>
+    <div class="card ind-card"><div class="ind-top"><div class="ind-icon-wrap">🔧</div><div class="ind-h">Narzędzia ręczne</div></div><p class="ind-p">Kupujący widzi zakres momentu i rozmiar gniazda — bez otwierania specyfikacji.</p></div>
+    <div class="card ind-card"><div class="ind-top"><div class="ind-icon-wrap">⚙️</div><div class="ind-h">Spawalnictwo</div></div><p class="ind-p">Kompatybilność spawarki, średnica drutu, polskie pochodzenie jako argument — widoczne od razu.</p></div>
+    <div class="card ind-card"><div class="ind-top"><div class="ind-icon-wrap">🦺</div><div class="ind-h">BHP</div></div><p class="ind-p">Norma EN i klasa ochrony na zdjęciu — kupujący B2B nie musi szukać w dokumentacji.</p></div>
+    <div class="card ind-card"><div class="ind-top"><div class="ind-icon-wrap">🔩</div><div class="ind-h">Części i akcesoria</div></div><p class="ind-p">Czy pasuje? Co w zestawie? Jakie wymiary? Odpowiadamy zdjęciem, nie opisem.</p></div>
+    <div class="card ind-card"><div class="ind-top"><div class="ind-icon-wrap">🔌</div><div class="ind-h">Elektronarzędzia</div></div><p class="ind-p">Klient widzi co dostaje w zestawie i dlaczego ta wiertarka jest warta swojej ceny.</p></div>
+    <div class="card ind-card"><div class="ind-top"><div class="ind-icon-wrap">🏠</div><div class="ind-h">Dom i ogród</div></div><p class="ind-p">Pasuje do mojego węża? Jak leży w dłoni? Jaki strumień? Każde zdjęcie w galerii odpowiada na inne pytanie.</p></div>
+    <div class="card ind-card"><div class="ind-top"><div class="ind-icon-wrap">🚗</div><div class="ind-h">Motoryzacja</div></div><p class="ind-p">Model, rocznik, numer OEM — widoczne na zdjęciu. Zero pytań "czy pasuje do mojego auta?".</p></div>
+    <div class="card ind-card"><div class="ind-top"><div class="ind-icon-wrap">🏭</div><div class="ind-h">Produkty przemysłowe</div></div><p class="ind-p">Kupujący B2B ocenia produkt w kilkanaście sekund. Galeria musi mówić wszystko bez słów.</p></div>
+    <div class="card ind-card"><div class="ind-top"><div class="ind-icon-wrap">🔬</div><div class="ind-h">Warsztat i garaż</div></div><p class="ind-p">Jak to wygląda na warsztacie? Co w zestawie? Zdjęcia, które sprzedają bez opisu.</p></div>
+    <div class="card ind-card"><div class="ind-top"><div class="ind-icon-wrap">💄</div><div class="ind-h">Kosmetyki i lifestyle</div></div><p class="ind-p">Vegan, SPF, Coral Safe — certyfikaty na etykiecie, emocja w lifestyle. Klient czuje produkt.</p></div>
   </div>
 </div>
 
@@ -953,14 +972,14 @@ select.cinput{cursor:pointer}
 <div class="section" id="proces">
   <div class="s-head">
     <div class="eyebrow">Proces</div>
-    <h2 class="s-title">Jak wygląda współpraca</h2>
-    <p class="s-sub">Cztery kroki od linku do gotowych materiałów. Bez wielotygodniowych konsultacji i bez zgadywania co jeszcze poprawić.</p>
+    <h2 class="s-title">Od linku do gotowej oferty — cztery kroki</h2>
+    <p class="s-sub">Bez tygodni mailowania w tę i z powrotem, bez zgadywania co jest nie tak. Wysyłasz link, my robimy resztę.</p>
   </div>
   <div class="proc-grid">
-    <div class="card proc-card"><div class="proc-step">KROK 01</div><div class="proc-title">Wysyłasz link lub zdjęcia produktu</div><p class="proc-text">Wystarczy link do oferty na Allegro, OLX, Amazon lub sklepie internetowym. Możesz też przesłać zdjęcie bezpośrednio przez formularz lub WhatsApp.</p></div>
-    <div class="card proc-card"><div class="proc-step">KROK 02</div><div class="proc-title">Analizujemy ofertę, konkurencję i miniaturę</div><p class="proc-text">Sprawdzamy, co osłabia widoczność i klikalność na liście wyników. Patrzymy na tytuł, miniaturę, galerię i opis — tak jak robi to kupujący.</p></div>
-    <div class="card proc-card"><div class="proc-step">KROK 03</div><div class="proc-title">Przygotowujemy zdjęcia, opis, tytuł lub infografiki</div><p class="proc-text">Zakres dopasowujemy do wybranego pakietu i realnego potencjału oferty. Każde ujęcie ma konkretne zadanie sprzedażowe.</p></div>
-    <div class="card proc-card"><div class="proc-step">KROK 04</div><div class="proc-title">Otrzymujesz materiały gotowe do publikacji</div><p class="proc-text">Gotowe pliki w wymaganych formatach. Wgrywasz bez dodatkowej obróbki. W pakiecie Standard i Premium — rundy poprawek w cenie.</p></div>
+    <div class="card proc-card"><div class="proc-step">KROK 01</div><div class="proc-title">Wysyłasz link — my zaczynamy</div><p class="proc-text">Link do oferty na Allegro, OLX, Amazon albo jedno zdjęcie produktu. Przez formularz albo WhatsApp — jak Ci wygodniej. Reszta jest po naszej stronie.</p></div>
+    <div class="card proc-card"><div class="proc-step">KROK 02</div><div class="proc-title">Patrzymy na ofertę oczami kupującego</div><p class="proc-text">Sprawdzamy miniaturę na liście wyników, tytuł pod wyszukiwarkę Allegro i galerię na ekranie telefonu — dokładnie tak jak robi to Twój klient przed zakupem.</p></div>
+    <div class="card proc-card"><div class="proc-step">KROK 03</div><div class="proc-title">Robimy materiały z konkretnym zadaniem</div><p class="proc-text">Każde zdjęcie, każde zdanie opisu, każdy tytuł — wszystko pod jeden cel: żeby klient kliknął, zrozumiał produkt i kupił.</p></div>
+    <div class="card proc-card"><div class="proc-step">KROK 04</div><div class="proc-title">Otwierasz pliki i wgrywasz — bez edytowania</div><p class="proc-text">Gotowe formaty pod Allegro, OLX i Amazon. Jeśli coś nie gra — poprawki w cenie pakietu. Nie zostawiamy Cię z plikiem, który nie działa.</p></div>
   </div>
 </div>
 
@@ -970,22 +989,22 @@ select.cinput{cursor:pointer}
 <div class="section" id="cennik">
   <div class="s-head c">
     <div class="eyebrow">Pakiety</div>
-    <h2 class="s-title">Wybierz zakres pod realny problem oferty.</h2>
-    <p class="s-sub">Możemy poprawić pojedynczą ofertę albo przygotować pełny zestaw materiałów dla serii produktów.</p>
+    <h2 class="s-title">Zacznij od bezpłatnej analizy albo zamów od razu.</h2>
+    <p class="s-sub">Nie wiesz jeszcze co jest nie tak z ofertą? Zacznij od Start. Wiesz co poprawić i chcesz to zlecić? Wybierz pakiet i napisz.</p>
   </div>
   <div class="price-grid">
 
     <!-- START -->
     <div class="card price-card">
       <div class="price-name">Start</div>
-      <div class="price-h">Mini audyt oferty</div>
+      <div class="price-h">Sprawdź, co blokuje Twoją sprzedaż</div>
       <div class="price-val-free">0 zł</div>
       <div class="price-from">dla pierwszej analizy</div>
       <div class="price-divider"></div>
-      <p class="price-desc">Szybka diagnoza, co najbardziej blokuje kliknięcia lub zaufanie.</p>
+      <p class="price-desc">Wysyłasz link, dostajesz konkretną listę problemów. Bez opłat, bez zobowiązań.</p>
       <ul class="price-list">
-        <li>ocena miniatury</li>
-        <li>ocena tytułu</li>
+        <li>ocena miniatury i tytułu</li>
+        <li>ocena struktury opisu</li>
         <li>krótka lista poprawek</li>
         <li>rekomendacja kolejnego kroku</li>
       </ul>
@@ -999,16 +1018,17 @@ select.cinput{cursor:pointer}
     <div class="card price-card ft">
       <div class="price-rec">✦ Najczęściej wybierane</div>
       <div class="price-name">Oferta Pro</div>
-      <div class="price-h">Zdjęcie + opis + SEO</div>
+      <div class="price-h">Gotowa oferta — do wgrania od razu</div>
       <div class="price-val">od 149 zł</div>
       <div class="price-from">za jedną ofertę</div>
       <div class="price-divider"></div>
-      <p class="price-desc">Komplet najważniejszych elementów pod marketplace.</p>
+      <p class="price-desc">Jedno zlecenie, jedna dostawa — zdjęcie, tytuł i opis gotowe do wgrania w Allegro.</p>
       <ul class="price-list">
         <li>zdjęcie główne</li>
-        <li>tytuł SEO</li>
-        <li>opis sprzedażowy</li>
-        <li>układ bullet points</li>
+        <li>tytuł SEO pod Allegro</li>
+        <li>opis sprzedażowy (struktura 8 bloków)</li>
+        <li>5 bullet points z korzyściami</li>
+        <li>FAQ — 4 pytania i odpowiedzi</li>
         <li>rekomendacje galerii</li>
       </ul>
       <div class="price-btns">
@@ -1020,16 +1040,18 @@ select.cinput{cursor:pointer}
     <!-- STUDIO -->
     <div class="card price-card">
       <div class="price-name">Studio</div>
-      <div class="price-h">Pełna galeria produktu</div>
+      <div class="price-h">Spójny system dla wielu produktów</div>
       <div class="price-val-custom">indywidualnie</div>
       <div class="price-from">dla serii produktów</div>
       <div class="price-divider"></div>
-      <p class="price-desc">Dla sprzedawców, którzy chcą spójnego systemu ofert.</p>
+      <p class="price-desc">Kilka albo kilkanaście produktów? Budujemy system raz — i powielasz go bez zaczynania od zera.</p>
       <ul class="price-list">
-        <li>hero packshot</li>
-        <li>detale i zastosowanie</li>
-        <li>infografiki produktowe</li>
-        <li>szablon opisu</li>
+        <li>hero packshot + pełna galeria</li>
+        <li>detale, zastosowanie, infografiki</li>
+        <li>pełny copywriting Allegro (8 bloków) dla każdego produktu</li>
+        <li>analiza konkurencji i frazy long-tail</li>
+        <li>szablon opisu do powielania w serii</li>
+        <li>checklist przed publikacją każdej oferty</li>
         <li>QA serii ofert</li>
       </ul>
       <div class="price-btns">
@@ -1047,21 +1069,25 @@ select.cinput{cursor:pointer}
 <div class="section" id="audit-checklist">
   <div class="s-head c">
     <div class="eyebrow">Metodologia</div>
-    <h2 class="s-title">Co analizujemy w każdej ofercie</h2>
-    <p class="s-sub">Za każdą usługą stoi metoda. Nie pracujemy intuicyjnie — sprawdzamy te same punkty przy każdym produkcie.</p>
+    <h2 class="s-title">Jak oceniamy ofertę zanim zaczniemy pracę</h2>
+    <p class="s-sub">Każda zlecona oferta przechodzi przez ten sam zestaw pytań. Nie gubimy nic ważnego — i zawsze wiemy od czego zacząć.</p>
   </div>
   <div class="audit-grid">
     <div class="card audit-card">
-      <h3>🖼️ Miniatura i zdjęcie główne</h3>
-      <p>Czy produkt wyróżnia się na liście wyników? Czy miniatura jest czytelna w rozmiarze 200×200 px? Czy tło i kontur spełniają wymagania platformy?</p>
+      <h3>🖼️ Miniatura — czy masz szansę na kliknięcie?</h3>
+      <p>Patrzymy na miniaturę tak jak klient: na liście wyników, na telefonie, w rozmiarze kafelka. Jeśli produkt się nie wyróżnia — nie będzie kliknięcia, nieważne jak dobry jest opis.</p>
     </div>
     <div class="card audit-card">
-      <h3>🔍 Tytuł SEO i czytelność opisu</h3>
-      <p>Czy tytuł zawiera frazy, których używają kupujący? Czy opis odpowiada na pytania przed zakupem? Czy bullety są konkretne i skanowalne?</p>
+      <h3>🔍 Tytuł — czy Allegro w ogóle Cię pokazuje?</h3>
+      <p>Sprawdzamy czy tytuł zawiera frazy, których szukają Twoi klienci. Bez odpowiednich słów Allegro nie wyświetli oferty — i nie ma znaczenia jak dobre są zdjęcia.</p>
     </div>
     <div class="card audit-card">
-      <h3>📸 Galeria i spójność przekazu</h3>
-      <p>Czy każde zdjęcie ma zadanie sprzedażowe? Czy galeria pokazuje zastosowanie, detale i zawartość zestawu? Czy zdjęcia, opis i tytuł mówią to samo?</p>
+      <h3>📸 Galeria — czy odpowiada na pytania klienta?</h3>
+      <p>Sprawdzamy czy każde zdjęcie w galerii coś wnosi. Zestaw, detal, zastosowanie, certyfikat — klient nie powinien szukać żadnej z tych informacji w opisie.</p>
+    </div>
+    <div class="card audit-card">
+      <h3>✍️ Opis — czy klient rozumie i kupuje?</h3>
+      <p>Sprawdzamy czy pierwsze zdanie mówi do klienta, nie do algorytmu. Czy opis odpowiada na obawy zanim klient je zada. I czy parametry są w formie, którą można przeczytać w 30 sekund.</p>
     </div>
   </div>
 </div>
@@ -1075,13 +1101,15 @@ select.cinput{cursor:pointer}
     <h2 class="s-title">Najczęstsze pytania</h2>
   </div>
   <div class="faq-wrap" style="max-width:760px;margin:0 auto">
-    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq1"><span>Czy muszę wysyłać produkt do studia?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq1" role="region"><div class="faq-a-inner">Nie zawsze. W większości przypadków wystarczy jedno zdjęcie produktu lub link do obecnej oferty. Na podstawie jednego zdjęcia jesteśmy w stanie przygotować kompletną galerię. Jeżeli produkt wymaga klasycznej sesji lub dokładnych ujęć detali — ustalimy to przed wyceną.</div></div></div>
-    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq2"><span>Czy przygotowujecie materiały pod Allegro?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq2" role="region"><div class="faq-a-inner">Tak. Przygotowujemy zdjęcie główne, galerię, tytuł SEO, opis produktu, bullet points i infografiki produktowe pod Allegro. Znamy aktualne wymagania platformy co do formatów, rozmiarów i zasad prezentacji produktu.</div></div></div>
-    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq3"><span>Czy poprawiacie istniejącą ofertę?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq3" role="region"><div class="faq-a-inner">Tak. Wystarczy wysłać link do obecnej oferty — wskażemy co warto poprawić w zdjęciu, tytule, opisie i galerii. Możemy poprawić pojedynczy element lub przebudować całość w ramach pakietu Standard lub Premium.</div></div></div>
-    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq4"><span>Czy gwarantujecie wzrost sprzedaży?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq4" role="region"><div class="faq-a-inner">Nie obiecujemy konkretnych liczb — sprzedaż zależy od wielu czynników: ceny, konkurencji, sezonu. Poprawiamy elementy, które mają udokumentowany wpływ na klikalność i decyzję zakupową: zdjęcia, miniaturę, tytuł, opis i galerię.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq1"><span>Czy muszę coś wysyłać?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq1" role="region"><div class="faq-a-inner">Nie. W zdecydowanej większości przypadków wystarczy jedno zdjęcie albo link do obecnej oferty. Na tej podstawie przygotowujemy kompletną galerię. Jeśli produkt wymaga ujęć których nie da się zrobić bez fizycznego dostępu — powiemy o tym przed wyceną, nie po.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq2"><span>Co dokładnie dostaję po realizacji?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq2" role="region"><div class="faq-a-inner">Zależy od wybranego pakietu. Start: lista konkretnych zmian do wprowadzenia. Oferta Pro: zdjęcie główne, tytuł SEO, opis z bullet pointami i FAQ — gotowe do wklejenia. Studio: kompletny system materiałów dla całej serii z szablonami i checklistą.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq3"><span>Mam już ofertę. Możecie ją poprawić zamiast robić od nowa?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq3" role="region"><div class="faq-a-inner">Tak — i to jest najczęstszy scenariusz. Wyślij link, wskażemy co warto poprawić i w jakim zakresie. Możemy zmienić samo zdjęcie, sam opis albo całość naraz.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq4"><span>Czy to naprawdę pomoże mojej sprzedaży?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq4" role="region"><div class="faq-a-inner">Nie obiecujemy konkretnych liczb — sprzedaż zależy też od ceny, konkurencji i sezonu. Ale poprawiamy dokładnie te elementy, przez które klienci rezygnują: miniatura, której nikt nie klika, tytuł który Allegro nie pokazuje i opis, który nie odpowiada na pytania. To są realne bariery — i można je usunąć.</div></div></div>
     <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq5"><span>Dla jakich produktów pracujecie?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq5" role="region"><div class="faq-a-inner">Najczęściej dla produktów e-commerce i marketplace: narzędzia, BHP, spawalnictwo, dom i ogród, elektronarzędzia, motoryzacja, kosmetyki i akcesoria. Szczególnie dobrze rozumiemy produkty techniczne, gdzie kupujący szuka konkretnych parametrów na zdjęciach.</div></div></div>
-    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq6"><span>Co otrzymam po realizacji?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq6" role="region"><div class="faq-a-inner">W zależności od pakietu: gotowe pliki graficzne w wymaganym formacie, tytuł SEO, opis produktu, bullet points, rekomendacje do galerii lub kompletny zestaw materiałów gotowych do wgrania bez żadnej dodatkowej obróbki.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq6"><span>Ile czasu trwa realizacja?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq6" role="region"><div class="faq-a-inner">Standardowy czas to 48 godzin od przesłania materiałów. Jeśli masz pilne zlecenie albo serię produktów — napisz na WhatsApp, ustalimy harmonogram.</div></div></div>
     <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq7"><span>Jakie formy płatności akceptujecie?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq7" role="region"><div class="faq-a-inner">Akceptujemy przelew bankowy oraz BLIK. Przy pierwszym zamówieniu stosujemy przedpłatę 50%. Przy stałej współpracy lub zamówieniach zbiorczych warunki ustalamy indywidualnie.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq8"><span>Czy copywriting Allegro to gotowy opis do wklejenia?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq8" role="region"><div class="faq-a-inner">Tak. Dostarczamy gotowy opis w strukturze 8 bloków Allegro: hook z główną frazą kluczową, korzyści, tabela parametrów technicznych, scenariusze zastosowania, zawartość zestawu, FAQ, informacje o wysyłce i CTA. Każdy blok jest oznaczony — wklejasz bezpośrednio do edytora Allegro bez dodatkowej obróbki. Do opisu dołączamy checklist przed publikacją z weryfikacją tytułu, parametrów i frazy kluczowej.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq9"><span>Czy opisy są zgodne z Regulaminem Allegro?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq9" role="region"><div class="faq-a-inner">Tak. Tworzymy opisy zgodnie z aktualnym Regulaminem Allegro — bez zakazanych fraz, porównań do konkurencji po nazwie, linków zewnętrznych i deklaracji w stylu "najlepszy" czy "100% gwarancji". Frazy kluczowe dobieramy pod algorytm wyszukiwarki Allegro, nie pod Google.</div></div></div>
   </div>
 </div>
 
@@ -1094,8 +1122,8 @@ select.cinput{cursor:pointer}
   <!-- LEWA: nagłówek + kanały + trust -->
   <div class="contact-left">
     <div class="eyebrow">Kontakt</div>
-    <h2 class="contact-heading">Wyślij link<br>do oferty —<br><em>odpiszemy w 24h</em></h2>
-    <p class="contact-sub">Sprawdzimy miniaturę, tytuł i galerię. Dostaniesz 3 konkretne rekomendacje. Bez zobowiązań, bez opłat za pierwszą analizę.</p>
+    <h2 class="contact-heading">Wyślij link.<br>Odpisujemy<br><em>w ciągu 24h.</em></h2>
+    <p class="contact-sub">Nie potrzebujemy długiego briefu. Wystarczy link do oferty albo jedno zdjęcie — i powiemy co warto poprawić. Bez zobowiązań, pierwsza analiza bezpłatnie.</p>
 
     <div class="contact-channels-stack">
       <a href="https://wa.me/48791162938?text=Cześć,%20chcę%20wysłać%20ofertę%20do%20analizy." class="cch cch-wa">
@@ -1125,9 +1153,9 @@ select.cinput{cursor:pointer}
     </div>
 
     <div class="contact-trust">
-      <div class="contact-trust-item">Pierwszy mini audyt bezpłatnie — bez zobowiązań</div>
+      <div class="contact-trust-item">Pierwsza analiza bezpłatnie — bez zobowiązań</div>
       <div class="contact-trust-item">Odpowiedź w ciągu 24h w dni robocze</div>
-      <div class="contact-trust-item">Wycena bez ukrytych kosztów</div>
+      <div class="contact-trust-item">Wycena konkretna — bez ukrytych kosztów</div>
       <div class="contact-trust-item">Dane chronione zgodnie z RODO</div>
     </div>
   </div>
@@ -1136,8 +1164,8 @@ select.cinput{cursor:pointer}
   <div class="contact-form-card" id="mini-audyt">
     <div id="contactFormWrap">
       <div class="cform-head">
-        <div class="cform-title">Wyślij zapytanie</div>
-        <div class="cform-sub">Wypełnij formularz lub napisz na WhatsApp — odpiszemy z analizą i wyceną.</div>
+        <div class="cform-title">Napisz do nas</div>
+        <div class="cform-sub">Formularz albo WhatsApp — jak Ci wygodniej. Odpiszemy z konkretną analizą i wyceną.</div>
       </div>
       <form id="contactForm" name="kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
         <input type="hidden" name="form-name" value="kontakt">
