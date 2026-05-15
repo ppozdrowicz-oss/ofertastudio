@@ -13,6 +13,8 @@
 <meta property="og:title" content="OfertaStudio.pl — autorski projekt tworzenia ofert produktowych">
 <meta property="og:description" content="Miniatury, galerie, tytuły SEO, opisy sprzedażowe i materiały do publikacji dla Allegro, OLX, Amazon i sklepów internetowych.">
 <meta property="og:image" content="https://ofertastudio.pl/elektronarzedzia-po-zestaw.png">
+<meta property="og:image:width" content="1254">
+<meta property="og:image:height" content="1254">
 <meta property="og:locale" content="pl_PL">
 <meta property="og:site_name" content="OfertaStudio.pl">
 <meta name="twitter:card" content="summary_large_image">
@@ -638,16 +640,13 @@ select.cinput{cursor:pointer}
   .contact-form-card{border-radius:.875rem}
 }
 
-/* ── PORTFOLIO SECTION ── */
-.portfolio-section{}
-
 /* BA slider — main hero slider */
-.pf-slider-wrap{position:relative;border-radius:1rem;overflow:hidden;border:1px solid var(--bs);box-shadow:var(--sh3);cursor:ew-resize;user-select:none;background:var(--s2);aspect-ratio:4/3;max-height:480px}
+.pf-slider-wrap{position:relative;border-radius:1rem;overflow:hidden;border:1px solid var(--bs);box-shadow:var(--sh3);cursor:ew-resize;user-select:none;touch-action:none;background:var(--s2);aspect-ratio:4/3;max-height:480px}
 .pf-slider-wrap:focus-visible{outline:2px solid var(--brand);outline-offset:4px;border-radius:1rem}
 .pf-side{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
 .pf-side-po{background:#fff}
 .pf-side-przed{background:var(--s3)}
-.pf-side img{width:100%;height:100%;object-fit:contain;padding:1.5rem}
+.pf-side img{display:block;width:100%;height:100%;object-fit:contain;padding:1.5rem}
 .pf-divline{position:absolute;top:0;bottom:0;width:2px;background:var(--brand);z-index:10;transform:translateX(-50%);left:50%}
 .pf-handle{position:absolute;top:50%;width:3rem;height:3rem;border-radius:50%;background:var(--brand);z-index:11;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.9375rem;font-weight:700;box-shadow:0 4px 20px rgba(37,99,235,.5),0 0 0 3px rgba(255,255,255,.25);transform:translate(-50%,-50%);left:50%;transition:transform .15s,box-shadow .15s}
 .pf-slider-wrap:hover .pf-handle{box-shadow:0 6px 28px rgba(37,99,235,.6),0 0 0 4px rgba(255,255,255,.3)}
@@ -675,7 +674,7 @@ select.cinput{cursor:pointer}
 .pf-card{border-radius:var(--r);overflow:hidden;position:relative;cursor:pointer;transition:all .25s}
 .pf-card:hover{box-shadow:var(--sh3);transform:translateY(-3px)}
 .pf-card-img{aspect-ratio:4/3;background:var(--s2);overflow:hidden;position:relative;border-bottom:1px solid var(--bs)}
-.pf-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.pf-card-img img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
 .pf-card:hover .pf-card-img img{transform:scale(1.06)}
 .pf-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,22,40,.7) 0%,transparent 55%);opacity:0;transition:opacity .25s;display:flex;align-items:flex-end;padding:1rem}
 .pf-card:hover .pf-card-overlay{opacity:1}
@@ -750,6 +749,72 @@ select.cinput{cursor:pointer}
 .hero-sub-result{font-size:.9375rem;color:var(--t2);line-height:1.8;padding:.875rem 1.125rem;background:var(--brand-bg);border:1px solid rgba(37,99,235,.15);border-radius:var(--r);margin-top:.25rem!important}
 @media(max-width:640px){
   .hero-sub p,.hero-sub-list li,.hero-sub-result{font-size:.875rem}
+}
+
+/* final mobile overrides: keep these after all component rules */
+@media(max-width:640px){
+  html{scroll-padding-top:4rem}
+  body{font-size:.975rem}
+  .nav-inner{height:3.5rem;padding:0 1rem}
+  .nav-logo svg{width:min(190px,52vw);height:auto}
+  .nav-drawer{top:3.5rem;max-height:calc(100dvh - 3.5rem);overflow-y:auto;padding-bottom:calc(1rem + env(safe-area-inset-bottom))}
+  .nav-drawer .drawer-ctas{flex-direction:column}
+  .nav-drawer .btn-nav,.nav-drawer .btn-wa{min-height:2.75rem}
+  .toggle-btn,.ham-btn{width:2.5rem;height:2.5rem}
+  .wa-fab{right:1rem;bottom:calc(1rem + env(safe-area-inset-bottom));width:3.125rem;height:3.125rem}
+
+  .section{padding:2.25rem 1rem}
+  .hero{padding:5.25rem 1rem 2rem;gap:1.5rem}
+  .hero-h1{font-size:clamp(1.75rem,8vw,2.3rem);line-height:1.08;margin-bottom:1rem}
+  .hero-kicker{font-size:.75rem;margin-bottom:1rem}
+  .hero-sub,.hero-sub p{line-height:1.65}
+  .hero-ctas{gap:.75rem;margin-bottom:1.25rem}
+  .btn-hero-primary,.btn-hero-wa,.btn-hero-ghost,.btn-p,.btn-s,.btn-wa-inline{min-height:2.75rem;width:100%;justify-content:center;text-align:center}
+  .hero-trust{gap:.45rem}
+  .hero-trust span{font-size:.7rem;line-height:1.35}
+
+  .metrics,.svc-grid,.price-grid,.audit-grid,.proc-grid,.story-grid,.split-copy,.correction-card,.portfolio-grid,.contact-wrap{grid-template-columns:1fr}
+  .metrics{display:grid;gap:.625rem}
+  .mc,.svc-card,.price-card,.story-copy,.story-note,.copy-panel,.correction-card{padding:1.25rem}
+  .band{padding:1.5rem 1rem}
+  .band-inner{grid-template-columns:1fr}
+  .band-item{border-right:0;border-bottom:1px solid rgba(255,255,255,.12);padding:1rem 0}
+  .band-item:last-child{border-bottom:0}
+
+  .pf-featured{gap:1.5rem;margin-bottom:2rem}
+  .pf-slider-wrap{max-height:none}
+  .pf-side img{padding:.875rem}
+  .pf-handle{width:2.75rem;height:2.75rem}
+  .pf-grid{grid-template-columns:1fr}
+  .pf-card{cursor:default}
+  .pf-card-body{padding:1rem}
+  .pf-card-p,.pf-mini-row{font-size:.8rem}
+  .pf-cta-strip{margin-top:1.25rem;padding:1rem}
+  .pf-cta-strip-btns,.pf-cta-strip-btns a{width:100%}
+
+  .ind-grid,.ind-grid.ind-grid--wide{grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem}
+  .ind-card{padding:.875rem}
+  .ind-top{align-items:flex-start}
+  .ind-h{font-size:.875rem}
+  .ind-p{font-size:.78rem}
+
+  .contact-heading{font-size:clamp(1.5rem,8vw,2.1rem)}
+  .contact-sub{font-size:.9375rem;line-height:1.65;margin-bottom:1.5rem}
+  .cfield-row,.cpkg-grid{grid-template-columns:1fr}
+  .cpkg{min-height:3rem}
+  .cinput,select.cinput,textarea.cinput{font-size:16px}
+  .cch{min-height:3.5rem}
+  .faq-q{line-height:1.35}
+  .foot-links{row-gap:.5rem}
+}
+@media(max-width:420px){
+  .ind-grid,.ind-grid.ind-grid--wide{grid-template-columns:1fr}
+  .hero-trust span{width:100%;justify-content:flex-start}
+  .pf-card-img{aspect-ratio:1}
+}
+@media(hover:none){
+  .card:hover,.pf-card:hover,.shot-card:hover,.btn-p:hover,.btn-s:hover,.btn-nav:hover,.btn-hero-primary:hover,.btn-hero-wa:hover,.sticky-btn:hover,.csubmit-btn:hover:not(:disabled),.csubmit-wa:hover{transform:none}
+  .pf-card-overlay{opacity:1}
 }
 </style>
 </head>
@@ -921,12 +986,12 @@ select.cinput{cursor:pointer}
       <div class="pf-slider-wrap" id="pfSlider" tabindex="0"
            role="img" aria-label="Porównanie przed i po — Metabo PowerMaxx BS 12 BL">
         <div class="pf-side pf-side-po">
-          <img loading="lazy" src="elektronarzedzia-po-zestaw.png"
+          <img decoding="async" loading="lazy" src="elektronarzedzia-po-zestaw.png" width="1254" height="1254"
                alt="Metabo PowerMaxx BS 12 BL — po optymalizacji"
                onerror="this.style.display='none'">
         </div>
         <div class="pf-side pf-side-przed" id="pfBefore" style="clip-path:inset(0 50% 0 0)">
-          <img loading="lazy" src="elektronarzedzia-przed.jpg"
+          <img decoding="async" loading="lazy" src="elektronarzedzia-przed.jpg" width="1016" height="762"
                alt="Metabo PowerMaxx BS 12 BL — przed optymalizacją"
                onerror="this.style.display='none'">
         </div>
@@ -970,7 +1035,7 @@ select.cinput{cursor:pointer}
 
     <div class="card pf-card">
       <div class="pf-card-img">
-        <img loading="lazy" src="dom-ogrod-po-front.png" alt="Pistolet Gardena — efekt końcowy"
+        <img decoding="async" loading="lazy" src="dom-ogrod-po-front.png" width="1672" height="941" alt="Pistolet Gardena — efekt końcowy"
              onerror="this.parentElement.style.background='var(--s3)'">
         <div class="pf-card-overlay">
           <span class="pf-card-overlay-text">Zobacz case study →</span>
@@ -991,7 +1056,7 @@ select.cinput{cursor:pointer}
 
     <div class="card pf-card">
       <div class="pf-card-img">
-        <img loading="lazy" src="spawalnictwo-po-front.png" alt="Drut MIG/MAG — efekt końcowy"
+        <img decoding="async" loading="lazy" src="spawalnictwo-po-front.png" width="1254" height="1254" alt="Drut MIG/MAG — efekt końcowy"
              onerror="this.parentElement.style.background='var(--s3)'">
         <div class="pf-card-overlay">
           <span class="pf-card-overlay-text">Zobacz case study →</span>
@@ -1012,7 +1077,7 @@ select.cinput{cursor:pointer}
 
     <div class="card pf-card">
       <div class="pf-card-img">
-        <img loading="lazy" src="tabaiba-po-front.png" alt="Tabaiba Sun Oil — efekt końcowy"
+        <img decoding="async" loading="lazy" src="tabaiba-po-front.png" width="2560" height="2560" alt="Tabaiba Sun Oil — efekt końcowy"
              onerror="this.parentElement.style.background='var(--s3)'">
         <div class="pf-card-overlay">
           <span class="pf-card-overlay-text">Zobacz case study →</span>
@@ -1033,7 +1098,7 @@ select.cinput{cursor:pointer}
 
     <div class="card pf-card">
       <div class="pf-card-img">
-        <img loading="lazy" src="bhp-po-front.png" alt="Rękawice BHP — efekt końcowy"
+        <img decoding="async" loading="lazy" src="bhp-po-front.png" width="1254" height="1254" alt="Rękawice BHP — efekt końcowy"
              onerror="this.parentElement.style.background='var(--s3)'">
         <div class="pf-card-overlay">
           <span class="pf-card-overlay-text">Zobacz case study →</span>
@@ -1054,7 +1119,7 @@ select.cinput{cursor:pointer}
 
     <div class="card pf-card">
       <div class="pf-card-img">
-        <img loading="lazy" src="narzedzia-po-walizka.png" alt="Klucz dynamometryczny — efekt końcowy"
+        <img decoding="async" loading="lazy" src="narzedzia-po-walizka.png" width="1254" height="1254" alt="Klucz dynamometryczny — efekt końcowy"
              onerror="this.parentElement.style.background='var(--s3)'">
         <div class="pf-card-overlay">
           <span class="pf-card-overlay-text">Zobacz case study →</span>
@@ -1180,18 +1245,18 @@ select.cinput{cursor:pointer}
     </div>
   </div>
   <div class="ind-grid ind-grid--wide">
-    <div class="card ind-card"><div class="ind-top"><span class="ind-icon-wrap"><img class="ind-icon" src="/icons/specjalizacje/narzedzia.svg" alt="" loading="lazy"></span><div class="ind-h">Narzędzia</div></div><p class="ind-p">Parametry, zakres pracy, zastosowanie i trwałość pokazane bez szukania w opisie.</p></div>
-    <div class="card ind-card"><div class="ind-top"><span class="ind-icon-wrap"><img class="ind-icon" src="/icons/specjalizacje/spawalnictwo.svg" alt="" loading="lazy"></span><div class="ind-h">Spawalnictwo</div></div><p class="ind-p">Średnice, kompatybilność, typ materiału i przewagi techniczne podane w czytelnej formie.</p></div>
-    <div class="card ind-card"><div class="ind-top"><span class="ind-icon-wrap"><img class="ind-icon" src="/icons/specjalizacje/bhp.svg" alt="" loading="lazy"></span><div class="ind-h">BHP</div></div><p class="ind-p">Normy, klasy ochrony, zastosowanie i detale, które budują zaufanie do produktu.</p></div>
-    <div class="card ind-card"><div class="ind-top"><span class="ind-icon-wrap"><img class="ind-icon" src="/icons/specjalizacje/elektronarzedzia.svg" alt="" loading="lazy"></span><div class="ind-h">Elektronarzędzia</div></div><p class="ind-p">Zestaw, akumulatory, parametry, detale i kontekst użycia w logicznej galerii.</p></div>
-    <div class="card ind-card"><div class="ind-top"><span class="ind-icon-wrap"><img class="ind-icon" src="/icons/specjalizacje/warsztat-garaz.svg" alt="" loading="lazy"></span><div class="ind-h">Warsztat i garaż</div></div><p class="ind-p">Wyposażenie, akcesoria i rozwiązania, które muszą wyglądać praktycznie, nie tylko ładnie.</p></div>
-    <div class="card ind-card"><div class="ind-top"><span class="ind-icon-wrap"><img class="ind-icon" src="/icons/specjalizacje/motoryzacja.svg" alt="" loading="lazy"></span><div class="ind-h">Motoryzacja</div></div><p class="ind-p">Kompatybilność, wymiary, zastosowanie i zawartość zestawu pokazane bez niejasności.</p></div>
-    <div class="card ind-card"><div class="ind-top"><span class="ind-icon-wrap"><img class="ind-icon" src="/icons/specjalizacje/dom-ogrod.svg" alt="" loading="lazy"></span><div class="ind-h">Dom i ogród</div></div><p class="ind-p">Zastosowanie, skala, wygoda i efekt końcowy produktu pokazane w kontekście użycia.</p></div>
-    <div class="card ind-card"><div class="ind-top"><span class="ind-icon-wrap"><img class="ind-icon" src="/icons/specjalizacje/kosmetyki-lifestyle.svg" alt="" loading="lazy"></span><div class="ind-h">Kosmetyki</div></div><p class="ind-p">Etykieta, konsystencja, oznaczenia, składniki i lifestyle bez utraty czytelności.</p></div>
+    <div class="card ind-card"><div class="ind-top"><span class="ind-icon-wrap"><img decoding="async" class="ind-icon" src="/icons/specjalizacje/narzedzia.svg" width="24" height="24" alt="" loading="lazy"></span><div class="ind-h">Narzędzia</div></div><p class="ind-p">Parametry, zakres pracy, zastosowanie i trwałość pokazane bez szukania w opisie.</p></div>
+    <div class="card ind-card"><div class="ind-top"><span class="ind-icon-wrap"><img decoding="async" class="ind-icon" src="/icons/specjalizacje/spawalnictwo.svg" width="24" height="24" alt="" loading="lazy"></span><div class="ind-h">Spawalnictwo</div></div><p class="ind-p">Średnice, kompatybilność, typ materiału i przewagi techniczne podane w czytelnej formie.</p></div>
+    <div class="card ind-card"><div class="ind-top"><span class="ind-icon-wrap"><img decoding="async" class="ind-icon" src="/icons/specjalizacje/bhp.svg" width="24" height="24" alt="" loading="lazy"></span><div class="ind-h">BHP</div></div><p class="ind-p">Normy, klasy ochrony, zastosowanie i detale, które budują zaufanie do produktu.</p></div>
+    <div class="card ind-card"><div class="ind-top"><span class="ind-icon-wrap"><img decoding="async" class="ind-icon" src="/icons/specjalizacje/elektronarzedzia.svg" width="24" height="24" alt="" loading="lazy"></span><div class="ind-h">Elektronarzędzia</div></div><p class="ind-p">Zestaw, akumulatory, parametry, detale i kontekst użycia w logicznej galerii.</p></div>
+    <div class="card ind-card"><div class="ind-top"><span class="ind-icon-wrap"><img decoding="async" class="ind-icon" src="/icons/specjalizacje/warsztat-garaz.svg" width="24" height="24" alt="" loading="lazy"></span><div class="ind-h">Warsztat i garaż</div></div><p class="ind-p">Wyposażenie, akcesoria i rozwiązania, które muszą wyglądać praktycznie, nie tylko ładnie.</p></div>
+    <div class="card ind-card"><div class="ind-top"><span class="ind-icon-wrap"><img decoding="async" class="ind-icon" src="/icons/specjalizacje/motoryzacja.svg" width="24" height="24" alt="" loading="lazy"></span><div class="ind-h">Motoryzacja</div></div><p class="ind-p">Kompatybilność, wymiary, zastosowanie i zawartość zestawu pokazane bez niejasności.</p></div>
+    <div class="card ind-card"><div class="ind-top"><span class="ind-icon-wrap"><img decoding="async" class="ind-icon" src="/icons/specjalizacje/dom-ogrod.svg" width="24" height="24" alt="" loading="lazy"></span><div class="ind-h">Dom i ogród</div></div><p class="ind-p">Zastosowanie, skala, wygoda i efekt końcowy produktu pokazane w kontekście użycia.</p></div>
+    <div class="card ind-card"><div class="ind-top"><span class="ind-icon-wrap"><img decoding="async" class="ind-icon" src="/icons/specjalizacje/kosmetyki-lifestyle.svg" width="24" height="24" alt="" loading="lazy"></span><div class="ind-h">Kosmetyki</div></div><p class="ind-p">Etykieta, konsystencja, oznaczenia, składniki i lifestyle bez utraty czytelności.</p></div>
     <div class="card ind-card"><div class="ind-top"><span class="ind-icon-wrap">🔌</span><div class="ind-h">Elektronika</div></div><p class="ind-p">Funkcje, porty, kompatybilność i realne zastosowania uporządkowane pod szybki wybór.</p></div>
     <div class="card ind-card"><div class="ind-top"><span class="ind-icon-wrap">✨</span><div class="ind-h">Produkty lifestyle</div></div><p class="ind-p">Estetyka, emocja i korzyść użytkowa połączone z konkretnymi informacjami o produkcie.</p></div>
-    <div class="card ind-card"><div class="ind-top"><span class="ind-icon-wrap"><img class="ind-icon" src="/icons/specjalizacje/produkty-przemyslowe.svg" alt="" loading="lazy"></span><div class="ind-h">Produkty przemysłowe</div></div><p class="ind-p">Dane techniczne, zastosowanie i przewaga produktu podane językiem decyzji B2B.</p></div>
-    <div class="card ind-card"><div class="ind-top"><span class="ind-icon-wrap"><img class="ind-icon" src="/icons/specjalizacje/czesci-akcesoria.svg" alt="" loading="lazy"></span><div class="ind-h">Akcesoria</div></div><p class="ind-p">Co pasuje, co jest w zestawie i jak działa z produktem głównym — jasno i szybko.</p></div>
+    <div class="card ind-card"><div class="ind-top"><span class="ind-icon-wrap"><img decoding="async" class="ind-icon" src="/icons/specjalizacje/produkty-przemyslowe.svg" width="24" height="24" alt="" loading="lazy"></span><div class="ind-h">Produkty przemysłowe</div></div><p class="ind-p">Dane techniczne, zastosowanie i przewaga produktu podane językiem decyzji B2B.</p></div>
+    <div class="card ind-card"><div class="ind-top"><span class="ind-icon-wrap"><img decoding="async" class="ind-icon" src="/icons/specjalizacje/czesci-akcesoria.svg" width="24" height="24" alt="" loading="lazy"></span><div class="ind-h">Akcesoria</div></div><p class="ind-p">Co pasuje, co jest w zestawie i jak działa z produktem głównym — jasno i szybko.</p></div>
   </div>
   <div class="section-cta">
     <a href="#realizacje-preview" class="btn-s">Zobacz przykłady realizacji</a>
@@ -1698,7 +1763,7 @@ sections.forEach(s=>obs.observe(s));
     hd.setAttribute('aria-valuenow',Math.round(cur));
   }
   sl.addEventListener('mousedown',e=>{drag=true;set(e.clientX);e.preventDefault()});
-  sl.addEventListener('touchstart',e=>{drag=true;set(e.touches[0].clientX)},{passive:true});
+  sl.addEventListener('touchstart',e=>{drag=true;set(e.touches[0].clientX);e.preventDefault()},{passive:false});
   sl.addEventListener('click',e=>set(e.clientX));
   sl.addEventListener('keydown',e=>{
     const r=sl.getBoundingClientRect();
@@ -1708,7 +1773,7 @@ sections.forEach(s=>obs.observe(s));
     if(e.key==='End'){e.preventDefault();set(r.right)}
   });
   window.addEventListener('mousemove',e=>{if(drag)set(e.clientX)});
-  window.addEventListener('touchmove',e=>{if(drag)set(e.touches[0].clientX)},{passive:true});
+  window.addEventListener('touchmove',e=>{if(drag){set(e.touches[0].clientX);e.preventDefault()}},{passive:false});
   window.addEventListener('mouseup',()=>drag=false);
   window.addEventListener('touchend',()=>drag=false);
 })();

@@ -14,6 +14,8 @@
 <meta property="og:description" content="Informacje o przetwarzaniu danych osobowych w serwisie OfertaStudio.pl i formularzu kontaktowym.">
 <meta property="og:url" content="https://ofertastudio.pl/polityka-prywatnosci">
 <meta property="og:image" content="https://ofertastudio.pl/elektronarzedzia-po-zestaw.png">
+<meta property="og:image:width" content="1254">
+<meta property="og:image:height" content="1254">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Polityka prywatności — OfertaStudio.pl">
 <meta name="twitter:description" content="Informacje o przetwarzaniu danych osobowych w serwisie OfertaStudio.pl.">
@@ -181,6 +183,31 @@ footer{border-top:1px solid var(--bs);padding:2.25rem 1.75rem;position:relative;
   .nav-inner{padding:0 1rem}
   .foot-inner{flex-direction:column;gap:.75rem}
   .foot-links{gap:1rem}
+}
+@media(max-width:640px){
+  html{scroll-padding-top:4rem}
+  body{font-size:.975rem}
+  .nav-inner{height:3.5rem;gap:.75rem}
+  .nav-logo svg{width:min(180px,52vw);height:auto}
+  .toggle-btn{width:2.5rem;height:2.5rem}
+  .page{padding:5rem 1rem 3rem}
+  .hero-h1{font-size:clamp(1.65rem,8vw,2.25rem);line-height:1.08}
+  .hero-sub{font-size:.9375rem;line-height:1.65}
+  .summary-card,.policy-section,.contact-cta{border-radius:.875rem;padding:1.125rem}
+  .section-head{gap:.65rem}
+  .sec-num{flex-shrink:0}
+  .section-title{font-size:1.1rem;line-height:1.25}
+  .section-text,.summary-card p,.provider-card p,.right-card p{font-size:.9rem;line-height:1.65}
+  .btn-p{width:100%;justify-content:center;min-height:2.75rem}
+  .foot-inner{text-align:center}
+  .foot-links{justify-content:center;gap:.75rem 1rem}
+  .foot-copy{display:none}
+}
+@media(max-width:380px){
+  .nav-back{display:none}
+}
+@media(hover:none){
+  .card:hover,.btn-p:hover{transform:none}
 }
 </style>
 </head>
