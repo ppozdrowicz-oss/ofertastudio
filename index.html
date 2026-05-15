@@ -76,6 +76,7 @@
   ]
 }
 </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap"></noscript>
@@ -84,10 +85,10 @@
 :root{
   --bg:#f6f8fc;--s1:#fff;--s2:#f0f4f9;--s3:#e8eef7;
   --bs:#dce4f0;--b:#c8d4e8;
-  --t1:#0a1628;--t2:#3d5278;--t3:#8496b4;
+  --t1:#0a1628;--t2:#33496d;--t3:#5f708c;
   --brand:#2563eb;--brand2:#1a4fc4;--cyan:#0891b2;--green:#059669;--amber:#d97706;
   --brand-bg:rgba(37,99,235,.07);--ok-bg:#ecfdf5;--ok:#047857;
-  --wa:#25d366;--wa2:#128c4a;
+  --wa:#128c4a;--wa2:#0f7a40;
   --sh1:0 1px 3px rgba(10,22,40,.07),0 0 0 1px rgba(10,22,40,.04);
   --sh2:0 4px 12px rgba(10,22,40,.09),0 0 0 1px rgba(10,22,40,.04);
   --sh3:0 16px 40px rgba(10,22,40,.11),0 2px 6px rgba(10,22,40,.05);
@@ -118,6 +119,7 @@ body{min-height:100vh;font-family:'Inter',system-ui,sans-serif;font-size:1rem;li
 :focus{outline:none}
 :focus-visible{outline:2px solid var(--brand);outline-offset:3px;border-radius:4px}
 button:focus-visible,a:focus-visible{outline:2px solid var(--brand);outline-offset:3px;border-radius:6px}
+input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
 .toggle-btn:focus-visible,.ham-btn:focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:.625rem}
 .faq-q:focus-visible{outline:2px solid var(--brand);outline-offset:-2px;border-radius:0}
 #baSliderMain:focus-visible{outline:2px solid var(--brand);outline-offset:4px;border-radius:var(--r)}
@@ -127,6 +129,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--brand);outline-offs
 .sticky-btn:focus-visible,.ch-item:focus-visible,.wa-fab:focus-visible{
   outline:2px solid var(--brand);outline-offset:3px;
 }
+.skip-link{position:fixed;top:.75rem;left:.75rem;z-index:1000;transform:translateY(-150%);background:var(--brand);color:#fff;padding:.75rem 1rem;border-radius:.625rem;font-weight:800;text-decoration:none;box-shadow:var(--sh3)}
+.skip-link:focus{transform:translateY(0);outline:3px solid #fff;outline-offset:2px}
 .grid-bg{position:fixed;inset:0;pointer-events:none;z-index:0;
   background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
   background-size:40px 40px;
@@ -639,9 +643,13 @@ select.cinput{cursor:pointer}
   .cpkg-grid{grid-template-columns:1fr 1fr}
   .contact-form-card{border-radius:.875rem}
 }
+@media(prefers-reduced-motion:reduce){
+  *,::before,::after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.001ms!important}
+  .sdot{animation:none}
+}
 
 /* BA slider — main hero slider */
-.pf-slider-wrap{position:relative;border-radius:1rem;overflow:hidden;border:1px solid var(--bs);box-shadow:var(--sh3);cursor:ew-resize;user-select:none;touch-action:none;background:var(--s2);aspect-ratio:4/3;max-height:480px}
+.pf-slider-wrap{position:relative;border-radius:1rem;overflow:hidden;border:1px solid var(--bs);box-shadow:var(--sh3);cursor:ew-resize;user-select:none;touch-action:none;background:var(--s2);aspect-ratio:4/3;max-height:480px;contain:layout paint}
 .pf-slider-wrap:focus-visible{outline:2px solid var(--brand);outline-offset:4px;border-radius:1rem}
 .pf-side{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
 .pf-side-po{background:#fff}
@@ -673,7 +681,7 @@ select.cinput{cursor:pointer}
 .pf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
 .pf-card{border-radius:var(--r);overflow:hidden;position:relative;cursor:pointer;transition:all .25s}
 .pf-card:hover{box-shadow:var(--sh3);transform:translateY(-3px)}
-.pf-card-img{aspect-ratio:4/3;background:var(--s2);overflow:hidden;position:relative;border-bottom:1px solid var(--bs)}
+.pf-card-img{aspect-ratio:4/3;background:var(--s2);overflow:hidden;position:relative;border-bottom:1px solid var(--bs);contain:layout paint}
 .pf-card-img img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
 .pf-card:hover .pf-card-img img{transform:scale(1.06)}
 .pf-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,22,40,.7) 0%,transparent 55%);opacity:0;transition:opacity .25s;display:flex;align-items:flex-end;padding:1rem}
@@ -719,6 +727,8 @@ select.cinput{cursor:pointer}
 .section--compact{padding-top:2.5rem;padding-bottom:2.5rem}
 .section--flush-bottom{padding-bottom:0}
 .section--flush-top{padding-top:2rem}
+.section:not(.hero),.band,footer{content-visibility:auto;contain-intrinsic-size:1px 900px}
+.portfolio-section{contain-intrinsic-size:1px 1500px}
 .eyebrow--center{justify-content:center}
 
 /* ── INLINE STYLE REPLACEMENTS ── */
@@ -817,30 +827,32 @@ select.cinput{cursor:pointer}
   .pf-card-overlay{opacity:1}
 }
 </style>
+<script src="/analytics.js" defer></script>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Przejdź do treści</a>
 <div class="grid-bg"></div>
 
 <!-- WhatsApp FAB (mobile) -->
 <a href="https://wa.me/48791162938?text=Cześć,%20chciałbym%20zapytać%20o%20optymalizację%20oferty%20Allegro." class="wa-fab" aria-label="Napisz na WhatsApp">
-  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
 <!-- Sticky CTA (desktop) -->
 <div class="sticky-cta">
-  <div class="sticky-pill">● Darmowy mini audyt</div>
-  <a href="#mini-audyt" class="sticky-btn">Wyślij — odbierz analizę w 24h</a>
+  <div class="sticky-pill"><span aria-hidden="true">●</span> Darmowy mini audyt</div>
+  <a href="#mini-audyt" class="sticky-btn" data-event="mini_audit_click" data-location="hero" data-package="start">Wyślij link do analizy</a>
 </div>
 
 <!-- NAV -->
-<nav>
+<nav aria-label="Główna nawigacja">
   <div class="nav-inner">
     <a class="nav-logo" href="/" aria-label="OfertaStudio.pl – strona główna">
-      <svg viewBox="0 0 300 42" height="26" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;display:block">
+      <svg viewBox="0 0 300 42" height="26" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;display:block" aria-hidden="true" focusable="false">
         <text y="34" font-family="Inter,sans-serif" font-weight="800" font-size="36" fill="#0f2d6e" letter-spacing="-1">Oferta<tspan fill="#2563eb">Studio</tspan><tspan font-weight="300" font-size="26" fill="#94a3b8" dy="1">.pl</tspan></text>
       </svg>
     </a>
-    <div class="nav-links" role="navigation" aria-label="Menu główne">
+    <div class="nav-links" aria-label="Menu główne">
       <a href="/realizacje" class="nav-link">Realizacje</a>
       <a href="#uslugi" class="nav-link">Usługi</a>
       <a href="#specjalizacje" class="nav-link">Specjalizacje</a>
@@ -849,8 +861,8 @@ select.cinput{cursor:pointer}
       <a href="#kontakt" class="nav-link">Kontakt</a>
     </div>
     <div class="nav-right">
-      <div class="status-pill"><span class="sdot"></span>Zapytania otwarte</div>
-      <button class="toggle-btn" id="themeToggle" aria-label="Włącz tryb ciemny" aria-pressed="false">☀</button>
+      <div class="status-pill"><span class="sdot" aria-hidden="true"></span>Zapytania otwarte</div>
+      <button class="toggle-btn" id="themeToggle" aria-label="Włącz tryb ciemny" aria-pressed="false"><span aria-hidden="true">☀</span></button>
       <a href="#kontakt" class="btn-nav">Zapytaj o ofertę</a>
       <button class="ham-btn" id="hamBtn" aria-label="Otwórz menu nawigacji" aria-expanded="false" aria-controls="navDrawer">
         <span></span><span></span><span></span>
@@ -870,18 +882,18 @@ select.cinput{cursor:pointer}
   <div class="drawer-ctas">
     <a href="#kontakt" class="btn-nav" onclick="closeDrawer()">Zapytaj o ofertę</a>
     <a href="https://wa.me/48791162938" class="btn-wa" onclick="closeDrawer()">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       WhatsApp
     </a>
   </div>
 </div>
 
-<div class="page">
+<main class="page" id="main-content" tabindex="-1">
 
 <!-- ── HERO ── -->
 <div class="hero">
   <div>
-    <div class="hero-kicker"><span class="sdot"></span>Autorski projekt i praktyczne studio ofert produktowych</div>
+    <div class="hero-kicker"><span class="sdot" aria-hidden="true"></span>Autorski projekt i praktyczne studio ofert produktowych</div>
 
     <h1 class="hero-h1">Kupujący widzi Twoją ofertę. Ale nie klika?</h1>
 
@@ -890,13 +902,13 @@ select.cinput{cursor:pointer}
     </div>
 
     <div class="hero-ctas">
-      <a href="#kontakt" class="btn-hero-primary">
+      <a href="#kontakt" class="btn-hero-primary" data-event="hero_cta_click" data-location="hero" data-package="start">
         Wyślij link — odbierz darmowy mini audyt
         <span class="btn-badge">start</span>
       </a>
       <div class="hero-ctas-row">
-        <a href="#realizacje-preview" class="btn-hero-ghost">Zobacz realizacje przed/po</a>
-        <a href="https://wa.me/48791162938?text=Cześć,%20chcę%20wysłać%20link%20do%20mini%20audytu%20oferty." class="btn-hero-wa">
+        <a href="#realizacje-preview" class="btn-hero-ghost" data-event="hero_cta_click" data-location="hero">Zobacz realizacje przed/po</a>
+        <a href="https://wa.me/48791162938?text=Cześć,%20chcę%20wysłać%20link%20do%20mini%20audytu%20oferty." class="btn-hero-wa" data-location="hero" data-package="start">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           WhatsApp
         </a>
@@ -973,7 +985,7 @@ select.cinput{cursor:pointer}
 <div class="divider"></div>
 
 <!-- ── PORTFOLIO ── -->
-<div class="section portfolio-section" id="realizacje-preview">
+<div class="section portfolio-section" id="realizacje-preview" data-view-event="realizations_section_view" data-location="case_study">
   <div class="s-head">
     <div class="eyebrow">Portfolio</div>
     <h2 class="s-title">Tak mogą wyglądać oferty po dopracowaniu</h2>
@@ -984,23 +996,22 @@ select.cinput{cursor:pointer}
   <div class="pf-featured">
     <div>
       <div class="pf-slider-wrap" id="pfSlider" tabindex="0"
-           role="img" aria-label="Porównanie przed i po — Metabo PowerMaxx BS 12 BL">
-        <div class="pf-side pf-side-po">
+           role="slider" aria-label="Porównanie przed i po — Metabo PowerMaxx BS 12 BL"
+           aria-orientation="horizontal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+        <div class="pf-side pf-side-po" aria-hidden="true">
           <img decoding="async" loading="lazy" src="elektronarzedzia-po-zestaw.png" width="1254" height="1254"
                alt="Metabo PowerMaxx BS 12 BL — po optymalizacji"
                onerror="this.style.display='none'">
         </div>
-        <div class="pf-side pf-side-przed" id="pfBefore" style="clip-path:inset(0 50% 0 0)">
+        <div class="pf-side pf-side-przed" id="pfBefore" style="clip-path:inset(0 50% 0 0)" aria-hidden="true">
           <img decoding="async" loading="lazy" src="elektronarzedzia-przed.jpg" width="1016" height="762"
                alt="Metabo PowerMaxx BS 12 BL — przed optymalizacją"
                onerror="this.style.display='none'">
         </div>
-        <div class="pf-divline" id="pfLine"></div>
-        <div class="pf-handle" id="pfHandle"
-             role="slider" tabindex="0" aria-label="Suwak przed/po"
-             aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">◀▶</div>
-        <span class="pf-tag pf-tag-b">PRZED</span>
-        <span class="pf-tag pf-tag-a">PO</span>
+        <div class="pf-divline" id="pfLine" aria-hidden="true"></div>
+        <div class="pf-handle" id="pfHandle" aria-hidden="true">◀▶</div>
+        <span class="pf-tag pf-tag-b" aria-hidden="true">PRZED</span>
+        <span class="pf-tag pf-tag-a" aria-hidden="true">PO</span>
       </div>
       <p class="pf-hint">// przeciągnij suwak · klawiatura: ← →</p>
     </div>
@@ -1015,10 +1026,10 @@ select.cinput{cursor:pointer}
         <div class="pf-mini-row"><strong>Efekt jakościowy</strong>Oferta szybciej tłumaczy zawartość zestawu, zastosowanie i przewagi wariantu.</div>
       </div>
       <div class="pf-featured-tags">
-        <span class="pf-tag-chip">✓ Zdjęcie główne</span>
-        <span class="pf-tag-chip">✓ Detale techniczne</span>
-        <span class="pf-tag-chip">✓ Lifestyle</span>
-        <span class="pf-tag-chip">✓ Infografika PL</span>
+        <span class="pf-tag-chip"><span aria-hidden="true">✓</span> Zdjęcie główne</span>
+        <span class="pf-tag-chip"><span aria-hidden="true">✓</span> Detale techniczne</span>
+        <span class="pf-tag-chip"><span aria-hidden="true">✓</span> Lifestyle</span>
+        <span class="pf-tag-chip"><span aria-hidden="true">✓</span> Infografika PL</span>
         <span class="pf-tag-chip neutral">case portfolio</span>
       </div>
       <div class="pf-stats">
@@ -1026,7 +1037,7 @@ select.cinput{cursor:pointer}
         <div class="pf-stat"><div class="n">10</div><div class="l">gotowych ujęć</div></div>
         <div class="pf-stat"><div class="n">2560px</div><div class="l">format plików</div></div>
       </div>
-      <a href="/realizacje#elektronarzedzia" class="btn-s">Zobacz pełne case study →</a>
+      <a href="/realizacje#elektronarzedzia" class="btn-s" data-event="case_study_click" data-location="case_study">Zobacz pełne case study →</a>
     </div>
   </div>
 
@@ -1050,7 +1061,7 @@ select.cinput{cursor:pointer}
           <div class="pf-mini-row"><strong>Efekt</strong>Czytelna galeria pokazuje zastosowanie, ergonomię i kompatybilność.</div>
         </div>
         <div class="pf-card-stat">1 zdj. → 7 ujęć</div>
-        <a href="/realizacje#dom-ogrod" class="pf-card-link">Zobacz case study →</a>
+        <a href="/realizacje#dom-ogrod" class="pf-card-link" data-event="case_study_click" data-location="case_study">Zobacz case study →</a>
       </div>
     </div>
 
@@ -1071,7 +1082,7 @@ select.cinput{cursor:pointer}
           <div class="pf-mini-row"><strong>Efekt</strong>Galeria lepiej porządkuje opakowanie, szpulę, detal drutu i wyróżnik.</div>
         </div>
         <div class="pf-card-stat">1 zdj. → 5 ujęć + infografika</div>
-        <a href="/realizacje#spawalnictwo" class="pf-card-link">Zobacz case study →</a>
+        <a href="/realizacje#spawalnictwo" class="pf-card-link" data-event="case_study_click" data-location="case_study">Zobacz case study →</a>
       </div>
     </div>
 
@@ -1092,7 +1103,7 @@ select.cinput{cursor:pointer}
           <div class="pf-mini-row"><strong>Efekt</strong>Seria ujęć pokazuje produkt, etykietę, oznaczenia i sposób użycia.</div>
         </div>
         <div class="pf-card-stat">1 zdj. → 4 ujęcia</div>
-        <a href="/realizacje#kosmetyki" class="pf-card-link">Zobacz case study →</a>
+        <a href="/realizacje#kosmetyki" class="pf-card-link" data-event="case_study_click" data-location="case_study">Zobacz case study →</a>
       </div>
     </div>
 
@@ -1113,7 +1124,7 @@ select.cinput{cursor:pointer}
           <div class="pf-mini-row"><strong>Efekt</strong>Galeria szybciej pokazuje ochronę, fakturę lateksu i realne użycie.</div>
         </div>
         <div class="pf-card-stat">1 zdj. → 5 ujęć</div>
-        <a href="/realizacje#bhp" class="pf-card-link">Zobacz case study →</a>
+        <a href="/realizacje#bhp" class="pf-card-link" data-event="case_study_click" data-location="case_study">Zobacz case study →</a>
       </div>
     </div>
 
@@ -1134,7 +1145,7 @@ select.cinput{cursor:pointer}
           <div class="pf-mini-row"><strong>Efekt</strong>Ujęcia pokazują walizkę, mechanizm głowicy i skalę momentu.</div>
         </div>
         <div class="pf-card-stat">1 zdj. → 4 gotowe pliki</div>
-        <a href="/realizacje#narzedzia" class="pf-card-link">Zobacz case study →</a>
+        <a href="/realizacje#narzedzia" class="pf-card-link" data-event="case_study_click" data-location="case_study">Zobacz case study →</a>
       </div>
     </div>
 
@@ -1158,10 +1169,10 @@ select.cinput{cursor:pointer}
       <div class="pf-cta-strip-sub">Wyślij link — otrzymasz informację, co warto zmienić i jaki zakres pracy ma sens. Bez zobowiązań.</div>
     </div>
     <div class="pf-cta-strip-btns">
-      <a href="https://wa.me/48791162938?text=Cześć,%20chcę%20wysłać%20ofertę%20do%20analizy." class="btn-hero-wa">
+      <a href="https://wa.me/48791162938?text=Cześć,%20chcę%20wysłać%20ofertę%20do%20analizy." class="btn-hero-wa" data-location="case_study">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp
       </a>
-      <a href="#kontakt" class="btn-p">Wyślij — odbierz analizę w 24h</a>
+      <a href="#kontakt" class="btn-p" data-event="mini_audit_click" data-location="case_study" data-package="start">Wyślij link do analizy</a>
     </div>
   </div>
 
@@ -1189,7 +1200,7 @@ select.cinput{cursor:pointer}
   </div>
   <div class="svc-grid">
     <div class="card svc-card">
-      <div class="svc-icon-wrap">🖼️</div>
+      <div class="svc-icon-wrap" aria-hidden="true">🖼️</div>
       <div class="svc-h">Miniatura nie zatrzymuje wzroku</div>
       <p class="svc-desc">Na liście wyników oferta konkuruje rozmiarem kafelka, kontrastem, czytelnością produktu i pierwszym wrażeniem. Jeżeli miniatura wygląda jak przypadkowe zdjęcie, kupujący przewija dalej.</p>
       <ul class="feat-list">
@@ -1200,7 +1211,7 @@ select.cinput{cursor:pointer}
       </ul>
     </div>
     <div class="card svc-card">
-      <div class="svc-icon-wrap">🔍</div>
+      <div class="svc-icon-wrap" aria-hidden="true">🔍</div>
       <div class="svc-h">Tytuł nie odpowiada na intencję kupującego</div>
       <p class="svc-desc">Tytuł powinien łączyć język klienta, frazy wyszukiwania i najważniejsze parametry. Bez tego oferta może być trudniejsza do znalezienia albo nie przekonać po samym nagłówku.</p>
       <ul class="feat-list">
@@ -1211,7 +1222,7 @@ select.cinput{cursor:pointer}
       </ul>
     </div>
     <div class="card svc-card">
-      <div class="svc-icon-wrap">✍️</div>
+      <div class="svc-icon-wrap" aria-hidden="true">✍️</div>
       <div class="svc-h">Opis nie prowadzi do decyzji zakupowej</div>
       <p class="svc-desc">Opis skopiowany od producenta rzadko odpowiada na realne pytania klienta. Skuteczniejszy układ porządkuje korzyści, parametry, zastosowanie, zawartość zestawu i obawy przed zakupem.</p>
       <ul class="feat-list">
@@ -1253,7 +1264,7 @@ select.cinput{cursor:pointer}
     <div class="card ind-card"><div class="ind-top"><span class="ind-icon-wrap"><img decoding="async" class="ind-icon" src="/icons/specjalizacje/motoryzacja.svg" width="24" height="24" alt="" loading="lazy"></span><div class="ind-h">Motoryzacja</div></div><p class="ind-p">Kompatybilność, wymiary, zastosowanie i zawartość zestawu pokazane bez niejasności.</p></div>
     <div class="card ind-card"><div class="ind-top"><span class="ind-icon-wrap"><img decoding="async" class="ind-icon" src="/icons/specjalizacje/dom-ogrod.svg" width="24" height="24" alt="" loading="lazy"></span><div class="ind-h">Dom i ogród</div></div><p class="ind-p">Zastosowanie, skala, wygoda i efekt końcowy produktu pokazane w kontekście użycia.</p></div>
     <div class="card ind-card"><div class="ind-top"><span class="ind-icon-wrap"><img decoding="async" class="ind-icon" src="/icons/specjalizacje/kosmetyki-lifestyle.svg" width="24" height="24" alt="" loading="lazy"></span><div class="ind-h">Kosmetyki</div></div><p class="ind-p">Etykieta, konsystencja, oznaczenia, składniki i lifestyle bez utraty czytelności.</p></div>
-    <div class="card ind-card"><div class="ind-top"><span class="ind-icon-wrap">🔌</span><div class="ind-h">Elektronika</div></div><p class="ind-p">Funkcje, porty, kompatybilność i realne zastosowania uporządkowane pod szybki wybór.</p></div>
+    <div class="card ind-card"><div class="ind-top"><span class="ind-icon-wrap" aria-hidden="true">🔌</span><div class="ind-h">Elektronika</div></div><p class="ind-p">Funkcje, porty, kompatybilność i realne zastosowania uporządkowane pod szybki wybór.</p></div>
     <div class="card ind-card"><div class="ind-top"><span class="ind-icon-wrap">✨</span><div class="ind-h">Produkty lifestyle</div></div><p class="ind-p">Estetyka, emocja i korzyść użytkowa połączone z konkretnymi informacjami o produkcie.</p></div>
     <div class="card ind-card"><div class="ind-top"><span class="ind-icon-wrap"><img decoding="async" class="ind-icon" src="/icons/specjalizacje/produkty-przemyslowe.svg" width="24" height="24" alt="" loading="lazy"></span><div class="ind-h">Produkty przemysłowe</div></div><p class="ind-p">Dane techniczne, zastosowanie i przewaga produktu podane językiem decyzji B2B.</p></div>
     <div class="card ind-card"><div class="ind-top"><span class="ind-icon-wrap"><img decoding="async" class="ind-icon" src="/icons/specjalizacje/czesci-akcesoria.svg" width="24" height="24" alt="" loading="lazy"></span><div class="ind-h">Akcesoria</div></div><p class="ind-p">Co pasuje, co jest w zestawie i jak działa z produktem głównym — jasno i szybko.</p></div>
@@ -1280,7 +1291,7 @@ select.cinput{cursor:pointer}
     <div class="card proc-card"><div class="proc-step">KROK 04</div><div class="proc-title">Otrzymujesz gotową propozycję do wdrożenia</div><p class="proc-text">Dostajesz materiały i wskazówki, które można wykorzystać na Allegro, OLX, Amazon lub w sklepie internetowym.</p></div>
   </div>
   <div class="section-cta">
-    <a href="#kontakt" class="btn-p">Wyślij — odbierz analizę w 24h</a>
+    <a href="#kontakt" class="btn-p" data-event="mini_audit_click" data-location="case_study" data-package="start">Wyślij link do analizy</a>
   </div>
 </div>
 
@@ -1295,7 +1306,7 @@ select.cinput{cursor:pointer}
       <p>Po przygotowaniu materiałów możesz zgłosić uwagi. Celem nie jest oddanie przypadkowego projektu, ale dopracowanie oferty tak, aby jasno pokazywała produkt, jego zastosowanie i przewagę.</p>
       <div class="section-cta">
         <a href="#kontakt" class="btn-p">Zapytaj o ofertę</a>
-        <a href="#cennik" class="btn-s">Zobacz pakiety</a>
+        <a href="#cennik" class="btn-s" data-event="pricing_cta_click" data-location="pricing">Zobacz pakiety</a>
       </div>
     </div>
     <div class="correction-icon" aria-hidden="true">↻</div>
@@ -1329,7 +1340,7 @@ select.cinput{cursor:pointer}
         <li>odpowiedź mailowo lub WhatsApp</li>
       </ul>
       <div class="price-btns">
-        <a href="#kontakt" class="price-btn price-btn-primary" data-interest="Darmowy mini audyt" data-message="Interesuje mnie mini audyt.">Odbierz mini audyt</a>
+        <a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="start" data-interest="Darmowy mini audyt" data-message="Interesuje mnie mini audyt.">Odbierz mini audyt</a>
       </div>
     </div>
 
@@ -1349,7 +1360,7 @@ select.cinput{cursor:pointer}
         <li>rekomendacje do galerii</li>
       </ul>
       <div class="price-btns">
-        <a href="#kontakt" class="price-btn price-btn-primary" data-interest="Oferta Pro" data-message="Interesuje mnie Tekst Pack.">Zapytaj o tekst</a>
+        <a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="tekst_pack" data-interest="Oferta Pro" data-message="Interesuje mnie Tekst Pack.">Zapytaj o tekst</a>
       </div>
     </div>
 
@@ -1369,7 +1380,7 @@ select.cinput{cursor:pointer}
         <li>spójny styl wizualny</li>
       </ul>
       <div class="price-btns">
-        <a href="#kontakt" class="price-btn price-btn-primary" data-interest="Oferta Pro" data-message="Interesuje mnie Foto Pack.">Zapytaj o zdjęcia</a>
+        <a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="foto_pack" data-interest="Oferta Pro" data-message="Interesuje mnie Foto Pack.">Zapytaj o zdjęcia</a>
       </div>
     </div>
 
@@ -1392,7 +1403,7 @@ select.cinput{cursor:pointer}
         <li>poprawki</li>
       </ul>
       <div class="price-btns">
-        <a href="#kontakt" class="price-btn price-btn-primary" data-interest="Oferta Pro" data-message="Interesuje mnie Oferta Pro.">Zapytaj o Ofertę Pro</a>
+        <a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="oferta_pro" data-interest="Oferta Pro" data-message="Interesuje mnie Oferta Pro.">Zapytaj o Ofertę Pro</a>
       </div>
     </div>
 
@@ -1412,7 +1423,7 @@ select.cinput{cursor:pointer}
         <li>indywidualna wycena</li>
       </ul>
       <div class="price-btns">
-        <a href="#kontakt" class="price-btn price-btn-primary" data-interest="Seria produktów" data-message="Interesuje mnie Studio / seria produktów.">Zapytaj o serię produktów</a>
+        <a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="studio" data-interest="Seria produktów" data-message="Interesuje mnie Studio / seria produktów.">Zapytaj o serię produktów</a>
       </div>
     </div>
 
@@ -1432,7 +1443,7 @@ select.cinput{cursor:pointer}
         <li>rozliczenie ustalane indywidualnie</li>
       </ul>
       <div class="price-btns">
-        <a href="#kontakt" class="price-btn price-btn-primary" data-interest="Seria produktów" data-message="Interesuje mnie abonament / stała współpraca.">Zapytaj o stałą współpracę</a>
+        <a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="abonament" data-interest="Seria produktów" data-message="Interesuje mnie abonament / stała współpraca.">Zapytaj o stałą współpracę</a>
       </div>
     </div>
 
@@ -1451,19 +1462,19 @@ select.cinput{cursor:pointer}
   </div>
   <div class="audit-grid">
     <div class="card audit-card">
-      <h3>🖼️ Miniatura — czy masz szansę na kliknięcie?</h3>
+      <h3><span aria-hidden="true">🖼️</span> Miniatura — czy masz szansę na kliknięcie?</h3>
       <p>Patrzę na miniaturę tak jak klient: na liście wyników, na telefonie, w rozmiarze kafelka. Jeśli produkt się nie wyróżnia — nie będzie kliknięcia, nieważne jak dobry jest opis.</p>
     </div>
     <div class="card audit-card">
-      <h3>🔍 Tytuł — czy Allegro w ogóle Cię pokazuje?</h3>
+      <h3><span aria-hidden="true">🔍</span> Tytuł — czy Allegro w ogóle Cię pokazuje?</h3>
       <p>Sprawdzam czy tytuł zawiera frazy, których szukają kupujący. Bez odpowiednich słów Allegro nie wyświetli oferty — i nie ma znaczenia jak dobre są zdjęcia.</p>
     </div>
     <div class="card audit-card">
-      <h3>📸 Galeria — czy odpowiada na pytania klienta?</h3>
+      <h3><span aria-hidden="true">📸</span> Galeria — czy odpowiada na pytania klienta?</h3>
       <p>Sprawdzam czy każde zdjęcie w galerii coś wnosi. Zestaw, detal, zastosowanie, potwierdzenie normy — klient nie powinien szukać żadnej z tych informacji w opisie.</p>
     </div>
     <div class="card audit-card">
-      <h3>✍️ Opis — czy klient rozumie i kupuje?</h3>
+      <h3><span aria-hidden="true">✍️</span> Opis — czy klient rozumie i kupuje?</h3>
       <p>Sprawdzam czy pierwsze zdanie mówi do klienta, nie tylko do algorytmu. Czy opis odpowiada na obawy zanim klient je zada. I czy parametry są w formie, którą można przeczytać szybko.</p>
     </div>
   </div>
@@ -1503,7 +1514,7 @@ select.cinput{cursor:pointer}
     <p class="contact-sub">Nie potrzebuję długiego briefu. Wystarczy link do oferty albo jedno zdjęcie — wrócę z konkretną informacją, co warto poprawić i jaki zakres pracy ma sens.</p>
 
     <div class="contact-channels-stack">
-      <a href="https://wa.me/48791162938?text=Cześć,%20chcę%20wysłać%20ofertę%20do%20analizy." class="cch cch-wa">
+      <a href="https://wa.me/48791162938?text=Cześć,%20chcę%20wysłać%20ofertę%20do%20analizy." class="cch cch-wa" data-location="contact">
         <div class="cch-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
         <div class="cch-body">
           <div class="cch-label">WhatsApp — najszybciej</div>
@@ -1511,7 +1522,7 @@ select.cinput{cursor:pointer}
           <div class="cch-meta">Najprostszy kontakt przy krótkich pytaniach</div>
         </div>
       </a>
-      <a href="mailto:kontakt@ofertastudio.pl" class="cch cch-mail">
+      <a href="mailto:kontakt@ofertastudio.pl" class="cch cch-mail" data-location="contact">
         <div class="cch-icon cch-icon--brand"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
         <div class="cch-body">
           <div class="cch-label">E-mail</div>
@@ -1519,7 +1530,7 @@ select.cinput{cursor:pointer}
           <div class="cch-meta">Do linku, briefu i materiałów produktowych</div>
         </div>
       </a>
-      <a href="tel:+48791162938" class="cch cch-phone">
+      <a href="tel:+48791162938" class="cch cch-phone" data-location="contact">
         <div class="cch-icon cch-icon--brand"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
         <div class="cch-body">
           <div class="cch-label">Telefon</div>
@@ -1546,19 +1557,19 @@ select.cinput{cursor:pointer}
       </div>
       <form id="contactForm" name="kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
         <input type="hidden" name="form-name" value="kontakt">
-        <p class="visually-hidden" aria-hidden="true"><label>Nie wypełniaj: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+        <p class="visually-hidden" aria-hidden="true"><label>Nie wypełniaj: <input name="bot-field" tabindex="-1" autocomplete="off" aria-hidden="true"></label></p>
         <div class="cform-body">
 
           <div class="cfield-row">
             <div class="cfield">
               <label class="cfield-label" for="imie">Imię <span class="cfield-req">*</span></label>
               <input class="cinput" id="imie" type="text" name="imie" placeholder="Twoje imię" required autocomplete="given-name" aria-describedby="imie-error">
-              <div class="field-error" id="imie-error"></div>
+              <div class="field-error" id="imie-error" aria-live="polite"></div>
             </div>
             <div class="cfield">
               <label class="cfield-label" for="email">E-mail <span class="cfield-req">*</span></label>
               <input class="cinput" id="email" type="email" name="email" placeholder="ty@example.pl" required autocomplete="email" aria-describedby="email-error">
-              <div class="field-error" id="email-error"></div>
+              <div class="field-error" id="email-error" aria-live="polite"></div>
             </div>
           </div>
 
@@ -1567,36 +1578,36 @@ select.cinput{cursor:pointer}
             <div class="cpkg-grid" id="pkgGrid" role="radiogroup" aria-labelledby="interest-label" aria-describedby="interest-error">
               <label class="cpkg sel" id="pkg-start">
                 <input type="radio" name="zainteresowanie" value="Darmowy mini audyt" checked required>
-                <span class="cpkg-icon">🔍</span>
+                <span class="cpkg-icon" aria-hidden="true">🔍</span>
                 <span class="cpkg-name">Darmowy mini audyt</span>
                 <span class="cpkg-price">0 zł</span>
               </label>
               <label class="cpkg" id="pkg-pro">
                 <input type="radio" name="zainteresowanie" value="Oferta Pro" required>
-                <span class="cpkg-icon">⚡</span>
+                <span class="cpkg-icon" aria-hidden="true">⚡</span>
                 <span class="cpkg-name">Oferta Pro</span>
                 <span class="cpkg-price">od 149 zł</span>
               </label>
               <label class="cpkg" id="pkg-studio">
                 <input type="radio" name="zainteresowanie" value="Seria produktów" required>
-                <span class="cpkg-icon">📦</span>
+                <span class="cpkg-icon" aria-hidden="true">📦</span>
                 <span class="cpkg-name">Seria produktów</span>
                 <span class="cpkg-price">wycena</span>
               </label>
               <label class="cpkg" id="pkg-unsure">
                 <input type="radio" name="zainteresowanie" value="Nie wiem jeszcze" required>
-                <span class="cpkg-icon">?</span>
+                <span class="cpkg-icon" aria-hidden="true">?</span>
                 <span class="cpkg-name">Nie wiem jeszcze</span>
                 <span class="cpkg-price">pomoc w wyborze</span>
               </label>
             </div>
-            <div class="field-error" id="interest-error"></div>
+            <div class="field-error" id="interest-error" aria-live="polite"></div>
           </div>
 
           <div class="cfield">
             <label class="cfield-label" for="offer_link">Link do oferty <span class="label-optional">(opcjonalnie)</span></label>
             <input class="cinput" id="offer_link" type="url" name="offer_link" placeholder="https://allegro.pl/oferta/..." autocomplete="url" aria-describedby="offer-link-error">
-            <div class="field-error" id="offer-link-error"></div>
+            <div class="field-error" id="offer-link-error" aria-live="polite"></div>
           </div>
 
           <div class="cfield">
@@ -1646,12 +1657,12 @@ select.cinput{cursor:pointer}
         <div class="cform-submit">
           <button type="submit" class="csubmit-btn" id="submitBtn">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-            Wyślij — odbierz analizę w 24h
+            Wyślij link do analizy
           </button>
           <div class="csubmit-note">Odpowiadam mailowo lub przez WhatsApp. Bez zobowiązań.</div>
           <div class="form-status" id="formStatus" role="alert" aria-live="assertive"></div>
           <div class="csubmit-or">lub napisz bezpośrednio</div>
-          <a href="https://wa.me/48791162938?text=Cześć,%20chcę%20zapytać%20o%20optymalizację%20oferty." class="csubmit-wa">
+          <a href="https://wa.me/48791162938?text=Cześć,%20chcę%20zapytać%20o%20optymalizację%20oferty." class="csubmit-wa" data-location="contact">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             WhatsApp · +48 791 162 938
           </a>
@@ -1660,7 +1671,7 @@ select.cinput{cursor:pointer}
       <p class="cform-note">Wysyłając formularz wyrażasz zgodę na przetwarzanie danych w celu odpowiedzi na zapytanie. Szczegóły: <a href="/polityka-prywatnosci">Polityka prywatności</a>.</p>
     </div>
     <div class="cform-success" id="formSuccess" role="status" aria-live="polite" tabindex="-1">
-      <div class="cform-success-icon">✅</div>
+      <div class="cform-success-icon" aria-hidden="true">✅</div>
       <div class="cform-success-title">Dziękuję — wiadomość została wysłana.</div>
       <div class="cform-success-sub">Odpowiem mailowo lub przez WhatsApp, jeśli został podany numer.</div>
     </div>
@@ -1669,7 +1680,7 @@ select.cinput{cursor:pointer}
 </div>
 </div>
 
-</div><!-- /page -->
+</main><!-- /page -->
 
 <footer>
   <div class="foot-inner">
@@ -1695,7 +1706,7 @@ const root=document.documentElement,tb=document.getElementById('themeToggle');
 const saved=localStorage.getItem('os-theme');
 if(saved){
   root.setAttribute('data-theme',saved);
-  tb.textContent=saved==='dark'?'☾':'☀';
+  tb.innerHTML=`<span aria-hidden="true">${saved==='dark'?'☾':'☀'}</span>`;
   tb.setAttribute('aria-pressed',saved==='dark'?'true':'false');
   tb.setAttribute('aria-label',saved==='dark'?'Włącz tryb jasny':'Włącz tryb ciemny');
 }
@@ -1703,7 +1714,7 @@ tb.addEventListener('click',()=>{
   const dark=root.getAttribute('data-theme')==='dark';
   const next=dark?'light':'dark';
   root.setAttribute('data-theme',next);
-  tb.textContent=dark?'☀':'☾';
+  tb.innerHTML=`<span aria-hidden="true">${dark?'☀':'☾'}</span>`;
   tb.setAttribute('aria-pressed',dark?'false':'true');
   tb.setAttribute('aria-label',dark?'Włącz tryb ciemny':'Włącz tryb jasny');
   localStorage.setItem('os-theme',next);
@@ -1718,6 +1729,7 @@ function closeDrawer(){
   hamBtn.setAttribute('aria-label','Otwórz menu nawigacji');
   drawer.setAttribute('aria-hidden','true');
   document.body.style.overflow='';
+  hamBtn.focus();
 }
 hamBtn.addEventListener('click',()=>{
   const open=hamBtn.classList.toggle('open');
@@ -1730,6 +1742,9 @@ hamBtn.addEventListener('click',()=>{
 document.addEventListener('click',e=>{
   const nav=document.querySelector('nav');
   if(!nav.contains(e.target)&&!drawer.contains(e.target)&&drawer.classList.contains('open'))closeDrawer();
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'&&drawer.classList.contains('open'))closeDrawer();
 });
 
 /* Active nav link on scroll */
@@ -1760,7 +1775,7 @@ sections.forEach(s=>obs.observe(s));
     before.style.clipPath=`inset(0 ${100-cur}% 0 0)`;
     ln.style.left=cur+'%';
     hd.style.left=cur+'%';
-    hd.setAttribute('aria-valuenow',Math.round(cur));
+    sl.setAttribute('aria-valuenow',Math.round(cur));
   }
   sl.addEventListener('mousedown',e=>{drag=true;set(e.clientX);e.preventDefault()});
   sl.addEventListener('touchstart',e=>{drag=true;set(e.touches[0].clientX);e.preventDefault()},{passive:false});
@@ -1772,6 +1787,7 @@ sections.forEach(s=>obs.observe(s));
     if(e.key==='Home'){e.preventDefault();set(r.left)}
     if(e.key==='End'){e.preventDefault();set(r.right)}
   });
+  sl.addEventListener('blur',()=>drag=false);
   window.addEventListener('mousemove',e=>{if(drag)set(e.clientX)});
   window.addEventListener('touchmove',e=>{if(drag){set(e.touches[0].clientX);e.preventDefault()}},{passive:false});
   window.addEventListener('mouseup',()=>drag=false);
@@ -1861,6 +1877,26 @@ if(form){
         document.getElementById('contactFormWrap').style.display='none';
         document.getElementById('formSuccess').style.display='block';
         document.getElementById('formSuccess').focus?.();
+        const sentData=new FormData(form);
+        const interest=sentData.get('zainteresowanie')||'';
+        const packageMap={
+          'Darmowy mini audyt':'start',
+          'Oferta Pro':'oferta_pro',
+          'Seria produktów':'studio',
+          'Nie wiem jeszcze':'start'
+        };
+        const platformMap={
+          'Allegro':'allegro',
+          'OLX':'olx',
+          'Amazon':'amazon',
+          'Sklep internetowy':'sklep',
+          'Inne':'inne'
+        };
+        window.trackEvent?.('form_submit',{
+          location:'contact',
+          package:packageMap[interest]||undefined,
+          platform:platformMap[sentData.get('platforma')]||undefined
+        });
       }else{
         if(formStatus){
           formStatus.textContent='Nie udało się wysłać formularza. Sprawdź wymagane pola albo napisz bezpośrednio na WhatsApp.';

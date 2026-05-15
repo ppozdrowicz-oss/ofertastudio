@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -71,48 +71,54 @@
   ]
 }
 </script>
-<style>
-:root{--bg:#f6f8fc;--card:#fff;--text:#0a1628;--muted:#3d5278;--line:#dce4f0;--brand:#2563eb;--brand-dark:#1746a2;--soft:#eef4ff}
-*{box-sizing:border-box}body{font-family:Inter,system-ui,sans-serif;margin:0;background:var(--bg);color:var(--text);line-height:1.7}.wrap{max-width:1040px;margin:0 auto;padding:0 1rem}.top{border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:10}.top-in{min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:.8rem}.logo{font-weight:800;color:#0f2d6e;text-decoration:none}.logo span{color:var(--brand)}
-.main{padding:1.2rem 0 2.4rem}.breadcrumbs{font-size:.86rem;color:var(--muted);margin:.6rem 0 1.3rem}.breadcrumbs a{color:var(--muted);text-decoration:none}.hero{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr);gap:1rem;align-items:stretch;margin-bottom:1rem}.hero-box,.card,.cta{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1.2rem}
-h1{font-size:clamp(1.85rem,4vw,2.85rem);line-height:1.14;margin:0 0 .75rem;letter-spacing:-.01em}h2{font-size:1.28rem;line-height:1.25;margin:0 0 .65rem}h3{font-size:1rem;margin:.85rem 0 .25rem}p{margin:.25rem 0}.muted{color:var(--muted)}.eyebrow{font-size:.78rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--brand);margin-bottom:.45rem}
-.btns{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1rem}.btn{display:inline-flex;align-items:center;justify-content:center;padding:.76rem 1.05rem;border-radius:10px;text-decoration:none;font-weight:800}.btn-p{background:var(--brand);color:#fff}.btn-p:hover{background:var(--brand-dark)}.btn-s{background:#fff;color:var(--text);border:1px solid #c8d4e8}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.85rem}.list{padding-left:1.1rem;margin:.4rem 0 0}.list li{margin:.22rem 0}.process{counter-reset:step}.step{position:relative;padding-left:3rem}.step:before{counter-increment:step;content:counter(step);position:absolute;left:0;top:.15rem;width:2rem;height:2rem;border-radius:50%;background:var(--soft);color:var(--brand);display:grid;place-items:center;font-weight:900}
-.note{background:var(--soft);border-color:#c9dafc}.links{display:flex;gap:.5rem;flex-wrap:wrap}.link-chip{font-size:.88rem;text-decoration:none;color:var(--muted);background:#fff;border:1px solid var(--line);padding:.38rem .68rem;border-radius:999px}.faq details{border-top:1px solid var(--line);padding:.75rem 0}.faq details:first-child{border-top:0}.faq summary{font-weight:800;cursor:pointer}.faq p{color:var(--muted);margin-top:.35rem}
-footer{border-top:1px solid var(--line);padding:1.1rem 0 1.6rem;margin-top:1.2rem;color:var(--muted);font-size:.88rem}@media(max-width:760px){.hero,.grid{grid-template-columns:1fr}.btn{width:100%}.hero-box,.card,.cta{padding:1rem}}
-</style>
-<style>
-@media(max-width:760px){
-  html{scroll-padding-top:4rem}
-  body{font-size:.97rem}
-  .wrap{padding:0 .875rem}
-  .top-in{min-height:56px;gap:.5rem}
-  .logo{font-size:.95rem;white-space:nowrap}
-  .top .btn{width:auto;min-height:2.5rem;padding:.625rem .8rem;font-size:.875rem}
-  .main{padding:.85rem 0 1.75rem}
-  .breadcrumbs{font-size:.8rem;margin:.5rem 0 1rem}
-  h1{font-size:clamp(1.55rem,8vw,2.1rem);line-height:1.12}
-  h2{font-size:1.12rem}
-  .hero{gap:.75rem}
-  .hero-box,.card,.cta{border-radius:12px;padding:1rem}
-  .btns{gap:.55rem}
-  .btn{min-height:2.75rem;line-height:1.25;text-align:center}
-  .link-chip{display:inline-flex;align-items:center;min-height:2.25rem}
-  .step{padding-left:2.55rem}
-  .step:before{width:1.85rem;height:1.85rem}
-  .links{gap:.45rem}
-}
-@media(max-width:380px){
-  .top-in{align-items:flex-start;flex-direction:column;padding:.75rem .875rem}
-  .top .btn{width:100%}
-}
-</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap"></noscript>
+<link rel="stylesheet" href="/service-style.css">
+<script src="/analytics.js" defer></script>
 </head>
 <body>
-<header class="top"><div class="wrap top-in"><a class="logo" href="/">Oferta<span>Studio</span>.pl</a><a class="btn btn-s" href="/#kontakt">Kontakt</a></div></header>
+<a class="skip-link" href="#main-content">Przejdź do treści</a>
+<div class="grid-bg"></div>
+<nav class="site-nav" aria-label="Główna nawigacja">
+  <div class="nav-inner">
+    <a class="nav-logo" href="/" aria-label="OfertaStudio.pl – strona główna">
+      <svg viewBox="0 0 300 42" height="26" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;display:block" aria-hidden="true" focusable="false">
+        <text y="34" font-family="Inter,sans-serif" font-weight="800" font-size="36" fill="#0f2d6e" letter-spacing="-1">Oferta<tspan fill="#2563eb">Studio</tspan><tspan font-weight="300" font-size="26" fill="#94a3b8" dy="1">.pl</tspan></text>
+      </svg>
+    </a>
+    <div class="nav-links" aria-label="Menu główne">
+      <a href="/realizacje" class="nav-link">Realizacje</a>
+      <a href="/#uslugi" class="nav-link">Usługi</a>
+      <a href="/#specjalizacje" class="nav-link">Specjalizacje</a>
+      <a href="/#cennik" class="nav-link">Pakiety</a>
+      <a href="/#faq" class="nav-link">FAQ</a>
+      <a href="/#kontakt" class="nav-link">Kontakt</a>
+    </div>
+    <div class="nav-right">
+      <div class="status-pill"><span class="sdot" aria-hidden="true"></span>Zapytania otwarte</div>
+      <button class="toggle-btn" id="themeToggle" aria-label="Włącz tryb ciemny" aria-pressed="false"><span aria-hidden="true">☀</span></button>
+      <a href="/#kontakt" class="btn-nav">Zapytaj o ofertę</a>
+      <button class="ham-btn" id="hamBtn" aria-label="Otwórz menu nawigacji" aria-expanded="false" aria-controls="navDrawer"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer" role="navigation" aria-label="Menu mobilne" aria-hidden="true">
+  <a href="/realizacje" class="nav-link" onclick="closeDrawer()">Realizacje przed/po</a>
+  <a href="/#uslugi" class="nav-link" onclick="closeDrawer()">Usługi</a>
+  <a href="/#specjalizacje" class="nav-link" onclick="closeDrawer()">Specjalizacje</a>
+  <a href="/#cennik" class="nav-link" onclick="closeDrawer()">Pakiety i ceny</a>
+  <a href="/#faq" class="nav-link" onclick="closeDrawer()">FAQ</a>
+  <a href="/#kontakt" class="nav-link" onclick="closeDrawer()">Kontakt</a>
+  <div class="drawer-ctas">
+    <a href="/#kontakt" class="btn-nav" onclick="closeDrawer()">Zapytaj o ofertę</a>
+    <a href="https://wa.me/48791162938" class="btn-wa" onclick="closeDrawer()">WhatsApp</a>
+  </div>
+</div>
 
-<main class="wrap main">
-  <nav class="breadcrumbs" aria-label="Breadcrumbs"><a href="/">Start</a> / Oferty OLX</nav>
+<main id="main-content" class="wrap main" tabindex="-1">
+  <nav class="breadcrumbs" aria-label="Ścieżka strony"><a href="/">Start</a> / Oferty OLX</nav>
 
   <section class="hero">
     <div class="hero-box">
@@ -120,7 +126,7 @@ footer{border-top:1px solid var(--line);padding:1.1rem 0 1.6rem;margin-top:1.2re
       <h1>Oferty OLX — zdjęcia i treść, które budują zaufanie kupującego</h1>
       <p class="muted">OLX działa inaczej niż Allegro: kupujący mocniej ocenia wiarygodność ogłoszenia, stan produktu, jasność zdjęć i łatwość kontaktu. Oferta powinna szybko zmniejszać niepewność.</p>
       <div class="btns">
-        <a class="btn btn-p" href="/#kontakt">Zapytaj o ofertę OLX</a>
+        <a class="btn btn-p" href="/#kontakt" data-event="hero_cta_click" data-location="hero" data-platform="olx">Zapytaj o ofertę OLX</a>
         <a class="btn btn-s" href="/realizacje">Zobacz realizacje przed/po</a>
       </div>
     </div>
@@ -179,11 +185,11 @@ footer{border-top:1px solid var(--line);padding:1.1rem 0 1.6rem;margin-top:1.2re
     <section class="card">
       <h2>Przykład zastosowania</h2>
       <p>Dla produktu warsztatowego na OLX warto pokazać zdjęcie całego zestawu, stan użycia, detale robocze, akcesoria i sposób odbioru. Opis powinien jasno wskazać, co jest w komplecie, czy produkt jest sprawny i jak najlepiej skontaktować się ze sprzedającym.</p>
-      <div class="btns"><a class="btn btn-s" href="/realizacje#narzedzia">Zobacz przykład narzędzi</a></div>
+      <div class="btns"><a class="btn btn-s" href="/realizacje#narzedzia" data-event="case_study_click" data-location="case_study">Zobacz przykład narzędzi</a></div>
     </section>
   </div>
 
-  <section class="card faq">
+  <section class="card faq" id="faq">
     <h2>FAQ</h2>
     <details><summary>Czy oferta OLX różni się od oferty Allegro?</summary><p>Tak. Na OLX większe znaczenie ma zaufanie do ogłoszenia, jasny stan produktu, kontakt i lokalny kontekst sprzedaży. Allegro częściej wymaga bardziej uporządkowanej struktury marketplace.</p></details>
     <details><summary>Czy można przygotować ogłoszenie bez gotowego linku?</summary><p>Tak. Wystarczą zdjęcia produktu, informacje o stanie, cenie, lokalizacji lub sposobie odbioru oraz to, co chcesz podkreślić.</p></details>
@@ -209,23 +215,39 @@ footer{border-top:1px solid var(--line);padding:1.1rem 0 1.6rem;margin-top:1.2re
     <h2>Chcesz przygotować lepsze ogłoszenie OLX?</h2>
     <p class="muted">Wyślij link, zdjęcia albo krótki opis produktu. Możesz też zaznaczyć, że nie masz jeszcze gotowej oferty.</p>
     <div class="btns">
-      <a class="btn btn-p" href="/#kontakt">Zapytaj o przygotowanie materiałów</a>
+      <a class="btn btn-p" href="/#kontakt" data-event="hero_cta_click" data-location="hero">Zapytaj o przygotowanie materiałów</a>
       <a class="btn btn-s" href="/audyt-oferty-allegro">Najpierw sprawdź audyt Allegro</a>
     </div>
   </section>
 </main>
 
-<footer><div class="wrap">
-  <p>OfertaStudio.pl jest rozwijane jako autorski projekt portfolio i usługa indywidualna.</p>
-  <div class="links" aria-label="Główne strony">
-    <a class="link-chip" href="/">Start</a>
-    <a class="link-chip" href="/realizacje">Realizacje</a>
-    <a class="link-chip" href="/optymalizacja-ofert-allegro">Optymalizacja Allegro</a>
-    <a class="link-chip" href="/zdjecia-produktowe-allegro">Zdjęcia Allegro</a>
-    <a class="link-chip" href="/opisy-produktow-allegro">Opisy Allegro</a>
-    <a class="link-chip" href="/audyt-oferty-allegro">Audyt Allegro</a>
-    <a class="link-chip" href="/polityka-prywatnosci">Polityka prywatności</a>
+<footer>
+  <div class="foot-inner">
+    <div class="foot-logo">OfertaStudio.pl © 2026</div>
+    <div class="foot-links">
+      <a href="/realizacje">Realizacje</a>
+      <a href="/optymalizacja-ofert-allegro">Optymalizacja Allegro</a>
+      <a href="/zdjecia-produktowe-allegro">Zdjęcia Allegro</a>
+      <a href="/opisy-produktow-allegro">Opisy Allegro</a>
+      <a href="/audyt-oferty-allegro">Audyt Allegro</a>
+      <a href="/oferty-olx">Oferty OLX</a>
+      <a href="/#cennik">Pakiety</a>
+      <a href="/#kontakt">Kontakt</a>
+      <a href="/polityka-prywatnosci">Polityka prywatności</a>
+    </div>
+    <div class="foot-copy">Allegro · OLX · Amazon · Sklepy internetowe</div>
   </div>
-</div></footer>
+</footer>
+<script>
+const root=document.documentElement,tb=document.getElementById("themeToggle");
+const saved=localStorage.getItem("os-theme");
+if(saved){root.setAttribute("data-theme",saved);tb.innerHTML=`<span aria-hidden="true">${saved==="dark"?"☾":"☀"}</span>`;tb.setAttribute("aria-pressed",saved==="dark"?"true":"false");tb.setAttribute("aria-label",saved==="dark"?"Włącz tryb jasny":"Włącz tryb ciemny")}
+tb.addEventListener("click",()=>{const dark=root.getAttribute("data-theme")==="dark";const next=dark?"light":"dark";root.setAttribute("data-theme",next);tb.innerHTML=`<span aria-hidden="true">${dark?"☀":"☾"}</span>`;tb.setAttribute("aria-pressed",dark?"false":"true");tb.setAttribute("aria-label",dark?"Włącz tryb ciemny":"Włącz tryb jasny");localStorage.setItem("os-theme",next)});
+const hamBtn=document.getElementById("hamBtn"),drawer=document.getElementById("navDrawer");
+function closeDrawer(){hamBtn.classList.remove("open");drawer.classList.remove("open");hamBtn.setAttribute("aria-expanded","false");hamBtn.setAttribute("aria-label","Otwórz menu nawigacji");drawer.setAttribute("aria-hidden","true");document.body.style.overflow="";}
+hamBtn.addEventListener("click",()=>{const open=hamBtn.classList.toggle("open");drawer.classList.toggle("open",open);hamBtn.setAttribute("aria-expanded",String(open));hamBtn.setAttribute("aria-label",open?"Zamknij menu nawigacji":"Otwórz menu nawigacji");drawer.setAttribute("aria-hidden",String(!open));document.body.style.overflow=open?"hidden":""});
+document.addEventListener("click",e=>{const nav=document.querySelector(".site-nav");if(!nav.contains(e.target)&&!drawer.contains(e.target)&&drawer.classList.contains("open"))closeDrawer()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&drawer.classList.contains("open"))closeDrawer()});
+</script>
 </body>
 </html>
