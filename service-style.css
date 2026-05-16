@@ -157,3 +157,12 @@ footer{border-top:1px solid var(--bs);padding:2rem 1.75rem;position:relative;z-i
   *,::before,::after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.001ms!important}
   .sdot{animation:none}
 }
+
+
+/* Unified footer */
+.foot-inner{align-items:flex-start;gap:1.25rem 2rem}
+.foot-brand{max-width:420px}
+.foot-desc{margin:.35rem 0 0;color:var(--t2);font-size:.875rem;line-height:1.55}
+.foot-links{max-width:760px;gap:.75rem 1.25rem;justify-content:flex-end}
+.foot-copy{flex-basis:100%;width:100%;padding-top:.875rem;border-top:1px solid var(--bs);font-size:.8125rem;color:var(--t3)}
+@media(max-width:760px){.foot-inner{text-align:center;flex-direction:column;align-items:center}.foot-brand{max-width:none}.foot-links{justify-content:center}.foot-copy{display:block}}
