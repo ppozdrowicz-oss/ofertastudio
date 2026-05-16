@@ -4,22 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Realizacje przed/po ofert produktowych | OfertaStudio.pl</title>
-<meta name="description" content="Portfolio OfertaStudio.pl: przykłady materiałów sprzedażowych dla produktów technicznych, BHP, spawalnictwa, domu i ogrodu oraz kosmetyków.">
+<meta name="description" content="Realizacje OfertaStudio.pl: zobacz 6 case studies przed/po dla zdjęć, galerii i opisów produktów. Sprawdź portfolio i wyślij link.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://ofertastudio.pl/realizacje/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pl_PL">
 <meta property="og:site_name" content="OfertaStudio.pl">
-<meta property="og:title" content="Realizacje przed/po — OfertaStudio.pl">
-<meta property="og:description" content="Przykłady przygotowanych materiałów sprzedażowych: problem, rozwiązanie, zakres i efekt jakościowy bez fikcyjnych danych biznesowych.">
+<meta property="og:title" content="Realizacje przed/po ofert produktowych | OfertaStudio.pl">
+<meta property="og:description" content="Realizacje OfertaStudio.pl: zobacz 6 case studies przed/po dla zdjęć, galerii i opisów produktów. Sprawdź portfolio i wyślij link.">
 <meta property="og:url" content="https://ofertastudio.pl/realizacje/">
-<meta property="og:image" content="https://ofertastudio.pl/elektronarzedzia-po-zestaw.png">
-<meta property="og:image:width" content="1254">
-<meta property="og:image:height" content="1254">
+<meta property="og:image" content="https://ofertastudio.pl/og-default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Realizacje przed/po — OfertaStudio.pl">
-<meta name="twitter:description" content="Portfolio przykładów ofert produktowych: problem, rozwiązanie, zakres i efekt jakościowy.">
-<meta name="twitter:image" content="https://ofertastudio.pl/elektronarzedzia-po-zestaw.png">
+<meta name="twitter:title" content="Realizacje przed/po ofert produktowych | OfertaStudio.pl">
+<meta name="twitter:description" content="Realizacje OfertaStudio.pl: zobacz 6 case studies przed/po dla zdjęć, galerii i opisów produktów. Sprawdź portfolio i wyślij link.">
+<meta name="twitter:image" content="https://ofertastudio.pl/og-default.jpg">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%232563eb'/><text x='4' y='24' font-family='Inter' font-weight='800' font-size='20' fill='white'>OS</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,29 +30,32 @@
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "Organization",
+      "@id": "https://ofertastudio.pl/#organization",
+      "name": "OfertaStudio.pl",
+      "url": "https://ofertastudio.pl/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://ofertastudio.pl/og-default.jpg",
+        "width": 1200,
+        "height": 630
+      },
+      "email": "kontakt@ofertastudio.pl",
+      "telephone": "+48791162938",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "PL"
+      }
+    },
+    {
       "@type": "WebSite",
       "@id": "https://ofertastudio.pl/#website",
       "name": "OfertaStudio.pl",
       "url": "https://ofertastudio.pl/",
       "inLanguage": "pl-PL",
-      "publisher": {"@id": "https://ofertastudio.pl/#author"}
-    },
-    {
-      "@type": "Person",
-      "@id": "https://ofertastudio.pl/#author",
-      "name": "Autor projektu OfertaStudio.pl",
-      "url": "https://ofertastudio.pl/",
-      "description": "Autor autorskiego projektu portfolio i usługi indywidualnej tworzenia materiałów sprzedażowych dla e-commerce."
-    },
-    {
-      "@type": "Service",
-      "@id": "https://ofertastudio.pl/#service",
-      "name": "Tworzenie i optymalizacja ofert produktowych",
-      "serviceType": "Materiały sprzedażowe dla Allegro, OLX, Amazon i sklepów internetowych",
-      "provider": {"@id": "https://ofertastudio.pl/#author"},
-      "areaServed": {"@type": "Country", "name": "Polska"},
-      "url": "https://ofertastudio.pl/",
-      "description": "Przygotowanie miniatur, galerii, tytułów SEO, opisów, infografik i materiałów do publikacji w ramach indywidualnej współpracy."
+      "publisher": {
+        "@id": "https://ofertastudio.pl/#organization"
+      }
     },
     {
       "@type": "CollectionPage",
@@ -60,14 +63,29 @@
       "name": "Realizacje przed/po — przykłady ofert produktowych",
       "url": "https://ofertastudio.pl/realizacje/",
       "description": "Portfolio przykładów pracy nad zdjęciami produktowymi, galeriami, opisami i materiałami sprzedażowymi.",
-      "isPartOf": {"@id": "https://ofertastudio.pl/#website"}
+      "isPartOf": {
+        "@id": "https://ofertastudio.pl/#website"
+      },
+      "publisher": {
+        "@id": "https://ofertastudio.pl/#organization"
+      }
     },
     {
       "@type": "BreadcrumbList",
       "@id": "https://ofertastudio.pl/realizacje#breadcrumb",
       "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Start", "item": "https://ofertastudio.pl/"},
-        {"@type": "ListItem", "position": 2, "name": "Realizacje", "item": "https://ofertastudio.pl/realizacje/"}
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Strona główna",
+          "item": "https://ofertastudio.pl/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Realizacje",
+          "item": "https://ofertastudio.pl/realizacje/"
+        }
       ]
     }
   ]
@@ -75,31 +93,6 @@
 </script>
 <style>
 *,::before,::after{box-sizing:border-box;margin:0;padding:0;border-width:0;border-style:solid}
-:root{
-  --bg:#f6f8fc;--s1:#fff;--s2:#f0f4f9;--s3:#e8eef7;
-  --bs:#dce4f0;--b:#c8d4e8;
-  --t1:#0a1628;--t2:#33496d;--t3:#5f708c;
-  --brand:#2563eb;--brand2:#1a4fc4;--cyan:#0891b2;--green:#059669;--amber:#d97706;
-  --brand-bg:rgba(37,99,235,.07);--ok-bg:#ecfdf5;--ok:#047857;
-  --sh1:0 1px 3px rgba(10,22,40,.07),0 0 0 1px rgba(10,22,40,.04);
-  --sh2:0 4px 12px rgba(10,22,40,.09),0 0 0 1px rgba(10,22,40,.04);
-  --sh3:0 16px 40px rgba(10,22,40,.11),0 2px 6px rgba(10,22,40,.05);
-  --sh4:0 32px 64px rgba(10,22,40,.15),0 4px 12px rgba(10,22,40,.07);
-  --nav:rgba(246,248,252,.9);--glass:linear-gradient(160deg,rgba(255,255,255,.75),rgba(255,255,255,.45));
-  --r:0.875rem;--grid:rgba(37,99,235,.055);
-}
-[data-theme="dark"]{
-  --bg:#050810;--s1:#0c1022;--s2:#111829;--s3:#172035;
-  --bs:#1e2d45;--b:#2a3e5c;
-  --t1:#eef2ff;--t2:#93afd4;--t3:#4a6080;
-  --brand:#3b82f6;--brand2:#60a5fa;
-  --brand-bg:rgba(59,130,246,.1);--ok-bg:#064e3b;--ok:#6ee7b7;
-  --sh1:0 1px 3px rgba(0,0,0,.35),0 0 0 1px rgba(255,255,255,.04);
-  --sh2:0 4px 12px rgba(0,0,0,.42),0 0 0 1px rgba(255,255,255,.05);
-  --sh3:0 16px 40px rgba(0,0,0,.5),0 2px 6px rgba(0,0,0,.3);
-  --sh4:0 32px 64px rgba(0,0,0,.6),0 4px 12px rgba(0,0,0,.35);
-  --nav:rgba(5,8,16,.9);--glass:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.025));
-}
 html{scroll-behavior:smooth;scroll-padding-top:5rem;background:var(--bg)}
 body{min-height:100vh;font-family:'Inter',system-ui,sans-serif;font-size:1rem;line-height:1.65;color:var(--t1);background:radial-gradient(ellipse 80% 40% at 50% -5%,rgba(37,99,235,.09),transparent),var(--bg);-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .3s,color .3s}
 [data-theme="dark"] body{background:radial-gradient(ellipse 80% 40% at 50% -5%,rgba(59,130,246,.11),transparent),var(--bg)}
@@ -405,49 +398,16 @@ footer{border-top:1px solid var(--bs);padding:2rem 1.75rem;position:relative;z-i
 
 </style>
 <script src="/analytics.js" defer></script>
+<link rel="stylesheet" href="/site-system.css">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Przejdź do treści</a>
 <div class="grid-bg"></div>
 
-<nav class="site-nav" aria-label="Główna nawigacja">
-  <div class="nav-inner">
-    <a class="nav-logo" href="/" aria-label="OfertaStudio.pl - strona główna">
-      <svg viewBox="0 0 300 42" height="26" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;display:block" aria-hidden="true" focusable="false">
-        <text y="34" font-family="Inter,sans-serif" font-weight="800" font-size="36" fill="#0f2d6e" letter-spacing="-1">Oferta<tspan fill="#2563eb">Studio</tspan><tspan font-weight="300" font-size="26" fill="#94a3b8" dy="1">.pl</tspan></text>
-      </svg>
-    </a>
-    <div class="nav-links" aria-label="Menu główne">
-      <a href="/#uslugi" class="nav-link">Usługi</a>
-      <a href="/realizacje/" class="nav-link">Realizacje</a>
-      <a href="/#pakiety" class="nav-link">Pakiety</a>
-      <a href="/#proces" class="nav-link">Proces</a>
-      <a href="/#faq" class="nav-link">FAQ</a>
-      <a href="/#kontakt" class="nav-link">Kontakt</a>
-    </div>
-    <div class="nav-right">
-      <div class="status-pill"><span class="sdot" aria-hidden="true"></span>Zapytania otwarte</div>
-      <button class="toggle-btn" id="themeToggle" aria-label="Włącz tryb ciemny" aria-pressed="false"><span aria-hidden="true">☀</span></button>
-      <a href="/#kontakt" class="btn-nav">Mini audyt</a>
-      <button class="ham-btn" id="hamBtn" aria-label="Otwórz menu nawigacji" aria-expanded="false" aria-controls="navDrawer"><span></span><span></span><span></span></button>
-    </div>
-  </div>
-</nav>
-<div class="nav-drawer" id="navDrawer" role="navigation" aria-label="Menu mobilne" aria-hidden="true">
-  <a href="/#uslugi" class="nav-link" onclick="closeDrawer()">Usługi</a>
-  <a href="/realizacje/" class="nav-link" onclick="closeDrawer()">Realizacje</a>
-  <a href="/#pakiety" class="nav-link" onclick="closeDrawer()">Pakiety</a>
-  <a href="/#proces" class="nav-link" onclick="closeDrawer()">Proces</a>
-  <a href="/#faq" class="nav-link" onclick="closeDrawer()">FAQ</a>
-  <a href="/#kontakt" class="nav-link" onclick="closeDrawer()">Kontakt</a>
-  <div class="drawer-ctas">
-    <a href="/#kontakt" class="btn-nav" onclick="closeDrawer()">Mini audyt</a>
-    <a href="https://wa.me/48791162938" class="btn-wa" onclick="closeDrawer()">WhatsApp</a>
-  </div>
-</div>
-
+<div data-site-header></div>
 
 <main class="page" id="main-content" tabindex="-1">
+<nav data-site-breadcrumb></nav>
 
 <!-- HERO -->
 <div class="hero">
@@ -867,28 +827,9 @@ footer{border-top:1px solid var(--bs);padding:2rem 1.75rem;position:relative;z-i
 
 </main>
 
-<footer>
-  <div class="foot-inner">
-    <div class="foot-brand">
-      <div class="foot-logo">OfertaStudio.pl</div>
-      <p class="foot-desc">Autorski projekt tworzenia i optymalizacji ofert produktowych dla e-commerce.</p>
-      <p class="foot-desc">Strona prezentuje przykłady realizacji, proces pracy i możliwość kontaktu w sprawie indywidualnej współpracy.</p>
-    </div>
-    <div class="foot-links" aria-label="Linki w stopce">
-      <a href="/">Strona główna</a>
-      <a href="/realizacje/">Realizacje</a>
-      <a href="/zdjecia-produktowe-allegro/">Zdjęcia produktowe Allegro</a>
-      <a href="/opisy-produktow-allegro/">Opisy produktów Allegro</a>
-      <a href="/optymalizacja-ofert-allegro/">Optymalizacja ofert Allegro</a>
-      <a href="/audyt-oferty-allegro/">Audyt oferty Allegro</a>
-      <a href="/oferty-olx/">Oferty OLX</a>
-      <a href="/polityka-prywatnosci/">Polityka prywatności</a>
-      <a href="/#kontakt">Kontakt</a>
-    </div>
-    <div class="foot-copy">© 2026 OfertaStudio.pl. Autorski projekt portfolio usługowego - współpraca ustalana indywidualnie.</div>
-  </div>
-</footer>
+<div data-site-footer></div>
 
+<script src="/site-components.js"></script>
 <script>
 // THEME — localStorage sync + aria
 const root=document.documentElement,tb=document.getElementById('themeToggle');
