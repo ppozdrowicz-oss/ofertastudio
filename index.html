@@ -422,6 +422,7 @@ footer{border-top:1px solid var(--bs);padding:2.25rem 1.75rem;position:relative;
   .btn-nav{display:none}
   .ham-btn{display:flex}
   /* .nav-drawer zawsze display:flex — sterowane przez .open */
+  .section:not(.hero),.band,footer{content-visibility:visible;contain-intrinsic-size:auto}
   .sticky-cta{display:none}
   .wa-fab{display:flex}
   /* hero na tablecie */
@@ -1756,6 +1757,50 @@ document.addEventListener('click',e=>{
 });
 document.addEventListener('keydown',e=>{
   if(e.key==='Escape'&&drawer.classList.contains('open'))closeDrawer();
+});
+
+/* Precise hash scrolling for fixed mobile/desktop navigation */
+const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
+function normalizePath(path){
+  const normalized=path.replace(/\/index\.html$/,'/');
+  return normalized.length>1?normalized.replace(/\/$/,''):normalized||'/';
+}
+function samePageHash(href){
+  if(!href)return null;
+  const url=new URL(href,window.location.href);
+  if(url.origin!==window.location.origin)return null;
+  if(normalizePath(url.pathname)!==normalizePath(window.location.pathname))return null;
+  return url.hash||null;
+}
+function navOffset(){
+  const nav=document.querySelector('nav');
+  return Math.ceil(nav?.getBoundingClientRect().height||0);
+}
+function visualAnchorTarget(target){
+  if(!target.classList.contains('section'))return target;
+  return target.querySelector(':scope > .s-head,:scope > .contact-wrap,:scope > .cta-box,:scope > .card,:scope > .grid')||target;
+}
+function scrollToHash(hash,{update=true,behavior='smooth'}={}){
+  if(!hash||hash==='#')return false;
+  const target=document.getElementById(decodeURIComponent(hash.slice(1)));
+  if(!target)return false;
+  const anchor=visualAnchorTarget(target);
+  const top=Math.max(0,window.scrollY+anchor.getBoundingClientRect().top-navOffset());
+  window.scrollTo({top,behavior:reduceMotion.matches?'auto':behavior});
+  if(update&&window.location.hash!==hash)history.pushState(null,'',hash);
+  return true;
+}
+document.querySelectorAll('a[href*="#"]').forEach(link=>{
+  link.addEventListener('click',e=>{
+    const hash=samePageHash(link.getAttribute('href'));
+    if(!hash)return;
+    e.preventDefault();
+    closeDrawer();
+    requestAnimationFrame(()=>requestAnimationFrame(()=>scrollToHash(hash)));
+  });
+});
+window.addEventListener('load',()=>{
+  if(window.location.hash)requestAnimationFrame(()=>scrollToHash(window.location.hash,{update:false,behavior:'auto'}));
 });
 
 /* Active nav link on scroll */
