@@ -108,7 +108,7 @@
   --sh4:0 32px 64px rgba(0,0,0,.6),0 4px 10px rgba(0,0,0,.35);
   --nav:rgba(5,8,16,.9);--glass:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.025));
 }
-html{scroll-behavior:smooth;background:var(--bg)}
+html{scroll-behavior:smooth;scroll-padding-top:5rem;background:var(--bg)}
 body{min-height:100vh;font-family:'Inter',system-ui,sans-serif;font-size:1rem;line-height:1.65;color:var(--t1);
   background:radial-gradient(ellipse 80% 50% at 50% -10%,rgba(37,99,235,.1),transparent),var(--bg);
   -webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .3s,color .3s}
@@ -182,7 +182,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;border-bottom:1px solid var(
 
 /* ── LAYOUT ── */
 .page{position:relative;z-index:1}
-.section{max-width:1280px;margin:0 auto;padding:4rem 1.75rem}
+.section{max-width:1280px;margin:0 auto;padding:4rem 1.75rem;scroll-margin-top:5rem}
 .divider{height:1px;background:var(--bs);max-width:1280px;margin:0 auto}
 .card{
   background:var(--s1);
@@ -422,6 +422,7 @@ footer{border-top:1px solid var(--bs);padding:2.25rem 1.75rem;position:relative;
   .btn-nav{display:none}
   .ham-btn{display:flex}
   /* .nav-drawer zawsze display:flex — sterowane przez .open */
+  .section:not(.hero),.band,footer{content-visibility:visible;contain-intrinsic-size:auto}
   .sticky-cta{display:none}
   .wa-fab{display:flex}
   /* hero na tablecie */
@@ -826,6 +827,17 @@ select.cinput{cursor:pointer}
   .card:hover,.pf-card:hover,.shot-card:hover,.btn-p:hover,.btn-s:hover,.btn-nav:hover,.btn-hero-primary:hover,.btn-hero-wa:hover,.sticky-btn:hover,.csubmit-btn:hover:not(:disabled),.csubmit-wa:hover{transform:none}
   .pf-card-overlay{opacity:1}
 }
+
+/* Unified footer */
+.foot-inner{align-items:flex-start;gap:1.25rem 2rem}
+.foot-brand{max-width:420px}
+.foot-desc{margin:.35rem 0 0;color:var(--t2);font-size:.875rem;line-height:1.55}
+.foot-links{max-width:760px;gap:.75rem 1.25rem;justify-content:flex-end}
+.foot-copy{flex-basis:100%;width:100%;padding-top:.875rem;border-top:1px solid var(--bs);font-size:.8125rem;color:var(--t3)}
+@media(max-width:760px){.foot-inner{text-align:center;flex-direction:column;align-items:center}.foot-brand{max-width:none}.foot-links{justify-content:center}.foot-copy{display:block}}
+
+.anchor-alias{display:block;position:relative;top:-5rem;visibility:hidden}
+
 </style>
 <script src="/analytics.js" defer></script>
 </head>
@@ -841,52 +853,46 @@ select.cinput{cursor:pointer}
 <!-- Sticky CTA (desktop) -->
 <div class="sticky-cta">
   <div class="sticky-pill"><span aria-hidden="true">●</span> Darmowy mini audyt</div>
-  <a href="#mini-audyt" class="sticky-btn" data-event="mini_audit_click" data-location="hero" data-package="start">Wyślij link do analizy</a>
+  <a href="/#kontakt" class="sticky-btn" data-event="mini_audit_click" data-location="hero" data-package="start">Wyślij link do analizy</a>
 </div>
 
 <!-- NAV -->
-<nav aria-label="Główna nawigacja">
+<nav class="site-nav" aria-label="Główna nawigacja">
   <div class="nav-inner">
-    <a class="nav-logo" href="/" aria-label="OfertaStudio.pl – strona główna">
+    <a class="nav-logo" href="/" aria-label="OfertaStudio.pl - strona główna">
       <svg viewBox="0 0 300 42" height="26" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;display:block" aria-hidden="true" focusable="false">
         <text y="34" font-family="Inter,sans-serif" font-weight="800" font-size="36" fill="#0f2d6e" letter-spacing="-1">Oferta<tspan fill="#2563eb">Studio</tspan><tspan font-weight="300" font-size="26" fill="#94a3b8" dy="1">.pl</tspan></text>
       </svg>
     </a>
     <div class="nav-links" aria-label="Menu główne">
-      <a href="/realizacje" class="nav-link">Realizacje</a>
-      <a href="#uslugi" class="nav-link">Usługi</a>
-      <a href="#specjalizacje" class="nav-link">Specjalizacje</a>
-      <a href="#cennik" class="nav-link">Pakiety</a>
-      <a href="#faq" class="nav-link">FAQ</a>
-      <a href="#kontakt" class="nav-link">Kontakt</a>
+      <a href="/#uslugi" class="nav-link">Usługi</a>
+      <a href="/realizacje/" class="nav-link">Realizacje</a>
+      <a href="/#pakiety" class="nav-link">Pakiety</a>
+      <a href="/#proces" class="nav-link">Proces</a>
+      <a href="/#faq" class="nav-link">FAQ</a>
+      <a href="/#kontakt" class="nav-link">Kontakt</a>
     </div>
     <div class="nav-right">
       <div class="status-pill"><span class="sdot" aria-hidden="true"></span>Zapytania otwarte</div>
       <button class="toggle-btn" id="themeToggle" aria-label="Włącz tryb ciemny" aria-pressed="false"><span aria-hidden="true">☀</span></button>
-      <a href="#kontakt" class="btn-nav">Zapytaj o ofertę</a>
-      <button class="ham-btn" id="hamBtn" aria-label="Otwórz menu nawigacji" aria-expanded="false" aria-controls="navDrawer">
-        <span></span><span></span><span></span>
-      </button>
+      <a href="/#kontakt" class="btn-nav">Mini audyt</a>
+      <button class="ham-btn" id="hamBtn" aria-label="Otwórz menu nawigacji" aria-expanded="false" aria-controls="navDrawer"><span></span><span></span><span></span></button>
     </div>
   </div>
 </nav>
-
-<!-- Mobile drawer -->
 <div class="nav-drawer" id="navDrawer" role="navigation" aria-label="Menu mobilne" aria-hidden="true">
-  <a href="/realizacje" class="nav-link" onclick="closeDrawer()">Realizacje przed/po</a>
-  <a href="#uslugi" class="nav-link" onclick="closeDrawer()">Usługi</a>
-  <a href="#specjalizacje" class="nav-link" onclick="closeDrawer()">Specjalizacje</a>
-  <a href="#cennik" class="nav-link" onclick="closeDrawer()">Pakiety i ceny</a>
-  <a href="#faq" class="nav-link" onclick="closeDrawer()">FAQ</a>
-  <a href="#kontakt" class="nav-link" onclick="closeDrawer()">Kontakt</a>
+  <a href="/#uslugi" class="nav-link" onclick="closeDrawer()">Usługi</a>
+  <a href="/realizacje/" class="nav-link" onclick="closeDrawer()">Realizacje</a>
+  <a href="/#pakiety" class="nav-link" onclick="closeDrawer()">Pakiety</a>
+  <a href="/#proces" class="nav-link" onclick="closeDrawer()">Proces</a>
+  <a href="/#faq" class="nav-link" onclick="closeDrawer()">FAQ</a>
+  <a href="/#kontakt" class="nav-link" onclick="closeDrawer()">Kontakt</a>
   <div class="drawer-ctas">
-    <a href="#kontakt" class="btn-nav" onclick="closeDrawer()">Zapytaj o ofertę</a>
-    <a href="https://wa.me/48791162938" class="btn-wa" onclick="closeDrawer()">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      WhatsApp
-    </a>
+    <a href="/#kontakt" class="btn-nav" onclick="closeDrawer()">Mini audyt</a>
+    <a href="https://wa.me/48791162938" class="btn-wa" onclick="closeDrawer()">WhatsApp</a>
   </div>
 </div>
+
 
 <main class="page" id="main-content" tabindex="-1">
 
@@ -902,12 +908,12 @@ select.cinput{cursor:pointer}
     </div>
 
     <div class="hero-ctas">
-      <a href="#kontakt" class="btn-hero-primary" data-event="hero_cta_click" data-location="hero" data-package="start">
+      <a href="/#kontakt" class="btn-hero-primary" data-event="hero_cta_click" data-location="hero" data-package="start">
         Wyślij link — odbierz darmowy mini audyt
         <span class="btn-badge">start</span>
       </a>
       <div class="hero-ctas-row">
-        <a href="#realizacje-preview" class="btn-hero-ghost" data-event="hero_cta_click" data-location="hero">Zobacz realizacje przed/po</a>
+        <a href="/realizacje/" class="btn-hero-ghost" data-event="hero_cta_click" data-location="hero">Zobacz realizacje przed/po</a>
         <a href="https://wa.me/48791162938?text=Cześć,%20chcę%20wysłać%20link%20do%20mini%20audytu%20oferty." class="btn-hero-wa" data-location="hero" data-package="start">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           WhatsApp
@@ -957,7 +963,8 @@ select.cinput{cursor:pointer}
 <div class="divider"></div>
 
 <!-- ── O PROJEKCIE ── -->
-<div class="section" id="o-projekcie">
+<span id="o-projekcie" class="anchor-alias" aria-hidden="true"></span>
+<div class="section" id="dlaczego">
   <div class="s-head">
     <div class="eyebrow">Historia projektu</div>
     <h2 class="s-title">Dlaczego powstało OfertaStudio?</h2>
@@ -977,15 +984,16 @@ select.cinput{cursor:pointer}
     </aside>
   </div>
   <div class="section-cta">
-    <a href="#kontakt" class="btn-p">Wyślij link — odbierz darmowy mini audyt</a>
-    <a href="#proces" class="btn-s">Zobacz proces pracy</a>
+    <a href="/#kontakt" class="btn-p">Wyślij link — odbierz darmowy mini audyt</a>
+    <a href="/#proces" class="btn-s">Zobacz proces pracy</a>
   </div>
 </div>
 
 <div class="divider"></div>
 
 <!-- ── PORTFOLIO ── -->
-<div class="section portfolio-section" id="realizacje-preview" data-view-event="realizations_section_view" data-location="case_study">
+<span id="realizacje-preview" class="anchor-alias" aria-hidden="true"></span>
+<div class="section portfolio-section" id="realizacje" data-view-event="realizations_section_view" data-location="case_study">
   <div class="s-head">
     <div class="eyebrow">Portfolio</div>
     <h2 class="s-title">Tak mogą wyglądać oferty po dopracowaniu</h2>
@@ -999,12 +1007,12 @@ select.cinput{cursor:pointer}
            role="slider" aria-label="Porównanie przed i po — Metabo PowerMaxx BS 12 BL"
            aria-orientation="horizontal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
         <div class="pf-side pf-side-po" aria-hidden="true">
-          <img decoding="async" loading="lazy" src="elektronarzedzia-po-zestaw.png" width="1254" height="1254"
+          <img decoding="async" loading="lazy" src="/elektronarzedzia-po-zestaw.png" width="1254" height="1254"
                alt="Metabo PowerMaxx BS 12 BL — po optymalizacji"
                onerror="this.style.display='none'">
         </div>
         <div class="pf-side pf-side-przed" id="pfBefore" style="clip-path:inset(0 50% 0 0)" aria-hidden="true">
-          <img decoding="async" loading="lazy" src="elektronarzedzia-przed.jpg" width="1016" height="762"
+          <img decoding="async" loading="lazy" src="/elektronarzedzia-przed.jpg" width="1016" height="762"
                alt="Metabo PowerMaxx BS 12 BL — przed optymalizacją"
                onerror="this.style.display='none'">
         </div>
@@ -1037,7 +1045,7 @@ select.cinput{cursor:pointer}
         <div class="pf-stat"><div class="n">10</div><div class="l">gotowych ujęć</div></div>
         <div class="pf-stat"><div class="n">2560px</div><div class="l">format plików</div></div>
       </div>
-      <a href="/realizacje#elektronarzedzia" class="btn-s" data-event="case_study_click" data-location="case_study">Zobacz pełne case study →</a>
+      <a href="/realizacje/#elektronarzedzia" class="btn-s" data-event="case_study_click" data-location="case_study">Zobacz pełne case study →</a>
     </div>
   </div>
 
@@ -1046,7 +1054,7 @@ select.cinput{cursor:pointer}
 
     <div class="card pf-card">
       <div class="pf-card-img">
-        <img decoding="async" loading="lazy" src="dom-ogrod-po-front.png" width="1672" height="941" alt="Pistolet Gardena — efekt końcowy"
+        <img decoding="async" loading="lazy" src="/dom-ogrod-po-front.png" width="1672" height="941" alt="Pistolet Gardena — efekt końcowy"
              onerror="this.parentElement.style.background='var(--s3)'">
         <div class="pf-card-overlay">
           <span class="pf-card-overlay-text">Zobacz case study →</span>
@@ -1061,13 +1069,13 @@ select.cinput{cursor:pointer}
           <div class="pf-mini-row"><strong>Efekt</strong>Czytelna galeria pokazuje zastosowanie, ergonomię i kompatybilność.</div>
         </div>
         <div class="pf-card-stat">1 zdj. → 7 ujęć</div>
-        <a href="/realizacje#dom-ogrod" class="pf-card-link" data-event="case_study_click" data-location="case_study">Zobacz case study →</a>
+        <a href="/realizacje/#dom-ogrod" class="pf-card-link" data-event="case_study_click" data-location="case_study">Zobacz case study →</a>
       </div>
     </div>
 
     <div class="card pf-card">
       <div class="pf-card-img">
-        <img decoding="async" loading="lazy" src="spawalnictwo-po-front.png" width="1254" height="1254" alt="Drut MIG/MAG — efekt końcowy"
+        <img decoding="async" loading="lazy" src="/spawalnictwo-po-front.png" width="1254" height="1254" alt="Drut MIG/MAG — efekt końcowy"
              onerror="this.parentElement.style.background='var(--s3)'">
         <div class="pf-card-overlay">
           <span class="pf-card-overlay-text">Zobacz case study →</span>
@@ -1082,13 +1090,13 @@ select.cinput{cursor:pointer}
           <div class="pf-mini-row"><strong>Efekt</strong>Galeria lepiej porządkuje opakowanie, szpulę, detal drutu i wyróżnik.</div>
         </div>
         <div class="pf-card-stat">1 zdj. → 5 ujęć + infografika</div>
-        <a href="/realizacje#spawalnictwo" class="pf-card-link" data-event="case_study_click" data-location="case_study">Zobacz case study →</a>
+        <a href="/realizacje/#spawalnictwo" class="pf-card-link" data-event="case_study_click" data-location="case_study">Zobacz case study →</a>
       </div>
     </div>
 
     <div class="card pf-card">
       <div class="pf-card-img">
-        <img decoding="async" loading="lazy" src="tabaiba-po-front.png" width="2560" height="2560" alt="Tabaiba Sun Oil — efekt końcowy"
+        <img decoding="async" loading="lazy" src="/tabaiba-po-front.png" width="1024" height="1024" alt="Tabaiba Sun Oil — efekt końcowy"
              onerror="this.parentElement.style.background='var(--s3)'">
         <div class="pf-card-overlay">
           <span class="pf-card-overlay-text">Zobacz case study →</span>
@@ -1103,13 +1111,13 @@ select.cinput{cursor:pointer}
           <div class="pf-mini-row"><strong>Efekt</strong>Seria ujęć pokazuje produkt, etykietę, oznaczenia i sposób użycia.</div>
         </div>
         <div class="pf-card-stat">1 zdj. → 4 ujęcia</div>
-        <a href="/realizacje#kosmetyki" class="pf-card-link" data-event="case_study_click" data-location="case_study">Zobacz case study →</a>
+        <a href="/realizacje/#kosmetyki" class="pf-card-link" data-event="case_study_click" data-location="case_study">Zobacz case study →</a>
       </div>
     </div>
 
     <div class="card pf-card">
       <div class="pf-card-img">
-        <img decoding="async" loading="lazy" src="bhp-po-front.png" width="1254" height="1254" alt="Rękawice BHP — efekt końcowy"
+        <img decoding="async" loading="lazy" src="/bhp-po-front.png" width="1254" height="1254" alt="Rękawice BHP — efekt końcowy"
              onerror="this.parentElement.style.background='var(--s3)'">
         <div class="pf-card-overlay">
           <span class="pf-card-overlay-text">Zobacz case study →</span>
@@ -1124,13 +1132,13 @@ select.cinput{cursor:pointer}
           <div class="pf-mini-row"><strong>Efekt</strong>Galeria szybciej pokazuje ochronę, fakturę lateksu i realne użycie.</div>
         </div>
         <div class="pf-card-stat">1 zdj. → 5 ujęć</div>
-        <a href="/realizacje#bhp" class="pf-card-link" data-event="case_study_click" data-location="case_study">Zobacz case study →</a>
+        <a href="/realizacje/#bhp" class="pf-card-link" data-event="case_study_click" data-location="case_study">Zobacz case study →</a>
       </div>
     </div>
 
     <div class="card pf-card">
       <div class="pf-card-img">
-        <img decoding="async" loading="lazy" src="narzedzia-po-walizka.png" width="1254" height="1254" alt="Klucz dynamometryczny — efekt końcowy"
+        <img decoding="async" loading="lazy" src="/narzedzia-po-walizka.png" width="1254" height="1254" alt="Klucz dynamometryczny — efekt końcowy"
              onerror="this.parentElement.style.background='var(--s3)'">
         <div class="pf-card-overlay">
           <span class="pf-card-overlay-text">Zobacz case study →</span>
@@ -1145,7 +1153,7 @@ select.cinput{cursor:pointer}
           <div class="pf-mini-row"><strong>Efekt</strong>Ujęcia pokazują walizkę, mechanizm głowicy i skalę momentu.</div>
         </div>
         <div class="pf-card-stat">1 zdj. → 4 gotowe pliki</div>
-        <a href="/realizacje#narzedzia" class="pf-card-link" data-event="case_study_click" data-location="case_study">Zobacz case study →</a>
+        <a href="/realizacje/#narzedzia" class="pf-card-link" data-event="case_study_click" data-location="case_study">Zobacz case study →</a>
       </div>
     </div>
 
@@ -1154,7 +1162,7 @@ select.cinput{cursor:pointer}
       <div class="pf-teaser-icon">📂</div>
       <div class="pf-teaser-h">Więcej kategorii</div>
       <p class="pf-teaser-p">Motoryzacja, elektronika, produkty przemysłowe — pytaj o wycenę dla swojej kategorii.</p>
-      <a href="/realizacje" class="btn-p btn-p--sm">
+      <a href="/realizacje/" class="btn-p btn-p--sm">
         Pełne portfolio →
       </a>
     </div>
@@ -1172,7 +1180,7 @@ select.cinput{cursor:pointer}
       <a href="https://wa.me/48791162938?text=Cześć,%20chcę%20wysłać%20ofertę%20do%20analizy." class="btn-hero-wa" data-location="case_study">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp
       </a>
-      <a href="#kontakt" class="btn-p" data-event="mini_audit_click" data-location="case_study" data-package="start">Wyślij link do analizy</a>
+      <a href="/#kontakt" class="btn-p" data-event="mini_audit_click" data-location="case_study" data-package="start">Wyślij link do analizy</a>
     </div>
   </div>
 
@@ -1183,9 +1191,9 @@ select.cinput{cursor:pointer}
 <div class="section section--compact" id="mini-audyt-top">
   <div class="cta-box">
     <div class="eyebrow eyebrow--center">Mini audyt</div>
-    <h2>Zanim wybierzesz zakres — sprawdź co blokuje Twoją sprzedaż</h2>
+    <h2 class="s-title">Zanim wybierzesz zakres — sprawdź co blokuje Twoją sprzedaż</h2>
     <p>Wyślij link, zdjęcie albo krótki opis produktu. Dostaniesz konkretną listę: co warto poprawić w miniaturze, tytule, galerii albo opisie. Zero ogólników, zero zobowiązań.</p>
-    <a href="#kontakt" class="btn-p">Wyślij link — odbierz darmowy mini audyt</a>
+    <a href="/#kontakt" class="btn-p">Wyślij link — odbierz darmowy mini audyt</a>
   </div>
 </div>
 
@@ -1234,8 +1242,8 @@ select.cinput{cursor:pointer}
     </div>
   </div>
   <div class="section-cta">
-    <a href="#kontakt" class="btn-p">Wyślij link — odbierz darmowy mini audyt</a>
-    <a href="#specjalizacje" class="btn-s">Sprawdź obsługiwane kategorie</a>
+    <a href="/#kontakt" class="btn-p">Wyślij link — odbierz darmowy mini audyt</a>
+    <a href="/#specjalizacje" class="btn-s">Sprawdź obsługiwane kategorie</a>
   </div>
 </div>
 
@@ -1270,8 +1278,8 @@ select.cinput{cursor:pointer}
     <div class="card ind-card"><div class="ind-top"><span class="ind-icon-wrap"><img decoding="async" class="ind-icon" src="/icons/specjalizacje/czesci-akcesoria.svg" width="24" height="24" alt="" loading="lazy"></span><div class="ind-h">Akcesoria</div></div><p class="ind-p">Co pasuje, co jest w zestawie i jak działa z produktem głównym — jasno i szybko.</p></div>
   </div>
   <div class="section-cta">
-    <a href="#realizacje-preview" class="btn-s">Zobacz przykłady realizacji</a>
-    <a href="#kontakt" class="btn-p">Zapytaj o ofertę</a>
+    <a href="/realizacje/" class="btn-s">Zobacz przykłady realizacji</a>
+    <a href="/#kontakt" class="btn-p">Zapytaj o ofertę</a>
   </div>
 </div>
 
@@ -1291,7 +1299,7 @@ select.cinput{cursor:pointer}
     <div class="card proc-card"><div class="proc-step">KROK 04</div><div class="proc-title">Otrzymujesz gotową propozycję do wdrożenia</div><p class="proc-text">Dostajesz materiały i wskazówki, które można wykorzystać na Allegro, OLX, Amazon lub w sklepie internetowym.</p></div>
   </div>
   <div class="section-cta">
-    <a href="#kontakt" class="btn-p" data-event="mini_audit_click" data-location="case_study" data-package="start">Wyślij link do analizy</a>
+    <a href="/#kontakt" class="btn-p" data-event="mini_audit_click" data-location="case_study" data-package="start">Wyślij link do analizy</a>
   </div>
 </div>
 
@@ -1302,11 +1310,11 @@ select.cinput{cursor:pointer}
   <div class="card correction-card">
     <div>
       <div class="eyebrow">Poprawki</div>
-      <h2>Poprawki są częścią procesu</h2>
+      <h2 class="s-title">Poprawki są częścią procesu</h2>
       <p>Po przygotowaniu materiałów możesz zgłosić uwagi. Celem nie jest oddanie przypadkowego projektu, ale dopracowanie oferty tak, aby jasno pokazywała produkt, jego zastosowanie i przewagę.</p>
       <div class="section-cta">
-        <a href="#kontakt" class="btn-p">Zapytaj o ofertę</a>
-        <a href="#cennik" class="btn-s" data-event="pricing_cta_click" data-location="pricing">Zobacz pakiety</a>
+        <a href="/#kontakt" class="btn-p">Zapytaj o ofertę</a>
+        <a href="/#pakiety" class="btn-s" data-event="pricing_cta_click" data-location="pricing">Zobacz pakiety</a>
       </div>
     </div>
     <div class="correction-icon" aria-hidden="true">↻</div>
@@ -1315,8 +1323,9 @@ select.cinput{cursor:pointer}
 
 <div class="divider"></div>
 
-<!-- ── CENNIK ── -->
-<div class="section" id="cennik">
+<!-- ── PAKIETY ── -->
+<span id="cennik" class="anchor-alias" aria-hidden="true"></span>
+<div class="section" id="pakiety">
   <div class="s-head c">
     <div class="eyebrow">Pakiety</div>
     <h2 class="s-title">Wybierz zakres albo zacznij od mini audytu.</h2>
@@ -1340,7 +1349,7 @@ select.cinput{cursor:pointer}
         <li>odpowiedź mailowo lub WhatsApp</li>
       </ul>
       <div class="price-btns">
-        <a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="start" data-interest="Darmowy mini audyt" data-message="Interesuje mnie mini audyt.">Odbierz mini audyt</a>
+        <a href="/#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="start" data-interest="Darmowy mini audyt" data-message="Interesuje mnie mini audyt.">Odbierz mini audyt</a>
       </div>
     </div>
 
@@ -1360,7 +1369,7 @@ select.cinput{cursor:pointer}
         <li>rekomendacje do galerii</li>
       </ul>
       <div class="price-btns">
-        <a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="tekst_pack" data-interest="Oferta Pro" data-message="Interesuje mnie Tekst Pack.">Zapytaj o tekst</a>
+        <a href="/#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="tekst_pack" data-interest="Oferta Pro" data-message="Interesuje mnie Tekst Pack.">Zapytaj o tekst</a>
       </div>
     </div>
 
@@ -1380,7 +1389,7 @@ select.cinput{cursor:pointer}
         <li>spójny styl wizualny</li>
       </ul>
       <div class="price-btns">
-        <a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="foto_pack" data-interest="Oferta Pro" data-message="Interesuje mnie Foto Pack.">Zapytaj o zdjęcia</a>
+        <a href="/#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="foto_pack" data-interest="Oferta Pro" data-message="Interesuje mnie Foto Pack.">Zapytaj o zdjęcia</a>
       </div>
     </div>
 
@@ -1403,7 +1412,7 @@ select.cinput{cursor:pointer}
         <li>poprawki</li>
       </ul>
       <div class="price-btns">
-        <a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="oferta_pro" data-interest="Oferta Pro" data-message="Interesuje mnie Oferta Pro.">Zapytaj o Ofertę Pro</a>
+        <a href="/#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="oferta_pro" data-interest="Oferta Pro" data-message="Interesuje mnie Oferta Pro.">Zapytaj o Ofertę Pro</a>
       </div>
     </div>
 
@@ -1423,7 +1432,7 @@ select.cinput{cursor:pointer}
         <li>indywidualna wycena</li>
       </ul>
       <div class="price-btns">
-        <a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="studio" data-interest="Seria produktów" data-message="Interesuje mnie Studio / seria produktów.">Zapytaj o serię produktów</a>
+        <a href="/#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="studio" data-interest="Seria produktów" data-message="Interesuje mnie Studio / seria produktów.">Zapytaj o serię produktów</a>
       </div>
     </div>
 
@@ -1443,7 +1452,7 @@ select.cinput{cursor:pointer}
         <li>rozliczenie ustalane indywidualnie</li>
       </ul>
       <div class="price-btns">
-        <a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="abonament" data-interest="Seria produktów" data-message="Interesuje mnie abonament / stała współpraca.">Zapytaj o stałą współpracę</a>
+        <a href="/#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="abonament" data-interest="Seria produktów" data-message="Interesuje mnie abonament / stała współpraca.">Zapytaj o stałą współpracę</a>
       </div>
     </div>
 
@@ -1552,7 +1561,7 @@ select.cinput{cursor:pointer}
   <div class="contact-form-card" id="mini-audyt">
     <div id="contactFormWrap">
       <div class="cform-head">
-        <div class="cform-title">Napisz do autora projektu</div>
+        <div class="cform-title">Napisz do mnie</div>
         <div class="cform-sub">Możesz mieć gotową ofertę, same zdjęcia, serię produktów albo dopiero pomysł. Wystarczy krótki opis sytuacji.</div>
       </div>
       <form id="contactForm" name="kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
@@ -1668,7 +1677,7 @@ select.cinput{cursor:pointer}
           </a>
         </div>
       </form>
-      <p class="cform-note">Wysyłając formularz wyrażasz zgodę na przetwarzanie danych w celu odpowiedzi na zapytanie. Szczegóły: <a href="/polityka-prywatnosci">Polityka prywatności</a>.</p>
+      <p class="cform-note">Wysyłając formularz wyrażasz zgodę na przetwarzanie danych w celu odpowiedzi na zapytanie. Szczegóły: <a href="/polityka-prywatnosci/">Polityka prywatności</a>.</p>
     </div>
     <div class="cform-success" id="formSuccess" role="status" aria-live="polite" tabindex="-1">
       <div class="cform-success-icon" aria-hidden="true">✅</div>
@@ -1684,19 +1693,23 @@ select.cinput{cursor:pointer}
 
 <footer>
   <div class="foot-inner">
-    <div class="foot-logo">OfertaStudio.pl © 2026</div>
-    <div class="foot-links">
-      <a href="/realizacje">Realizacje</a>
-      <a href="/optymalizacja-ofert-allegro">Optymalizacja Allegro</a>
-      <a href="/zdjecia-produktowe-allegro">Zdjęcia Allegro</a>
-      <a href="/opisy-produktow-allegro">Opisy Allegro</a>
-      <a href="/audyt-oferty-allegro">Audyt Allegro</a>
-      <a href="/oferty-olx">Oferty OLX</a>
-      <a href="#cennik">Pakiety</a>
-      <a href="#kontakt">Kontakt</a>
-      <a href="/polityka-prywatnosci">Polityka prywatności</a>
+    <div class="foot-brand">
+      <div class="foot-logo">OfertaStudio.pl</div>
+      <p class="foot-desc">Autorski projekt tworzenia i optymalizacji ofert produktowych dla e-commerce.</p>
+      <p class="foot-desc">Strona prezentuje przykłady realizacji, proces pracy i możliwość kontaktu w sprawie indywidualnej współpracy.</p>
     </div>
-    <div class="foot-copy">Allegro · OLX · Amazon · Sklepy internetowe</div>
+    <div class="foot-links" aria-label="Linki w stopce">
+      <a href="/">Strona główna</a>
+      <a href="/realizacje/">Realizacje</a>
+      <a href="/zdjecia-produktowe-allegro/">Zdjęcia produktowe Allegro</a>
+      <a href="/opisy-produktow-allegro/">Opisy produktów Allegro</a>
+      <a href="/optymalizacja-ofert-allegro/">Optymalizacja ofert Allegro</a>
+      <a href="/audyt-oferty-allegro/">Audyt oferty Allegro</a>
+      <a href="/oferty-olx/">Oferty OLX</a>
+      <a href="/polityka-prywatnosci/">Polityka prywatności</a>
+      <a href="/#kontakt">Kontakt</a>
+    </div>
+    <div class="foot-copy">© 2026 OfertaStudio.pl. Autorski projekt portfolio usługowego - współpraca ustalana indywidualnie.</div>
   </div>
 </footer>
 
@@ -1729,7 +1742,6 @@ function closeDrawer(){
   hamBtn.setAttribute('aria-label','Otwórz menu nawigacji');
   drawer.setAttribute('aria-hidden','true');
   document.body.style.overflow='';
-  hamBtn.focus();
 }
 hamBtn.addEventListener('click',()=>{
   const open=hamBtn.classList.toggle('open');
@@ -1747,15 +1759,61 @@ document.addEventListener('keydown',e=>{
   if(e.key==='Escape'&&drawer.classList.contains('open'))closeDrawer();
 });
 
+/* Precise hash scrolling for fixed mobile/desktop navigation */
+const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
+function normalizePath(path){
+  const normalized=path.replace(/\/index\.html$/,'/');
+  return normalized.length>1?normalized.replace(/\/$/,''):normalized||'/';
+}
+function samePageHash(href){
+  if(!href)return null;
+  const url=new URL(href,window.location.href);
+  if(url.origin!==window.location.origin)return null;
+  if(normalizePath(url.pathname)!==normalizePath(window.location.pathname))return null;
+  return url.hash||null;
+}
+function navOffset(){
+  const nav=document.querySelector('nav');
+  return Math.ceil(nav?.getBoundingClientRect().height||0);
+}
+function visualAnchorTarget(target){
+  if(!target.classList.contains('section'))return target;
+  return target.querySelector(':scope > .s-head,:scope > .contact-wrap,:scope > .cta-box,:scope > .card,:scope > .grid')||target;
+}
+function scrollToHash(hash,{update=true,behavior='smooth'}={}){
+  if(!hash||hash==='#')return false;
+  const target=document.getElementById(decodeURIComponent(hash.slice(1)));
+  if(!target)return false;
+  const anchor=visualAnchorTarget(target);
+  const top=Math.max(0,window.scrollY+anchor.getBoundingClientRect().top-navOffset());
+  window.scrollTo({top,behavior:reduceMotion.matches?'auto':behavior});
+  if(update&&window.location.hash!==hash)history.pushState(null,'',hash);
+  return true;
+}
+document.querySelectorAll('a[href*="#"]').forEach(link=>{
+  link.addEventListener('click',e=>{
+    const hash=samePageHash(link.getAttribute('href'));
+    if(!hash)return;
+    e.preventDefault();
+    closeDrawer();
+    requestAnimationFrame(()=>requestAnimationFrame(()=>scrollToHash(hash)));
+  });
+});
+window.addEventListener('load',()=>{
+  if(window.location.hash)requestAnimationFrame(()=>scrollToHash(window.location.hash,{update:false,behavior:'auto'}));
+});
+
 /* Active nav link on scroll */
 const sections=document.querySelectorAll('[id]');
 const navLinks=document.querySelectorAll('.nav-link');
+function navHash(link){
+  const href=link.getAttribute('href')||'';
+  return href.includes('#')?'#'+href.split('#').pop():href;
+}
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
-      navLinks.forEach(l=>{
-        l.classList.toggle('active',l.getAttribute('href')==='#'+e.target.id||l.getAttribute('href')==='/'+e.target.id);
-      });
+      navLinks.forEach(l=>l.classList.toggle('active',navHash(l)==='#'+e.target.id));
     }
   });
 },{threshold:.3,rootMargin:'-60px 0px -60px 0px'});

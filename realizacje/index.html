@@ -6,13 +6,13 @@
 <title>Realizacje przed/po ofert produktowych | OfertaStudio.pl</title>
 <meta name="description" content="Portfolio OfertaStudio.pl: przykłady materiałów sprzedażowych dla produktów technicznych, BHP, spawalnictwa, domu i ogrodu oraz kosmetyków.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://ofertastudio.pl/realizacje">
+<link rel="canonical" href="https://ofertastudio.pl/realizacje/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pl_PL">
 <meta property="og:site_name" content="OfertaStudio.pl">
 <meta property="og:title" content="Realizacje przed/po — OfertaStudio.pl">
 <meta property="og:description" content="Przykłady przygotowanych materiałów sprzedażowych: problem, rozwiązanie, zakres i efekt jakościowy bez fikcyjnych danych biznesowych.">
-<meta property="og:url" content="https://ofertastudio.pl/realizacje">
+<meta property="og:url" content="https://ofertastudio.pl/realizacje/">
 <meta property="og:image" content="https://ofertastudio.pl/elektronarzedzia-po-zestaw.png">
 <meta property="og:image:width" content="1254">
 <meta property="og:image:height" content="1254">
@@ -56,9 +56,9 @@
     },
     {
       "@type": "CollectionPage",
-      "@id": "https://ofertastudio.pl/realizacje",
+      "@id": "https://ofertastudio.pl/realizacje/",
       "name": "Realizacje przed/po — przykłady ofert produktowych",
-      "url": "https://ofertastudio.pl/realizacje",
+      "url": "https://ofertastudio.pl/realizacje/",
       "description": "Portfolio przykładów pracy nad zdjęciami produktowymi, galeriami, opisami i materiałami sprzedażowymi.",
       "isPartOf": {"@id": "https://ofertastudio.pl/#website"}
     },
@@ -67,7 +67,7 @@
       "@id": "https://ofertastudio.pl/realizacje#breadcrumb",
       "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "Start", "item": "https://ofertastudio.pl/"},
-        {"@type": "ListItem", "position": 2, "name": "Realizacje", "item": "https://ofertastudio.pl/realizacje"}
+        {"@type": "ListItem", "position": 2, "name": "Realizacje", "item": "https://ofertastudio.pl/realizacje/"}
       ]
     }
   ]
@@ -100,7 +100,7 @@
   --sh4:0 32px 64px rgba(0,0,0,.6),0 4px 12px rgba(0,0,0,.35);
   --nav:rgba(5,8,16,.9);--glass:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.025));
 }
-html{scroll-behavior:smooth;background:var(--bg)}
+html{scroll-behavior:smooth;scroll-padding-top:5rem;background:var(--bg)}
 body{min-height:100vh;font-family:'Inter',system-ui,sans-serif;font-size:1rem;line-height:1.65;color:var(--t1);background:radial-gradient(ellipse 80% 40% at 50% -5%,rgba(37,99,235,.09),transparent),var(--bg);-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .3s,color .3s}
 [data-theme="dark"] body{background:radial-gradient(ellipse 80% 40% at 50% -5%,rgba(59,130,246,.11),transparent),var(--bg)}
 ::selection{background:rgba(37,99,235,.25)}
@@ -146,7 +146,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;border-bottom:1px solid var(
 
 /* LAYOUT */
 .page{position:relative;z-index:1}
-.section{max-width:1280px;margin:0 auto;padding:3.5rem 1.75rem}
+.section{max-width:1280px;margin:0 auto;padding:3.5rem 1.75rem;scroll-margin-top:5rem}
 .section--flush-bottom{padding-bottom:0}
 .divider{height:1px;background:var(--bs);max-width:1280px;margin:0 auto}
 .card{background:var(--s1);border:1px solid var(--bs);border-radius:var(--r);box-shadow:var(--sh1);transition:box-shadow .25s ease,border-color .25s ease,transform .2s ease}
@@ -394,6 +394,15 @@ footer{border-top:1px solid var(--bs);padding:2rem 1.75rem;position:relative;z-i
   *,::before,::after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.001ms!important}
   .sdot{animation:none}
 }
+
+/* Unified footer */
+.foot-inner{align-items:flex-start;gap:1.25rem 2rem}
+.foot-brand{max-width:420px}
+.foot-desc{margin:.35rem 0 0;color:var(--t2);font-size:.875rem;line-height:1.55}
+.foot-links{max-width:760px;gap:.75rem 1.25rem;justify-content:flex-end}
+.foot-copy{flex-basis:100%;width:100%;padding-top:.875rem;border-top:1px solid var(--bs);font-size:.8125rem;color:var(--t3)}
+@media(max-width:760px){.foot-inner{text-align:center;flex-direction:column;align-items:center}.foot-brand{max-width:none}.foot-links{justify-content:center}.foot-copy{display:block}}
+
 </style>
 <script src="/analytics.js" defer></script>
 </head>
@@ -401,42 +410,42 @@ footer{border-top:1px solid var(--bs);padding:2rem 1.75rem;position:relative;z-i
 <a class="skip-link" href="#main-content">Przejdź do treści</a>
 <div class="grid-bg"></div>
 
-<nav aria-label="Główna nawigacja">
+<nav class="site-nav" aria-label="Główna nawigacja">
   <div class="nav-inner">
-    <a class="nav-logo" href="/" aria-label="OfertaStudio.pl – strona główna">
-      <svg viewBox="0 0 300 42" height="24" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;display:block" aria-hidden="true" focusable="false">
+    <a class="nav-logo" href="/" aria-label="OfertaStudio.pl - strona główna">
+      <svg viewBox="0 0 300 42" height="26" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;display:block" aria-hidden="true" focusable="false">
         <text y="34" font-family="Inter,sans-serif" font-weight="800" font-size="36" fill="#0f2d6e" letter-spacing="-1">Oferta<tspan fill="#2563eb">Studio</tspan><tspan font-weight="300" font-size="26" fill="#94a3b8" dy="1">.pl</tspan></text>
       </svg>
     </a>
-    <div class="nav-links" aria-label="Główne sekcje">
+    <div class="nav-links" aria-label="Menu główne">
       <a href="/#uslugi" class="nav-link">Usługi</a>
-      <a href="/realizacje" class="nav-link">Realizacje</a>
+      <a href="/realizacje/" class="nav-link">Realizacje</a>
+      <a href="/#pakiety" class="nav-link">Pakiety</a>
       <a href="/#proces" class="nav-link">Proces</a>
-      <a href="/#cennik" class="nav-link">Pakiety</a>
       <a href="/#faq" class="nav-link">FAQ</a>
       <a href="/#kontakt" class="nav-link">Kontakt</a>
     </div>
     <div class="nav-right">
-      <div class="status-pill"><span class="sdot" aria-hidden="true"></span>Nowe zlecenia</div>
+      <div class="status-pill"><span class="sdot" aria-hidden="true"></span>Zapytania otwarte</div>
       <button class="toggle-btn" id="themeToggle" aria-label="Włącz tryb ciemny" aria-pressed="false"><span aria-hidden="true">☀</span></button>
-      <a href="/#kontakt" class="btn-nav">Zapytaj o ofertę</a>
-      <button class="ham-btn" id="hamBtn" aria-label="Otwórz menu" aria-expanded="false" aria-controls="navDrawer"><span></span><span></span><span></span></button>
+      <a href="/#kontakt" class="btn-nav">Mini audyt</a>
+      <button class="ham-btn" id="hamBtn" aria-label="Otwórz menu nawigacji" aria-expanded="false" aria-controls="navDrawer"><span></span><span></span><span></span></button>
     </div>
   </div>
 </nav>
-
 <div class="nav-drawer" id="navDrawer" role="navigation" aria-label="Menu mobilne" aria-hidden="true">
   <a href="/#uslugi" class="nav-link" onclick="closeDrawer()">Usługi</a>
-  <a href="/realizacje" class="nav-link" onclick="closeDrawer()">Realizacje</a>
+  <a href="/realizacje/" class="nav-link" onclick="closeDrawer()">Realizacje</a>
+  <a href="/#pakiety" class="nav-link" onclick="closeDrawer()">Pakiety</a>
   <a href="/#proces" class="nav-link" onclick="closeDrawer()">Proces</a>
-  <a href="/#cennik" class="nav-link" onclick="closeDrawer()">Pakiety</a>
   <a href="/#faq" class="nav-link" onclick="closeDrawer()">FAQ</a>
   <a href="/#kontakt" class="nav-link" onclick="closeDrawer()">Kontakt</a>
   <div class="drawer-ctas">
-    <a href="tel:+48791162938" class="btn-nav">Zadzwoń</a>
-    <a href="https://wa.me/48791162938" class="btn-wa">WhatsApp</a>
+    <a href="/#kontakt" class="btn-nav" onclick="closeDrawer()">Mini audyt</a>
+    <a href="https://wa.me/48791162938" class="btn-wa" onclick="closeDrawer()">WhatsApp</a>
   </div>
 </div>
+
 
 <main class="page" id="main-content" tabindex="-1">
 
@@ -712,7 +721,7 @@ footer{border-top:1px solid var(--bs);padding:2rem 1.75rem;position:relative;z-i
       </div>
       <div class="ba-slider" id="ba001" tabindex="0" role="slider" aria-label="Porównanie przed i po — Tabaiba Sun Oil" aria-orientation="horizontal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
         <div class="ba-before-side" aria-hidden="true"><img decoding="async" loading="lazy" class="ba-img" src="/tabaiba-przed.png" width="500" height="500" alt="Zdjęcie referencyjne przed obróbką" onerror="this.parentElement.innerHTML='<div class=ph><div class=ph-icon aria-hidden=true>📷</div><div class=ph-text>tabaiba-przed.png</div></div>'"></div>
-        <div class="ba-after-side" id="ba001-after" aria-hidden="true"><img decoding="async" loading="lazy" class="ba-img" src="/tabaiba-po-front.png" width="2560" height="2560" alt="Packshot po obróbce" onerror="this.parentElement.innerHTML='<div class=ph><div class=ph-icon aria-hidden=true>✨</div></div>'"></div>
+        <div class="ba-after-side" id="ba001-after" aria-hidden="true"><img decoding="async" loading="lazy" class="ba-img" src="/tabaiba-po-front.png" width="1024" height="1024" alt="Packshot po obróbce" onerror="this.parentElement.innerHTML='<div class=ph><div class=ph-icon aria-hidden=true>✨</div></div>'"></div>
         <div class="ba-divline" id="ba001-line" aria-hidden="true"></div>
         <div class="ba-handle" id="ba001-handle" aria-hidden="true">◀▶</div>
         <div class="ba-tag b" aria-hidden="true">PRZED</div>
@@ -723,10 +732,10 @@ footer{border-top:1px solid var(--bs);padding:2rem 1.75rem;position:relative;z-i
       <h3 class="shots-title">4 ujęcia — 4 różne zadania sprzedażowe</h3>
       <div class="shots-sub">Każde zdjęcie w serii ma konkretny cel. Razem budują pełne zaufanie klienta do produktu.</div>
       <div class="shots-grid">
-        <div class="shot-card"><div class="shot-img"><img decoding="async" loading="lazy" src="/tabaiba-po-front.png" width="2560" height="2560" alt="Packshot frontalny" onerror="this.parentElement.innerHTML='<div class=ph><div class=ph-icon aria-hidden=true>📦</div></div>'"></div><div class="shot-body"><div class="shot-type">Ujęcie 01 · Frontalne</div><div class="shot-name">Białe tło, pełna ekspozycja</div><div class="shot-why">Pierwsze zdjęcie na liście Allegro. Decyduje o kliknięciu — czyste tło i ostre kontury wyróżniają produkt wśród konkurencji.</div></div></div>
-        <div class="shot-card"><div class="shot-img"><img decoding="async" loading="lazy" src="/tabaiba-po-bok.png" width="2560" height="2560" alt="Packshot boczny" onerror="this.parentElement.innerHTML='<div class=ph><div class=ph-icon aria-hidden=true>📦</div></div>'"></div><div class="shot-body"><div class="shot-type">Ujęcie 02 · Boczne 3/4</div><div class="shot-name">Głębia i trójwymiarowość</div><div class="shot-why">Klient widzi kształt i proporcje produktu — nie płaską grafikę. Pomaga lepiej pokazać kształt i proporcje produktu przed zakupem.</div></div></div>
-        <div class="shot-card"><div class="shot-img"><img decoding="async" loading="lazy" src="/tabaiba-po-detal.png" width="2560" height="2560" alt="Detal etykiety" onerror="this.parentElement.innerHTML='<div class=ph><div class=ph-icon aria-hidden=true>🔍</div></div>'"></div><div class="shot-body"><div class="shot-type">Ujęcie 03 · Detal etykiety</div><div class="shot-name">Skład i oznaczenia widoczne</div><div class="shot-why">SPF 50+, Vegan, Coral Safe — kluczowe argumenty zakupowe widoczne bez czytania opisu. Buduje zaufanie i przyspiesza decyzję.</div></div></div>
-        <div class="shot-card"><div class="shot-img"><img decoding="async" loading="lazy" src="/tabaiba-po-lifestyle.png" width="2560" height="2560" alt="Lifestyle z kroplami wody" onerror="this.parentElement.innerHTML='<div class=ph><div class=ph-icon aria-hidden=true>💧</div></div>'"></div><div class="shot-body"><div class="shot-type">Ujęcie 04 · Lifestyle</div><div class="shot-name">Emocja i kontekst użycia</div><div class="shot-why">Krople wody kojarzą się ze słońcem i ochroną. Klient wyobraża sobie produkt w użyciu — to wzmacnia kontekst użycia w kategorii kosmetyki SPF.</div></div></div>
+        <div class="shot-card"><div class="shot-img"><img decoding="async" loading="lazy" src="/tabaiba-po-front.png" width="1024" height="1024" alt="Packshot frontalny" onerror="this.parentElement.innerHTML='<div class=ph><div class=ph-icon aria-hidden=true>📦</div></div>'"></div><div class="shot-body"><div class="shot-type">Ujęcie 01 · Frontalne</div><div class="shot-name">Białe tło, pełna ekspozycja</div><div class="shot-why">Pierwsze zdjęcie na liście Allegro. Decyduje o kliknięciu — czyste tło i ostre kontury wyróżniają produkt wśród konkurencji.</div></div></div>
+        <div class="shot-card"><div class="shot-img"><img decoding="async" loading="lazy" src="/tabaiba-po-bok.png" width="1024" height="1024" alt="Packshot boczny" onerror="this.parentElement.innerHTML='<div class=ph><div class=ph-icon aria-hidden=true>📦</div></div>'"></div><div class="shot-body"><div class="shot-type">Ujęcie 02 · Boczne 3/4</div><div class="shot-name">Głębia i trójwymiarowość</div><div class="shot-why">Klient widzi kształt i proporcje produktu — nie płaską grafikę. Pomaga lepiej pokazać kształt i proporcje produktu przed zakupem.</div></div></div>
+        <div class="shot-card"><div class="shot-img"><img decoding="async" loading="lazy" src="/tabaiba-po-detal.png" width="1024" height="1024" alt="Detal etykiety" onerror="this.parentElement.innerHTML='<div class=ph><div class=ph-icon aria-hidden=true>🔍</div></div>'"></div><div class="shot-body"><div class="shot-type">Ujęcie 03 · Detal etykiety</div><div class="shot-name">Skład i oznaczenia widoczne</div><div class="shot-why">SPF 50+, Vegan, Coral Safe — kluczowe argumenty zakupowe widoczne bez czytania opisu. Buduje zaufanie i przyspiesza decyzję.</div></div></div>
+        <div class="shot-card"><div class="shot-img"><img decoding="async" loading="lazy" src="/tabaiba-po-lifestyle.png" width="1024" height="1024" alt="Lifestyle z kroplami wody" onerror="this.parentElement.innerHTML='<div class=ph><div class=ph-icon aria-hidden=true>💧</div></div>'"></div><div class="shot-body"><div class="shot-type">Ujęcie 04 · Lifestyle</div><div class="shot-name">Emocja i kontekst użycia</div><div class="shot-why">Krople wody kojarzą się ze słońcem i ochroną. Klient wyobraża sobie produkt w użyciu — to wzmacnia kontekst użycia w kategorii kosmetyki SPF.</div></div></div>
       </div>
     </div>
     <div class="insight-wrap"><div class="insight"><div class="insight-icon" aria-hidden="true">💡</div><div><div class="insight-title">Punkt wyjścia tego projektu</div><div class="insight-text">Punktem wyjścia było jedno zdjęcie produktu — płaskie oświetlenie, szare tło, brak głębi. Na jego podstawie powstały cztery ujęcia, z których każde pełni inną funkcję sprzedażową. Żadna fizyczna sesja fotograficzna nie była potrzebna.</div></div></div></div>
@@ -860,18 +869,23 @@ footer{border-top:1px solid var(--bs);padding:2rem 1.75rem;position:relative;z-i
 
 <footer>
   <div class="foot-inner">
-    <div class="foot-logo">OfertaStudio.pl © 2026</div>
-    <div class="foot-links">
-      <a href="/">Strona główna</a>
-      <a href="/optymalizacja-ofert-allegro">Optymalizacja Allegro</a>
-      <a href="/zdjecia-produktowe-allegro">Zdjęcia Allegro</a>
-      <a href="/opisy-produktow-allegro">Opisy Allegro</a>
-      <a href="/audyt-oferty-allegro">Audyt Allegro</a>
-      <a href="/oferty-olx">Oferty OLX</a>
-      <a href="/#cennik">Pakiety</a>
-      <a href="/#kontakt">Kontakt</a>
-      <a href="/polityka-prywatnosci">Polityka prywatności</a>
+    <div class="foot-brand">
+      <div class="foot-logo">OfertaStudio.pl</div>
+      <p class="foot-desc">Autorski projekt tworzenia i optymalizacji ofert produktowych dla e-commerce.</p>
+      <p class="foot-desc">Strona prezentuje przykłady realizacji, proces pracy i możliwość kontaktu w sprawie indywidualnej współpracy.</p>
     </div>
+    <div class="foot-links" aria-label="Linki w stopce">
+      <a href="/">Strona główna</a>
+      <a href="/realizacje/">Realizacje</a>
+      <a href="/zdjecia-produktowe-allegro/">Zdjęcia produktowe Allegro</a>
+      <a href="/opisy-produktow-allegro/">Opisy produktów Allegro</a>
+      <a href="/optymalizacja-ofert-allegro/">Optymalizacja ofert Allegro</a>
+      <a href="/audyt-oferty-allegro/">Audyt oferty Allegro</a>
+      <a href="/oferty-olx/">Oferty OLX</a>
+      <a href="/polityka-prywatnosci/">Polityka prywatności</a>
+      <a href="/#kontakt">Kontakt</a>
+    </div>
+    <div class="foot-copy">© 2026 OfertaStudio.pl. Autorski projekt portfolio usługowego - współpraca ustalana indywidualnie.</div>
   </div>
 </footer>
 
@@ -896,7 +910,7 @@ function closeDrawer(){
   drawer.classList.remove('open');
   hamBtn.classList.remove('open');
   hamBtn.setAttribute('aria-expanded','false');
-  hamBtn.setAttribute('aria-label','Otwórz menu');
+  hamBtn.setAttribute('aria-label','Otwórz menu nawigacji');
   drawer.setAttribute('aria-hidden','true');
 }
 window.closeDrawer=closeDrawer;
@@ -905,7 +919,7 @@ if(hamBtn&&drawer){
     const open=drawer.classList.toggle('open');
     hamBtn.classList.toggle('open',open);
     hamBtn.setAttribute('aria-expanded',open?'true':'false');
-    hamBtn.setAttribute('aria-label',open?'Zamknij menu':'Otwórz menu');
+    hamBtn.setAttribute('aria-label',open?'Zamknij menu nawigacji':'Otwórz menu nawigacji');
     drawer.setAttribute('aria-hidden',open?'false':'true');
   });
   drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeDrawer));
