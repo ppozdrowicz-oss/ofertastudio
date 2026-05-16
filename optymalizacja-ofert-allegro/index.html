@@ -190,13 +190,18 @@
     </section>
   </div>
 
-  <section class="card faq" id="faq">
-    <h2>FAQ</h2>
-    <details><summary>Czy optymalizacja oznacza budowę oferty od zera?</summary><p>Nie zawsze. Można poprawić istniejącą ofertę albo przygotować komplet materiałów od początku, zależnie od jakości obecnych zdjęć i treści.</p></details>
-    <details><summary>Czy można zacząć od jednej oferty?</summary><p>Tak. Jedna oferta często wystarcza, żeby sprawdzić proces i wypracować styl dla kolejnych produktów.</p></details>
-    <details><summary>Czy obejmuje to zdjęcia i opisy?</summary><p>Tak, jeśli taki zakres zostanie wybrany. Optymalizacja może obejmować miniaturę, galerię, infografiki, tytuł, opis, parametry i FAQ.</p></details>
-    <details><summary>Czy dostanę listę rekomendacji?</summary><p>Tak. Nawet przy większym zakresie ważne jest pokazanie, dlaczego dane elementy są zmieniane i jaki problem rozwiązują.</p></details>
-    <details><summary>Czy to daje pewność wzrostu sprzedaży?</summary><p>Nie. OfertaStudio poprawia elementy prezentacji produktu, ale wynik zależy też od ceny, konkurencji, historii konta, opinii, sezonu i popytu.</p></details>
+  <section class="faq-section" id="faq">
+    <div class="s-head c">
+      <div class="eyebrow">FAQ</div>
+      <h2 class="s-title">Najczęstsze pytania</h2>
+    </div>
+    <div class="faq-wrap faq-wrap--centered">
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq-optymalizacja-ofert-allegro-1"><span>Czy optymalizacja oznacza budowę oferty od zera?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq-optymalizacja-ofert-allegro-1" role="region"><div class="faq-a-inner">Nie zawsze. Można poprawić istniejącą ofertę albo przygotować komplet materiałów od początku, zależnie od jakości obecnych zdjęć i treści.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq-optymalizacja-ofert-allegro-2"><span>Czy można zacząć od jednej oferty?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq-optymalizacja-ofert-allegro-2" role="region"><div class="faq-a-inner">Tak. Jedna oferta często wystarcza, żeby sprawdzić proces i wypracować styl dla kolejnych produktów.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq-optymalizacja-ofert-allegro-3"><span>Czy obejmuje to zdjęcia i opisy?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq-optymalizacja-ofert-allegro-3" role="region"><div class="faq-a-inner">Tak, jeśli taki zakres zostanie wybrany. Optymalizacja może obejmować miniaturę, galerię, infografiki, tytuł, opis, parametry i FAQ.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq-optymalizacja-ofert-allegro-4"><span>Czy dostanę listę rekomendacji?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq-optymalizacja-ofert-allegro-4" role="region"><div class="faq-a-inner">Tak. Nawet przy większym zakresie ważne jest pokazanie, dlaczego dane elementy są zmieniane i jaki problem rozwiązują.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq-optymalizacja-ofert-allegro-5"><span>Czy to daje pewność wzrostu sprzedaży?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq-optymalizacja-ofert-allegro-5" role="region"><div class="faq-a-inner">Nie. OfertaStudio poprawia elementy prezentacji produktu, ale wynik zależy też od ceny, konkurencji, historii konta, opinii, sezonu i popytu.</div></div></div>
+    </div>
   </section>
 
   <section class="card">
@@ -252,6 +257,17 @@ function closeDrawer(){hamBtn.classList.remove("open");drawer.classList.remove("
 hamBtn.addEventListener("click",()=>{const open=hamBtn.classList.toggle("open");drawer.classList.toggle("open",open);hamBtn.setAttribute("aria-expanded",String(open));hamBtn.setAttribute("aria-label",open?"Zamknij menu nawigacji":"Otwórz menu nawigacji");drawer.setAttribute("aria-hidden",String(!open));document.body.style.overflow=open?"hidden":""});
 document.addEventListener("click",e=>{const nav=document.querySelector(".site-nav");if(!nav.contains(e.target)&&!drawer.contains(e.target)&&drawer.classList.contains("open"))closeDrawer()});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&drawer.classList.contains("open"))closeDrawer()});
+function tFaq(btn){
+  const it=btn.closest(".faq-item"),op=it.classList.contains("open");
+  document.querySelectorAll(".faq-item.open").forEach(i=>{
+    i.classList.remove("open");
+    i.querySelector(".faq-q").setAttribute("aria-expanded","false");
+  });
+  if(!op){
+    it.classList.add("open");
+    btn.setAttribute("aria-expanded","true");
+  }
+}
 </script>
 </body>
 </html>

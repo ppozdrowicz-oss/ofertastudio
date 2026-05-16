@@ -190,13 +190,18 @@
     </section>
   </div>
 
-  <section class="card faq" id="faq">
-    <h2>FAQ</h2>
-    <details><summary>Czy audyt jest tylko dla gotowych ofert?</summary><p>Nie. Możesz wysłać też zdjęcia produktu, projekt oferty albo pomysł. Wtedy audyt pokaże, co warto przygotować przed publikacją.</p></details>
-    <details><summary>Czy muszę mieć dane sprzedażowe?</summary><p>Nie. Dane mogą pomóc, ale podstawowy audyt opiera się na tym, co widzi kupujący: zdjęcie, tytuł, galeria, opis i konkurencja.</p></details>
-    <details><summary>Czy audyt obejmuje konkurencję?</summary><p>Tak, w praktycznym zakresie. Sprawdzam, jak oferta wypada na tle typowych wyników w kategorii i co może utrudniać kliknięcie.</p></details>
-    <details><summary>Co jeśli nie mam linku do oferty?</summary><p>Możesz zaznaczyć w formularzu, że nie masz gotowej oferty, i opisać produkt. Link nie jest wymagany, jeśli jesteś na wcześniejszym etapie.</p></details>
-    <details><summary>Czy audyt daje pewność sprzedaży?</summary><p>Nie. Audyt wskazuje bariery i rekomendacje, ale wynik zależy też od ceny, konkurencji, opinii, sezonu, dostępności i jakości produktu.</p></details>
+  <section class="faq-section" id="faq">
+    <div class="s-head c">
+      <div class="eyebrow">FAQ</div>
+      <h2 class="s-title">Najczęstsze pytania</h2>
+    </div>
+    <div class="faq-wrap faq-wrap--centered">
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq-audyt-oferty-allegro-1"><span>Czy audyt jest tylko dla gotowych ofert?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq-audyt-oferty-allegro-1" role="region"><div class="faq-a-inner">Nie. Możesz wysłać też zdjęcia produktu, projekt oferty albo pomysł. Wtedy audyt pokaże, co warto przygotować przed publikacją.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq-audyt-oferty-allegro-2"><span>Czy muszę mieć dane sprzedażowe?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq-audyt-oferty-allegro-2" role="region"><div class="faq-a-inner">Nie. Dane mogą pomóc, ale podstawowy audyt opiera się na tym, co widzi kupujący: zdjęcie, tytuł, galeria, opis i konkurencja.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq-audyt-oferty-allegro-3"><span>Czy audyt obejmuje konkurencję?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq-audyt-oferty-allegro-3" role="region"><div class="faq-a-inner">Tak, w praktycznym zakresie. Sprawdzam, jak oferta wypada na tle typowych wyników w kategorii i co może utrudniać kliknięcie.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq-audyt-oferty-allegro-4"><span>Co jeśli nie mam linku do oferty?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq-audyt-oferty-allegro-4" role="region"><div class="faq-a-inner">Możesz zaznaczyć w formularzu, że nie masz gotowej oferty, i opisać produkt. Link nie jest wymagany, jeśli jesteś na wcześniejszym etapie.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq-audyt-oferty-allegro-5"><span>Czy audyt daje pewność sprzedaży?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq-audyt-oferty-allegro-5" role="region"><div class="faq-a-inner">Nie. Audyt wskazuje bariery i rekomendacje, ale wynik zależy też od ceny, konkurencji, opinii, sezonu, dostępności i jakości produktu.</div></div></div>
+    </div>
   </section>
 
   <section class="card">
@@ -252,6 +257,17 @@ function closeDrawer(){hamBtn.classList.remove("open");drawer.classList.remove("
 hamBtn.addEventListener("click",()=>{const open=hamBtn.classList.toggle("open");drawer.classList.toggle("open",open);hamBtn.setAttribute("aria-expanded",String(open));hamBtn.setAttribute("aria-label",open?"Zamknij menu nawigacji":"Otwórz menu nawigacji");drawer.setAttribute("aria-hidden",String(!open));document.body.style.overflow=open?"hidden":""});
 document.addEventListener("click",e=>{const nav=document.querySelector(".site-nav");if(!nav.contains(e.target)&&!drawer.contains(e.target)&&drawer.classList.contains("open"))closeDrawer()});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&drawer.classList.contains("open"))closeDrawer()});
+function tFaq(btn){
+  const it=btn.closest(".faq-item"),op=it.classList.contains("open");
+  document.querySelectorAll(".faq-item.open").forEach(i=>{
+    i.classList.remove("open");
+    i.querySelector(".faq-q").setAttribute("aria-expanded","false");
+  });
+  if(!op){
+    it.classList.add("open");
+    btn.setAttribute("aria-expanded","true");
+  }
+}
 </script>
 </body>
 </html>

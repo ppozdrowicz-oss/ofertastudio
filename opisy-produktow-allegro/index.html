@@ -190,13 +190,18 @@
     </section>
   </div>
 
-  <section class="card faq" id="faq">
-    <h2>FAQ</h2>
-    <details><summary>Czy przygotowujesz tylko opis, bez zdjęć?</summary><p>Tak. Tekst Pack może obejmować sam tytuł, opis, parametry, sekcje korzyści i FAQ. Jeśli widzę problem w galerii, dodaję krótką rekomendację.</p></details>
-    <details><summary>Czy opis jest gotowy do wklejenia?</summary><p>Tak, materiał jest układany tak, aby dało się go łatwo przenieść do oferty. Ostateczne formatowanie zależy od edytora Allegro i ustawień sprzedawcy.</p></details>
-    <details><summary>Czy używasz słów kluczowych?</summary><p>Tak, ale bez upychania fraz. Tytuł i opis mają brzmieć naturalnie i pomagać kupującemu, a nie wyglądać jak lista słów.</p></details>
-    <details><summary>Czy można poprawić istniejący opis?</summary><p>Tak. Możesz wysłać obecny opis, a ja uporządkuję tytuł, strukturę informacji, korzyści, parametry i pytania klienta.</p></details>
-    <details><summary>Czy obiecujesz konkretne wyniki sprzedaży?</summary><p>Nie. Tekst ma poprawić czytelność, zrozumienie produktu i kompletność informacji. Sprzedaż zależy też od ceny, konkurencji, opinii i dostępności.</p></details>
+  <section class="faq-section" id="faq">
+    <div class="s-head c">
+      <div class="eyebrow">FAQ</div>
+      <h2 class="s-title">Najczęstsze pytania</h2>
+    </div>
+    <div class="faq-wrap faq-wrap--centered">
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq-opisy-produktow-allegro-1"><span>Czy przygotowujesz tylko opis, bez zdjęć?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq-opisy-produktow-allegro-1" role="region"><div class="faq-a-inner">Tak. Tekst Pack może obejmować sam tytuł, opis, parametry, sekcje korzyści i FAQ. Jeśli widzę problem w galerii, dodaję krótką rekomendację.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq-opisy-produktow-allegro-2"><span>Czy opis jest gotowy do wklejenia?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq-opisy-produktow-allegro-2" role="region"><div class="faq-a-inner">Tak, materiał jest układany tak, aby dało się go łatwo przenieść do oferty. Ostateczne formatowanie zależy od edytora Allegro i ustawień sprzedawcy.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq-opisy-produktow-allegro-3"><span>Czy używasz słów kluczowych?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq-opisy-produktow-allegro-3" role="region"><div class="faq-a-inner">Tak, ale bez upychania fraz. Tytuł i opis mają brzmieć naturalnie i pomagać kupującemu, a nie wyglądać jak lista słów.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq-opisy-produktow-allegro-4"><span>Czy można poprawić istniejący opis?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq-opisy-produktow-allegro-4" role="region"><div class="faq-a-inner">Tak. Możesz wysłać obecny opis, a ja uporządkuję tytuł, strukturę informacji, korzyści, parametry i pytania klienta.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq-opisy-produktow-allegro-5"><span>Czy obiecujesz konkretne wyniki sprzedaży?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq-opisy-produktow-allegro-5" role="region"><div class="faq-a-inner">Nie. Tekst ma poprawić czytelność, zrozumienie produktu i kompletność informacji. Sprzedaż zależy też od ceny, konkurencji, opinii i dostępności.</div></div></div>
+    </div>
   </section>
 
   <section class="card">
@@ -252,6 +257,17 @@ function closeDrawer(){hamBtn.classList.remove("open");drawer.classList.remove("
 hamBtn.addEventListener("click",()=>{const open=hamBtn.classList.toggle("open");drawer.classList.toggle("open",open);hamBtn.setAttribute("aria-expanded",String(open));hamBtn.setAttribute("aria-label",open?"Zamknij menu nawigacji":"Otwórz menu nawigacji");drawer.setAttribute("aria-hidden",String(!open));document.body.style.overflow=open?"hidden":""});
 document.addEventListener("click",e=>{const nav=document.querySelector(".site-nav");if(!nav.contains(e.target)&&!drawer.contains(e.target)&&drawer.classList.contains("open"))closeDrawer()});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&drawer.classList.contains("open"))closeDrawer()});
+function tFaq(btn){
+  const it=btn.closest(".faq-item"),op=it.classList.contains("open");
+  document.querySelectorAll(".faq-item.open").forEach(i=>{
+    i.classList.remove("open");
+    i.querySelector(".faq-q").setAttribute("aria-expanded","false");
+  });
+  if(!op){
+    it.classList.add("open");
+    btn.setAttribute("aria-expanded","true");
+  }
+}
 </script>
 </body>
 </html>

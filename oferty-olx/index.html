@@ -190,13 +190,18 @@
     </section>
   </div>
 
-  <section class="card faq" id="faq">
-    <h2>FAQ</h2>
-    <details><summary>Czy oferta OLX różni się od oferty Allegro?</summary><p>Tak. Na OLX większe znaczenie ma zaufanie do ogłoszenia, jasny stan produktu, kontakt i lokalny kontekst sprzedaży. Allegro częściej wymaga bardziej uporządkowanej struktury marketplace.</p></details>
-    <details><summary>Czy można przygotować ogłoszenie bez gotowego linku?</summary><p>Tak. Wystarczą zdjęcia produktu, informacje o stanie, cenie, lokalizacji lub sposobie odbioru oraz to, co chcesz podkreślić.</p></details>
-    <details><summary>Czy opis powinien być długi?</summary><p>Nie. Powinien być kompletny, ale szybki do przeczytania. Najważniejsze informacje muszą pojawić się wcześnie, szczególnie na mobile.</p></details>
-    <details><summary>Czy warto pokazywać wady produktu?</summary><p>Tak, jeśli produkt jest używany lub ma ograniczenia. Uczciwe pokazanie stanu zmniejsza liczbę nietrafionych zapytań i buduje zaufanie.</p></details>
-    <details><summary>Czy przygotowujesz też zdjęcia do OLX?</summary><p>Mogę przygotować układ galerii, obróbkę istniejących zdjęć, rekomendacje ujęć lub komplet materiałów, zależnie od jakości zdjęć wejściowych.</p></details>
+  <section class="faq-section" id="faq">
+    <div class="s-head c">
+      <div class="eyebrow">FAQ</div>
+      <h2 class="s-title">Najczęstsze pytania</h2>
+    </div>
+    <div class="faq-wrap faq-wrap--centered">
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq-oferty-olx-1"><span>Czy oferta OLX różni się od oferty Allegro?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq-oferty-olx-1" role="region"><div class="faq-a-inner">Tak. Na OLX większe znaczenie ma zaufanie do ogłoszenia, jasny stan produktu, kontakt i lokalny kontekst sprzedaży. Allegro częściej wymaga bardziej uporządkowanej struktury marketplace.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq-oferty-olx-2"><span>Czy można przygotować ogłoszenie bez gotowego linku?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq-oferty-olx-2" role="region"><div class="faq-a-inner">Tak. Wystarczą zdjęcia produktu, informacje o stanie, cenie, lokalizacji lub sposobie odbioru oraz to, co chcesz podkreślić.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq-oferty-olx-3"><span>Czy opis powinien być długi?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq-oferty-olx-3" role="region"><div class="faq-a-inner">Nie. Powinien być kompletny, ale szybki do przeczytania. Najważniejsze informacje muszą pojawić się wcześnie, szczególnie na mobile.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq-oferty-olx-4"><span>Czy warto pokazywać wady produktu?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq-oferty-olx-4" role="region"><div class="faq-a-inner">Tak, jeśli produkt jest używany lub ma ograniczenia. Uczciwe pokazanie stanu zmniejsza liczbę nietrafionych zapytań i buduje zaufanie.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq-oferty-olx-5"><span>Czy przygotowujesz też zdjęcia do OLX?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq-oferty-olx-5" role="region"><div class="faq-a-inner">Mogę przygotować układ galerii, obróbkę istniejących zdjęć, rekomendacje ujęć lub komplet materiałów, zależnie od jakości zdjęć wejściowych.</div></div></div>
+    </div>
   </section>
 
   <section class="card">
@@ -253,6 +258,17 @@ function closeDrawer(){hamBtn.classList.remove("open");drawer.classList.remove("
 hamBtn.addEventListener("click",()=>{const open=hamBtn.classList.toggle("open");drawer.classList.toggle("open",open);hamBtn.setAttribute("aria-expanded",String(open));hamBtn.setAttribute("aria-label",open?"Zamknij menu nawigacji":"Otwórz menu nawigacji");drawer.setAttribute("aria-hidden",String(!open));document.body.style.overflow=open?"hidden":""});
 document.addEventListener("click",e=>{const nav=document.querySelector(".site-nav");if(!nav.contains(e.target)&&!drawer.contains(e.target)&&drawer.classList.contains("open"))closeDrawer()});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&drawer.classList.contains("open"))closeDrawer()});
+function tFaq(btn){
+  const it=btn.closest(".faq-item"),op=it.classList.contains("open");
+  document.querySelectorAll(".faq-item.open").forEach(i=>{
+    i.classList.remove("open");
+    i.querySelector(".faq-q").setAttribute("aria-expanded","false");
+  });
+  if(!op){
+    it.classList.add("open");
+    btn.setAttribute("aria-expanded","true");
+  }
+}
 </script>
 </body>
 </html>

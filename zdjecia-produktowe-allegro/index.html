@@ -188,13 +188,18 @@
     </section>
   </div>
 
-  <section class="card faq" id="faq">
-    <h2>FAQ</h2>
-    <details><summary>Czy muszę wysyłać produkt do zdjęć?</summary><p>Nie zawsze. Często wystarczą dobre zdjęcia bazowe, pliki producenta albo obecna oferta. Jeśli potrzebna jest fizyczna sesja, zakres trzeba ustalić osobno.</p></details>
-    <details><summary>Czy zdjęcie główne będzie zgodne z Allegro?</summary><p>Projektuję je z myślą o czytelności i zasadach marketplace. Jeśli kategoria wymaga prostego tła, miniatura jest przygotowywana tak, aby nie traciła profesjonalnego wyglądu.</p></details>
-    <details><summary>Czy można przygotować same infografiki?</summary><p>Tak, jeśli obecne zdjęcia są dobre, można przygotować tylko infografiki z parametrami, zawartością zestawu lub zastosowaniem produktu.</p></details>
-    <details><summary>Dla jakich kategorii to działa?</summary><p>Najmocniej dla produktów technicznych, narzędzi, BHP, warsztatu i motoryzacji, ale ten sam proces można zastosować też w domu i ogrodzie, kosmetykach, elektronice czy produktach lifestyle.</p></details>
-    <details><summary>Czy obiecujesz wzrost sprzedaży?</summary><p>Nie. Celem jest poprawa jakości prezentacji: miniatury, galerii i informacji wizualnych. Wyniki zależą też od ceny, konkurencji, sezonu i samego produktu.</p></details>
+  <section class="faq-section" id="faq">
+    <div class="s-head c">
+      <div class="eyebrow">FAQ</div>
+      <h2 class="s-title">Najczęstsze pytania</h2>
+    </div>
+    <div class="faq-wrap faq-wrap--centered">
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq-zdjecia-produktowe-allegro-1"><span>Czy muszę wysyłać produkt do zdjęć?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq-zdjecia-produktowe-allegro-1" role="region"><div class="faq-a-inner">Nie zawsze. Często wystarczą dobre zdjęcia bazowe, pliki producenta albo obecna oferta. Jeśli potrzebna jest fizyczna sesja, zakres trzeba ustalić osobno.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq-zdjecia-produktowe-allegro-2"><span>Czy zdjęcie główne będzie zgodne z Allegro?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq-zdjecia-produktowe-allegro-2" role="region"><div class="faq-a-inner">Projektuję je z myślą o czytelności i zasadach marketplace. Jeśli kategoria wymaga prostego tła, miniatura jest przygotowywana tak, aby nie traciła profesjonalnego wyglądu.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq-zdjecia-produktowe-allegro-3"><span>Czy można przygotować same infografiki?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq-zdjecia-produktowe-allegro-3" role="region"><div class="faq-a-inner">Tak, jeśli obecne zdjęcia są dobre, można przygotować tylko infografiki z parametrami, zawartością zestawu lub zastosowaniem produktu.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq-zdjecia-produktowe-allegro-4"><span>Dla jakich kategorii to działa?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq-zdjecia-produktowe-allegro-4" role="region"><div class="faq-a-inner">Najmocniej dla produktów technicznych, narzędzi, BHP, warsztatu i motoryzacji, ale ten sam proces można zastosować też w domu i ogrodzie, kosmetykach, elektronice czy produktach lifestyle.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="tFaq(this)" aria-expanded="false" aria-controls="faq-zdjecia-produktowe-allegro-5"><span>Czy obiecujesz wzrost sprzedaży?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq-zdjecia-produktowe-allegro-5" role="region"><div class="faq-a-inner">Nie. Celem jest poprawa jakości prezentacji: miniatury, galerii i informacji wizualnych. Wyniki zależą też od ceny, konkurencji, sezonu i samego produktu.</div></div></div>
+    </div>
   </section>
 
   <section class="card">
@@ -250,6 +255,17 @@ function closeDrawer(){hamBtn.classList.remove("open");drawer.classList.remove("
 hamBtn.addEventListener("click",()=>{const open=hamBtn.classList.toggle("open");drawer.classList.toggle("open",open);hamBtn.setAttribute("aria-expanded",String(open));hamBtn.setAttribute("aria-label",open?"Zamknij menu nawigacji":"Otwórz menu nawigacji");drawer.setAttribute("aria-hidden",String(!open));document.body.style.overflow=open?"hidden":""});
 document.addEventListener("click",e=>{const nav=document.querySelector(".site-nav");if(!nav.contains(e.target)&&!drawer.contains(e.target)&&drawer.classList.contains("open"))closeDrawer()});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&drawer.classList.contains("open"))closeDrawer()});
+function tFaq(btn){
+  const it=btn.closest(".faq-item"),op=it.classList.contains("open");
+  document.querySelectorAll(".faq-item.open").forEach(i=>{
+    i.classList.remove("open");
+    i.querySelector(".faq-q").setAttribute("aria-expanded","false");
+  });
+  if(!op){
+    it.classList.add("open");
+    btn.setAttribute("aria-expanded","true");
+  }
+}
 </script>
 </body>
 </html>
