@@ -108,7 +108,7 @@
   --sh4:0 32px 64px rgba(0,0,0,.6),0 4px 10px rgba(0,0,0,.35);
   --nav:rgba(5,8,16,.9);--glass:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.025));
 }
-html{scroll-behavior:smooth;scroll-padding-top:5rem;background:var(--bg)}
+html{scroll-behavior:smooth;background:var(--bg)}
 body{min-height:100vh;font-family:'Inter',system-ui,sans-serif;font-size:1rem;line-height:1.65;color:var(--t1);
   background:radial-gradient(ellipse 80% 50% at 50% -10%,rgba(37,99,235,.1),transparent),var(--bg);
   -webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .3s,color .3s}
@@ -182,7 +182,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;border-bottom:1px solid var(
 
 /* ── LAYOUT ── */
 .page{position:relative;z-index:1}
-.section{max-width:1280px;margin:0 auto;padding:4rem 1.75rem;scroll-margin-top:5rem}
+.section{max-width:1280px;margin:0 auto;padding:4rem 1.75rem}
 .divider{height:1px;background:var(--bs);max-width:1280px;margin:0 auto}
 .card{
   background:var(--s1);
@@ -422,7 +422,6 @@ footer{border-top:1px solid var(--bs);padding:2.25rem 1.75rem;position:relative;
   .btn-nav{display:none}
   .ham-btn{display:flex}
   /* .nav-drawer zawsze display:flex — sterowane przez .open */
-  .section:not(.hero),.band,footer{content-visibility:visible;contain-intrinsic-size:auto}
   .sticky-cta{display:none}
   .wa-fab{display:flex}
   /* hero na tablecie */
@@ -836,7 +835,7 @@ select.cinput{cursor:pointer}
 .foot-copy{flex-basis:100%;width:100%;padding-top:.875rem;border-top:1px solid var(--bs);font-size:.8125rem;color:var(--t3)}
 @media(max-width:760px){.foot-inner{text-align:center;flex-direction:column;align-items:center}.foot-brand{max-width:none}.foot-links{justify-content:center}.foot-copy{display:block}}
 
-.anchor-alias{display:block;position:relative;top:-5rem;visibility:hidden}
+.anchor-alias{display:block;position:relative;top:-4.75rem;visibility:hidden}
 
 </style>
 <script src="/analytics.js" defer></script>
@@ -1191,7 +1190,7 @@ select.cinput{cursor:pointer}
 <div class="section section--compact" id="mini-audyt-top">
   <div class="cta-box">
     <div class="eyebrow eyebrow--center">Mini audyt</div>
-    <h2 class="s-title">Zanim wybierzesz zakres — sprawdź co blokuje Twoją sprzedaż</h2>
+    <h2>Zanim wybierzesz zakres — sprawdź co blokuje Twoją sprzedaż</h2>
     <p>Wyślij link, zdjęcie albo krótki opis produktu. Dostaniesz konkretną listę: co warto poprawić w miniaturze, tytule, galerii albo opisie. Zero ogólników, zero zobowiązań.</p>
     <a href="/#kontakt" class="btn-p">Wyślij link — odbierz darmowy mini audyt</a>
   </div>
@@ -1310,7 +1309,7 @@ select.cinput{cursor:pointer}
   <div class="card correction-card">
     <div>
       <div class="eyebrow">Poprawki</div>
-      <h2 class="s-title">Poprawki są częścią procesu</h2>
+      <h2>Poprawki są częścią procesu</h2>
       <p>Po przygotowaniu materiałów możesz zgłosić uwagi. Celem nie jest oddanie przypadkowego projektu, ale dopracowanie oferty tak, aby jasno pokazywała produkt, jego zastosowanie i przewagę.</p>
       <div class="section-cta">
         <a href="/#kontakt" class="btn-p">Zapytaj o ofertę</a>
@@ -1561,7 +1560,7 @@ select.cinput{cursor:pointer}
   <div class="contact-form-card" id="mini-audyt">
     <div id="contactFormWrap">
       <div class="cform-head">
-        <div class="cform-title">Napisz do mnie</div>
+        <div class="cform-title">Napisz do autora projektu</div>
         <div class="cform-sub">Możesz mieć gotową ofertę, same zdjęcia, serię produktów albo dopiero pomysł. Wystarczy krótki opis sytuacji.</div>
       </div>
       <form id="contactForm" name="kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
@@ -1742,6 +1741,7 @@ function closeDrawer(){
   hamBtn.setAttribute('aria-label','Otwórz menu nawigacji');
   drawer.setAttribute('aria-hidden','true');
   document.body.style.overflow='';
+  hamBtn.focus();
 }
 hamBtn.addEventListener('click',()=>{
   const open=hamBtn.classList.toggle('open');
@@ -1757,50 +1757,6 @@ document.addEventListener('click',e=>{
 });
 document.addEventListener('keydown',e=>{
   if(e.key==='Escape'&&drawer.classList.contains('open'))closeDrawer();
-});
-
-/* Precise hash scrolling for fixed mobile/desktop navigation */
-const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
-function normalizePath(path){
-  const normalized=path.replace(/\/index\.html$/,'/');
-  return normalized.length>1?normalized.replace(/\/$/,''):normalized||'/';
-}
-function samePageHash(href){
-  if(!href)return null;
-  const url=new URL(href,window.location.href);
-  if(url.origin!==window.location.origin)return null;
-  if(normalizePath(url.pathname)!==normalizePath(window.location.pathname))return null;
-  return url.hash||null;
-}
-function navOffset(){
-  const nav=document.querySelector('nav');
-  return Math.ceil(nav?.getBoundingClientRect().height||0);
-}
-function visualAnchorTarget(target){
-  if(!target.classList.contains('section'))return target;
-  return target.querySelector(':scope > .s-head,:scope > .contact-wrap,:scope > .cta-box,:scope > .card,:scope > .grid')||target;
-}
-function scrollToHash(hash,{update=true,behavior='smooth'}={}){
-  if(!hash||hash==='#')return false;
-  const target=document.getElementById(decodeURIComponent(hash.slice(1)));
-  if(!target)return false;
-  const anchor=visualAnchorTarget(target);
-  const top=Math.max(0,window.scrollY+anchor.getBoundingClientRect().top-navOffset());
-  window.scrollTo({top,behavior:reduceMotion.matches?'auto':behavior});
-  if(update&&window.location.hash!==hash)history.pushState(null,'',hash);
-  return true;
-}
-document.querySelectorAll('a[href*="#"]').forEach(link=>{
-  link.addEventListener('click',e=>{
-    const hash=samePageHash(link.getAttribute('href'));
-    if(!hash)return;
-    e.preventDefault();
-    closeDrawer();
-    requestAnimationFrame(()=>requestAnimationFrame(()=>scrollToHash(hash)));
-  });
-});
-window.addEventListener('load',()=>{
-  if(window.location.hash)requestAnimationFrame(()=>scrollToHash(window.location.hash,{update:false,behavior:'auto'}));
 });
 
 /* Active nav link on scroll */
