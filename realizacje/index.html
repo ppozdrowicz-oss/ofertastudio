@@ -299,14 +299,27 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--brand);outline-offs
 
   .ba-label-row{gap:.5rem;align-items:flex-start;flex-wrap:wrap}
   .ba-hint{width:100%;margin-left:0}
-  .ba-slider{height:auto;min-height:220px;aspect-ratio:4/3}
+  .ba-slider{height:auto;min-height:0;aspect-ratio:16/9}
   .ba-img{padding:.75rem}
   .ba-handle{width:3rem;height:3rem}
   .ba-tag{top:.625rem;font-size:.625rem}
   .ba-tag.b{left:.625rem}
   .ba-tag.a{right:.625rem}
 
-  .shots-grid,.shots-grid-3,.shots-grid-2{grid-template-columns:1fr;gap:.875rem}
+  .shots-grid,.shots-grid-3,.shots-grid-2{
+    display:flex;
+    grid-template-columns:none;
+    gap:.875rem;
+    overflow-x:auto;
+    overflow-y:hidden;
+    margin-left:-1.125rem;
+    margin-right:-1.125rem;
+    padding:0 1.125rem .875rem;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+  }
+  .shots-grid-3,.shots-grid-2{margin-top:1rem}
+  .shot-card{flex:0 0 min(82vw,22rem);scroll-snap-align:start}
   .shot-img img{padding:.5rem}
   .shot-body{padding:.875rem}
   .infogr-card{grid-template-columns:1fr}

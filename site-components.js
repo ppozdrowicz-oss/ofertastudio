@@ -20,7 +20,7 @@
 
   const navItems = [
     { key: 'uslugi', label: 'Usługi', href: '/#uslugi' },
-    { key: 'realizacje', label: 'Realizacje', href: '/realizacje/' },
+    { key: 'realizacje', label: 'Realizacje', href: '/#realizacje' },
     { key: 'pakiety', label: 'Pakiety', href: '/#pakiety' },
     { key: 'proces', label: 'Proces', href: '/#proces' },
     { key: 'faq', label: 'FAQ', href: '/#faq' },
@@ -78,7 +78,7 @@
           <div class="nav-right">
             <div class="status-pill"><span class="sdot" aria-hidden="true"></span>Zapytania otwarte</div>
             <button class="toggle-btn" id="themeToggle" type="button" aria-label="Włącz tryb ciemny" aria-pressed="false"><span aria-hidden="true">☀</span></button>
-            <a href="${homeHref('#mini-audyt')}" class="btn-nav" data-event="mini_audit_click" data-location="header" data-package="start">Bezpłatny mini audyt</a>
+            <a href="${homeHref('#kontakt')}" class="btn-nav" data-event="mini_audit_click" data-location="header" data-package="start">Bezpłatny mini audyt</a>
             <button class="ham-btn" id="hamBtn" type="button" aria-label="Otwórz menu nawigacji" aria-expanded="false" aria-controls="navDrawer"><span></span><span></span><span></span></button>
           </div>
         </div>
@@ -86,7 +86,7 @@
       <div class="nav-drawer" id="navDrawer" role="navigation" aria-label="Menu mobilne" aria-hidden="true">
         ${drawerLinks}
         <div class="drawer-ctas">
-          <a href="${homeHref('#mini-audyt')}" class="btn-nav" data-event="mini_audit_click" data-location="mobile_nav" data-package="start">Bezpłatny mini audyt</a>
+          <a href="${homeHref('#kontakt')}" class="btn-nav" data-event="mini_audit_click" data-location="mobile_nav" data-package="start">Bezpłatny mini audyt</a>
           <a href="https://wa.me/48791162938" class="btn-wa" rel="noopener">WhatsApp</a>
         </div>
         <div class="drawer-contacts" aria-label="Kontakt">
@@ -213,8 +213,8 @@
   }
 
   function bindHomeActiveSections() {
-    if (window.location.pathname !== '/') return;
-    const ids = ['uslugi', 'pakiety', 'proces', 'faq', 'kontakt'];
+    if (!isHome()) return;
+    const ids = ['uslugi', 'realizacje', 'pakiety', 'proces', 'faq', 'kontakt'];
     const sections = ids.map(id => document.getElementById(id)).filter(Boolean);
     if (!sections.length || !('IntersectionObserver' in window)) return;
     const observer = new IntersectionObserver(entries => {
