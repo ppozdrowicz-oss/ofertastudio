@@ -786,7 +786,8 @@ select.cinput{cursor:pointer}
   text-align:center;padding:2rem;gap:1rem;
   background:var(--brand-bg);border-color:rgba(37,99,235,.2);
 }
-.pf-teaser-icon{font-size:2rem}
+.pf-teaser-icon{width:2rem;height:2rem;display:grid;place-items:center}
+.pf-teaser-icon img{display:block;width:100%;height:100%}
 .pf-teaser-h{font-size:.9375rem;font-weight:700;color:var(--t1)}
 .pf-teaser-p{font-size:.8125rem;color:var(--t2);line-height:1.6;margin:0}
 
@@ -1182,7 +1183,7 @@ select.cinput{cursor:pointer}
 
     <!-- Teaser — więcej realizacji -->
     <div class="card pf-card pf-card--teaser">
-      <div class="pf-teaser-icon" aria-hidden="true">📂</div>
+      <div class="pf-teaser-icon" aria-hidden="true"><img decoding="async" loading="lazy" src="/icons/specjalizacje/wiecej-kategorii.svg" width="32" height="32" alt=""></div>
       <div class="pf-teaser-h">Więcej kategorii</div>
       <p class="pf-teaser-p">Motoryzacja, elektronika, produkty przemysłowe — pytaj o wycenę dla swojej kategorii.</p>
       <a href="/realizacje/" class="btn-p btn-p--sm">
