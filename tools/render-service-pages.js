@@ -18,6 +18,7 @@ const pages = [
   {
     file: 'zdjecia-produktowe-allegro/index.html',
     url: '/zdjecia-produktowe-allegro/',
+    robots: 'noindex, follow',
     title: 'Zdjęcia produktowe Allegro — miniatury i galerie SEO | OfertaStudio.pl',
     description: 'Zdjęcia produktowe Allegro: miniatury, galerie i infografiki bez wysyłki produktu. Wyślij link lub zdjęcia i zapytaj o Foto Pack od 249 zł.',
     h1: 'Zdjęcia produktowe Allegro: miniatura, packshot, galeria i infografika',
@@ -101,6 +102,7 @@ const pages = [
   {
     file: 'opisy-produktow-allegro/index.html',
     url: '/opisy-produktow-allegro/',
+    robots: 'noindex, follow',
     title: 'Opisy produktów Allegro — tytuł SEO i treść oferty | OfertaStudio.pl',
     description: 'Opisy produktów Allegro: tytuł SEO, korzyści, parametry i FAQ gotowe do wklejenia. Wyślij ofertę i zapytaj o Tekst Pack od 179 zł.',
     h1: 'Opisy produktów Allegro: copywriting, tytuł SEO i struktura bloków',
@@ -184,6 +186,7 @@ const pages = [
   {
     file: 'optymalizacja-ofert-allegro/index.html',
     url: '/optymalizacja-ofert-allegro/',
+    robots: 'noindex, follow',
     title: 'Optymalizacja ofert Allegro — zdjęcia, opis, tytuł SEO | OfertaStudio.pl',
     description: 'Optymalizacja ofert Allegro: miniatura, galeria, opis i tytuł SEO w jednym procesie. Wyślij link i zapytaj o Ofertę Pro od 399 zł.',
     h1: 'Optymalizacja ofert Allegro: miniatura, galeria, opis i algorytm Allegro',
@@ -268,6 +271,7 @@ const pages = [
   {
     file: 'audyt-oferty-allegro/index.html',
     url: '/audyt-oferty-allegro/',
+    robots: 'noindex, follow',
     title: 'Audyt oferty Allegro — miniatura, tytuł i galeria | OfertaStudio.pl',
     description: 'Audyt oferty Allegro: sprawdzę miniaturę, tytuł, galerię, opis i konkurencję. Wyślij link i odbierz bezpłatny mini audyt przed zmianami.',
     h1: 'Audyt oferty Allegro: checklista tego, co sprawdzamy przed zmianami',
@@ -353,6 +357,7 @@ const pages = [
   {
     file: 'oferty-olx/index.html',
     url: '/oferty-olx/',
+    robots: 'noindex, follow',
     title: 'Oferty OLX — zdjęcia i treść ogłoszenia | OfertaStudio.pl',
     description: 'Oferty OLX: zdjęcia, tytuł i treść ogłoszenia, które budują zaufanie na mobile. Wyślij produkt i zapytaj o przygotowanie oferty OLX.',
     h1: 'Poprawa ofert OLX: zdjęcia, tytuł i treść ogłoszenia pod specyfikę OLX',
@@ -559,7 +564,7 @@ function render(page) {
 <title>${escapeHtml(page.title)}</title>
 <meta name="description" content="${escapeHtml(page.description)}">
 <link rel="canonical" href="${SITE}${page.url}">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="${page.robots || 'index, follow'}">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pl_PL">
 <meta property="og:site_name" content="OfertaStudio.pl">
