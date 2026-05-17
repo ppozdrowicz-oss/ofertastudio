@@ -270,38 +270,6 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px soli
   -webkit-mask-image:radial-gradient(ellipse 100% 60% at 50% 0%,black,transparent);
   mask-image:radial-gradient(ellipse 100% 60% at 50% 0%,black,transparent)}
 
-/* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:500;border-bottom:1px solid var(--bs)}
-.nav-inner{max-width:1280px;margin:0 auto;padding:0 1.25rem;height:3.75rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;background:var(--nav);backdrop-filter:blur(24px)}
-.nav-logo{display:flex;align-items:center;text-decoration:none;flex-shrink:0}
-.nav-links{display:flex;align-items:center;gap:.125rem;flex:1;justify-content:center}
-.nav-link{font-size:.875rem;font-weight:500;color:var(--t2);text-decoration:none;padding:.375rem .625rem;border-radius:.5rem;transition:all .15s;white-space:nowrap}
-.nav-link:hover{color:var(--t1);background:var(--brand-bg)}
-.nav-link.active{color:var(--brand);background:var(--brand-bg)}
-.nav-right{display:flex;align-items:center;gap:.5rem;flex-shrink:0}
-.status-pill{display:flex;align-items:center;gap:.375rem;font-size:.75rem;font-weight:600;color:var(--ok);background:var(--ok-bg);padding:.25rem .625rem;border-radius:999px;white-space:nowrap}
-.sdot{width:6px;height:6px;border-radius:50%;background:var(--ok);animation:blink 2s infinite;flex-shrink:0}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-.toggle-btn{width:2.25rem;height:2.25rem;border-radius:.625rem;background:transparent;border:1px solid var(--bs);cursor:pointer;display:grid;place-items:center;font-size:1rem;color:var(--t3);transition:all .15s;flex-shrink:0}
-.toggle-btn:hover{background:var(--brand-bg);color:var(--t1)}
-.btn-nav{font-size:.875rem;font-weight:600;color:#fff;background:var(--brand);padding:.5rem 1rem;border-radius:.625rem;text-decoration:none;border:none;cursor:pointer;box-shadow:var(--sh2);transition:all .2s;white-space:nowrap}
-.btn-nav:hover{background:var(--brand2);transform:translateY(-1px)}
-
-/* mobile hamburger */
-.ham-btn{display:none;width:2.25rem;height:2.25rem;border-radius:.625rem;background:transparent;border:1px solid var(--bs);cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px;flex-shrink:0}
-.ham-btn span{display:block;width:16px;height:1.5px;background:var(--t2);border-radius:2px;transition:all .25s}
-.ham-btn.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
-.ham-btn.open span:nth-child(2){opacity:0;transform:scaleX(0)}
-.ham-btn.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
-
-/* mobile drawer */
-.nav-drawer{display:flex;flex-direction:column;position:fixed;top:3.75rem;left:0;right:0;z-index:499;background:var(--nav);backdrop-filter:blur(24px);border-bottom:1px solid var(--bs);padding:1rem 1.25rem 1.5rem;gap:.25rem;transform:translateY(-8px);opacity:0;visibility:hidden;transition:transform .25s,opacity .25s,visibility .25s;pointer-events:none}
-.nav-drawer.open{transform:translateY(0);opacity:1;visibility:visible;pointer-events:auto}
-.nav-drawer .nav-link{padding:.625rem .875rem;font-size:.9375rem;border-radius:.625rem}
-.nav-drawer .drawer-ctas{display:flex;gap:.625rem;margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--bs)}
-.nav-drawer .btn-nav{flex:1;text-align:center;padding:.625rem 1rem}
-.nav-drawer .btn-wa{flex:1;text-align:center;padding:.625rem 1rem;font-size:.875rem;font-weight:600;color:#fff;background:var(--wa);border-radius:.625rem;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:.375rem}
-
 /* ── STICKY CTA (desktop) ── */
 .sticky-cta{position:fixed;bottom:1.75rem;right:1.75rem;z-index:150;display:flex;flex-direction:column;align-items:flex-end;gap:.5rem}
 .sticky-pill{font-size:.6875rem;font-weight:700;color:var(--ok);background:var(--ok-bg);padding:.25rem .625rem;border-radius:999px;letter-spacing:.04em}
@@ -522,15 +490,6 @@ textarea.cta-input{min-height:110px;resize:vertical;flex:none;width:100%}
 .faq-item.open .faq-a{max-height:300px}
 .faq-a-inner{padding:1rem 1.5rem 1.375rem;font-size:.9375rem;color:var(--t2);line-height:1.8;border-top:1px solid var(--bs)}
 
-/* ── FOOTER ── */
-footer{border-top:1px solid var(--bs);padding:2.25rem 1.75rem;position:relative;z-index:1}
-.foot-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
-.foot-logo{font-size:.9375rem;font-weight:700;color:var(--t2)}
-.foot-links{display:flex;gap:1.5rem;flex-wrap:wrap}
-.foot-links a{font-size:.875rem;color:var(--t3);text-decoration:none;transition:color .2s}
-.foot-links a:hover{color:var(--t1)}
-.foot-copy{font-size:.8125rem;color:var(--t3)}
-
 /* ══════════════════════════════════════════
    RESPONSIVE — tablet
 ══════════════════════════════════════════ */
@@ -551,11 +510,6 @@ footer{border-top:1px solid var(--bs);padding:2.25rem 1.75rem;position:relative;
   .story-grid,.split-copy,.correction-card{grid-template-columns:1fr}
   .proc-grid{grid-template-columns:1fr 1fr}
   .portfolio-grid{grid-template-columns:1fr}
-  .nav-links{display:none}
-  .status-pill{display:none}
-  .btn-nav{display:none}
-  .ham-btn{display:flex}
-  /* .nav-drawer zawsze display:flex — sterowane przez .open */
   .section:not(.hero),.band,footer{content-visibility:visible;contain-intrinsic-size:auto}
   .sticky-cta{display:none}
   .wa-fab{display:flex}
@@ -635,10 +589,6 @@ footer{border-top:1px solid var(--bs);padding:2.25rem 1.75rem;position:relative;
   /* typography */
   .s-title{font-size:clamp(1.375rem,5.5vw,1.875rem)}
   .s-sub{font-size:.9375rem}
-  /* footer */
-  .foot-inner{flex-direction:column;gap:.75rem;text-align:center}
-  .foot-links{gap:.875rem;justify-content:center}
-  .foot-copy{display:none}
   /* portfolio */
   .ba-slider{height:220px}
   .pf-slider-wrap{aspect-ratio:4/3;max-height:280px}
@@ -660,7 +610,6 @@ footer{border-top:1px solid var(--bs);padding:2.25rem 1.75rem;position:relative;
 
 @media(max-width:380px){
   .hero-h1{font-size:1.625rem}
-  .nav-inner{padding:0 .875rem}
   .pf-grid{grid-template-columns:1fr}
   .ind-grid{grid-template-columns:1fr}
   .ind-grid--wide{grid-template-columns:1fr}
@@ -900,12 +849,6 @@ select.cinput{cursor:pointer}
 @media(max-width:640px){
   html{scroll-padding-top:4rem}
   body{font-size:.975rem}
-  .nav-inner{height:3.5rem;padding:0 1rem}
-  .nav-logo svg{width:min(190px,52vw);height:auto}
-  .nav-drawer{top:3.5rem;max-height:calc(100dvh - 3.5rem);overflow-y:auto;padding-bottom:calc(1rem + env(safe-area-inset-bottom))}
-  .nav-drawer .drawer-ctas{flex-direction:column}
-  .nav-drawer .btn-nav,.nav-drawer .btn-wa{min-height:2.75rem}
-  .toggle-btn,.ham-btn{width:2.5rem;height:2.5rem}
   .wa-fab{right:1rem;bottom:calc(1rem + env(safe-area-inset-bottom));width:3.125rem;height:3.125rem}
 
   .section{padding:2.25rem 1rem}
@@ -950,7 +893,6 @@ select.cinput{cursor:pointer}
   .cinput,select.cinput,textarea.cinput{font-size:16px}
   .cch{min-height:3.5rem}
   .faq-q{line-height:1.35}
-  .foot-links{row-gap:.5rem}
 }
 @media(max-width:420px){
   .ind-grid,.ind-grid.ind-grid--wide{grid-template-columns:1fr}
@@ -961,14 +903,6 @@ select.cinput{cursor:pointer}
   .card:hover,.pf-card:hover,.shot-card:hover,.btn-p:hover,.btn-s:hover,.btn-nav:hover,.btn-hero-primary:hover,.btn-hero-wa:hover,.sticky-btn:hover,.csubmit-btn:hover:not(:disabled),.csubmit-wa:hover{transform:none}
   .pf-card-overlay{opacity:1}
 }
-
-/* Unified footer */
-.foot-inner{align-items:flex-start;gap:1.25rem 2rem}
-.foot-brand{max-width:420px}
-.foot-desc{margin:.35rem 0 0;color:var(--t2);font-size:.875rem;line-height:1.55}
-.foot-links{max-width:760px;gap:.75rem 1.25rem;justify-content:flex-end}
-.foot-copy{flex-basis:100%;width:100%;padding-top:.875rem;border-top:1px solid var(--bs);font-size:.8125rem;color:var(--t3)}
-@media(max-width:760px){.foot-inner{text-align:center;flex-direction:column;align-items:center}.foot-brand{max-width:none}.foot-links{justify-content:center}.foot-copy{display:block}}
 
 .anchor-alias{display:block;position:relative;top:-5rem;visibility:hidden}
 
@@ -988,7 +922,7 @@ select.cinput{cursor:pointer}
 <!-- Sticky CTA (desktop) -->
 <div class="sticky-cta">
   <div class="sticky-pill"><span aria-hidden="true">●</span> Darmowy mini audyt</div>
-  <a href="/#kontakt" class="sticky-btn" data-event="mini_audit_click" data-location="hero" data-package="start">Wyślij link do analizy</a>
+  <a href="#kontakt" class="sticky-btn" data-event="mini_audit_click" data-location="hero" data-package="start">Wyślij link do analizy</a>
 </div>
 
 <!-- NAV -->
@@ -1008,7 +942,7 @@ select.cinput{cursor:pointer}
     </div>
 
     <div class="hero-ctas">
-      <a href="/#kontakt" class="btn-hero-primary" data-event="hero_cta_click" data-location="hero" data-package="start">
+      <a href="#kontakt" class="btn-hero-primary" data-event="hero_cta_click" data-location="hero" data-package="start">
         Wyślij link — odbierz darmowy mini audyt
         <span class="btn-badge">start</span>
       </a>
@@ -1115,8 +1049,8 @@ select.cinput{cursor:pointer}
     </div>
   </div>
   <div class="section-cta">
-    <a href="/#kontakt" class="btn-p">Wyślij link — odbierz darmowy mini audyt</a>
-    <a href="/#proces" class="btn-s">Zobacz proces pracy</a>
+    <a href="#kontakt" class="btn-p">Wyślij link — odbierz darmowy mini audyt</a>
+    <a href="#proces" class="btn-s">Zobacz proces pracy</a>
   </div>
 </div>
 
@@ -1311,7 +1245,7 @@ select.cinput{cursor:pointer}
       <a href="https://wa.me/48791162938?text=Cześć,%20chcę%20wysłać%20ofertę%20do%20analizy." class="btn-hero-wa" data-location="case_study" rel="noopener">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp
       </a>
-      <a href="/#kontakt" class="btn-p" data-event="mini_audit_click" data-location="case_study" data-package="start">Wyślij link do analizy</a>
+      <a href="#kontakt" class="btn-p" data-event="mini_audit_click" data-location="case_study" data-package="start">Wyślij link do analizy</a>
     </div>
   </div>
 
@@ -1324,7 +1258,7 @@ select.cinput{cursor:pointer}
     <div class="eyebrow eyebrow--center">Mini audyt</div>
     <h2 class="s-title">Zanim zapłacisz — sprawdź jakość pracy na mini audycie</h2>
     <p>Wyślij link, zdjęcie albo krótki opis produktu. Dostaniesz konkretną listę: co warto poprawić w miniaturze, tytule, galerii albo opisie. Mini audyt jest bezpłatny i bez zobowiązań, a ewentualny zakres, termin i cena są ustalane przed startem.</p>
-    <a href="/#kontakt" class="btn-p">Wyślij link — odbierz darmowy mini audyt</a>
+    <a href="#kontakt" class="btn-p">Wyślij link — odbierz darmowy mini audyt</a>
   </div>
   <div class="card risk-note">
     <strong>Akceptacja przed płatnością</strong>
@@ -1377,8 +1311,8 @@ select.cinput{cursor:pointer}
     </div>
   </div>
   <div class="section-cta">
-    <a href="/#kontakt" class="btn-p">Wyślij link — odbierz darmowy mini audyt</a>
-    <a href="/#specjalizacje" class="btn-s">Sprawdź obsługiwane kategorie</a>
+    <a href="#kontakt" class="btn-p">Wyślij link — odbierz darmowy mini audyt</a>
+    <a href="#specjalizacje" class="btn-s">Sprawdź obsługiwane kategorie</a>
   </div>
 </div>
 
@@ -1415,7 +1349,7 @@ select.cinput{cursor:pointer}
   </div>
   <div class="section-cta">
     <a href="/realizacje/" class="btn-s">Zobacz przykłady realizacji</a>
-    <a href="/#kontakt" class="btn-p">Zapytaj o ofertę</a>
+    <a href="#kontakt" class="btn-p">Zapytaj o ofertę</a>
   </div>
 </div>
 
@@ -1435,7 +1369,7 @@ select.cinput{cursor:pointer}
     <div class="card proc-card"><div class="proc-step">KROK 04</div><div class="proc-title">Otrzymujesz gotową propozycję do wdrożenia</div><p class="proc-text">Dostajesz materiały i wskazówki, które można wykorzystać na Allegro, OLX, Amazon lub w sklepie internetowym.</p></div>
   </div>
   <div class="section-cta">
-    <a href="/#kontakt" class="btn-p" data-event="mini_audit_click" data-location="case_study" data-package="start">Wyślij link do analizy</a>
+    <a href="#kontakt" class="btn-p" data-event="mini_audit_click" data-location="case_study" data-package="start">Wyślij link do analizy</a>
   </div>
 </div>
 
@@ -1449,8 +1383,8 @@ select.cinput{cursor:pointer}
       <h2 class="s-title">Poprawki są częścią procesu</h2>
       <p>Po przygotowaniu materiałów możesz zgłosić uwagi. Celem nie jest oddanie przypadkowego projektu, ale dopracowanie oferty tak, aby jasno pokazywała produkt, jego zastosowanie i przewagę.</p>
       <div class="section-cta">
-        <a href="/#kontakt" class="btn-p">Zapytaj o ofertę</a>
-        <a href="/#pakiety" class="btn-s" data-event="pricing_cta_click" data-location="pricing">Zobacz pakiety</a>
+        <a href="#kontakt" class="btn-p">Zapytaj o ofertę</a>
+        <a href="#pakiety" class="btn-s" data-event="pricing_cta_click" data-location="pricing">Zobacz pakiety</a>
       </div>
     </div>
     <div class="correction-icon" aria-hidden="true">↻</div>
@@ -1484,7 +1418,7 @@ select.cinput{cursor:pointer}
         <li>odpowiedź mailowo lub WhatsApp</li>
       </ul>
       <div class="price-btns">
-        <a href="/#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="start" data-interest="Darmowy mini audyt" data-message="Interesuje mnie mini audyt.">Odbierz mini audyt</a>
+        <a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="start" data-interest="Darmowy mini audyt" data-message="Interesuje mnie mini audyt.">Odbierz mini audyt</a>
       </div>
     </div>
 
@@ -1504,7 +1438,7 @@ select.cinput{cursor:pointer}
         <li>rekomendacje do galerii</li>
       </ul>
       <div class="price-btns">
-        <a href="/#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="tekst_pack" data-interest="Tekst Pack" data-message="Interesuje mnie Tekst Pack.">Zapytaj o tekst</a>
+        <a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="tekst_pack" data-interest="Tekst Pack" data-message="Interesuje mnie Tekst Pack.">Zapytaj o tekst</a>
       </div>
     </div>
 
@@ -1524,7 +1458,7 @@ select.cinput{cursor:pointer}
         <li>spójny styl wizualny</li>
       </ul>
       <div class="price-btns">
-        <a href="/#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="foto_pack" data-interest="Foto Pack" data-message="Interesuje mnie Foto Pack.">Zapytaj o zdjęcia</a>
+        <a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="foto_pack" data-interest="Foto Pack" data-message="Interesuje mnie Foto Pack.">Zapytaj o zdjęcia</a>
       </div>
     </div>
 
@@ -1547,7 +1481,7 @@ select.cinput{cursor:pointer}
         <li>poprawki</li>
       </ul>
       <div class="price-btns">
-        <a href="/#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="oferta_pro" data-interest="Oferta Pro" data-message="Interesuje mnie Oferta Pro.">Zapytaj o Ofertę Pro</a>
+        <a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="oferta_pro" data-interest="Oferta Pro" data-message="Interesuje mnie Oferta Pro.">Zapytaj o Ofertę Pro</a>
       </div>
     </div>
 
@@ -1567,7 +1501,7 @@ select.cinput{cursor:pointer}
         <li>indywidualna wycena</li>
       </ul>
       <div class="price-btns">
-        <a href="/#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="studio" data-interest="Studio" data-message="Interesuje mnie Studio / seria produktów.">Zapytaj o serię produktów</a>
+        <a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="studio" data-interest="Studio" data-message="Interesuje mnie Studio / seria produktów.">Zapytaj o serię produktów</a>
       </div>
     </div>
 
@@ -1587,7 +1521,7 @@ select.cinput{cursor:pointer}
         <li>rozliczenie ustalane indywidualnie</li>
       </ul>
       <div class="price-btns">
-        <a href="/#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="abonament" data-interest="Abonament" data-message="Interesuje mnie abonament / stała współpraca.">Zapytaj o stałą współpracę</a>
+        <a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="abonament" data-interest="Abonament" data-message="Interesuje mnie abonament / stała współpraca.">Zapytaj o stałą współpracę</a>
       </div>
     </div>
 
@@ -1848,51 +1782,6 @@ select.cinput{cursor:pointer}
 
 <script src="/site-components.js"></script>
 <script>
-/* Theme */
-const root=document.documentElement,tb=document.getElementById('themeToggle');
-const saved=localStorage.getItem('os-theme');
-if(saved){
-  root.setAttribute('data-theme',saved);
-  tb.innerHTML=`<span aria-hidden="true">${saved==='dark'?'☾':'☀'}</span>`;
-  tb.setAttribute('aria-pressed',saved==='dark'?'true':'false');
-  tb.setAttribute('aria-label',saved==='dark'?'Włącz tryb jasny':'Włącz tryb ciemny');
-}
-tb.addEventListener('click',()=>{
-  const dark=root.getAttribute('data-theme')==='dark';
-  const next=dark?'light':'dark';
-  root.setAttribute('data-theme',next);
-  tb.innerHTML=`<span aria-hidden="true">${dark?'☀':'☾'}</span>`;
-  tb.setAttribute('aria-pressed',dark?'false':'true');
-  tb.setAttribute('aria-label',dark?'Włącz tryb ciemny':'Włącz tryb jasny');
-  localStorage.setItem('os-theme',next);
-});
-
-/* Hamburger / drawer */
-const hamBtn=document.getElementById('hamBtn'),drawer=document.getElementById('navDrawer');
-function closeDrawer(){
-  hamBtn.classList.remove('open');
-  drawer.classList.remove('open');
-  hamBtn.setAttribute('aria-expanded','false');
-  hamBtn.setAttribute('aria-label','Otwórz menu nawigacji');
-  drawer.setAttribute('aria-hidden','true');
-  document.body.style.overflow='';
-}
-hamBtn.addEventListener('click',()=>{
-  const open=hamBtn.classList.toggle('open');
-  drawer.classList.toggle('open',open);
-  hamBtn.setAttribute('aria-expanded',String(open));
-  hamBtn.setAttribute('aria-label',open?'Zamknij menu nawigacji':'Otwórz menu nawigacji');
-  drawer.setAttribute('aria-hidden',String(!open));
-  document.body.style.overflow=open?'hidden':'';
-});
-document.addEventListener('click',e=>{
-  const nav=document.querySelector('nav');
-  if(!nav.contains(e.target)&&!drawer.contains(e.target)&&drawer.classList.contains('open'))closeDrawer();
-});
-document.addEventListener('keydown',e=>{
-  if(e.key==='Escape'&&drawer.classList.contains('open'))closeDrawer();
-});
-
 /* Precise hash scrolling for fixed mobile/desktop navigation */
 const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
 function normalizePath(path){

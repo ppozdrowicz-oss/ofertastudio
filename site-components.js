@@ -1,4 +1,18 @@
 (() => {
+  const THEME_KEY = 'theme';
+  const LEGACY_THEME_KEY = 'os-theme';
+  const root = document.documentElement;
+
+  function storedTheme() {
+    try {
+      return localStorage.getItem(THEME_KEY) || localStorage.getItem(LEGACY_THEME_KEY) || 'light';
+    } catch (_) {
+      return 'light';
+    }
+  }
+
+  root.setAttribute('data-theme', storedTheme() === 'dark' ? 'dark' : 'light');
+
   const logo = `
     <svg viewBox="0 0 300 42" height="26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
       <text y="34" font-family="Inter,sans-serif" font-weight="800" font-size="36" fill="currentColor" letter-spacing="-1">Oferta<tspan fill="var(--brand)">Studio</tspan><tspan font-weight="300" font-size="26" fill="var(--t3)" dy="1">.pl</tspan></text>
@@ -40,7 +54,16 @@
     return '';
   };
 
-  const navLink = (item, extra = '') => `<a href="${item.href}" class="nav-link${extra}" data-nav-key="${item.key}">${item.label}</a>`;
+  const isHome = () => window.location.pathname.replace(/\/index\.html$/, '/') === '/';
+
+  const hrefFor = item => {
+    if (!isHome() || !item.href.startsWith('/#')) return item.href;
+    return item.href.slice(1);
+  };
+
+  const navLink = (item, extra = '') => `<a href="${hrefFor(item)}" class="nav-link${extra}" data-nav-key="${item.key}">${item.label}</a>`;
+
+  const homeHref = hash => isHome() ? hash : `/${hash}`;
 
   function renderHeader() {
     const host = document.querySelector('[data-site-header]');
@@ -55,7 +78,7 @@
           <div class="nav-right">
             <div class="status-pill"><span class="sdot" aria-hidden="true"></span>Zapytania otwarte</div>
             <button class="toggle-btn" id="themeToggle" type="button" aria-label="Włącz tryb ciemny" aria-pressed="false"><span aria-hidden="true">☀</span></button>
-            <a href="/#kontakt" class="btn-nav" data-event="mini_audit_click" data-location="header" data-package="start">Bezpłatny mini audyt</a>
+            <a href="${homeHref('#mini-audyt')}" class="btn-nav" data-event="mini_audit_click" data-location="header" data-package="start">Bezpłatny mini audyt</a>
             <button class="ham-btn" id="hamBtn" type="button" aria-label="Otwórz menu nawigacji" aria-expanded="false" aria-controls="navDrawer"><span></span><span></span><span></span></button>
           </div>
         </div>
@@ -63,7 +86,7 @@
       <div class="nav-drawer" id="navDrawer" role="navigation" aria-label="Menu mobilne" aria-hidden="true">
         ${drawerLinks}
         <div class="drawer-ctas">
-          <a href="/#kontakt" class="btn-nav" data-event="mini_audit_click" data-location="mobile_nav" data-package="start">Bezpłatny mini audyt</a>
+          <a href="${homeHref('#mini-audyt')}" class="btn-nav" data-event="mini_audit_click" data-location="mobile_nav" data-package="start">Bezpłatny mini audyt</a>
           <a href="https://wa.me/48791162938" class="btn-wa" rel="noopener">WhatsApp</a>
         </div>
         <div class="drawer-contacts" aria-label="Kontakt">
@@ -96,9 +119,9 @@
               <a href="/">Strona główna</a>
               ${serviceMap}
               <a href="/realizacje/">Realizacje</a>
-              <a href="/#pakiety">Pakiety</a>
+              <a href="${homeHref('#pakiety')}">Pakiety</a>
               <a href="/polityka-prywatnosci/">Polityka prywatności</a>
-              <a href="/#kontakt">Kontakt</a>
+              <a href="${homeHref('#kontakt')}">Kontakt</a>
             </div>
           </div>
           <div class="foot-copy">© 2026 OfertaStudio.pl. Autorski projekt portfolio usługowego - współpraca ustalana indywidualnie.</div>
@@ -125,9 +148,12 @@
   }
 
   function setTheme(theme) {
-    const root = document.documentElement;
-    const next = theme || localStorage.getItem('theme') || 'light';
+    const next = theme === 'dark' ? 'dark' : 'light';
     root.setAttribute('data-theme', next);
+    try {
+      localStorage.setItem(THEME_KEY, next);
+      localStorage.removeItem(LEGACY_THEME_KEY);
+    } catch (_) {}
     const btn = document.getElementById('themeToggle');
     if (btn) {
       btn.setAttribute('aria-pressed', String(next === 'dark'));
@@ -150,8 +176,32 @@
   }
 
   function bindHeader() {
+    const ham = document.getElementById('hamBtn');
     const drawer = document.getElementById('navDrawer');
+    const theme = document.getElementById('themeToggle');
+    setTheme(storedTheme());
+    theme?.addEventListener('click', () => {
+      setTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+    });
+    ham?.addEventListener('click', () => {
+      if (!drawer) return;
+      const open = ham.classList.toggle('open');
+      drawer.classList.toggle('open', open);
+      ham.setAttribute('aria-expanded', String(open));
+      ham.setAttribute('aria-label', open ? 'Zamknij menu nawigacji' : 'Otwórz menu nawigacji');
+      drawer.setAttribute('aria-hidden', String(!open));
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
     drawer?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeDrawer));
+    document.addEventListener('click', event => {
+      const nav = document.querySelector('.site-nav');
+      if (!drawer?.classList.contains('open')) return;
+      if (nav?.contains(event.target) || drawer.contains(event.target)) return;
+      closeDrawer();
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && drawer?.classList.contains('open')) closeDrawer();
+    });
     window.closeDrawer = closeDrawer;
   }
 
