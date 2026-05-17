@@ -18,7 +18,6 @@ const pages = [
   {
     file: 'zdjecia-produktowe-allegro/index.html',
     url: '/zdjecia-produktowe-allegro/',
-    robots: 'noindex, follow',
     title: 'Zdjęcia produktowe Allegro — miniatury i galerie SEO | OfertaStudio.pl',
     description: 'Zdjęcia produktowe Allegro: miniatury, galerie i infografiki bez wysyłki produktu. Wyślij link lub zdjęcia i zapytaj o Foto Pack od 249 zł.',
     h1: 'Zdjęcia produktowe Allegro: miniatura, packshot, galeria i infografika',
@@ -102,7 +101,6 @@ const pages = [
   {
     file: 'opisy-produktow-allegro/index.html',
     url: '/opisy-produktow-allegro/',
-    robots: 'noindex, follow',
     title: 'Opisy produktów Allegro — tytuł SEO i treść oferty | OfertaStudio.pl',
     description: 'Opisy produktów Allegro: tytuł SEO, korzyści, parametry i FAQ gotowe do wklejenia. Wyślij ofertę i zapytaj o Tekst Pack od 179 zł.',
     h1: 'Opisy produktów Allegro: copywriting, tytuł SEO i struktura bloków',
@@ -186,7 +184,6 @@ const pages = [
   {
     file: 'optymalizacja-ofert-allegro/index.html',
     url: '/optymalizacja-ofert-allegro/',
-    robots: 'noindex, follow',
     title: 'Optymalizacja ofert Allegro — zdjęcia, opis, tytuł SEO | OfertaStudio.pl',
     description: 'Optymalizacja ofert Allegro: miniatura, galeria, opis i tytuł SEO w jednym procesie. Wyślij link i zapytaj o Ofertę Pro od 399 zł.',
     h1: 'Optymalizacja ofert Allegro: miniatura, galeria, opis i algorytm Allegro',
@@ -271,7 +268,6 @@ const pages = [
   {
     file: 'audyt-oferty-allegro/index.html',
     url: '/audyt-oferty-allegro/',
-    robots: 'noindex, follow',
     title: 'Audyt oferty Allegro — miniatura, tytuł i galeria | OfertaStudio.pl',
     description: 'Audyt oferty Allegro: sprawdzę miniaturę, tytuł, galerię, opis i konkurencję. Wyślij link i odbierz bezpłatny mini audyt przed zmianami.',
     h1: 'Audyt oferty Allegro: checklista tego, co sprawdzamy przed zmianami',
@@ -289,7 +285,8 @@ const pages = [
       'Podstawowy mini audyt może zacząć się od linku do oferty, zdjęcia produktu albo krótkiego opisu pomysłu. Jeśli oferta jeszcze nie istnieje, audyt może wskazać, jakie materiały warto przygotować przed publikacją, aby nie budować strony produktu w ciemno.',
       'To dobre rozwiązanie, gdy nie wiesz, czy potrzebujesz zdjęć, opisu, pełnej optymalizacji czy tylko kilku poprawek. Audyt zmniejsza ryzyko zamawiania zakresu, który nie rozwiązuje głównego problemu.',
       'Najważniejsze w audycie jest nazwanie przyczyny, a nie wyliczenie przypadkowych sugestii. Jeżeli miniatura jest dobra, ale opis nie tłumaczy zastosowania, wnioski powinny kierować do tekstu. Jeżeli opis jest wystarczający, ale galeria nie pokazuje detali, priorytetem są zdjęcia. Dzięki temu sprzedawca nie wydaje czasu i budżetu na poprawki, które wyglądają efektownie, ale nie odpowiadają na realną barierę.',
-      'Audyt jest też przydatny wtedy, gdy sprzedawca sam przygotowuje materiały i potrzebuje zewnętrznego spojrzenia przed publikacją. Krótka diagnoza pozwala uniknąć utrwalania błędów w kolejnych ofertach i ułatwia podjęcie decyzji bez presji.'
+      'Audyt jest też przydatny wtedy, gdy sprzedawca sam przygotowuje materiały i potrzebuje zewnętrznego spojrzenia przed publikacją. Krótka diagnoza pozwala uniknąć utrwalania błędów w kolejnych ofertach i ułatwia podjęcie decyzji bez presji.',
+      'W praktyce checklista działa jak filtr przed dalszą pracą: oddziela elementy, które wpływają na decyzję kupującego, od poprawek czysto estetycznych. Dzięki temu łatwiej ustalić, czy najpierw poprawić zdjęcie główne, dopisać brakujące parametry, zmienić układ galerii, czy przygotować pełną optymalizację oferty.'
     ],
     fit: [
       ['Nie wiesz, gdzie jest problem', 'Audyt jest dobrym pierwszym krokiem, gdy oferta wygląda poprawnie, ale nie masz pewności, czy blokuje ją miniatura, opis, galeria, parametry czy ogólna logika prezentacji.'],
@@ -357,7 +354,6 @@ const pages = [
   {
     file: 'oferty-olx/index.html',
     url: '/oferty-olx/',
-    robots: 'noindex, follow',
     title: 'Oferty OLX — zdjęcia i treść ogłoszenia | OfertaStudio.pl',
     description: 'Oferty OLX: zdjęcia, tytuł i treść ogłoszenia, które budują zaufanie na mobile. Wyślij produkt i zapytaj o przygotowanie oferty OLX.',
     h1: 'Poprawa ofert OLX: zdjęcia, tytuł i treść ogłoszenia pod specyfikę OLX',
@@ -518,7 +514,7 @@ function schemaFor(page) {
 
 function cards(items) {
   return items.map(([title, text]) => `
-      <article class="card">
+      <article class="card service-card">
         <h3>${escapeHtml(title)}</h3>
         <p>${escapeHtml(text)}</p>
       </article>`).join('');
@@ -526,7 +522,7 @@ function cards(items) {
 
 function processSteps(items) {
   return items.map(([title, text]) => `
-      <article class="card step">
+      <article class="card service-card step">
         <h3>${escapeHtml(title)}</h3>
         <p>${escapeHtml(text)}</p>
       </article>`).join('');
@@ -564,7 +560,7 @@ function render(page) {
 <title>${escapeHtml(page.title)}</title>
 <meta name="description" content="${escapeHtml(page.description)}">
 <link rel="canonical" href="${SITE}${page.url}">
-<meta name="robots" content="${page.robots || 'index, follow'}">
+<meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pl_PL">
 <meta property="og:site_name" content="OfertaStudio.pl">
@@ -585,130 +581,130 @@ ${schema}
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap"></noscript>
+<link rel="stylesheet" href="/site-system.css">
 <link rel="stylesheet" href="/service-style.css">
 <script src="/analytics.js" defer></script>
-<link rel="stylesheet" href="/site-system.css">
 </head>
 <body>
 <a class="skip-link" href="${SKIP_LINK_TARGET}">Przejdź do treści</a>
 <div class="grid-bg"></div>
 <div data-site-header></div>
 
-<main id="main-content" class="wrap main" tabindex="-1">
+<main id="main-content" class="service-wrap service-main" tabindex="-1">
   <nav data-site-breadcrumb data-breadcrumb-current="${escapeHtml(page.label)}"></nav>
 
-  <section class="hero">
-    <div class="hero-box">
+  <section class="service-hero">
+    <div class="service-hero-content">
       <div class="eyebrow">${escapeHtml(page.eyebrow)}</div>
-      <h1>${escapeHtml(page.h1)}</h1>
-      <p class="muted">${escapeHtml(page.lead)}</p>
-      <div class="btns">
+      <h1 class="service-title">${escapeHtml(page.h1)}</h1>
+      <p class="service-lead">${escapeHtml(page.lead)}</p>
+      <div class="service-actions">
         <a class="btn btn-p" href="/#kontakt" data-event="hero_cta_click" data-location="hero">${escapeHtml(page.cta)}</a>
         <a class="btn btn-s" href="/realizacje/">Zobacz realizacje przed/po</a>
       </div>
     </div>
-    <aside class="card note">
+    <aside class="card service-card service-note">
       <div class="eyebrow">Mini audyt</div>
       <h2>Zanim wybierzesz zakres, sprawdź co blokuje ofertę</h2>
       <p>Wyślij link, zdjęcia albo krótki opis produktu. Otrzymasz konkretną informację, co warto poprawić i jaki zakres pracy ma sens przed płatną realizacją.</p>
-      <div class="btns">
+      <div class="service-actions">
         <a class="btn btn-p" href="/#kontakt" data-event="mini_audit_click" data-location="hero">Odbierz mini audyt</a>
       </div>
     </aside>
   </section>
 
-  <section class="stack" aria-labelledby="service-about">
-    <div class="card">
+  <section class="service-section" aria-labelledby="service-about">
+    <div class="card service-card">
       <div class="eyebrow">Na czym polega usługa</div>
       <h2 id="service-about">${escapeHtml(page.serviceName)} w praktyce</h2>
       ${intro}
     </div>
   </section>
 
-  <section class="faq-section" aria-labelledby="service-fit">
-    <div class="s-head c">
-      <div class="eyebrow">Dla kogo</div>
-      <h2 class="s-title" id="service-fit">Kiedy ten zakres ma sens</h2>
-      <p class="muted">Nie każda oferta wymaga tego samego działania. Ten zakres jest najbardziej przydatny w poniższych sytuacjach.</p>
-    </div>
-    <div class="grid">
-      ${cards(page.fit)}
-    </div>
-  </section>
-
-  <section class="card" aria-labelledby="service-prepare">
-    <div class="eyebrow">Przygotowanie</div>
-    <h2 id="service-prepare">Co warto przygotować przed kontaktem</h2>
-    <p>Im lepszy punkt startowy, tym szybciej można ustalić sensowny zakres. Nie musi to być kompletny brief, ale poniższe informacje pomagają uniknąć zgadywania.</p>
-    <ul class="list">
-      ${listItems(page.prepare)}
-    </ul>
-  </section>
-
-  <section class="faq-section" aria-labelledby="service-attention">
-    <div class="s-head c">
-      <div class="eyebrow">Kryteria</div>
-      <h2 class="s-title" id="service-attention">Na co zwracam uwagę</h2>
-      <p class="muted">Każda usługa ma inne akcenty, ale cel jest wspólny: oferta ma być bardziej czytelna, konkretna i łatwiejsza do podjęcia decyzji.</p>
-    </div>
-    <div class="grid">
-      ${cards(page.attention)}
-    </div>
-  </section>
-
-  <section class="faq-section" aria-labelledby="service-deliverables">
+  <section class="service-section" aria-labelledby="service-deliverables">
     <div class="s-head c">
       <div class="eyebrow">Zakres</div>
       <h2 class="s-title" id="service-deliverables">Co dostajesz</h2>
       <p class="muted">Zakres zawsze jest potwierdzany przed startem. Poniższe elementy pokazują, co zwykle wymaga uporządkowania przy tej usłudze.</p>
     </div>
-    <div class="grid">
+    <div class="service-grid">
       ${cards(page.deliverables)}
     </div>
   </section>
 
-  <section class="faq-section" aria-labelledby="service-mistakes">
+  <section class="service-section" aria-labelledby="service-mistakes">
     <div class="s-head c">
       <div class="eyebrow">Błędy</div>
       <h2 class="s-title" id="service-mistakes">Najczęstsze błędy</h2>
       <p class="muted">To problemy, które najczęściej osłabiają ofertę, zanim kupujący zdąży zapytać o szczegóły produktu.</p>
     </div>
-    <div class="grid">
+    <div class="service-grid">
       ${cards(page.mistakes)}
     </div>
   </section>
 
-  <section class="faq-section process" aria-labelledby="service-process">
+  <section class="service-section process" aria-labelledby="service-process">
     <div class="s-head c">
       <div class="eyebrow">Proces</div>
       <h2 class="s-title" id="service-process">Jak wygląda proces</h2>
     </div>
-    <div class="grid">
+    <div class="service-grid">
       ${processSteps(page.process)}
     </div>
   </section>
 
-  <section class="card" aria-labelledby="service-case">
+  <section class="card service-card" aria-labelledby="service-case">
     <div class="eyebrow">Przykład</div>
     <h2 id="service-case">${escapeHtml(page.caseStudy.title)}</h2>
     <p>${escapeHtml(page.caseStudy.text)}</p>
-    <div class="btns">
+    <div class="service-actions">
       <a class="btn btn-s" href="${page.caseStudy.href}" data-event="case_study_click" data-location="service_page">Zobacz pasujące case study</a>
     </div>
   </section>
 
-  <section class="faq-section" aria-labelledby="service-aftercare">
+  <section class="service-section" aria-labelledby="service-fit">
+    <div class="s-head c">
+      <div class="eyebrow">Dla kogo</div>
+      <h2 class="s-title" id="service-fit">Kiedy ten zakres ma sens</h2>
+      <p class="muted">Nie każda oferta wymaga tego samego działania. Ten zakres jest najbardziej przydatny w poniższych sytuacjach.</p>
+    </div>
+    <div class="service-grid">
+      ${cards(page.fit)}
+    </div>
+  </section>
+
+  <section class="card service-card" aria-labelledby="service-prepare">
+    <div class="eyebrow">Przygotowanie</div>
+    <h2 id="service-prepare">Co warto przygotować przed kontaktem</h2>
+    <p>Im lepszy punkt startowy, tym szybciej można ustalić sensowny zakres. Nie musi to być kompletny brief, ale poniższe informacje pomagają uniknąć zgadywania.</p>
+    <ul class="service-list">
+      ${listItems(page.prepare)}
+    </ul>
+  </section>
+
+  <section class="service-section" aria-labelledby="service-attention">
+    <div class="s-head c">
+      <div class="eyebrow">Kryteria</div>
+      <h2 class="s-title" id="service-attention">Na co zwracam uwagę</h2>
+      <p class="muted">Każda usługa ma inne akcenty, ale cel jest wspólny: oferta ma być bardziej czytelna, konkretna i łatwiejsza do podjęcia decyzji.</p>
+    </div>
+    <div class="service-grid">
+      ${cards(page.attention)}
+    </div>
+  </section>
+
+  <section class="service-section" aria-labelledby="service-aftercare">
     <div class="s-head c">
       <div class="eyebrow">Po wdrożeniu</div>
       <h2 class="s-title" id="service-aftercare">Jak korzystać z przygotowanych zmian</h2>
       <p class="muted">Dobra podstrona produktu nie kończy się na jednorazowej publikacji. Po wdrożeniu warto pilnować kilku rzeczy, żeby oferta nie wróciła do starego chaosu.</p>
     </div>
-    <div class="grid">
+    <div class="service-grid">
       ${cards(page.aftercare)}
     </div>
   </section>
 
-  <section class="faq-section" id="faq" aria-labelledby="service-faq">
+  <section class="service-section" id="faq" aria-labelledby="service-faq">
     <div class="s-head c">
       <div class="eyebrow">FAQ</div>
       <h2 class="s-title" id="service-faq">Mini-FAQ tej usługi</h2>
@@ -718,7 +714,7 @@ ${schema}
     </div>
   </section>
 
-  <section class="card" aria-labelledby="related-services">
+  <section class="card service-card" aria-labelledby="related-services">
     <div class="eyebrow">Powiązane usługi</div>
     <h2 id="related-services">Zobacz też inne zakresy</h2>
     <p>Jeśli po analizie okaże się, że problem leży w innym elemencie oferty, możesz przejść do powiązanego zakresu bez zaczynania od zera.</p>
@@ -729,11 +725,11 @@ ${schema}
     </div>
   </section>
 
-  <section class="cta" aria-labelledby="service-final-cta">
+  <section class="card service-card service-cta" aria-labelledby="service-final-cta">
     <div class="eyebrow">Następny krok</div>
     <h2 id="service-final-cta">Wyślij ofertę albo zdjęcia produktu</h2>
     <p class="muted">Nie potrzebujesz długiego briefu. Wystarczy link, zdjęcia albo krótki opis sytuacji. Najpierw sprawdzę, co warto poprawić i czy ten zakres rzeczywiście ma sens.</p>
-    <div class="btns">
+    <div class="service-actions">
       <a class="btn btn-p" href="/#kontakt" data-event="mini_audit_click" data-location="service_final">Wyślij link do analizy</a>
       <a class="btn btn-s" href="/realizacje/">Zobacz portfolio</a>
     </div>
