@@ -602,6 +602,7 @@ ${schema}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap"></noscript>
 <link rel="stylesheet" href="/site-system.css">
@@ -760,7 +761,7 @@ ${schema}
 </main>
 
 <div data-site-footer></div>
-<script src="/site-components.js"></script>
+<script src="/site-components.js" defer></script>
 <script>
 function tFaq(btn){
   const it=btn.closest(".faq-item"),op=it.classList.contains("open");
