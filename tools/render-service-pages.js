@@ -93,9 +93,9 @@ const pages = [
     faq: [
       ['Czy muszę wysyłać produkt do zdjęć?', 'Nie zawsze. Często wystarczą dobre zdjęcia bazowe, pliki producenta albo obecna oferta. Jeśli potrzebna jest fizyczna sesja, zakres trzeba ustalić osobno.'],
       ['Czy przygotowujesz tylko zdjęcie główne?', 'Tak, jeśli problemem jest głównie miniatura. Zwykle rekomenduję jednak sprawdzić całą galerię, bo mocne pierwsze zdjęcie powinno prowadzić do kolejnych informacji.'],
-      ['Czy infografiki pasują do każdej kategorii?', 'Nie w każdej kategorii muszą wyglądać tak samo, ale w produktach technicznych, BHP, narzędziach, akcesoriach i zestawach często bardzo pomagają uporządkować decyzję.'],
+      ['Czy można przygotować same infografiki?', 'Tak, jeśli obecne zdjęcia są wystarczająco czytelne. Wtedy można przygotować tylko infografiki z parametrami, zawartością zestawu, zastosowaniem albo najważniejszymi przewagami produktu.'],
       ['Czy zdjęcia będą zgodne z zasadami Allegro?', 'Materiały przygotowuję z myślą o czytelności i zasadach marketplace. Jeśli dana kategoria wymaga prostszego tła, projekt jest dopasowany do tego ograniczenia.'],
-      ['Co jeśli obecne zdjęcia są słabe?', 'Wtedy wskazuję, co da się poprawić, a czego nie warto udawać obróbką. Czasem lepsza jest krótka lista brakujących ujęć niż przerabianie materiału, który nie pokazuje produktu uczciwie.']
+      ['Czy obiecujesz wzrost sprzedaży?', 'Nie. Celem jest poprawa jakości prezentacji: miniatury, galerii i informacji wizualnych. Wyniki zależą też od ceny, konkurencji, sezonu, dostępności i samego produktu.']
     ]
   },
   {
@@ -348,7 +348,7 @@ const pages = [
       ['Czy muszę mieć dane sprzedażowe?', 'Nie. Dane mogą pomóc, ale podstawowy audyt opiera się na tym, co widzi kupujący: zdjęcie, tytuł, galeria, opis i konkurencja.'],
       ['Czy audyt obejmuje konkurencję?', 'Tak, w praktycznym zakresie. Sprawdzam, jak oferta wypada na tle typowych wyników w kategorii i co może utrudniać kliknięcie.'],
       ['Co jeśli nie mam linku do oferty?', 'Możesz zaznaczyć w formularzu, że nie masz gotowej oferty, i opisać produkt. Link nie jest wymagany, jeśli jesteś na wcześniejszym etapie.'],
-      ['Czy audyt daje gotowy plan działania?', 'Tak, celem audytu jest wskazanie priorytetów. Po nim powinno być jasne, czy potrzebujesz zdjęć, opisu, pełnej optymalizacji czy tylko pojedynczych poprawek.']
+      ['Czy audyt daje gotowy plan i pewność sprzedaży?', 'Audyt daje priorytety i rekomendowany kolejny krok, ale nie daje gwarancji sprzedaży. Wynik zależy też od ceny, konkurencji, opinii, sezonu, dostępności i jakości produktu.']
     ]
   },
   {
