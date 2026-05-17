@@ -146,13 +146,13 @@ strong{color:var(--t1);font-weight:600}
 .card:hover{box-shadow:var(--sh2);border-color:rgba(37,99,235,.22);transform:translateY(-1px)}
 
 /* PROVIDER GRID */
-.provider-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0}
+.provider-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,1.5rem);margin:1rem 0}
 .provider-card{padding:1.125rem 1.25rem}
 .provider-card strong{display:block;font-size:.9375rem;font-weight:700;color:var(--t1);margin-bottom:.3rem}
 .provider-card p{font-size:.8125rem;color:var(--t2);line-height:1.6;margin:0}
 
 /* RIGHTS GRID */
-.rights-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.625rem;margin:1rem 0}
+.rights-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(1rem,2vw,1.5rem);margin:1rem 0}
 .right-card{padding:1rem 1.125rem;display:flex;gap:.625rem;align-items:flex-start}
 .right-icon{font-size:1rem;flex-shrink:0;margin-top:.125rem}
 .right-card strong{display:block;font-size:.875rem;font-weight:700;color:var(--t1);margin-bottom:.2rem}

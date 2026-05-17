@@ -20,7 +20,7 @@
 
   const navItems = [
     { key: 'uslugi', label: 'Usługi', href: '/#uslugi' },
-    { key: 'realizacje', label: 'Realizacje', href: '/#realizacje' },
+    { key: 'realizacje', label: 'Realizacje', href: '/realizacje/' },
     { key: 'pakiety', label: 'Pakiety', href: '/#pakiety' },
     { key: 'proces', label: 'Proces', href: '/#proces' },
     { key: 'faq', label: 'FAQ', href: '/#faq' },
