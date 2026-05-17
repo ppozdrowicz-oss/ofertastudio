@@ -43,16 +43,6 @@
       }
     },
     {
-      "@type": "WebSite",
-      "@id": "https://ofertastudio.pl/#website",
-      "name": "OfertaStudio.pl",
-      "url": "https://ofertastudio.pl/",
-      "inLanguage": "pl-PL",
-      "publisher": {
-        "@id": "https://ofertastudio.pl/#organization"
-      }
-    },
-    {
       "@type": "Service",
       "@id": "https://ofertastudio.pl/audyt-oferty-allegro#service",
       "name": "Audyt oferty Allegro",
@@ -67,11 +57,31 @@
       "url": "https://ofertastudio.pl/audyt-oferty-allegro/",
       "description": "Sprzedawcy często czują, że oferta nie działa, ale nie wiedzą, od czego zacząć. Problem może leżeć w miniaturze, tytule, braku parametrów, zdjęciach, opisie, cenie, konkurencji albo w kilku drobnych rzeczach naraz. Audyt porządkuje ten chaos i wskazuje pierwszy rozsądny krok.",
       "offers": {
-        "@type": "Offer",
-        "name": "Start",
-        "price": "0",
-        "priceCurrency": "PLN",
-        "url": "https://ofertastudio.pl/#pakiety"
+        "@type": "OfferCatalog",
+        "name": "Pakiety OfertaStudio.pl",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "name": "Tekst Pack",
+            "price": "179",
+            "priceCurrency": "PLN",
+            "url": "https://ofertastudio.pl/#pakiety"
+          },
+          {
+            "@type": "Offer",
+            "name": "Foto Pack",
+            "price": "249",
+            "priceCurrency": "PLN",
+            "url": "https://ofertastudio.pl/#pakiety"
+          },
+          {
+            "@type": "Offer",
+            "name": "Oferta Pro",
+            "price": "399",
+            "priceCurrency": "PLN",
+            "url": "https://ofertastudio.pl/#pakiety"
+          }
+        ]
       }
     },
     {

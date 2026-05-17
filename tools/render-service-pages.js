@@ -468,12 +468,41 @@ function website() {
   };
 }
 
+function offerCatalog() {
+  return {
+    '@type': 'OfferCatalog',
+    name: 'Pakiety OfertaStudio.pl',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        name: 'Tekst Pack',
+        price: '179',
+        priceCurrency: 'PLN',
+        url: `${SITE}/#pakiety`
+      },
+      {
+        '@type': 'Offer',
+        name: 'Foto Pack',
+        price: '249',
+        priceCurrency: 'PLN',
+        url: `${SITE}/#pakiety`
+      },
+      {
+        '@type': 'Offer',
+        name: 'Oferta Pro',
+        price: '399',
+        priceCurrency: 'PLN',
+        url: `${SITE}/#pakiety`
+      }
+    ]
+  };
+}
+
 function schemaFor(page) {
   return {
     '@context': 'https://schema.org',
     '@graph': [
       organization(),
-      website(),
       {
         '@type': 'Service',
         '@id': `${SITE}${page.url.replace(/\/$/, '')}#service`,
@@ -483,13 +512,7 @@ function schemaFor(page) {
         areaServed: { '@type': 'Country', name: 'Polska' },
         url: `${SITE}${page.url}`,
         description: page.intro[0],
-        offers: {
-          '@type': 'Offer',
-          name: page.offerName,
-          price: page.price,
-          priceCurrency: 'PLN',
-          url: `${SITE}/#pakiety`
-        }
+        offers: offerCatalog()
       },
       {
         '@type': 'BreadcrumbList',
