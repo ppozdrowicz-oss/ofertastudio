@@ -553,14 +553,15 @@ select.cinput{cursor:pointer}
 .checkline span{font-size:.875rem;color:var(--t2);line-height:1.55}
 /* package selector */
 .cpkg-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem}
-.cpkg{display:flex;flex-direction:column;align-items:center;gap:.25rem;padding:.625rem .5rem;border-radius:.625rem;border:1.5px solid var(--bs);background:var(--s2);cursor:pointer;transition:all .15s;text-align:center}
+.cfield-note{font-size:.85rem;color:var(--t3);line-height:1.5;margin:.35rem 0 .75rem}
+.cpkg{display:flex;flex-direction:column;align-items:flex-start;gap:.2rem;padding:.7rem .75rem;border-radius:.625rem;border:1.5px solid var(--bs);background:var(--s2);cursor:pointer;transition:all .15s;text-align:left;min-height:4.1rem}
 .cpkg:hover{border-color:rgba(37,99,235,.35);background:var(--brand-bg)}
 .cpkg.sel{border-color:var(--brand);background:var(--brand-bg);box-shadow:0 0 0 2px rgba(37,99,235,.15)}
 .cpkg:has(input:focus-visible){outline:2px solid var(--brand);outline-offset:3px}
 .cpkg input{position:absolute;opacity:0;width:0;height:0}
-.cpkg-icon{font-size:1.125rem;line-height:1}
-.cpkg-name{font-size:.75rem;font-weight:700;color:var(--t1)}
-.cpkg-price{font-size:.6875rem;color:var(--t3);font-family:'JetBrains Mono',monospace}
+.cpkg-icon{font-size:1rem;line-height:1;margin-bottom:.1rem}
+.cpkg-name{font-size:.775rem;font-weight:700;color:var(--t1);line-height:1.25}
+.cpkg-meta{font-size:.72rem;color:var(--t3);line-height:1.35}
 /* submit area */
 .cform-submit{padding:1.25rem 1.75rem;border-top:1px solid var(--bs);background:var(--s2);display:flex;flex-direction:column;gap:.75rem}
 .csubmit-btn{display:flex;align-items:center;justify-content:center;gap:.625rem;width:100%;padding:.9375rem 1.5rem;border-radius:.75rem;font-size:1rem;font-weight:700;color:#fff;background:var(--brand);border:none;cursor:pointer;box-shadow:0 4px 16px rgba(37,99,235,.3);transition:all .2s;min-height:3.25rem;font-family:inherit}
@@ -628,9 +629,9 @@ select.cinput{cursor:pointer}
 .pf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;align-items:stretch}
 .pf-card{border-radius:var(--r);overflow:hidden;position:relative;cursor:pointer;transition:all .25s;height:100%;display:flex;flex-direction:column}
 .pf-card:hover{box-shadow:var(--sh3);transform:translateY(-3px)}
-.pf-card-img{aspect-ratio:4/3;background:radial-gradient(circle at 50% 42%,rgba(255,255,255,.96) 0%,rgba(238,243,250,.92) 54%,rgba(216,226,241,.96) 100%);overflow:hidden;position:relative;border-bottom:1px solid var(--bs);display:flex;align-items:center;justify-content:center;isolation:isolate;contain:layout paint}
+.pf-card-img{aspect-ratio:4/3;background:linear-gradient(160deg,#f7fbff 0%,#edf3fa 55%,#e4edf7 100%);overflow:hidden;position:relative;border-bottom:1px solid var(--bs);display:flex;align-items:center;justify-content:center;isolation:isolate;contain:layout paint}
 .pf-card-img picture{position:absolute;inset:0;display:block;width:100%;height:100%}
-.pf-card-img img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;padding:.75rem;mix-blend-mode:normal;transition:filter .25s ease}
+.pf-card-img img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;padding:0;mix-blend-mode:normal;transition:filter .25s ease}
 .pf-card:hover .pf-card-img img{filter:saturate(1.06) contrast(1.03)}
 .pf-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,22,40,.7) 0%,transparent 55%);opacity:0;transition:opacity .25s;display:flex;align-items:flex-end;padding:1rem}
 .pf-card:hover .pf-card-overlay{opacity:1}
@@ -762,7 +763,7 @@ select.cinput{cursor:pointer}
 @media(max-width:420px){
   .ind-grid,.ind-grid.ind-grid--wide{grid-template-columns:1fr}
   .hero-trust span{width:100%;justify-content:flex-start}
-  .pf-card-img{aspect-ratio:1}
+  .pf-card-img{aspect-ratio:4/3}
 }
 @media(hover:none){
   .card:hover,.pf-card:hover,.shot-card:hover,.btn-p:hover,.btn-s:hover,.btn-nav:hover,.btn-hero-primary:hover,.btn-hero-wa:hover,.sticky-btn:hover,.csubmit-btn:hover:not(:disabled),.csubmit-wa:hover{transform:none}
@@ -808,7 +809,7 @@ select.cinput{cursor:pointer}
   .price-list{gap:.25rem;padding-bottom:1rem}
   .price-list li{font-size:.84rem;line-height:1.45;padding-bottom:.35rem}
   .pf-card-img{aspect-ratio:4/3}
-  .pf-card-img img{padding:.65rem}
+  .pf-card-img img{padding:0}
   .pf-card-body{padding:.95rem}
   .pf-mini{gap:.35rem}
   .pf-mini-row{font-size:.8125rem;line-height:1.45}
@@ -939,9 +940,9 @@ select.cinput{cursor:pointer}
     <p class="s-sub">Trzy przykłady bez fikcyjnych wyników sprzedaży: problem, zmiana i efekt jakościowy widoczny w samej ofercie.</p>
   </div>
   <div class="pf-grid">
-    <div class="card pf-card"><div class="pf-card-img"><picture><source type="image/avif" srcset="/elektronarzedzia-po-zestaw.avif"><source type="image/webp" srcset="/elektronarzedzia-po-zestaw.webp"><img decoding="async" loading="lazy" src="/elektronarzedzia-po-zestaw.png" width="1254" height="1254" alt="Metabo PowerMaxx BS 12 BL — efekt końcowy" onerror="this.parentElement.style.background='var(--s3)'"></picture><div class="pf-card-overlay"><span class="pf-card-overlay-text">Zobacz case study →</span></div></div><div class="pf-card-body"><div class="pf-card-num">Case #001 · Elektronarzędzia</div><div class="pf-card-h">Metabo PowerMaxx BS 12 BL</div><div class="pf-mini"><div class="pf-mini-row"><strong>Problem</strong>Jedno zdjęcie nie pokazywało zawartości zestawu ani przewagi wariantu.</div><div class="pf-mini-row"><strong>Zmiana</strong>Miniatura, 10 ujęć, detale techniczne i infografika.</div><div class="pf-mini-row"><strong>Efekt</strong>Klient szybciej widzi, za co płaci i co znajduje się w zestawie.</div></div><a href="/realizacje/#elektronarzedzia" class="pf-card-link" data-event="case_study_click" data-location="case_study">Zobacz case study →</a></div></div>
-    <div class="card pf-card"><div class="pf-card-img"><picture><source type="image/avif" srcset="/dom-ogrod-po-front.avif"><source type="image/webp" srcset="/dom-ogrod-po-front.webp"><img decoding="async" loading="lazy" src="/dom-ogrod-po-front.png" width="1672" height="941" alt="Pistolet ogrodowy Gardena — efekt końcowy" onerror="this.parentElement.style.background='var(--s3)'"></picture><div class="pf-card-overlay"><span class="pf-card-overlay-text">Zobacz case study →</span></div></div><div class="pf-card-body"><div class="pf-card-num">Case #002 · Dom i ogród</div><div class="pf-card-h">Pistolet ogrodowy Gardena</div><div class="pf-mini"><div class="pf-mini-row"><strong>Problem</strong>Oferta nie pokazywała zastosowania, chwytu i kompatybilności.</div><div class="pf-mini-row"><strong>Zmiana</strong>Ujęcia w ogrodzie, detal złącza, chwyt w dłoni i głowica.</div><div class="pf-mini-row"><strong>Efekt</strong>Kupujący od razu widzi, czy produkt pasuje do jego systemu.</div></div><a href="/realizacje/#dom-ogrod" class="pf-card-link" data-event="case_study_click" data-location="case_study">Zobacz case study →</a></div></div>
-    <div class="card pf-card"><div class="pf-card-img"><picture><source type="image/avif" srcset="/spawalnictwo-po-front.avif"><source type="image/webp" srcset="/spawalnictwo-po-front.webp"><img decoding="async" loading="lazy" src="/spawalnictwo-po-front.png" width="1254" height="1254" alt="Drut spawalniczy MIG/MAG — efekt końcowy" onerror="this.parentElement.style.background='var(--s3)'"></picture><div class="pf-card-overlay"><span class="pf-card-overlay-text">Zobacz case study →</span></div></div><div class="pf-card-body"><div class="pf-card-num">Case #003 · Spawalnictwo</div><div class="pf-card-h">Drut spawalniczy MIG/MAG</div><div class="pf-mini"><div class="pf-mini-row"><strong>Problem</strong>Parametry i pochodzenie produktu ginęły na jednym zdjęciu.</div><div class="pf-mini-row"><strong>Zmiana</strong>Osobne ujęcia opakowania, szpuli, powłoki i wyróżnika produkcji w Polsce.</div><div class="pf-mini-row"><strong>Efekt</strong>Oferta szybciej pokazuje argument ważny przy porównaniu produktów.</div></div><a href="/realizacje/#spawalnictwo" class="pf-card-link" data-event="case_study_click" data-location="case_study">Zobacz case study →</a></div></div>
+    <div class="card pf-card"><div class="pf-card-img"><picture><source type="image/avif" srcset="/elektronarzedzia-po-zestaw-homepage.avif"><source type="image/webp" srcset="/elektronarzedzia-po-zestaw-homepage.webp"><img decoding="async" loading="lazy" src="/elektronarzedzia-po-zestaw-homepage.png" width="1254" height="941" alt="Metabo PowerMaxx BS 12 BL — efekt końcowy" onerror="this.parentElement.style.background='var(--s3)'"></picture><div class="pf-card-overlay"><span class="pf-card-overlay-text">Zobacz case study →</span></div></div><div class="pf-card-body"><div class="pf-card-num">Case #001 · Elektronarzędzia</div><div class="pf-card-h">Metabo PowerMaxx BS 12 BL</div><div class="pf-mini"><div class="pf-mini-row"><strong>Problem</strong>Jedno zdjęcie nie pokazywało zawartości zestawu ani przewagi wariantu.</div><div class="pf-mini-row"><strong>Zmiana</strong>Miniatura, 10 ujęć, detale techniczne i infografika.</div><div class="pf-mini-row"><strong>Efekt</strong>Klient szybciej widzi, za co płaci i co znajduje się w zestawie.</div></div><a href="/realizacje/#elektronarzedzia" class="pf-card-link" data-event="case_study_click" data-location="case_study">Zobacz case study →</a></div></div>
+    <div class="card pf-card"><div class="pf-card-img"><picture><source type="image/avif" srcset="/dom-ogrod-po-front-homepage.avif"><source type="image/webp" srcset="/dom-ogrod-po-front-homepage.webp"><img decoding="async" loading="lazy" src="/dom-ogrod-po-front-homepage.png" width="1254" height="941" alt="Pistolet ogrodowy Gardena — efekt końcowy" onerror="this.parentElement.style.background='var(--s3)'"></picture><div class="pf-card-overlay"><span class="pf-card-overlay-text">Zobacz case study →</span></div></div><div class="pf-card-body"><div class="pf-card-num">Case #002 · Dom i ogród</div><div class="pf-card-h">Pistolet ogrodowy Gardena</div><div class="pf-mini"><div class="pf-mini-row"><strong>Problem</strong>Oferta nie pokazywała zastosowania, chwytu i kompatybilności.</div><div class="pf-mini-row"><strong>Zmiana</strong>Ujęcia w ogrodzie, detal złącza, chwyt w dłoni i głowica.</div><div class="pf-mini-row"><strong>Efekt</strong>Kupujący od razu widzi, czy produkt pasuje do jego systemu.</div></div><a href="/realizacje/#dom-ogrod" class="pf-card-link" data-event="case_study_click" data-location="case_study">Zobacz case study →</a></div></div>
+    <div class="card pf-card"><div class="pf-card-img"><picture><source type="image/avif" srcset="/spawalnictwo-po-front-homepage.avif"><source type="image/webp" srcset="/spawalnictwo-po-front-homepage.webp"><img decoding="async" loading="lazy" src="/spawalnictwo-po-front-homepage.png" width="1254" height="941" alt="Drut spawalniczy MIG/MAG — efekt końcowy" onerror="this.parentElement.style.background='var(--s3)'"></picture><div class="pf-card-overlay"><span class="pf-card-overlay-text">Zobacz case study →</span></div></div><div class="pf-card-body"><div class="pf-card-num">Case #003 · Spawalnictwo</div><div class="pf-card-h">Drut spawalniczy MIG/MAG</div><div class="pf-mini"><div class="pf-mini-row"><strong>Problem</strong>Parametry i pochodzenie produktu ginęły na jednym zdjęciu.</div><div class="pf-mini-row"><strong>Zmiana</strong>Osobne ujęcia opakowania, szpuli, powłoki i wyróżnika produkcji w Polsce.</div><div class="pf-mini-row"><strong>Efekt</strong>Oferta szybciej pokazuje argument ważny przy porównaniu produktów.</div></div><a href="/realizacje/#spawalnictwo" class="pf-card-link" data-event="case_study_click" data-location="case_study">Zobacz case study →</a></div></div>
   </div>
   <div class="section-cta"><a href="/realizacje/" class="btn-s" data-event="case_study_click" data-location="case_study">Zobacz wszystkie realizacje</a></div>
 </div>
@@ -1054,48 +1055,49 @@ select.cinput{cursor:pointer}
 
           <div class="cfield">
             <div class="cfield-label" id="interest-label">Co Cię interesuje? <span class="cfield-req">*</span></div>
+            <div class="cfield-note">Wybierz orientacyjny zakres. Cenę i dokładny plan potwierdzę po sprawdzeniu oferty.</div>
             <div class="cpkg-grid" id="pkgGrid" role="radiogroup" aria-labelledby="interest-label" aria-describedby="interest-error">
               <label class="cpkg sel" id="pkg-start">
                 <input type="radio" name="zainteresowanie" value="Darmowy mini audyt" checked required>
                 <span class="cpkg-icon" aria-hidden="true">🔍</span>
                 <span class="cpkg-name">Darmowy mini audyt</span>
-                <span class="cpkg-price">0 zł</span>
+                <span class="cpkg-meta">3 pierwsze poprawki</span>
               </label>
               <label class="cpkg" id="pkg-tekst">
                 <input type="radio" name="zainteresowanie" value="Tekst Pack" required>
                 <span class="cpkg-icon" aria-hidden="true">✍</span>
                 <span class="cpkg-name">Tekst Pack</span>
-                <span class="cpkg-price">od 179 zł</span>
+                <span class="cpkg-meta">tytuł i opis</span>
               </label>
               <label class="cpkg" id="pkg-foto">
                 <input type="radio" name="zainteresowanie" value="Foto Pack" required>
                 <span class="cpkg-icon" aria-hidden="true">📷</span>
                 <span class="cpkg-name">Foto Pack</span>
-                <span class="cpkg-price">od 249 zł</span>
+                <span class="cpkg-meta">miniatura i galeria</span>
               </label>
               <label class="cpkg" id="pkg-pro">
                 <input type="radio" name="zainteresowanie" value="Oferta Pro" required>
                 <span class="cpkg-icon" aria-hidden="true">⚡</span>
                 <span class="cpkg-name">Oferta Pro</span>
-                <span class="cpkg-price">od 399 zł</span>
+                <span class="cpkg-meta">pełna przebudowa</span>
               </label>
               <label class="cpkg" id="pkg-studio">
                 <input type="radio" name="zainteresowanie" value="Studio" required>
                 <span class="cpkg-icon" aria-hidden="true">📦</span>
                 <span class="cpkg-name">Studio</span>
-                <span class="cpkg-price">od 990 zł</span>
+                <span class="cpkg-meta">seria produktów</span>
               </label>
               <label class="cpkg" id="pkg-abonament">
                 <input type="radio" name="zainteresowanie" value="Abonament" required>
                 <span class="cpkg-icon" aria-hidden="true">↻</span>
                 <span class="cpkg-name">Abonament</span>
-                <span class="cpkg-price">od 1490 zł/mc</span>
+                <span class="cpkg-meta">stała obsługa</span>
               </label>
               <label class="cpkg" id="pkg-unsure">
                 <input type="radio" name="zainteresowanie" value="Nie wiem jeszcze" required>
                 <span class="cpkg-icon" aria-hidden="true">?</span>
                 <span class="cpkg-name">Nie wiem jeszcze</span>
-                <span class="cpkg-price">pomoc w wyborze</span>
+                <span class="cpkg-meta">pomoc w wyborze</span>
               </label>
             </div>
             <div class="field-error" id="interest-error" aria-live="polite"></div>
