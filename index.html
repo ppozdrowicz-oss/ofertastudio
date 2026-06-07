@@ -637,80 +637,108 @@ select.cinput{cursor:pointer}
   .sdot{animation:none}
 }
 
-/* BA slider — main hero slider */
-.pf-slider-wrap{position:relative;border-radius:1rem;overflow:hidden;border:1px solid var(--bs);box-shadow:var(--sh3);cursor:ew-resize;user-select:none;touch-action:none;background:var(--s2);aspect-ratio:4/3;max-height:480px;contain:layout paint}
-.pf-slider-wrap:focus-visible{outline:2px solid var(--focus);outline-offset:4px;border-radius:1rem}
-.pf-side{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
-.pf-side-po{background:#fff}
-.pf-side-przed{background:var(--s3)}
-.pf-side img{display:block;width:100%;height:100%;object-fit:contain;padding:1.5rem}
-.pf-divline{position:absolute;top:0;bottom:0;width:2px;background:var(--brand);z-index:10;transform:translateX(-50%);left:50%}
-.pf-handle{position:absolute;top:50%;width:3rem;height:3rem;border-radius:50%;background:var(--brand);z-index:11;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.9375rem;font-weight:700;box-shadow:0 4px 20px rgba(37,99,235,.5),0 0 0 3px rgba(255,255,255,.25);transform:translate(-50%,-50%);left:50%;transition:transform .15s,box-shadow .15s}
-.pf-slider-wrap:hover .pf-handle{box-shadow:0 6px 28px rgba(37,99,235,.6),0 0 0 4px rgba(255,255,255,.3)}
-.pf-handle:focus-visible{outline:3px solid #fff;outline-offset:3px;box-shadow:0 6px 28px rgba(37,99,235,.6),0 0 0 6px rgba(37,99,235,.35)}
-.pf-tag{position:absolute;top:.875rem;font-family:'JetBrains Mono',monospace;font-size:.6875rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .75rem;border-radius:.375rem;z-index:12}
-.pf-tag-b{left:.875rem;background:rgba(0,0,0,.52);color:#fff}
+/* Realizacje — editorial case studies */
+.case-studies-section{position:relative}
+.case-studies-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2rem;align-items:end;margin-bottom:2rem}
+.case-studies-head .s-head{margin-bottom:0}
+.case-studies-head-actions{display:flex;align-items:center;justify-content:flex-end}
+.case-studies-showroom{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(320px,.75fr);gap:1.25rem;align-items:start}
+.case-featured,.case-card{padding:0;overflow:hidden;border-radius:calc(var(--radius-xl) + .25rem);background:var(--s1);border-color:var(--brand-border-soft);transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.case-featured{box-shadow:var(--sh3)}
+.case-featured:hover,.case-card:hover{transform:translateY(-2px);box-shadow:var(--sh3);border-color:var(--brand-border)}
+.case-featured-media{padding:.75rem .75rem 0;background:linear-gradient(145deg,var(--s2),var(--brand-bg));border-bottom:1px solid var(--bs)}
+.pf-slider-wrap{position:relative;overflow:hidden;border:1px solid var(--bs);border-radius:var(--radius-xl);cursor:ew-resize;user-select:none;touch-action:none;background:#eef3fa;aspect-ratio:4/3;contain:layout paint}
+.pf-slider-wrap:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
+.pf-side{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#eef3fa}
+.pf-side picture{width:100%;height:100%}
+.pf-side img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+.pf-side-przed{z-index:2;clip-path:inset(0 50% 0 0)}
+.pf-divline{position:absolute;top:0;bottom:0;left:50%;z-index:10;width:2px;background:#fff;box-shadow:0 0 0 1px rgba(10,22,40,.18);transform:translateX(-50%)}
+.pf-handle{position:absolute;top:50%;left:50%;z-index:11;display:grid;place-items:center;width:3rem;height:3rem;border:1px solid rgba(255,255,255,.7);border-radius:50%;background:var(--brand);color:#fff;font-size:.9rem;font-weight:800;box-shadow:0 8px 24px rgba(37,99,235,.38),0 0 0 4px rgba(255,255,255,.3);transform:translate(-50%,-50%);transition:box-shadow .2s ease,transform .2s ease}
+.pf-slider-wrap:hover .pf-handle{box-shadow:0 10px 30px rgba(37,99,235,.48),0 0 0 5px rgba(255,255,255,.34)}
+.pf-tag{position:absolute;top:.875rem;z-index:12;padding:.35rem .7rem;border-radius:var(--radius-sm);font-family:var(--font-mono);font-size:.625rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;box-shadow:var(--sh1)}
+.pf-tag-b{left:.875rem;background:rgba(10,22,40,.7);color:#fff}
 .pf-tag-a{right:.875rem;background:var(--brand);color:#fff}
-.pf-hint{font-family:'JetBrains Mono',monospace;font-size:.6875rem;color:var(--t3);text-align:center;margin-top:.625rem;letter-spacing:.04em}
-
-/* Featured case (top row) */
-.pf-featured{display:grid;grid-template-columns:1fr 400px;gap:2.5rem;align-items:center;margin-bottom:3rem}
-.pf-featured-meta{}
-.pf-featured-eyebrow{font-family:'JetBrains Mono',monospace;font-size:.625rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--brand);background:var(--brand-bg);border:1px solid rgba(37,99,235,.18);padding:.25rem .75rem;border-radius:.375rem;display:inline-block;margin-bottom:1rem}
-.pf-featured-h{font-size:clamp(1.375rem,2.5vw,1.875rem);font-weight:800;letter-spacing:-.025em;color:var(--t1);line-height:1.2;margin-bottom:.75rem}
-.pf-featured-p{font-size:.9375rem;color:var(--t2);line-height:1.8;margin-bottom:1.25rem}
-.pf-stats{display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.5rem;padding:1rem 1.25rem;background:var(--s2);border:1px solid var(--bs);border-radius:var(--r)}
-.pf-stat .n{font-size:1.75rem;font-weight:800;letter-spacing:-.04em;color:var(--brand);line-height:1}
-.pf-stat .l{font-size:.75rem;color:var(--t3);margin-top:.2rem;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.08em}
-.pf-featured-tags{display:flex;flex-wrap:wrap;gap:.375rem;margin-bottom:1.5rem}
-.pf-tag-chip{font-size:.75rem;font-weight:600;color:var(--ok);background:var(--ok-bg);padding:.25rem .625rem;border-radius:999px}
-.pf-tag-chip.neutral{color:var(--t2);background:var(--s3)}
-
-/* Cases grid */
-.pf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;align-items:stretch}
-.pf-card{border-radius:var(--r);overflow:hidden;position:relative;cursor:pointer;transition:all .25s;height:100%;display:flex;flex-direction:column}
-.pf-card:hover{box-shadow:var(--sh3);transform:translateY(-3px)}
-.pf-card-img{aspect-ratio:4/3;background:#fff;overflow:hidden;position:relative;border-bottom:1px solid var(--bs);display:flex;align-items:center;justify-content:center;isolation:isolate;contain:layout paint}
-.pf-card-img picture{position:absolute;inset:0;display:block;width:100%;height:100%}
-.pf-card-img img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;background:#fff;padding:0;mix-blend-mode:normal;transition:filter .25s ease}
-.pf-card:hover .pf-card-img img{filter:saturate(1.06) contrast(1.03)}
-.pf-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,22,40,.7) 0%,transparent 55%);opacity:0;transition:opacity .25s;display:flex;align-items:flex-end;padding:1rem}
-.pf-card:hover .pf-card-overlay{opacity:1}
-.pf-card-overlay-text{font-size:.8125rem;font-weight:600;color:#fff;font-family:'JetBrains Mono',monospace;letter-spacing:.06em}
-.pf-card-body{padding:1rem 1.125rem;background:var(--s1);display:flex;flex-direction:column;flex:1}
-.pf-card-num{font-family:'JetBrains Mono',monospace;font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--brand);margin-bottom:.3rem}
-.pf-card-h{font-size:.9375rem;font-weight:700;color:var(--t1);line-height:1.35;margin-bottom:.375rem}
-.pf-card-p{font-size:.8125rem;color:var(--t2);line-height:1.6;margin-bottom:.5rem}
-.pf-card-stat{font-family:'JetBrains Mono',monospace;font-size:.6875rem;font-weight:700;color:var(--ok);background:var(--ok-bg);padding:.2rem .5rem;border-radius:.375rem;display:inline-block}
-.pf-mini{display:grid;gap:.45rem;margin:.75rem 0 .65rem}
-.pf-mini-row{font-size:.75rem;color:var(--t2);line-height:1.55}
-.pf-mini-row strong{display:block;font-size:.625rem;font-family:'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--brand);margin-bottom:.1rem}
-.pf-card-link{display:inline-flex;margin-top:auto;font-size:.8125rem;font-weight:700;color:var(--brand);text-decoration:none}
-.pf-card-link:hover{text-decoration:underline;text-underline-offset:3px}
-
-/* CTA strip */
-.pf-cta-strip{margin-top:2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;padding:1.5rem 2rem;border-radius:var(--r);background:var(--s2);border:1px solid var(--bs)}
-.pf-cta-strip-text{}
-.pf-cta-strip-label{font-family:'JetBrains Mono',monospace;font-size:.625rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brand);margin-bottom:.35rem}
-.pf-cta-strip-h{font-size:1.0625rem;font-weight:800;color:var(--t1);letter-spacing:-.015em}
-.pf-cta-strip-sub{font-size:.875rem;color:var(--t2);margin-top:.25rem}
-.pf-cta-strip-btns{display:flex;gap:.625rem;flex-shrink:0;flex-wrap:wrap}
-
-/* Responsive */
-@media(max-width:960px){
-  .pf-featured{grid-template-columns:1fr}
-  .pf-grid{grid-template-columns:1fr 1fr}
+.pf-hint{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.7rem .25rem .75rem;font-family:var(--font-mono);font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--t3)}
+.pf-hint strong{color:var(--brand);font-weight:800}
+.case-featured-body{padding:clamp(1.25rem,2.2vw,2rem)}
+.case-meta{display:flex;align-items:center;justify-content:space-between;gap:.75rem;flex-wrap:wrap;margin-bottom:.9rem}
+.case-category,.case-number{font-family:var(--font-mono);font-size:.625rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
+.case-category{display:inline-flex;align-items:center;min-height:1.75rem;padding:.3rem .65rem;border:1px solid var(--brand-border-soft);border-radius:var(--radius-pill);background:var(--brand-bg);color:var(--brand)}
+.case-number{color:var(--t3)}
+.case-title{font-size:clamp(1.45rem,2.5vw,2rem);font-weight:800;letter-spacing:-.03em;line-height:1.16;color:var(--t1);margin-bottom:.65rem}
+.case-intro{max-width:720px;font-size:.925rem;line-height:1.72;color:var(--t2)}
+.case-proof{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:1.35rem 0 1.25rem;border:1px solid var(--bs);border-radius:var(--radius-lg);background:var(--s2);overflow:hidden}
+.case-proof-item{min-width:0;padding:1rem}
+.case-proof-item+.case-proof-item{border-left:1px solid var(--bs)}
+.case-proof dt{margin-bottom:.35rem;font-family:var(--font-mono);font-size:.625rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--brand)}
+.case-proof dd{font-size:.8rem;line-height:1.58;color:var(--t2)}
+.case-link{display:inline-flex;align-items:center;gap:.45rem;min-height:2.75rem;color:var(--brand);font-size:.875rem;font-weight:800;text-decoration:none}
+.case-link::after{content:'\2192';font-family:var(--font-mono);transition:transform .2s ease}
+.case-link:hover::after{transform:translateX(3px)}
+.case-side-stack{display:grid;gap:1.25rem}
+.case-card{display:flex;flex-direction:column;min-width:0;box-shadow:var(--sh2)}
+.case-card-media{position:relative;height:170px;overflow:hidden;background:linear-gradient(145deg,var(--s2),var(--brand-bg));border-bottom:1px solid var(--bs)}
+.case-card-media picture{display:block;width:100%;height:100%}
+.case-card-media img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .35s ease,filter .35s ease}
+.case-card:hover .case-card-media img{transform:scale(1.02);filter:saturate(1.04) contrast(1.02)}
+.case-card-media::after{content:'';position:absolute;inset:auto 0 0;height:36%;background:linear-gradient(transparent,rgba(10,22,40,.13));pointer-events:none}
+.case-card-body{display:flex;flex:1;flex-direction:column;padding:1.15rem 1.2rem 1rem}
+.case-card .case-meta{margin-bottom:.65rem}
+.case-card .case-title{font-size:1.05rem;line-height:1.3;margin-bottom:.3rem}
+.case-card .case-intro{font-size:.8rem;line-height:1.58}
+.case-card .case-proof{grid-template-columns:1fr;margin:.9rem 0 .65rem;border:0;border-radius:0;background:transparent;overflow:visible}
+.case-card .case-proof-item{display:grid;grid-template-columns:4.25rem minmax(0,1fr);gap:.55rem;padding:.5rem 0;border-top:1px solid var(--bs)}
+.case-card .case-proof-item+.case-proof-item{border-left:0}
+.case-card .case-proof dt{margin:0;padding-top:.05rem}
+.case-card .case-proof dd{font-size:.75rem;line-height:1.5}
+.case-card .case-link{margin-top:auto;font-size:.8125rem}
+.case-studies-cta{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1.5rem;align-items:center;margin-top:1.25rem;padding:1.35rem 1.5rem;overflow:hidden;border:1px solid var(--brand-border-soft);border-radius:calc(var(--radius-xl) + .25rem);background:linear-gradient(135deg,var(--s1),var(--brand-bg));box-shadow:var(--sh2)}
+.case-studies-cta::before{content:'';position:absolute;inset:0 auto 0 0;width:2px;background:linear-gradient(var(--brand),var(--cyan))}
+.case-studies-cta-copy{position:relative;min-width:0}
+.case-studies-cta-label{margin-bottom:.3rem;font-family:var(--font-mono);font-size:.625rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--brand)}
+.case-studies-cta h3{font-size:1.08rem;line-height:1.35;color:var(--t1);margin-bottom:.2rem}
+.case-studies-cta p{font-size:.84rem;line-height:1.58;color:var(--t2)}
+[data-theme="dark"] .case-featured-media,[data-theme="dark"] .case-card-media{background:linear-gradient(145deg,#0b1220,var(--s2))}
+[data-theme="dark"] .pf-slider-wrap,[data-theme="dark"] .pf-side{background:#111827;border-color:var(--b)}
+[data-theme="dark"] .case-featured,[data-theme="dark"] .case-card{border-color:var(--bs)}
+[data-theme="dark"] .case-featured:hover,[data-theme="dark"] .case-card:hover{border-color:var(--brand-border-soft)}
+@media(max-width:1024px){
+  .case-studies-showroom{grid-template-columns:1fr}
+  .case-side-stack{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .case-card-media{height:190px}
 }
-@media(max-width:580px){
-  .pf-grid{grid-template-columns:1fr 1fr}
-  .pf-featured-h{font-size:1.25rem}
-  .pf-stats{gap:1rem}
-  .pf-cta-strip{flex-direction:column;align-items:flex-start;padding:1.25rem}
-  .pf-cta-strip-btns{width:100%}
-  .pf-cta-strip-btns .btn-p,.pf-cta-strip-btns .btn-s{flex:1;justify-content:center}
+@media(max-width:760px){
+  .case-studies-head{grid-template-columns:1fr;gap:1.25rem;align-items:start}
+  .case-studies-head-actions{justify-content:flex-start}
+  .case-side-stack{grid-template-columns:1fr}
+  .case-card-media{height:auto;aspect-ratio:16/9}
+  .case-studies-cta{grid-template-columns:1fr;align-items:start}
 }
-@media(max-width:420px){
-  .pf-grid{grid-template-columns:1fr}
+@media(max-width:640px){
+  .case-studies-head-actions,.case-studies-head-actions .btn-s{width:100%}
+  .case-featured-media{padding:.5rem .5rem 0}
+  .pf-tag{top:.55rem;font-size:.55rem;padding:.3rem .5rem}
+  .pf-tag-b{left:.55rem}
+  .pf-tag-a{right:.55rem}
+  .pf-handle{width:2.65rem;height:2.65rem}
+  .pf-hint{font-size:.57rem;line-height:1.45}
+  .case-featured-body{padding:1.15rem}
+  .case-title{font-size:1.35rem}
+  .case-intro{font-size:.85rem;line-height:1.65}
+  .case-proof{grid-template-columns:1fr}
+  .case-proof-item{padding:.8rem .9rem}
+  .case-proof-item+.case-proof-item{border-left:0;border-top:1px solid var(--bs)}
+  .case-card-body{padding:1rem}
+  .case-card .case-title{font-size:1rem}
+  .case-card .case-proof-item{grid-template-columns:4rem minmax(0,1fr)}
+  .case-studies-cta{padding:1.1rem}
+  .case-studies-cta .btn-p{width:100%}
+}
+@media(max-width:375px){
+  .pf-hint span:last-child{display:none}
+  .case-card-media{aspect-ratio:4/3}
+  .case-card .case-proof-item{grid-template-columns:1fr;gap:.2rem}
 }
 
 /* ── SECTION UTILITIES ── */
@@ -776,17 +804,6 @@ select.cinput{cursor:pointer}
   .band-inner{grid-template-columns:1fr}
   .band-item{border-right:0;border-bottom:1px solid rgba(255,255,255,.12);padding:1rem 0}
   .band-item:last-child{border-bottom:0}
-
-  .pf-featured{gap:1.5rem;margin-bottom:2rem}
-  .pf-slider-wrap{max-height:none}
-  .pf-side img{padding:.875rem}
-  .pf-handle{width:2.75rem;height:2.75rem}
-  .pf-grid{grid-template-columns:1fr}
-  .pf-card{cursor:default}
-  .pf-card-body{padding:1rem}
-  .pf-card-p,.pf-mini-row{font-size:.8rem}
-  .pf-cta-strip{margin-top:1.25rem;padding:1rem}
-  .pf-cta-strip-btns,.pf-cta-strip-btns a{width:100%}
 
   .ind-grid,.ind-grid.ind-grid--wide{grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
   .ind-card{padding:.875rem}
@@ -1016,16 +1033,6 @@ body{
 .pricing-scope-list li::before{content:'\2713';color:var(--brand);font-weight:800;flex:0 0 auto}
 .pricing-help .btn-s{margin-top:auto}
 .pricing-start-note{margin-top:1.25rem;padding:1rem 1.25rem;border:1px solid var(--brand-border-soft);border-radius:var(--radius-lg);background:var(--brand-bg);color:var(--t2);font-size:.9rem;font-weight:500;line-height:1.7;text-align:center}
-
-/* Portfolio */
-.pf-grid{gap:1.25rem}
-.pf-card{border-radius:var(--radius-xl);cursor:default}
-.pf-card:hover{transform:translateY(-2px);box-shadow:var(--sh3)}
-.pf-card-body{padding:1.25rem}
-.pf-card-h{font-size:1.0625rem;line-height:1.4;margin-bottom:.5rem}
-.pf-mini{gap:.625rem;margin:.875rem 0}
-.pf-mini-row{font-size:.8125rem;line-height:1.55}
-.pf-card-link{min-height:2.5rem;align-items:center;text-underline-offset:3px}
 
 /* Process and audit CTA */
 .proc-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
@@ -1345,18 +1352,85 @@ body{
 
 <!-- ── REALIZACJE ── -->
 <span id="realizacje-preview" class="anchor-alias" aria-hidden="true"></span>
-<div class="section portfolio-section" id="realizacje" data-view-event="realizations_section_view" data-location="case_study">
-  <div class="s-head">
-    <div class="eyebrow">Realizacje</div>
-    <h2 class="s-title">Zobacz, jak zmienia się odbiór oferty po poprawie zdjęć i układu informacji</h2>
-    <p class="s-sub">To nie są dekoracyjne mockupy. Każda realizacja pokazuje, co było słabe wcześniej, co zostało poprawione i co kupujący widzi szybciej po zmianie.</p>
+<div class="section portfolio-section case-studies-section" id="realizacje" data-view-event="realizations_section_view" data-location="case_study">
+  <div class="case-studies-head">
+    <div class="s-head">
+      <div class="eyebrow">Realizacje przed / po</div>
+      <h2 class="s-title">Zobacz, jak zmienia się odbiór oferty po poprawie zdjęć i treści</h2>
+      <p class="s-sub">To nie są dekoracyjne mockupy. Każda realizacja pokazuje, co było problemem, co zostało poprawione i co kupujący widzi szybciej po zmianie.</p>
+    </div>
+    <div class="case-studies-head-actions">
+      <a href="/realizacje/" class="btn-s" data-event="case_study_click" data-location="case_study">Zobacz wszystkie realizacje</a>
+    </div>
   </div>
-  <div class="pf-grid">
-    <div class="card pf-card"><div class="pf-card-img pf-card-img--fill pf-card-img--metabo"><picture><source type="image/avif" srcset="/elektronarzedzia-po-zestaw.avif"><source type="image/webp" srcset="/elektronarzedzia-po-zestaw.webp"><img decoding="async" loading="lazy" src="/elektronarzedzia-po-zestaw.png" width="1254" height="1254" alt="Metabo PowerMaxx BS 12 BL — efekt końcowy" onerror="this.parentElement.style.background='var(--s3)'"></picture><div class="pf-card-overlay"><span class="pf-card-overlay-text">Zobacz pełny case →</span></div></div><div class="pf-card-body"><div class="pf-card-num">Case #001 · Elektronarzędzia</div><div class="pf-card-h">Metabo PowerMaxx BS 12 BL</div><div class="pf-mini"><div class="pf-mini-row"><strong>Produkt / kategoria</strong>Wiertarko-wkrętarka akumulatorowa.</div><div class="pf-mini-row"><strong>Problem przed</strong>Jedno zdjęcie nie rozróżniało wariantu ani zawartości zestawu.</div><div class="pf-mini-row"><strong>Co poprawiono</strong>Miniaturę, 10 ujęć, detale techniczne i infografikę.</div><div class="pf-mini-row"><strong>Efekt dla odbioru</strong>Kupujący od razu widzi dwa akumulatory, walizkę i cechy wersji bezszczotkowej.</div></div><a href="/realizacje/#elektronarzedzia" class="pf-card-link" data-event="case_study_click" data-location="case_study">Sprawdź, czy u Ciebie problemem jest też galeria →</a></div></div>
-    <div class="card pf-card"><div class="pf-card-img pf-card-img--fill pf-card-img--garden"><picture><source type="image/avif" srcset="/dom-ogrod-po-front.avif"><source type="image/webp" srcset="/dom-ogrod-po-front.webp"><img decoding="async" loading="lazy" src="/dom-ogrod-po-front.png" width="1672" height="941" alt="Pistolet ogrodowy Gardena — efekt końcowy" onerror="this.parentElement.style.background='var(--s3)'"></picture><div class="pf-card-overlay"><span class="pf-card-overlay-text">Zobacz pełny case →</span></div></div><div class="pf-card-body"><div class="pf-card-num">Case #002 · Dom i ogród</div><div class="pf-card-h">Pistolet ogrodowy Gardena</div><div class="pf-mini"><div class="pf-mini-row"><strong>Produkt / kategoria</strong>Pistolet do podlewania i system ogrodowy.</div><div class="pf-mini-row"><strong>Problem przed</strong>Oferta nie pokazywała chwytu, trybów strumienia ani złącza.</div><div class="pf-mini-row"><strong>Co poprawiono</strong>Dodano użycie w ogrodzie, detal złącza, chwyt i serię głowicy.</div><div class="pf-mini-row"><strong>Efekt dla odbioru</strong>Galeria zamyka pytanie o kompatybilność i wygodę obsługi jeszcze przed kontaktem.</div></div><a href="/realizacje/#dom-ogrod" class="pf-card-link" data-event="case_study_click" data-location="case_study">Zobacz, co można poprawić w podobnej ofercie →</a></div></div>
-    <div class="card pf-card"><div class="pf-card-img pf-card-img--fill pf-card-img--welding"><picture><source type="image/avif" srcset="/spawalnictwo-po-front.avif"><source type="image/webp" srcset="/spawalnictwo-po-front.webp"><img decoding="async" loading="lazy" src="/spawalnictwo-po-front.png" width="1254" height="1254" alt="Drut spawalniczy MIG/MAG — efekt końcowy" onerror="this.parentElement.style.background='var(--s3)'"></picture><div class="pf-card-overlay"><span class="pf-card-overlay-text">Zobacz pełny case →</span></div></div><div class="pf-card-body"><div class="pf-card-num">Case #003 · Spawalnictwo</div><div class="pf-card-h">Drut spawalniczy MIG/MAG</div><div class="pf-mini"><div class="pf-mini-row"><strong>Produkt / kategoria</strong>Drut spawalniczy do ofert technicznych.</div><div class="pf-mini-row"><strong>Problem przed</strong>Średnica, szpula i pochodzenie produktu ginęły na jednym zdjęciu.</div><div class="pf-mini-row"><strong>Co poprawiono</strong>Rozdzielono opakowanie, szpulę, detal drutu i informację o produkcji w Polsce.</div><div class="pf-mini-row"><strong>Efekt dla odbioru</strong>Kupujący szybciej porównuje parametry i widzi wyróżnik istotny w tej kategorii.</div></div><a href="/realizacje/#spawalnictwo" class="pf-card-link" data-event="case_study_click" data-location="case_study">Wyślij podobną ofertę techniczną do analizy →</a></div></div>
+
+  <div class="case-studies-showroom">
+    <article class="card case-featured">
+      <div class="case-featured-media">
+        <div class="pf-slider-wrap" id="pfSlider" tabindex="0" role="slider" aria-label="Porównanie zdjęcia przed i po dla Metabo PowerMaxx BS 12 BL" aria-orientation="horizontal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+          <div class="pf-side pf-side-po" aria-hidden="true"><picture><source type="image/avif" srcset="/elektronarzedzia-po-zestaw-homepage.avif"><source type="image/webp" srcset="/elektronarzedzia-po-zestaw-homepage.webp"><img decoding="async" loading="lazy" src="/elektronarzedzia-po-zestaw-homepage.png" width="1254" height="941" alt=""></picture></div>
+          <div class="pf-side pf-side-przed" id="pfBefore" aria-hidden="true"><picture><source type="image/avif" srcset="/elektronarzedzia-przed.avif"><source type="image/webp" srcset="/elektronarzedzia-przed.webp"><img decoding="async" loading="lazy" src="/elektronarzedzia-przed.jpg" width="1016" height="762" alt=""></picture></div>
+          <span class="pf-tag pf-tag-b">Przed</span>
+          <span class="pf-tag pf-tag-a">Po</span>
+          <span class="pf-divline" id="pfLine" aria-hidden="true"></span>
+          <span class="pf-handle" id="pfHandle" aria-hidden="true">↔</span>
+        </div>
+        <div class="pf-hint"><strong>Przeciągnij suwak</strong><span>Jedno zdjęcie wejściowe → kompletna galeria</span></div>
+      </div>
+      <div class="case-featured-body">
+        <div class="case-meta"><span class="case-category">Elektronarzędzia</span><span class="case-number">Case study #001</span></div>
+        <h3 class="case-title">Metabo PowerMaxx BS 12 BL</h3>
+        <p class="case-intro">Galeria została zaprojektowana tak, żeby kupujący od pierwszych sekund rozumiał wariant produktu, zawartość zestawu i przewagi wersji bezszczotkowej.</p>
+        <dl class="case-proof">
+          <div class="case-proof-item"><dt>Problem</dt><dd>Jedno zdjęcie nie pokazywało wartości zestawu ani różnic między wariantami.</dd></div>
+          <div class="case-proof-item"><dt>Zmiana</dt><dd>Miniatura, zestaw, walizka, akumulatory, detale techniczne i infografika tworzą logiczną sekwencję.</dd></div>
+          <div class="case-proof-item"><dt>Efekt</dt><dd>Kupujący szybciej widzi, co dokładnie kupuje i za co płaci.</dd></div>
+        </dl>
+        <a href="/realizacje/#elektronarzedzia" class="case-link" data-event="case_study_click" data-location="case_study">Zobacz pełną realizację</a>
+      </div>
+    </article>
+
+    <div class="case-side-stack">
+      <article class="card case-card">
+        <div class="case-card-media" aria-hidden="true"><picture><source type="image/avif" srcset="/dom-ogrod-po-front-homepage.avif"><source type="image/webp" srcset="/dom-ogrod-po-front-homepage.webp"><img decoding="async" loading="lazy" src="/dom-ogrod-po-front-homepage.png" width="1254" height="941" alt=""></picture></div>
+        <div class="case-card-body">
+          <div class="case-meta"><span class="case-category">Dom i ogród</span><span class="case-number">#002</span></div>
+          <h3 class="case-title">Gardena — prezentacja produktu</h3>
+          <p class="case-intro">Od ogólnego widoku do detali, które odpowiadają na pytania przed zakupem.</p>
+          <dl class="case-proof">
+            <div class="case-proof-item"><dt>Problem</dt><dd>Brakowało kontekstu użycia, chwytu, trybów strumienia i złącza.</dd></div>
+            <div class="case-proof-item"><dt>Zmiana</dt><dd>Galeria prowadzi od produktu do zastosowania i szczegółów.</dd></div>
+            <div class="case-proof-item"><dt>Efekt</dt><dd>Kompatybilność i wygoda obsługi są czytelne bez szukania w opisie.</dd></div>
+          </dl>
+          <a href="/realizacje/#dom-ogrod" class="case-link" data-event="case_study_click" data-location="case_study">Zobacz realizację</a>
+        </div>
+      </article>
+
+      <article class="card case-card">
+        <div class="case-card-media" aria-hidden="true"><picture><source type="image/avif" srcset="/spawalnictwo-po-front-homepage.avif"><source type="image/webp" srcset="/spawalnictwo-po-front-homepage.webp"><img decoding="async" loading="lazy" src="/spawalnictwo-po-front-homepage.png" width="1254" height="941" alt=""></picture></div>
+        <div class="case-card-body">
+          <div class="case-meta"><span class="case-category">Spawalnictwo</span><span class="case-number">#003</span></div>
+          <h3 class="case-title">Produkt techniczny do marketplace</h3>
+          <p class="case-intro">Najważniejsze parametry produktu zostały rozdzielone na czytelne ujęcia.</p>
+          <dl class="case-proof">
+            <div class="case-proof-item"><dt>Problem</dt><dd>Średnica, szpula i pochodzenie produktu ginęły w pierwszym kontakcie.</dd></div>
+            <div class="case-proof-item"><dt>Zmiana</dt><dd>Opakowanie, detal drutu i kluczowe informacje dostały własne kadry.</dd></div>
+            <div class="case-proof-item"><dt>Efekt</dt><dd>Kupujący szybciej porównuje wariant i nie szuka podstawowych danych w długim opisie.</dd></div>
+          </dl>
+          <a href="/realizacje/#spawalnictwo" class="case-link" data-event="case_study_click" data-location="case_study">Zobacz realizację</a>
+        </div>
+      </article>
+    </div>
   </div>
-  <div class="section-cta"><a href="/realizacje/" class="btn-s" data-event="case_study_click" data-location="case_study">Zobacz wszystkie realizacje</a></div>
+
+  <div class="case-studies-cta">
+    <div class="case-studies-cta-copy">
+      <div class="case-studies-cta-label">Bezpłatna diagnoza na start</div>
+      <h3>Chcesz zobaczyć, co blokuje Twoją ofertę?</h3>
+      <p>Wyślij link albo zdjęcie produktu. Wskażę 3 konkretne rzeczy, które warto poprawić jako pierwsze.</p>
+    </div>
+    <a href="#kontakt" class="btn-p" data-event="mini_audit_click" data-location="case_study" data-package="start" data-interest="Mini audyt — 0 zł" data-message="Chcę wysłać ofertę do analizy.">Wyślij link do analizy</a>
+  </div>
 </div>
 
 <div class="divider"></div>
