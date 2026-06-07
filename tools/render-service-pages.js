@@ -7,23 +7,27 @@ const WEBSITE = `${SITE}/#website`;
 const SKIP_LINK_TARGET = '#main-content';
 
 const serviceLinks = [
-  ['Zdjęcia produktowe Allegro', '/zdjecia-produktowe-allegro/'],
-  ['Opisy produktów Allegro', '/opisy-produktow-allegro/'],
-  ['Optymalizacja ofert Allegro', '/optymalizacja-ofert-allegro/'],
-  ['Audyt oferty Allegro', '/audyt-oferty-allegro/'],
-  ['Oferty OLX', '/oferty-olx/']
+  ['Zdjęcia produktowe: miniatura i galeria', '/zdjecia-produktowe-allegro/'],
+  ['Tytuł i opis produktu Allegro', '/opisy-produktow-allegro/'],
+  ['Poprawa całej oferty Allegro', '/optymalizacja-ofert-allegro/'],
+  ['Audyt oferty: 3 poprawki na start', '/audyt-oferty-allegro/'],
+  ['Zdjęcia i opis ogłoszenia OLX', '/oferty-olx/']
 ];
 
 const pages = [
   {
     file: 'zdjecia-produktowe-allegro/index.html',
     url: '/zdjecia-produktowe-allegro/',
-    title: 'Zdjęcia produktowe Allegro — miniatury i galerie SEO | OfertaStudio.pl',
-    description: 'Zdjęcia produktowe Allegro: miniatury, galerie i infografiki bez wysyłki produktu. Wyślij link lub zdjęcia i zapytaj o Foto Pack od 249 zł.',
-    h1: 'Zdjęcia produktowe Allegro: miniatura, packshot, galeria i infografika',
+    title: 'Zdjęcia produktowe Allegro — miniatura i galeria | OfertaStudio.pl',
+    description: 'Miniatura, packshot, galeria i infografiki do ofert Allegro. Pokaż produkt tak, żeby klient szybciej widział zestaw, detale i przewagę.',
+    h1: 'Zdjęcia produktowe Allegro — miniatura, galeria i packshot',
     label: 'Zdjęcia produktowe Allegro',
     eyebrow: 'Zdjęcia produktowe',
-    lead: 'Dobre zdjęcia produktowe Allegro nie są tylko ładnym obrazkiem. Miniatura ma zatrzymać wzrok na liście ofert, packshot ma jasno pokazać produkt, galeria ma odpowiedzieć na pytania kupującego, a infografika ma skrócić drogę od zainteresowania do decyzji.',
+    lead: 'Dobre zdjęcia Allegro nie mają tylko wyglądać dobrze. Mają pokazać produkt tak, żeby kupujący od razu widział, co jest w zestawie, czym różni się wariant i czy produkt pasuje do jego sytuacji.',
+    heroCta: 'Pokaż produkt — sprawdzę, czy problemem jest miniatura czy cała galeria',
+    introHeading: 'Zdjęcia mają wyjaśniać produkt, nie tylko go pokazywać',
+    finalCtaTitle: 'Sprawdź, czy problemem jest miniatura czy cała galeria',
+    finalCtaText: 'Wyślij link albo zdjęcia produktu. Sprawdzę, czy wystarczy poprawa miniatury, czy galeria wymaga nowego układu. Zakres i cena przed startem.',
     serviceType: 'Zdjęcia produktowe, miniatury, galerie i infografiki do ofert Allegro',
     serviceName: 'Zdjęcia produktowe Allegro',
     offerName: 'Foto Pack',
@@ -100,20 +104,24 @@ const pages = [
   {
     file: 'opisy-produktow-allegro/index.html',
     url: '/opisy-produktow-allegro/',
-    title: 'Opisy produktów Allegro — tytuł SEO i treść oferty | OfertaStudio.pl',
-    description: 'Opisy produktów Allegro: tytuł SEO, korzyści, parametry i FAQ gotowe do wklejenia. Wyślij ofertę i zapytaj o Tekst Pack od 179 zł.',
-    h1: 'Opisy produktów Allegro: tytuł i treść, które odpowiadają na pytania',
+    title: 'Opisy produktów Allegro — tytuł i opis oferty | OfertaStudio.pl',
+    description: 'Opisy produktów Allegro, które tłumaczą wartość, porządkują parametry i odpowiadają na pytania kupującego przed kontaktem.',
+    h1: 'Opisy produktów Allegro — tytuł i opis, które ułatwiają decyzję',
     label: 'Opisy produktów Allegro',
-    eyebrow: 'Copywriting Allegro',
-    lead: 'Opis produktu Allegro powinien pomagać kupującemu podjąć decyzję, a nie tylko powtarzać dane techniczne. Dobry tekst łączy czytelny tytuł, korzyści, parametry i odpowiedzi na obawy w układzie gotowym do wdrożenia.',
-    serviceType: 'Tytuły SEO, opisy produktów, korzyści, parametry i FAQ do ofert Allegro',
+    eyebrow: 'Tytuł i opis Allegro',
+    lead: 'Opis produktu ma nie tylko wymieniać dane. Ma pomóc kupującemu szybciej zrozumieć wartość, rozwiać wątpliwości i ograniczyć pytania przed zakupem.',
+    heroCta: 'Wyślij opis lub link — pokażę, co trzeba uprościć',
+    introHeading: 'Opis ma odpowiadać, zanim kupujący napisze',
+    finalCtaTitle: 'Uprość tytuł i opis, zanim klient zada kolejne pytanie',
+    finalCtaText: 'Wyślij obecny opis albo link do oferty. Pokażę, które informacje trzeba skrócić, przesunąć lub dopowiedzieć. Zakres i cena przed startem.',
+    serviceType: 'Tytuły, opisy produktów, korzyści, parametry i FAQ do ofert Allegro',
     serviceName: 'Opisy produktów Allegro',
     offerName: 'Tekst Pack',
     price: '179',
     intro: [
       'W wielu ofertach opis jest traktowany jak miejsce na kopiuj-wklej z katalogu producenta. Problem polega na tym, że kupujący nie szuka tam tylko specyfikacji. Chce zrozumieć, czy produkt pasuje do jego sytuacji, czym różni się od podobnych modeli i czy nie będzie żałował zakupu.',
-      'Copywriting do Allegro musi pracować razem z tytułem, zdjęciem głównym i galerią. Tytuł SEO pomaga dopasować ofertę do zapytań, ale opis powinien rozwinąć obietnicę z miniatury: pokazać zastosowanie, wyjaśnić parametry, uporządkować zestaw i odpowiedzieć na pytania, które najczęściej blokują kliknięcie w przycisk zakupu.',
-      'Usługa polega na przygotowaniu treści w strukturze bloków. Zamiast jednego długiego akapitu powstaje logiczny układ: krótkie otwarcie, najważniejsze korzyści, parametry w czytelnej formie, scenariusze użycia, zawartość zestawu, FAQ i rekomendacje do galerii, jeśli tekst ujawnia brakujące zdjęcia.',
+      'Tytuł i opis Allegro muszą pracować razem ze zdjęciem głównym i galerią. Tytuł pomaga znaleźć i zrozumieć produkt, a opis rozwija obietnicę z miniatury: pokazuje zastosowanie, wyjaśnia parametry, porządkuje zestaw i odpowiada na pytania, które najczęściej zatrzymują decyzję.',
+      'Zamiast jednego długiego akapitu powstaje czytelny układ informacji: krótkie otwarcie, najważniejsze korzyści, parametry, scenariusze użycia, zawartość zestawu, FAQ i rekomendacje do galerii, jeśli tekst ujawnia brakujące zdjęcia.',
       'Nie obiecuję magicznej sprzedaży z samego opisu, bo wynik zależy też od ceny, konkurencji, opinii i dostępności. Dobrze napisany opis zmniejsza jednak chaos informacyjny. Kupujący szybciej rozumie produkt, a sprzedawca nie musi odpowiadać na te same pytania w wiadomościach.'
     ],
     fit: [
@@ -131,7 +139,7 @@ const pages = [
     ],
     attention: [
       ['Pierwsze zdania opisu', 'Początek nie może być pustym sloganem. Powinien szybko powiedzieć, co to za produkt, dla kogo jest i jaki problem rozwiązuje.'],
-      ['Naturalny tytuł SEO', 'Tytuł powinien łączyć frazę docelową z czytelnością. Upychanie słów kluczowych utrudnia decyzję i może wyglądać mniej profesjonalnie.'],
+      ['Naturalny tytuł oferty', 'Tytuł powinien pomagać znaleźć produkt i od razu go zrozumieć. Upychanie słów kluczowych utrudnia decyzję i może wyglądać mniej profesjonalnie.'],
       ['Język korzyści', 'Nie wystarczy napisać, że produkt jest solidny. Trzeba pokazać, z czego to wynika i jak ta cecha przekłada się na użycie.'],
       ['Skanowanie na mobile', 'Bloki muszą być krótkie, a śródtytuły konkretne. Kupujący na telefonie powinien znaleźć parametry i odpowiedzi bez przewijania ściany tekstu.'],
       ['Zgodność z galerią', 'Opis i zdjęcia powinny wzajemnie się wzmacniać. Jeżeli tekst mówi o czymś ważnym, galeria powinna to pokazać albo przynajmniej nie zaprzeczać przekazowi.']
@@ -139,23 +147,23 @@ const pages = [
     aftercare: [
       ['Sprawdź pytania po publikacji', 'Po wdrożeniu opisu warto obserwować, czy klienci nadal pytają o te same rzeczy. Jeżeli tak, sekcje FAQ, parametry albo opis zastosowania wymagają doprecyzowania.'],
       ['Nie kopiuj tekstu bez kontroli', 'Opis przygotowany dla jednego produktu może być dobrym wzorem, ale nie powinien być mechanicznie powielany na całą kategorię. Każdy wariant ma inne cechy i ograniczenia.'],
-      ['Aktualizuj tytuł przy zmianie wariantu', 'Jeśli zmienia się model, rozmiar, komplet lub ważny parametr, tytuł SEO też powinien zostać sprawdzony. Nieaktualny tytuł przyciąga niewłaściwe oczekiwania.'],
+      ['Aktualizuj tytuł przy zmianie wariantu', 'Jeśli zmienia się model, rozmiar, komplet lub ważny parametr, tytuł oferty też powinien zostać sprawdzony. Nieaktualny tytuł przyciąga niewłaściwe oczekiwania.'],
       ['Porównuj opis z galerią', 'Po dodaniu nowych zdjęć sprawdź, czy tekst nadal odpowiada temu, co widać w ofercie. Czasem jedno nowe ujęcie pozwala skrócić akapit albo przenieść informację do infografiki.'],
       ['Pilnuj tonu marki sprzedawcy', 'Opis powinien być konkretny, ale nie musi brzmieć tak samo w każdej kategorii. Produkty techniczne wymagają innego akcentu niż kosmetyki albo produkty lifestyle.'],
       ['Zostaw miejsce na realne dane', 'Jeżeli nie masz potwierdzonej informacji, nie wpisuj jej na siłę. Lepiej oznaczyć brak danych do uzupełnienia niż tworzyć obietnicę, której sprzedawca nie może obronić.']
     ],
     deliverables: [
-      ['Tytuł SEO', 'Propozycja tytułu z główną frazą, ważnymi parametrami i językiem kupującego, bez upychania słów kluczowych kosztem czytelności.'],
+      ['Tytuł oferty', 'Propozycja tytułu z główną frazą, ważnymi parametrami i językiem kupującego, bez upychania słów kluczowych kosztem czytelności.'],
       ['Opis sprzedażowy', 'Treść otwierająca ofertę, która wyjaśnia, co to za produkt, dla kogo jest i dlaczego warto czytać dalej.'],
       ['Sekcja korzyści', 'Przełożenie cech technicznych na praktyczne sytuacje: co klient zyskuje, czego unika i w jakim zastosowaniu produkt ma sens.'],
-      ['Parametry w strukturze', 'Uporządkowane dane techniczne, zawartość zestawu, kompatybilność, normy albo ograniczenia przedstawione w sposób łatwy do skanowania.'],
+      ['Parametry w czytelnym układzie', 'Uporządkowane dane techniczne, zawartość zestawu, kompatybilność, normy albo ograniczenia przedstawione w sposób łatwy do skanowania.'],
       ['FAQ do oferty', 'Zestaw pytań i odpowiedzi, które zamykają typowe wątpliwości przed zakupem, bez obietnic niemożliwych do potwierdzenia.'],
       ['Rekomendacje do zdjęć', 'Jeśli tekst wymaga pokazania cechy w galerii, wskazuję, jaki kadr lub infografika powinny uzupełnić opis.']
     ],
     mistakes: [
       ['Opis jest kopią specyfikacji', 'Parametry są potrzebne, ale bez interpretacji klient nie wie, co oznaczają w praktyce. Sama tabela nie pokazuje, co produkt daje i dla kogo jest.'],
-      ['Tytuł SEO jest przeładowany', 'Frazy są dodane mechanicznie, przez co tytuł wygląda nienaturalnie i gorzej tłumaczy produkt na liście ofert.'],
-      ['Brakuje struktury bloków', 'Długi tekst bez śródtytułów i krótkich sekcji jest trudny do czytania, szczególnie na telefonie. Kupujący skanuje, a nie analizuje każde zdanie.'],
+      ['Tytuł jest przeładowany', 'Frazy są dodane mechanicznie, przez co tytuł wygląda nienaturalnie i gorzej tłumaczy produkt na liście ofert.'],
+      ['Brakuje czytelnego układu', 'Długi tekst bez śródtytułów i krótkich sekcji jest trudny do czytania, szczególnie na telefonie. Kupujący skanuje, a nie analizuje każde zdanie.'],
       ['Korzyści są ogólne', 'Sformułowania typu wysoka jakość albo solidne wykonanie nie mówią nic konkretnego. Opis powinien pokazać, z czego ta jakość wynika.'],
       ['Opis obiecuje za dużo', 'Deklaracje bez pokrycia mogą obniżyć zaufanie i naruszać zasady marketplace. Lepiej pokazać realną przewagę niż pisać najwięcej i najlepiej.'],
       ['FAQ nie odpowiada na realne pytania', 'Sekcja FAQ bywa dopisana na końcu, ale nie wynika z produktu. Dobre FAQ dotyczy kompatybilności, zastosowania, zestawu, montażu albo ograniczeń.']
@@ -163,7 +171,7 @@ const pages = [
     process: [
       ['Analiza produktu i obecnej oferty', 'Sprawdzam tytuł, opis, parametry, zdjęcia i konkurencyjne wyniki. Szukam tego, czego kupujący może nie zrozumieć albo czego oferta nie mówi wystarczająco wcześnie.'],
       ['Mapa informacji', 'Układam kolejność treści: co musi pojawić się w tytule, co w pierwszym ekranie opisu, co w sekcji korzyści, a co w parametrach i FAQ.'],
-      ['Pisanie treści', 'Przygotowuję tytuł SEO i opis w blokach. Język jest konkretny, sprzedażowy, ale bez sztucznych obietnic i bez tekstu lanego tylko po to, żeby zwiększyć objętość.'],
+      ['Pisanie treści', 'Przygotowuję tytuł oferty i opis w krótkich sekcjach. Język jest konkretny, sprzedażowy, ale bez sztucznych obietnic i tekstu lanego tylko po to, żeby zwiększyć objętość.'],
       ['Kontrola wdrożenia', 'Na końcu sprawdzam, czy tekst da się wygodnie wkleić do oferty i czy nie wymaga dodatkowych zdjęć, infografik albo doprecyzowania parametrów.']
     ],
     caseStudy: {
@@ -175,68 +183,72 @@ const pages = [
       ['Czy przygotowujesz tylko opis, bez zdjęć?', 'Tak. Tekst Pack może obejmować sam tytuł, opis, parametry, sekcje korzyści i FAQ. Jeśli widzę problem w galerii, dodaję krótką rekomendację.'],
       ['Czy opis jest gotowy do wklejenia?', 'Tak, materiał jest układany tak, aby dało się go łatwo przenieść do oferty. Ostateczne formatowanie zależy od edytora Allegro i ustawień sprzedawcy.'],
       ['Czy używasz słów kluczowych?', 'Tak, ale bez upychania fraz. Tytuł i opis mają brzmieć naturalnie i pomagać kupującemu, a nie wyglądać jak lista słów.'],
-      ['Czy można poprawić istniejący opis?', 'Tak. Możesz wysłać obecny opis, a ja uporządkuję tytuł, strukturę informacji, korzyści, parametry i pytania klienta.'],
+      ['Czy można poprawić istniejący opis?', 'Tak. Możesz wysłać obecny opis, a ja uporządkuję tytuł, układ informacji, korzyści, parametry i pytania klienta.'],
       ['Czy opis może być krótki?', 'Może, jeśli produkt jest prosty i galeria dobrze tłumaczy ofertę. Ważniejsza od długości jest kompletność informacji oraz to, czy tekst pomaga kupującemu podjąć decyzję.']
     ]
   },
   {
     file: 'optymalizacja-ofert-allegro/index.html',
     url: '/optymalizacja-ofert-allegro/',
-    title: 'Optymalizacja ofert Allegro — zdjęcia, opis, tytuł SEO | OfertaStudio.pl',
-    description: 'Optymalizacja ofert Allegro: miniatura, galeria, opis i tytuł SEO w jednym procesie. Wyślij link i zapytaj o Ofertę Pro od 399 zł.',
-    h1: 'Optymalizacja ofert Allegro: miniatura, galeria, opis i algorytm Allegro',
-    label: 'Optymalizacja ofert Allegro',
+    title: 'Poprawa oferty Allegro — zdjęcia, opis i układ | OfertaStudio.pl',
+    description: 'Popraw zdjęcie główne, galerię, tytuł i opis oferty Allegro. Kupujący szybciej rozumie produkt i łatwiej podejmuje decyzję.',
+    h1: 'Poprawa oferty Allegro — zdjęcia, tytuł, opis i układ oferty',
+    label: 'Poprawa ofert Allegro',
     eyebrow: 'Oferta Pro',
-    lead: 'Poprawa oferty Allegro polega na uporządkowaniu zdjęcia głównego, galerii, tytułu, opisu i parametrów. Chodzi o to, żeby kupujący szybciej rozumiał produkt, widział jego przewagę i miał mniej powodów, by przejść dalej.',
-    serviceType: 'Optymalizacja zdjęcia, galerii, tytułu SEO i opisu oferty Allegro',
-    serviceName: 'Optymalizacja ofert Allegro',
+    lead: 'Jeśli zdjęcia, tytuł i opis nie pracują razem, oferta traci zrozumiałość. Ta usługa porządkuje całą prezentację produktu tak, żeby kupujący szybciej wiedział, co kupuje i dlaczego warto kliknąć właśnie tutaj.',
+    heroCta: 'Wyślij link — sprawdzę, czy potrzebujesz pełnej poprawy oferty',
+    introHeading: 'Gdy każdy element mówi co innego, oferta traci zrozumiałość',
+    finalCtaTitle: 'Sprawdź, czy oferta wymaga jednej poprawki czy pełnego uporządkowania',
+    finalCtaText: 'Wyślij link do oferty. Sprawdzę, czy problem leży w jednym elemencie, czy zdjęcia, tytuł i opis wymagają wspólnego kierunku. Zakres i cena przed startem.',
+    serviceType: 'Poprawa zdjęcia głównego, galerii, tytułu, opisu i układu oferty Allegro',
+    serviceName: 'Poprawa ofert Allegro',
     offerName: 'Oferta Pro',
     price: '399',
     intro: [
       'Allegro to środowisko porównywania. Kupujący widzi wiele podobnych ofert, filtruje po cenie, patrzy na miniaturę, tytuł, parametry, opinie i dostępność. Jeśli oferta nie tłumaczy wartości produktu szybko, nawet dobry produkt może przegrać z gorzej dobranym, ale lepiej pokazanym konkurentem.',
-      'Optymalizacja nie oznacza dopisania kilku słów kluczowych. Algorytm Allegro i zachowanie kupujących wymagają spójności: tytuł powinien odpowiadać na zapytanie, miniatura powinna być czytelna, parametry powinny być kompletne, galeria powinna rozwijać argumenty, a opis powinien porządkować decyzję.',
+      'Poprawa oferty nie oznacza dopisania kilku słów kluczowych. Liczy się spójność z tym, jak kupujący szuka i porównuje produkty: tytuł ma odpowiadać na zapytanie, miniatura ma być czytelna, parametry kompletne, galeria ma rozwijać najważniejsze informacje, a opis porządkować decyzję.',
       'W praktyce praca zaczyna się od diagnozy. Sprawdzam, co kupujący widzi najpierw, gdzie oferta traci uwagę, które informacje są ukryte, a które elementy wyglądają przypadkowo. Dopiero potem powstaje rekomendowany zakres: sama miniatura, tekst, galeria albo pełna przebudowa oferty.',
-      'Dobra optymalizacja jest uczciwa wobec produktu. Nie chodzi o obiecywanie wyników sprzedaży ani o agresywne hasła. Chodzi o poprawienie tych elementów, które sprzedawca realnie kontroluje: prezentacji, kompletności informacji, hierarchii argumentów i jakości materiałów.',
-      'Ważne jest też oddzielenie problemów oferty od problemów samego biznesu. Jeśli produkt ma niekonkurencyjną cenę, długi czas dostawy albo mało opinii, sama treść tego nie naprawi. Optymalizacja może jednak sprawić, że kupujący szybciej zrozumie, co kupuje, jakie ma warianty i dlaczego warto rozważyć właśnie tę ofertę.'
+      'Dobra poprawa oferty jest uczciwa wobec produktu. Nie chodzi o obiecywanie wyników sprzedaży ani o agresywne hasła. Chodzi o poprawienie tych elementów, które sprzedawca realnie kontroluje: prezentacji, kompletności informacji, kolejności argumentów i jakości materiałów.',
+      'Ważne jest też oddzielenie problemów oferty od problemów samego biznesu. Jeśli produkt ma niekonkurencyjną cenę, długi czas dostawy albo mało opinii, sama treść tego nie naprawi. Uporządkowanie oferty może jednak sprawić, że kupujący szybciej zrozumie, co kupuje, jakie ma warianty i dlaczego warto rozważyć właśnie tę ofertę.'
     ],
     fit: [
       ['Oferta ma ruch, ale nie przekonuje', 'Jeżeli produkt jest oglądany, a pytania lub zakupy nie idą w parze z potencjałem, warto sprawdzić, czy prezentacja wyjaśnia wartość wystarczająco szybko.'],
-      ['Produkt jest porównywany parametrami', 'W kategoriach technicznych klient zestawia warianty, normy, moc, wymiary, kompatybilność i zawartość zestawu. Optymalizacja pomaga pokazać te dane w logicznym porządku.'],
+      ['Produkt jest porównywany parametrami', 'W kategoriach technicznych klient zestawia warianty, normy, moc, wymiary, kompatybilność i zawartość zestawu. Poprawa oferty pomaga pokazać te dane w logicznym porządku.'],
       ['Masz dobre elementy, ale brak spójności', 'Czasem zdjęcia, opis i tytuł są osobno poprawne, ale nie tworzą jednej historii. Usługa porządkuje je tak, żeby pracowały razem.'],
-      ['Nie wiesz, od czego zacząć', 'Pełna optymalizacja ma sens, gdy problem jest rozproszony: miniatura, galeria, opis i parametry wymagają wspólnej decyzji, a nie pojedynczej kosmetycznej poprawki.']
+      ['Nie wiesz, od czego zacząć', 'Pełna poprawa oferty ma sens, gdy problem jest rozproszony: miniatura, galeria, opis i parametry wymagają wspólnej decyzji, a nie pojedynczej kosmetycznej zmiany.']
     ],
     prepare: [
       ['Link do oferty', 'Najlepiej zacząć od działającej oferty, bo można ocenić nie tylko treść, ale też kolejność informacji, zdjęcia, tytuł i kontekst kategorii.'],
       ['Informacje o produkcie', 'Potrzebne są dane, których nie da się wywnioskować ze zdjęć: warianty, materiały, ograniczenia, komplet, zastosowanie i przewagi nad podobnymi modelami.'],
       ['Materiały wizualne', 'Obecne zdjęcia, grafiki lub pliki producenta pozwalają ustalić, czy da się z nich zbudować lepszą galerię, czy trzeba przygotować brakujące ujęcia.'],
       ['Priorytet biznesowy', 'Warto określić, czy najważniejsza jest poprawa jednej oferty, przygotowanie wzoru pod serię, czy sprawdzenie procesu na wybranym produkcie.'],
-      ['Granice obietnic', 'Jeżeli produktu nie można reklamować w określony sposób, trzeba to uwzględnić przed pisaniem i projektowaniem. Optymalizacja nie powinna tworzyć ryzyka komunikacyjnego.']
+      ['Granice obietnic', 'Jeżeli produktu nie można reklamować w określony sposób, trzeba to uwzględnić przed pisaniem i projektowaniem. Poprawa oferty nie powinna tworzyć ryzyka komunikacyjnego.']
     ],
     attention: [
       ['Zgodność tytułu z treścią', 'Tytuł przyciąga kliknięcie, ale opis i galeria muszą potwierdzić obietnicę. Niespójność szybko obniża zaufanie.'],
       ['Parametry i filtry', 'Dane w ofercie powinny wspierać wyszukiwanie i porównywanie. Braki w parametrach mogą sprawić, że klient nie znajdzie produktu w oczekiwanym filtrze.'],
       ['Hierarchia argumentów', 'Najważniejsze informacje powinny pojawić się wcześnie. Jeśli przewaga produktu jest ukryta na końcu opisu, wielu kupujących do niej nie dotrze.'],
-      ['Rola miniatury', 'Miniatura nie musi mówić wszystkiego, ale musi jasno pokazać produkt i powód kliknięcia. To pierwszy etap całej optymalizacji.'],
+      ['Rola miniatury', 'Miniatura nie musi mówić wszystkiego, ale musi jasno pokazać produkt i powód kliknięcia. To pierwszy etap porządkowania całej oferty.'],
       ['Spójność po wdrożeniu', 'Po zmianach oferta nie może wyglądać jak kilka osobnych poprawek. Zdjęcia, tytuł i opis powinny mieć jeden kierunek i ten sam poziom konkretu.']
     ],
     aftercare: [
-      ['Wdrażaj zmiany w całości', 'Jeśli zmienisz tylko opis, a galeria nadal pokazuje stary układ informacji, efekt może być niespójny. Optymalizacja działa najlepiej, gdy elementy wspierają się nawzajem.'],
+      ['Wdrażaj zmiany w całości', 'Jeśli zmienisz tylko opis, a galeria nadal pokazuje stary układ informacji, efekt może być niespójny. Oferta działa najlepiej, gdy elementy wspierają się nawzajem.'],
       ['Obserwuj, gdzie pojawiają się pytania', 'Pytania kupujących po wdrożeniu są dobrym testem. Jeżeli dotyczą danych, które miały być jasne, trzeba wrócić do kolejności zdjęć, parametrów lub FAQ.'],
       ['Pilnuj parametrów przy wariantach', 'Gdy dodajesz nowy wariant produktu, nie zakładaj, że stary układ pasuje automatycznie. Wariant może wymagać innego tytułu, zdjęcia głównego albo infografiki.'],
-      ['Nie poprawiaj wszystkiego naraz bez celu', 'Po pierwszej optymalizacji warto zachować kierunek zmian i unikać przypadkowych eksperymentów. Każda kolejna poprawka powinna odpowiadać na konkretną barierę.'],
-      ['Porównuj ofertę z kategorią', 'Kategoria Allegro zmienia się wraz z konkurencją. Co pewien czas warto sprawdzić, czy miniatura, cena informacji i sposób pokazania produktu nadal są czytelne.'],
-      ['Twórz standard dla serii', 'Jeśli optymalizacja dotyczy jednego produktu z większej kategorii, warto potraktować ją jako wzór: kolejność zdjęć, styl opisu i zasady tytułów mogą uporządkować kolejne oferty.']
+      ['Nie poprawiaj wszystkiego naraz bez celu', 'Po pierwszym uporządkowaniu warto zachować kierunek zmian i unikać przypadkowych eksperymentów. Każda kolejna poprawka powinna odpowiadać na konkretną barierę.'],
+      ['Porównuj ofertę z kategorią', 'Kategoria Allegro zmienia się wraz z konkurencją. Co pewien czas warto sprawdzić, czy miniatura, kolejność informacji i sposób pokazania produktu nadal są czytelne.'],
+      ['Twórz standard dla serii', 'Jeśli poprawa dotyczy jednego produktu z większej kategorii, warto potraktować ją jako wzór: kolejność zdjęć, styl opisu i zasady tytułów mogą uporządkować kolejne oferty.']
     ],
     deliverables: [
       ['Diagnoza oferty', 'Analiza tego, jak oferta wygląda na tle kategorii: miniatura, tytuł, galeria, opis, parametry, kolejność informacji i potencjalne bariery zakupowe.'],
       ['Nowy kierunek prezentacji', 'Rekomendacja, które elementy powinny zostać zmienione najpierw i jaki zakres ma największy sens dla konkretnego produktu.'],
-      ['Tytuł SEO', 'Propozycja tytułu dopasowanego do języka kupującego i najważniejszych cech produktu, bez sztucznego przeładowania frazami.'],
+      ['Tytuł oferty', 'Propozycja tytułu dopasowanego do języka kupującego i najważniejszych cech produktu, bez sztucznego przeładowania frazami.'],
       ['Galeria i infografiki', 'Układ zdjęć oraz propozycje materiałów wizualnych, które pokazują produkt, zestaw, detale, zastosowanie i przewagi.'],
       ['Opis i FAQ', 'Treść oferty ułożona w blokach: korzyści, parametry, scenariusze użycia, zawartość zestawu i odpowiedzi na typowe pytania.'],
       ['Plan wdrożenia', 'Praktyczna lista zmian do publikacji, tak aby sprzedawca wiedział, co zmienić i w jakiej kolejności.']
     ],
     mistakes: [
-      ['Optymalizacja ogranicza się do tytułu', 'Sam tytuł SEO nie naprawi oferty, jeśli zdjęcie główne jest słabe, galeria nie tłumaczy produktu, a opis nie odpowiada na pytania kupującego.'],
+      ['Poprawa ogranicza się do tytułu', 'Sam tytuł nie naprawi oferty, jeśli zdjęcie główne jest słabe, galeria nie tłumaczy produktu, a opis nie odpowiada na pytania kupującego.'],
       ['Galeria nie prowadzi przez decyzję', 'Zdjęcia są dodane przypadkowo. Brakuje kolejności: najpierw produkt, potem detale, zastosowanie, parametry i elementy, które zamykają obawy.'],
       ['Parametry są niepełne', 'W Allegro parametry pomagają filtrować i porównywać produkty. Braki mogą ograniczać widoczność albo powodować, że klient nie znajduje informacji w oczekiwanym miejscu.'],
       ['Oferta mówi językiem producenta', 'Opis jest poprawny technicznie, ale nie tłumaczy, co produkt daje kupującemu. Sprzedawca zna produkt, klient dopiero próbuje go zrozumieć.'],
@@ -246,31 +258,35 @@ const pages = [
     process: [
       ['Mini audyt i wybór zakresu', 'Najpierw sprawdzam ofertę i wskazuję, co realnie blokuje jej czytelność. Dopiero po tym ustalany jest zakres, termin i cena płatnej realizacji.'],
       ['Analiza kategorii i intencji', 'Patrzę na sposób prezentacji podobnych produktów, język tytułów, typowe pytania kupujących i to, jak oferta może lepiej odpowiadać na intencję wyszukiwania.'],
-      ['Przebudowa elementów oferty', 'Przygotowuję rekomendowane zmiany w miniaturze, galerii, tytule SEO, opisie i FAQ. Każdy element ma pracować z pozostałymi, a nie istnieć osobno.'],
+      ['Przebudowa elementów oferty', 'Przygotowuję rekomendowane zmiany w miniaturze, galerii, tytule, opisie i FAQ. Każdy element ma pracować z pozostałymi, a nie istnieć osobno.'],
       ['Przekazanie gotowego materiału', 'Otrzymujesz komplet do wdrożenia lub jasną listę zmian. Jeśli coś wymaga dodatkowych zdjęć albo danych produktu, jest to opisane wprost.']
     ],
     caseStudy: {
       href: '/realizacje/#narzedzia',
       title: 'Przykład: narzędzie wymagające pokazania parametrów',
-      text: 'Case klucza dynamometrycznego pokazuje, że optymalizacja oferty technicznej nie polega na dekoracji. Ważne są ujęcia walizki, głowicy, skali Nm i zestawu informacji, które pozwalają kupującemu szybko ocenić zastosowanie produktu.'
+      text: 'Case klucza dynamometrycznego pokazuje, że poprawa oferty technicznej nie polega na dekoracji. Ważne są ujęcia walizki, głowicy, skali Nm i zestawu informacji, które pozwalają kupującemu szybko ocenić zastosowanie produktu.'
     },
     faq: [
-      ['Czy optymalizacja oznacza budowę oferty od zera?', 'Nie zawsze. Można poprawić istniejącą ofertę albo przygotować komplet materiałów od początku, zależnie od jakości obecnych zdjęć i treści.'],
+      ['Czy poprawa oznacza budowę oferty od zera?', 'Nie zawsze. Można poprawić istniejącą ofertę albo przygotować komplet materiałów od początku, zależnie od jakości obecnych zdjęć i treści.'],
       ['Czy można zacząć od jednej oferty?', 'Tak. Jedna oferta często wystarcza, żeby sprawdzić proces i wypracować styl dla kolejnych produktów.'],
-      ['Czy obejmuje to zdjęcia i opisy?', 'Tak, jeśli taki zakres zostanie wybrany. Optymalizacja może obejmować miniaturę, galerię, infografiki, tytuł, opis, parametry i FAQ.'],
-      ['Czy optymalizacja uwzględnia algorytm Allegro?', 'Tak, ale praktycznie: przez tytuł, parametry, kompletność informacji i dopasowanie oferty do tego, jak kupujący szuka oraz porównuje produkty.'],
+      ['Czy obejmuje to zdjęcia i opisy?', 'Tak, jeśli taki zakres zostanie wybrany. Poprawa może obejmować miniaturę, galerię, infografiki, tytuł, opis, parametry i FAQ.'],
+      ['Czy bierzesz pod uwagę sposób wyszukiwania na Allegro?', 'Tak. Sprawdzam tytuł, parametry, kompletność informacji i dopasowanie oferty do tego, jak kupujący szuka oraz porównuje produkty.'],
       ['Czy to daje pewność wzrostu sprzedaży?', 'Nie. OfertaStudio poprawia elementy prezentacji produktu, ale wynik zależy też od ceny, konkurencji, historii konta, opinii, sezonu i popytu.']
     ]
   },
   {
     file: 'audyt-oferty-allegro/index.html',
     url: '/audyt-oferty-allegro/',
-    title: 'Audyt oferty Allegro — miniatura, tytuł i galeria | OfertaStudio.pl',
-    description: 'Audyt oferty Allegro: sprawdzę miniaturę, tytuł, galerię, opis i konkurencję. Wyślij link i odbierz bezpłatny mini audyt przed zmianami.',
-    h1: 'Audyt oferty Allegro: checklista tego, co sprawdzamy przed zmianami',
+    title: 'Audyt oferty Allegro — 3 konkretne poprawki | OfertaStudio.pl',
+    description: 'Wyślij link do oferty Allegro i zobacz, co blokuje kliknięcia, zrozumienie produktu i decyzję zakupową. Najpierw diagnoza, potem zakres.',
+    h1: 'Audyt oferty Allegro — 3 konkretne poprawki na start',
     label: 'Audyt oferty Allegro',
     eyebrow: 'Mini audyt',
-    lead: 'Audyt oferty Allegro to szybka diagnoza prezentacji produktu: miniatury, tytułu, galerii, opisu, parametrów i podstawowych barier zakupowych. Zamiast zgadywać, co poprawić, dostajesz checklistę elementów, które naprawdę wpływają na zrozumienie oferty.',
+    lead: 'Nie musisz od razu zamawiać pełnej przebudowy oferty. Wyślij link i zobacz, co realnie blokuje kliknięcie, zrozumienie produktu albo decyzję o zakupie.',
+    heroCta: 'Wyślij link — dostaniesz 3 poprawki na start',
+    introHeading: 'Najpierw ustal, co naprawdę blokuje ofertę',
+    finalCtaTitle: 'Zacznij od 3 konkretnych poprawek',
+    finalCtaText: 'Wyślij link, zdjęcia albo krótki opis produktu. Dostaniesz diagnozę i pierwszy kierunek bez zobowiązań na starcie. Płatny zakres ustalamy dopiero po odpowiedzi.',
     serviceType: 'Audyt miniatury, tytułu, galerii, opisu i konkurencji oferty Allegro',
     serviceName: 'Audyt oferty Allegro',
     offerName: 'Start',
@@ -279,10 +295,10 @@ const pages = [
       'Sprzedawcy często czują, że oferta nie działa, ale nie wiedzą, od czego zacząć. Problem może leżeć w miniaturze, tytule, braku parametrów, zdjęciach, opisie, cenie, konkurencji albo w kilku drobnych rzeczach naraz. Audyt porządkuje ten chaos i wskazuje pierwszy rozsądny krok.',
       'Audyt nie jest raportem dla samego raportu. Ma odpowiedzieć na praktyczne pytanie: co kupujący widzi, czego nie rozumie i gdzie oferta nie pomaga mu podjąć decyzji. Dlatego sprawdzam zarówno elementy wizualne, jak i tekstowe oraz strukturę informacji.',
       'Podstawowy mini audyt może zacząć się od linku do oferty, zdjęcia produktu albo krótkiego opisu pomysłu. Jeśli oferta jeszcze nie istnieje, audyt może wskazać, jakie materiały warto przygotować przed publikacją, aby nie budować strony produktu w ciemno.',
-      'To dobre rozwiązanie, gdy nie wiesz, czy potrzebujesz zdjęć, opisu, pełnej optymalizacji czy tylko kilku poprawek. Audyt zmniejsza ryzyko zamawiania zakresu, który nie rozwiązuje głównego problemu.',
+      'To dobre rozwiązanie, gdy nie wiesz, czy potrzebujesz zdjęć, opisu, pełnej poprawy oferty czy tylko kilku zmian. Audyt zmniejsza ryzyko zamawiania zakresu, który nie rozwiązuje głównego problemu.',
       'Najważniejsze w audycie jest nazwanie przyczyny, a nie wyliczenie przypadkowych sugestii. Jeżeli miniatura jest dobra, ale opis nie tłumaczy zastosowania, wnioski powinny kierować do tekstu. Jeżeli opis jest wystarczający, ale galeria nie pokazuje detali, priorytetem są zdjęcia. Dzięki temu sprzedawca nie wydaje czasu i budżetu na poprawki, które wyglądają efektownie, ale nie odpowiadają na realną barierę.',
       'Audyt jest też przydatny wtedy, gdy sprzedawca sam przygotowuje materiały i potrzebuje zewnętrznego spojrzenia przed publikacją. Krótka diagnoza pozwala uniknąć utrwalania błędów w kolejnych ofertach i ułatwia podjęcie decyzji bez presji.',
-      'W praktyce checklista działa jak filtr przed dalszą pracą: oddziela elementy, które wpływają na decyzję kupującego, od poprawek czysto estetycznych. Dzięki temu łatwiej ustalić, czy najpierw poprawić zdjęcie główne, dopisać brakujące parametry, zmienić układ galerii, czy przygotować pełną optymalizację oferty.'
+      'W praktyce checklista działa jak filtr przed dalszą pracą: oddziela elementy, które wpływają na decyzję kupującego, od poprawek czysto estetycznych. Dzięki temu łatwiej ustalić, czy najpierw poprawić zdjęcie główne, dopisać brakujące parametry, zmienić układ galerii, czy uporządkować całą ofertę.'
     ],
     fit: [
       ['Nie wiesz, gdzie jest problem', 'Audyt jest dobrym pierwszym krokiem, gdy oferta wygląda poprawnie, ale nie masz pewności, czy blokuje ją miniatura, opis, galeria, parametry czy ogólna logika prezentacji.'],
@@ -308,7 +324,7 @@ const pages = [
       ['Zacznij od priorytetu numer jeden', 'Po audycie nie trzeba poprawiać wszystkiego naraz. Najpierw warto wykonać zmianę, która najbardziej wpływa na zrozumienie produktu albo kliknięcie w ofertę.'],
       ['Zapisz decyzje do kolejnych ofert', 'Jeżeli audyt pokazuje powtarzalny problem, na przykład słabe zdjęcie główne albo zbyt ogólny opis, potraktuj go jako zasadę dla następnych produktów.'],
       ['Oddziel problemy produktu od problemów oferty', 'Audyt dotyczy prezentacji. Jeśli produkt ma ograniczenia cenowe, dostępnościowe albo konkurencyjne, warto ich nie mieszać z oceną zdjęć i treści.'],
-      ['Uzupełniaj brakujące materiały', 'Część wniosków może wymagać dodatkowych zdjęć, parametrów albo informacji o zestawie. Bez tych danych nie warto udawać pełnej optymalizacji.'],
+      ['Uzupełniaj brakujące materiały', 'Część wniosków może wymagać dodatkowych zdjęć, parametrów albo informacji o zestawie. Bez tych danych nie warto udawać pełnej poprawy oferty.'],
       ['Wracaj do checklisty przed publikacją', 'Ta sama checklista przydaje się przy kolejnych ofertach: miniatura, tytuł, galeria, opis, parametry, FAQ i pytania, które kupujący może mieć przed kontaktem.'],
       ['Nie traktuj audytu jak wyroku', 'Audyt jest punktem decyzyjnym. Ma pomóc wybrać zakres pracy, a nie zamykać drogę do testowania lepszego tytułu, galerii albo innego układu opisu.']
     ],
@@ -318,7 +334,7 @@ const pages = [
       ['Ocena galerii', 'Sprawdzenie, czy zdjęcia prowadzą przez decyzję, czy pokazują detale, zastosowanie, skalę, zawartość zestawu i istotne parametry.'],
       ['Ocena opisu', 'Wskazanie, czy opis odpowiada na pytania kupującego, czy tylko powtarza dane producenta albo ukrywa najważniejsze argumenty.'],
       ['Lista priorytetów', 'Krótka checklista zmian: co poprawić najpierw, co może poczekać i jaki zakres pracy ma największy sens.'],
-      ['Rekomendacja kolejnego kroku', 'Wskazanie, czy wystarczy poprawka tytułu, nowa galeria, opis, pełna optymalizacja albo przygotowanie brakujących materiałów.']
+      ['Rekomendacja kolejnego kroku', 'Wskazanie, czy wystarczy poprawka tytułu, nowa galeria, opis, pełne uporządkowanie oferty albo przygotowanie brakujących materiałów.']
     ],
     mistakes: [
       ['Audyt jest zbyt ogólny', 'Komentarz typu poprawić zdjęcia nic nie daje. Sprzedawca potrzebuje wiedzieć, które zdjęcie, dlaczego i co ma się na nim znaleźć.'],
@@ -350,19 +366,23 @@ const pages = [
   {
     file: 'oferty-olx/index.html',
     url: '/oferty-olx/',
-    title: 'Oferty OLX — zdjęcia i treść ogłoszenia | OfertaStudio.pl',
-    description: 'Oferty OLX: zdjęcia, tytuł i treść ogłoszenia, które budują zaufanie na mobile. Wyślij produkt i zapytaj o przygotowanie oferty OLX.',
-    h1: 'Poprawa ofert OLX: zdjęcia, tytuł i treść ogłoszenia pod specyfikę OLX',
+    title: 'Oferty OLX — zdjęcia i opis ogłoszenia | OfertaStudio.pl',
+    description: 'Poprawa zdjęć i opisu ogłoszenia OLX. Więcej zaufania, mniej przypadkowych pytań i konkretniejszy kontakt od kupujących.',
+    h1: 'Oferty OLX — zdjęcia i opis, które budują zaufanie',
     label: 'Oferty OLX',
     eyebrow: 'OLX',
-    lead: 'Poprawa ofert OLX różni się od pracy nad Allegro. Na OLX liczy się szybkie zaufanie, jasny stan produktu, konkretna treść ogłoszenia, dobry kontakt i zdjęcia, które pokazują realny przedmiot bez przesadnego marketingu.',
-    serviceType: 'Zdjęcia, tytuł i treść ogłoszenia OLX',
+    lead: 'Na OLX liczy się szybkie zaufanie. Zdjęcia i opis mają pokazać realny stan produktu, komplet, sposób odbioru i najważniejsze ograniczenia, zanim kupujący napisze wiadomość.',
+    heroCta: 'Pokaż ogłoszenie OLX — sprawdzę, co budzi niepewność',
+    introHeading: 'Niepewność kupującego zaczyna się przed pierwszą wiadomością',
+    finalCtaTitle: 'Sprawdź, co w ogłoszeniu budzi niepewność',
+    finalCtaText: 'Wyślij link albo zdjęcia realnego produktu. Sprawdzę, czy ogłoszenie jasno pokazuje stan, komplet i warunki odbioru. Zakres i cena przed startem.',
+    serviceType: 'Zdjęcia, tytuł i opis ogłoszenia OLX',
     serviceName: 'Oferty OLX',
     offerName: 'Oferta Pro',
     price: '399',
     intro: [
       'OLX działa inaczej niż Allegro. Kupujący częściej porównuje lokalnie, pyta o stan, odbiór, szczegóły i wiarygodność sprzedającego. Oferta musi szybko odpowiedzieć na pytanie, czy produkt jest wart kontaktu, a nie tylko wyglądać jak opis katalogowy.',
-      'Na Allegro ważna jest struktura marketplace, parametry i algorytm. Na OLX duże znaczenie ma konkret: co sprzedajesz, w jakim stanie, co jest w zestawie, czy zdjęcia pokazują realny produkt i czy opis nie ukrywa informacji, o które kupujący zaraz zapyta w wiadomości.',
+      'Na OLX duże znaczenie ma konkret: co sprzedajesz, w jakim stanie, co jest w zestawie, czy zdjęcia pokazują realny produkt i czy opis nie ukrywa informacji, o które kupujący zaraz zapyta w wiadomości.',
       'Usługa obejmuje poprawę zdjęć, tytułu i treści ogłoszenia. W zależności od produktu może to oznaczać lepszą kolejność zdjęć, dopisanie informacji o stanie, uporządkowanie zalet, usunięcie niejasności, dodanie pytań i odpowiedzi albo przygotowanie ogłoszenia od zera.',
       'Nie chodzi o to, żeby ogłoszenie OLX było długie. Powinno być kompletne, uczciwe i szybkie do przeczytania. Kupujący ma zrozumieć produkt, stan, sposób kontaktu i powód, dla którego warto napisać właśnie do Ciebie.',
       'Dobrze przygotowane ogłoszenie OLX zmniejsza liczbę rozmów z osobami, które nie pasują do oferty. Jeżeli w treści są jasno opisane stan, komplet, odbiór, ograniczenia i najważniejsze cechy, kontaktują się częściej osoby, które rozumieją warunki. To oszczędza czas sprzedawcy i poprawia jakość zapytań.',
@@ -424,7 +444,7 @@ const pages = [
       text: 'Case pistoletu ogrodowego dobrze pokazuje różnicę między samym zdjęciem produktu a prezentacją zastosowania. W OLX takie kontekstowe ujęcie może budować zaufanie, bo kupujący szybciej widzi realne użycie i skalę przedmiotu.'
     },
     faq: [
-      ['Czy oferta OLX różni się od oferty Allegro?', 'Tak. Na OLX większe znaczenie ma zaufanie do ogłoszenia, jasny stan produktu, kontakt i lokalny kontekst sprzedaży. Allegro częściej wymaga bardziej uporządkowanej struktury marketplace.'],
+      ['Czy oferta OLX różni się od oferty Allegro?', 'Tak. Na OLX większe znaczenie ma zaufanie do ogłoszenia, jasny stan produktu, kontakt i lokalny kontekst sprzedaży. Na Allegro kupujący częściej porównuje parametry, warianty i kompletność całej oferty.'],
       ['Czy można przygotować ogłoszenie bez gotowego linku?', 'Tak. Wystarczą zdjęcia produktu, informacje o stanie, cenie, lokalizacji lub sposobie odbioru oraz to, co chcesz podkreślić.'],
       ['Czy opis powinien być długi?', 'Nie. Powinien być kompletny, ale szybki do przeczytania. Najważniejsze informacje muszą pojawić się wcześnie, szczególnie na mobile.'],
       ['Czy warto pokazywać wady produktu?', 'Tak, jeśli produkt jest używany lub ma ograniczenia. Uczciwe pokazanie stanu zmniejsza liczbę nietrafionych zapytań i buduje zaufanie.'],
@@ -561,8 +581,12 @@ function faqItems(items, slug) {
 }
 
 function relatedLinks(currentUrl) {
-  return serviceLinks
-    .filter(([, href]) => href !== currentUrl)
+  const links = serviceLinks.filter(([, href]) => href !== currentUrl);
+  if (currentUrl !== '/audyt-oferty-allegro/') {
+    links.sort(([, firstHref], [, secondHref]) =>
+      Number(secondHref === '/audyt-oferty-allegro/') - Number(firstHref === '/audyt-oferty-allegro/'));
+  }
+  return links
     .map(([label, href]) => `<a class="link-chip" href="${href}">${escapeHtml(label)}</a>`)
     .join('');
 }
@@ -571,6 +595,9 @@ function render(page) {
   const slug = page.url.replace(/\//g, '-').replace(/^-|-$/g, '');
   const schema = JSON.stringify(schemaFor(page), null, 2);
   const intro = page.intro.map(text => `<p>${escapeHtml(text)}</p>`).join('\n        ');
+  const isAudit = page.url === '/audyt-oferty-allegro/';
+  const diagnosticHref = isAudit ? '/#kontakt' : '/audyt-oferty-allegro/';
+  const diagnosticLabel = isAudit ? page.heroCta : 'Zacznij od audytu oferty Allegro';
   return `<!DOCTYPE html>
 <html lang="pl" data-theme="light">
 <head>
@@ -619,7 +646,7 @@ ${schema}
       <h1 class="service-title">${escapeHtml(page.h1)}</h1>
       <p class="service-lead">${escapeHtml(page.lead)}</p>
       <div class="service-actions">
-        <a class="btn btn-p" href="/#kontakt" data-event="hero_cta_click" data-location="hero">Wyślij link — dostaniesz 3 konkretne poprawki</a>
+        <a class="btn btn-p" href="/#kontakt" data-event="hero_cta_click" data-location="hero">${escapeHtml(page.heroCta)}</a>
         <a class="btn btn-s" href="/realizacje/">Zobacz realizacje przed/po</a>
       </div>
     </div>
@@ -628,15 +655,15 @@ ${schema}
       <h2>Zanim wybierzesz zakres, sprawdź, od czego zacząć</h2>
       <p>Wyślij link, zdjęcia albo krótki opis produktu. Dostaniesz konkret, nie ogólne porady, a zakres i cenę poznasz przed startem.</p>
       <div class="service-actions">
-        <a class="btn btn-p" href="/#kontakt" data-event="mini_audit_click" data-location="hero">Sprawdź, od czego zacząć</a>
+        <a class="btn btn-p" href="${diagnosticHref}" data-event="mini_audit_click" data-location="hero">${escapeHtml(diagnosticLabel)}</a>
       </div>
     </aside>
   </section>
 
   <section class="service-section" aria-labelledby="service-about">
     <div class="card service-card">
-      <div class="eyebrow">Na czym polega usługa</div>
-      <h2 id="service-about">${escapeHtml(page.serviceName)} w praktyce</h2>
+      <div class="eyebrow">Problem i rozwiązanie</div>
+      <h2 id="service-about">${escapeHtml(page.introHeading)}</h2>
       ${intro}
     </div>
   </section>
@@ -644,7 +671,7 @@ ${schema}
   <section class="service-section" aria-labelledby="service-deliverables">
     <div class="s-head c">
       <div class="eyebrow">Zakres</div>
-      <h2 class="s-title" id="service-deliverables">Co dostajesz</h2>
+      <h2 class="s-title" id="service-deliverables">Co obejmuje usługa</h2>
       <p class="muted">Zakres i cena są potwierdzane przed startem. Poniższe elementy pokazują, co zwykle wymaga uporządkowania przy tej usłudze.</p>
     </div>
     <div class="service-grid">
@@ -655,11 +682,22 @@ ${schema}
   <section class="service-section" aria-labelledby="service-mistakes">
     <div class="s-head c">
       <div class="eyebrow">Błędy</div>
-      <h2 class="s-title" id="service-mistakes">Najczęstsze błędy</h2>
+      <h2 class="s-title" id="service-mistakes">Co najczęściej osłabia ofertę</h2>
       <p class="muted">To problemy, które najczęściej osłabiają ofertę, zanim kupujący zdąży zapytać o szczegóły produktu.</p>
     </div>
     <div class="service-grid">
       ${cards(page.mistakes)}
+    </div>
+  </section>
+
+  <section class="service-section" aria-labelledby="service-fit">
+    <div class="s-head c">
+      <div class="eyebrow">Dla kogo</div>
+      <h2 class="s-title" id="service-fit">Dla kogo jest ta usługa</h2>
+      <p class="muted">Nie każda oferta wymaga tego samego działania. Ten zakres jest najbardziej przydatny w poniższych sytuacjach.</p>
+    </div>
+    <div class="service-grid">
+      ${cards(page.fit)}
     </div>
   </section>
 
@@ -678,18 +716,7 @@ ${schema}
     <h2 id="service-case">${escapeHtml(page.caseStudy.title)}</h2>
     <p>${escapeHtml(page.caseStudy.text)}</p>
     <div class="service-actions">
-      <a class="btn btn-s" href="${page.caseStudy.href}" data-event="case_study_click" data-location="service_page">Zobacz pasujące case study</a>
-    </div>
-  </section>
-
-  <section class="service-section" aria-labelledby="service-fit">
-    <div class="s-head c">
-      <div class="eyebrow">Dla kogo</div>
-      <h2 class="s-title" id="service-fit">Kiedy ten zakres ma sens</h2>
-      <p class="muted">Nie każda oferta wymaga tego samego działania. Ten zakres jest najbardziej przydatny w poniższych sytuacjach.</p>
-    </div>
-    <div class="service-grid">
-      ${cards(page.fit)}
+      <a class="btn btn-s" href="${page.caseStudy.href}" data-event="case_study_click" data-location="service_page">Zobacz tę realizację przed/po</a>
     </div>
   </section>
 
@@ -736,21 +763,21 @@ ${schema}
 
   <section class="card service-card" aria-labelledby="related-services">
     <div class="eyebrow">Powiązane usługi</div>
-    <h2 id="related-services">Sprawdź powiązane usługi</h2>
-    <p>Jeśli po analizie okaże się, że problem leży w innym elemencie oferty, możesz przejść do powiązanego zakresu bez zaczynania od zera.</p>
+    <h2 id="related-services">Wybierz następny krok dla swojej oferty</h2>
+    <p>Jeśli problem leży w innym elemencie oferty, przejdź do konkretnego zakresu albo zacznij od audytu i trzech najważniejszych poprawek.</p>
     <div class="links">
       ${relatedLinks(page.url)}
-      <a class="link-chip" href="/realizacje/">Realizacje przed/po</a>
-      <a class="link-chip" href="/#pakiety">Pakiety poprawy ofert</a>
+      <a class="link-chip" href="/realizacje/">Zobacz efekty przed/po w realizacjach</a>
+      <a class="link-chip" href="/#pakiety">Porównaj pakiety poprawy ofert</a>
     </div>
   </section>
 
   <section class="card service-card service-cta" aria-labelledby="service-final-cta">
     <div class="eyebrow">Następny krok</div>
-    <h2 id="service-final-cta">Wyślij ofertę albo zdjęcia produktu</h2>
-    <p class="muted">Bez briefu. Najpierw diagnoza, potem zakres i cena przed startem. Po realizacji dostajesz materiały gotowe do wdrożenia.</p>
+    <h2 id="service-final-cta">${escapeHtml(page.finalCtaTitle)}</h2>
+    <p class="muted">${escapeHtml(page.finalCtaText)}</p>
     <div class="service-actions">
-      <a class="btn btn-p" href="/#kontakt" data-event="mini_audit_click" data-location="service_final">Wyślij link — dostaniesz 3 konkretne poprawki</a>
+      <a class="btn btn-p" href="/#kontakt" data-event="mini_audit_click" data-location="service_final">${escapeHtml(page.heroCta)}</a>
       <a class="btn btn-s" href="/realizacje/">Zobacz realizacje przed/po</a>
     </div>
   </section>
