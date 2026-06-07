@@ -24,7 +24,6 @@ const pages = [
     label: 'Zdjęcia produktowe Allegro',
     eyebrow: 'Zdjęcia produktowe',
     lead: 'Dobre zdjęcia produktowe Allegro nie są tylko ładnym obrazkiem. Miniatura ma zatrzymać wzrok na liście ofert, packshot ma jasno pokazać produkt, galeria ma odpowiedzieć na pytania kupującego, a infografika ma skrócić drogę od zainteresowania do decyzji.',
-    cta: 'Zapytaj o zdjęcia produktowe',
     serviceType: 'Zdjęcia produktowe, miniatury, galerie i infografiki do ofert Allegro',
     serviceName: 'Zdjęcia produktowe Allegro',
     offerName: 'Foto Pack',
@@ -103,11 +102,10 @@ const pages = [
     url: '/opisy-produktow-allegro/',
     title: 'Opisy produktów Allegro — tytuł SEO i treść oferty | OfertaStudio.pl',
     description: 'Opisy produktów Allegro: tytuł SEO, korzyści, parametry i FAQ gotowe do wklejenia. Wyślij ofertę i zapytaj o Tekst Pack od 179 zł.',
-    h1: 'Opisy produktów Allegro: copywriting, tytuł SEO i struktura bloków',
+    h1: 'Opisy produktów Allegro: tytuł i treść, które odpowiadają na pytania',
     label: 'Opisy produktów Allegro',
     eyebrow: 'Copywriting Allegro',
-    lead: 'Opis produktu Allegro powinien pomagać kupującemu podjąć decyzję, a nie tylko powtarzać dane techniczne. Dobry tekst łączy tytuł SEO, korzyści, parametry, odpowiedzi na obawy i strukturę bloków, którą da się wygodnie przenieść do oferty.',
-    cta: 'Zapytaj o opis produktu',
+    lead: 'Opis produktu Allegro powinien pomagać kupującemu podjąć decyzję, a nie tylko powtarzać dane techniczne. Dobry tekst łączy czytelny tytuł, korzyści, parametry i odpowiedzi na obawy w układzie gotowym do wdrożenia.',
     serviceType: 'Tytuły SEO, opisy produktów, korzyści, parametry i FAQ do ofert Allegro',
     serviceName: 'Opisy produktów Allegro',
     offerName: 'Tekst Pack',
@@ -155,7 +153,7 @@ const pages = [
       ['Rekomendacje do zdjęć', 'Jeśli tekst wymaga pokazania cechy w galerii, wskazuję, jaki kadr lub infografika powinny uzupełnić opis.']
     ],
     mistakes: [
-      ['Opis jest kopią specyfikacji', 'Parametry są potrzebne, ale bez interpretacji klient nie wie, co oznaczają w praktyce. Sama tabela nie zastępuje argumentów sprzedażowych.'],
+      ['Opis jest kopią specyfikacji', 'Parametry są potrzebne, ale bez interpretacji klient nie wie, co oznaczają w praktyce. Sama tabela nie pokazuje, co produkt daje i dla kogo jest.'],
       ['Tytuł SEO jest przeładowany', 'Frazy są dodane mechanicznie, przez co tytuł wygląda nienaturalnie i gorzej tłumaczy produkt na liście ofert.'],
       ['Brakuje struktury bloków', 'Długi tekst bez śródtytułów i krótkich sekcji jest trudny do czytania, szczególnie na telefonie. Kupujący skanuje, a nie analizuje każde zdanie.'],
       ['Korzyści są ogólne', 'Sformułowania typu wysoka jakość albo solidne wykonanie nie mówią nic konkretnego. Opis powinien pokazać, z czego ta jakość wynika.'],
@@ -189,8 +187,7 @@ const pages = [
     h1: 'Optymalizacja ofert Allegro: miniatura, galeria, opis i algorytm Allegro',
     label: 'Optymalizacja ofert Allegro',
     eyebrow: 'Oferta Pro',
-    lead: 'Optymalizacja ofert Allegro polega na uporządkowaniu całej prezentacji produktu: zdjęcia głównego, galerii, tytułu SEO, opisu, parametrów i argumentów sprzedażowych. Chodzi o to, żeby kupujący szybciej rozumiał produkt, a oferta była spójna z tym, czego szuka w marketplace.',
-    cta: 'Zapytaj o optymalizację',
+    lead: 'Poprawa oferty Allegro polega na uporządkowaniu zdjęcia głównego, galerii, tytułu, opisu i parametrów. Chodzi o to, żeby kupujący szybciej rozumiał produkt, widział jego przewagę i miał mniej powodów, by przejść dalej.',
     serviceType: 'Optymalizacja zdjęcia, galerii, tytułu SEO i opisu oferty Allegro',
     serviceName: 'Optymalizacja ofert Allegro',
     offerName: 'Oferta Pro',
@@ -274,7 +271,6 @@ const pages = [
     label: 'Audyt oferty Allegro',
     eyebrow: 'Mini audyt',
     lead: 'Audyt oferty Allegro to szybka diagnoza prezentacji produktu: miniatury, tytułu, galerii, opisu, parametrów i podstawowych barier zakupowych. Zamiast zgadywać, co poprawić, dostajesz checklistę elementów, które naprawdę wpływają na zrozumienie oferty.',
-    cta: 'Odbierz mini audyt',
     serviceType: 'Audyt miniatury, tytułu, galerii, opisu i konkurencji oferty Allegro',
     serviceName: 'Audyt oferty Allegro',
     offerName: 'Start',
@@ -360,7 +356,6 @@ const pages = [
     label: 'Oferty OLX',
     eyebrow: 'OLX',
     lead: 'Poprawa ofert OLX różni się od pracy nad Allegro. Na OLX liczy się szybkie zaufanie, jasny stan produktu, konkretna treść ogłoszenia, dobry kontakt i zdjęcia, które pokazują realny przedmiot bez przesadnego marketingu.',
-    cta: 'Zapytaj o ofertę OLX',
     serviceType: 'Zdjęcia, tytuł i treść ogłoszenia OLX',
     serviceName: 'Oferty OLX',
     offerName: 'Oferta Pro',
@@ -450,6 +445,7 @@ function organization() {
     '@id': ORG,
     name: 'OfertaStudio.pl',
     url: `${SITE}/`,
+    description: 'Praktyczne studio poprawy ofert Allegro i OLX: zdjęcia, opisy, tytuły, układ informacji i materiały gotowe do wdrożenia.',
     logo: { '@type': 'ImageObject', url: OG, width: 1200, height: 630 },
     email: 'kontakt@ofertastudio.pl',
     telephone: '+48791162938',
@@ -505,7 +501,7 @@ function schemaFor(page) {
       organization(),
       {
         '@type': 'Service',
-        '@id': `${SITE}${page.url.replace(/\/$/, '')}#service`,
+        '@id': `${SITE}${page.url}#service`,
         name: page.serviceName,
         serviceType: page.serviceType,
         provider: { '@id': ORG },
@@ -516,7 +512,7 @@ function schemaFor(page) {
       },
       {
         '@type': 'BreadcrumbList',
-        '@id': `${SITE}${page.url.replace(/\/$/, '')}#breadcrumb`,
+        '@id': `${SITE}${page.url}#breadcrumb`,
         itemListElement: [
           { '@type': 'ListItem', position: 1, name: 'Strona główna', item: `${SITE}/` },
           { '@type': 'ListItem', position: 2, name: page.label, item: `${SITE}${page.url}` }
@@ -524,7 +520,7 @@ function schemaFor(page) {
       },
       {
         '@type': 'FAQPage',
-        '@id': `${SITE}${page.url.replace(/\/$/, '')}#faq`,
+        '@id': `${SITE}${page.url}#faq`,
         mainEntity: page.faq.map(([name, text]) => ({
           '@type': 'Question',
           name,
@@ -623,16 +619,16 @@ ${schema}
       <h1 class="service-title">${escapeHtml(page.h1)}</h1>
       <p class="service-lead">${escapeHtml(page.lead)}</p>
       <div class="service-actions">
-        <a class="btn btn-p" href="/#kontakt" data-event="hero_cta_click" data-location="hero">${escapeHtml(page.cta)}</a>
+        <a class="btn btn-p" href="/#kontakt" data-event="hero_cta_click" data-location="hero">Wyślij link — dostaniesz 3 konkretne poprawki</a>
         <a class="btn btn-s" href="/realizacje/">Zobacz realizacje przed/po</a>
       </div>
     </div>
     <aside class="card service-card service-note">
-      <div class="eyebrow">Mini audyt</div>
-      <h2>Zanim wybierzesz zakres, sprawdź co blokuje ofertę</h2>
-      <p>Wyślij link, zdjęcia albo krótki opis produktu. Otrzymasz konkretną informację, co warto poprawić i jaki zakres pracy ma sens przed płatną realizacją.</p>
+      <div class="eyebrow">Najpierw diagnoza</div>
+      <h2>Zanim wybierzesz zakres, sprawdź, od czego zacząć</h2>
+      <p>Wyślij link, zdjęcia albo krótki opis produktu. Dostaniesz konkret, nie ogólne porady, a zakres i cenę poznasz przed startem.</p>
       <div class="service-actions">
-        <a class="btn btn-p" href="/#kontakt" data-event="mini_audit_click" data-location="hero">Odbierz mini audyt</a>
+        <a class="btn btn-p" href="/#kontakt" data-event="mini_audit_click" data-location="hero">Sprawdź, od czego zacząć</a>
       </div>
     </aside>
   </section>
@@ -649,7 +645,7 @@ ${schema}
     <div class="s-head c">
       <div class="eyebrow">Zakres</div>
       <h2 class="s-title" id="service-deliverables">Co dostajesz</h2>
-      <p class="muted">Zakres zawsze jest potwierdzany przed startem. Poniższe elementy pokazują, co zwykle wymaga uporządkowania przy tej usłudze.</p>
+      <p class="muted">Zakres i cena są potwierdzane przed startem. Poniższe elementy pokazują, co zwykle wymaga uporządkowania przy tej usłudze.</p>
     </div>
     <div class="service-grid">
       ${cards(page.deliverables)}
@@ -700,7 +696,7 @@ ${schema}
   <section class="card service-card" aria-labelledby="service-prepare">
     <div class="eyebrow">Przygotowanie</div>
     <h2 id="service-prepare">Co warto przygotować przed kontaktem</h2>
-    <p>Im lepszy punkt startowy, tym szybciej można ustalić sensowny zakres. Nie musi to być kompletny brief, ale poniższe informacje pomagają uniknąć zgadywania.</p>
+    <p>Bez briefu i bez zgadywania. Na start wystarczy link, zdjęcia albo krótki opis; poniższe informacje pomagają szybciej ustalić sensowny zakres.</p>
     <ul class="service-list">
       ${listItems(page.prepare)}
     </ul>
@@ -740,22 +736,22 @@ ${schema}
 
   <section class="card service-card" aria-labelledby="related-services">
     <div class="eyebrow">Powiązane usługi</div>
-    <h2 id="related-services">Zobacz też inne zakresy</h2>
+    <h2 id="related-services">Sprawdź powiązane usługi</h2>
     <p>Jeśli po analizie okaże się, że problem leży w innym elemencie oferty, możesz przejść do powiązanego zakresu bez zaczynania od zera.</p>
     <div class="links">
       ${relatedLinks(page.url)}
-      <a class="link-chip" href="/realizacje/">Realizacje</a>
-      <a class="link-chip" href="/#pakiety">Pakiety</a>
+      <a class="link-chip" href="/realizacje/">Realizacje przed/po</a>
+      <a class="link-chip" href="/#pakiety">Pakiety poprawy ofert</a>
     </div>
   </section>
 
   <section class="card service-card service-cta" aria-labelledby="service-final-cta">
     <div class="eyebrow">Następny krok</div>
     <h2 id="service-final-cta">Wyślij ofertę albo zdjęcia produktu</h2>
-    <p class="muted">Nie potrzebujesz długiego briefu. Wystarczy link, zdjęcia albo krótki opis sytuacji. Najpierw sprawdzę, co warto poprawić i czy ten zakres rzeczywiście ma sens.</p>
+    <p class="muted">Bez briefu. Najpierw diagnoza, potem zakres i cena przed startem. Po realizacji dostajesz materiały gotowe do wdrożenia.</p>
     <div class="service-actions">
-      <a class="btn btn-p" href="/#kontakt" data-event="mini_audit_click" data-location="service_final">Wyślij link do analizy</a>
-      <a class="btn btn-s" href="/realizacje/">Zobacz portfolio</a>
+      <a class="btn btn-p" href="/#kontakt" data-event="mini_audit_click" data-location="service_final">Wyślij link — dostaniesz 3 konkretne poprawki</a>
+      <a class="btn btn-s" href="/realizacje/">Zobacz realizacje przed/po</a>
     </div>
   </section>
 </main>

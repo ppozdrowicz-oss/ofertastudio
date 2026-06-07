@@ -1,2 +1,2 @@
 # ofertastudio
-Landing page OfertaStudio.pl — profesjonalne packshoty i opisy produktów dla e-commerce
+Statyczny serwis OfertaStudio.pl — praktyczne studio poprawy ofert Allegro i OLX.

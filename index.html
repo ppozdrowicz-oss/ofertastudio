@@ -3,23 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Optymalizacja ofert Allegro, OLX i Amazon | OfertaStudio.pl</title>
-<meta name="description" content="Popraw miniaturę, galerię, tytuł SEO i opis produktu. Wyślij link do oferty i otrzymaj 3 konkretne poprawki bez zobowiązań.">
+<title>OfertaStudio.pl — poprawa ofert Allegro i OLX</title>
+<meta name="description" content="Poprawiam zdjęcia, opisy, tytuły i układ ofert Allegro i OLX. Wyślij link i dostaniesz 3 konkretne poprawki na start.">
 <meta name="author" content="Autor projektu OfertaStudio.pl">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://ofertastudio.pl/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ofertastudio.pl/">
-<meta property="og:title" content="Optymalizacja ofert Allegro, OLX i Amazon | OfertaStudio.pl">
-<meta property="og:description" content="Popraw miniaturę, galerię, tytuł SEO i opis produktu. Wyślij link do oferty i otrzymaj 3 konkretne poprawki bez zobowiązań.">
+<meta property="og:title" content="OfertaStudio.pl — poprawa ofert Allegro i OLX">
+<meta property="og:description" content="Poprawiam zdjęcia, opisy, tytuły i układ ofert Allegro i OLX. Wyślij link i dostaniesz 3 konkretne poprawki na start.">
 <meta property="og:image" content="https://ofertastudio.pl/og-default.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="pl_PL">
 <meta property="og:site_name" content="OfertaStudio.pl">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Optymalizacja ofert Allegro, OLX i Amazon | OfertaStudio.pl">
-<meta name="twitter:description" content="Popraw miniaturę, galerię, tytuł SEO i opis produktu. Wyślij link do oferty i otrzymaj 3 konkretne poprawki bez zobowiązań.">
+<meta name="twitter:title" content="OfertaStudio.pl — poprawa ofert Allegro i OLX">
+<meta name="twitter:description" content="Poprawiam zdjęcia, opisy, tytuły i układ ofert Allegro i OLX. Wyślij link i dostaniesz 3 konkretne poprawki na start.">
 <meta name="twitter:image" content="https://ofertastudio.pl/og-default.jpg">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%232563eb'/><text x='4' y='24' font-family='Inter' font-weight='800' font-size='20' fill='white'>OS</text></svg>">
 <script type="application/ld+json">
@@ -31,6 +31,7 @@
       "@id": "https://ofertastudio.pl/#organization",
       "name": "OfertaStudio.pl",
       "url": "https://ofertastudio.pl/",
+      "description": "Praktyczne studio poprawy ofert Allegro i OLX: zdjęcia, opisy, tytuły, układ informacji i materiały gotowe do wdrożenia.",
       "logo": {
         "@type": "ImageObject",
         "url": "https://ofertastudio.pl/og-default.jpg",
@@ -57,8 +58,8 @@
     {
       "@type": "Service",
       "@id": "https://ofertastudio.pl/#service-optymalizacja-ofert",
-      "name": "Optymalizacja ofert Allegro, OLX, Amazon i sklepów",
-      "serviceType": "Optymalizacja ofert marketplace: miniatury, galerii, tytułu SEO i opisu produktu",
+      "name": "Poprawa ofert Allegro i OLX",
+      "serviceType": "Poprawa zdjęć, opisów, tytułów i układu informacji w ofertach Allegro i OLX",
       "provider": {
         "@id": "https://ofertastudio.pl/#organization"
       },
@@ -67,7 +68,7 @@
         "name": "Polska"
       },
       "url": "https://ofertastudio.pl/",
-      "description": "Optymalizacja oferty produktowej przez uporządkowanie miniatury, galerii, tytułu SEO, opisu i argumentów zakupowych.",
+      "description": "OfertaStudio poprawia zdjęcia, opisy i układ ofert Allegro i OLX, żeby kupujący szybciej rozumiał produkt i widział jego przewagę.",
       "offers": {
         "@type": "OfferCatalog",
         "name": "Pakiety OfertaStudio.pl",
@@ -777,6 +778,11 @@ select.cinput{cursor:pointer}
 .anchor-alias{display:block;position:relative;top:-5rem;visibility:hidden}
 
 /* Home responsive hardening */
+.hero--single{grid-template-columns:minmax(0,900px);justify-content:start;padding-bottom:2rem}
+.hero--single .hero-sub{max-width:820px}
+.trust-section{padding-top:1rem}
+.trust-section .metrics{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1rem}
+.price-card.ft{order:initial}
 .hero-ctas,.btn-hero-primary,.btn-hero-ghost,.btn-p,.btn-s,.price-btn,.sticky-btn,.csubmit-btn,.csubmit-wa{min-width:0}
 .btn-hero-primary,.btn-hero-ghost,.btn-p,.btn-s,.price-btn,.sticky-btn,.csubmit-btn,.csubmit-wa{white-space:normal;line-height:1.25;text-wrap:balance}
 .audit-card,.trust-card,.price-card,.proc-card{display:flex;flex-direction:column}
@@ -788,6 +794,7 @@ select.cinput{cursor:pointer}
 @media(max-width:1024px){
   .hero{max-width:860px}
   .hero-ctas{max-width:560px}
+  .trust-section .metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 
 @media(max-width:640px){
@@ -804,6 +811,8 @@ select.cinput{cursor:pointer}
   .hero-ctas{gap:.65rem;margin-bottom:1rem}
   .hero-trust{padding-top:.85rem}
   .hero-trust span{font-size:.72rem;padding:.45rem .65rem}
+  .trust-section{padding-top:.5rem}
+  .trust-section .metrics{grid-template-columns:1fr}
   .metrics{gap:.7rem}
   .mc{padding:1rem}
   .mc-sub{font-size:.84rem;line-height:1.5}
@@ -839,7 +848,7 @@ select.cinput{cursor:pointer}
 <div class="grid-bg"></div>
 
 <!-- WhatsApp FAB (mobile) -->
-<a href="https://wa.me/48791162938?text=Cześć,%20chciałbym%20zapytać%20o%20optymalizację%20oferty%20Allegro." class="wa-fab" aria-label="Napisz na WhatsApp" rel="noopener">
+<a href="https://wa.me/48791162938?text=Cześć,%20chcę%20poprawić%20ofertę%20Allegro%20lub%20OLX." class="wa-fab" aria-label="Napisz na WhatsApp" rel="noopener">
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
@@ -855,14 +864,14 @@ select.cinput{cursor:pointer}
 <main class="page" id="main-content" tabindex="-1">
 
 <!-- ── HERO ── -->
-<div class="hero">
+<div class="hero hero--single">
   <div>
-    <div class="hero-kicker"><span class="sdot" aria-hidden="true"></span>Optymalizacja ofert Allegro, OLX, Amazon i sklepów internetowych</div>
+    <div class="hero-kicker"><span class="sdot" aria-hidden="true"></span>Zdjęcia, opisy i poprawa ofert Allegro i OLX</div>
 
-    <h1 class="hero-h1">Masz dobry produkt, ale oferta nie zbiera kliknięć i zapytań?</h1>
+    <h1 class="hero-h1">Masz dobry produkt, ale oferta nie pokazuje jego wartości wystarczająco szybko?</h1>
 
     <div class="hero-sub">
-      <p>Poprawiam miniaturę, galerię, tytuł SEO i opis produktu tak, żeby kupujący szybciej zrozumiał, co sprzedajesz, dlaczego warto kliknąć i co dokładnie dostanie po zakupie.</p>
+      <p>Poprawiam zdjęcie główne, galerię, tytuł i opis oferty Allegro lub OLX tak, żeby kupujący szybciej zrozumiał produkt, zobaczył jego przewagę i miał mniej powodów, by przejść dalej.</p>
     </div>
 
     <div class="hero-ctas">
@@ -875,62 +884,72 @@ select.cinput{cursor:pointer}
     </div>
 
     <div class="hero-trust">
-      <span>Mini audyt 0 zł · Bez zobowiązań · Zakres i cena przed startem</span>
+      <span>Mini audyt 0 zł · Bez briefu · Zakres i cena przed startem</span>
     </div>
   </div>
+</div>
 
+<!-- ── ZAUFANIE ── -->
+<div class="section trust-section" aria-labelledby="trust-heading">
+  <div class="s-head c">
+    <div class="eyebrow">Bezpieczny pierwszy krok</div>
+    <h2 class="s-title" id="trust-heading">Dlaczego warto zacząć od OfertaStudio?</h2>
+    <p class="s-sub">Najpierw diagnoza, potem zakres. Bez wciskania pełnej przebudowy, jeśli problem da się rozwiązać prościej.</p>
+  </div>
   <div class="metrics">
     <div class="glass mc">
-      <div class="mc-lbl">Czym jest OfertaStudio?</div>
-      <div class="mc-sub">Optymalizacja miniatury, galerii, tytułu SEO, opisu i argumentów sprzedażowych.</div>
+      <div class="mc-lbl">Bez briefu</div>
+      <div class="mc-sub">Nie musisz mieć briefu — wystarczy link albo zdjęcie produktu.</div>
     </div>
     <div class="glass mc">
-      <div class="mc-lbl">Dla kogo?</div>
-      <div class="mc-sub">Dla sprzedawców Allegro, OLX, Amazon i sklepów, których oferta nie pokazuje wartości produktu dość szybko.</div>
+      <div class="mc-lbl">Najpierw diagnoza</div>
+      <div class="mc-sub">Najpierw dostajesz diagnozę i kierunek.</div>
     </div>
     <div class="glass mc">
-      <div class="mc-lbl">Co możesz wysłać?</div>
-      <div class="mc-sub">Link do oferty, zdjęcie produktu albo krótki opis problemu. Bez briefu i bez przygotowań.</div>
+      <div class="mc-lbl">Tylko potrzebny zakres</div>
+      <div class="mc-sub">Jeśli wystarczy poprawa miniatury lub opisu, nie dokładam większego zakresu.</div>
     </div>
     <div class="glass mc">
-      <div class="mc-lbl">Co dostajesz?</div>
-      <div class="mc-sub">3 konkretne poprawki i wskazanie, czy zacząć od zdjęć, tytułu, opisu czy pełnej przebudowy.</div>
+      <div class="mc-lbl">Gotowe do wdrożenia</div>
+      <div class="mc-sub">Dostajesz materiały gotowe do wdrożenia, nie ogólne porady.</div>
+    </div>
+    <div class="glass mc">
+      <div class="mc-lbl">Allegro i OLX</div>
+      <div class="mc-sub">Pracuję pod to, jak klient faktycznie skanuje ofertę na Allegro i OLX.</div>
     </div>
   </div>
 </div>
 
 <div class="divider"></div>
 
-<!-- ── DLA KOGO ── -->
+<!-- ── PROBLEM / DLA KOGO ── -->
 <div class="section" id="uslugi">
+  <span id="bariery" class="anchor-alias" aria-hidden="true"></span>
   <div class="s-head">
-    <div class="eyebrow">Dla kogo</div>
-    <h2 class="s-title">Dla sprzedawców, którzy mają dobry produkt, ale oferta pokazuje go zbyt słabo</h2>
-    <p class="s-sub">Jeśli klient musi się domyślać, co kupuje i dlaczego warto kliknąć, oferta traci szansę już na liście wyników.</p>
+    <div class="eyebrow">Problem / dla kogo</div>
+    <h2 class="s-title">Oferta nie przegrywa tylko ceną. Często przegrywa sposobem pokazania produktu.</h2>
+    <p class="s-sub">Jeśli klient musi się domyślać, co kupuje, co jest w zestawie, czym różni się wariant i dlaczego warto kliknąć właśnie tę ofertę, często przechodzi dalej zanim dotrze do dobrych informacji.</p>
   </div>
   <div class="audit-grid">
-    <div class="card audit-card"><h3>Sprzedajesz na Allegro, OLX, Amazon lub we własnym sklepie</h3><p>Klient porównuje kilka podobnych ofert naraz. Twoja musi być czytelna od pierwszego spojrzenia.</p></div>
-    <div class="card audit-card"><h3>Masz produkt, ale miniatura nie zbiera kliknięć</h3><p>Dobry produkt nie wystarczy, jeśli kafelek w wynikach wygląda przeciętnie albo nieczytelnie.</p></div>
-    <div class="card audit-card"><h3>Potrzebujesz opisu, który tłumaczy wartość</h3><p>Cechy i parametry trzeba przełożyć na język decyzji: co to daje, dla kogo jest i dlaczego warto.</p></div>
-    <div class="card audit-card"><h3>Chcesz poprawić ofertę przed większym ruchem</h3><p>Przed reklamą lub kampanią warto usunąć bariery, które blokują kliknięcie, zaufanie i zapytania.</p></div>
+    <div class="card audit-card"><h3>Miniatura ginie wśród podobnych ofert</h3><p>Produkt może być dobry, ale klient nie zatrzyma się przy kafelku, który jest nieczytelny albo niczym się nie wyróżnia.</p></div>
+    <div class="card audit-card"><h3>Galeria nie odpowiada na pytania</h3><p>Brakuje skali, detali, zawartości zestawu lub zastosowania, więc kupujący sam musi składać informacje.</p></div>
+    <div class="card audit-card"><h3>Tytuł nie mówi szybko, co jest ważne</h3><p>Kluczowy wariant, parametr albo zastosowanie pojawia się za późno i nie pomaga rozpoznać właściwego produktu.</p></div>
+    <div class="card audit-card"><h3>Opis nie ułatwia decyzji</h3><p>Parametry są, ale klient nadal nie widzi przewagi albo musi napisać, żeby zrozumieć, co dokładnie kupuje.</p></div>
   </div>
+  <div class="section-cta"><a href="#kontakt" class="btn-p" data-event="mini_audit_click" data-location="barriers" data-package="start">Sprawdź, od czego zacząć</a></div>
 </div>
 
 <div class="divider"></div>
 
-<!-- ── BARIERY ── -->
-<div class="section" id="bariery">
-  <div class="s-head c">
-    <div class="eyebrow">Bariery sprzedaży</div>
-    <h2 class="s-title">3 miejsca, w których oferta najczęściej traci klienta</h2>
-    <p class="s-sub">Kupujący najpierw skanuje miniaturę, tytuł i pierwsze informacje. Jeśli nie widzi wartości, przechodzi do kolejnej oferty.</p>
+<!-- ── PAKIETY ── -->
+<div class="section" id="pakiety">
+  <div class="s-head c"><div class="eyebrow">Pakiety</div><h2 class="s-title">Wybierz zakres od problemu, nie od listy usług</h2><p class="s-sub">Nie musisz od razu zamawiać pełnej przebudowy. Możesz zacząć od diagnozy, samego tekstu, samych zdjęć albo dopięcia całej oferty.</p></div>
+  <div class="audit-grid">
+    <div class="card price-card"><div class="price-name">Mini audyt 0 zł</div><div class="price-h">Nie wiesz, od czego zacząć</div><div class="price-divider"></div><p class="price-desc">Krótka diagnoza jednej oferty, zdjęcia lub pomysłu na produkt.</p><ul class="price-list"><li>3 konkretne poprawki</li><li>wskazanie głównej bariery</li><li>rekomendowany pierwszy krok</li></ul><div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="start" data-interest="Darmowy mini audyt" data-message="Interesuje mnie mini audyt.">Sprawdź, od czego zacząć</a></div></div>
+    <div class="card price-card"><div class="price-name">Tekst Pack</div><div class="price-h">Klient nie rozumie wartości</div><div class="price-divider"></div><p class="price-desc">Tytuł i opis, które porządkują informacje i odpowiadają na najważniejsze pytania kupującego.</p><ul class="price-list"><li>czytelny tytuł</li><li>opis produktu</li><li>korzyści, parametry i FAQ</li></ul><div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="tekst_pack" data-interest="Tekst Pack" data-message="Interesuje mnie Tekst Pack.">Sprawdź zakres tekstów</a></div></div>
+    <div class="card price-card"><div class="price-name">Foto Pack</div><div class="price-h">Zdjęcia pokazują za mało</div><div class="price-divider"></div><p class="price-desc">Materiały wizualne, które pokazują produkt, zastosowanie i ważne detale bez szukania w opisie.</p><ul class="price-list"><li>miniatura</li><li>galeria produktu</li><li>packshoty lub infografiki</li></ul><div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="foto_pack" data-interest="Foto Pack" data-message="Interesuje mnie Foto Pack.">Sprawdź zakres zdjęć</a></div></div>
+    <div class="card price-card ft"><div class="price-rec"><span aria-hidden="true">✦</span> Pełny zakres</div><div class="price-name">Oferta Pro</div><div class="price-h">Cała oferta jest niespójna</div><div class="price-divider"></div><p class="price-desc">Uporządkowanie jednej oferty: od kolejności informacji po materiały gotowe do wdrożenia.</p><ul class="price-list"><li>układ informacji</li><li>tytuł i opis</li><li>galeria pokazująca przewagi</li></ul><div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="oferta_pro" data-interest="Oferta Pro" data-message="Interesuje mnie Oferta Pro.">Sprawdź zakres całej oferty</a></div></div>
   </div>
-  <div class="trust-grid">
-    <div class="card trust-card"><h3>Miniatura nie zatrzymuje wzroku</h3><p>Produkt jest widoczny, ale wygląda jak wiele innych. Skutek: oferta pojawia się w wynikach, ale nie zbiera kliknięć.</p></div>
-    <div class="card trust-card"><h3>Tytuł nie pomaga w wyborze</h3><p>Brakuje fraz, parametrów lub zastosowania, którego szuka klient. Skutek: oferta traci widoczność albo nie trafia w intencję zakupu.</p></div>
-    <div class="card trust-card"><h3>Opis nie tłumaczy wartości</h3><p>Parametry są, ale klient nie widzi, co z nich wynika. Skutek: więcej pytań, więcej wątpliwości i porównywanie głównie po cenie.</p></div>
-  </div>
-  <div class="section-cta"><a href="#kontakt" class="btn-p" data-event="mini_audit_click" data-location="barriers" data-package="start">Sprawdź, która bariera blokuje Twoją ofertę</a></div>
 </div>
 
 <div class="divider"></div>
@@ -940,40 +959,27 @@ select.cinput{cursor:pointer}
 <div class="section portfolio-section" id="realizacje" data-view-event="realizations_section_view" data-location="case_study">
   <div class="s-head">
     <div class="eyebrow">Realizacje</div>
-    <h2 class="s-title">Zobacz, jak oferta może szybciej tłumaczyć produkt</h2>
-    <p class="s-sub">Trzy przykłady bez fikcyjnych wyników sprzedaży: problem, zmiana i efekt jakościowy widoczny w samej ofercie.</p>
+    <h2 class="s-title">Zobacz, jak zmienia się odbiór oferty po poprawie zdjęć i układu informacji</h2>
+    <p class="s-sub">To nie są dekoracyjne mockupy. Każda realizacja pokazuje, co było słabe wcześniej, co zostało poprawione i co kupujący widzi szybciej po zmianie.</p>
   </div>
   <div class="pf-grid">
     <div class="card pf-card"><div class="pf-card-img pf-card-img--fill pf-card-img--metabo"><picture><source type="image/avif" srcset="/elektronarzedzia-po-zestaw-homepage.avif"><source type="image/webp" srcset="/elektronarzedzia-po-zestaw-homepage.webp"><img decoding="async" loading="lazy" src="/elektronarzedzia-po-zestaw-homepage.png" width="1254" height="941" alt="Metabo PowerMaxx BS 12 BL — efekt końcowy" onerror="this.parentElement.style.background='var(--s3)'"></picture><div class="pf-card-overlay"><span class="pf-card-overlay-text">Zobacz case study →</span></div></div><div class="pf-card-body"><div class="pf-card-num">Case #001 · Elektronarzędzia</div><div class="pf-card-h">Metabo PowerMaxx BS 12 BL</div><div class="pf-mini"><div class="pf-mini-row"><strong>Problem</strong>Jedno zdjęcie nie pokazywało zawartości zestawu ani przewagi wariantu.</div><div class="pf-mini-row"><strong>Zmiana</strong>Miniatura, 10 ujęć, detale techniczne i infografika.</div><div class="pf-mini-row"><strong>Efekt</strong>Klient szybciej widzi, za co płaci i co znajduje się w zestawie.</div></div><a href="/realizacje/#elektronarzedzia" class="pf-card-link" data-event="case_study_click" data-location="case_study">Zobacz case study →</a></div></div>
     <div class="card pf-card"><div class="pf-card-img pf-card-img--fill pf-card-img--garden"><picture><source type="image/avif" srcset="/dom-ogrod-po-front-homepage.avif"><source type="image/webp" srcset="/dom-ogrod-po-front-homepage.webp"><img decoding="async" loading="lazy" src="/dom-ogrod-po-front-homepage.png" width="1254" height="941" alt="Pistolet ogrodowy Gardena — efekt końcowy" onerror="this.parentElement.style.background='var(--s3)'"></picture><div class="pf-card-overlay"><span class="pf-card-overlay-text">Zobacz case study →</span></div></div><div class="pf-card-body"><div class="pf-card-num">Case #002 · Dom i ogród</div><div class="pf-card-h">Pistolet ogrodowy Gardena</div><div class="pf-mini"><div class="pf-mini-row"><strong>Problem</strong>Oferta nie pokazywała zastosowania, chwytu i kompatybilności.</div><div class="pf-mini-row"><strong>Zmiana</strong>Ujęcia w ogrodzie, detal złącza, chwyt w dłoni i głowica.</div><div class="pf-mini-row"><strong>Efekt</strong>Kupujący od razu widzi, czy produkt pasuje do jego systemu.</div></div><a href="/realizacje/#dom-ogrod" class="pf-card-link" data-event="case_study_click" data-location="case_study">Zobacz case study →</a></div></div>
-    <div class="card pf-card"><div class="pf-card-img pf-card-img--fill pf-card-img--welding"><picture><source type="image/avif" srcset="/spawalnictwo-po-front-homepage.avif"><source type="image/webp" srcset="/spawalnictwo-po-front-homepage.webp"><img decoding="async" loading="lazy" src="/spawalnictwo-po-front-homepage.png" width="1254" height="941" alt="Drut spawalniczy MIG/MAG — efekt końcowy" onerror="this.parentElement.style.background='var(--s3)'"></picture><div class="pf-card-overlay"><span class="pf-card-overlay-text">Zobacz case study →</span></div></div><div class="pf-card-body"><div class="pf-card-num">Case #003 · Spawalnictwo</div><div class="pf-card-h">Drut spawalniczy MIG/MAG</div><div class="pf-mini"><div class="pf-mini-row"><strong>Problem</strong>Parametry i pochodzenie produktu ginęły na jednym zdjęciu.</div><div class="pf-mini-row"><strong>Zmiana</strong>Osobne ujęcia opakowania, szpuli, powłoki i wyróżnika produkcji w Polsce.</div><div class="pf-mini-row"><strong>Efekt</strong>Oferta szybciej pokazuje argument ważny przy porównaniu produktów.</div></div><a href="/realizacje/#spawalnictwo" class="pf-card-link" data-event="case_study_click" data-location="case_study">Zobacz case study →</a></div></div>
+    <div class="card pf-card"><div class="pf-card-img pf-card-img--fill pf-card-img--welding"><picture><source type="image/avif" srcset="/spawalnictwo-po-front-homepage.avif"><source type="image/webp" srcset="/spawalnictwo-po-front-homepage.webp"><img decoding="async" loading="lazy" src="/spawalnictwo-po-front-homepage.png" width="1254" height="941" alt="Drut spawalniczy MIG/MAG — efekt końcowy" onerror="this.parentElement.style.background='var(--s3)'"></picture><div class="pf-card-overlay"><span class="pf-card-overlay-text">Zobacz case study →</span></div></div><div class="pf-card-body"><div class="pf-card-num">Case #003 · Spawalnictwo</div><div class="pf-card-h">Drut spawalniczy MIG/MAG</div><div class="pf-mini"><div class="pf-mini-row"><strong>Problem</strong>Parametry i pochodzenie produktu ginęły na jednym zdjęciu.</div><div class="pf-mini-row"><strong>Zmiana</strong>Osobne ujęcia opakowania, szpuli, powłoki i wyróżnika produkcji w Polsce.</div><div class="pf-mini-row"><strong>Efekt</strong>Oferta szybciej pokazuje przewagę ważną przy porównaniu produktów.</div></div><a href="/realizacje/#spawalnictwo" class="pf-card-link" data-event="case_study_click" data-location="case_study">Zobacz case study →</a></div></div>
   </div>
   <div class="section-cta"><a href="/realizacje/" class="btn-s" data-event="case_study_click" data-location="case_study">Zobacz wszystkie realizacje</a></div>
 </div>
 
 <div class="divider"></div>
 
-<!-- ── PAKIETY ── -->
-<div class="section" id="pakiety">
-  <div class="s-head c"><div class="eyebrow">Pakiety</div><h2 class="s-title">Wybierz zakres dopasowany do etapu oferty</h2><p class="s-sub">Na home wystarczy skrót: szybka ocena, tekst, zdjęcia albo pełna przebudowa jednej oferty. Szczegóły ustalasz po analizie materiałów.</p></div>
-  <div class="audit-grid">
-    <div class="card price-card"><div class="price-name">Mini audyt 0 zł</div><div class="price-h">3 pierwsze poprawki</div><div class="price-divider"></div><p class="price-desc">Krótka analiza jednej oferty, zdjęcia lub pomysłu na produkt.</p><ul class="price-list"><li>miniatura</li><li>tytuł lub opis</li><li>kolejny rozsądny krok</li></ul><div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="start" data-interest="Darmowy mini audyt" data-message="Interesuje mnie mini audyt.">Sprawdź ofertę za 0 zł</a></div></div>
-    <div class="card price-card"><div class="price-name">Tekst Pack</div><div class="price-h">Tytuł SEO i opis</div><div class="price-divider"></div><p class="price-desc">Treść, która porządkuje argumenty i odpowiada na najważniejsze pytania kupującego.</p><ul class="price-list"><li>tytuł SEO</li><li>opis sprzedażowy</li><li>korzyści, parametry i FAQ</li></ul><div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="tekst_pack" data-interest="Tekst Pack" data-message="Interesuje mnie Tekst Pack.">Zapytaj o tekst oferty</a></div></div>
-    <div class="card price-card"><div class="price-name">Foto Pack</div><div class="price-h">Miniatura i galeria</div><div class="price-divider"></div><p class="price-desc">Materiały wizualne, które pokazują produkt, zastosowanie i detale bez czytania opisu.</p><ul class="price-list"><li>miniatura</li><li>galeria produktu</li><li>packshoty lub infografiki</li></ul><div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="foto_pack" data-interest="Foto Pack" data-message="Interesuje mnie Foto Pack.">Zapytaj o zdjęcia</a></div></div>
-    <div class="card price-card ft"><div class="price-rec"><span aria-hidden="true">✦</span> Pełny zakres</div><div class="price-name">Oferta Pro</div><div class="price-h">Cała oferta od nowa</div><div class="price-divider"></div><p class="price-desc">Kompletna przebudowa jednej oferty: od kolejności argumentów po gotowe materiały.</p><ul class="price-list"><li>strategia oferty</li><li>tytuł i opis</li><li>galeria i argumenty sprzedażowe</li></ul><div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="oferta_pro" data-interest="Oferta Pro" data-message="Interesuje mnie Oferta Pro.">Poproś o plan oferty</a></div></div>
-  </div>
-</div>
-
-<div class="divider"></div>
-
 <!-- ── PROCES ── -->
 <div class="section" id="proces">
-  <div class="s-head"><div class="eyebrow">Proces</div><h2 class="s-title">Jak wygląda współpraca krok po kroku</h2><p class="s-sub">Bez rozbudowanego briefu. Na start wystarczy link, zdjęcie produktu albo jedno zdanie o problemie.</p></div>
+  <div class="s-head"><div class="eyebrow">Proces</div><h2 class="s-title">Jak wygląda współpraca</h2><p class="s-sub">Cztery konkretne kroki od pierwszej wiadomości do materiałów gotowych do wdrożenia.</p></div>
   <div class="proc-grid">
-    <div class="card proc-card"><div class="proc-step">KROK 01</div><div class="proc-title">Wysyłasz link lub zdjęcie</div><p class="proc-text">Może to być oferta, zdjęcie produktu albo krótki opis sytuacji.</p></div>
-    <div class="card proc-card"><div class="proc-step">KROK 02</div><div class="proc-title">Dostajesz pierwszą analizę</div><p class="proc-text">Wiadomo, czy problem leży w miniaturze, tytule, galerii, opisie czy argumentach.</p></div>
-    <div class="card proc-card"><div class="proc-step">KROK 03</div><div class="proc-title">Znasz zakres i cenę</div><p class="proc-text">Przed startem jest jasne, co powstanie, ile potrwa i ile będzie kosztować.</p></div>
-    <div class="card proc-card"><div class="proc-step">KROK 04</div><div class="proc-title">Wdrażasz gotowe materiały</div><p class="proc-text">Dostajesz teksty, strukturę oferty, rekomendacje lub grafiki gotowe do publikacji.</p></div>
+    <div class="card proc-card"><div class="proc-step">KROK 01</div><div class="proc-title">Wysyłasz link, zdjęcie albo krótki opis</div><p class="proc-text">Bez rozbudowanego briefu i przygotowań.</p></div>
+    <div class="card proc-card"><div class="proc-step">KROK 02</div><div class="proc-title">Dostajesz diagnozę i rekomendowany kierunek</div><p class="proc-text">Wiesz, co blokuje ofertę i od czego warto zacząć.</p></div>
+    <div class="card proc-card"><div class="proc-step">KROK 03</div><div class="proc-title">Przed startem znasz zakres, cenę i termin</div><p class="proc-text">Podejmujesz decyzję dopiero wtedy, gdy warunki są jasne.</p></div>
+    <div class="card proc-card"><div class="proc-step">KROK 04</div><div class="proc-title">Otrzymujesz materiały gotowe do wdrożenia</div><p class="proc-text">Dostajesz teksty, rekomendacje lub grafiki przygotowane do publikacji.</p></div>
   </div>
 </div>
 
@@ -982,7 +988,7 @@ select.cinput{cursor:pointer}
 <!-- ── MINI AUDYT ── -->
 <span id="faq" class="anchor-alias" aria-hidden="true"></span>
 <div class="section section--compact" id="mini-audyt">
-  <div class="cta-box"><div class="eyebrow eyebrow--center">Mini audyt 0 zł</div><h2>Nie wiesz, co blokuje ofertę?</h2><p>Wystarczy link, zdjęcie produktu albo krótki opis. Otrzymasz 3 konkretne poprawki i wskazanie, czy zacząć od miniatury, galerii, tytułu, opisu czy całej struktury oferty.</p><div class="cta-form" aria-label="Co obejmuje mini audyt"><div class="chk-wrap"><ul class="feat-list"><li>link, zdjęcie albo krótki opis</li><li>3 rzeczy do poprawy</li><li>wskazanie pierwszego kroku</li><li>decyzja o dalszej pracy po odpowiedzi</li></ul></div></div><a href="#kontakt" class="btn-p" data-event="mini_audit_click" data-location="mini_audit" data-package="start">Wyślij link — dostaniesz 3 konkretne poprawki</a></div>
+  <div class="cta-box"><div class="eyebrow eyebrow--center">Mini audyt 0 zł</div><h2>Nie wiesz, co blokuje ofertę?</h2><p>Wyślij link albo zdjęcie produktu. Dostaniesz 3 konkretne poprawki i informację, czy zacząć od miniatury, galerii, opisu czy pełnej przebudowy.</p><div class="cta-form" aria-label="Co obejmuje mini audyt"><div class="chk-wrap"><ul class="feat-list"><li>bez briefu</li><li>3 konkretne rzeczy do poprawy</li><li>zakres i cena przed startem</li><li>bez zobowiązań na starcie</li></ul></div></div><a href="#kontakt" class="btn-p" data-event="mini_audit_click" data-location="mini_audit" data-package="start">Wyślij link — dostaniesz 3 konkretne poprawki</a></div>
 </div>
 
 <div class="divider"></div>
@@ -995,7 +1001,7 @@ select.cinput{cursor:pointer}
   <div class="contact-left">
     <div class="eyebrow">Kontakt</div>
     <h2 class="contact-heading">Wyślij ofertę do sprawdzenia</h2>
-    <p class="contact-sub">Podeślij link do oferty, zdjęcie produktu albo krótki opis sytuacji. W odpowiedzi dostaniesz konkret: co poprawić i jaki kierunek pracy ma sens.</p>
+    <p class="contact-sub">Nie musisz mieć briefu. Wystarczy link, zdjęcie albo krótka wiadomość. Najpierw sprawdzę ofertę, potem wrócę z zakresem i ceną.</p>
 
     <div class="contact-channels-stack">
       <a href="https://wa.me/48791162938?text=Cześć,%20chcę%20wysłać%20ofertę%20do%20analizy." class="cch cch-wa" data-location="contact" rel="noopener">
@@ -1011,7 +1017,7 @@ select.cinput{cursor:pointer}
         <div class="cch-body">
           <div class="cch-label">E-mail</div>
           <div class="cch-value">kontakt@ofertastudio.pl</div>
-          <div class="cch-meta">Do linku, briefu i materiałów produktowych</div>
+          <div class="cch-meta">Do linku, zdjęć i materiałów produktowych</div>
         </div>
       </a>
       <a href="tel:+48791162938" class="cch cch-phone" data-location="contact">
@@ -1026,9 +1032,9 @@ select.cinput{cursor:pointer}
 
     <div class="contact-trust">
       <div class="contact-trust-item">Nie musisz mieć briefu</div>
-      <div class="contact-trust-item">Możesz wysłać sam link albo zdjęcie</div>
-      <div class="contact-trust-item">Decyzja o płatnej pracy dopiero po odpowiedzi</div>
-      <div class="contact-trust-item">Dane chronione zgodnie z RODO</div>
+      <div class="contact-trust-item">Najpierw sprawdzę ofertę, potem wrócę z zakresem i ceną</div>
+      <div class="contact-trust-item">Decyzję o płatnej pracy podejmujesz dopiero po odpowiedzi</div>
+      <div class="contact-trust-item">Odpowiadam mailowo lub przez WhatsApp</div>
     </div>
   </div>
 
@@ -1037,7 +1043,7 @@ select.cinput{cursor:pointer}
     <div id="contactFormWrap">
       <div class="cform-head">
         <div class="cform-title">Wyślij krótki opis</div>
-        <div class="cform-sub">Nie musisz mieć briefu. Wystarczy link, zdjęcie albo informacja, co chcesz sprzedać.</div>
+        <div class="cform-sub">Nie musisz mieć briefu. Wystarczy link, zdjęcie albo krótka wiadomość.</div>
       </div>
       <form id="contactForm" name="kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
         <input type="hidden" name="form-name" value="kontakt">
@@ -1162,12 +1168,12 @@ select.cinput{cursor:pointer}
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
             Wyślij link — dostaniesz 3 konkretne poprawki
           </button>
-          <div class="csubmit-note">Odpowiadam mailowo lub przez WhatsApp. Bez zobowiązań.</div>
+          <div class="csubmit-note">Najpierw sprawdzę ofertę. Decyzję o płatnej pracy podejmujesz dopiero po odpowiedzi.</div>
           <div class="form-status" id="formStatus" role="alert" aria-live="assertive"></div>
           <div class="csubmit-or">lub napisz bezpośrednio</div>
-          <a href="https://wa.me/48791162938?text=Cześć,%20chcę%20zapytać%20o%20optymalizację%20oferty." class="csubmit-wa" data-location="contact" rel="noopener">
+          <a href="https://wa.me/48791162938?text=Cześć,%20chcę%20poprawić%20ofertę%20Allegro%20lub%20OLX." class="csubmit-wa" data-location="contact" rel="noopener">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            WhatsApp · +48 791 162 938
+            Napisz na WhatsApp · +48 791 162 938
           </a>
         </div>
       </form>

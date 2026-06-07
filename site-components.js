@@ -77,7 +77,7 @@
           <div class="nav-right">
             <div class="status-pill"><span class="sdot" aria-hidden="true"></span>Zapytania otwarte</div>
             <button class="toggle-btn" id="themeToggle" type="button" aria-label="Włącz tryb ciemny" aria-pressed="false"><span aria-hidden="true">☀</span></button>
-            <a href="${homeHref('#kontakt')}" class="btn-nav" data-event="mini_audit_click" data-location="header" data-package="start">Mini audyt 0 zł</a>
+            <a href="${homeHref('#kontakt')}" class="btn-nav" data-event="mini_audit_click" data-location="header" data-package="start">Sprawdź, od czego zacząć</a>
             <button class="ham-btn" id="hamBtn" type="button" aria-label="Otwórz menu nawigacji" aria-expanded="false" aria-controls="navDrawer"><span></span><span></span><span></span></button>
           </div>
         </div>
@@ -85,8 +85,8 @@
       <div class="nav-drawer" id="navDrawer" role="navigation" aria-label="Menu mobilne" aria-hidden="true">
         ${drawerLinks}
         <div class="drawer-ctas">
-          <a href="${homeHref('#kontakt')}" class="btn-nav" data-event="mini_audit_click" data-location="mobile_nav" data-package="start">Mini audyt 0 zł</a>
-          <a href="https://wa.me/48791162938" class="btn-wa" rel="noopener">WhatsApp</a>
+          <a href="${homeHref('#kontakt')}" class="btn-nav" data-event="mini_audit_click" data-location="mobile_nav" data-package="start">Sprawdź, od czego zacząć</a>
+          <a href="https://wa.me/48791162938" class="btn-wa" rel="noopener">Napisz na WhatsApp</a>
         </div>
         <div class="drawer-contacts" aria-label="Kontakt">
           <a class="drawer-contact" href="mailto:kontakt@ofertastudio.pl">kontakt@ofertastudio.pl</a>
@@ -104,13 +104,13 @@
         <div class="foot-inner">
           <div class="foot-brand">
             <div class="foot-logo">OfertaStudio.pl</div>
-            <p class="foot-desc">Autorski projekt tworzenia i optymalizacji ofert produktowych dla Allegro, OLX i e-commerce.</p>
+            <p class="foot-desc">Praktyczne studio poprawy ofert Allegro i OLX: zdjęcia, opisy, tytuły, układ informacji i materiały gotowe do wdrożenia.</p>
           </div>
           <div class="foot-contact" aria-label="Kontakt">
             <div class="foot-title">Kontakt</div>
             <a href="mailto:kontakt@ofertastudio.pl">kontakt@ofertastudio.pl</a>
             <a href="tel:+48791162938">+48 791 162 938</a>
-            <a href="https://wa.me/48791162938" rel="noopener">WhatsApp</a>
+            <a href="https://wa.me/48791162938" rel="noopener">Napisz na WhatsApp</a>
           </div>
           <div>
             <div class="foot-title">Mapa strony</div>
@@ -123,7 +123,7 @@
               <a href="${homeHref('#kontakt')}">Kontakt</a>
             </div>
           </div>
-          <div class="foot-copy">© 2026 OfertaStudio.pl. Autorski projekt portfolio usługowego - współpraca ustalana indywidualnie.</div>
+          <div class="foot-copy">© 2026 OfertaStudio.pl. Najpierw diagnoza, potem zakres i cena przed startem.</div>
         </div>
       </footer>`;
   }
