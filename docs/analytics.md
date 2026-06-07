@@ -31,8 +31,8 @@ Aktualne hooki wysylaja:
 Typowe parametry:
 
 - `location`: `hero`, `pricing`, `footer`, `contact`, `case_study`,
-- `package`: `start`, `tekst_pack`, `foto_pack`, `oferta_pro`, `studio`, `abonament`,
-- `platform`: `allegro`, `olx`, `amazon`, `sklep`, `inne`,
+- `package`: `start`, `tekst_start`, `foto_start`, `oferta_start`, `studio_start`, `abonament`, `full_scope`,
+- `platform`: `allegro`, `olx`, `allegro_olx`, `unknown`, `other`,
 - `page_path`: dodawany automatycznie.
 
 ## Testowanie

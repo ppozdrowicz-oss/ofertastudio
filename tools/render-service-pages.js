@@ -30,8 +30,8 @@ const pages = [
     finalCtaText: 'Wyślij link albo zdjęcia produktu. Sprawdzę, czy wystarczy poprawa miniatury, czy galeria wymaga nowego układu. Zakres i cena przed startem.',
     serviceType: 'Zdjęcia produktowe, miniatury, galerie i infografiki do ofert Allegro',
     serviceName: 'Zdjęcia produktowe Allegro',
-    offerName: 'Foto Pack',
-    price: '249',
+    offerName: 'Foto Start',
+    price: '149',
     intro: [
       'W Allegro kupujący często podejmuje pierwszą decyzję, zanim przeczyta opis. Widzi miniaturę, cenę, nazwę produktu i kilka ofert obok siebie. Jeżeli zdjęcie główne jest ciemne, przeładowane albo nie pokazuje najważniejszej cechy, oferta może zostać pominięta mimo dobrego produktu i uczciwej ceny.',
       'Usługa obejmuje przygotowanie lub uporządkowanie materiałów wizualnych do oferty: od zdjęcia głównego, przez logiczną galerię, po infografiki produktowe. Pracuję na tym, co realnie pomaga sprzedawcy: czytelność w miniaturze, skala produktu, zawartość zestawu, ważne detale, zastosowanie i parametry widoczne bez szukania w opisie.',
@@ -116,8 +116,8 @@ const pages = [
     finalCtaText: 'Wyślij obecny opis albo link do oferty. Pokażę, które informacje trzeba skrócić, przesunąć lub dopowiedzieć. Zakres i cena przed startem.',
     serviceType: 'Tytuły, opisy produktów, korzyści, parametry i FAQ do ofert Allegro',
     serviceName: 'Opisy produktów Allegro',
-    offerName: 'Tekst Pack',
-    price: '179',
+    offerName: 'Tekst Start',
+    price: '79',
     intro: [
       'W wielu ofertach opis jest traktowany jak miejsce na kopiuj-wklej z katalogu producenta. Problem polega na tym, że kupujący nie szuka tam tylko specyfikacji. Chce zrozumieć, czy produkt pasuje do jego sytuacji, czym różni się od podobnych modeli i czy nie będzie żałował zakupu.',
       'Tytuł i opis Allegro muszą pracować razem ze zdjęciem głównym i galerią. Tytuł pomaga znaleźć i zrozumieć produkt, a opis rozwija obietnicę z miniatury: pokazuje zastosowanie, wyjaśnia parametry, porządkuje zestaw i odpowiada na pytania, które najczęściej zatrzymują decyzję.',
@@ -180,7 +180,7 @@ const pages = [
       text: 'W przykładzie z drutem spawalniczym ważne były parametry, pochodzenie produktu i czytelne pokazanie opakowania. Taki typ produktu pokazuje, dlaczego opis nie może być tylko katalogiem danych. Treść powinna wyjaśnić, co oznaczają parametry i dlaczego kupujący ma im zaufać.'
     },
     faq: [
-      ['Czy przygotowujesz tylko opis, bez zdjęć?', 'Tak. Tekst Pack może obejmować sam tytuł, opis, parametry, sekcje korzyści i FAQ. Jeśli widzę problem w galerii, dodaję krótką rekomendację.'],
+      ['Czy przygotowujesz tylko opis, bez zdjęć?', 'Tak. Tekst Start może obejmować tytuł, krótki lead, pierwsze punkty sprzedażowe albo rekomendację zmian w obecnym opisie. Pełny opis wyceniam osobno po sprawdzeniu materiałów.'],
       ['Czy opis jest gotowy do wklejenia?', 'Tak, materiał jest układany tak, aby dało się go łatwo przenieść do oferty. Ostateczne formatowanie zależy od edytora Allegro i ustawień sprzedawcy.'],
       ['Czy używasz słów kluczowych?', 'Tak, ale bez upychania fraz. Tytuł i opis mają brzmieć naturalnie i pomagać kupującemu, a nie wyglądać jak lista słów.'],
       ['Czy można poprawić istniejący opis?', 'Tak. Możesz wysłać obecny opis, a ja uporządkuję tytuł, układ informacji, korzyści, parametry i pytania klienta.'],
@@ -202,8 +202,8 @@ const pages = [
     finalCtaText: 'Wyślij link do oferty. Sprawdzę, czy problem leży w jednym elemencie, czy zdjęcia, tytuł i opis wymagają wspólnego kierunku. Zakres i cena przed startem.',
     serviceType: 'Poprawa zdjęcia głównego, galerii, tytułu, opisu i układu oferty Allegro',
     serviceName: 'Poprawa ofert Allegro',
-    offerName: 'Oferta Pro',
-    price: '399',
+    offerName: 'Oferta Start',
+    price: '199',
     intro: [
       'Allegro to środowisko porównywania. Kupujący widzi wiele podobnych ofert, filtruje po cenie, patrzy na miniaturę, tytuł, parametry, opinie i dostępność. Jeśli oferta nie tłumaczy wartości produktu szybko, nawet dobry produkt może przegrać z gorzej dobranym, ale lepiej pokazanym konkurentem.',
       'Poprawa oferty nie oznacza dopisania kilku słów kluczowych. Liczy się spójność z tym, jak kupujący szuka i porównuje produkty: tytuł ma odpowiadać na zapytanie, miniatura ma być czytelna, parametry kompletne, galeria ma rozwijać najważniejsze informacje, a opis porządkować decyzję.',
@@ -378,8 +378,8 @@ const pages = [
     finalCtaText: 'Wyślij link albo zdjęcia realnego produktu. Sprawdzę, czy ogłoszenie jasno pokazuje stan, komplet i warunki odbioru. Zakres i cena przed startem.',
     serviceType: 'Zdjęcia, tytuł i opis ogłoszenia OLX',
     serviceName: 'Oferty OLX',
-    offerName: 'Oferta Pro',
-    price: '399',
+    offerName: 'Oferta Start',
+    price: '199',
     intro: [
       'OLX działa inaczej niż Allegro. Kupujący częściej porównuje lokalnie, pyta o stan, odbiór, szczegóły i wiarygodność sprzedającego. Oferta musi szybko odpowiedzieć na pytanie, czy produkt jest wart kontaktu, a nie tylko wyglądać jak opis katalogowy.',
       'Na OLX duże znaczenie ma konkret: co sprzedajesz, w jakim stanie, co jest w zestawie, czy zdjęcia pokazują realny produkt i czy opis nie ukrywa informacji, o które kupujący zaraz zapyta w wiadomości.',
@@ -491,23 +491,49 @@ function offerCatalog() {
     itemListElement: [
       {
         '@type': 'Offer',
-        name: 'Tekst Pack',
-        price: '179',
+        name: 'Mini audyt',
+        price: '0',
         priceCurrency: 'PLN',
         url: `${SITE}/#pakiety`
       },
       {
         '@type': 'Offer',
-        name: 'Foto Pack',
-        price: '249',
+        name: 'Tekst Start',
+        price: '79',
         priceCurrency: 'PLN',
+        description: 'Cena startowa za lekki zakres pracy dla jednej oferty.',
         url: `${SITE}/#pakiety`
       },
       {
         '@type': 'Offer',
-        name: 'Oferta Pro',
-        price: '399',
+        name: 'Foto Start',
+        price: '149',
         priceCurrency: 'PLN',
+        description: 'Cena startowa za lekki zakres pracy dla jednego produktu.',
+        url: `${SITE}/#pakiety`
+      },
+      {
+        '@type': 'Offer',
+        name: 'Oferta Start',
+        price: '199',
+        priceCurrency: 'PLN',
+        description: 'Cena startowa za szybkie uporządkowanie jednej oferty.',
+        url: `${SITE}/#pakiety`
+      },
+      {
+        '@type': 'Offer',
+        name: 'Studio Start',
+        price: '499',
+        priceCurrency: 'PLN',
+        description: 'Cena startowa za podstawowy standard dla małej serii produktów.',
+        url: `${SITE}/#pakiety`
+      },
+      {
+        '@type': 'Offer',
+        name: 'Abonament',
+        price: '1490',
+        priceCurrency: 'PLN',
+        description: 'Cena startowa za miesiąc stałej obsługi ofert.',
         url: `${SITE}/#pakiety`
       }
     ]
