@@ -206,9 +206,9 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--brand);outline-offs
 .shot-card{background:var(--s1);border:1px solid var(--bs);border-radius:.75rem;overflow:hidden;box-shadow:var(--sh1);transition:all .25s}
 .shot-card:hover{box-shadow:var(--sh3);transform:translateY(-3px);border-color:rgba(37,99,235,.3)}
 .shot-img{aspect-ratio:1;background:#fff;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--bs);overflow:hidden;position:relative;contain:layout paint}
-.shot-img img{display:block;width:100%;height:100%;object-fit:contain;padding:.75rem;transition:transform .35s}
-.shot-card:hover .shot-img img{transform:scale(1.05)}
-.shot-img--muted{background:var(--s2)}
+.shot-img picture{display:block;width:100%;height:100%;background:#fff}
+.shot-img img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;background:#fff;padding:0}
+.shot-img--muted{background:#fff}
 .shot-body{padding:.875rem}
 .shot-type{font-family:'JetBrains Mono',monospace;font-size:.625rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brand);margin-bottom:.3rem}
 .shot-name{font-size:.875rem;font-weight:700;color:var(--t1);margin-bottom:.3rem}
@@ -217,7 +217,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--brand);outline-offs
 /* INFOGRAPHIC SPLIT CARD */
 .infogr-card{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--s1);border:1px solid var(--bs);border-radius:.75rem;overflow:hidden;box-shadow:var(--sh1);margin-top:1rem}
 .infogr-img{aspect-ratio:1;background:#fff;display:flex;align-items:center;justify-content:center;border-right:1px solid var(--bs);overflow:hidden;min-height:180px;contain:layout paint}
-.infogr-img img{display:block;width:100%;height:100%;object-fit:contain;padding:1rem}
+.infogr-img picture{display:block;width:100%;height:100%;background:#fff}
+.infogr-img img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;background:#fff;padding:0}
 .infogr-body{padding:1.5rem;display:flex;flex-direction:column;justify-content:center}
 .infogr-type{font-family:'JetBrains Mono',monospace;font-size:.625rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brand);margin-bottom:.5rem}
 .infogr-title{font-size:.9375rem;font-weight:700;color:var(--t1);margin-bottom:.5rem}
@@ -321,7 +322,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--brand);outline-offs
   }
   .shots-grid-3,.shots-grid-2{margin-top:1rem}
   .shot-card{flex:0 0 min(82vw,22rem);scroll-snap-align:start}
-  .shot-img img{padding:.5rem}
+  .shot-img img{padding:0}
   .shot-body{padding:.875rem}
   .infogr-card{grid-template-columns:1fr}
   .infogr-img{aspect-ratio:1;min-height:0;border-right:0;border-bottom:1px solid var(--bs)}
