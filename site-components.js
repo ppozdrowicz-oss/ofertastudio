@@ -56,6 +56,7 @@
   const isHome = () => window.location.pathname.replace(/\/index\.html$/, '/') === '/';
 
   const hrefFor = item => {
+    if (isHome() && item.key === 'realizacje') return '#realizacje';
     if (!isHome() || !item.href.startsWith('/#')) return item.href;
     return item.href.slice(1);
   };
@@ -213,18 +214,47 @@
 
   function bindHomeActiveSections() {
     if (!isHome()) return;
-    const ids = ['uslugi', 'realizacje', 'pakiety', 'proces', 'kontakt'];
-    const sections = ids.map(id => document.getElementById(id)).filter(Boolean);
+    const sectionMap = [
+      ['uslugi', 'uslugi'],
+      ['realizacje', 'realizacje'],
+      ['pakiety', 'pakiety'],
+      ['proces', 'proces'],
+      ['kontakt', 'kontakt']
+    ];
+    const sections = sectionMap
+      .map(([id, key]) => ({ id, key, el: document.getElementById(id) }))
+      .filter(item => item.el)
+      .sort((a, b) => a.el.offsetTop - b.el.offsetTop);
     if (!sections.length || !('IntersectionObserver' in window)) return;
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        document.querySelectorAll('[data-nav-key]').forEach(link => {
-          link.classList.toggle('active', link.dataset.navKey === entry.target.id);
-        });
+    const navLinks = () => document.querySelectorAll('[data-nav-key]');
+    const navHeight = () => Math.ceil(document.querySelector('.site-nav')?.getBoundingClientRect().height || 0);
+    const setActive = key => navLinks().forEach(link => link.classList.toggle('active', link.dataset.navKey === key));
+    const currentSection = () => {
+      const probe = navHeight() + Math.min(180, window.innerHeight * .28);
+      const containing = sections.find(section => {
+        const rect = section.el.getBoundingClientRect();
+        return rect.top <= probe && rect.bottom > probe;
       });
-    }, { threshold: .35, rootMargin: '-80px 0px -55% 0px' });
-    sections.forEach(section => observer.observe(section));
+      if (containing) return containing;
+      return [...sections].reverse().find(section => section.el.getBoundingClientRect().top <= probe) || null;
+    };
+    let ticking = false;
+    const syncActive = () => {
+      ticking = false;
+      const section = currentSection();
+      setActive(section?.key || '');
+    };
+    const scheduleSync = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(syncActive);
+    };
+    const observer = new IntersectionObserver(scheduleSync, { threshold: [0, .12, .35, .65], rootMargin: `-${navHeight() + 8}px 0px -58% 0px` });
+    sections.forEach(section => observer.observe(section.el));
+    window.addEventListener('scroll', scheduleSync, { passive: true });
+    window.addEventListener('resize', scheduleSync);
+    window.addEventListener('hashchange', scheduleSync);
+    scheduleSync();
   }
 
   function init() {
