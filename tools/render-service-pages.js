@@ -19,7 +19,7 @@ const pages = [
     file: 'zdjecia-produktowe-allegro/index.html',
     url: '/zdjecia-produktowe-allegro/',
     title: 'Zdjęcia produktowe Allegro — miniatura i galeria | OfertaStudio.pl',
-    description: 'Miniatura, packshot, galeria i infografiki do ofert Allegro. Pokaż produkt tak, żeby klient szybciej widział zestaw, detale i przewagę.',
+    description: 'Poprawa miniatury, galerii, packshotów i infografik pod Allegro. Zdjęcia mają wyjaśniać produkt, nie tylko dobrze wyglądać.',
     h1: 'Zdjęcia produktowe Allegro — miniatura, galeria i packshot',
     label: 'Zdjęcia produktowe Allegro',
     eyebrow: 'Zdjęcia produktowe',
@@ -89,8 +89,9 @@ const pages = [
       ['Kontrola publikacyjna', 'Na końcu sprawdzam, czy materiały mają sens jako komplet: czy pierwsze zdjęcie przyciąga uwagę, czy kolejne odpowiadają na pytania i czy oferta nie wymaga dodatkowego doprecyzowania w opisie.']
     ],
     caseStudy: {
-      href: '/realizacje/#elektronarzedzia',
+      href: '/realizacje/#metabo',
       title: 'Przykład: elektronarzędzie z jednego zdjęcia do pełnej galerii',
+      cta: 'Zobacz case: Metabo',
       text: 'W case study Metabo punktem wyjścia było pojedyncze zdjęcie zestawu. Galeria została rozpisana tak, aby kupujący zobaczył zawartość, detale, walizkę, oznaczenia i sposób użycia bez szukania informacji w opisie. To dobry przykład sytuacji, w której zdjęcia przejmują część pracy sprzedawcy.'
     },
     faq: [
@@ -105,7 +106,7 @@ const pages = [
     file: 'opisy-produktow-allegro/index.html',
     url: '/opisy-produktow-allegro/',
     title: 'Opisy produktów Allegro — tytuł i opis oferty | OfertaStudio.pl',
-    description: 'Opisy produktów Allegro, które tłumaczą wartość, porządkują parametry i odpowiadają na pytania kupującego przed kontaktem.',
+    description: 'Tytuł i opis Allegro, które szybciej porządkują decyzję kupującego. Mniej chaosu, mniej pytań, więcej czytelności oferty.',
     h1: 'Opisy produktów Allegro — tytuł i opis, które ułatwiają decyzję',
     label: 'Opisy produktów Allegro',
     eyebrow: 'Tytuł i opis Allegro',
@@ -177,6 +178,7 @@ const pages = [
     caseStudy: {
       href: '/realizacje/#spawalnictwo',
       title: 'Przykład: produkt techniczny wymagający jasnych argumentów',
+      cta: 'Zobacz case: Spawalnictwo',
       text: 'W przykładzie z drutem spawalniczym ważne były parametry, pochodzenie produktu i czytelne pokazanie opakowania. Taki typ produktu pokazuje, dlaczego opis nie może być tylko katalogiem danych. Treść powinna wyjaśnić, co oznaczają parametry i dlaczego kupujący ma im zaufać.'
     },
     faq: [
@@ -191,10 +193,10 @@ const pages = [
     file: 'optymalizacja-ofert-allegro/index.html',
     url: '/optymalizacja-ofert-allegro/',
     title: 'Poprawa oferty Allegro — zdjęcia, opis i układ | OfertaStudio.pl',
-    description: 'Popraw zdjęcie główne, galerię, tytuł i opis oferty Allegro. Kupujący szybciej rozumie produkt i łatwiej podejmuje decyzję.',
+    description: 'Pełne uporządkowanie oferty Allegro: miniatura, galeria, tytuł, opis, parametry i FAQ. Najpierw diagnoza, potem zakres i wycena.',
     h1: 'Poprawa oferty Allegro — zdjęcia, tytuł, opis i układ oferty',
     label: 'Poprawa ofert Allegro',
-    eyebrow: 'Oferta Pro',
+    eyebrow: 'Pełna poprawa oferty Allegro',
     lead: 'Jeśli zdjęcia, tytuł i opis nie pracują razem, oferta traci zrozumiałość. Ta usługa porządkuje całą prezentację produktu tak, żeby kupujący szybciej wiedział, co kupuje i dlaczego warto kliknąć właśnie tutaj.',
     heroCta: 'Wyślij link — sprawdzę, czy potrzebujesz pełnej poprawy oferty',
     introHeading: 'Gdy każdy element mówi co innego, oferta traci zrozumiałość',
@@ -202,7 +204,7 @@ const pages = [
     finalCtaText: 'Wyślij link do oferty. Sprawdzę, czy problem leży w jednym elemencie, czy zdjęcia, tytuł i opis wymagają wspólnego kierunku. Zakres i cena przed startem.',
     serviceType: 'Poprawa zdjęcia głównego, galerii, tytułu, opisu i układu oferty Allegro',
     serviceName: 'Poprawa ofert Allegro',
-    offerName: 'Oferta Start',
+    offerName: 'Pełny zakres — wycena po analizie',
     price: '199',
     intro: [
       'Allegro to środowisko porównywania. Kupujący widzi wiele podobnych ofert, filtruje po cenie, patrzy na miniaturę, tytuł, parametry, opinie i dostępność. Jeśli oferta nie tłumaczy wartości produktu szybko, nawet dobry produkt może przegrać z gorzej dobranym, ale lepiej pokazanym konkurentem.',
@@ -264,6 +266,7 @@ const pages = [
     caseStudy: {
       href: '/realizacje/#narzedzia',
       title: 'Przykład: narzędzie wymagające pokazania parametrów',
+      cta: 'Zobacz case: Narzędzia',
       text: 'Case klucza dynamometrycznego pokazuje, że poprawa oferty technicznej nie polega na dekoracji. Ważne są ujęcia walizki, głowicy, skali Nm i zestawu informacji, które pozwalają kupującemu szybko ocenić zastosowanie produktu.'
     },
     faq: [
@@ -277,8 +280,8 @@ const pages = [
   {
     file: 'audyt-oferty-allegro/index.html',
     url: '/audyt-oferty-allegro/',
-    title: 'Audyt oferty Allegro — 3 konkretne poprawki | OfertaStudio.pl',
-    description: 'Wyślij link do oferty Allegro i zobacz, co blokuje kliknięcia, zrozumienie produktu i decyzję zakupową. Najpierw diagnoza, potem zakres.',
+    title: 'Audyt oferty Allegro — 3 poprawki na start | OfertaStudio.pl',
+    description: 'Wyślij link do oferty Allegro i zobacz, co blokuje kliknięcie, zrozumienie produktu lub decyzję zakupową. Najpierw diagnoza, potem zakres.',
     h1: 'Audyt oferty Allegro — 3 konkretne poprawki na start',
     label: 'Audyt oferty Allegro',
     eyebrow: 'Mini audyt',
@@ -289,7 +292,7 @@ const pages = [
     finalCtaText: 'Wyślij link, zdjęcia albo krótki opis produktu. Dostaniesz diagnozę i pierwszy kierunek bez zobowiązań na starcie. Płatny zakres ustalamy dopiero po odpowiedzi.',
     serviceType: 'Audyt miniatury, tytułu, galerii, opisu i konkurencji oferty Allegro',
     serviceName: 'Audyt oferty Allegro',
-    offerName: 'Start',
+    offerName: 'Mini audyt',
     price: '0',
     intro: [
       'Sprzedawcy często czują, że oferta nie działa, ale nie wiedzą, od czego zacząć. Problem może leżeć w miniaturze, tytule, braku parametrów, zdjęciach, opisie, cenie, konkurencji albo w kilku drobnych rzeczach naraz. Audyt porządkuje ten chaos i wskazuje pierwszy rozsądny krok.',
@@ -353,6 +356,7 @@ const pages = [
     caseStudy: {
       href: '/realizacje/#bhp',
       title: 'Przykład: BHP i oferta z brakującymi informacjami wizualnymi',
+      cta: 'Zobacz case: BHP',
       text: 'W case study rękawic BHP ważne były norma, detal lateksu, wnętrze i zastosowanie. To dobry przykład dla audytu, bo pokazuje, że jedna ciemna fotografia może ukryć informacje, których kupujący potrzebuje przed zakupem.'
     },
     faq: [
@@ -367,7 +371,7 @@ const pages = [
     file: 'oferty-olx/index.html',
     url: '/oferty-olx/',
     title: 'Oferty OLX — zdjęcia i opis ogłoszenia | OfertaStudio.pl',
-    description: 'Poprawa zdjęć i opisu ogłoszenia OLX. Więcej zaufania, mniej przypadkowych pytań i konkretniejszy kontakt od kupujących.',
+    description: 'Zdjęcia i opis ogłoszenia OLX, które budują zaufanie przed pierwszą wiadomością. Stan, komplet i warunki jasno pokazane od początku.',
     h1: 'Oferty OLX — zdjęcia i opis, które budują zaufanie',
     label: 'Oferty OLX',
     eyebrow: 'OLX',
@@ -439,8 +443,9 @@ const pages = [
       ['Finalna wersja do publikacji', 'Otrzymujesz uporządkowany tekst i wskazówki do galerii. Ogłoszenie ma być gotowe do szybkiego skanowania na telefonie.']
     ],
     caseStudy: {
-      href: '/realizacje/#dom-ogrod',
+      href: '/realizacje/#gardena',
       title: 'Przykład: produkt dom i ogród pokazany w kontekście użycia',
+      cta: 'Zobacz case: Gardena',
       text: 'Case pistoletu ogrodowego dobrze pokazuje różnicę między samym zdjęciem produktu a prezentacją zastosowania. W OLX takie kontekstowe ujęcie może budować zaufanie, bo kupujący szybciej widzi realne użycie i skalę przedmiotu.'
     },
     faq: [
@@ -622,8 +627,9 @@ function render(page) {
   const schema = JSON.stringify(schemaFor(page), null, 2);
   const intro = page.intro.map(text => `<p>${escapeHtml(text)}</p>`).join('\n        ');
   const isAudit = page.url === '/audyt-oferty-allegro/';
-  const diagnosticHref = isAudit ? '/#kontakt' : '/audyt-oferty-allegro/';
-  const diagnosticLabel = isAudit ? page.heroCta : 'Zacznij od audytu oferty Allegro';
+  const isOlx = page.url === '/oferty-olx/';
+  const diagnosticHref = isAudit || isOlx ? '/#kontakt' : '/audyt-oferty-allegro/';
+  const diagnosticLabel = isAudit ? page.heroCta : isOlx ? 'Zacznij od szybkiej diagnozy ogłoszenia OLX' : 'Zacznij od audytu oferty Allegro';
   return `<!DOCTYPE html>
 <html lang="pl" data-theme="light">
 <head>
@@ -673,7 +679,7 @@ ${schema}
       <p class="service-lead">${escapeHtml(page.lead)}</p>
       <div class="service-actions">
         <a class="btn btn-p" href="/#kontakt" data-event="hero_cta_click" data-location="hero">${escapeHtml(page.heroCta)}</a>
-        <a class="btn btn-s" href="/realizacje/">Zobacz realizacje przed/po</a>
+        <a class="btn btn-s" href="${page.caseStudy.href}" data-event="case_study_click" data-location="hero">${escapeHtml(page.caseStudy.cta)}</a>
       </div>
     </div>
     <aside class="card service-card service-note">
@@ -742,7 +748,7 @@ ${schema}
     <h2 id="service-case">${escapeHtml(page.caseStudy.title)}</h2>
     <p>${escapeHtml(page.caseStudy.text)}</p>
     <div class="service-actions">
-      <a class="btn btn-s" href="${page.caseStudy.href}" data-event="case_study_click" data-location="service_page">Zobacz tę realizację przed/po</a>
+      <a class="btn btn-s" href="${page.caseStudy.href}" data-event="case_study_click" data-location="service_page">${escapeHtml(page.caseStudy.cta)}</a>
     </div>
   </section>
 
@@ -804,7 +810,7 @@ ${schema}
     <p class="muted">${escapeHtml(page.finalCtaText)}</p>
     <div class="service-actions">
       <a class="btn btn-p" href="/#kontakt" data-event="mini_audit_click" data-location="service_final">${escapeHtml(page.heroCta)}</a>
-      <a class="btn btn-s" href="/realizacje/">Zobacz realizacje przed/po</a>
+      <a class="btn btn-s" href="${page.caseStudy.href}" data-event="case_study_click" data-location="service_final">${escapeHtml(page.caseStudy.cta)}</a>
     </div>
   </section>
 </main>
