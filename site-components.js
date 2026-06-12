@@ -208,7 +208,10 @@
   function markActive() {
     const key = pageKey();
     document.querySelectorAll('[data-nav-key]').forEach(link => {
-      link.classList.toggle('active', Boolean(key) && link.dataset.navKey === key);
+      const active = Boolean(key) && link.dataset.navKey === key;
+      link.classList.toggle('active', active);
+      if (active) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
     });
   }
 
@@ -228,7 +231,12 @@
     if (!sections.length || !('IntersectionObserver' in window)) return;
     const navLinks = () => document.querySelectorAll('[data-nav-key]');
     const navHeight = () => Math.ceil(document.querySelector('.site-nav')?.getBoundingClientRect().height || 0);
-    const setActive = key => navLinks().forEach(link => link.classList.toggle('active', link.dataset.navKey === key));
+    const setActive = key => navLinks().forEach(link => {
+      const active = link.dataset.navKey === key;
+      link.classList.toggle('active', active);
+      if (active) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
     const currentSection = () => {
       const probe = navHeight() + Math.min(180, window.innerHeight * .28);
       const containing = sections.find(section => {

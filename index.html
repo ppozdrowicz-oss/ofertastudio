@@ -1652,7 +1652,7 @@ body{
       </div>
       <form id="contactForm" name="kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
         <input type="hidden" name="form-name" value="kontakt">
-        <p hidden aria-hidden="true"><label>Nie wypełniaj: <input name="bot-field" tabindex="-1" autocomplete="off" aria-hidden="true"></label></p>
+        <div hidden aria-hidden="true"><input type="text" name="bot-field" tabindex="-1" autocomplete="off" aria-label="Pole kontrolne"></div>
         <div class="cform-body">
 
           <div class="cfield-row">
@@ -1690,7 +1690,7 @@ body{
                 <span class="cpkg-name">Foto Start — od 149 zł</span>
                 <span class="cpkg-meta">miniatura albo pierwsza poprawa galerii</span>
               </label>
-              <label class="cpkg" id="pkg-pro">
+              <label class="cpkg" id="pkg-offer-start">
                 <input type="radio" name="zainteresowanie" value="Oferta Start — od 199 zł" required>
                 <span class="cpkg-icon" aria-hidden="true">⚡</span>
                 <span class="cpkg-name">Oferta Start — od 199 zł</span>
