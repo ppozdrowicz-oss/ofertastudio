@@ -1261,6 +1261,124 @@ body{
   .process-item:hover .process-panel{transform:none;box-shadow:var(--sh1)}
 }
 
+/* ── FINAL HOMEPAGE COHESION PASS ── */
+.section{padding-top:clamp(3.5rem,5.5vw,4.75rem);padding-bottom:clamp(3.5rem,5.5vw,4.75rem)}
+#pakiety{position:relative;isolation:isolate;background:var(--s2);box-shadow:0 0 0 100vmax var(--s2);clip-path:inset(0 -100vmax)}
+#pakiety .s-head{margin-bottom:2rem}
+.hero--single{min-height:min(700px,76vh)}
+.hero-ctas{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
+.btn-hero-primary,.btn-hero-ghost{min-height:3.15rem}
+.btn-hero-ghost{padding:.82rem 1.35rem}
+
+/* Reassurance: one decision card and four calm principles. */
+.trust-benefit-grid{grid-template-columns:minmax(330px,.95fr) minmax(0,1.05fr);gap:0 clamp(1.5rem,4vw,3.5rem)}
+.trust-benefit--primary{grid-column:1;grid-row:1/5;min-height:100%}
+.trust-benefit:not(.trust-benefit--primary){grid-column:2;min-height:0;padding:1.15rem .25rem 1.15rem 3.5rem;border:0;border-bottom:1px solid var(--bs);border-radius:0;background:transparent;box-shadow:none}
+.trust-benefit--primary+.trust-benefit{border-top:1px solid var(--bs)}
+.trust-benefit:not(.trust-benefit--primary)::after{display:none}
+.trust-benefit:not(.trust-benefit--primary) .trust-benefit-mark{position:absolute;top:1.15rem;left:.25rem;width:2.25rem;height:2.25rem;margin:0;border-color:var(--bs);background:transparent;color:var(--t3)}
+.trust-benefit:not(.trust-benefit--primary):hover{transform:none;border-color:var(--bs);background:transparent;box-shadow:none}
+.trust-benefit:not(.trust-benefit--primary):hover .trust-benefit-mark{border-color:var(--brand-border-soft);background:var(--brand-bg);color:var(--brand)}
+
+/* Editorial problem block: text and evidence, not another card wall. */
+.problem-stage{overflow:visible;padding:clamp(1.25rem,3vw,2.25rem) 0 clamp(1.25rem,3vw,2.25rem) clamp(1.5rem,3vw,2.5rem);border:0;border-left:2px solid var(--brand);border-radius:0;background:transparent;box-shadow:none}
+.problem-stage::before{display:none}
+.problem-list{gap:0 1.5rem}
+.problem-card{padding:1.25rem .25rem 1.25rem 0;border:0;border-top:1px solid var(--bs);border-radius:0;background:transparent;box-shadow:none}
+.problem-card::before{display:none}
+.problem-card:hover{transform:none;border-color:var(--brand-border-soft);background:transparent;box-shadow:none}
+
+/* Pricing: clearer hierarchy and a stronger outcome line. */
+.package-grid{gap:1rem}
+.price-card{padding:1.5rem;border-top:1px solid var(--bs);box-shadow:none}
+.price-card:hover{transform:translateY(-2px)}
+.price-h{min-height:3rem;margin-bottom:.15rem}
+.price-for{margin-bottom:1rem}
+.package-details{gap:.65rem;margin-bottom:1.15rem}
+.package-detail{padding-bottom:.65rem}
+.package-detail--effect{margin-top:.05rem;padding:.75rem .8rem;border:1px solid var(--brand-border-soft);border-radius:var(--radius-md);background:var(--brand-bg)}
+.package-detail--effect strong{color:var(--brand)}
+.price-btn{min-height:2.75rem;box-shadow:none}
+.price-card--choice{display:grid;grid-template-columns:minmax(230px,.75fr) minmax(0,1.6fr) minmax(220px,.65fr);gap:clamp(1.25rem,3vw,2.5rem);align-items:center;padding:1.4rem 1.5rem}
+.price-card--choice .price-line{margin:.1rem 0 .7rem}
+.price-card--choice .price-h{min-height:0;margin:0}
+.price-card--choice .price-for{margin-bottom:.75rem}
+#pakiety .price-card--choice .package-details{grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem;margin:0}
+#pakiety .price-card--choice .package-detail{padding:0 .9rem 0 0;border:0;border-right:1px solid var(--bs)}
+#pakiety .price-card--choice .package-detail:last-child{padding:.65rem .75rem;border:1px solid var(--brand-border-soft)}
+#pakiety .price-card--choice .price-btns{width:100%;max-width:none}
+.pricing-explainer-main{box-shadow:none}
+.pricing-help{box-shadow:none;border-style:dashed}
+.pricing-start-note{border:0;border-left:2px solid var(--brand);border-radius:0;background:transparent;text-align:left}
+
+/* Showroom and timeline. */
+.case-featured{box-shadow:var(--sh2)}
+.case-card{box-shadow:var(--sh1)}
+.case-featured:hover,.case-card:hover{transform:none}
+.process-panel{box-shadow:none}
+.process-item:hover .process-panel{transform:none}
+.process-node{box-shadow:0 0 0 .45rem var(--bg)}
+
+/* FAQ as one editorial accordion. */
+.home-faq-list{gap:0;border-top:1px solid var(--bs)}
+.home-faq-item{border:0;border-bottom:1px solid var(--bs);border-radius:0;background:transparent;box-shadow:none}
+.home-faq-item summary{padding:1.1rem .15rem}
+.home-faq-item summary:hover{color:var(--brand)}
+.home-faq-item summary:focus-visible{outline:2px solid var(--focus);outline-offset:4px;border-radius:var(--radius-sm)}
+.home-faq-answer{max-width:780px;padding:0 3.2rem 1.2rem .15rem}
+
+/* Audit preview and maker trust use separators instead of nested cards. */
+.audit-deliverables{padding:.4rem 0 .4rem clamp(1.5rem,3vw,2.25rem);border:0;border-left:1px solid var(--bs);border-radius:0;background:transparent;box-shadow:none}
+.audit-deliverables::before{display:none}
+[data-theme="dark"] .audit-deliverables{background:transparent;border-color:var(--bs);box-shadow:none}
+.maker-trust{padding:clamp(1.5rem,3vw,2.25rem) 0;border:0;border-top:1px solid var(--bs);border-bottom:1px solid var(--bs);border-radius:0;background:transparent;box-shadow:none}
+[data-theme="dark"] .maker-trust{background:transparent;border-color:var(--bs)}
+.maker-trust-points{gap:0;border-top:1px solid var(--bs)}
+.maker-trust-points li{padding:.8rem .1rem;border:0;border-bottom:1px solid var(--bs);border-radius:0;background:transparent}
+.maker-trust-points li:last-child{border-bottom:0}
+
+/* Contact is the clean destination of the funnel. */
+.contact-section{position:relative;isolation:isolate;background:var(--s2);box-shadow:0 0 0 100vmax var(--s2);clip-path:inset(0 -100vmax)}
+.contact-form-card{box-shadow:var(--sh2)}
+.cpkg-icon{display:grid;place-items:center;width:1.5rem;height:1.5rem;border:1px solid var(--brand-border-soft);border-radius:50%;background:var(--brand-bg);font-family:var(--font-mono);font-size:.58rem;font-weight:800;color:var(--brand)}
+.cform-success-icon{display:grid;place-items:center;width:3rem;height:3rem;margin:0 auto 1rem;border-radius:50%;background:var(--ok-bg);color:var(--ok);font-size:1.5rem;font-weight:900}
+
+@media(max-width:1024px){
+  .trust-benefit-grid{grid-template-columns:minmax(280px,.85fr) minmax(0,1.15fr)}
+  .trust-benefit--primary{grid-column:1;grid-row:1/5}
+  .price-card--choice{grid-template-columns:minmax(220px,.75fr) minmax(0,1.25fr)}
+  #pakiety .price-card--choice .price-btns{grid-column:1/-1;max-width:24rem}
+}
+@media(max-width:760px){
+  .section{padding-top:3.25rem;padding-bottom:3.25rem}
+  .hero--single{min-height:auto}
+  .trust-benefit-grid{grid-template-columns:1fr;gap:0}
+  .trust-benefit--primary{grid-column:1;grid-row:auto;margin-bottom:.75rem}
+  .trust-benefit:not(.trust-benefit--primary){grid-column:1}
+  .problem-stage{padding-left:1.25rem}
+  .price-card--choice{grid-template-columns:1fr;gap:1rem}
+  #pakiety .price-card--choice .package-details{grid-template-columns:1fr}
+  #pakiety .price-card--choice .package-detail{padding:0 0 .7rem;border-right:0;border-bottom:1px solid var(--bs)}
+  #pakiety .price-card--choice .package-detail:last-child{padding:.7rem;border:1px solid var(--brand-border-soft)}
+  #pakiety .price-card--choice .price-btns{grid-column:auto;max-width:none}
+  .audit-deliverables{padding:1.25rem 0 0;border-left:0;border-top:1px solid var(--bs)}
+  .maker-trust{gap:1.25rem}
+}
+@media(max-width:640px){
+  .section{padding-top:2.75rem;padding-bottom:2.75rem}
+  .hero-ctas{display:grid;grid-template-columns:1fr;width:100%}
+  .btn-hero-primary,.btn-hero-ghost{width:100%;justify-content:center;text-align:center}
+  .price-card{padding:1.1rem}
+  .price-h{min-height:0}
+  .package-detail--effect{padding:.7rem}
+  .pricing-start-note{padding:.75rem 0 .75rem 1rem}
+  .home-faq-item summary{padding:1rem .1rem}
+  .home-faq-answer{padding:0 2.6rem 1rem .1rem}
+  .maker-trust{padding:1.4rem 0}
+  .contact-form-card{box-shadow:var(--sh1)}
+  .cpkg{grid-template-columns:1.6rem minmax(0,1fr);column-gap:.65rem;padding:.75rem}
+}
+
 </style>
 <script src="/analytics.js" defer></script>
 </head>
@@ -1274,7 +1392,7 @@ body{
 </a>
 
 <!-- Sticky CTA (desktop) -->
-<div class="sticky-cta">
+<div class="sticky-cta" aria-label="Szybki dostęp do mini audytu">
   <div class="sticky-pill"><span aria-hidden="true">●</span> Mini audyt 0 zł</div>
   <a href="#kontakt" class="sticky-btn" data-event="mini_audit_click" data-location="hero" data-package="start">Wyślij link — dostaniesz 3 konkretne poprawki</a>
 </div>
@@ -1299,9 +1417,7 @@ body{
       <a href="#kontakt" class="btn-hero-primary" data-event="hero_cta_click" data-location="hero" data-package="start">
         Wyślij link — dostaniesz 3 konkretne poprawki
       </a>
-      <div class="hero-ctas-row">
-        <a href="/realizacje/" class="btn-hero-ghost" data-event="hero_cta_click" data-location="hero">Zobacz realizacje przed/po</a>
-      </div>
+      <a href="#realizacje" class="btn-hero-ghost" data-event="hero_cta_click" data-location="hero">Zobacz realizacje przed/po</a>
     </div>
 
     <div class="hero-trust">
@@ -1382,51 +1498,50 @@ body{
   <div class="package-grid">
     <div class="card price-card">
       <div class="price-name">Mini audyt</div><div class="price-line"><span class="price-val price-val-free">0 zł</span></div><div class="price-h">3 konkretne poprawki na start</div><div class="price-divider"></div>
-      <p class="price-for"><strong>Dla kogo</strong>Dla sprzedawcy, który czuje, że oferta nie działa, ale nie chce zgadywać, od czego zacząć.</p>
-      <div class="package-details"><div class="package-detail"><strong>Zakres startowy</strong><span>Krótka diagnoza jednej oferty, zdjęcia albo pomysłu na produkt.</span></div><div class="package-detail"><strong>Efekt</strong><span>Wskazuję 3 pierwsze rzeczy do poprawy i najlepszy kierunek dalszego działania.</span></div></div>
+      <p class="price-for"><strong>Dla kogo</strong>Gdy widzisz problem, ale nie wiesz jeszcze, od czego zacząć.</p>
+      <div class="package-details"><div class="package-detail"><strong>Na start</strong><span>Diagnoza jednej oferty, zdjęcia albo pomysłu na produkt.</span></div><div class="package-detail package-detail--effect"><strong>Efekt</strong><span>3 pierwsze poprawki i jasny kierunek dalszego działania.</span></div></div>
       <div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="start" data-interest="Mini audyt — 0 zł" data-message="Interesuje mnie mini audyt.">Wyślij link do analizy</a></div>
     </div>
     <div class="card price-card">
       <div class="price-name">Tekst Start</div><div class="price-line"><span class="price-val">od 79 zł</span><span class="price-unit">/ 1 oferta</span></div><div class="price-h">Szybka poprawa tytułu i pierwszego układu treści</div><div class="price-divider"></div>
-      <p class="price-for"><strong>Dla kogo</strong>Dla oferty, w której produkt jest dobry, ale tytuł, lead albo pierwsze argumenty nie pokazują jego wartości wystarczająco szybko.</p>
-      <div class="package-details"><div class="package-detail"><strong>Zakres startowy</strong><span>Tytuł oferty, krótki lead, 3–5 najważniejszych punktów sprzedażowych albo rekomendacja, co poprawić w obecnym opisie.</span></div><div class="package-detail"><strong>Efekt</strong><span>Klient szybciej widzi, co sprzedajesz, dla kogo jest produkt i dlaczego warto czytać dalej.</span></div></div>
-      <div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="tekst_start" data-interest="Tekst Start — od 79 zł" data-message="Interesuje mnie pakiet Tekst Start.">Popraw tekst oferty</a></div>
+      <p class="price-for"><strong>Dla kogo</strong>Gdy tytuł i pierwsze argumenty nie pokazują szybko wartości produktu.</p>
+      <div class="package-details"><div class="package-detail"><strong>Na start</strong><span>Tytuł, krótki lead i 3–5 najważniejszych punktów sprzedażowych.</span></div><div class="package-detail package-detail--effect"><strong>Efekt</strong><span>Kupujący szybciej rozumie produkt i wie, dlaczego warto czytać dalej.</span></div></div>
+      <div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="tekst_start" data-interest="Tekst Start — od 79 zł" data-message="Interesuje mnie pakiet Tekst Start.">Wybierz ten zakres</a></div>
     </div>
     <div class="card price-card">
       <div class="price-name">Foto Start</div><div class="price-line"><span class="price-val">od 149 zł</span><span class="price-unit">/ 1 produkt</span></div><div class="price-h">Miniatura albo pierwsza poprawa galerii</div><div class="price-divider"></div>
-      <p class="price-for"><strong>Dla kogo</strong>Dla produktu, który ginie w miniaturze albo ma zdjęcia bez jasnej kolejności.</p>
-      <div class="package-details"><div class="package-detail"><strong>Zakres startowy</strong><span>Ocena obecnych zdjęć, rekomendacja kolejności galerii, poprawa lub przygotowanie jednej miniatury albo prosta grafika startowa na bazie dostarczonych materiałów.</span></div><div class="package-detail"><strong>Efekt</strong><span>Produkt szybciej zwraca uwagę i lepiej pokazuje to, co kupujący powinien zobaczyć jako pierwsze.</span></div></div>
-      <div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="foto_start" data-interest="Foto Start — od 149 zł" data-message="Interesuje mnie pakiet Foto Start.">Sprawdź zdjęcia produktu</a></div>
+      <p class="price-for"><strong>Dla kogo</strong>Gdy produkt ginie w miniaturze albo galeria nie ma czytelnej kolejności.</p>
+      <div class="package-details"><div class="package-detail"><strong>Na start</strong><span>Ocena zdjęć oraz poprawa miniatury lub pierwszej grafiki galerii.</span></div><div class="package-detail package-detail--effect"><strong>Efekt</strong><span>Produkt szybciej pokazuje to, co kupujący powinien zobaczyć jako pierwsze.</span></div></div>
+      <div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="foto_start" data-interest="Foto Start — od 149 zł" data-message="Interesuje mnie pakiet Foto Start.">Wybierz ten zakres</a></div>
     </div>
     <div class="card price-card">
       <div class="price-name">Oferta Start</div><div class="price-line"><span class="price-val">od 199 zł</span><span class="price-unit">/ 1 oferta</span></div><div class="price-h">Szybkie uporządkowanie jednej oferty</div><div class="price-divider"></div>
-      <p class="price-for"><strong>Dla kogo</strong>Dla oferty, która potrzebuje pierwszego konkretnego kierunku: co poprawić w zdjęciu głównym, tytule, opisie i układzie informacji.</p>
-      <div class="package-details"><div class="package-detail"><strong>Zakres startowy</strong><span>Analiza jednej oferty, rekomendacja zmian, poprawiony tytuł, skrócony układ opisu i wskazanie, co zrobić ze zdjęciami.</span></div><div class="package-detail"><strong>Efekt</strong><span>Dostajesz szybką mapę poprawy oferty bez zamawiania pełnej przebudowy na start.</span></div></div>
-      <div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="oferta_start" data-interest="Oferta Start — od 199 zł" data-message="Interesuje mnie pakiet Oferta Start.">Uporządkuj ofertę</a></div>
+      <p class="price-for"><strong>Dla kogo</strong>Gdy jedna oferta wymaga szybkiego uporządkowania najważniejszych elementów.</p>
+      <div class="package-details"><div class="package-detail"><strong>Na start</strong><span>Analiza, poprawiony tytuł, skrócony układ opisu i kierunek dla zdjęć.</span></div><div class="package-detail package-detail--effect"><strong>Efekt</strong><span>Mapa poprawy jednej oferty bez zamawiania pełnej przebudowy.</span></div></div>
+      <div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="oferta_start" data-interest="Oferta Start — od 199 zł" data-message="Interesuje mnie pakiet Oferta Start.">Wybierz ten zakres</a></div>
     </div>
     <div class="card price-card">
       <div class="price-name">Studio Start</div><div class="price-line"><span class="price-val">od 499 zł</span></div><div class="price-h">Pierwszy standard dla małej serii produktów</div><div class="price-divider"></div>
-      <p class="price-for"><strong>Dla kogo</strong>Dla kilku podobnych produktów, które powinny wyglądać spójniej i mieć podobny sposób prezentacji.</p>
-      <div class="package-details"><div class="package-detail"><strong>Zakres startowy</strong><span>Podstawowy standard tytułów, opisów, układu informacji albo kierunku galerii dla małej serii produktów.</span></div><div class="package-detail"><strong>Efekt</strong><span>Zamiast poprawiać każdy produkt od zera, zaczynasz budować spójny standard dla kategorii lub serii.</span></div></div>
-      <div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="studio_start" data-interest="Studio Start — od 499 zł" data-message="Interesuje mnie pakiet Studio Start.">Zapytaj o standard dla serii</a></div>
+      <p class="price-for"><strong>Dla kogo</strong>Gdy kilka podobnych produktów potrzebuje wspólnego standardu prezentacji.</p>
+      <div class="package-details"><div class="package-detail"><strong>Na start</strong><span>Podstawowy standard tytułów, opisów, informacji lub kierunku galerii.</span></div><div class="package-detail package-detail--effect"><strong>Efekt</strong><span>Spójny punkt wyjścia dla małej serii produktów.</span></div></div>
+      <div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="studio_start" data-interest="Studio Start — od 499 zł" data-message="Interesuje mnie pakiet Studio Start.">Zapytaj o ten zakres</a></div>
     </div>
     <div class="card price-card subscription-card">
       <div class="price-name">Abonament</div><div class="price-line"><span class="price-val">od 1490 zł</span><span class="price-unit">/ mies.</span></div><div class="price-h">Stała obsługa nowych i poprawianych ofert</div><div class="price-divider"></div>
-      <p class="price-for"><strong>Dla kogo</strong>Dla sprzedawcy, który regularnie dodaje lub poprawia oferty i chce mieć przewidywalny proces pracy.</p>
-      <div class="package-details"><div class="package-detail"><strong>Zakres startowy</strong><span>Stała obsługa ustalana indywidualnie po analizie liczby produktów, rytmu publikacji i potrzeb.</span></div><div class="package-detail"><strong>Efekt</strong><span>Masz stałe wsparcie przy ofertach bez każdorazowego startowania od zera.</span></div></div>
-      <div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="abonament" data-interest="Abonament — od 1490 zł / mies." data-message="Interesuje mnie stała współpraca.">Zapytaj o stałą współpracę</a></div>
+      <p class="price-for"><strong>Dla kogo</strong>Gdy regularnie dodajesz lub poprawiasz oferty i potrzebujesz stałego rytmu pracy.</p>
+      <div class="package-details"><div class="package-detail"><strong>Na start</strong><span>Zakres ustalany po analizie liczby produktów i częstotliwości publikacji.</span></div><div class="package-detail package-detail--effect"><strong>Efekt</strong><span>Stałe wsparcie bez rozpoczynania każdej realizacji od zera.</span></div></div>
+      <div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="abonament" data-interest="Abonament — od 1490 zł / mies." data-message="Interesuje mnie stała współpraca.">Zapytaj o ten zakres</a></div>
     </div>
-    <div class="card price-card">
-      <div class="price-name">Nie wiem, czego potrzebuję</div><div class="price-line"><span class="price-val price-val-free">0 zł</span><span class="price-unit">na start</span></div><div class="price-h">Najpierw kierunek, potem zakres</div><div class="price-divider"></div>
-      <p class="price-for"><strong>Dla kogo</strong>Dla osoby, która chce poprawić ofertę, ale nie wie jeszcze, który zakres ma sens.</p>
-      <div class="package-details"><div class="package-detail"><strong>Zakres startowy</strong><span>Krótka analiza i rekomendacja najlepszego pierwszego kroku.</span></div><div class="package-detail"><strong>Efekt</strong><span>Nie musisz wybierać pakietu na ślepo. Najpierw sprawdzam materiał, potem podpowiadam, od czego zacząć.</span></div></div>
+    <div class="card price-card price-card--choice">
+      <div class="price-choice-summary"><div class="price-name">Nie wiem, czego potrzebuję</div><div class="price-line"><span class="price-val price-val-free">0 zł</span><span class="price-unit">na start</span></div><div class="price-h">Najpierw kierunek, potem zakres</div></div>
+      <div class="price-choice-details"><p class="price-for"><strong>Dla kogo</strong>Gdy chcesz poprawić ofertę, ale nie wiesz jeszcze, który zakres ma sens.</p><div class="package-details"><div class="package-detail"><strong>Na start</strong><span>Krótka analiza i rekomendacja najlepszego pierwszego kroku.</span></div><div class="package-detail package-detail--effect"><strong>Efekt</strong><span>Wybierasz zakres po sprawdzeniu materiału, nie na ślepo.</span></div></div></div>
       <div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="unknown" data-interest="Nie wiem jeszcze — 0 zł na start" data-message="Potrzebuję pomocy w wyborze zakresu.">Pomóż mi wybrać zakres</a></div>
     </div>
   </div>
   <div class="pricing-explainer">
     <div class="pricing-explainer-main">
       <div class="eyebrow">Większy zakres</div>
-      <h3>Pełny zakres? Wyceniam po analizie materiałów</h3>
+      <h3>Pełny zakres — wycena po analizie</h3>
       <p>Pakiety Start są dobrym wejściem, kiedy chcesz szybko poprawić jeden element albo sprawdzić kierunek. Jeśli potrzebujesz pełnego opisu, pełnej galerii, kompletnej przebudowy oferty albo standardu dla większej serii produktów, najpierw sprawdzam materiały i dopiero wtedy proponuję konkretny zakres.</p>
       <ul class="pricing-scope-list"><li>Pełny opis oferty</li><li>Pełna galeria i infografiki</li><li>Kompletna poprawa jednej oferty</li><li>Standard dla większej serii produktów</li><li>Stała obsługa ofert</li></ul>
       <a href="#kontakt" class="btn-p" data-event="pricing_cta_click" data-location="pricing" data-package="full_scope" data-interest="Pełny zakres — wycena po analizie" data-message="Potrzebuję wyceny pełnego zakresu.">Wyślij materiał do wyceny</a>
@@ -1485,7 +1600,7 @@ body{
 
     <div class="case-side-stack">
       <article class="card case-card case-card--garden">
-        <div class="case-card-media case-card-media--garden"><picture><source type="image/webp" srcset="/dom-ogrod-po-front.webp"><img decoding="async" loading="eager" src="/dom-ogrod-po-front.png" width="1672" height="941" alt="Realizacja przed i po dla produktu Gardena w kategorii dom i ogród"></picture></div>
+        <div class="case-card-media case-card-media--garden"><picture><source type="image/webp" srcset="/dom-ogrod-po-front.webp"><img decoding="async" loading="lazy" src="/dom-ogrod-po-front.png" width="1672" height="941" alt="Realizacja przed i po dla produktu Gardena w kategorii dom i ogród"></picture></div>
         <div class="case-card-body">
           <div class="case-meta"><span class="case-category">Dom i ogród</span><span class="case-number">#002</span></div>
           <h3 class="case-title">Gardena — prezentacja produktu</h3>
@@ -1500,7 +1615,7 @@ body{
       </article>
 
       <article class="card case-card case-card--welding">
-        <div class="case-card-media case-card-media--welding"><picture><source type="image/webp" srcset="/spawalnictwo-po-front.webp"><img decoding="async" loading="eager" src="/spawalnictwo-po-front.png" width="1254" height="1254" alt="Realizacja przed i po dla produktu technicznego ze spawalnictwa"></picture></div>
+        <div class="case-card-media case-card-media--welding"><picture><source type="image/webp" srcset="/spawalnictwo-po-front.webp"><img decoding="async" loading="lazy" src="/spawalnictwo-po-front.png" width="1254" height="1254" alt="Realizacja przed i po dla produktu technicznego ze spawalnictwa"></picture></div>
         <div class="case-card-body">
           <div class="case-meta"><span class="case-category">Spawalnictwo</span><span class="case-number">#003</span></div>
           <h3 class="case-title">Produkt techniczny do marketplace</h3>
@@ -1594,7 +1709,7 @@ body{
 <div class="divider"></div>
 
 <!-- ── KTO POPRAWIA OFERTĘ ── -->
-<section class="section section--compact" aria-labelledby="maker-trust-heading">
+<section class="section section--compact maker-section" aria-labelledby="maker-trust-heading">
   <div class="maker-trust">
     <div>
       <div class="eyebrow">Praktyczne studio marketplace</div>
@@ -1613,7 +1728,7 @@ body{
 <div class="divider"></div>
 
 <!-- ── KONTAKT ── -->
-<div class="section" id="kontakt">
+<div class="section contact-section" id="kontakt">
 <div class="contact-wrap">
 
   <!-- LEWA: nagłówek + kanały + trust -->
@@ -1688,37 +1803,37 @@ body{
             <div class="cpkg-grid" id="pkgGrid" role="radiogroup" aria-labelledby="interest-label" aria-describedby="interest-error">
               <label class="cpkg sel" id="pkg-start">
                 <input type="radio" name="zainteresowanie" value="Mini audyt — 0 zł" checked required>
-                <span class="cpkg-icon" aria-hidden="true">🔍</span>
+                <span class="cpkg-icon" aria-hidden="true">01</span>
                 <span class="cpkg-name">Mini audyt — 0 zł</span>
                 <span class="cpkg-meta">3 konkretne poprawki na start</span>
               </label>
               <label class="cpkg" id="pkg-tekst">
                 <input type="radio" name="zainteresowanie" value="Tekst Start — od 79 zł" required>
-                <span class="cpkg-icon" aria-hidden="true">✍</span>
+                <span class="cpkg-icon" aria-hidden="true">T</span>
                 <span class="cpkg-name">Tekst Start — od 79 zł</span>
                 <span class="cpkg-meta">tytuł, lead i pierwsze punkty sprzedażowe</span>
               </label>
               <label class="cpkg" id="pkg-foto">
                 <input type="radio" name="zainteresowanie" value="Foto Start — od 149 zł" required>
-                <span class="cpkg-icon" aria-hidden="true">📷</span>
+                <span class="cpkg-icon" aria-hidden="true">F</span>
                 <span class="cpkg-name">Foto Start — od 149 zł</span>
                 <span class="cpkg-meta">miniatura albo pierwsza poprawa galerii</span>
               </label>
               <label class="cpkg" id="pkg-offer-start">
                 <input type="radio" name="zainteresowanie" value="Oferta Start — od 199 zł" required>
-                <span class="cpkg-icon" aria-hidden="true">⚡</span>
+                <span class="cpkg-icon" aria-hidden="true">O</span>
                 <span class="cpkg-name">Oferta Start — od 199 zł</span>
                 <span class="cpkg-meta">szybkie uporządkowanie jednej oferty</span>
               </label>
               <label class="cpkg" id="pkg-studio">
                 <input type="radio" name="zainteresowanie" value="Studio Start — od 499 zł" required>
-                <span class="cpkg-icon" aria-hidden="true">📦</span>
+                <span class="cpkg-icon" aria-hidden="true">S</span>
                 <span class="cpkg-name">Studio Start — od 499 zł</span>
                 <span class="cpkg-meta">pierwszy standard dla małej serii produktów</span>
               </label>
               <label class="cpkg" id="pkg-abonament">
                 <input type="radio" name="zainteresowanie" value="Abonament — od 1490 zł / mies." required>
-                <span class="cpkg-icon" aria-hidden="true">↻</span>
+                <span class="cpkg-icon" aria-hidden="true">A</span>
                 <span class="cpkg-name">Abonament — od 1490 zł / mies.</span>
                 <span class="cpkg-meta">stała obsługa nowych i poprawianych ofert</span>
               </label>
@@ -1730,7 +1845,7 @@ body{
               </label>
               <label class="cpkg" id="pkg-full">
                 <input type="radio" name="zainteresowanie" value="Pełny zakres — wycena po analizie" required>
-                <span class="cpkg-icon" aria-hidden="true">✦</span>
+                <span class="cpkg-icon" aria-hidden="true">P</span>
                 <span class="cpkg-name">Pełny zakres — wycena po analizie</span>
                 <span class="cpkg-meta">pełny opis, galeria, kompletna poprawa oferty lub większa seria</span>
               </label>
@@ -1793,7 +1908,7 @@ body{
         <div class="cform-submit">
           <button type="submit" class="csubmit-btn" id="submitBtn">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-            Wyślij do analizy
+            Wyślij ofertę do sprawdzenia
           </button>
           <div class="csubmit-note">Najpierw sprawdzę materiał. Decyzję o płatnej pracy podejmujesz dopiero po odpowiedzi.</div>
           <div class="form-status" id="formStatus" role="alert" aria-live="assertive"></div>
@@ -1807,7 +1922,7 @@ body{
       <p class="cform-note">Wysyłając formularz, wyrażasz zgodę na przetwarzanie danych w celu odpowiedzi na zapytanie. Szczegóły: <a href="/polityka-prywatnosci/">Polityka prywatności</a>.</p>
     </div>
     <div class="cform-success" id="formSuccess" role="status" aria-live="polite" tabindex="-1">
-      <div class="cform-success-icon" aria-hidden="true">✅</div>
+      <div class="cform-success-icon" aria-hidden="true">✓</div>
       <div class="cform-success-title">Dziękuję — wiadomość została wysłana.</div>
       <div class="cform-success-sub">Odpowiem mailowo lub przez WhatsApp, jeśli został podany numer.</div>
     </div>
@@ -1838,7 +1953,7 @@ function samePageHash(href){
 }
 function navOffset(){
   const nav=document.querySelector('nav');
-  return Math.ceil(nav?.getBoundingClientRect().height||0);
+  return Math.ceil(nav?.getBoundingClientRect().height||0)+16;
 }
 function visualAnchorTarget(target){
   if(!target.classList.contains('section'))return target;
@@ -1871,8 +1986,8 @@ window.addEventListener('load',()=>{
 const floatingActions=document.querySelectorAll('.sticky-cta,.wa-fab');
 if(floatingActions.length&&'IntersectionObserver' in window){
   const desktopMedia=window.matchMedia('(min-width:1025px)');
-  const desktopSuppressors=document.querySelectorAll('.case-studies-section,#mini-audyt,#kontakt,footer');
-  const mobileSuppressors=document.querySelectorAll('.trust-section,.problem-section,.case-studies-section,#mini-audyt,#kontakt,footer');
+  const desktopSuppressors=document.querySelectorAll('.hero,#pakiety,.case-studies-section,#proces,#mini-audyt,#kontakt,footer');
+  const mobileSuppressors=document.querySelectorAll('.hero,.trust-section,.problem-section,#pakiety,.case-studies-section,#proces,#faq,#mini-audyt,#kontakt,footer');
   const desktopVisible=new Set();
   const mobileVisible=new Set();
   const syncFloatingActions=()=>{

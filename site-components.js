@@ -243,8 +243,7 @@
         const rect = section.el.getBoundingClientRect();
         return rect.top <= probe && rect.bottom > probe;
       });
-      if (containing) return containing;
-      return [...sections].reverse().find(section => section.el.getBoundingClientRect().top <= probe) || null;
+      return containing || null;
     };
     let ticking = false;
     const syncActive = () => {
