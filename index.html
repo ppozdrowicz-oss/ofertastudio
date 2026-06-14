@@ -1354,25 +1354,55 @@ body{
 .home-faq-item summary:focus-visible{outline:2px solid var(--focus);outline-offset:4px;border-radius:var(--radius-sm)}
 .home-faq-answer{max-width:780px;padding:0 3.2rem 1.2rem .15rem}
 
-/* Audit preview and maker trust use separators instead of nested cards. */
-.audit-deliverables{padding:.4rem 0 .4rem clamp(1.5rem,3vw,2.25rem);border:0;border-left:1px solid var(--bs);border-radius:0;background:transparent;box-shadow:none}
-.audit-deliverables::before{display:none}
-[data-theme="dark"] .audit-deliverables{background:transparent;border-color:var(--bs);box-shadow:none}
-.maker-trust{padding:clamp(1.5rem,3vw,2.25rem) 0;border:0;border-top:1px solid var(--bs);border-bottom:1px solid var(--bs);border-radius:0;background:transparent;box-shadow:none}
+/* Audit preview and maker trust close the funnel without another wall of cards. */
+.audit-cta-panel{padding:clamp(1.8rem,3.5vw,2.6rem) 0;border:0;border-top:1px solid var(--bs);border-bottom:1px solid var(--bs);border-radius:0;background:transparent;box-shadow:none}
+.audit-cta-panel::before{display:none}
+.audit-cta-panel::after{top:-1px;right:auto;bottom:auto;left:0;width:6rem;height:2px;background:linear-gradient(90deg,var(--brand),var(--cyan));opacity:1}
+.audit-cta-main{padding-right:clamp(.5rem,2vw,1.5rem)}
+.audit-cta-panel .audit-cta-microcopy{padding-left:0;border-left:0}
+.audit-benefit-pills{gap:.45rem}
+.audit-benefit-pills li{border-color:var(--brand-border-soft);background:var(--s1);box-shadow:none}
+.audit-deliverables{padding:clamp(1.2rem,2.5vw,1.55rem);border:1px solid var(--brand-border-soft);border-radius:var(--radius-xl);background:linear-gradient(155deg,var(--s2),var(--s1));box-shadow:var(--sh1)}
+.audit-deliverables::before{display:block;top:-1px;left:18%;right:18%;height:2px;background:linear-gradient(90deg,transparent,var(--brand),transparent);opacity:.7}
+[data-theme="dark"] .audit-cta-panel{background:transparent;border-color:var(--bs);box-shadow:none}
+[data-theme="dark"] .audit-deliverables{background:linear-gradient(155deg,var(--s2),var(--s1));border-color:var(--bs);box-shadow:var(--sh1)}
+.maker-trust{align-items:start;padding:clamp(1.7rem,3vw,2.4rem) 0;border:0;border-top:1px solid var(--bs);border-bottom:1px solid var(--bs);border-radius:0;background:transparent;box-shadow:none}
 [data-theme="dark"] .maker-trust{background:transparent;border-color:var(--bs)}
-.maker-trust-points{gap:0;border-top:1px solid var(--bs)}
-.maker-trust-points li{padding:.8rem .1rem;border:0;border-bottom:1px solid var(--bs);border-radius:0;background:transparent}
-.maker-trust-points li:last-child{border-bottom:0}
+.maker-trust-copy{padding-right:clamp(.5rem,2vw,1.5rem)}
+.maker-trust-method-label{margin-bottom:.55rem;font-family:var(--font-mono);font-size:.625rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--brand)}
+.maker-trust-points{counter-reset:maker-point;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 1.1rem;border-top:1px solid var(--bs)}
+.maker-trust-points li{counter-increment:maker-point;display:grid;grid-template-columns:2rem minmax(0,1fr);gap:.55rem;align-items:start;padding:.85rem .1rem;border:0;border-bottom:1px solid var(--bs);border-radius:0;background:transparent}
+.maker-trust-points li::before{content:counter(maker-point,decimal-leading-zero);display:grid;place-items:center;width:1.8rem;height:1.55rem;border:1px solid var(--brand-border-soft);border-radius:var(--radius-pill);background:var(--brand-bg);font-family:var(--font-mono);font-size:.58rem;font-weight:800;color:var(--brand)}
 
 /* Contact is the clean destination of the funnel. */
 .contact-section{position:relative;isolation:isolate;background:var(--s2);box-shadow:0 0 0 100vmax var(--s2);clip-path:inset(0 -100vmax)}
-.contact-form-card{box-shadow:var(--sh2)}
+.contact-wrap{grid-template-columns:minmax(0,1fr) minmax(430px,500px)}
+.contact-channels-stack{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:.65rem;margin-bottom:1.5rem}
+.contact-channels-stack .cch-wa{grid-column:1/-1}
+.cch{min-width:0;padding:.9rem 1rem}
+.cch-body{min-width:0}
+.cch-value{overflow-wrap:anywhere}
+.contact-trust{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem 1rem;padding-top:1.1rem;border-top:1px solid var(--bs)}
+.contact-trust-item{align-items:flex-start;font-size:.8rem;line-height:1.5}
+.contact-form-card{border-color:var(--brand-border-soft);box-shadow:var(--sh2)}
+.cform-head{background:linear-gradient(145deg,var(--s1),var(--brand-bg))}
+.cform-title{font-size:1.15rem}
+.form-honeypot{display:none!important}
+.cfield{margin-bottom:.9rem}
+.field-error{min-height:0}
+.field-error:not(:empty){min-height:1rem}
+.cpkg-grid{gap:.5rem}
+.cpkg{min-height:4.55rem;padding:.7rem .75rem;background:transparent}
+.cpkg.sel{background:var(--brand-bg)}
+.cform-submit{padding-top:1.1rem;padding-bottom:1.1rem}
 .cpkg-icon{display:grid;place-items:center;width:1.5rem;height:1.5rem;border:1px solid var(--brand-border-soft);border-radius:50%;background:var(--brand-bg);font-family:var(--font-mono);font-size:.58rem;font-weight:800;color:var(--brand)}
 .cform-success-icon{display:grid;place-items:center;width:3rem;height:3rem;margin:0 auto 1rem;border-radius:50%;background:var(--ok-bg);color:var(--ok);font-size:1.5rem;font-weight:900}
 
 @media(max-width:1024px){
   .trust-benefit-grid{grid-template-columns:minmax(280px,.85fr) minmax(0,1.15fr)}
   .trust-benefit--primary{grid-column:1;grid-row:1/5}
+  .contact-wrap{grid-template-columns:1fr}
+  .contact-form-card{width:100%;max-width:680px}
   .price-card--choice{grid-template-columns:minmax(220px,.75fr) minmax(0,1.25fr)}
   #pakiety .price-card--choice .price-btns{grid-column:1/-1;max-width:24rem}
   .pricing-explainer{grid-template-columns:1fr}
@@ -1397,8 +1427,11 @@ body{
   #pakiety .price-card--choice .package-detail{grid-template-columns:4.75rem minmax(0,1fr);gap:.7rem;padding:.55rem 0;border-bottom:1px solid var(--bs)}
   #pakiety .price-card--choice .package-detail:last-child{padding:.6rem 0;border-left:0;border-bottom:0}
   #pakiety .price-card--choice .price-btns{grid-column:auto;max-width:none}
-  .audit-deliverables{padding:1.25rem 0 0;border-left:0;border-top:1px solid var(--bs)}
+  .audit-cta-panel{padding:1.35rem 0}
+  .audit-cta-main{padding-right:0}
+  .audit-deliverables{padding:1.1rem;border:1px solid var(--brand-border-soft)}
   .maker-trust{gap:1.25rem}
+  .maker-trust-copy{padding-right:0}
 }
 @media(max-width:640px){
   .section{padding-top:2.75rem;padding-bottom:2.75rem}
@@ -1421,15 +1454,20 @@ body{
   .home-faq-item summary{padding:1rem .1rem}
   .home-faq-answer{padding:0 2.6rem 1rem .1rem}
   .maker-trust{padding:1.4rem 0}
+  .maker-trust-points{grid-template-columns:1fr}
+  .contact-channels-stack,.contact-trust{grid-template-columns:1fr}
+  .contact-channels-stack .cch-wa{grid-column:auto}
   .contact-form-card{box-shadow:var(--sh1)}
   .cpkg{grid-template-columns:1.6rem minmax(0,1fr);column-gap:.65rem;padding:.75rem}
+  .cpkg:not(.sel){grid-template-areas:'icon name';align-items:center;min-height:3.2rem}
+  .cpkg:not(.sel) .cpkg-meta{display:none}
   .audit-cta-panel .eyebrow{margin-bottom:.65rem}
   .audit-cta-panel h2{margin-bottom:.7rem}
   .audit-cta-panel .audit-cta-lead{margin-bottom:.85rem}
   .audit-cta-actions{margin-bottom:.7rem}
   .audit-cta-panel .audit-cta-microcopy{font-size:.72rem;line-height:1.45}
   .audit-benefit-pills li{min-height:1.8rem;padding:.32rem .5rem}
-  .audit-deliverables{padding-top:.9rem}
+  .audit-deliverables{padding:1rem}
   .audit-cta-panel .audit-deliverables-intro{margin-bottom:.5rem}
   .audit-deliverable{padding:.58rem .05rem}
   .audit-deliverable p{font-size:.72rem;line-height:1.42}
@@ -1769,17 +1807,20 @@ body{
 <!-- ── KTO POPRAWIA OFERTĘ ── -->
 <section class="section section--compact maker-section" aria-labelledby="maker-trust-heading">
   <div class="maker-trust">
-    <div>
+    <div class="maker-trust-copy">
       <div class="eyebrow">Praktyczne studio marketplace</div>
       <h2 id="maker-trust-heading">Kto poprawia Twoją ofertę?</h2>
       <p>OfertaStudio to praktyczne studio poprawy ofert Allegro i OLX. Zamiast sprzedawać gotowy pakiet na ślepo, najpierw sprawdzam, co w ofercie realnie blokuje zrozumienie produktu: zdjęcie główne, galeria, tytuł, opis, parametry albo układ informacji.</p>
     </div>
-    <ul class="maker-trust-points">
-      <li>bez fikcyjnych wyników sprzedaży</li>
-      <li>bez wciskania pełnego zakresu na start</li>
-      <li>z materiałami gotowymi do wdrożenia</li>
-      <li>z naciskiem na to, co kupujący widzi jako pierwsze</li>
-    </ul>
+    <div class="maker-trust-method">
+      <div class="maker-trust-method-label">Zasady współpracy</div>
+      <ul class="maker-trust-points">
+        <li>bez fikcyjnych wyników sprzedaży</li>
+        <li>bez wciskania pełnego zakresu na start</li>
+        <li>z materiałami gotowymi do wdrożenia</li>
+        <li>z naciskiem na to, co kupujący widzi jako pierwsze</li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -1839,7 +1880,7 @@ body{
       </div>
       <form id="contactForm" name="kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
         <input type="hidden" name="form-name" value="kontakt">
-        <div hidden aria-hidden="true"><input type="text" name="bot-field" tabindex="-1" autocomplete="off" aria-label="Pole kontrolne"></div>
+        <div class="form-honeypot" hidden aria-hidden="true"><input type="text" name="bot-field" tabindex="-1" autocomplete="off" aria-hidden="true"></div>
         <div class="cform-body">
 
           <div class="cfield-row">
@@ -1857,8 +1898,8 @@ body{
 
           <div class="cfield">
             <div class="cfield-label" id="interest-label">Od czego chcesz zacząć? <span class="cfield-req">*</span></div>
-            <div class="cfield-note">Wybierz orientacyjnie. Jeśli nie wiesz, wybierz mini audyt albo pomoc w wyborze zakresu. Dokładną cenę potwierdzę po sprawdzeniu materiałów.</div>
-            <div class="cpkg-grid" id="pkgGrid" role="radiogroup" aria-labelledby="interest-label" aria-describedby="interest-error">
+            <div class="cfield-note" id="interest-help">Wybierz orientacyjnie. Jeśli nie wiesz, wybierz mini audyt albo pomoc w wyborze zakresu. Dokładną cenę potwierdzę po sprawdzeniu materiałów.</div>
+            <div class="cpkg-grid" id="pkgGrid" role="radiogroup" aria-labelledby="interest-label" aria-describedby="interest-help interest-error">
               <label class="cpkg sel" id="pkg-start">
                 <input type="radio" name="zainteresowanie" value="Mini audyt — 0 zł" checked required>
                 <span class="cpkg-icon" aria-hidden="true">01</span>
@@ -2044,8 +2085,8 @@ window.addEventListener('load',()=>{
 const floatingActions=document.querySelectorAll('.sticky-cta,.mobile-sticky-cta');
 if(floatingActions.length&&'IntersectionObserver' in window){
   const desktopMedia=window.matchMedia('(min-width:1025px)');
-  const desktopSuppressors=document.querySelectorAll('.hero,#pakiety,.case-studies-section,#proces,#mini-audyt,#kontakt,footer');
-  const mobileSuppressors=document.querySelectorAll('.hero,#pakiety,.case-studies-section,#proces,#faq,#mini-audyt,#kontakt,footer');
+  const desktopSuppressors=document.querySelectorAll('.hero,#pakiety,.case-studies-section,#proces,#mini-audyt,.maker-section,#kontakt,footer');
+  const mobileSuppressors=document.querySelectorAll('.hero,#pakiety,.case-studies-section,#proces,#faq,#mini-audyt,.maker-section,#kontakt,footer');
   const desktopVisible=new Set();
   const mobileVisible=new Set();
   const syncFloatingActions=()=>{
