@@ -1271,7 +1271,11 @@ body{
 .hero--single{min-height:min(700px,76vh)}
 .hero-ctas{display:flex;flex-direction:row;align-items:stretch;justify-content:flex-start;gap:.75rem;flex-wrap:nowrap;width:fit-content;max-width:100%}
 .btn-hero-primary,.btn-hero-ghost{min-height:3.15rem}
-.btn-hero-ghost{padding:.82rem 1.35rem}
+.btn-hero-primary{font-weight:800;padding:.9rem 1.7rem}
+.btn-hero-primary:focus-visible{box-shadow:0 0 0 4px var(--brand-bg),0 8px 24px rgba(37,99,235,.3)}
+.btn-hero-ghost{padding:.82rem 1.3rem;background:transparent;border-color:var(--brand-border-soft);box-shadow:none}
+.btn-hero-ghost:hover{background:var(--brand-bg);box-shadow:none}
+.btn-hero-ghost:focus-visible{border-color:var(--brand-border);background:var(--brand-bg);box-shadow:none}
 
 /* Reassurance: one decision card and four calm principles. */
 .trust-benefit-grid{grid-template-columns:minmax(330px,.95fr) minmax(0,1.05fr);gap:0 clamp(1.5rem,4vw,3.5rem)}
