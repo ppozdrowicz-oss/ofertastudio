@@ -228,22 +228,26 @@
       .map(([id, key]) => ({ id, key, el: document.getElementById(id) }))
       .filter(item => item.el)
       .sort((a, b) => a.el.offsetTop - b.el.offsetTop);
-    if (!sections.length || !('IntersectionObserver' in window)) return;
+    if (!sections.length) return;
     const navLinks = () => document.querySelectorAll('[data-nav-key]');
     const navHeight = () => Math.ceil(document.querySelector('.site-nav')?.getBoundingClientRect().height || 0);
-    const setActive = key => navLinks().forEach(link => {
-      const active = link.dataset.navKey === key;
-      link.classList.toggle('active', active);
-      if (active) link.setAttribute('aria-current', 'location');
-      else link.removeAttribute('aria-current');
-    });
-    const currentSection = () => {
-      const probe = navHeight() + Math.min(180, window.innerHeight * .28);
-      const containing = sections.find(section => {
-        const rect = section.el.getBoundingClientRect();
-        return rect.top <= probe && rect.bottom > probe;
+    let activeKey = null;
+    const setActive = key => {
+      if (key === activeKey) return;
+      activeKey = key;
+      navLinks().forEach(link => {
+        const active = link.dataset.navKey === key;
+        link.classList.toggle('active', active);
+        if (active) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
       });
-      return containing || null;
+    };
+    const currentSection = () => {
+      const probe = window.scrollY + navHeight() + Math.min(180, window.innerHeight * .28);
+      return sections.find(section => {
+        const top = section.el.offsetTop;
+        return probe >= top && probe < top + section.el.offsetHeight;
+      }) || null;
     };
     let ticking = false;
     const syncActive = () => {
@@ -256,11 +260,14 @@
       ticking = true;
       requestAnimationFrame(syncActive);
     };
-    const observer = new IntersectionObserver(scheduleSync, { threshold: [0, .12, .35, .65], rootMargin: `-${navHeight() + 8}px 0px -58% 0px` });
-    sections.forEach(section => observer.observe(section.el));
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(scheduleSync, { threshold: [0, .12, .35, .65], rootMargin: `-${navHeight() + 8}px 0px -58% 0px` });
+      sections.forEach(section => observer.observe(section.el));
+    }
     window.addEventListener('scroll', scheduleSync, { passive: true });
     window.addEventListener('resize', scheduleSync);
     window.addEventListener('hashchange', scheduleSync);
+    window.addEventListener('load', scheduleSync, { once: true });
     scheduleSync();
   }
 

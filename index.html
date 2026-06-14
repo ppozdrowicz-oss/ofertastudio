@@ -204,7 +204,7 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px soli
 .price-btn:focus-visible,.btn-p:focus-visible,.btn-s:focus-visible,
 .btn-nav:focus-visible,.btn-hero-primary:focus-visible,
 .btn-hero-wa:focus-visible,.btn-hero-ghost:focus-visible,
-.sticky-btn:focus-visible,.ch-item:focus-visible,.wa-fab:focus-visible{
+.sticky-btn:focus-visible,.ch-item:focus-visible,.mobile-sticky-cta:focus-visible{
   outline:2px solid var(--focus);outline-offset:3px;
 }
 .skip-link{position:fixed;top:.75rem;left:.75rem;z-index:1000;transform:translateY(-150%);background:var(--brand);color:#fff;padding:.75rem 1rem;border-radius:.625rem;font-weight:800;text-decoration:none;box-shadow:var(--sh3)}
@@ -223,11 +223,14 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px soli
 .sticky-btn:hover{background:var(--brand2);transform:translateY(-1px)}
 [data-theme="dark"] .sticky-cta{border-color:var(--b);background:var(--s2)}
 
-/* WhatsApp FAB (mobile only) */
-.wa-fab{display:none;position:fixed;bottom:1.25rem;right:1.25rem;z-index:200;width:3.25rem;height:3.25rem;border-radius:50%;background:var(--wa);box-shadow:0 4px 20px rgba(37,211,102,.45);align-items:center;justify-content:center;text-decoration:none;transition:transform .2s,box-shadow .2s,opacity .2s,visibility .2s}
-.wa-fab.is-hidden{visibility:hidden;opacity:0;transform:translateY(calc(100% + 1.5rem));pointer-events:none}
-.wa-fab:hover{transform:scale(1.07);box-shadow:0 6px 28px rgba(37,211,102,.55)}
-.wa-fab svg{width:1.625rem;height:1.625rem;fill:#fff}
+/* Compact audit CTA (tablet and mobile) */
+.mobile-sticky-cta{display:none;position:fixed;right:max(.875rem,env(safe-area-inset-right));bottom:max(.875rem,env(safe-area-inset-bottom));z-index:200;align-items:center;gap:.65rem;max-width:calc(100vw - 1.75rem);min-height:2.875rem;padding:.35rem .4rem .35rem .8rem;border:1px solid var(--brand-border-soft);border-radius:var(--radius-pill);background:var(--s1);color:var(--t1);box-shadow:var(--sh3);text-decoration:none;transition:opacity .2s ease,transform .2s ease,visibility .2s ease,border-color .2s ease}
+.mobile-sticky-cta.is-hidden{visibility:hidden;opacity:0;transform:translateY(calc(100% + 1.5rem));pointer-events:none}
+.mobile-sticky-cta:hover{transform:translateY(-1px);border-color:var(--brand-border)}
+.mobile-sticky-copy{font-size:.7rem;font-weight:700;line-height:1.2;white-space:nowrap}
+.mobile-sticky-copy strong{color:var(--brand);font-weight:800}
+.mobile-sticky-arrow{display:grid;place-items:center;flex:0 0 auto;width:2rem;height:2rem;border-radius:50%;background:var(--action);color:#fff;font-family:var(--font-mono);font-size:.85rem;font-weight:800}
+[data-theme="dark"] .mobile-sticky-cta{background:var(--s2);border-color:var(--b)}
 
 /* ── LAYOUT ── */
 .page{position:relative;z-index:1}
@@ -463,7 +466,7 @@ textarea.cta-input{min-height:110px;resize:vertical;flex:none;width:100%}
   .portfolio-grid{grid-template-columns:1fr}
   .section:not(.hero),.band,footer{content-visibility:visible;contain-intrinsic-size:auto}
   .sticky-cta{display:none}
-  .wa-fab{display:flex}
+  .mobile-sticky-cta{display:flex}
   /* hero na tablecie */
   .hero{grid-template-columns:1fr;gap:2rem;padding:6rem 1.5rem 3rem}
   .metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
@@ -834,8 +837,8 @@ select.cinput{cursor:pointer}
 @media(max-width:640px){
   html{scroll-padding-top:4rem}
   body{font-size:.975rem}
-  .wa-fab{right:1rem;bottom:calc(1rem + env(safe-area-inset-bottom));width:3.125rem;height:3.125rem}
-  .wa-fab ~ .site-footer{padding-bottom:calc(5.5rem + env(safe-area-inset-bottom))}
+  .mobile-sticky-cta{right:max(.75rem,env(safe-area-inset-right));bottom:max(.75rem,env(safe-area-inset-bottom));min-height:2.75rem;padding-left:.7rem}
+  .mobile-sticky-cta ~ .site-footer{padding-bottom:calc(5rem + env(safe-area-inset-bottom))}
 
   .section{padding:2.25rem 1rem}
   .hero{padding:5.25rem 1rem 2rem;gap:1.5rem}
@@ -1266,7 +1269,7 @@ body{
 #pakiety{position:relative;isolation:isolate;background:var(--s2);box-shadow:0 0 0 100vmax var(--s2);clip-path:inset(0 -100vmax)}
 #pakiety .s-head{margin-bottom:2rem}
 .hero--single{min-height:min(700px,76vh)}
-.hero-ctas{display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:.75rem;flex-wrap:nowrap;width:fit-content;max-width:100%}
+.hero-ctas{display:flex;flex-direction:row;align-items:stretch;justify-content:flex-start;gap:.75rem;flex-wrap:nowrap;width:fit-content;max-width:100%}
 .btn-hero-primary,.btn-hero-ghost{min-height:3.15rem}
 .btn-hero-ghost{padding:.82rem 1.35rem}
 
@@ -1290,12 +1293,13 @@ body{
 
 /* Pricing: clearer hierarchy and a stronger outcome line. */
 .package-grid{gap:1rem}
-.price-card{padding:1.5rem;border-top:1px solid var(--bs);box-shadow:none}
+.price-card{padding:1.4rem;border-top:1px solid var(--bs);box-shadow:none}
 .price-card:hover{transform:translateY(-2px)}
-.price-h{min-height:3rem;margin-bottom:.15rem}
-.price-for{margin-bottom:1rem}
-.package-details{gap:.65rem;margin-bottom:1.15rem}
-.package-detail{padding-bottom:.65rem}
+.price-h{min-height:2.75rem;margin-bottom:.1rem}
+.price-for{margin-bottom:.85rem;font-size:.84rem;line-height:1.58}
+.package-details{gap:.55rem;margin-bottom:1rem}
+.package-detail{padding-bottom:.55rem}
+.package-detail span{line-height:1.5}
 .package-detail--effect{margin-top:.05rem;padding:.75rem .8rem;border:1px solid var(--brand-border-soft);border-radius:var(--radius-md);background:var(--brand-bg)}
 .package-detail--effect strong{color:var(--brand)}
 .price-btn{min-height:2.75rem;box-shadow:none}
@@ -1349,6 +1353,12 @@ body{
   .price-card--choice{grid-template-columns:minmax(220px,.75fr) minmax(0,1.25fr)}
   #pakiety .price-card--choice .price-btns{grid-column:1/-1;max-width:24rem}
 }
+@media(min-width:641px) and (max-width:820px){
+  .hero-ctas{width:100%}
+  .hero-ctas>a{align-self:stretch}
+  .btn-hero-primary{flex:1.45}
+  .btn-hero-ghost{flex:.8}
+}
 @media(max-width:760px){
   .section{padding-top:3.25rem;padding-bottom:3.25rem}
   .hero--single{min-height:auto}
@@ -1368,15 +1378,35 @@ body{
   .section{padding-top:2.75rem;padding-bottom:2.75rem}
   .hero-ctas{display:grid;grid-template-columns:1fr;width:100%}
   .btn-hero-primary,.btn-hero-ghost{width:100%;justify-content:center;text-align:center}
-  .price-card{padding:1.1rem}
+  .price-card{padding:1rem}
+  .price-name{margin-bottom:.4rem}
+  .price-line{min-height:0;margin:.05rem 0 .65rem}
+  .price-line .price-val{font-size:1.75rem}
+  .price-h{font-size:1rem;line-height:1.3}
+  .price-divider{margin-bottom:.75rem}
+  .price-for{margin-bottom:.7rem;font-size:.8rem;line-height:1.5}
+  .package-details{gap:.45rem;margin-bottom:.8rem}
+  .package-detail{padding-bottom:.45rem}
+  .package-detail span{font-size:.78rem;line-height:1.45}
   .price-h{min-height:0}
-  .package-detail--effect{padding:.7rem}
+  .package-detail--effect{padding:.6rem .65rem}
+  .price-btn{min-height:2.625rem;font-size:.84rem}
   .pricing-start-note{padding:.75rem 0 .75rem 1rem}
   .home-faq-item summary{padding:1rem .1rem}
   .home-faq-answer{padding:0 2.6rem 1rem .1rem}
   .maker-trust{padding:1.4rem 0}
   .contact-form-card{box-shadow:var(--sh1)}
   .cpkg{grid-template-columns:1.6rem minmax(0,1fr);column-gap:.65rem;padding:.75rem}
+  .audit-cta-panel .eyebrow{margin-bottom:.65rem}
+  .audit-cta-panel h2{margin-bottom:.7rem}
+  .audit-cta-panel .audit-cta-lead{margin-bottom:.85rem}
+  .audit-cta-actions{margin-bottom:.7rem}
+  .audit-cta-panel .audit-cta-microcopy{font-size:.72rem;line-height:1.45}
+  .audit-benefit-pills li{min-height:1.8rem;padding:.32rem .5rem}
+  .audit-deliverables{padding-top:.9rem}
+  .audit-cta-panel .audit-deliverables-intro{margin-bottom:.5rem}
+  .audit-deliverable{padding:.58rem .05rem}
+  .audit-deliverable p{font-size:.72rem;line-height:1.42}
 }
 
 </style>
@@ -1386,9 +1416,10 @@ body{
 <a class="skip-link" href="#main-content">Przejdź do treści</a>
 <div class="grid-bg"></div>
 
-<!-- WhatsApp FAB (mobile) -->
-<a href="https://wa.me/48791162938?text=Cześć,%20chcę%20poprawić%20ofertę%20Allegro%20lub%20OLX." class="wa-fab" aria-label="Napisz na WhatsApp" rel="noopener">
-  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+<!-- Compact mini-audit CTA (tablet and mobile) -->
+<a href="#kontakt" class="mobile-sticky-cta" aria-label="Przejdź do formularza mini audytu" data-event="mini_audit_click" data-location="mobile_sticky" data-package="start">
+  <span class="mobile-sticky-copy">Mini audyt <strong>0 zł</strong></span>
+  <span class="mobile-sticky-arrow" aria-hidden="true">→</span>
 </a>
 
 <!-- Sticky CTA (desktop) -->
@@ -1983,11 +2014,11 @@ window.addEventListener('load',()=>{
 });
 
 /* Keep floating actions away from inline conversion and reading sections. */
-const floatingActions=document.querySelectorAll('.sticky-cta,.wa-fab');
+const floatingActions=document.querySelectorAll('.sticky-cta,.mobile-sticky-cta');
 if(floatingActions.length&&'IntersectionObserver' in window){
   const desktopMedia=window.matchMedia('(min-width:1025px)');
   const desktopSuppressors=document.querySelectorAll('.hero,#pakiety,.case-studies-section,#proces,#mini-audyt,#kontakt,footer');
-  const mobileSuppressors=document.querySelectorAll('.hero,.trust-section,.problem-section,#pakiety,.case-studies-section,#proces,#faq,#mini-audyt,#kontakt,footer');
+  const mobileSuppressors=document.querySelectorAll('.hero,#pakiety,.case-studies-section,#proces,#faq,#mini-audyt,#kontakt,footer');
   const desktopVisible=new Set();
   const mobileVisible=new Set();
   const syncFloatingActions=()=>{
