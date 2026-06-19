@@ -1825,6 +1825,363 @@ input.cinput:hover,select.cinput:hover,textarea.cinput:hover{
   .hero-trust span{min-height:1.6rem;padding:.28rem .42rem;font-size:.66rem}
 }
 
+/* ── PRICING DECISION UX POLISH ── */
+#pakiety .s-head{
+  max-width:780px;
+  margin-bottom:clamp(1.6rem,3vw,2.15rem);
+}
+#pakiety .package-grid{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:.9rem;
+  align-items:stretch;
+}
+#pakiety .price-card{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  padding:1.05rem;
+  border:1px solid var(--bs);
+  border-radius:var(--ui-radius-card);
+  background:linear-gradient(180deg,var(--s1),rgba(37,99,235,.018));
+  box-shadow:none;
+  overflow:hidden;
+}
+#pakiety .price-card::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:3px;
+  background:linear-gradient(90deg,var(--brand),transparent 68%);
+  opacity:.5;
+}
+#pakiety .price-card:hover{
+  border-color:var(--brand-border-soft);
+  box-shadow:var(--sh1);
+}
+#pakiety .subscription-card{
+  background:linear-gradient(180deg,var(--s1),var(--brand-bg));
+}
+#pakiety .price-name{
+  width:max-content;
+  max-width:100%;
+  min-height:1.55rem;
+  margin:0 0 .62rem;
+  padding:.3rem .55rem;
+  border:1px solid var(--brand-border-soft);
+  border-radius:var(--radius-pill);
+  background:var(--brand-bg);
+  color:var(--brand);
+  font-size:.58rem;
+  line-height:1.1;
+  letter-spacing:.1em;
+}
+#pakiety .price-line{
+  min-height:2rem;
+  margin:0 0 .35rem;
+  align-items:flex-end;
+  gap:.25rem .45rem;
+}
+#pakiety .price-line .price-val,
+#pakiety .price-line .price-val-free{
+  margin:0;
+  font-size:clamp(1.55rem,2.25vw,1.95rem);
+  line-height:.98;
+  letter-spacing:-.045em;
+}
+#pakiety .price-unit{
+  margin-bottom:.08rem;
+  font-size:.72rem;
+  font-weight:800;
+  color:var(--t3);
+}
+#pakiety .price-h{
+  min-height:0;
+  margin:0 0 .78rem;
+  padding:0 0 .7rem;
+  border-bottom:1px solid var(--bs);
+  font-size:.98rem;
+  line-height:1.32;
+  letter-spacing:-.015em;
+}
+#pakiety .price-for,
+#pakiety .package-detail{
+  display:grid;
+  grid-template-columns:5.35rem minmax(0,1fr);
+  gap:.6rem;
+  margin:0;
+  padding:.52rem 0;
+  border:0;
+  border-top:1px solid var(--bs);
+  color:var(--t2);
+  font-size:.76rem;
+  line-height:1.45;
+}
+#pakiety .price-for strong,
+#pakiety .package-detail strong{
+  margin:0;
+  padding-top:.05rem;
+  color:var(--t3);
+  font-family:var(--font-mono);
+  font-size:.54rem;
+  font-weight:800;
+  letter-spacing:.09em;
+  line-height:1.3;
+  text-transform:uppercase;
+}
+#pakiety .package-details{
+  display:grid;
+  gap:0;
+  margin:0 0 .82rem;
+}
+#pakiety .package-detail span{
+  color:var(--t2);
+  font-size:.76rem;
+  line-height:1.45;
+}
+#pakiety .package-detail--effect{
+  grid-template-columns:5.35rem minmax(0,1fr);
+  margin:.08rem 0 0;
+  padding:.65rem .72rem;
+  border:1px solid var(--brand-border-soft);
+  border-radius:var(--radius-lg);
+  background:var(--brand-bg);
+}
+#pakiety .package-detail--effect strong{
+  color:var(--brand);
+}
+#pakiety .package-detail--effect span{
+  color:var(--t1);
+  font-weight:800;
+}
+#pakiety .price-btns{
+  gap:.45rem;
+  margin-top:auto;
+  padding-top:.05rem;
+}
+#pakiety .price-btn{
+  min-height:2.62rem;
+  padding:.68rem .9rem;
+  border-radius:var(--radius-lg);
+  font-size:.82rem;
+  line-height:1.22;
+  box-shadow:0 7px 16px rgba(37,99,235,.18);
+}
+#pakiety .price-btn:hover{
+  box-shadow:0 10px 22px rgba(37,99,235,.24);
+}
+#pakiety .price-btn:focus-visible{
+  outline:2px solid var(--focus);
+  outline-offset:3px;
+  box-shadow:var(--ui-focus-ring),0 8px 20px rgba(37,99,235,.22);
+}
+#pakiety .price-card--choice{
+  grid-column:1/-1;
+  display:grid;
+  grid-template-columns:minmax(190px,.58fr) minmax(0,1.35fr) minmax(210px,.48fr);
+  gap:clamp(1rem,2.4vw,1.8rem);
+  align-items:center;
+  padding:1.15rem 1.25rem;
+  background:linear-gradient(135deg,var(--s1),var(--brand-bg));
+  border-color:var(--brand-border-soft);
+}
+#pakiety .price-card--choice .price-line{
+  margin-bottom:.45rem;
+}
+#pakiety .price-card--choice .price-h{
+  margin:0;
+  padding:0;
+  border:0;
+}
+#pakiety .price-card--choice .price-for{
+  padding-top:0;
+  border-top:0;
+}
+#pakiety .price-card--choice .package-details{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:.65rem;
+  margin:0;
+}
+#pakiety .price-card--choice .package-detail{
+  grid-template-columns:1fr;
+  gap:.15rem;
+  padding:.62rem .72rem;
+  border:1px solid var(--bs);
+  border-radius:var(--radius-lg);
+  background:var(--s1);
+}
+#pakiety .price-card--choice .package-detail:last-child{
+  padding:.62rem .72rem;
+  border:1px solid var(--brand-border-soft);
+  background:var(--brand-bg);
+}
+#pakiety .price-card--choice .price-btns{
+  width:100%;
+  max-width:none;
+}
+#pakiety .pricing-explainer{
+  display:grid;
+  grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);
+  gap:0;
+  margin-top:1.25rem;
+  padding:1.35rem 0;
+  border-top:1px solid var(--bs);
+  border-bottom:1px solid var(--bs);
+}
+#pakiety .pricing-explainer-main,
+#pakiety .pricing-help{
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+}
+#pakiety .pricing-explainer-main{
+  padding-right:clamp(1.25rem,3vw,2.2rem);
+}
+#pakiety .pricing-help{
+  padding-left:clamp(1.25rem,3vw,2.2rem);
+  border-left:1px solid var(--bs);
+}
+#pakiety .pricing-explainer h3{
+  margin-bottom:.5rem;
+  font-size:clamp(1.15rem,1.8vw,1.45rem);
+}
+#pakiety .pricing-explainer p{
+  max-width:760px;
+  margin-bottom:.9rem;
+  font-size:.86rem;
+  line-height:1.62;
+}
+#pakiety .pricing-scope-list{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:.45rem .6rem;
+  margin-bottom:1rem;
+}
+#pakiety .pricing-scope-list li{
+  min-width:0;
+  padding:.45rem .55rem;
+  border:1px solid var(--bs);
+  border-radius:var(--radius-md);
+  background:var(--s1);
+  font-size:.78rem;
+  line-height:1.38;
+}
+#pakiety .pricing-help .btn-s,
+#pakiety .pricing-explainer-main .btn-p{
+  min-height:2.62rem;
+  padding:.68rem 1rem;
+  font-size:.84rem;
+}
+#pakiety .pricing-start-note{
+  max-width:980px;
+  margin:1rem 0 0;
+  padding:.72rem 0 .72rem .95rem;
+  border:0;
+  border-left:2px solid var(--brand);
+  border-radius:0;
+  background:transparent;
+  color:var(--t3);
+  font-size:.78rem;
+  line-height:1.58;
+  text-align:left;
+}
+[data-theme="dark"] #pakiety .price-card{
+  background:linear-gradient(180deg,var(--s1),rgba(255,255,255,.012));
+}
+[data-theme="dark"] #pakiety .subscription-card,
+[data-theme="dark"] #pakiety .price-card--choice{
+  background:linear-gradient(135deg,var(--s1),var(--brand-bg));
+}
+[data-theme="dark"] #pakiety .price-card--choice .package-detail,
+[data-theme="dark"] #pakiety .pricing-scope-list li{
+  background:rgba(255,255,255,.018);
+  border-color:var(--bs);
+}
+[data-theme="dark"] #pakiety .package-detail--effect,
+[data-theme="dark"] #pakiety .price-card--choice .package-detail:last-child{
+  background:var(--brand-bg);
+  border-color:var(--brand-border-soft);
+}
+@media(max-width:1024px){
+  #pakiety .package-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #pakiety .price-card--choice{grid-template-columns:minmax(210px,.7fr) minmax(0,1.3fr)}
+  #pakiety .price-card--choice .price-btns{grid-column:1/-1;max-width:22rem}
+  #pakiety .pricing-explainer{grid-template-columns:1fr}
+  #pakiety .pricing-explainer-main{padding-right:0}
+  #pakiety .pricing-help{margin-top:1.05rem;padding:1.05rem 0 0;border-left:0;border-top:1px solid var(--bs)}
+}
+@media(max-width:760px){
+  #pakiety .price-card--choice{grid-template-columns:1fr;gap:.9rem}
+  #pakiety .price-card--choice .package-details{grid-template-columns:1fr}
+  #pakiety .price-card--choice .price-btns{grid-column:auto;max-width:none}
+}
+@media(max-width:640px){
+  #pakiety .s-head{margin-bottom:1.35rem}
+  #pakiety .package-grid{grid-template-columns:1fr;gap:.75rem}
+  #pakiety .price-card{padding:.9rem}
+  #pakiety .price-name{margin-bottom:.48rem}
+  #pakiety .price-line{margin-bottom:.32rem}
+  #pakiety .price-line .price-val,
+  #pakiety .price-line .price-val-free{font-size:1.58rem}
+  #pakiety .price-h{margin-bottom:.58rem;padding-bottom:.55rem;font-size:.92rem;line-height:1.28}
+  #pakiety .price-for,
+  #pakiety .package-detail,
+  #pakiety .package-detail--effect{
+    grid-template-columns:4.55rem minmax(0,1fr);
+    gap:.5rem;
+  }
+  #pakiety .price-for,
+  #pakiety .package-detail{
+    padding:.44rem 0;
+    font-size:.73rem;
+    line-height:1.38;
+  }
+  #pakiety .package-detail span{font-size:.73rem;line-height:1.38}
+  #pakiety .package-detail--effect{padding:.58rem .62rem}
+  #pakiety .price-btn{min-height:2.52rem;font-size:.8rem}
+  #pakiety .pricing-explainer{margin-top:1rem;padding:1.05rem 0}
+  #pakiety .pricing-scope-list{grid-template-columns:1fr;gap:.4rem}
+  #pakiety .pricing-scope-list li{padding:.42rem .5rem;font-size:.76rem}
+  #pakiety .pricing-help{margin-top:.9rem;padding-top:.9rem}
+  #pakiety .pricing-start-note{padding:.62rem 0 .62rem .75rem;font-size:.74rem}
+}
+@media(max-width:360px){
+  #pakiety .package-grid{gap:.65rem}
+  #pakiety .price-card{padding:.72rem}
+  #pakiety .price-name{min-height:1.45rem;margin-bottom:.38rem;padding:.26rem .48rem;font-size:.54rem}
+  #pakiety .price-line{min-height:1.75rem;margin-bottom:.24rem}
+  #pakiety .price-line .price-val,
+  #pakiety .price-line .price-val-free{font-size:1.42rem}
+  #pakiety .price-unit{font-size:.68rem}
+  #pakiety .price-h{margin-bottom:.45rem;padding-bottom:.45rem;font-size:.86rem;line-height:1.24}
+  #pakiety .price-for,
+  #pakiety .package-detail,
+  #pakiety .package-detail--effect{
+    grid-template-columns:4.35rem minmax(0,1fr);
+    gap:.42rem;
+  }
+  #pakiety .price-for,
+  #pakiety .package-detail{
+    padding:.34rem 0;
+    font-size:.7rem;
+    line-height:1.32;
+  }
+  #pakiety .package-detail strong,
+  #pakiety .price-for strong{font-size:.5rem}
+  #pakiety .package-detail span{font-size:.7rem;line-height:1.32}
+  #pakiety .package-detail--effect{padding:.45rem .48rem}
+  #pakiety .price-btn{min-height:2.38rem;padding:.55rem .72rem;font-size:.76rem}
+}
+@media(hover:none){
+  #pakiety .price-card:hover,
+  #pakiety .price-btn:hover{
+    transform:none;
+  }
+}
+
 </style>
 <script src="/analytics.js" defer></script>
 </head>
@@ -1949,42 +2306,42 @@ input.cinput:hover,select.cinput:hover,textarea.cinput:hover{
     <div class="card price-card">
       <div class="price-name">Mini audyt</div><div class="price-line"><span class="price-val price-val-free">0 zł</span></div><div class="price-h">3 konkretne poprawki na start</div><div class="price-divider"></div>
       <p class="price-for"><strong>Dla kogo</strong>Gdy nie wiesz jeszcze, od czego zacząć.</p>
-      <div class="package-details"><div class="package-detail"><strong>Na start</strong><span>Diagnoza jednej oferty, zdjęcia albo pomysłu.</span></div><div class="package-detail package-detail--effect"><strong>Efekt</strong><span>3 konkretne poprawki i kierunek dalszych działań.</span></div></div>
+      <div class="package-details"><div class="package-detail"><strong>Zakres startowy</strong><span>Diagnoza jednej oferty, zdjęcia albo pomysłu.</span></div><div class="package-detail package-detail--effect"><strong>Efekt</strong><span>3 konkretne poprawki i kierunek dalszych działań.</span></div></div>
       <div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="start" data-interest="Mini audyt — 0 zł" data-message="Interesuje mnie mini audyt.">Wyślij link do analizy</a></div>
     </div>
     <div class="card price-card">
       <div class="price-name">Tekst Start</div><div class="price-line"><span class="price-val">od 79 zł</span><span class="price-unit">/ 1 oferta</span></div><div class="price-h">Szybka poprawa tytułu i pierwszego układu treści</div><div class="price-divider"></div>
       <p class="price-for"><strong>Dla kogo</strong>Gdy tytuł i początek opisu nie pokazują wartości produktu.</p>
-      <div class="package-details"><div class="package-detail"><strong>Na start</strong><span>Tytuł, krótki lead i 3–5 kluczowych punktów.</span></div><div class="package-detail package-detail--effect"><strong>Efekt</strong><span>Kupujący szybciej rozumie produkt i jego przewagę.</span></div></div>
+      <div class="package-details"><div class="package-detail"><strong>Zakres startowy</strong><span>Tytuł, krótki lead i 3–5 kluczowych punktów.</span></div><div class="package-detail package-detail--effect"><strong>Efekt</strong><span>Kupujący szybciej rozumie produkt i jego przewagę.</span></div></div>
       <div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="tekst_start" data-interest="Tekst Start — od 79 zł" data-message="Interesuje mnie pakiet Tekst Start.">Wybierz Tekst Start</a></div>
     </div>
     <div class="card price-card">
       <div class="price-name">Foto Start</div><div class="price-line"><span class="price-val">od 149 zł</span><span class="price-unit">/ 1 produkt</span></div><div class="price-h">Miniatura albo pierwsza poprawa galerii</div><div class="price-divider"></div>
       <p class="price-for"><strong>Dla kogo</strong>Gdy miniatura ginie, a galeria nie prowadzi kupującego.</p>
-      <div class="package-details"><div class="package-detail"><strong>Na start</strong><span>Ocena zdjęć i poprawa miniatury lub pierwszej grafiki.</span></div><div class="package-detail package-detail--effect"><strong>Efekt</strong><span>Najważniejsza cecha produktu jest widoczna od razu.</span></div></div>
+      <div class="package-details"><div class="package-detail"><strong>Zakres startowy</strong><span>Ocena zdjęć i poprawa miniatury lub pierwszej grafiki.</span></div><div class="package-detail package-detail--effect"><strong>Efekt</strong><span>Najważniejsza cecha produktu jest widoczna od razu.</span></div></div>
       <div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="foto_start" data-interest="Foto Start — od 149 zł" data-message="Interesuje mnie pakiet Foto Start.">Wybierz Foto Start</a></div>
     </div>
     <div class="card price-card">
       <div class="price-name">Oferta Start</div><div class="price-line"><span class="price-val">od 199 zł</span><span class="price-unit">/ 1 oferta</span></div><div class="price-h">Szybkie uporządkowanie jednej oferty</div><div class="price-divider"></div>
       <p class="price-for"><strong>Dla kogo</strong>Gdy jedna oferta wymaga uporządkowania kluczowych elementów.</p>
-      <div class="package-details"><div class="package-detail"><strong>Na start</strong><span>Analiza, poprawiony tytuł, skrócony układ opisu i kierunek dla zdjęć.</span></div><div class="package-detail package-detail--effect"><strong>Efekt</strong><span>Mapa poprawy jednej oferty bez zamawiania pełnej przebudowy.</span></div></div>
+      <div class="package-details"><div class="package-detail"><strong>Zakres startowy</strong><span>Analiza, poprawiony tytuł, skrócony układ opisu i kierunek dla zdjęć.</span></div><div class="package-detail package-detail--effect"><strong>Efekt</strong><span>Mapa poprawy jednej oferty bez zamawiania pełnej przebudowy.</span></div></div>
       <div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="oferta_start" data-interest="Oferta Start — od 199 zł" data-message="Interesuje mnie pakiet Oferta Start.">Wybierz Oferta Start</a></div>
     </div>
     <div class="card price-card">
       <div class="price-name">Studio Start</div><div class="price-line"><span class="price-val">od 499 zł</span></div><div class="price-h">Pierwszy standard dla małej serii produktów</div><div class="price-divider"></div>
       <p class="price-for"><strong>Dla kogo</strong>Gdy podobne produkty potrzebują wspólnego standardu prezentacji.</p>
-      <div class="package-details"><div class="package-detail"><strong>Na start</strong><span>Podstawowy standard tytułów, opisów lub kierunku galerii.</span></div><div class="package-detail package-detail--effect"><strong>Efekt</strong><span>Spójny punkt wyjścia dla małej serii produktów.</span></div></div>
+      <div class="package-details"><div class="package-detail"><strong>Zakres startowy</strong><span>Podstawowy standard tytułów, opisów lub kierunku galerii.</span></div><div class="package-detail package-detail--effect"><strong>Efekt</strong><span>Spójny punkt wyjścia dla małej serii produktów.</span></div></div>
       <div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="studio_start" data-interest="Studio Start — od 499 zł" data-message="Interesuje mnie pakiet Studio Start.">Zapytaj o Studio Start</a></div>
     </div>
     <div class="card price-card subscription-card">
       <div class="price-name">Abonament</div><div class="price-line"><span class="price-val">od 1490 zł</span><span class="price-unit">/ mies.</span></div><div class="price-h">Stała obsługa nowych i poprawianych ofert</div><div class="price-divider"></div>
       <p class="price-for"><strong>Dla kogo</strong>Gdy regularnie dodajesz lub poprawiasz oferty.</p>
-      <div class="package-details"><div class="package-detail"><strong>Na start</strong><span>Zakres po analizie liczby produktów i rytmu publikacji.</span></div><div class="package-detail package-detail--effect"><strong>Efekt</strong><span>Stałe wsparcie bez rozpoczynania każdej realizacji od zera.</span></div></div>
+      <div class="package-details"><div class="package-detail"><strong>Zakres startowy</strong><span>Zakres po analizie liczby produktów i rytmu publikacji.</span></div><div class="package-detail package-detail--effect"><strong>Efekt</strong><span>Stałe wsparcie bez rozpoczynania każdej realizacji od zera.</span></div></div>
       <div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="abonament" data-interest="Abonament — od 1490 zł / mies." data-message="Interesuje mnie stała współpraca.">Zapytaj o stałą współpracę</a></div>
     </div>
     <div class="card price-card price-card--choice">
       <div class="price-choice-summary"><div class="price-name">Nie wiem, czego potrzebuję</div><div class="price-line"><span class="price-val price-val-free">0 zł</span><span class="price-unit">na start</span></div><div class="price-h">Najpierw kierunek, potem zakres</div></div>
-      <div class="price-choice-details"><p class="price-for"><strong>Dla kogo</strong>Gdy nie wiesz jeszcze, który zakres ma sens.</p><div class="package-details"><div class="package-detail"><strong>Na start</strong><span>Krótka analiza i rekomendacja pierwszego kroku.</span></div><div class="package-detail package-detail--effect"><strong>Efekt</strong><span>Wybierasz zakres po sprawdzeniu materiału, nie na ślepo.</span></div></div></div>
+      <div class="price-choice-details"><p class="price-for"><strong>Dla kogo</strong>Gdy nie wiesz jeszcze, który zakres ma sens.</p><div class="package-details"><div class="package-detail"><strong>Zakres startowy</strong><span>Krótka analiza i rekomendacja pierwszego kroku.</span></div><div class="package-detail package-detail--effect"><strong>Efekt</strong><span>Wybierasz zakres po sprawdzeniu materiału, nie na ślepo.</span></div></div></div>
       <div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="unknown" data-interest="Nie wiem jeszcze — 0 zł na start" data-message="Potrzebuję pomocy w wyborze zakresu.">Pomóż mi wybrać zakres</a></div>
     </div>
   </div>
