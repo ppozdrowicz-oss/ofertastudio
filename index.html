@@ -1478,6 +1478,158 @@ body{
   #pakiety .price-card:hover{transform:none;box-shadow:none}
 }
 
+/* ── HOMEPAGE DESIGN SYSTEM BASELINE ── */
+:root{
+  --ui-radius-control:var(--radius-lg);
+  --ui-radius-card:calc(var(--radius-xl) + .125rem);
+  --ui-border:var(--bs);
+  --ui-border-soft:var(--brand-border-soft);
+  --ui-focus-ring:0 0 0 4px var(--brand-bg);
+  --ui-primary-shadow:0 8px 22px rgba(37,99,235,.22);
+  --ui-primary-shadow-hover:0 12px 28px rgba(37,99,235,.28);
+  --ui-card-shadow:var(--sh1);
+  --ui-card-shadow-hover:var(--sh2);
+}
+.btn-p,.btn-s,.btn-nav,.btn-hero-primary,.btn-hero-ghost,.price-btn,.case-link,.sticky-btn,.mobile-sticky-cta,.csubmit-btn,.csubmit-wa{
+  border-radius:var(--ui-radius-control);
+  transition:background-color .18s ease,border-color .18s ease,box-shadow .18s ease,transform .18s ease,color .18s ease;
+}
+.btn-p,.btn-nav,.btn-hero-primary,.price-btn-primary,.sticky-btn,.csubmit-btn{
+  background:var(--action);
+  color:var(--on-brand);
+  border-color:transparent;
+  box-shadow:var(--ui-primary-shadow);
+}
+.btn-p:hover,.btn-nav:hover,.btn-hero-primary:hover,.price-btn-primary:hover,.sticky-btn:hover,.csubmit-btn:hover:not(:disabled){
+  background:var(--action-hover);
+  color:var(--on-brand);
+  border-color:transparent;
+  box-shadow:var(--ui-primary-shadow-hover);
+}
+.btn-s,.btn-hero-ghost,.case-link,.csubmit-wa{
+  background:var(--s1);
+  color:var(--brand);
+  border-color:var(--ui-border-soft);
+  box-shadow:none;
+}
+.btn-s:hover,.btn-hero-ghost:hover,.case-link:hover,.csubmit-wa:hover{
+  background:var(--brand-bg);
+  color:var(--brand2);
+  border-color:var(--brand-border);
+  box-shadow:none;
+}
+.btn-p:focus-visible,.btn-s:focus-visible,.btn-nav:focus-visible,.btn-hero-primary:focus-visible,.btn-hero-ghost:focus-visible,
+.price-btn:focus-visible,.case-link:focus-visible,.sticky-btn:focus-visible,.mobile-sticky-cta:focus-visible,
+.csubmit-btn:focus-visible,.csubmit-wa:focus-visible,.cch:focus-visible,
+input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{
+  outline:2px solid var(--focus);
+  outline-offset:3px;
+  box-shadow:var(--ui-focus-ring);
+}
+.card,.trust-benefit--primary,.price-card,.case-featured,.case-card,.process-panel,.audit-deliverables,.contact-form-card,.cch,.cpkg,.cform-success{
+  border-radius:var(--ui-radius-card);
+  border-color:var(--ui-border);
+}
+.trust-benefit--primary,.case-featured,.case-card,.process-panel,.audit-deliverables,.contact-form-card,.cch{
+  box-shadow:var(--ui-card-shadow);
+}
+.price-card,.cpkg{
+  box-shadow:none;
+}
+.price-card:hover,.case-card:hover,.case-featured:hover,.trust-benefit--primary:hover,.process-item:hover .process-panel,.cch:hover,.cpkg:hover{
+  border-color:var(--ui-border-soft);
+  box-shadow:var(--ui-card-shadow-hover);
+}
+.eyebrow,.hero-kicker,.price-name,.problem-card-label,.case-category,.case-number,.case-featured-rank,
+.case-studies-cta-label,.process-label,.audit-preview-kicker,.maker-trust-method-label,.sticky-pill{
+  display:inline-flex;
+  align-items:center;
+  width:max-content;
+  max-width:100%;
+  min-height:1.75rem;
+  padding:.34rem .62rem;
+  border:1px solid var(--ui-border-soft);
+  border-radius:var(--radius-pill);
+  background:var(--brand-bg);
+  color:var(--brand);
+  box-shadow:none;
+  line-height:1.1;
+}
+.s-head.c .eyebrow{margin-inline:auto}
+.price-name,.case-category,.case-number,.case-featured-rank,.problem-card-label,.process-label,.case-studies-cta-label,.maker-trust-method-label{
+  font-family:var(--font-mono);
+  font-size:.62rem;
+  font-weight:800;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+}
+.hero-kicker,.sticky-pill{
+  gap:.45rem;
+  font-size:.68rem;
+  font-weight:800;
+  letter-spacing:.03em;
+}
+.audit-preview-kicker{gap:.5rem}
+.trust-primary-points li,.audit-benefit-pills li,.cpkg-icon,.audit-deliverable-number,.maker-trust-points li::before{
+  border-color:var(--ui-border-soft);
+  background:var(--brand-bg);
+  color:var(--brand);
+  box-shadow:none;
+}
+.audit-benefit-pills li{
+  min-height:2rem;
+  border-radius:var(--radius-pill);
+}
+.section{scroll-margin-top:calc(var(--nav-height) + 1.5rem)}
+.s-head{margin-bottom:clamp(1.5rem,2.8vw,2rem)}
+.s-title{text-wrap:balance}
+.s-sub{max-width:760px}
+.s-head.c .s-sub{margin-left:auto;margin-right:auto}
+input.cinput,select.cinput,textarea.cinput{
+  border-radius:var(--ui-radius-control);
+  transition:border-color .18s ease,box-shadow .18s ease,background-color .18s ease;
+}
+input.cinput:hover,select.cinput:hover,textarea.cinput:hover{
+  border-color:var(--brand-border-soft);
+}
+[data-theme="dark"] .btn-s,[data-theme="dark"] .btn-hero-ghost,[data-theme="dark"] .case-link,[data-theme="dark"] .csubmit-wa{
+  background:rgba(255,255,255,.025);
+  color:var(--brand);
+  border-color:var(--bs);
+}
+[data-theme="dark"] .btn-s:hover,[data-theme="dark"] .btn-hero-ghost:hover,[data-theme="dark"] .case-link:hover,[data-theme="dark"] .csubmit-wa:hover{
+  background:var(--brand-bg);
+  border-color:var(--brand-border-soft);
+}
+[data-theme="dark"] .eyebrow,[data-theme="dark"] .hero-kicker,[data-theme="dark"] .price-name,[data-theme="dark"] .problem-card-label,
+[data-theme="dark"] .case-category,[data-theme="dark"] .case-number,[data-theme="dark"] .case-featured-rank,
+[data-theme="dark"] .case-studies-cta-label,[data-theme="dark"] .process-label,[data-theme="dark"] .audit-preview-kicker,
+[data-theme="dark"] .maker-trust-method-label,[data-theme="dark"] .sticky-pill{
+  border-color:var(--bs);
+  background:rgba(255,255,255,.025);
+}
+@media(hover:hover){
+  .btn-p:hover,.btn-s:hover,.btn-nav:hover,.btn-hero-primary:hover,.btn-hero-ghost:hover,.price-btn:hover,.case-link:hover,.sticky-btn:hover,.csubmit-btn:hover:not(:disabled),.csubmit-wa:hover{
+    transform:translateY(-1px);
+  }
+  .price-card:hover,.case-card:hover,.case-featured:hover,.trust-benefit--primary:hover,.cch:hover,.cpkg:hover{
+    transform:translateY(-1px);
+  }
+}
+@media(max-width:640px){
+  .eyebrow,.hero-kicker,.price-name,.problem-card-label,.case-category,.case-number,.case-featured-rank,
+  .case-studies-cta-label,.process-label,.audit-preview-kicker,.maker-trust-method-label,.sticky-pill{
+    min-height:1.6rem;
+    padding:.3rem .52rem;
+  }
+}
+@media(hover:none){
+  .btn-p:hover,.btn-s:hover,.btn-nav:hover,.btn-hero-primary:hover,.btn-hero-ghost:hover,.price-btn:hover,.case-link:hover,.sticky-btn:hover,.csubmit-btn:hover:not(:disabled),.csubmit-wa:hover,
+  .price-card:hover,.case-card:hover,.case-featured:hover,.trust-benefit--primary:hover,.cch:hover,.cpkg:hover{
+    transform:none;
+  }
+}
+
 </style>
 <script src="/analytics.js" defer></script>
 </head>
