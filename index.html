@@ -800,6 +800,171 @@ select.cinput{cursor:pointer}
   .case-card .case-proof-item{grid-template-columns:1fr;gap:.2rem}
 }
 
+/* Proof showroom polish */
+.case-studies-section{
+  padding-top:clamp(3.2rem,6vw,5rem);
+  padding-bottom:clamp(3.2rem,6vw,5rem);
+}
+.case-studies-head{
+  margin-bottom:clamp(1.6rem,3vw,2.4rem);
+}
+.case-studies-showroom{
+  grid-template-columns:minmax(0,1.55fr) minmax(330px,.78fr);
+  gap:clamp(1rem,2.2vw,1.7rem);
+}
+.case-featured{
+  border-color:var(--brand-border-soft);
+  background:linear-gradient(180deg,var(--s1),rgba(37,99,235,.018));
+}
+.case-featured::after{
+  content:'';
+  position:absolute;
+  inset:auto 0 0;
+  height:34%;
+  z-index:0;
+  background:radial-gradient(70% 80% at 18% 100%,var(--brand-bg),transparent 72%);
+  pointer-events:none;
+}
+.case-featured-media,
+.case-featured-body{
+  position:relative;
+  z-index:1;
+}
+.case-featured-media{
+  padding:clamp(.65rem,1.2vw,.95rem) clamp(.65rem,1.2vw,.95rem) 0;
+}
+.pf-slider-wrap{
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.55),var(--sh1);
+}
+.case-featured-body{
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  gap:0;
+}
+.case-featured .case-meta{
+  margin-bottom:.75rem;
+}
+.case-featured-rank{
+  display:inline-flex;
+  align-items:center;
+  min-height:1.65rem;
+  padding:.26rem .58rem;
+  border:1px solid var(--bs);
+  border-radius:var(--radius-pill);
+  background:var(--s2);
+}
+.case-featured .case-title{
+  max-width:720px;
+  margin-bottom:.55rem;
+}
+.case-featured .case-intro{
+  max-width:760px;
+  font-size:.95rem;
+}
+.case-proof{
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.55);
+}
+.case-proof dd strong{
+  color:var(--t1);
+}
+.case-featured .case-link{
+  width:max-content;
+  min-height:2.7rem;
+  padding:.6rem .9rem;
+  border:1px solid var(--brand-border-soft);
+  border-radius:var(--radius-pill);
+  background:var(--brand-bg);
+}
+.case-featured .case-link:hover{
+  border-color:var(--brand-border);
+  background:var(--s1);
+}
+.case-side-stack{
+  gap:clamp(1rem,2vw,1.35rem);
+}
+.case-card{
+  border-color:var(--bs);
+  background:linear-gradient(180deg,var(--s1),rgba(37,99,235,.012));
+}
+.case-card-media{
+  height:clamp(210px,18vw,250px);
+  background:linear-gradient(145deg,#fff,var(--s2));
+}
+.case-card-media::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.52);
+  pointer-events:none;
+}
+.case-card-media img{
+  padding:.45rem;
+}
+.case-card-media--garden img{
+  padding:.15rem;
+  object-position:50% 50%;
+}
+.case-card-media--welding img{
+  padding:.7rem;
+  object-position:52% 50%;
+}
+.case-card-body{
+  padding:1.15rem 1.18rem 1rem;
+}
+.case-card .case-title{
+  margin-bottom:.45rem;
+}
+.case-card .case-intro{
+  margin-bottom:.25rem;
+}
+.case-card .case-proof{
+  margin:.75rem 0 .7rem;
+}
+.case-card .case-proof-item{
+  padding:.55rem 0;
+}
+.case-card .case-link{
+  min-height:2.35rem;
+}
+.case-studies-cta{
+  margin-top:clamp(1rem,2vw,1.35rem);
+  box-shadow:var(--sh1);
+}
+[data-theme="dark"] .case-featured,
+[data-theme="dark"] .case-card{
+  background:linear-gradient(180deg,var(--s1),rgba(255,255,255,.014));
+}
+[data-theme="dark"] .case-featured-rank{
+  background:rgba(255,255,255,.024);
+  border-color:var(--bs);
+}
+[data-theme="dark"] .case-featured .case-link,
+[data-theme="dark"] .case-card .case-link{
+  background:rgba(37,99,235,.12);
+}
+[data-theme="dark"] .case-card-media{
+  background:linear-gradient(145deg,#f8fafc,#fff);
+}
+@media(max-width:1024px){
+  .case-studies-showroom{grid-template-columns:1fr}
+  .case-side-stack{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .case-featured .case-link{width:max-content}
+}
+@media(max-width:760px){
+  .case-side-stack{grid-template-columns:1fr}
+  .case-featured .case-link{width:100%;justify-content:center}
+}
+@media(max-width:640px){
+  .case-studies-section{padding-top:2.8rem;padding-bottom:2.8rem}
+  .case-featured-media{padding:.5rem .5rem 0}
+  .pf-slider-wrap{aspect-ratio:4/3}
+  .case-featured .case-intro{font-size:.86rem}
+  .case-featured .case-link{min-height:2.55rem}
+  .case-card-media{height:auto}
+  .case-card-body{padding:1rem}
+}
+
 /* ── SECTION UTILITIES ── */
 .section--compact{padding-top:2.5rem;padding-bottom:2.5rem}
 .section--flush-bottom{padding-bottom:0}
@@ -2383,7 +2548,7 @@ input.cinput:hover,select.cinput:hover,textarea.cinput:hover{
     <article class="card case-featured">
       <div class="case-featured-media">
         <div class="pf-slider-wrap" id="pfSlider" tabindex="0" role="slider" aria-label="Porównanie zdjęcia przed i po dla Metabo PowerMaxx BS 12 BL" aria-orientation="horizontal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
-          <div class="pf-side pf-side-po"><picture><source type="image/avif" srcset="/elektronarzedzia-po-zestawwww.avif"><source type="image/webp" srcset="/elektronarzedzia-po-zestawwww.webp"><img decoding="async" loading="lazy" src="/elektronarzedzia-po-zestawwww.png" width="1672" height="941" alt="Realizacja po poprawie dla oferty Metabo PowerMaxx BS 12 BL"></picture></div>
+          <div class="pf-side pf-side-po"><picture><source type="image/avif" srcset="/elektronarzedzia-po-zestaw.avif"><source type="image/webp" srcset="/elektronarzedzia-po-zestaw.webp"><img decoding="async" loading="lazy" src="/elektronarzedzia-po-zestaw.png" width="1254" height="1254" alt="Realizacja po poprawie dla oferty Metabo PowerMaxx BS 12 BL"></picture></div>
           <div class="pf-side pf-side-przed" id="pfBefore"><picture><source type="image/avif" srcset="/elektronarzedzia-przed.avif"><source type="image/webp" srcset="/elektronarzedzia-przed.webp"><img decoding="async" loading="lazy" src="/elektronarzedzia-przed.jpg" width="1016" height="762" alt="Realizacja przed poprawą dla oferty Metabo PowerMaxx BS 12 BL"></picture></div>
           <span class="pf-tag pf-tag-b">Przed</span>
           <span class="pf-tag pf-tag-a">Po</span>
@@ -2407,13 +2572,14 @@ input.cinput:hover,select.cinput:hover,textarea.cinput:hover{
 
     <div class="case-side-stack">
       <article class="card case-card case-card--garden">
-        <div class="case-card-media case-card-media--garden"><picture><source type="image/webp" srcset="/dom-ogrod-po-front.webp"><img decoding="async" loading="lazy" src="/dom-ogrod-po-front.png" width="1672" height="941" alt="Realizacja przed i po dla produktu Gardena w kategorii dom i ogród"></picture></div>
+        <div class="case-card-media case-card-media--garden"><picture><source type="image/avif" srcset="/dom-ogrod-po-front-homepage.avif"><source type="image/webp" srcset="/dom-ogrod-po-front-homepage.webp"><img decoding="async" loading="lazy" src="/dom-ogrod-po-front-homepage.png" width="1672" height="941" alt="Realizacja po poprawie dla produktu Gardena w kategorii dom i ogród"></picture></div>
         <div class="case-card-body">
           <div class="case-meta"><span class="case-category">Dom i ogród</span><span class="case-number">#002</span></div>
           <h3 class="case-title">Gardena — prezentacja produktu</h3>
-          <p class="case-intro"><strong>Zmiana</strong>Od ogólnego widoku do detali, które odpowiadają na pytania przed zakupem.</p>
+          <p class="case-intro">Od ogólnego widoku do galerii, która tłumaczy chwyt, złącze i kontekst użycia.</p>
           <dl class="case-proof">
             <div class="case-proof-item"><dt>Problem</dt><dd>Brakowało kontekstu użycia, chwytu, trybów strumienia i złącza.</dd></div>
+            <div class="case-proof-item"><dt>Zmiana</dt><dd>Packshot, detal i ujęcia w ogrodzie prowadzą kupującego przez najważniejsze pytania.</dd></div>
             <div class="case-proof-item"><dt>Efekt</dt><dd>Kompatybilność i wygoda obsługi są czytelne bez szukania w opisie.</dd></div>
           </dl>
           <a href="/realizacje/#gardena" class="case-link" data-event="case_study_click" data-location="case_study">Zobacz case: Gardena</a>
@@ -2421,13 +2587,14 @@ input.cinput:hover,select.cinput:hover,textarea.cinput:hover{
       </article>
 
       <article class="card case-card case-card--welding">
-        <div class="case-card-media case-card-media--welding"><picture><source type="image/webp" srcset="/spawalnictwo-po-front.webp"><img decoding="async" loading="lazy" src="/spawalnictwo-po-front.png" width="1254" height="1254" alt="Realizacja przed i po dla produktu technicznego ze spawalnictwa"></picture></div>
+        <div class="case-card-media case-card-media--welding"><picture><source type="image/avif" srcset="/spawalnictwo-po-front-homepage.avif"><source type="image/webp" srcset="/spawalnictwo-po-front-homepage.webp"><img decoding="async" loading="lazy" src="/spawalnictwo-po-front-homepage.png" width="1254" height="1254" alt="Realizacja po poprawie dla produktu technicznego ze spawalnictwa"></picture></div>
         <div class="case-card-body">
           <div class="case-meta"><span class="case-category">Spawalnictwo</span><span class="case-number">#003</span></div>
           <h3 class="case-title">Produkt techniczny do marketplace</h3>
-          <p class="case-intro"><strong>Zmiana</strong>Najważniejsze parametry produktu zostały rozdzielone na czytelne ujęcia.</p>
+          <p class="case-intro">Parametry, opakowanie i pochodzenie produktu rozdzielone na czytelne ujęcia.</p>
           <dl class="case-proof">
             <div class="case-proof-item"><dt>Problem</dt><dd>Średnica, szpula i pochodzenie produktu ginęły w pierwszym kontakcie.</dd></div>
+            <div class="case-proof-item"><dt>Zmiana</dt><dd>Zdjęcie główne, detale i infografika porządkują dane techniczne przed opisem.</dd></div>
             <div class="case-proof-item"><dt>Efekt</dt><dd>Kupujący szybciej porównuje wariant i nie szuka podstawowych danych w długim opisie.</dd></div>
           </dl>
           <a href="/realizacje/#spawalnictwo" class="case-link" data-event="case_study_click" data-location="case_study">Zobacz case: Spawalnictwo</a>
