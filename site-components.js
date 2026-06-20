@@ -19,8 +19,8 @@
     </svg>`;
 
   const navItems = [
-    { key: 'uslugi', label: 'Dla kogo', href: '/#uslugi' },
-    { key: 'realizacje', label: 'Realizacje', href: '/realizacje/' },
+    { key: 'dla-kogo', label: 'Dla kogo', href: '/#dla-kogo' },
+    { key: 'realizacje', label: 'Realizacje', href: '/#realizacje' },
     { key: 'pakiety', label: 'Pakiety', href: '/#pakiety' },
     { key: 'proces', label: 'Proces', href: '/#proces' },
     { key: 'kontakt', label: 'Kontakt', href: '/#kontakt' }
@@ -44,12 +44,19 @@
     '/polityka-prywatnosci/': 'Polityka prywatności'
   };
 
+  const normalizeHashKey = hash => {
+    const key = (hash || '').replace(/^#/, '');
+    if (key === 'uslugi' || key === 'bariery') return 'dla-kogo';
+    if (key === 'realizacje-preview') return 'realizacje';
+    return key;
+  };
+
   const pageKey = () => {
     const path = window.location.pathname.replace(/\/index\.html$/, '/');
     if (path.startsWith('/realizacje')) return 'realizacje';
-    if (path === '/' && window.location.hash) return window.location.hash.slice(1);
+    if (path === '/' && window.location.hash) return normalizeHashKey(window.location.hash);
     if (path === '/') return '';
-    if (serviceLinks.some(([, href]) => path === href)) return 'uslugi';
+    if (serviceLinks.some(([, href]) => path === href)) return 'dla-kogo';
     return '';
   };
 
@@ -117,9 +124,11 @@
             <div class="foot-title">Mapa strony</div>
             <div class="foot-links" aria-label="Linki w stopce">
               <a href="/">Strona główna</a>
+              <a href="${homeHref('#dla-kogo')}">Dla kogo</a>
               ${serviceMap}
               <a href="/realizacje/">Realizacje</a>
               <a href="${homeHref('#pakiety')}">Pakiety</a>
+              <a href="${homeHref('#proces')}">Proces</a>
               <a href="/polityka-prywatnosci/">Polityka prywatności</a>
               <a href="${homeHref('#kontakt')}">Kontakt</a>
             </div>
@@ -218,7 +227,7 @@
   function bindHomeActiveSections() {
     if (!isHome()) return;
     const sectionMap = [
-      ['uslugi', 'uslugi'],
+      ['dla-kogo', 'dla-kogo'],
       ['realizacje', 'realizacje'],
       ['pakiety', 'pakiety'],
       ['proces', 'proces'],
