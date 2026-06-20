@@ -887,8 +887,11 @@ select.cinput{cursor:pointer}
   background:linear-gradient(180deg,var(--s1),rgba(37,99,235,.012));
 }
 .case-card-media{
+  padding:clamp(.55rem,1vw,.78rem);
   height:clamp(210px,18vw,250px);
-  background:linear-gradient(145deg,#fff,var(--s2));
+  background:
+    radial-gradient(80% 70% at 50% 42%,rgba(255,255,255,.95),rgba(255,255,255,.72) 58%,transparent 100%),
+    linear-gradient(145deg,#edf4fb,#f9fbff);
 }
 .case-card-media::after{
   content:'';
@@ -898,15 +901,37 @@ select.cinput{cursor:pointer}
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.52);
   pointer-events:none;
 }
+.case-card-media picture{
+  position:relative;
+  z-index:1;
+  display:block;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  border-radius:calc(var(--radius-xl) - .35rem);
+  background:#edf3fa;
+  box-shadow:inset 0 0 0 1px rgba(15,23,42,.045),0 10px 24px rgba(15,23,42,.045);
+}
 .case-card-media img{
-  padding:.45rem;
+  width:100%;
+  height:100%;
+  max-width:none;
+  max-height:none;
+  padding:0;
+  object-fit:cover;
+  transition:filter .3s ease,transform .3s ease;
 }
 .case-card-media--garden img{
-  padding:.15rem;
-  object-position:50% 50%;
+  transform:none;
+  object-position:50% 51%;
+}
+.case-card-media--welding picture{
+  position:relative;
+  inset:auto;
+  display:block;
 }
 .case-card-media--welding img{
-  padding:.7rem;
+  transform:none;
   object-position:52% 50%;
 }
 .case-card-body{
@@ -944,12 +969,20 @@ select.cinput{cursor:pointer}
   background:rgba(37,99,235,.12);
 }
 [data-theme="dark"] .case-card-media{
-  background:linear-gradient(145deg,#f8fafc,#fff);
+  background:
+    radial-gradient(80% 70% at 50% 42%,rgba(255,255,255,.95),rgba(255,255,255,.74) 58%,transparent 100%),
+    linear-gradient(145deg,#e9f1f9,#f8fbff);
+}
+[data-theme="dark"] .case-card-media picture{
+  background:#edf3fa;
+  box-shadow:inset 0 0 0 1px rgba(15,23,42,.055),0 12px 28px rgba(0,0,0,.18);
 }
 @media(max-width:1024px){
   .case-studies-showroom{grid-template-columns:1fr}
   .case-side-stack{grid-template-columns:repeat(2,minmax(0,1fr))}
   .case-featured .case-link{width:max-content}
+  .case-card-media--garden,
+  .case-card-media--welding{aspect-ratio:4/3}
 }
 @media(max-width:760px){
   .case-side-stack{grid-template-columns:1fr}
@@ -2950,31 +2983,46 @@ textarea.cinput{
   margin-bottom:clamp(1.75rem,3vw,2.35rem);
 }
 .process-timeline{
+  isolation:isolate;
   grid-template-columns:repeat(4,minmax(0,1fr));
   gap:clamp(.85rem,1.8vw,1.25rem);
   align-items:stretch;
 }
 .process-timeline::before{
+  z-index:0;
   top:1.4rem;
   left:calc(12.5% + .65rem);
   right:calc(12.5% + .65rem);
   height:2px;
   background:linear-gradient(90deg,transparent,var(--brand-border-soft) 8%,var(--brand) 50%,var(--brand-border-soft) 92%,transparent);
+  pointer-events:none;
 }
 .process-item{
+  position:relative;
+  z-index:1;
   display:grid;
   grid-template-rows:auto 1fr;
 }
 .process-node{
   position:relative;
   z-index:2;
+  isolation:isolate;
+  overflow:visible;
   width:2.85rem;
   height:2.85rem;
   margin:0 auto 1rem;
-  border-color:var(--brand-border-soft);
-  background:linear-gradient(180deg,var(--s1),var(--brand-bg));
-  box-shadow:0 0 0 .5rem var(--bg),0 10px 24px rgba(37,99,235,.1);
+  border-color:var(--brand-border);
+  background:linear-gradient(180deg,#fff,var(--s2));
+  box-shadow:0 0 0 .55rem var(--bg),0 10px 24px rgba(37,99,235,.1),inset 0 -1.05rem 1.5rem rgba(37,99,235,.07);
   transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease,background-color .18s ease;
+}
+.process-node::before{
+  content:'';
+  position:absolute;
+  z-index:-1;
+  inset:-.58rem;
+  border-radius:50%;
+  background:var(--bg);
 }
 .process-panel{
   position:relative;
@@ -3015,7 +3063,7 @@ textarea.cinput{
 }
 .process-item:hover .process-node{
   border-color:var(--brand-border);
-  box-shadow:0 0 0 .5rem var(--bg),0 12px 30px rgba(37,99,235,.16);
+  box-shadow:0 0 0 .55rem var(--bg),0 12px 30px rgba(37,99,235,.16),inset 0 -1.05rem 1.5rem rgba(37,99,235,.1);
   transform:translateY(-1px);
 }
 .process-item:hover .process-panel{
@@ -3171,9 +3219,9 @@ textarea.cinput{
   opacity:.5;
 }
 [data-theme="dark"] .process-node{
-  background:linear-gradient(180deg,var(--s1),var(--brand-bg));
-  border-color:var(--bs);
-  box-shadow:0 0 0 .5rem var(--bg),0 10px 24px rgba(0,0,0,.28);
+  background:linear-gradient(180deg,var(--s1),var(--s2));
+  border-color:var(--brand-border-soft);
+  box-shadow:0 0 0 .55rem var(--bg),0 10px 24px rgba(0,0,0,.28),inset 0 -1.05rem 1.5rem rgba(96,165,250,.1);
 }
 [data-theme="dark"] .process-panel,
 [data-theme="dark"] .home-faq-list{
