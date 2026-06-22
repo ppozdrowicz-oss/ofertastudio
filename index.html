@@ -923,6 +923,7 @@ select.cinput{cursor:pointer}
 }
 .case-card-media--garden img{
   transform:none;
+  object-fit:contain;
   object-position:50% 51%;
 }
 .case-card-media--welding picture{
@@ -932,6 +933,7 @@ select.cinput{cursor:pointer}
 }
 .case-card-media--welding img{
   transform:none;
+  object-fit:contain;
   object-position:52% 50%;
 }
 .case-card-body{
@@ -2996,6 +2998,23 @@ textarea.cinput{
   height:2px;
   background:linear-gradient(90deg,transparent,var(--brand-border-soft) 8%,var(--brand) 50%,var(--brand-border-soft) 92%,transparent);
   pointer-events:none;
+}
+@media(min-width:1025px){
+  .process-timeline::before{
+    display:none;
+  }
+  .process-item:not(:last-child)::after{
+    content:'';
+    position:absolute;
+    z-index:0;
+    top:1.425rem;
+    left:calc(50% + 2.08rem);
+    width:calc(100% + clamp(.85rem,1.8vw,1.25rem) - 4.16rem);
+    height:2px;
+    border-radius:var(--radius-pill);
+    background:linear-gradient(90deg,var(--brand-border-soft),var(--brand),var(--brand-border-soft));
+    pointer-events:none;
+  }
 }
 .process-item{
   position:relative;
