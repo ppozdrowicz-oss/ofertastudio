@@ -921,6 +921,23 @@ select.cinput{cursor:pointer}
   object-fit:cover;
   transition:filter .3s ease,transform .3s ease;
 }
+.case-card-media--garden,
+.case-card-media--welding{
+  background:#fff;
+}
+.case-card-media--garden::after,
+.case-card-media--welding::after{
+  box-shadow:inset 0 0 0 1px rgba(15,23,42,.06);
+}
+.case-card-media--garden picture,
+.case-card-media--welding picture{
+  background:#fff;
+  box-shadow:none;
+}
+.case-card-media--garden img,
+.case-card-media--welding img{
+  background:#fff;
+}
 .case-card-media--garden img{
   transform:none;
   object-fit:contain;
@@ -933,7 +950,7 @@ select.cinput{cursor:pointer}
 }
 .case-card-media--welding img{
   transform:none;
-  object-fit:contain;
+  object-fit:cover;
   object-position:52% 50%;
 }
 .case-card-body{
@@ -978,6 +995,16 @@ select.cinput{cursor:pointer}
 [data-theme="dark"] .case-card-media picture{
   background:#edf3fa;
   box-shadow:inset 0 0 0 1px rgba(15,23,42,.055),0 12px 28px rgba(0,0,0,.18);
+}
+[data-theme="dark"] .case-card-media--garden,
+[data-theme="dark"] .case-card-media--welding,
+[data-theme="dark"] .case-card-media--garden picture,
+[data-theme="dark"] .case-card-media--welding picture{
+  background:#fff;
+}
+[data-theme="dark"] .case-card-media--garden picture,
+[data-theme="dark"] .case-card-media--welding picture{
+  box-shadow:none;
 }
 @media(max-width:1024px){
   .case-studies-showroom{grid-template-columns:1fr}
@@ -3630,7 +3657,7 @@ textarea.cinput{
 
     <div class="case-side-stack">
       <article class="card case-card case-card--garden">
-        <div class="case-card-media case-card-media--garden"><picture><source type="image/avif" srcset="/dom-ogrod-po-front-homepage.avif"><source type="image/webp" srcset="/dom-ogrod-po-front-homepage.webp"><img decoding="async" loading="lazy" src="/dom-ogrod-po-front-homepage.png" width="1672" height="941" alt="Realizacja po poprawie dla produktu Gardena w kategorii dom i ogród"></picture></div>
+        <div class="case-card-media case-card-media--garden"><picture><source type="image/avif" srcset="/dom-ogrod-po-front.avif"><source type="image/webp" srcset="/dom-ogrod-po-front.webp"><img decoding="async" loading="lazy" src="/dom-ogrod-po-front.png" width="1672" height="941" alt="Realizacja po poprawie dla produktu Gardena w kategorii dom i ogród"></picture></div>
         <div class="case-card-body">
           <div class="case-meta"><span class="case-category">Dom i ogród</span><span class="case-number">#002</span></div>
           <h3 class="case-title">Gardena — prezentacja produktu</h3>
@@ -3645,7 +3672,7 @@ textarea.cinput{
       </article>
 
       <article class="card case-card case-card--welding">
-        <div class="case-card-media case-card-media--welding"><picture><source type="image/avif" srcset="/spawalnictwo-po-front-homepage.avif"><source type="image/webp" srcset="/spawalnictwo-po-front-homepage.webp"><img decoding="async" loading="lazy" src="/spawalnictwo-po-front-homepage.png" width="1254" height="1254" alt="Realizacja po poprawie dla produktu technicznego ze spawalnictwa"></picture></div>
+        <div class="case-card-media case-card-media--welding"><picture><source type="image/avif" srcset="/spawalnictwo-po-front.avif"><source type="image/webp" srcset="/spawalnictwo-po-front.webp"><img decoding="async" loading="lazy" src="/spawalnictwo-po-front.png" width="1254" height="1254" alt="Realizacja po poprawie dla produktu technicznego ze spawalnictwa"></picture></div>
         <div class="case-card-body">
           <div class="case-meta"><span class="case-category">Spawalnictwo</span><span class="case-number">#003</span></div>
           <h3 class="case-title">Produkt techniczny do marketplace</h3>
