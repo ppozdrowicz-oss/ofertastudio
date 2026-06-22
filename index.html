@@ -3431,6 +3431,175 @@ textarea.cinput{
   }
 }
 
+/* ── FINAL HOMEPAGE SYSTEM HARMONIZATION ── */
+:root{
+  --ui-control-min:2.75rem;
+  --ui-control-pad-y:.72rem;
+  --ui-control-pad-x:1.08rem;
+  --ui-transition-fast:.18s ease;
+  --ui-transition-card:border-color .18s ease,box-shadow .18s ease,transform .18s ease,background-color .18s ease,color .18s ease;
+}
+.btn-p,.btn-s,.btn-wa-inline,.btn-nav,.btn-hero-primary,.btn-hero-ghost,.btn-hero-wa,
+.price-btn,.case-link,.sticky-btn,.mobile-sticky-cta,.csubmit-btn,.csubmit-wa{
+  min-width:0;
+  border-radius:var(--ui-radius-control);
+  line-height:1.22;
+  text-decoration:none;
+  transition:background-color var(--ui-transition-fast),border-color var(--ui-transition-fast),box-shadow var(--ui-transition-fast),transform var(--ui-transition-fast),color var(--ui-transition-fast);
+}
+.btn-p,.btn-s,.btn-wa-inline,.btn-nav,.btn-hero-primary,.btn-hero-ghost,.btn-hero-wa,
+.price-btn,.sticky-btn,.csubmit-btn,.csubmit-wa{
+  min-height:var(--ui-control-min);
+}
+.btn-p,.btn-s,.btn-wa-inline,.btn-nav,.btn-hero-primary,.btn-hero-ghost,.btn-hero-wa,
+.price-btn,.csubmit-btn,.csubmit-wa{
+  padding-block:var(--ui-control-pad-y);
+}
+.btn-p,.btn-nav,.btn-hero-primary,.price-btn-primary,.sticky-btn,.csubmit-btn{
+  background:var(--action);
+  color:var(--on-brand);
+  border-color:transparent;
+  box-shadow:var(--ui-primary-shadow);
+}
+.btn-p:hover,.btn-nav:hover,.btn-hero-primary:hover,.price-btn-primary:hover,.sticky-btn:hover,.csubmit-btn:hover:not(:disabled){
+  background:var(--action-hover);
+  color:var(--on-brand);
+  border-color:transparent;
+  box-shadow:var(--ui-primary-shadow-hover);
+}
+.btn-s,.btn-hero-ghost,.price-btn-ghost,.case-link{
+  border-color:var(--ui-border-soft);
+}
+.btn-s:hover,.btn-hero-ghost:hover,.price-btn-ghost:hover,.case-link:hover{
+  border-color:var(--brand-border);
+}
+.btn-wa-inline,.btn-hero-wa,.price-btn-wa{
+  background:var(--wa);
+  color:var(--on-wa);
+  box-shadow:0 8px 18px rgba(37,211,102,.18);
+}
+.btn-wa-inline:hover,.btn-hero-wa:hover,.price-btn-wa:hover{
+  background:var(--wa2);
+  color:var(--on-wa);
+  box-shadow:0 10px 24px rgba(37,211,102,.24);
+}
+.btn-p:focus-visible,.btn-s:focus-visible,.btn-wa-inline:focus-visible,.btn-nav:focus-visible,
+.btn-hero-primary:focus-visible,.btn-hero-ghost:focus-visible,.btn-hero-wa:focus-visible,
+.price-btn:focus-visible,.case-link:focus-visible,.sticky-btn:focus-visible,.mobile-sticky-cta:focus-visible,
+.csubmit-btn:focus-visible,.csubmit-wa:focus-visible,.cform-note a:focus-visible,
+.home-faq-item summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+  outline:2px solid var(--focus);
+  outline-offset:3px;
+  box-shadow:var(--ui-focus-ring);
+}
+.card,.trust-benefit,.trust-benefit--primary,.price-card,.case-featured,.case-card,.process-panel,
+.home-faq-item,.audit-deliverables,.contact-form-card,.maker-trust,.cch,.cpkg,.checkline,.cform-success{
+  transition:var(--ui-transition-card);
+}
+.card,.trust-benefit--primary,.price-card,.case-featured,.case-card,.process-panel,
+.audit-deliverables,.contact-form-card,.cch,.cpkg,.cform-success{
+  border-radius:var(--ui-radius-card);
+}
+.trust-benefit--primary,.case-featured,.case-card,.process-panel,.audit-deliverables,.contact-form-card,.cch{
+  border-color:var(--ui-border);
+}
+.price-card,.cpkg,.checkline,.home-faq-item{
+  border-color:var(--ui-border);
+}
+.hero-trust span,.trust-primary-points li,.audit-benefit-pills li,.pricing-scope-list li,
+.maker-trust-points li,.cpkg-icon,.audit-deliverable-number{
+  transition:border-color var(--ui-transition-fast),background-color var(--ui-transition-fast),box-shadow var(--ui-transition-fast),color var(--ui-transition-fast);
+}
+.hero-trust span,.trust-primary-points li,.audit-benefit-pills li{
+  border-color:var(--ui-border-soft);
+  background:var(--s1);
+  box-shadow:none;
+}
+.eyebrow,.hero-kicker,.price-name,.problem-card-label,.case-category,.case-number,.case-featured-rank,
+.case-studies-cta-label,.process-label,.audit-preview-kicker,.maker-trust-method-label,.sticky-pill{
+  border-color:var(--ui-border-soft);
+  background:var(--brand-bg);
+  box-shadow:none;
+}
+.s-head{
+  margin-bottom:clamp(1.55rem,2.8vw,2.15rem);
+}
+.s-title,.hero-title{
+  text-wrap:balance;
+}
+.s-sub,.hero-lead{
+  text-wrap:pretty;
+}
+input.cinput,select.cinput,textarea.cinput{
+  border-radius:var(--ui-radius-control);
+}
+.checkline:has(input:focus-visible),.cpkg:has(input:focus-visible){
+  outline:2px solid var(--focus);
+  outline-offset:3px;
+  box-shadow:var(--ui-focus-ring);
+}
+[data-theme="dark"] .btn-s,[data-theme="dark"] .btn-hero-ghost,[data-theme="dark"] .price-btn-ghost,[data-theme="dark"] .case-link{
+  background:rgba(255,255,255,.025);
+  border-color:var(--bs);
+  color:var(--brand);
+}
+[data-theme="dark"] .btn-s:hover,[data-theme="dark"] .btn-hero-ghost:hover,[data-theme="dark"] .price-btn-ghost:hover,[data-theme="dark"] .case-link:hover{
+  background:var(--brand-bg);
+  border-color:var(--brand-border-soft);
+}
+[data-theme="dark"] .hero-trust span,[data-theme="dark"] .trust-primary-points li,[data-theme="dark"] .audit-benefit-pills li{
+  background:rgba(255,255,255,.025);
+  border-color:var(--bs);
+}
+[data-theme="dark"] .eyebrow,[data-theme="dark"] .hero-kicker,[data-theme="dark"] .price-name,[data-theme="dark"] .problem-card-label,
+[data-theme="dark"] .case-category,[data-theme="dark"] .case-number,[data-theme="dark"] .case-featured-rank,
+[data-theme="dark"] .case-studies-cta-label,[data-theme="dark"] .process-label,[data-theme="dark"] .audit-preview-kicker,
+[data-theme="dark"] .maker-trust-method-label,[data-theme="dark"] .sticky-pill{
+  background:rgba(255,255,255,.025);
+  border-color:var(--bs);
+}
+@media(hover:hover){
+  .btn-p:hover,.btn-s:hover,.btn-wa-inline:hover,.btn-nav:hover,.btn-hero-primary:hover,.btn-hero-ghost:hover,.btn-hero-wa:hover,
+  .price-btn:hover,.case-link:hover,.sticky-btn:hover,.csubmit-btn:hover:not(:disabled),.csubmit-wa:hover{
+    transform:translateY(-1px);
+  }
+}
+@media(max-width:640px){
+  :root{
+    --ui-control-min:2.7rem;
+    --ui-control-pad-y:.68rem;
+    --ui-control-pad-x:.9rem;
+  }
+  .btn-p,.btn-s,.btn-wa-inline,.btn-hero-primary,.btn-hero-ghost,.btn-hero-wa,.price-btn,.csubmit-btn,.csubmit-wa{
+    justify-content:center;
+    width:100%;
+    padding-inline:var(--ui-control-pad-x);
+    text-align:center;
+  }
+  .hero-trust span,.trust-primary-points li,.audit-benefit-pills li{
+    min-width:0;
+    line-height:1.28;
+  }
+  .s-head{
+    margin-bottom:1.25rem;
+  }
+}
+@media(hover:none),(prefers-reduced-motion:reduce){
+  .btn-p:hover,.btn-s:hover,.btn-wa-inline:hover,.btn-nav:hover,.btn-hero-primary:hover,.btn-hero-ghost:hover,.btn-hero-wa:hover,
+  .price-btn:hover,.case-link:hover,.sticky-btn:hover,.csubmit-btn:hover:not(:disabled),.csubmit-wa:hover,
+  .card:hover,.trust-benefit:hover,.price-card:hover,.case-featured:hover,.case-card:hover,.process-item:hover .process-panel,.home-faq-item:hover,.cch:hover,.cpkg:hover{
+    transform:none;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .btn-p,.btn-s,.btn-wa-inline,.btn-nav,.btn-hero-primary,.btn-hero-ghost,.btn-hero-wa,
+  .price-btn,.case-link,.sticky-btn,.mobile-sticky-cta,.csubmit-btn,.csubmit-wa,
+  .card,.trust-benefit,.price-card,.case-featured,.case-card,.process-panel,.home-faq-item,
+  .audit-deliverables,.contact-form-card,.maker-trust,.cch,.cpkg,.checkline{
+    transition:none!important;
+  }
+}
+
 </style>
 <script src="/analytics.js" defer></script>
 </head>
