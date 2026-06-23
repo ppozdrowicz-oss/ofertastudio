@@ -3855,6 +3855,236 @@ input.cinput,select.cinput,textarea.cinput{
   }
 }
 
+/* Strategic homepage sections: reassurance + editorial problem block */
+.trust-section{
+  padding-top:clamp(2.5rem,4.5vw,4rem);
+  padding-bottom:clamp(3.5rem,5.5vw,5rem);
+}
+.trust-section .s-head{
+  max-width:720px;
+  margin-bottom:clamp(1.55rem,3vw,2.2rem);
+}
+.trust-section .s-title{
+  max-width:680px;
+}
+.trust-section .s-sub{
+  max-width:650px;
+}
+.trust-benefit-grid{
+  grid-template-columns:minmax(360px,1.08fr) repeat(2,minmax(0,.96fr));
+  gap:clamp(.8rem,1.4vw,1.05rem);
+}
+.trust-benefit{
+  padding:1.25rem;
+  border-radius:1.25rem;
+  background:linear-gradient(180deg,rgba(255,255,255,.82),rgba(248,250,252,.72));
+  box-shadow:0 10px 28px rgba(15,23,42,.055);
+}
+.trust-benefit::after{
+  right:1.2rem;
+  width:1.9rem;
+  opacity:.72;
+}
+.trust-benefit--primary{
+  padding:clamp(1.6rem,2.8vw,2.15rem);
+  border-radius:1.55rem;
+  background:linear-gradient(145deg,rgba(255,255,255,.96),rgba(239,246,255,.74));
+  box-shadow:0 18px 46px rgba(15,23,42,.09);
+}
+.trust-benefit--primary::before{
+  background:radial-gradient(circle at 88% 0%,rgba(37,99,235,.12),transparent 36%);
+}
+.trust-benefit-mark{
+  margin-bottom:1rem;
+  border-radius:1rem;
+  background:rgba(239,246,255,.82);
+}
+.trust-benefit--primary .trust-benefit-mark{
+  margin-bottom:1.15rem;
+  background:#fff;
+}
+.trust-benefit h3{
+  max-width:18rem;
+  margin-bottom:.45rem;
+  font-size:1.02rem;
+  line-height:1.32;
+}
+.trust-benefit--primary h3{
+  max-width:25rem;
+  margin-bottom:.72rem;
+  font-size:clamp(1.55rem,2.45vw,2.05rem);
+  line-height:1.08;
+}
+.trust-benefit p{
+  max-width:22rem;
+  font-size:.85rem;
+  line-height:1.62;
+}
+.trust-benefit--primary p{
+  max-width:27rem;
+  font-size:.94rem;
+  line-height:1.7;
+}
+.trust-primary-points{
+  margin-top:1.45rem;
+  padding-top:1.15rem;
+  gap:.48rem;
+}
+.trust-primary-points li{
+  background:rgba(255,255,255,.76);
+  border-color:var(--brand-border-soft);
+  font-size:.73rem;
+}
+
+.problem-section{
+  padding-top:clamp(3.6rem,5.5vw,5.25rem);
+  padding-bottom:clamp(3.8rem,6vw,5.5rem);
+}
+.problem-stage{
+  grid-template-columns:minmax(320px,.86fr) minmax(0,1.14fr);
+  gap:clamp(2rem,4.4vw,4.25rem);
+  padding:clamp(1.4rem,3vw,2.25rem) 0 clamp(1.4rem,3vw,2.25rem) clamp(1.5rem,3vw,2.4rem);
+  border-left:1px solid var(--brand-border);
+}
+.problem-copy .s-head{
+  margin-bottom:1.4rem;
+}
+.problem-copy .s-title{
+  max-width:620px;
+  font-size:clamp(2rem,3vw,2.72rem);
+  line-height:1.06;
+  letter-spacing:-.04em;
+}
+.problem-copy .s-sub{
+  max-width:560px;
+  font-size:.98rem;
+  line-height:1.78;
+}
+.problem-copy .section-cta{
+  width:auto;
+  min-width:min(100%,19rem);
+  margin-top:1.25rem;
+  padding-top:1.25rem;
+}
+.problem-copy .section-cta .btn-p{
+  min-height:3rem;
+  padding-inline:1.25rem;
+}
+.problem-list{
+  gap:0 2rem;
+}
+.problem-card{
+  padding:1.35rem 0;
+  border-top-color:rgba(148,163,184,.28);
+}
+.problem-card-label{
+  margin-bottom:.68rem;
+  font-size:.58rem;
+  letter-spacing:.12em;
+}
+.problem-card h3{
+  max-width:20rem;
+  margin-bottom:.52rem;
+  font-size:1.08rem;
+  line-height:1.32;
+}
+.problem-card p{
+  max-width:22rem;
+  font-size:.86rem;
+  line-height:1.68;
+}
+.problem-card:hover{
+  border-top-color:var(--brand-border-soft);
+}
+[data-theme="dark"] .trust-benefit{
+  background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.025));
+  box-shadow:0 12px 30px rgba(0,0,0,.22);
+}
+[data-theme="dark"] .trust-benefit--primary{
+  background:linear-gradient(145deg,rgba(255,255,255,.058),rgba(37,99,235,.095));
+  box-shadow:0 18px 46px rgba(0,0,0,.28);
+}
+[data-theme="dark"] .trust-benefit--primary .trust-benefit-mark,
+[data-theme="dark"] .trust-primary-points li{
+  background:rgba(15,23,42,.56);
+}
+[data-theme="dark"] .problem-stage{
+  border-left-color:rgba(96,165,250,.44);
+}
+[data-theme="dark"] .problem-card{
+  border-top-color:rgba(148,163,184,.2);
+}
+[data-theme="dark"] .problem-card:hover{
+  border-top-color:rgba(96,165,250,.36);
+}
+@media(max-width:1024px){
+  .trust-benefit-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+  .trust-benefit--primary{
+    grid-column:1/-1;
+    grid-row:auto;
+  }
+  .problem-stage{
+    grid-template-columns:1fr;
+    gap:1.6rem;
+  }
+  .problem-copy .section-cta{
+    width:100%;
+    max-width:22rem;
+  }
+}
+@media(max-width:640px){
+  .trust-section,
+  .problem-section{
+    padding-top:2.75rem;
+    padding-bottom:3rem;
+  }
+  .trust-section .s-head,
+  .problem-copy .s-head{
+    margin-bottom:1.25rem;
+  }
+  .trust-benefit-grid{
+    grid-template-columns:1fr;
+    gap:.72rem;
+  }
+  .trust-benefit,
+  .trust-benefit--primary{
+    padding:1rem;
+    border-radius:1.1rem;
+  }
+  .trust-benefit--primary h3{
+    font-size:1.38rem;
+  }
+  .trust-primary-points{
+    padding-top:.95rem;
+  }
+  .problem-stage{
+    padding:0 0 0 1rem;
+    border-left-width:1px;
+  }
+  .problem-copy .s-title{
+    font-size:clamp(1.55rem,7vw,2rem);
+    line-height:1.1;
+  }
+  .problem-copy .s-sub{
+    font-size:.92rem;
+    line-height:1.66;
+  }
+  .problem-list{
+    grid-template-columns:1fr;
+  }
+  .problem-card{
+    padding:1.05rem 0;
+  }
+  .problem-copy .section-cta{
+    max-width:none;
+  }
+  .problem-copy .section-cta .btn-p{
+    width:100%;
+    justify-content:center;
+  }
+}
 </style>
 <script src="/analytics.js" defer></script>
 </head>
@@ -3910,8 +4140,8 @@ input.cinput,select.cinput,textarea.cinput{
 <div class="section trust-section" aria-labelledby="trust-heading">
   <div class="s-head c">
     <div class="eyebrow">Bezpieczny pierwszy krok</div>
-    <h2 class="s-title" id="trust-heading">Dlaczego warto zacząć od OfertaStudio?</h2>
-    <p class="s-sub">Najpierw diagnoza, potem zakres. Bez wciskania pełnej przebudowy, jeśli problem da się rozwiązać prościej.</p>
+    <h2 class="s-title" id="trust-heading">Najpierw diagnoza, potem zakres</h2>
+    <p class="s-sub">Nie musisz mieć pełnego briefu ani wybierać pakietu w ciemno. Najpierw sprawdzam materiał, a dopiero potem rekomenduję sensowny zakres.</p>
   </div>
   <div class="trust-benefit-grid">
     <article class="trust-benefit trust-benefit--primary">
@@ -4470,8 +4700,8 @@ window.addEventListener('load',()=>{
 const floatingActions=document.querySelectorAll('.sticky-cta,.mobile-sticky-cta');
 if(floatingActions.length&&'IntersectionObserver' in window){
   const desktopMedia=window.matchMedia('(min-width:1025px)');
-  const desktopSuppressors=document.querySelectorAll('.hero,#pakiety,.case-studies-section,#proces,#mini-audyt,.maker-section,#kontakt,footer');
-  const mobileSuppressors=document.querySelectorAll('.hero,#pakiety,.case-studies-section,#proces,#faq,#mini-audyt,.maker-section,#kontakt,footer');
+  const desktopSuppressors=document.querySelectorAll('.hero,.trust-section,.problem-section,#pakiety,.case-studies-section,#proces,#mini-audyt,.maker-section,#kontakt,footer');
+  const mobileSuppressors=document.querySelectorAll('.hero,.trust-section,.problem-section,#pakiety,.case-studies-section,#proces,#faq,#mini-audyt,.maker-section,#kontakt,footer');
   const desktopVisible=new Set();
   const mobileVisible=new Set();
   const syncFloatingActions=()=>{
