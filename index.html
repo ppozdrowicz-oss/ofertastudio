@@ -4085,6 +4085,539 @@ input.cinput,select.cinput,textarea.cinput{
     justify-content:center;
   }
 }
+
+/* ── HERO PREMIUM REFINEMENT ── */
+.hero.hero--premium{
+  position:relative;
+  isolation:isolate;
+  display:grid;
+  grid-template-columns:minmax(0,1.02fr) minmax(360px,.82fr);
+  align-items:center;
+  gap:clamp(2rem,4.3vw,4.5rem);
+  max-width:min(1240px,calc(100% - 2rem));
+  min-height:min(720px,82vh);
+  margin:0 auto;
+  padding:clamp(6.6rem,8.8vw,8.4rem) clamp(.25rem,1.2vw,.75rem) clamp(3.25rem,5.4vw,5rem);
+  background:
+    radial-gradient(circle at 88% 16%,rgba(37,99,235,.08),transparent 30%),
+    radial-gradient(circle at 8% 6%,rgba(8,145,178,.04),transparent 28%);
+}
+.hero.hero--premium::before{
+  content:'';
+  position:absolute;
+  z-index:-1;
+  top:5.25rem;
+  right:clamp(.25rem,2vw,1.25rem);
+  width:min(40vw,31rem);
+  height:min(40vw,31rem);
+  border-radius:42% 58% 48% 52%;
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.62),rgba(37,99,235,.045)),
+    radial-gradient(circle at 32% 28%,rgba(37,99,235,.12),transparent 44%);
+  box-shadow:0 28px 90px rgba(37,99,235,.08),inset 0 1px 0 rgba(255,255,255,.7);
+  transform:rotate(-5deg);
+  opacity:.88;
+}
+.hero.hero--premium>div,
+.hero.hero--premium>aside{
+  min-width:0;
+}
+.hero-copy{
+  position:relative;
+  z-index:1;
+}
+.hero.hero--premium .hero-kicker{
+  width:max-content;
+  max-width:100%;
+  margin-bottom:1.05rem;
+  border-color:var(--brand-border-soft);
+  background:rgba(255,255,255,.68);
+  box-shadow:0 1px 0 rgba(15,23,42,.04);
+}
+.hero.hero--premium .hero-h1{
+  max-width:850px;
+  margin-bottom:1.15rem;
+  font-size:clamp(2.45rem,4.65vw,4.1rem);
+  line-height:1.04;
+  letter-spacing:-.042em;
+  text-wrap:balance;
+}
+.hero.hero--premium .hero-sub{
+  max-width:690px;
+  margin-bottom:1.35rem;
+  font-size:clamp(.98rem,1.15vw,1.06rem);
+  line-height:1.68;
+}
+.hero.hero--premium .hero-ctas{
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content:flex-start;
+  width:auto;
+  max-width:760px;
+  gap:.75rem;
+  margin-bottom:1rem;
+}
+.hero.hero--premium .btn-hero-primary,
+.hero.hero--premium .btn-hero-ghost{
+  min-height:3.12rem;
+  border-radius:calc(var(--radius-lg) + .125rem);
+}
+.hero.hero--premium .btn-hero-primary{
+  flex:0 1 auto;
+  padding:.92rem 1.5rem;
+  font-weight:850;
+  box-shadow:0 11px 26px rgba(37,99,235,.24);
+}
+.hero.hero--premium .btn-hero-ghost{
+  flex:0 0 auto;
+  padding:.86rem 1.22rem;
+  background:rgba(255,255,255,.72);
+  border-color:var(--brand-border-soft);
+  color:var(--t2);
+  box-shadow:0 1px 0 rgba(15,23,42,.04);
+}
+.hero.hero--premium .btn-hero-ghost:hover{
+  background:var(--s1);
+  color:var(--t1);
+}
+.hero.hero--premium .hero-trust{
+  max-width:720px;
+  gap:.45rem .5rem;
+}
+.hero.hero--premium .hero-trust span{
+  min-height:1.76rem;
+  padding:.32rem .58rem;
+  border-color:var(--brand-border-soft);
+  background:rgba(255,255,255,.72);
+  color:var(--t2);
+  font-size:.73rem;
+}
+.hero-diagnostic{
+  position:relative;
+  z-index:1;
+}
+.diagnostic-card{
+  position:relative;
+  overflow:hidden;
+  padding:clamp(1rem,1.6vw,1.35rem);
+  border:1px solid var(--brand-border-soft);
+  border-radius:1.45rem;
+  background:
+    linear-gradient(160deg,rgba(255,255,255,.96),rgba(248,250,252,.9) 62%,rgba(239,246,255,.72));
+  box-shadow:0 22px 58px rgba(10,22,40,.12),inset 0 1px 0 rgba(255,255,255,.82);
+}
+.diagnostic-card::before{
+  content:'';
+  position:absolute;
+  inset:0 0 auto;
+  height:42%;
+  background:radial-gradient(circle at 82% 10%,rgba(37,99,235,.12),transparent 42%);
+  pointer-events:none;
+}
+.diagnostic-card>*{
+  position:relative;
+  z-index:1;
+}
+.diagnostic-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:1rem;
+  padding-bottom:.95rem;
+  border-bottom:1px solid rgba(148,163,184,.22);
+}
+.diagnostic-eyebrow{
+  margin:0 0 .32rem;
+  font-family:var(--font-mono);
+  font-size:.62rem;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--brand);
+}
+.diagnostic-head h2{
+  max-width:18rem;
+  margin:0;
+  color:var(--t1);
+  font-size:1.08rem;
+  line-height:1.28;
+  letter-spacing:-.018em;
+}
+.diagnostic-badge{
+  display:inline-flex;
+  align-items:center;
+  min-height:1.75rem;
+  padding:.32rem .6rem;
+  border:1px solid var(--bs);
+  border-radius:var(--radius-pill);
+  background:rgba(255,255,255,.72);
+  color:var(--t3);
+  font-family:var(--font-mono);
+  font-size:.58rem;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+.diagnostic-offer{
+  display:grid;
+  grid-template-columns:5.4rem minmax(0,1fr);
+  gap:.85rem;
+  align-items:center;
+  margin-top:1rem;
+  padding:.85rem;
+  border:1px solid var(--bs);
+  border-radius:1rem;
+  background:rgba(255,255,255,.78);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.75);
+}
+.offer-thumb{
+  display:grid;
+  place-items:center;
+  aspect-ratio:1;
+  overflow:hidden;
+  border:1px solid rgba(148,163,184,.24);
+  border-radius:.85rem;
+  background:#fff;
+}
+.offer-thumb picture,
+.offer-thumb img,
+.after-thumb picture,
+.after-thumb img{
+  display:block;
+  width:100%;
+  height:100%;
+}
+.offer-thumb img,
+.after-thumb img{
+  object-fit:contain;
+}
+.offer-thumb--before img{
+  padding:1.05rem;
+  filter:saturate(.92) contrast(.98);
+}
+.offer-preview-copy{
+  min-width:0;
+}
+.offer-platform-row{
+  display:flex;
+  justify-content:space-between;
+  gap:.75rem;
+  margin-bottom:.55rem;
+  color:var(--t3);
+  font-family:var(--font-mono);
+  font-size:.58rem;
+  font-weight:800;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
+.offer-line{
+  height:.7rem;
+  border-radius:var(--radius-pill);
+  background:linear-gradient(90deg,rgba(51,73,109,.18),rgba(51,73,109,.08));
+}
+.offer-line+.offer-line{
+  margin-top:.42rem;
+}
+.offer-line--wide{
+  width:100%;
+}
+.offer-line--mid{
+  width:68%;
+}
+.offer-meta-row{
+  display:flex;
+  gap:.35rem;
+  margin-top:.7rem;
+}
+.offer-meta-row span{
+  display:block;
+  height:.55rem;
+  flex:1;
+  border-radius:var(--radius-pill);
+  background:rgba(37,99,235,.1);
+}
+.diagnostic-list{
+  display:grid;
+  gap:.55rem;
+  margin:1rem 0;
+  padding:0;
+  list-style:none;
+}
+.diagnostic-list li{
+  display:grid;
+  grid-template-columns:.75rem minmax(4.8rem,.32fr) minmax(0,1fr);
+  gap:.55rem;
+  align-items:start;
+  min-width:0;
+  padding:.72rem .05rem;
+  border-bottom:1px solid rgba(148,163,184,.22);
+  color:var(--t2);
+  font-size:.8rem;
+  line-height:1.45;
+}
+.diagnostic-list li:last-child{
+  border-bottom:0;
+}
+.diagnostic-list strong{
+  color:var(--t1);
+  font-size:.78rem;
+  line-height:1.45;
+}
+.diagnostic-dot{
+  width:.48rem;
+  height:.48rem;
+  margin-top:.36rem;
+  border-radius:50%;
+  background:var(--amber);
+  box-shadow:0 0 0 .22rem rgba(217,119,6,.12);
+}
+.diagnostic-after{
+  padding:.95rem;
+  border:1px solid rgba(5,150,105,.22);
+  border-radius:1.1rem;
+  background:
+    linear-gradient(145deg,rgba(236,253,245,.72),rgba(255,255,255,.88));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.75);
+}
+.after-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:.75rem;
+  margin-bottom:.75rem;
+}
+.after-head span{
+  color:var(--ok);
+  font-family:var(--font-mono);
+  font-size:.62rem;
+  font-weight:900;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+}
+.after-head strong{
+  color:var(--t3);
+  font-size:.72rem;
+  line-height:1.3;
+}
+.after-grid{
+  display:grid;
+  grid-template-columns:5.4rem minmax(0,1fr);
+  gap:.85rem;
+  align-items:center;
+}
+.after-thumb{
+  display:grid;
+  place-items:center;
+  aspect-ratio:1;
+  overflow:hidden;
+  border:1px solid rgba(5,150,105,.2);
+  border-radius:.9rem;
+  background:#fff;
+  box-shadow:0 8px 18px rgba(10,22,40,.055);
+}
+.after-thumb img{
+  padding:.25rem;
+}
+.after-list{
+  display:grid;
+  gap:.45rem;
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+.after-list li{
+  display:flex;
+  align-items:flex-start;
+  gap:.45rem;
+  color:var(--t2);
+  font-size:.8rem;
+  line-height:1.45;
+}
+.after-list li::before{
+  content:'\2713';
+  flex:0 0 auto;
+  color:var(--ok);
+  font-weight:900;
+}
+[data-theme="dark"] .hero.hero--premium{
+  background:
+    radial-gradient(circle at 88% 16%,rgba(96,165,250,.08),transparent 30%),
+    radial-gradient(circle at 8% 6%,rgba(14,165,233,.045),transparent 28%);
+}
+[data-theme="dark"] .hero.hero--premium::before{
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.035),rgba(96,165,250,.045)),
+    radial-gradient(circle at 32% 28%,rgba(96,165,250,.11),transparent 44%);
+  box-shadow:0 28px 90px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.04);
+}
+[data-theme="dark"] .hero.hero--premium .hero-kicker,
+[data-theme="dark"] .hero.hero--premium .hero-trust span,
+[data-theme="dark"] .hero.hero--premium .btn-hero-ghost,
+[data-theme="dark"] .diagnostic-badge,
+[data-theme="dark"] .diagnostic-offer{
+  background:rgba(255,255,255,.035);
+}
+[data-theme="dark"] .diagnostic-card{
+  background:linear-gradient(160deg,rgba(12,16,34,.96),rgba(17,24,41,.92));
+  box-shadow:0 24px 64px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.045);
+}
+[data-theme="dark"] .diagnostic-head,
+[data-theme="dark"] .diagnostic-list li{
+  border-color:rgba(148,163,184,.2);
+}
+[data-theme="dark"] .diagnostic-after{
+  background:linear-gradient(145deg,rgba(6,78,59,.35),rgba(12,16,34,.82));
+  border-color:rgba(110,231,183,.22);
+}
+@media(max-width:1024px){
+  .hero.hero--premium{
+    grid-template-columns:1fr;
+    max-width:min(900px,calc(100% - 2rem));
+    min-height:auto;
+    padding-top:6.15rem;
+    padding-bottom:3rem;
+  }
+  .hero.hero--premium::before{
+    top:4.8rem;
+    right:-4rem;
+    width:18rem;
+    height:18rem;
+    opacity:.4;
+  }
+  .hero-diagnostic{
+    max-width:620px;
+  }
+}
+@media(max-width:760px){
+  .hero.hero--premium{
+    max-width:100%;
+    gap:1.35rem;
+    padding:5.6rem 1rem 2.35rem;
+  }
+  .hero.hero--premium .hero-kicker{
+    width:100%;
+    margin-bottom:.82rem;
+    border-radius:.8rem;
+  }
+  .hero.hero--premium .hero-h1{
+    max-width:12.8em;
+    margin-bottom:.9rem;
+    font-size:clamp(1.88rem,8.1vw,2.55rem);
+    line-height:1.06;
+    letter-spacing:-.034em;
+  }
+  .hero.hero--premium .hero-sub{
+    max-width:none;
+    margin-bottom:1.05rem;
+    font-size:.93rem;
+    line-height:1.6;
+  }
+  .hero.hero--premium .hero-ctas{
+    display:grid;
+    grid-template-columns:1fr;
+    width:100%;
+    max-width:34rem;
+    gap:.62rem;
+    margin-bottom:.82rem;
+  }
+  .hero.hero--premium .btn-hero-primary,
+  .hero.hero--premium .btn-hero-ghost{
+    width:100%;
+    min-height:2.95rem;
+    justify-content:center;
+    text-align:center;
+  }
+  .hero.hero--premium .hero-trust{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    max-width:34rem;
+    gap:.42rem;
+  }
+  .hero.hero--premium .hero-trust span{
+    width:100%;
+    min-width:0;
+    justify-content:flex-start;
+    padding:.34rem .5rem;
+    font-size:.68rem;
+    line-height:1.25;
+  }
+  .diagnostic-card{
+    border-radius:1.2rem;
+  }
+}
+@media(max-width:520px){
+  .hero.hero--premium{
+    padding-top:5.25rem;
+    padding-bottom:2rem;
+  }
+  .hero.hero--premium .hero-h1{
+    max-width:none;
+    font-size:clamp(1.65rem,7.4vw,2.12rem);
+    line-height:1.08;
+  }
+  .hero.hero--premium .hero-sub{
+    font-size:.9rem;
+    line-height:1.56;
+  }
+  .diagnostic-card{
+    padding:.9rem;
+  }
+  .diagnostic-head{
+    display:grid;
+    gap:.6rem;
+    padding-bottom:.78rem;
+  }
+  .diagnostic-head h2{
+    max-width:none;
+    font-size:.98rem;
+  }
+  .diagnostic-badge{
+    width:max-content;
+  }
+  .diagnostic-offer{
+    display:none;
+  }
+  .diagnostic-list{
+    display:none;
+  }
+  .diagnostic-after{
+    margin-top:.72rem;
+    padding:.75rem;
+  }
+  .after-head{
+    display:grid;
+    gap:.2rem;
+    margin-bottom:.62rem;
+  }
+  .after-grid{
+    grid-template-columns:1fr;
+    gap:.55rem;
+  }
+  .after-thumb{
+    display:none;
+  }
+  .after-list li{
+    font-size:.76rem;
+    line-height:1.38;
+  }
+}
+@media(max-width:360px){
+  .hero.hero--premium{
+    padding-top:5.1rem;
+  }
+  .hero.hero--premium .hero-h1{
+    font-size:1.56rem;
+  }
+  .hero.hero--premium .hero-trust{
+    grid-template-columns:1fr;
+  }
+  .diagnostic-offer,
+  .after-grid{
+    grid-template-columns:4.3rem minmax(0,1fr);
+  }
+}
 </style>
 <script src="/analytics.js" defer></script>
 </head>
@@ -4101,7 +4634,7 @@ input.cinput,select.cinput,textarea.cinput{
 <!-- Sticky CTA (desktop) -->
 <div class="sticky-cta" aria-label="Szybki dostęp do mini audytu">
   <div class="sticky-pill"><span aria-hidden="true">●</span> Mini audyt 0 zł</div>
-  <a href="#kontakt" class="sticky-btn" data-event="mini_audit_click" data-location="hero" data-package="start">Wyślij link — dostaniesz 3 konkretne poprawki</a>
+  <a href="#kontakt" class="sticky-btn" data-event="mini_audit_click" data-location="hero" data-package="start">Wyślij link — wskażę 3 konkretne poprawki</a>
 </div>
 
 <!-- NAV -->
@@ -4110,19 +4643,19 @@ input.cinput,select.cinput,textarea.cinput{
 <main class="page" id="main-content" tabindex="-1">
 
 <!-- ── HERO ── -->
-<div class="hero hero--single">
-  <div>
+<section class="hero hero--premium" aria-labelledby="hero-heading">
+  <div class="hero-copy">
     <div class="hero-kicker"><span class="sdot" aria-hidden="true"></span>Zdjęcia, opisy i poprawa ofert Allegro i OLX</div>
 
-    <h1 class="hero-h1">Masz dobry produkt, ale oferta nie pokazuje jego wartości wystarczająco szybko?</h1>
+    <h1 class="hero-h1" id="hero-heading">Poprawiam oferty Allegro i OLX, żeby produkt był zrozumiały w kilka sekund.</h1>
 
     <div class="hero-sub">
-      <p>Poprawiam zdjęcie główne, galerię, tytuł i opis oferty Allegro lub OLX tak, żeby kupujący szybciej zrozumiał produkt, zobaczył jego przewagę i miał mniej powodów, by przejść dalej.</p>
+      <p>Poprawiam zdjęcie główne, galerię, tytuł i opis oferty Allegro lub OLX. Pomagam uporządkować informacje tak, żeby kupujący szybciej zobaczył, co sprzedajesz, dlaczego warto i czym produkt różni się od konkurencji.</p>
     </div>
 
     <div class="hero-ctas">
       <a href="#kontakt" class="btn-hero-primary" data-event="hero_cta_click" data-location="hero" data-package="start">
-        Wyślij link — dostaniesz 3 konkretne poprawki
+        Wyślij link — wskażę 3 konkretne poprawki
       </a>
       <a href="#realizacje" class="btn-hero-ghost" data-event="hero_cta_click" data-location="hero">Zobacz realizacje przed/po</a>
     </div>
@@ -4134,7 +4667,81 @@ input.cinput,select.cinput,textarea.cinput{
       <span>Zakres i cena przed startem</span>
     </div>
   </div>
-</div>
+
+  <aside class="hero-diagnostic" aria-label="Przykładowa mini diagnoza oferty">
+    <div class="diagnostic-card">
+      <div class="diagnostic-head">
+        <div>
+          <p class="diagnostic-eyebrow">Mini diagnoza oferty</p>
+          <h2>Co blokuje szybkie zrozumienie produktu?</h2>
+        </div>
+        <span class="diagnostic-badge">Allegro / OLX</span>
+      </div>
+
+      <div class="diagnostic-offer" aria-label="Przykładowy podgląd oferty przed poprawą">
+        <div class="offer-thumb offer-thumb--before">
+          <picture>
+            <source srcset="/elektronarzedzia-po-zestaw-homepage.avif" type="image/avif">
+            <source srcset="/elektronarzedzia-po-zestaw-homepage.webp" type="image/webp">
+            <img src="/elektronarzedzia-po-zestaw-homepage.png" alt="Przykładowy produkt w miniaturze oferty" loading="eager" decoding="async">
+          </picture>
+        </div>
+        <div class="offer-preview-copy">
+          <div class="offer-platform-row">
+            <span>Oferta teraz</span>
+            <span>podgląd listy</span>
+          </div>
+          <div class="offer-line offer-line--wide"></div>
+          <div class="offer-line offer-line--mid"></div>
+          <div class="offer-meta-row">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+
+      <ul class="diagnostic-list">
+        <li>
+          <span class="diagnostic-dot" aria-hidden="true"></span>
+          <strong>Miniatura</strong>
+          <span>produkt zbyt mały na liście</span>
+        </li>
+        <li>
+          <span class="diagnostic-dot" aria-hidden="true"></span>
+          <strong>Galeria</strong>
+          <span>brakuje zdjęcia zestawu i detalu</span>
+        </li>
+        <li>
+          <span class="diagnostic-dot" aria-hidden="true"></span>
+          <strong>Opis</strong>
+          <span>najważniejsza przewaga pojawia się za późno</span>
+        </li>
+      </ul>
+
+      <div class="diagnostic-after" aria-label="Efekt po poprawie">
+        <div class="after-head">
+          <span>Po poprawie</span>
+          <strong>materiały do wdrożenia</strong>
+        </div>
+        <div class="after-grid">
+          <div class="after-thumb">
+            <picture>
+              <source srcset="/elektronarzedzia-po-front.avif" type="image/avif">
+              <source srcset="/elektronarzedzia-po-front.webp" type="image/webp">
+              <img src="/elektronarzedzia-po-front.png" alt="Czytelniejsza miniatura produktu po poprawie" loading="eager" decoding="async">
+            </picture>
+          </div>
+          <ul class="after-list">
+            <li>czytelna miniatura</li>
+            <li>logiczna kolejność galerii</li>
+            <li>opis odpowiada na pytania kupującego</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </aside>
+</section>
 
 <!-- ── ZAUFANIE ── -->
 <div class="section trust-section" aria-labelledby="trust-heading">
