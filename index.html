@@ -129,42 +129,6 @@
       }
     },
     {
-      "@type": "FAQPage",
-      "@id": "https://ofertastudio.pl/#faq-schema",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Czy muszę mieć gotową ofertę?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Nie. Możesz wysłać link do oferty, zdjęcie produktu albo krótki opis tego, co chcesz sprzedać."}
-        },
-        {
-          "@type": "Question",
-          "name": "Czy mini audyt naprawdę jest darmowy?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Tak. Mini audyt 0 zł obejmuje 3 pierwsze rzeczy, które warto poprawić lub sprawdzić przed wyborem zakresu."}
-        },
-        {
-          "@type": "Question",
-          "name": "Czy pakiety Start oznaczają pełną usługę?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Nie. Pakiety Start to pierwszy, lekki zakres pracy. Pełny opis, pełna galeria albo pełna poprawa oferty są wyceniane po analizie materiałów."}
-        },
-        {
-          "@type": "Question",
-          "name": "Czy pracujesz tylko z Allegro i OLX?",
-          "acceptedAnswer": {"@type": "Answer", "text": "To główny zakres OfertaStudio. Jeśli masz inną platformę, możesz ją opisać w formularzu, ale podstawowa komunikacja i przykłady są budowane wokół Allegro i OLX."}
-        },
-        {
-          "@type": "Question",
-          "name": "Co dostanę po wysłaniu formularza?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Najpierw sprawdzę materiał i wrócę z rekomendowanym kierunkiem, zakresem i ceną. Decyzję o płatnej pracy podejmujesz dopiero po odpowiedzi."}
-        },
-        {
-          "@type": "Question",
-          "name": "Czy obiecujesz wzrost sprzedaży?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Nie obiecuję fikcyjnych wyników. Poprawiam czytelność oferty, zdjęcia, opis i układ informacji tak, żeby kupujący szybciej zrozumiał produkt i miał mniej powodów, by przejść dalej."}
-        }
-      ]
-    },
-    {
       "@type": "BreadcrumbList",
       "@id": "https://ofertastudio.pl/#breadcrumb",
       "itemListElement": [
@@ -4618,6 +4582,234 @@ input.cinput,select.cinput,textarea.cinput{
     grid-template-columns:4.3rem minmax(0,1fr);
   }
 }
+
+/* ── HOME STRUCTURE REFINEMENT ── */
+.trust-section--bar{
+  padding-top:clamp(1rem,2vw,1.5rem);
+  padding-bottom:clamp(1.5rem,2.6vw,2.1rem);
+}
+.home-trust-bar{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:.75rem;
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+.home-trust-bar li{
+  min-width:0;
+  padding:1rem 1.05rem;
+  border:1px solid var(--brand-border-soft);
+  border-radius:var(--radius-xl);
+  background:rgba(255,255,255,.72);
+  box-shadow:0 8px 22px rgba(10,22,40,.055);
+}
+.home-trust-bar strong{
+  display:block;
+  margin-bottom:.24rem;
+  color:var(--t1);
+  font-size:.9rem;
+  line-height:1.28;
+}
+.home-trust-bar span{
+  display:block;
+  color:var(--t2);
+  font-size:.78rem;
+  line-height:1.45;
+}
+.diagnostic-section{
+  position:relative;
+}
+.diagnostic-section .s-head{
+  max-width:780px;
+}
+.diagnostic-flow{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:1rem;
+}
+.diagnostic-flow-card{
+  position:relative;
+  min-width:0;
+  padding:1.25rem;
+  border:1px solid var(--bs);
+  border-radius:var(--radius-xl);
+  background:linear-gradient(180deg,rgba(255,255,255,.86),rgba(248,250,252,.78));
+  box-shadow:var(--sh1);
+}
+.diagnostic-flow-card::before{
+  content:'';
+  position:absolute;
+  top:1.25rem;
+  bottom:1.25rem;
+  left:0;
+  width:2px;
+  border-radius:0 2px 2px 0;
+  background:var(--brand-border-soft);
+}
+.diagnostic-flow-label{
+  width:max-content;
+  margin-bottom:.65rem;
+  padding:.28rem .55rem;
+  border:1px solid var(--brand-border-soft);
+  border-radius:var(--radius-pill);
+  background:var(--brand-bg);
+  color:var(--brand);
+  font-family:var(--font-mono);
+  font-size:.58rem;
+  font-weight:900;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+}
+.diagnostic-flow-card h3{
+  margin:0 0 .9rem;
+  color:var(--t1);
+  font-size:1.05rem;
+  line-height:1.32;
+  letter-spacing:-.015em;
+}
+.diagnostic-flow-card dl{
+  display:grid;
+  gap:.65rem;
+  margin:0;
+}
+.diagnostic-flow-card dl div{
+  display:grid;
+  grid-template-columns:8.4rem minmax(0,1fr);
+  gap:.8rem;
+  padding-top:.65rem;
+  border-top:1px solid rgba(148,163,184,.22);
+}
+.diagnostic-flow-card dt{
+  color:var(--brand);
+  font-family:var(--font-mono);
+  font-size:.58rem;
+  font-weight:900;
+  letter-spacing:.1em;
+  line-height:1.5;
+  text-transform:uppercase;
+}
+.diagnostic-flow-card dd{
+  margin:0;
+  color:var(--t2);
+  font-size:.84rem;
+  line-height:1.58;
+}
+.first-step-section{
+  padding-top:clamp(2.3rem,4vw,3.2rem);
+  padding-bottom:clamp(2.3rem,4vw,3.2rem);
+}
+.first-step-panel{
+  display:grid;
+  grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr) max-content;
+  gap:clamp(1.2rem,2.8vw,2rem);
+  align-items:center;
+  padding:clamp(1.35rem,2.4vw,1.8rem);
+  border:1px solid var(--brand-border-soft);
+  border-radius:calc(var(--radius-xl) + .25rem);
+  background:linear-gradient(135deg,var(--s1),var(--brand-bg));
+  box-shadow:var(--sh2);
+}
+.first-step-copy h2{
+  margin:0 0 .55rem;
+  color:var(--t1);
+  font-size:clamp(1.45rem,2.4vw,2rem);
+  line-height:1.1;
+  letter-spacing:-.035em;
+}
+.first-step-copy p{
+  max-width:620px;
+  margin:0;
+  color:var(--t2);
+  font-size:.92rem;
+  line-height:1.65;
+}
+.first-step-list{
+  display:grid;
+  gap:.5rem;
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+.first-step-list li{
+  display:grid;
+  gap:.1rem;
+  padding:.68rem .78rem;
+  border:1px solid var(--bs);
+  border-radius:var(--radius-lg);
+  background:rgba(255,255,255,.66);
+}
+.first-step-list strong{
+  color:var(--t1);
+  font-size:.84rem;
+  line-height:1.32;
+}
+.first-step-list span{
+  color:var(--t2);
+  font-size:.76rem;
+  line-height:1.45;
+}
+.first-step-panel .btn-p{
+  align-self:center;
+  white-space:normal;
+}
+[data-theme="dark"] .home-trust-bar li,
+[data-theme="dark"] .diagnostic-flow-card,
+[data-theme="dark"] .first-step-list li{
+  background:rgba(255,255,255,.035);
+}
+[data-theme="dark"] .first-step-panel{
+  background:linear-gradient(135deg,var(--s1),rgba(37,99,235,.09));
+}
+@media(max-width:1024px){
+  .home-trust-bar{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+  .first-step-panel{
+    grid-template-columns:1fr;
+  }
+  .first-step-panel .btn-p{
+    width:max-content;
+  }
+}
+@media(max-width:760px){
+  .home-trust-bar,
+  .diagnostic-flow{
+    grid-template-columns:1fr;
+  }
+  .home-trust-bar{
+    gap:.55rem;
+  }
+  .home-trust-bar li{
+    padding:.82rem .9rem;
+  }
+  .diagnostic-flow-card{
+    padding:1rem;
+  }
+  .diagnostic-flow-card dl div{
+    grid-template-columns:1fr;
+    gap:.2rem;
+  }
+  .first-step-panel{
+    gap:1rem;
+    padding:1.05rem;
+  }
+  .first-step-panel .btn-p{
+    width:100%;
+    justify-content:center;
+  }
+}
+@media(max-width:420px){
+  .home-trust-bar strong{
+    font-size:.84rem;
+  }
+  .home-trust-bar span,
+  .diagnostic-flow-card dd,
+  .first-step-copy p{
+    font-size:.78rem;
+    line-height:1.5;
+  }
+}
 </style>
 <script src="/analytics.js" defer></script>
 </head>
@@ -4743,136 +4935,103 @@ input.cinput,select.cinput,textarea.cinput{
   </aside>
 </section>
 
-<!-- ── ZAUFANIE ── -->
-<div class="section trust-section" aria-labelledby="trust-heading">
-  <div class="s-head c">
-    <div class="eyebrow">Bezpieczny pierwszy krok</div>
-    <h2 class="s-title" id="trust-heading">Najpierw diagnoza, potem zakres</h2>
-    <p class="s-sub">Nie musisz mieć pełnego briefu ani wybierać pakietu w ciemno. Najpierw sprawdzam materiał, a dopiero potem rekomenduję sensowny zakres.</p>
-  </div>
-  <div class="trust-benefit-grid">
-    <article class="trust-benefit trust-benefit--primary">
-      <div class="trust-benefit-mark" aria-hidden="true">01 / DIAGNOZA</div>
-      <h3>Najpierw diagnoza</h3>
-      <p>Zanim zaproponuję zakres, sprawdzam, co realnie blokuje ofertę.</p>
-      <ul class="trust-primary-points" aria-label="Korzyści pierwszego kroku">
-        <li>Bez briefu</li>
-        <li>Bez zobowiązań</li>
-        <li>Tylko potrzebny zakres</li>
-      </ul>
-    </article>
-    <article class="trust-benefit">
-      <div class="trust-benefit-mark" aria-hidden="true">02</div>
-      <h3>Bez briefu</h3>
-      <p>Nie musisz przygotowywać rozbudowanego opisu. Wystarczy link, zdjęcie albo krótka wiadomość.</p>
-    </article>
-    <article class="trust-benefit">
-      <div class="trust-benefit-mark" aria-hidden="true">03</div>
-      <h3>Tylko potrzebny zakres</h3>
-      <p>Jeśli wystarczy poprawa miniatury albo opisu, nie dokładam większej pracy na siłę.</p>
-    </article>
-    <article class="trust-benefit">
-      <div class="trust-benefit-mark" aria-hidden="true">04</div>
-      <h3>Gotowe do wdrożenia</h3>
-      <p>Dostajesz konkretne teksty, grafiki albo rekomendacje, które można wykorzystać w ofercie.</p>
-    </article>
-    <article class="trust-benefit">
-      <div class="trust-benefit-mark" aria-hidden="true">05</div>
-      <h3>Allegro i OLX</h3>
-      <p>Pracuję pod sposób, w jaki kupujący faktycznie skanuje ofertę na marketplace.</p>
-    </article>
-  </div>
-</div>
+<!-- ── PASEK BEZPIECZEŃSTWA ── -->
+<section class="section section--compact trust-section trust-section--bar" aria-label="Bezpieczny pierwszy krok">
+  <ul class="home-trust-bar">
+    <li><strong>Mini audyt 0 zł</strong><span>3 konkretne poprawki na start</span></li>
+    <li><strong>Bez briefu</strong><span>wystarczy link, zdjęcie albo krótki opis</span></li>
+    <li><strong>Bez zobowiązań</strong><span>decyzja dopiero po odpowiedzi</span></li>
+    <li><strong>Zakres przed startem</strong><span>cena i kierunek po analizie</span></li>
+  </ul>
+</section>
 
 <div class="divider"></div>
 
 <!-- ── PROBLEM / DLA KOGO ── -->
-<div class="section problem-section" id="dla-kogo" aria-labelledby="problem-heading">
+<section class="section problem-section" id="dla-kogo" aria-labelledby="problem-heading">
   <span id="uslugi" class="anchor-alias" aria-hidden="true"></span>
   <span id="bariery" class="anchor-alias" aria-hidden="true"></span>
   <div class="problem-stage">
     <div class="problem-copy">
       <div class="s-head">
         <div class="eyebrow">Problem / dla kogo</div>
-        <h2 class="s-title" id="problem-heading">Oferta nie przegrywa tylko ceną. Często przegrywa sposobem pokazania produktu.</h2>
-        <p class="s-sub">Jeśli klient musi się domyślać, co kupuje, co jest w zestawie, czym różni się wariant i dlaczego warto kliknąć właśnie tę ofertę, często przechodzi dalej zanim dotrze do dobrych informacji.</p>
+        <h2 class="s-title" id="problem-heading">Oferta nie przegrywa tylko ceną</h2>
+        <p class="s-sub">Często produkt jest dobry, ale oferta nie pokazuje tego wystarczająco szybko. Kupujący widzi miniaturę, kilka zdjęć, tytuł i pierwsze linie opisu — i na tej podstawie decyduje, czy czyta dalej.</p>
       </div>
-      <div class="section-cta"><a href="#kontakt" class="btn-p" data-event="mini_audit_click" data-location="barriers" data-package="start">Sprawdź, od czego zacząć</a></div>
+      <div class="section-cta"><a href="#kontakt" class="btn-p" data-event="mini_audit_click" data-location="problem" data-package="start">Sprawdź, od czego zacząć</a></div>
     </div>
     <div class="problem-list">
-      <article class="problem-card"><div class="problem-card-label">Problem 01</div><h3>Miniatura ginie wśród podobnych ofert</h3><p>Produkt może być dobry, ale klient nie zatrzyma się przy kafelku, który jest nieczytelny albo niczym się nie wyróżnia.</p></article>
-      <article class="problem-card"><div class="problem-card-label">Problem 02</div><h3>Galeria nie odpowiada na pytania</h3><p>Brakuje skali, detali, zawartości zestawu lub zastosowania, więc kupujący sam musi składać informacje.</p></article>
-      <article class="problem-card"><div class="problem-card-label">Problem 03</div><h3>Tytuł nie mówi szybko, co jest ważne</h3><p>Kluczowy wariant, parametr albo zastosowanie pojawia się za późno i nie pomaga rozpoznać właściwego produktu.</p></article>
-      <article class="problem-card"><div class="problem-card-label">Problem 04</div><h3>Opis nie ułatwia decyzji</h3><p>Parametry są, ale klient nadal nie widzi przewagi albo musi napisać, żeby zrozumieć, co dokładnie kupuje.</p></article>
+      <article class="problem-card"><div class="problem-card-label">Problem 01</div><h3>Miniatura nie zatrzymuje uwagi</h3><p>Produkt jest zbyt mały, nieczytelny albo nie pokazuje najważniejszej przewagi.</p></article>
+      <article class="problem-card"><div class="problem-card-label">Problem 02</div><h3>Galeria nie odpowiada na pytania</h3><p>Brakuje zdjęć zestawu, detalu, skali, zastosowania albo wariantu.</p></article>
+      <article class="problem-card"><div class="problem-card-label">Problem 03</div><h3>Tytuł nie porządkuje informacji</h3><p>Najważniejsze parametry są ukryte lub podane w złej kolejności.</p></article>
+      <article class="problem-card"><div class="problem-card-label">Problem 04</div><h3>Opis nie prowadzi do decyzji</h3><p>Jest kopią specyfikacji albo zbyt późno wyjaśnia, dla kogo jest produkt.</p></article>
     </div>
   </div>
-</div>
+</section>
 
 <div class="divider"></div>
 
-<!-- ── PAKIETY ── -->
-<div class="section" id="pakiety">
-  <div class="s-head c"><div class="eyebrow">Pakiety Start</div><h2 class="s-title">Zacznij od lekkiego zakresu dopasowanego do problemu</h2><p class="s-sub">Nie musisz od razu zamawiać pełnej przebudowy. Wybierz pierwszy krok, a dokładny zakres i cenę potwierdzę po sprawdzeniu materiałów.</p></div>
-  <div class="package-grid">
-    <div class="card price-card">
-      <div class="price-name">Mini audyt</div><div class="price-line"><span class="price-val price-val-free">0 zł</span></div><div class="price-h">3 konkretne poprawki na start</div><div class="price-divider"></div>
-      <p class="price-for"><strong>Dla kogo</strong>Gdy nie wiesz jeszcze, od czego zacząć.</p>
-      <div class="package-details"><div class="package-detail"><strong>Zakres startowy</strong><span>Diagnoza jednej oferty, zdjęcia albo pomysłu.</span></div><div class="package-detail package-detail--effect"><strong>Efekt</strong><span>3 konkretne poprawki i kierunek dalszych działań.</span></div></div>
-      <div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="start" data-interest="Mini audyt — 0 zł" data-message="Interesuje mnie mini audyt.">Wyślij link do analizy</a></div>
-    </div>
-    <div class="card price-card">
-      <div class="price-name">Tekst Start</div><div class="price-line"><span class="price-val">od 79 zł</span><span class="price-unit">/ 1 oferta</span></div><div class="price-h">Szybka poprawa tytułu i pierwszego układu treści</div><div class="price-divider"></div>
-      <p class="price-for"><strong>Dla kogo</strong>Gdy tytuł i początek opisu nie pokazują wartości produktu.</p>
-      <div class="package-details"><div class="package-detail"><strong>Zakres startowy</strong><span>Tytuł, krótki lead i 3–5 kluczowych punktów.</span></div><div class="package-detail package-detail--effect"><strong>Efekt</strong><span>Kupujący szybciej rozumie produkt i jego przewagę.</span></div></div>
-      <div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="tekst_start" data-interest="Tekst Start — od 79 zł" data-message="Interesuje mnie pakiet Tekst Start.">Wybierz Tekst Start</a></div>
-    </div>
-    <div class="card price-card">
-      <div class="price-name">Foto Start</div><div class="price-line"><span class="price-val">od 149 zł</span><span class="price-unit">/ 1 produkt</span></div><div class="price-h">Miniatura albo pierwsza poprawa galerii</div><div class="price-divider"></div>
-      <p class="price-for"><strong>Dla kogo</strong>Gdy miniatura ginie, a galeria nie prowadzi kupującego.</p>
-      <div class="package-details"><div class="package-detail"><strong>Zakres startowy</strong><span>Ocena zdjęć i poprawa miniatury lub pierwszej grafiki.</span></div><div class="package-detail package-detail--effect"><strong>Efekt</strong><span>Najważniejsza cecha produktu jest widoczna od razu.</span></div></div>
-      <div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="foto_start" data-interest="Foto Start — od 149 zł" data-message="Interesuje mnie pakiet Foto Start.">Wybierz Foto Start</a></div>
-    </div>
-    <div class="card price-card">
-      <div class="price-name">Oferta Start</div><div class="price-line"><span class="price-val">od 199 zł</span><span class="price-unit">/ 1 oferta</span></div><div class="price-h">Szybkie uporządkowanie jednej oferty</div><div class="price-divider"></div>
-      <p class="price-for"><strong>Dla kogo</strong>Gdy jedna oferta wymaga uporządkowania kluczowych elementów.</p>
-      <div class="package-details"><div class="package-detail"><strong>Zakres startowy</strong><span>Analiza, poprawiony tytuł, skrócony układ opisu i kierunek dla zdjęć.</span></div><div class="package-detail package-detail--effect"><strong>Efekt</strong><span>Mapa poprawy jednej oferty bez zamawiania pełnej przebudowy.</span></div></div>
-      <div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="oferta_start" data-interest="Oferta Start — od 199 zł" data-message="Interesuje mnie pakiet Oferta Start.">Wybierz Oferta Start</a></div>
-    </div>
-    <div class="card price-card">
-      <div class="price-name">Studio Start</div><div class="price-line"><span class="price-val">od 499 zł</span></div><div class="price-h">Pierwszy standard dla małej serii produktów</div><div class="price-divider"></div>
-      <p class="price-for"><strong>Dla kogo</strong>Gdy podobne produkty potrzebują wspólnego standardu prezentacji.</p>
-      <div class="package-details"><div class="package-detail"><strong>Zakres startowy</strong><span>Podstawowy standard tytułów, opisów lub kierunku galerii.</span></div><div class="package-detail package-detail--effect"><strong>Efekt</strong><span>Spójny punkt wyjścia dla małej serii produktów.</span></div></div>
-      <div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="studio_start" data-interest="Studio Start — od 499 zł" data-message="Interesuje mnie pakiet Studio Start.">Zapytaj o Studio Start</a></div>
-    </div>
-    <div class="card price-card subscription-card">
-      <div class="price-name">Abonament</div><div class="price-line"><span class="price-val">od 1490 zł</span><span class="price-unit">/ mies.</span></div><div class="price-h">Stała obsługa nowych i poprawianych ofert</div><div class="price-divider"></div>
-      <p class="price-for"><strong>Dla kogo</strong>Gdy regularnie dodajesz lub poprawiasz oferty.</p>
-      <div class="package-details"><div class="package-detail"><strong>Zakres startowy</strong><span>Zakres po analizie liczby produktów i rytmu publikacji.</span></div><div class="package-detail package-detail--effect"><strong>Efekt</strong><span>Stałe wsparcie bez rozpoczynania każdej realizacji od zera.</span></div></div>
-      <div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="abonament" data-interest="Abonament — od 1490 zł / mies." data-message="Interesuje mnie stała współpraca.">Zapytaj o stałą współpracę</a></div>
-    </div>
-    <div class="card price-card price-card--choice">
-      <div class="price-choice-summary"><div class="price-name">Nie wiem, czego potrzebuję</div><div class="price-line"><span class="price-val price-val-free">0 zł</span><span class="price-unit">na start</span></div><div class="price-h">Najpierw kierunek, potem zakres</div></div>
-      <div class="price-choice-details"><p class="price-for"><strong>Dla kogo</strong>Gdy nie wiesz jeszcze, który zakres ma sens.</p><div class="package-details"><div class="package-detail"><strong>Zakres startowy</strong><span>Krótka analiza i rekomendacja pierwszego kroku.</span></div><div class="package-detail package-detail--effect"><strong>Efekt</strong><span>Wybierasz zakres po sprawdzeniu materiału, nie na ślepo.</span></div></div></div>
-      <div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="unknown" data-interest="Nie wiem jeszcze — 0 zł na start" data-message="Potrzebuję pomocy w wyborze zakresu.">Pomóż mi wybrać zakres</a></div>
-    </div>
+<!-- ── DIAGNOSTYKA ── -->
+<section class="section diagnostic-section" aria-labelledby="diagnostic-heading">
+  <div class="s-head">
+    <div class="eyebrow">Diagnoza oferty</div>
+    <h2 class="s-title" id="diagnostic-heading">Co może blokować decyzję kupującego?</h2>
+    <p class="s-sub">Nie każdy problem wymaga pełnej przebudowy. Czasem wystarczy poprawić kolejność zdjęć, pokazać skalę, dopisać kompatybilność albo przenieść ważną informację wyżej.</p>
   </div>
-  <div class="pricing-explainer">
-    <div class="pricing-explainer-main">
-      <div class="eyebrow">Większy zakres</div>
-      <h3>Pełny zakres — wycena po analizie</h3>
-      <p>Pakiety Start służą do poprawy jednego elementu albo sprawdzenia kierunku. Pełny opis, pełna galeria, kompletna poprawa oferty lub standard dla większej serii wymagają analizy materiałów i osobnej wyceny.</p>
-      <ul class="pricing-scope-list"><li>Pełny opis oferty</li><li>Pełna galeria i infografiki</li><li>Kompletna poprawa jednej oferty</li><li>Standard dla większej serii produktów</li><li>Stała obsługa ofert</li></ul>
-      <a href="#kontakt" class="btn-p" data-event="pricing_cta_click" data-location="pricing" data-package="full_scope" data-interest="Pełny zakres — wycena po analizie" data-message="Potrzebuję wyceny pełnego zakresu.">Wyślij materiał do wyceny</a>
-    </div>
-    <div class="pricing-help">
-      <div class="eyebrow">Bez wybierania w ciemno</div>
-      <h3>Nie wiesz, który zakres wybrać?</h3>
-      <p>Wyślij jedną ofertę, zdjęcie albo krótki opis produktu. Wrócę z rekomendacją pierwszego kroku lub pełniejszej wyceny.</p>
-      <a href="#kontakt" class="btn-s" data-event="pricing_cta_click" data-location="pricing" data-package="unknown" data-interest="Nie wiem jeszcze — 0 zł na start" data-message="Potrzebuję pomocy w wyborze zakresu.">Pomóż mi wybrać zakres</a>
-    </div>
+  <div class="diagnostic-flow" aria-label="Objawy, możliwe przyczyny i pierwsze poprawki">
+    <article class="diagnostic-flow-card">
+      <div class="diagnostic-flow-label">Objaw</div>
+      <h3>Klienci oglądają, ale nie pytają</h3>
+      <dl>
+        <div><dt>Możliwa przyczyna</dt><dd>Galeria nie pokazuje zestawu, skali lub zastosowania.</dd></div>
+        <div><dt>Pierwsza poprawka</dt><dd>Ułożyć zdjęcia w sekwencję: produkt → zestaw → detal → użycie → parametr.</dd></div>
+      </dl>
+    </article>
+    <article class="diagnostic-flow-card">
+      <div class="diagnostic-flow-label">Objaw</div>
+      <h3>Oferta ginie obok podobnych wyników</h3>
+      <dl>
+        <div><dt>Możliwa przyczyna</dt><dd>Miniatura jest zbyt mała, ciemna albo nie pokazuje kluczowej cechy.</dd></div>
+        <div><dt>Pierwsza poprawka</dt><dd>Pokazać produkt większym kadrem i usunąć elementy, które rozpraszają uwagę.</dd></div>
+      </dl>
+    </article>
+    <article class="diagnostic-flow-card">
+      <div class="diagnostic-flow-label">Objaw</div>
+      <h3>Kupujący pyta o podstawowe rzeczy</h3>
+      <dl>
+        <div><dt>Możliwa przyczyna</dt><dd>Brakuje informacji o wariancie, kompatybilności, komplecie albo ograniczeniach.</dd></div>
+        <div><dt>Pierwsza poprawka</dt><dd>Dodać brakujące informacje do galerii i pierwszych akapitów opisu.</dd></div>
+      </dl>
+    </article>
+    <article class="diagnostic-flow-card">
+      <div class="diagnostic-flow-label">Objaw</div>
+      <h3>Opis jest długi, ale nie pomaga wybrać</h3>
+      <dl>
+        <div><dt>Możliwa przyczyna</dt><dd>Najpierw pojawia się specyfikacja, a dopiero później sens produktu.</dd></div>
+        <div><dt>Pierwsza poprawka</dt><dd>Zacząć od zastosowania, różnicy wobec podobnych ofert i najczęstszych pytań kupującego.</dd></div>
+      </dl>
+    </article>
   </div>
-  <p class="pricing-start-note">Podane ceny są brutto i dotyczą pierwszego, lekkiego zakresu. Dokładna wycena zależy od liczby produktów, jakości materiałów i poziomu trudności. Pełną poprawę oferty lub serię produktów wyceniam po analizie materiałów.</p>
-</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── PIERWSZY KROK ── -->
+<section class="section section--compact first-step-section" aria-labelledby="first-step-heading">
+  <div class="first-step-panel">
+    <div class="first-step-copy">
+      <div class="eyebrow">Bezpieczny pierwszy krok</div>
+      <h2 id="first-step-heading">Najpierw diagnoza, potem zakres</h2>
+      <p>Nie musisz zgadywać, czy problemem jest miniatura, galeria, tytuł czy opis. Wyślij link, a wrócę z pierwszym kierunkiem i 3 konkretnymi poprawkami.</p>
+    </div>
+    <ol class="first-step-list">
+      <li><strong>1. Wysyłasz link</strong><span>albo zdjęcie produktu, jeśli oferta jeszcze nie istnieje.</span></li>
+      <li><strong>2. Dostajesz diagnozę</strong><span>co blokuje zrozumienie i co poprawić najpierw.</span></li>
+      <li><strong>3. Decydujesz o zakresie</strong><span>dopiero gdy cena i kierunek są jasne.</span></li>
+    </ol>
+    <a href="#kontakt" class="btn-p" data-event="mini_audit_click" data-location="first_step" data-package="start">Wyślij link — zacznij od 3 poprawek</a>
+  </div>
+</section>
 
 <div class="divider"></div>
 
@@ -4961,6 +5120,72 @@ input.cinput,select.cinput,textarea.cinput{
 
 <div class="divider"></div>
 
+<!-- ── PAKIETY ── -->
+<div class="section" id="pakiety">
+  <div class="s-head c"><div class="eyebrow">Pakiety Start</div><h2 class="s-title">Zacznij od zakresu dopasowanego do problemu</h2><p class="s-sub">Nie musisz zamawiać pełnej przebudowy w ciemno. Pakiet Start pomaga poprawić pierwszy element albo sprawdzić kierunek, a większy zakres wyceniam po analizie materiałów.</p></div>
+  <div class="package-grid">
+    <div class="card price-card">
+      <div class="price-name">Mini audyt</div><div class="price-line"><span class="price-val price-val-free">0 zł</span></div><div class="price-h">3 konkretne poprawki na start</div><div class="price-divider"></div>
+      <p class="price-for"><strong>Dla kogo</strong>Gdy nie wiesz jeszcze, od czego zacząć.</p>
+      <div class="package-details"><div class="package-detail"><strong>Zakres startowy</strong><span>Diagnoza jednej oferty, zdjęcia albo pomysłu.</span></div><div class="package-detail package-detail--effect"><strong>Efekt</strong><span>3 konkretne poprawki i kierunek dalszych działań.</span></div></div>
+      <div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="start" data-interest="Mini audyt — 0 zł" data-message="Interesuje mnie mini audyt.">Wyślij link do analizy</a></div>
+    </div>
+    <div class="card price-card">
+      <div class="price-name">Tekst Start</div><div class="price-line"><span class="price-val">od 79 zł</span><span class="price-unit">/ 1 oferta</span></div><div class="price-h">Szybka poprawa tytułu i pierwszego układu treści</div><div class="price-divider"></div>
+      <p class="price-for"><strong>Dla kogo</strong>Gdy tytuł i początek opisu nie pokazują wartości produktu.</p>
+      <div class="package-details"><div class="package-detail"><strong>Zakres startowy</strong><span>Tytuł, krótki lead i 3–5 kluczowych punktów.</span></div><div class="package-detail package-detail--effect"><strong>Efekt</strong><span>Kupujący szybciej rozumie produkt i jego przewagę.</span></div></div>
+      <div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="tekst_start" data-interest="Tekst Start — od 79 zł" data-message="Interesuje mnie pakiet Tekst Start.">Wybierz Tekst Start</a></div>
+    </div>
+    <div class="card price-card">
+      <div class="price-name">Foto Start</div><div class="price-line"><span class="price-val">od 149 zł</span><span class="price-unit">/ 1 produkt</span></div><div class="price-h">Miniatura albo pierwsza poprawa galerii</div><div class="price-divider"></div>
+      <p class="price-for"><strong>Dla kogo</strong>Gdy miniatura ginie, a galeria nie prowadzi kupującego.</p>
+      <div class="package-details"><div class="package-detail"><strong>Zakres startowy</strong><span>Ocena zdjęć i poprawa miniatury lub pierwszej grafiki.</span></div><div class="package-detail package-detail--effect"><strong>Efekt</strong><span>Najważniejsza cecha produktu jest widoczna od razu.</span></div></div>
+      <div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="foto_start" data-interest="Foto Start — od 149 zł" data-message="Interesuje mnie pakiet Foto Start.">Wybierz Foto Start</a></div>
+    </div>
+    <div class="card price-card">
+      <div class="price-name">Oferta Start</div><div class="price-line"><span class="price-val">od 199 zł</span><span class="price-unit">/ 1 oferta</span></div><div class="price-h">Szybkie uporządkowanie jednej oferty</div><div class="price-divider"></div>
+      <p class="price-for"><strong>Dla kogo</strong>Gdy jedna oferta wymaga uporządkowania kluczowych elementów.</p>
+      <div class="package-details"><div class="package-detail"><strong>Zakres startowy</strong><span>Analiza, poprawiony tytuł, skrócony układ opisu i kierunek dla zdjęć.</span></div><div class="package-detail package-detail--effect"><strong>Efekt</strong><span>Mapa poprawy jednej oferty bez zamawiania pełnej przebudowy.</span></div></div>
+      <div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="oferta_start" data-interest="Oferta Start — od 199 zł" data-message="Interesuje mnie pakiet Oferta Start.">Wybierz Oferta Start</a></div>
+    </div>
+    <div class="card price-card">
+      <div class="price-name">Studio Start</div><div class="price-line"><span class="price-val">od 499 zł</span></div><div class="price-h">Pierwszy standard dla małej serii produktów</div><div class="price-divider"></div>
+      <p class="price-for"><strong>Dla kogo</strong>Gdy podobne produkty potrzebują wspólnego standardu prezentacji.</p>
+      <div class="package-details"><div class="package-detail"><strong>Zakres startowy</strong><span>Podstawowy standard tytułów, opisów lub kierunku galerii.</span></div><div class="package-detail package-detail--effect"><strong>Efekt</strong><span>Spójny punkt wyjścia dla małej serii produktów.</span></div></div>
+      <div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="studio_start" data-interest="Studio Start — od 499 zł" data-message="Interesuje mnie pakiet Studio Start.">Zapytaj o Studio Start</a></div>
+    </div>
+    <div class="card price-card subscription-card">
+      <div class="price-name">Abonament</div><div class="price-line"><span class="price-val">od 1490 zł</span><span class="price-unit">/ mies.</span></div><div class="price-h">Stała obsługa nowych i poprawianych ofert</div><div class="price-divider"></div>
+      <p class="price-for"><strong>Dla kogo</strong>Gdy regularnie dodajesz lub poprawiasz oferty.</p>
+      <div class="package-details"><div class="package-detail"><strong>Zakres startowy</strong><span>Zakres po analizie liczby produktów i rytmu publikacji.</span></div><div class="package-detail package-detail--effect"><strong>Efekt</strong><span>Stałe wsparcie bez rozpoczynania każdej realizacji od zera.</span></div></div>
+      <div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="abonament" data-interest="Abonament — od 1490 zł / mies." data-message="Interesuje mnie stała współpraca.">Zapytaj o stałą współpracę</a></div>
+    </div>
+    <div class="card price-card price-card--choice">
+      <div class="price-choice-summary"><div class="price-name">Nie wiem, czego potrzebuję</div><div class="price-line"><span class="price-val price-val-free">0 zł</span><span class="price-unit">na start</span></div><div class="price-h">Najpierw kierunek, potem zakres</div></div>
+      <div class="price-choice-details"><p class="price-for"><strong>Dla kogo</strong>Gdy nie wiesz jeszcze, który zakres ma sens.</p><div class="package-details"><div class="package-detail"><strong>Zakres startowy</strong><span>Krótka analiza i rekomendacja pierwszego kroku.</span></div><div class="package-detail package-detail--effect"><strong>Efekt</strong><span>Wybierasz zakres po sprawdzeniu materiału, nie na ślepo.</span></div></div></div>
+      <div class="price-btns"><a href="#kontakt" class="price-btn price-btn-primary" data-event="pricing_cta_click" data-location="pricing" data-package="unknown" data-interest="Nie wiem jeszcze — 0 zł na start" data-message="Potrzebuję pomocy w wyborze zakresu.">Pomóż mi wybrać zakres</a></div>
+    </div>
+  </div>
+  <div class="pricing-explainer">
+    <div class="pricing-explainer-main">
+      <div class="eyebrow">Większy zakres</div>
+      <h3>Pełny zakres — wycena po analizie</h3>
+      <p>Pakiety Start służą do poprawy jednego elementu albo sprawdzenia kierunku. Pełny opis, pełna galeria, kompletna poprawa oferty lub standard dla większej serii wymagają analizy materiałów i osobnej wyceny.</p>
+      <ul class="pricing-scope-list"><li>Pełny opis oferty</li><li>Pełna galeria i infografiki</li><li>Kompletna poprawa jednej oferty</li><li>Standard dla większej serii produktów</li><li>Stała obsługa ofert</li></ul>
+      <a href="#kontakt" class="btn-p" data-event="pricing_cta_click" data-location="pricing" data-package="full_scope" data-interest="Pełny zakres — wycena po analizie" data-message="Potrzebuję wyceny pełnego zakresu.">Wyślij materiał do wyceny</a>
+    </div>
+    <div class="pricing-help">
+      <div class="eyebrow">Bez wybierania w ciemno</div>
+      <h3>Nie wiesz, który zakres wybrać?</h3>
+      <p>Wyślij jedną ofertę, zdjęcie albo krótki opis produktu. Wrócę z rekomendacją pierwszego kroku lub pełniejszej wyceny.</p>
+      <a href="#kontakt" class="btn-s" data-event="pricing_cta_click" data-location="pricing" data-package="unknown" data-interest="Nie wiem jeszcze — 0 zł na start" data-message="Potrzebuję pomocy w wyborze zakresu.">Pomóż mi wybrać zakres</a>
+    </div>
+  </div>
+  <p class="pricing-start-note">Podane ceny są brutto i dotyczą pierwszego, lekkiego zakresu. Dokładna wycena zależy od liczby produktów, jakości materiałów i poziomu trudności. Pełną poprawę oferty lub serię produktów wyceniam po analizie materiałów.</p>
+</div>
+
+<div class="divider"></div>
+
 <!-- ── PROCES ── -->
 <div class="section process-section" id="proces" aria-labelledby="process-heading">
   <div class="s-head"><div class="eyebrow">Proces</div><h2 class="s-title" id="process-heading">Jak wygląda współpraca</h2><p class="s-sub">Cztery konkretne kroki od pierwszej wiadomości do materiałów gotowych do wdrożenia.</p></div>
@@ -4970,58 +5195,6 @@ input.cinput,select.cinput,textarea.cinput{
     <li class="process-item"><div class="process-node" aria-hidden="true">03</div><div class="process-panel"><div class="process-label">Krok 03</div><h3>Przed startem znasz zakres, cenę i termin</h3><p>Podejmujesz decyzję dopiero wtedy, gdy warunki są jasne.</p></div></li>
     <li class="process-item"><div class="process-node" aria-hidden="true">04</div><div class="process-panel"><div class="process-label">Krok 04</div><h3>Otrzymujesz materiały gotowe do wdrożenia</h3><p>Dostajesz teksty, rekomendacje lub grafiki przygotowane do publikacji.</p></div></li>
   </ol>
-</div>
-
-<div class="divider"></div>
-
-<!-- ── FAQ ── -->
-<section class="section home-faq" id="faq" aria-labelledby="home-faq-heading">
-  <div class="s-head c">
-    <div class="eyebrow">FAQ</div>
-    <h2 class="s-title" id="home-faq-heading">Najczęstsze pytania przed pierwszą wiadomością</h2>
-    <p class="s-sub">Nie musisz znać nazwy usługi ani przygotowywać pełnego briefu. Wystarczy, że pokażesz ofertę, produkt albo problem — resztę doprecyzujemy po analizie.</p>
-  </div>
-  <div class="home-faq-list">
-    <details class="home-faq-item"><summary>Czy muszę mieć gotową ofertę?</summary><div class="home-faq-answer">Nie. Możesz wysłać link do oferty, zdjęcie produktu albo krótki opis tego, co chcesz sprzedać.</div></details>
-    <details class="home-faq-item"><summary>Czy mini audyt naprawdę jest darmowy?</summary><div class="home-faq-answer">Tak. Mini audyt 0 zł obejmuje 3 pierwsze rzeczy, które warto poprawić lub sprawdzić przed wyborem zakresu.</div></details>
-    <details class="home-faq-item"><summary>Czy pakiety Start oznaczają pełną usługę?</summary><div class="home-faq-answer">Nie. Pakiety Start to pierwszy, lekki zakres pracy. Pełny opis, pełna galeria albo pełna poprawa oferty są wyceniane po analizie materiałów.</div></details>
-    <details class="home-faq-item"><summary>Czy pracujesz tylko z Allegro i OLX?</summary><div class="home-faq-answer">To główny zakres OfertaStudio. Jeśli masz inną platformę, możesz ją opisać w formularzu, ale podstawowa komunikacja i przykłady są budowane wokół Allegro i OLX.</div></details>
-    <details class="home-faq-item"><summary>Co dostanę po wysłaniu formularza?</summary><div class="home-faq-answer">Najpierw sprawdzę materiał i wrócę z rekomendowanym kierunkiem, zakresem i ceną. Decyzję o płatnej pracy podejmujesz dopiero po odpowiedzi.</div></details>
-    <details class="home-faq-item"><summary>Czy obiecujesz wzrost sprzedaży?</summary><div class="home-faq-answer">Nie obiecuję fikcyjnych wyników. Poprawiam czytelność oferty, zdjęcia, opis i układ informacji tak, żeby kupujący szybciej zrozumiał produkt i miał mniej powodów, by przejść dalej.</div></details>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ── MINI AUDYT ── -->
-<div class="section section--compact" id="mini-audyt">
-  <div class="cta-box audit-cta-panel">
-    <div class="audit-cta-main">
-      <div class="eyebrow">Mini audyt 0 zł</div>
-      <h2>Nie zgaduj, co blokuje ofertę</h2>
-      <p class="audit-cta-lead">Wyślij link albo zdjęcie produktu. Sprawdzę, gdzie oferta traci uwagę kupującego i wskażę 3 konkretne rzeczy, które warto poprawić jako pierwsze.</p>
-      <div class="audit-cta-actions">
-        <a href="#kontakt" class="btn-p audit-cta-button" data-event="mini_audit_click" data-location="mini_audit" data-package="start">Wyślij link do analizy</a>
-        <p class="audit-cta-microcopy">Bez briefu. Bez zobowiązań. Zakres i cena dopiero po sprawdzeniu materiału.</p>
-      </div>
-      <ul class="audit-benefit-pills" aria-label="Korzyści mini audytu">
-        <li>bez briefu</li>
-        <li>1 oferta na start</li>
-        <li>odpowiedź z kierunkiem</li>
-        <li>bez zobowiązań</li>
-      </ul>
-    </div>
-    <aside class="audit-deliverables" aria-labelledby="audit-deliverables-title">
-      <div class="audit-preview-kicker">Podgląd diagnozy</div>
-      <h3 id="audit-deliverables-title">Co dostaniesz?</h3>
-      <p class="audit-deliverables-intro">Krótka diagnoza, która pomaga wybrać właściwy pierwszy krok.</p>
-      <ol class="audit-deliverables-list">
-        <li class="audit-deliverable"><span class="audit-deliverable-number" aria-hidden="true">01</span><div><strong>3 konkretne poprawki</strong><p>Nie ogólne porady, tylko rzeczy do poprawy w Twojej ofercie.</p></div></li>
-        <li class="audit-deliverable"><span class="audit-deliverable-number" aria-hidden="true">02</span><div><strong>Pierwszy kierunek działania</strong><p>Powiem, czy zacząć od zdjęcia, opisu, tytułu czy układu całej oferty.</p></div></li>
-        <li class="audit-deliverable"><span class="audit-deliverable-number" aria-hidden="true">03</span><div><strong>Bezpieczny start</strong><p>Najpierw diagnoza, potem decyzja o ewentualnej płatnej pracy.</p></div></li>
-      </ol>
-    </aside>
-  </div>
 </div>
 
 <div class="divider"></div>
@@ -5045,6 +5218,32 @@ input.cinput,select.cinput,textarea.cinput{
     </div>
   </div>
 </section>
+
+<div class="divider"></div>
+
+<!-- ── MINI AUDYT ── -->
+<div class="section section--compact" id="mini-audyt">
+  <div class="cta-box audit-cta-panel">
+    <div class="audit-cta-main">
+      <div class="eyebrow">Mini audyt 0 zł</div>
+      <h2>Wyślij link. Wskażę 3 konkretne poprawki.</h2>
+      <p class="audit-cta-lead">Sprawdzę, gdzie oferta traci uwagę kupującego: w miniaturze, galerii, tytule, opisie albo kolejności informacji. Potem zdecydujesz, czy i jaki zakres ma sens.</p>
+      <div class="audit-cta-actions">
+        <a href="#kontakt" class="btn-p audit-cta-button" data-event="mini_audit_click" data-location="mini_audit" data-package="start">Wyślij link do analizy</a>
+        <p class="audit-cta-microcopy">Bez briefu. Bez zobowiązań. Zakres i cena dopiero po sprawdzeniu materiału.</p>
+      </div>
+    </div>
+    <aside class="audit-deliverables" aria-labelledby="audit-deliverables-title">
+      <div class="audit-preview-kicker">Podgląd diagnozy</div>
+      <h3 id="audit-deliverables-title">Co dostaniesz?</h3>
+      <ol class="audit-deliverables-list">
+        <li class="audit-deliverable"><span class="audit-deliverable-number" aria-hidden="true">01</span><div><strong>3 konkretne poprawki</strong><p>Nie ogólne porady, tylko rzeczy do poprawy w Twojej ofercie.</p></div></li>
+        <li class="audit-deliverable"><span class="audit-deliverable-number" aria-hidden="true">02</span><div><strong>Pierwszy kierunek działania</strong><p>Powiem, czy zacząć od zdjęcia, opisu, tytułu czy układu całej oferty.</p></div></li>
+        <li class="audit-deliverable"><span class="audit-deliverable-number" aria-hidden="true">03</span><div><strong>Zakres przed startem</strong><p>Decyzję o płatnej pracy podejmujesz dopiero po odpowiedzi.</p></div></li>
+      </ol>
+    </aside>
+  </div>
+</div>
 
 <div class="divider"></div>
 
@@ -5307,8 +5506,8 @@ window.addEventListener('load',()=>{
 const floatingActions=document.querySelectorAll('.sticky-cta,.mobile-sticky-cta');
 if(floatingActions.length&&'IntersectionObserver' in window){
   const desktopMedia=window.matchMedia('(min-width:1025px)');
-  const desktopSuppressors=document.querySelectorAll('.hero,.trust-section,.problem-section,#pakiety,.case-studies-section,#proces,#mini-audyt,.maker-section,#kontakt,footer');
-  const mobileSuppressors=document.querySelectorAll('.hero,.trust-section,.problem-section,#pakiety,.case-studies-section,#proces,#faq,#mini-audyt,.maker-section,#kontakt,footer');
+  const desktopSuppressors=document.querySelectorAll('.hero,.trust-section,.problem-section,.diagnostic-section,.first-step-section,#pakiety,.case-studies-section,#proces,#mini-audyt,.maker-section,#kontakt,footer');
+  const mobileSuppressors=document.querySelectorAll('.hero,.trust-section,.problem-section,.diagnostic-section,.first-step-section,#pakiety,.case-studies-section,#proces,#mini-audyt,.maker-section,#kontakt,footer');
   const desktopVisible=new Set();
   const mobileVisible=new Set();
   const syncFloatingActions=()=>{
