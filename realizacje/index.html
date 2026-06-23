@@ -171,6 +171,12 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--brand);outline-offs
 .brief-card{padding:1rem;border-radius:.75rem;background:var(--s1);border:1px solid var(--bs)}
 .brief-k{font-family:'JetBrains Mono',monospace;font-size:.625rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brand);margin-bottom:.375rem}
 .brief-v{font-size:.875rem;color:var(--t2);line-height:1.65}
+.case-output{padding:1.35rem 2.5rem;border-bottom:1px solid var(--bs);display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.35fr);gap:1.25rem;align-items:center;background:linear-gradient(135deg,var(--s1),var(--brand-bg))}
+.case-output-main p{font-size:.875rem;color:var(--t2);line-height:1.65;margin:0}
+.case-output-list{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.65rem;margin:0;padding:0}
+.case-output-list li{min-width:0;padding:.78rem .85rem;border:1px solid var(--bs);border-radius:.75rem;background:var(--s1)}
+.case-output-list strong{display:block;margin-bottom:.22rem;color:var(--brand);font-size:1.05rem;line-height:1.1;letter-spacing:-.02em}
+.case-output-list span{display:block;color:var(--t2);font-size:.76rem;line-height:1.45}
 .case-cta{padding:1.5rem 2.5rem 2rem;border-top:1px solid var(--bs);display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;background:var(--s2)}
 .case-cta p{font-size:.9375rem;color:var(--t2);line-height:1.7;margin:0;max-width:680px}
 .case-cta strong{color:var(--t1)}
@@ -178,14 +184,14 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--brand);outline-offs
 .visually-hidden{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
 /* B/A SLIDER */
-.ba-wrap{width:100%;max-width:none;flex:0 0 100%;grid-column:1/-1;padding:2rem 2.5rem;border-bottom:1px solid var(--bs)}
+.ba-wrap{width:100%;max-width:none;min-width:0;flex:0 0 100%;grid-column:1/-1;padding:2rem 2.5rem;border-bottom:1px solid var(--bs)}
 .ba-label-row{display:flex;gap:.75rem;margin-bottom:1rem;align-items:center}
 .ba-badge{font-family:'JetBrains Mono',monospace;font-size:.6875rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .875rem;border-radius:.375rem}
 .ba-badge.before{background:rgba(0,0,0,.07);color:var(--t3)}
 [data-theme="dark"] .ba-badge.before{background:rgba(255,255,255,.08)}
 .ba-badge.after{background:var(--brand);color:#fff}
 .ba-hint{font-size:.75rem;color:var(--t3);font-family:'JetBrains Mono',monospace;margin-left:auto}
-.ba-slider{display:block;width:100%;max-width:none;border-radius:.75rem;overflow:hidden;border:1px solid var(--bs);box-shadow:var(--sh2);position:relative;cursor:ew-resize;user-select:none;touch-action:none;height:auto;min-height:360px;aspect-ratio:16/9;background:var(--s2);contain:layout paint}
+.ba-slider{display:block;width:100%;max-width:none;min-width:0;border-radius:.75rem;overflow:hidden;border:1px solid var(--bs);box-shadow:var(--sh2);position:relative;cursor:ew-resize;user-select:none;touch-action:none;height:auto;min-height:360px;aspect-ratio:16/9;background:var(--s2);contain:layout paint}
 .ba-before-side{position:absolute;inset:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--s3)}
 .ba-after-side{position:absolute;inset:0;width:100%;height:100%;clip-path:inset(0 0 0 50%);display:flex;align-items:center;justify-content:center;background:#fff}
 .ba-after-inner{position:absolute;inset:0;width:100%;height:100%;background:#fff;display:flex;align-items:center;justify-content:center}
@@ -258,14 +264,16 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--brand);outline-offs
   .shots-grid-3{grid-template-columns:1fr 1fr}
   .case-header{flex-direction:column}
   .case-brief{grid-template-columns:1fr 1fr}
+  .case-output{grid-template-columns:1fr}
   .case-nums{gap:1.25rem}
   .infogr-card{grid-template-columns:1fr}
   .infogr-img{aspect-ratio:1;min-height:0;border-right:none;border-bottom:1px solid var(--bs)}
 }
 @media(max-width:580px){
   .section{padding:2.5rem 1rem}
-  .ba-wrap,.shots-wrap,.case-header,.insight-wrap,.case-brief,.case-cta{padding-left:1.25rem;padding-right:1.25rem}
+  .ba-wrap,.shots-wrap,.case-header,.insight-wrap,.case-brief,.case-output,.case-cta{padding-left:1.25rem;padding-right:1.25rem}
   .case-brief{grid-template-columns:1fr}
+  .case-output-list{grid-template-columns:1fr}
   .shots-grid{grid-template-columns:1fr}
   .shots-grid-3,.shots-grid-2{grid-template-columns:1fr}
   .ba-slider{height:260px}
@@ -294,7 +302,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--brand);outline-offs
   .cat-desc{font-size:.875rem;line-height:1.55}
 
   .case-card{border-radius:.875rem;margin-bottom:1.5rem}
-  .case-header,.case-brief,.ba-wrap,.shots-wrap,.insight-wrap,.case-cta{padding:1.125rem}
+  .case-header,.case-brief,.case-output,.ba-wrap,.shots-wrap,.insight-wrap,.case-cta{padding:1.125rem}
   .case-h{font-size:1.25rem;line-height:1.22}
   .case-sub,.brief-v,.case-cta p,.insight-text{font-size:.875rem;line-height:1.65}
   .case-badges{gap:.375rem}
@@ -365,11 +373,11 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--brand);outline-offs
   <div class="hero-grid">
     <div>
       <div class="eyebrow">Realizacje</div>
-      <h1 class="hero-h1">Realizacje przed/po — przykłady ofert produktowych</h1>
-      <p class="hero-sub">Każdy przykład pokazuje punkt wyjścia, wprowadzone zmiany, przygotowane zdjęcia i efekt widoczny w samej ofercie. Bez fikcyjnych wyników sprzedaży i bez udawania, że marki z przykładów są klientami.</p>
+      <h1 class="hero-h1">Realizacje przed/po — dowód tego, co zmienia się w ofercie</h1>
+      <p class="hero-sub">Każdy przykład pokazuje materiał wejściowy, problem w odbiorze oferty, wprowadzone zmiany, gotowe ujęcia galerii i efekt widoczny dla kupującego. Bez fikcyjnych wzrostów sprzedaży i bez sugerowania, że marki z przykładów są klientami.</p>
       <div class="hero-stats">
         <div class="hero-stat"><div class="n">6</div><div class="l">kategorii produktowych</div></div>
-        <div class="hero-stat"><div class="n">6</div><div class="l">case studies</div></div>
+        <div class="hero-stat"><div class="n">6</div><div class="l">realizacji przed/po</div></div>
         <div class="hero-stat"><div class="n">PL</div><div class="l">materiały po polsku</div></div>
       </div>
     </div>
@@ -390,7 +398,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--brand);outline-offs
 
 <!-- CATEGORY NAV -->
 <div class="section section--flush-bottom">
-  <p class="honesty-note">Realizacje pokazują przykłady przygotowanych materiałów sprzedażowych i kierunek pracy nad ofertą. Dane biznesowe są podawane tylko tam, gdzie są dostępne.</p>
+  <p class="honesty-note">Realizacje pokazują fakty o pracy nad ofertą: co było nieczytelne, co zostało uporządkowane, jakie materiały powstały i co kupujący może zrozumieć szybciej. Nie pokazuję fikcyjnych wyników sprzedaży ani nie przypisuję marek jako klientów.</p>
   <div class="cat-nav">
     <button type="button" class="cat-btn active" data-filter="all">Wszystkie</button>
     <button type="button" class="cat-btn" data-filter="narzedzia">Narzędzia</button>
@@ -428,6 +436,17 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--brand);outline-offs
       <div class="brief-card"><div class="brief-k">Efekt dla odbioru oferty</div><div class="brief-v">Kupujący od razu rozróżnia wersję bezszczotkową, widzi dwa akumulatory i walizkę oraz szybciej ocenia, za co płaci.</div></div>
       <div class="brief-card"><div class="brief-k">Zakres materiałów</div><div class="brief-v">Zdjęcie główne, galeria 10 ujęć, detale techniczne, lifestyle, infografika PL.</div></div>
       <div class="brief-card"><div class="brief-k">Następny krok</div><div class="brief-v"><a class="btn-s" href="/#kontakt">Sprawdź, czy u Ciebie problemem jest też galeria</a></div></div>
+    </div>
+    <div class="case-output" aria-label="Metryki projektowe realizacji Metabo">
+      <div class="case-output-main">
+        <div class="brief-k">Materiał końcowy</div>
+        <p>Galeria gotowa do wdrożenia w ofercie marketplace: zdjęcie główne, zestaw, detale, użycie i infografika parametrów.</p>
+      </div>
+      <ul class="case-output-list">
+        <li><strong>1 → 10</strong><span>z jednego zdjęcia wejściowego do kompletnej galerii</span></li>
+        <li><strong>5 typów kadrów</strong><span>produkt, zestaw, detal, użycie, parametr</span></li>
+        <li><strong>lista ofert</strong><span>miniatura pokazuje wariant i zawartość zestawu szybciej</span></li>
+      </ul>
     </div>
     <div class="ba-wrap">
       <div class="ba-label-row"><span class="ba-badge before">← PRZED</span><span class="ba-badge after">PO →</span><span class="ba-hint">// przeciągnij suwak</span></div>
@@ -500,6 +519,17 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--brand);outline-offs
       <div class="brief-card"><div class="brief-k">Zakres materiałów</div><div class="brief-v">Zdjęcie główne, lifestyle w ogrodzie, ergonomia w dłoni, złącze, ujęcia głowicy.</div></div>
       <div class="brief-card"><div class="brief-k">Następny krok</div><div class="brief-v"><a class="btn-s" href="/#kontakt">Zobacz, co można poprawić w podobnej ofercie</a></div></div>
     </div>
+    <div class="case-output" aria-label="Metryki projektowe realizacji Gardena">
+      <div class="case-output-main">
+        <div class="brief-k">Materiał końcowy</div>
+        <p>Galeria porządkuje pytania kupującego o chwyt, użycie, złącze, regulację i wygląd produktu na liście ofert.</p>
+      </div>
+      <ul class="case-output-list">
+        <li><strong>1 → 7</strong><span>z jednego zdjęcia do sekwencji galerii</span></li>
+        <li><strong>4 pytania</strong><span>chwyt, strumień, kompatybilność, regulacja</span></li>
+        <li><strong>OLX / Allegro</strong><span>produkt pokazany w miniaturze i w kontekście użycia</span></li>
+      </ul>
+    </div>
     <div class="ba-wrap">
       <div class="ba-label-row"><span class="ba-badge before">← PRZED</span><span class="ba-badge after">PO →</span><span class="ba-hint">// przeciągnij suwak</span></div>
       <div class="ba-slider" id="ba005" tabindex="0" role="slider" aria-label="Porównanie przed i po — pistolet ogrodowy Gardena" aria-orientation="horizontal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
@@ -517,7 +547,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--brand);outline-offs
         <div class="shot-card"><div class="shot-img"><picture><source type="image/avif" srcset="/dom-ogrod-po-front.avif"><source type="image/webp" srcset="/dom-ogrod-po-front.webp"><img decoding="async" loading="lazy" src="/dom-ogrod-po-front.png" width="1672" height="941" alt="Pistolet ogrodowy Gardena pokazany pod kątem 3/4 na białym tle" onerror="this.closest('.ba-before-side,.ba-after-side,.ba-after-inner,.shot-img,.infogr-img,.pf-side').innerHTML='<div class=ph><div class=ph-icon aria-hidden=true>🌿</div></div>'"></picture></div><div class="shot-body"><div class="shot-type">Ujęcie 01 · Główne 3/4</div><div class="shot-name">Białe tło, głęboki cień</div><div class="shot-why">Czyste białe tło z naturalnym cieniem nadaje produktowi przestrzenność. Pomarańczowo-szara kolorystyka Gardeny wyróżnia ofertę nawet w miniaturze.</div></div></div>
         <div class="shot-card"><div class="shot-img"><picture><source type="image/avif" srcset="/dom-ogrod-po-lifestyle.avif"><source type="image/webp" srcset="/dom-ogrod-po-lifestyle.webp"><img decoding="async" loading="lazy" src="/dom-ogrod-po-lifestyle.png" width="1402" height="1122" alt="Pistolet w użyciu w ogrodzie" onerror="this.closest('.ba-before-side,.ba-after-side,.ba-after-inner,.shot-img,.infogr-img,.pf-side').innerHTML='<div class=ph><div class=ph-icon aria-hidden=true>🌸</div></div>'"></picture></div><div class="shot-body"><div class="shot-type">Ujęcie 02 · Lifestyle</div><div class="shot-name">Strumień wody w ogrodzie</div><div class="shot-why">Dłoń w ogrodzie z wyraźnym strumieniem wody i kwitnącym tłem — klient wyobraża sobie produkt w swoim ogrodzie.</div></div></div>
         <div class="shot-card"><div class="shot-img"><picture><source type="image/avif" srcset="/dom-ogrod-po-wdloni.avif"><source type="image/webp" srcset="/dom-ogrod-po-wdloni.webp"><img decoding="async" loading="lazy" src="/dom-ogrod-po-wdloni.png" width="1402" height="1122" alt="Pistolet ogrodowy Gardena trzymany w dłoni dla pokazania ergonomii" onerror="this.closest('.ba-before-side,.ba-after-side,.ba-after-inner,.shot-img,.infogr-img,.pf-side').innerHTML='<div class=ph><div class=ph-icon aria-hidden=true>✋</div></div>'"></picture></div><div class="shot-body"><div class="shot-type">Ujęcie 03 · W dłoni</div><div class="shot-name">Ergonomia i rozmiar</div><div class="shot-why">Pistolet w dłoni na białym tle pokazuje realny rozmiar i ergonomię chwytu — bez konieczności wizyty w sklepie.</div></div></div>
-        <div class="shot-card"><div class="shot-img"><picture><source type="image/avif" srcset="/dom-ogrod-po-zlacze.avif"><source type="image/webp" srcset="/dom-ogrod-po-zlacze.webp"><img decoding="async" loading="lazy" src="/dom-ogrod-po-zlacze.png" width="1402" height="1122" alt="Detal złącza Gardena" onerror="this.closest('.ba-before-side,.ba-after-side,.ba-after-inner,.shot-img,.infogr-img,.pf-side').innerHTML='<div class=ph><div class=ph-icon aria-hidden=true>🔌</div></div>'"></picture></div><div class="shot-body"><div class="shot-type">Ujęcie 04 · Złącze</div><div class="shot-name">Kompatybilność z systemem</div><div class="shot-why">Zbliżenie na złącze Gardena eliminuje pytanie: "czy pasuje do mojego węża?". Klient z systemem Gardena kupuje bez wahania.</div></div></div>
+        <div class="shot-card"><div class="shot-img"><picture><source type="image/avif" srcset="/dom-ogrod-po-zlacze.avif"><source type="image/webp" srcset="/dom-ogrod-po-zlacze.webp"><img decoding="async" loading="lazy" src="/dom-ogrod-po-zlacze.png" width="1402" height="1122" alt="Detal złącza Gardena" onerror="this.closest('.ba-before-side,.ba-after-side,.ba-after-inner,.shot-img,.infogr-img,.pf-side').innerHTML='<div class=ph><div class=ph-icon aria-hidden=true>🔌</div></div>'"></picture></div><div class="shot-body"><div class="shot-type">Ujęcie 04 · Złącze</div><div class="shot-name">Kompatybilność z systemem</div><div class="shot-why">Zbliżenie na złącze Gardena odpowiada na pytanie: "czy pasuje do mojego węża?". Kupujący widzi kompatybilność bez szukania jej w opisie.</div></div></div>
       </div>
       <div class="shots-grid-3">
         <div class="shot-card"><div class="shot-img"><picture><source type="image/avif" srcset="/dom-ogrod-po-uchwyt.avif"><source type="image/webp" srcset="/dom-ogrod-po-uchwyt.webp"><img decoding="async" loading="lazy" src="/dom-ogrod-po-uchwyt.png" width="1402" height="1122" alt="Detal uchwytu i spustu" onerror="this.closest('.ba-before-side,.ba-after-side,.ba-after-inner,.shot-img,.infogr-img,.pf-side').innerHTML='<div class=ph><div class=ph-icon aria-hidden=true>🤜</div></div>'"></picture></div><div class="shot-body"><div class="shot-type">Ujęcie 05 · Uchwyt</div><div class="shot-name">Gumowe wstawki antypoślizgowe</div><div class="shot-why">Detal czarnych wstawek gumowych i spustu — widoczna jakość wykończenia i wygoda trzymania mokrą dłonią.</div></div></div>
@@ -525,7 +555,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--brand);outline-offs
         <div class="shot-card"><div class="shot-img"><picture><source type="image/avif" srcset="/dom-ogrod-po-glowica-bok.avif"><source type="image/webp" srcset="/dom-ogrod-po-glowica-bok.webp"><img decoding="async" loading="lazy" src="/dom-ogrod-po-glowica-bok.png" width="1254" height="1254" alt="Boczne ujęcie głowicy pistoletu Gardena pokazujące profil dyszy" onerror="this.closest('.ba-before-side,.ba-after-side,.ba-after-inner,.shot-img,.infogr-img,.pf-side').innerHTML='<div class=ph><div class=ph-icon aria-hidden=true>💦</div></div>'"></picture></div><div class="shot-body"><div class="shot-type">Ujęcie 07 · Głowica bok</div><div class="shot-name">Głębokość i profil dyszy</div><div class="shot-why">Ujęcie boczne głowicy pokazuje głębokość dyszy i pierścień regulacyjny — ważne dla osób porównujących kilka modeli.</div></div></div>
       </div>
     </div>
-    <div class="insight-wrap"><div class="insight"><div class="insight-icon" aria-hidden="true">💡</div><div><div class="insight-title">Dom i ogród — kontekst użycia to argument sprzedażowy</div><div class="insight-text">Produkty ogrodowe zwykle potrzebują kontekstu użycia — nie tylko białego tła. Dlatego klasyczny packshot warto połączyć z ujęciem lifestyle i detalami technicznymi. Kompletna galeria 7 ujęć odpowiada na pytania kupującego zanim się pojawią.</div></div></div></div>
+    <div class="insight-wrap"><div class="insight"><div class="insight-icon" aria-hidden="true">💡</div><div><div class="insight-title">Dom i ogród — kontekst użycia pomaga zrozumieć produkt</div><div class="insight-text">Produkty ogrodowe zwykle potrzebują kontekstu użycia — nie tylko białego tła. Dlatego klasyczny packshot warto połączyć z ujęciem lifestyle i detalami technicznymi. Kompletna galeria 7 ujęć odpowiada na pytania kupującego zanim się pojawią.</div></div></div></div>
   </div>
 </div>
 
@@ -558,6 +588,17 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--brand);outline-offs
       <div class="brief-card"><div class="brief-k">Zakres materiałów</div><div class="brief-v">Zdjęcie główne, galeria 4 ujęć, detal drutu, infografika produktowa.</div></div>
       <div class="brief-card"><div class="brief-k">Następny krok</div><div class="brief-v"><a class="btn-s" href="/#kontakt">Wyślij swoją ofertę techniczną do analizy</a></div></div>
     </div>
+    <div class="case-output" aria-label="Metryki projektowe realizacji spawalnictwo">
+      <div class="case-output-main">
+        <div class="brief-k">Materiał końcowy</div>
+        <p>Zdjęcie główne i galeria rozdzielają dane techniczne, wygląd szpuli, detal drutu i wyróżnik pochodzenia produktu.</p>
+      </div>
+      <ul class="case-output-list">
+        <li><strong>1 → 5</strong><span>zdjęcie wejściowe, ujęcia techniczne i infografika</span></li>
+        <li><strong>parametry</strong><span>średnica, materiał, szpula i opakowanie pokazane osobno</span></li>
+        <li><strong>infografika</strong><span>wyróżnik pochodzenia widoczny bez czytania opisu</span></li>
+      </ul>
+    </div>
     <div class="ba-wrap">
       <div class="ba-label-row"><span class="ba-badge before">← PRZED</span><span class="ba-badge after">PO →</span><span class="ba-hint">// przeciągnij suwak</span></div>
       <div class="ba-slider" id="ba003" tabindex="0" role="slider" aria-label="Porównanie przed i po — drut spawalniczy MIG/MAG" aria-orientation="horizontal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
@@ -569,7 +610,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--brand);outline-offs
       </div>
     </div>
     <div class="shots-wrap">
-      <h3 class="shots-title">5 ujęć — każde z innym zadaniem sprzedażowym</h3>
+      <h3 class="shots-title">5 ujęć — każde z innym zadaniem informacyjnym</h3>
       <div class="shots-sub">Drut MIG/MAG kupuje specjalista, który porównuje oferty. Galeria powinna odpowiedzieć na pytania o parametry, opakowanie i pochodzenie produktu zanim kupujący przejdzie do opisu.</div>
       <div class="shots-grid">
         <div class="shot-card"><div class="shot-img"><picture><source type="image/avif" srcset="/spawalnictwo-po-front.avif"><source type="image/webp" srcset="/spawalnictwo-po-front.webp"><img decoding="async" loading="lazy" src="/spawalnictwo-po-front.png" width="1254" height="1254" alt="Drut spawalniczy MIG/MAG ze szpulą i pudełkiem pokazany pod kątem 3/4" onerror="this.closest('.ba-before-side,.ba-after-side,.ba-after-inner,.shot-img,.infogr-img,.pf-side').innerHTML='<div class=ph><div class=ph-icon aria-hidden=true>📦</div></div>'"></picture></div><div class="shot-body"><div class="shot-type">Ujęcie 01 · Zdjęcie główne</div><div class="shot-name">Szpula z opakowaniem — bliskie 3/4</div><div class="shot-why">Szpula i pudełko razem — klient widzi komplet. Czarne opakowanie z pomarańczowym logo wyróżnia się na liście Allegro wśród szarych kartonów.</div></div></div>
@@ -581,7 +622,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--brand);outline-offs
         <div class="infogr-img"><picture><source type="image/avif" srcset="/spawalnictwo-po-infografika.avif"><source type="image/webp" srcset="/spawalnictwo-po-infografika.webp"><img decoding="async" loading="lazy" src="/spawalnictwo-po-infografika.png" width="1254" height="1254" alt="Infografika Wyprodukowano w Polsce" onerror="this.closest('.ba-before-side,.ba-after-side,.ba-after-inner,.shot-img,.infogr-img,.pf-side').innerHTML='<div class=ph><div class=ph-icon aria-hidden=true>🇵🇱</div></div>'"></picture></div>
         <div class="infogr-body">
           <div class="infogr-type">Ujęcie 05 · Infografika</div>
-          <div class="infogr-title">"Wyprodukowano w Polsce" jako argument sprzedażowy</div>
+          <div class="infogr-title">"Wyprodukowano w Polsce" jako argument w ofercie</div>
           <div class="infogr-text">W kategorii drutu spawalniczego dominuje import z Azji. Polskie pochodzenie to realny wyróżnik — szczególnie dla firm wymagających dokumentacji zgodności. Infografika z logo producenta to argument, który nie wymaga czytania opisu.</div>
         </div>
       </div>
@@ -603,7 +644,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--brand);outline-offs
       <div class="case-meta">
         <div class="case-cat">CASE STUDY #004 · KOSMETYKI</div>
         <h2 class="case-h">Tabaiba Sun — Aloe Protective Sun Oil SPF 50+</h2>
-        <div class="case-sub">Z jednego słabego zdjęcia referencyjnego powstała kompletna seria packshotów. Każde ujęcie zostało zaprojektowane z myślą o konkretnej korzyści sprzedażowej na stronie produktu.</div>
+        <div class="case-sub">Z jednego słabego zdjęcia referencyjnego powstała kompletna seria packshotów. Każde ujęcie zostało zaprojektowane z myślą o konkretnej informacji, którą kupujący powinien szybko zobaczyć na stronie produktu.</div>
         <div class="case-badges">
           <span class="case-badge"><span aria-hidden="true">✓</span> Zdjęcie główne</span>
           <span class="case-badge"><span aria-hidden="true">✓</span> Galeria 4 ujęcia</span>
@@ -624,6 +665,17 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--brand);outline-offs
       <div class="brief-card"><div class="brief-k">Zakres materiałów</div><div class="brief-v">Packshot frontalny, ujęcie 3/4, detal etykiety, lifestyle.</div></div>
       <div class="brief-card"><div class="brief-k">Następny krok</div><div class="brief-v"><a class="btn-s" href="/#kontakt">Sprawdź, czy zdjęcia pokazują wartość produktu</a></div></div>
     </div>
+    <div class="case-output" aria-label="Metryki projektowe realizacji Tabaiba">
+      <div class="case-output-main">
+        <div class="brief-k">Materiał końcowy</div>
+        <p>Seria packshotów pokazuje produkt, formę opakowania, najważniejsze oznaczenia i kontekst użycia SPF.</p>
+      </div>
+      <ul class="case-output-list">
+        <li><strong>1 → 4</strong><span>z referencji do czterech ujęć galerii</span></li>
+        <li><strong>4 zadania</strong><span>front, proporcje, etykieta, lifestyle</span></li>
+        <li><strong>miniatura</strong><span>produkt ma czystszy kontur i czytelniejszą etykietę</span></li>
+      </ul>
+    </div>
     <div class="ba-wrap">
       <div class="ba-label-row">
         <span class="ba-badge before">← PRZED</span>
@@ -640,16 +692,16 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--brand);outline-offs
       </div>
     </div>
     <div class="shots-wrap">
-      <h3 class="shots-title">4 ujęcia — 4 różne zadania sprzedażowe</h3>
+      <h3 class="shots-title">4 ujęcia — 4 różne zadania w galerii</h3>
       <div class="shots-sub">Każde zdjęcie w serii ma konkretny cel. Razem budują pełne zaufanie klienta do produktu.</div>
       <div class="shots-grid">
-        <div class="shot-card"><div class="shot-img"><picture><source type="image/avif" srcset="/tabaiba-po-front.avif"><source type="image/webp" srcset="/tabaiba-po-front.webp"><img decoding="async" loading="lazy" src="/tabaiba-po-front.png" width="1024" height="1024" alt="Frontalny packshot kosmetyku Tabaiba Sun Oil SPF 50+ na białym tle" onerror="this.closest('.ba-before-side,.ba-after-side,.ba-after-inner,.shot-img,.infogr-img,.pf-side').innerHTML='<div class=ph><div class=ph-icon aria-hidden=true>📦</div></div>'"></picture></div><div class="shot-body"><div class="shot-type">Ujęcie 01 · Frontalne</div><div class="shot-name">Białe tło, pełna ekspozycja</div><div class="shot-why">Pierwsze zdjęcie na liście Allegro. Decyduje o kliknięciu — czyste tło i ostre kontury wyróżniają produkt wśród konkurencji.</div></div></div>
+        <div class="shot-card"><div class="shot-img"><picture><source type="image/avif" srcset="/tabaiba-po-front.avif"><source type="image/webp" srcset="/tabaiba-po-front.webp"><img decoding="async" loading="lazy" src="/tabaiba-po-front.png" width="1024" height="1024" alt="Frontalny packshot kosmetyku Tabaiba Sun Oil SPF 50+ na białym tle" onerror="this.closest('.ba-before-side,.ba-after-side,.ba-after-inner,.shot-img,.infogr-img,.pf-side').innerHTML='<div class=ph><div class=ph-icon aria-hidden=true>📦</div></div>'"></picture></div><div class="shot-body"><div class="shot-type">Ujęcie 01 · Frontalne</div><div class="shot-name">Białe tło, pełna ekspozycja</div><div class="shot-why">Pierwsze zdjęcie na liście Allegro. Czyste tło i ostre kontury pomagają szybciej rozpoznać produkt wśród podobnych ofert.</div></div></div>
         <div class="shot-card"><div class="shot-img"><picture><source type="image/avif" srcset="/tabaiba-po-bok.avif"><source type="image/webp" srcset="/tabaiba-po-bok.webp"><img decoding="async" loading="lazy" src="/tabaiba-po-bok.png" width="1024" height="1024" alt="Boczne ujęcie kosmetyku Tabaiba Sun Oil pokazujące formę opakowania" onerror="this.closest('.ba-before-side,.ba-after-side,.ba-after-inner,.shot-img,.infogr-img,.pf-side').innerHTML='<div class=ph><div class=ph-icon aria-hidden=true>📦</div></div>'"></picture></div><div class="shot-body"><div class="shot-type">Ujęcie 02 · Boczne 3/4</div><div class="shot-name">Głębia i trójwymiarowość</div><div class="shot-why">Klient widzi kształt i proporcje produktu — nie płaską grafikę. Pomaga lepiej pokazać kształt i proporcje produktu przed zakupem.</div></div></div>
-        <div class="shot-card"><div class="shot-img"><picture><source type="image/avif" srcset="/tabaiba-po-detal.avif"><source type="image/webp" srcset="/tabaiba-po-detal.webp"><img decoding="async" loading="lazy" src="/tabaiba-po-detal.png" width="1024" height="1024" alt="Detal etykiety Tabaiba Sun Oil z oznaczeniami SPF 50+, Vegan i Coral Safe" onerror="this.closest('.ba-before-side,.ba-after-side,.ba-after-inner,.shot-img,.infogr-img,.pf-side').innerHTML='<div class=ph><div class=ph-icon aria-hidden=true>🔍</div></div>'"></picture></div><div class="shot-body"><div class="shot-type">Ujęcie 03 · Detal etykiety</div><div class="shot-name">Skład i oznaczenia widoczne</div><div class="shot-why">SPF 50+, Vegan, Coral Safe — kluczowe argumenty zakupowe widoczne bez czytania opisu. Buduje zaufanie i przyspiesza decyzję.</div></div></div>
+        <div class="shot-card"><div class="shot-img"><picture><source type="image/avif" srcset="/tabaiba-po-detal.avif"><source type="image/webp" srcset="/tabaiba-po-detal.webp"><img decoding="async" loading="lazy" src="/tabaiba-po-detal.png" width="1024" height="1024" alt="Detal etykiety Tabaiba Sun Oil z oznaczeniami SPF 50+, Vegan i Coral Safe" onerror="this.closest('.ba-before-side,.ba-after-side,.ba-after-inner,.shot-img,.infogr-img,.pf-side').innerHTML='<div class=ph><div class=ph-icon aria-hidden=true>🔍</div></div>'"></picture></div><div class="shot-body"><div class="shot-type">Ujęcie 03 · Detal etykiety</div><div class="shot-name">Skład i oznaczenia widoczne</div><div class="shot-why">SPF 50+, Vegan, Coral Safe — kluczowe informacje widoczne bez czytania opisu. Detal etykiety ułatwia ocenę produktu.</div></div></div>
         <div class="shot-card"><div class="shot-img"><picture><source type="image/avif" srcset="/tabaiba-po-lifestyle.avif"><source type="image/webp" srcset="/tabaiba-po-lifestyle.webp"><img decoding="async" loading="lazy" src="/tabaiba-po-lifestyle.png" width="1024" height="1024" alt="Lifestyle z kroplami wody" onerror="this.closest('.ba-before-side,.ba-after-side,.ba-after-inner,.shot-img,.infogr-img,.pf-side').innerHTML='<div class=ph><div class=ph-icon aria-hidden=true>💧</div></div>'"></picture></div><div class="shot-body"><div class="shot-type">Ujęcie 04 · Lifestyle</div><div class="shot-name">Emocja i kontekst użycia</div><div class="shot-why">Krople wody kojarzą się ze słońcem i ochroną. Klient wyobraża sobie produkt w użyciu — to wzmacnia kontekst użycia w kategorii kosmetyki SPF.</div></div></div>
       </div>
     </div>
-    <div class="insight-wrap"><div class="insight"><div class="insight-icon" aria-hidden="true">💡</div><div><div class="insight-title">Punkt wyjścia tego projektu</div><div class="insight-text">Punktem wyjścia było jedno zdjęcie produktu — płaskie oświetlenie, szare tło, brak głębi. Na jego podstawie powstały cztery ujęcia, z których każde pełni inną funkcję sprzedażową. Żadna fizyczna sesja fotograficzna nie była potrzebna.</div></div></div></div>
+    <div class="insight-wrap"><div class="insight"><div class="insight-icon" aria-hidden="true">💡</div><div><div class="insight-title">Punkt wyjścia tego projektu</div><div class="insight-text">Punktem wyjścia było jedno zdjęcie produktu — płaskie oświetlenie, szare tło, brak głębi. Na jego podstawie powstały cztery ujęcia, z których każde pełni inną funkcję informacyjną w galerii. Żadna fizyczna sesja fotograficzna nie była potrzebna.</div></div></div></div>
   </div>
 </div>
 
@@ -682,6 +734,17 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--brand);outline-offs
       <div class="brief-card"><div class="brief-k">Zakres materiałów</div><div class="brief-v">Zdjęcie główne, detal lateksu, wnętrze, zastosowanie, norma EN-388.</div></div>
       <div class="brief-card"><div class="brief-k">Następny krok</div><div class="brief-v"><a class="btn-s" href="/#kontakt">Sprawdź, czy galeria odpowiada na pytania o normy</a></div></div>
     </div>
+    <div class="case-output" aria-label="Metryki projektowe realizacji BHP">
+      <div class="case-output-main">
+        <div class="brief-k">Materiał końcowy</div>
+        <p>Galeria prowadzi od czytelnej miniatury do informacji o materiale, wnętrzu, zastosowaniu i normie ochronnej.</p>
+      </div>
+      <ul class="case-output-list">
+        <li><strong>1 → 5</strong><span>od ciemnego zdjęcia do pełnej prezentacji rękawic</span></li>
+        <li><strong>norma</strong><span>EN-388 i CE pokazane jako informacja w galerii</span></li>
+        <li><strong>zastosowanie</strong><span>materiał i chwyt pokazane przed opisem</span></li>
+      </ul>
+    </div>
     <div class="ba-wrap">
       <div class="ba-label-row"><span class="ba-badge before">← PRZED</span><span class="ba-badge after">PO →</span><span class="ba-hint">// przeciągnij suwak</span></div>
       <div class="ba-slider" id="ba004" tabindex="0" role="slider" aria-label="Porównanie przed i po — rękawice BHP" aria-orientation="horizontal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
@@ -696,7 +759,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--brand);outline-offs
       <h3 class="shots-title">5 ujęć — od produktu do argumentu zakupowego</h3>
       <div class="shots-sub">Rękawice BHP kupuje osoba odpowiedzialna za bezpieczeństwo pracy. Każde ujęcie odpowiada na jedno z jej pytań.</div>
       <div class="shots-grid">
-        <div class="shot-card"><div class="shot-img"><picture><source type="image/avif" srcset="/bhp-po-front.avif"><source type="image/webp" srcset="/bhp-po-front.webp"><img decoding="async" loading="lazy" src="/bhp-po-front.png" width="1254" height="1254" alt="Para rękawic na białym tle" onerror="this.closest('.ba-before-side,.ba-after-side,.ba-after-inner,.shot-img,.infogr-img,.pf-side').innerHTML='<div class=ph><div class=ph-icon aria-hidden=true>🧤</div></div>'"></picture></div><div class="shot-body"><div class="shot-type">Ujęcie 01 · Zdjęcie główne</div><div class="shot-name">Para rękawic, białe tło</div><div class="shot-why">Czyste białe tło zamiast czarnego — produkt czytelny w miniaturze Allegro. Żółty kolor lateksu wyróżnia ofertę bez konieczności obniżki ceny.</div></div></div>
+        <div class="shot-card"><div class="shot-img"><picture><source type="image/avif" srcset="/bhp-po-front.avif"><source type="image/webp" srcset="/bhp-po-front.webp"><img decoding="async" loading="lazy" src="/bhp-po-front.png" width="1254" height="1254" alt="Para rękawic na białym tle" onerror="this.closest('.ba-before-side,.ba-after-side,.ba-after-inner,.shot-img,.infogr-img,.pf-side').innerHTML='<div class=ph><div class=ph-icon aria-hidden=true>🧤</div></div>'"></picture></div><div class="shot-body"><div class="shot-type">Ujęcie 01 · Zdjęcie główne</div><div class="shot-name">Para rękawic, białe tło</div><div class="shot-why">Czyste białe tło zamiast czarnego — produkt jest czytelny w miniaturze Allegro, a żółta powłoka lateksowa jest łatwiejsza do zauważenia.</div></div></div>
         <div class="shot-card"><div class="shot-img"><picture><source type="image/avif" srcset="/bhp-po-detal-latex.avif"><source type="image/webp" srcset="/bhp-po-detal-latex.webp"><img decoding="async" loading="lazy" src="/bhp-po-detal-latex.png" width="1254" height="1254" alt="Faktura powłoki lateksowej" onerror="this.closest('.ba-before-side,.ba-after-side,.ba-after-inner,.shot-img,.infogr-img,.pf-side').innerHTML='<div class=ph><div class=ph-icon aria-hidden=true>🔍</div></div>'"></picture></div><div class="shot-body"><div class="shot-type">Ujęcie 02 · Detal lateksu</div><div class="shot-name">Faktura powłoki i chwyt</div><div class="shot-why">Zbliżenie na pomarszczoną fakturę lateksu pokazuje właściwości antypoślizgowe lepiej niż jakikolwiek opis.</div></div></div>
         <div class="shot-card"><div class="shot-img"><picture><source type="image/avif" srcset="/bhp-po-wnetrze.avif"><source type="image/webp" srcset="/bhp-po-wnetrze.webp"><img decoding="async" loading="lazy" src="/bhp-po-wnetrze.png" width="1254" height="1254" alt="Wnętrze rękawicy bawełniane" onerror="this.closest('.ba-before-side,.ba-after-side,.ba-after-inner,.shot-img,.infogr-img,.pf-side').innerHTML='<div class=ph><div class=ph-icon aria-hidden=true>👋</div></div>'"></picture></div><div class="shot-body"><div class="shot-type">Ujęcie 03 · Wnętrze</div><div class="shot-name">Wyściółka bawełniana</div><div class="shot-why">Wywrócony ściąg pokazuje bawełniane wnętrze — kluczowy argument komfortu przy długiej pracy.</div></div></div>
         <div class="shot-card"><div class="shot-img"><picture><source type="image/avif" srcset="/bhp-po-zastosowanie.avif"><source type="image/webp" srcset="/bhp-po-zastosowanie.webp"><img decoding="async" loading="lazy" src="/bhp-po-zastosowanie.png" width="1254" height="1254" alt="Rękawica na dłoni z kluczem" onerror="this.closest('.ba-before-side,.ba-after-side,.ba-after-inner,.shot-img,.infogr-img,.pf-side').innerHTML='<div class=ph><div class=ph-icon aria-hidden=true>🔧</div></div>'"></picture></div><div class="shot-body"><div class="shot-type">Ujęcie 04 · Zastosowanie</div><div class="shot-name">Rękawica w pracy z narzędziem</div><div class="shot-why">Dłoń w rękawicy trzymająca klucz — klient od razu rozumie zastosowanie i kwalifikuje właściwego kupującego.</div></div></div>
@@ -742,6 +805,17 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--brand);outline-offs
       <div class="brief-card"><div class="brief-k">Zakres materiałów</div><div class="brief-v">Zdjęcie główne, walizka, detal głowicy, skala momentu.</div></div>
       <div class="brief-card"><div class="brief-k">Następny krok</div><div class="brief-v"><a class="btn-s" href="/#kontakt">Wyślij ofertę narzędzia do analizy</a></div></div>
     </div>
+    <div class="case-output" aria-label="Metryki projektowe realizacji klucz dynamometryczny">
+      <div class="case-output-main">
+        <div class="brief-k">Materiał końcowy</div>
+        <p>Zdjęcie główne i galeria pomagają szybko sprawdzić komplet, głowicę oraz zakres momentu bez szukania w opisie.</p>
+      </div>
+      <ul class="case-output-list">
+        <li><strong>1 → 4</strong><span>ujęcie wejściowe do czterech plików galerii</span></li>
+        <li><strong>3 decyzje</strong><span>zestaw, mechanizm głowicy, skala momentu</span></li>
+        <li><strong>porównanie</strong><span>kupujący szybciej ocenia właściwy wariant narzędzia</span></li>
+      </ul>
+    </div>
     <div class="ba-wrap">
       <div class="ba-label-row"><span class="ba-badge before">← PRZED</span><span class="ba-badge after">PO →</span><span class="ba-hint">// przeciągnij suwak</span></div>
       <div class="ba-slider" id="ba002" tabindex="0" role="slider" aria-label="Porównanie przed i po — klucz dynamometryczny" aria-orientation="horizontal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
@@ -762,7 +836,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--brand);outline-offs
         <div class="shot-card"><div class="shot-img"><picture><source type="image/avif" srcset="/narzedzia-po-skala.avif"><source type="image/webp" srcset="/narzedzia-po-skala.webp"><img decoding="async" loading="lazy" src="/narzedzia-po-skala.png" width="1254" height="1254" alt="Skala momentu obrotowego" onerror="this.closest('.ba-before-side,.ba-after-side,.ba-after-inner,.shot-img,.infogr-img,.pf-side').innerHTML='<div class=ph><div class=ph-icon aria-hidden=true>📏</div></div>'"></picture></div><div class="shot-body"><div class="shot-type">Ujęcie 04 · Skala momentu</div><div class="shot-name">Zakres Nm czytelny</div><div class="shot-why">Zbliżenie na skalę z pierścieniem nastawczym i zakresem momentu — kluczowy parametr widoczny bez szukania w opisie.</div></div></div>
       </div>
     </div>
-    <div class="insight-wrap"><div class="insight"><div class="insight-icon" aria-hidden="true">💡</div><div><div class="insight-title">Dlaczego to ważne dla narzędzi</div><div class="insight-text">Kupujący narzędzia techniczne podejmują decyzję na podstawie parametrów, nie estetyki. Jeśli te parametry nie są widoczne na zdjęciach, klient albo nie kupuje, albo kupuje i zwraca. Zadaniem materiałów jest pokazanie tego, co ważne — zanim trafi do opisu.</div></div></div></div>
+    <div class="insight-wrap"><div class="insight"><div class="insight-icon" aria-hidden="true">💡</div><div><div class="insight-title">Dlaczego to ważne dla narzędzi</div><div class="insight-text">Kupujący narzędzia techniczne porównuje parametry, nie sam wygląd. Jeśli zakres momentu, głowica i zawartość zestawu nie są widoczne w galerii, musi szukać ich w opisie albo porównywać ofertę z konkurencją ręcznie.</div></div></div></div>
   </div>
 </div>
 <div class="divider"></div>

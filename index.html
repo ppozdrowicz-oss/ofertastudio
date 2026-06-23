@@ -831,6 +831,35 @@ select.cinput{cursor:pointer}
 .case-proof dd strong{
   color:var(--t1);
 }
+.case-metrics{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:.55rem;
+  margin:0 0 1.15rem;
+  padding:0;
+  list-style:none;
+}
+.case-metrics li{
+  min-width:0;
+  padding:.72rem .78rem;
+  border:1px solid var(--bs);
+  border-radius:var(--radius-lg);
+  background:var(--s1);
+}
+.case-metrics strong{
+  display:block;
+  margin-bottom:.18rem;
+  color:var(--brand);
+  font-size:.9rem;
+  line-height:1.15;
+  letter-spacing:-.01em;
+}
+.case-metrics span{
+  display:block;
+  color:var(--t2);
+  font-size:.72rem;
+  line-height:1.42;
+}
 .case-featured .case-link{
   width:max-content;
   min-height:2.7rem;
@@ -914,7 +943,7 @@ select.cinput{cursor:pointer}
 }
 .case-card-media--welding img{
   transform:none;
-  object-fit:cover;
+  object-fit:contain;
   object-position:52% 50%;
 }
 .case-card-body{
@@ -928,6 +957,21 @@ select.cinput{cursor:pointer}
 }
 .case-card .case-proof{
   margin:.75rem 0 .7rem;
+}
+.case-card .case-metrics{
+  grid-template-columns:1fr;
+  gap:.42rem;
+  margin:.2rem 0 .8rem;
+}
+.case-card .case-metrics li{
+  padding:.55rem .62rem;
+  background:var(--s2);
+}
+.case-card .case-metrics strong{
+  font-size:.78rem;
+}
+.case-card .case-metrics span{
+  font-size:.7rem;
 }
 .case-card .case-proof-item{
   padding:.55rem 0;
@@ -979,6 +1023,7 @@ select.cinput{cursor:pointer}
 }
 @media(max-width:760px){
   .case-side-stack{grid-template-columns:1fr}
+  .case-metrics{grid-template-columns:1fr}
   .case-featured .case-link{width:100%;justify-content:center}
 }
 @media(max-width:640px){
@@ -5181,11 +5226,11 @@ input.cinput,select.cinput,textarea.cinput{
   <div class="case-studies-head">
     <div class="s-head">
       <div class="eyebrow">Realizacje przed / po</div>
-      <h2 class="s-title">Zobacz, jak zmienia się odbiór oferty po poprawie zdjęć i treści</h2>
-      <p class="s-sub">To nie są dekoracyjne mockupy. Każda realizacja pokazuje, co było problemem, co zostało poprawione i co kupujący widzi szybciej po zmianie.</p>
+      <h2 class="s-title">Zobacz, jak zmienia się odbiór oferty po uporządkowaniu zdjęć i informacji</h2>
+      <p class="s-sub">Nie pokazuję fikcyjnych wzrostów sprzedaży. Pokazuję konkretną różnicę w tym, co kupujący widzi: miniaturę, galerię, opis, parametry i logikę oferty.</p>
     </div>
     <div class="case-studies-head-actions">
-      <a href="/realizacje/" class="btn-s" data-event="case_study_click" data-location="case_study">Zobacz wszystkie realizacje</a>
+      <a href="/realizacje/" class="btn-s" data-event="case_study_click" data-location="case_study">Zobacz pełne realizacje</a>
     </div>
   </div>
 
@@ -5205,12 +5250,17 @@ input.cinput,select.cinput,textarea.cinput{
       <div class="case-featured-body">
         <div class="case-meta"><span class="case-category">Elektronarzędzia</span><span class="case-featured-rank">Wyróżniona realizacja · #001</span></div>
         <h3 class="case-title">Metabo PowerMaxx BS 12 BL</h3>
-        <p class="case-intro">Galeria została zaprojektowana tak, żeby kupujący od pierwszych sekund rozumiał wariant produktu, zawartość zestawu i przewagi wersji bezszczotkowej.</p>
+        <p class="case-intro">Produkt techniczny wymagał pokazania wariantu, zawartości zestawu, detali i parametrów bez odsyłania kupującego do długiego opisu.</p>
         <dl class="case-proof">
-          <div class="case-proof-item"><dt>Problem</dt><dd>Jedno zdjęcie nie pokazywało wartości zestawu ani różnic między wariantami.</dd></div>
-          <div class="case-proof-item"><dt>Zmiana</dt><dd>Miniatura, zestaw, walizka, akumulatory, detale techniczne i infografika tworzą logiczną sekwencję.</dd></div>
-          <div class="case-proof-item"><dt>Efekt</dt><dd>Kupujący szybciej widzi, co dokładnie kupuje i za co płaci.</dd></div>
+          <div class="case-proof-item"><dt>Przed</dt><dd>Jedno zdjęcie nie pokazywało wartości zestawu ani różnic między wariantami.</dd></div>
+          <div class="case-proof-item"><dt>Poprawiono</dt><dd>Miniaturę, zestaw, walizkę, akumulatory, detale techniczne i infografikę PL.</dd></div>
+          <div class="case-proof-item"><dt>Efekt odbioru</dt><dd>Kupujący szybciej widzi wariant, komplet i najważniejsze argumenty techniczne.</dd></div>
         </dl>
+        <ul class="case-metrics" aria-label="Metryki projektowe realizacji Metabo">
+          <li><strong>1 → 10</strong><span>zdjęcie wejściowe do kompletnej galerii</span></li>
+          <li><strong>5 typów kadrów</strong><span>produkt, zestaw, detal, użycie, parametr</span></li>
+          <li><strong>zakres</strong><span>zdjęcie główne, galeria, infografika</span></li>
+        </ul>
         <a href="/realizacje/#metabo" class="case-link" data-event="case_study_click" data-location="case_study">Zobacz case: Metabo</a>
       </div>
     </article>
@@ -5221,12 +5271,16 @@ input.cinput,select.cinput,textarea.cinput{
         <div class="case-card-body">
           <div class="case-meta"><span class="case-category">Dom i ogród</span><span class="case-number">#002</span></div>
           <h3 class="case-title">Gardena — prezentacja produktu</h3>
-          <p class="case-intro">Od ogólnego widoku do galerii, która tłumaczy chwyt, złącze i kontekst użycia.</p>
+          <p class="case-intro">Produkt dom i ogród wymagał pokazania ergonomii, złącza, skali i kontekstu użycia.</p>
           <dl class="case-proof">
-            <div class="case-proof-item"><dt>Problem</dt><dd>Brakowało kontekstu użycia, chwytu, trybów strumienia i złącza.</dd></div>
-            <div class="case-proof-item"><dt>Zmiana</dt><dd>Packshot, detal i ujęcia w ogrodzie prowadzą kupującego przez najważniejsze pytania.</dd></div>
-            <div class="case-proof-item"><dt>Efekt</dt><dd>Kompatybilność i wygoda obsługi są czytelne bez szukania w opisie.</dd></div>
+            <div class="case-proof-item"><dt>Przed</dt><dd>Brakowało kontekstu użycia, chwytu, trybów strumienia i złącza.</dd></div>
+            <div class="case-proof-item"><dt>Poprawiono</dt><dd>Packshot, ujęcie w ogrodzie, detal złącza, chwyt i serię głowicy.</dd></div>
+            <div class="case-proof-item"><dt>Efekt odbioru</dt><dd>Kompatybilność i wygoda obsługi są czytelne bez szukania w opisie.</dd></div>
           </dl>
+          <ul class="case-metrics" aria-label="Metryki projektowe realizacji Gardena">
+            <li><strong>1 → 7</strong><span>zdjęcie wejściowe do sekwencji galerii</span></li>
+            <li><strong>4 pytania</strong><span>chwyt, strumień, złącze, użycie</span></li>
+          </ul>
           <a href="/realizacje/#gardena" class="case-link" data-event="case_study_click" data-location="case_study">Zobacz case: Gardena</a>
         </div>
       </article>
@@ -5236,12 +5290,16 @@ input.cinput,select.cinput,textarea.cinput{
         <div class="case-card-body">
           <div class="case-meta"><span class="case-category">Spawalnictwo</span><span class="case-number">#003</span></div>
           <h3 class="case-title">Produkt techniczny do marketplace</h3>
-          <p class="case-intro">Parametry, opakowanie i pochodzenie produktu rozdzielone na czytelne ujęcia.</p>
+          <p class="case-intro">Produkt techniczny wymagał rozdzielenia parametrów, opakowania, detalu i wyróżnika pochodzenia.</p>
           <dl class="case-proof">
-            <div class="case-proof-item"><dt>Problem</dt><dd>Średnica, szpula i pochodzenie produktu ginęły w pierwszym kontakcie.</dd></div>
-            <div class="case-proof-item"><dt>Zmiana</dt><dd>Zdjęcie główne, detale i infografika porządkują dane techniczne przed opisem.</dd></div>
-            <div class="case-proof-item"><dt>Efekt</dt><dd>Kupujący szybciej porównuje wariant i nie szuka podstawowych danych w długim opisie.</dd></div>
+            <div class="case-proof-item"><dt>Przed</dt><dd>Średnica, szpula i pochodzenie produktu ginęły w pierwszym kontakcie.</dd></div>
+            <div class="case-proof-item"><dt>Poprawiono</dt><dd>Zdjęcie główne, detal drutu, ujęcia szpuli i infografikę produktową.</dd></div>
+            <div class="case-proof-item"><dt>Efekt odbioru</dt><dd>Kupujący szybciej porównuje wariant i nie szuka podstawowych danych w opisie.</dd></div>
           </dl>
+          <ul class="case-metrics" aria-label="Metryki projektowe realizacji spawalnictwo">
+            <li><strong>1 → 5</strong><span>ujęcia techniczne i infografika</span></li>
+            <li><strong>zakres</strong><span>miniatura, detale, parametr, pochodzenie</span></li>
+          </ul>
           <a href="/realizacje/#spawalnictwo" class="case-link" data-event="case_study_click" data-location="case_study">Zobacz case: Spawalnictwo</a>
         </div>
       </article>
