@@ -18,8 +18,8 @@ const pages = [
   {
     file: 'zdjecia-produktowe-allegro/index.html',
     url: '/zdjecia-produktowe-allegro/',
-    title: 'Zdjęcia produktowe Allegro — miniatura i galeria | OfertaStudio.pl',
-    description: 'Zdjęcia produktowe Allegro poprawione pod miniaturę, galerię i decyzję kupującego. Pokaż produkt szybciej, czytelniej i bez zgadywania.',
+    title: 'Zdjęcia produktowe Allegro — miniatury, galerie i infografiki',
+    description: 'Poprawiam miniatury, galerie i infografiki do ofert Allegro, żeby produkt był czytelny na liście, w galerii i na telefonie.',
     h1: 'Zdjęcia produktowe Allegro, które są czytelne już w miniaturze',
     label: 'Zdjęcia produktowe Allegro',
     eyebrow: 'Zdjęcia produktowe',
@@ -141,8 +141,8 @@ const pages = [
   {
     file: 'opisy-produktow-allegro/index.html',
     url: '/opisy-produktow-allegro/',
-    title: 'Opisy produktów Allegro — tytuł i opis do wklejenia | OfertaStudio.pl',
-    description: 'Opisy produktów Allegro pisane pod pytania kupującego: tytuł, lead, korzyści, parametry i FAQ gotowe do wdrożenia w ofercie.',
+    title: 'Opisy produktów Allegro — teksty, które porządkują decyzję zakupową',
+    description: 'Piszę i porządkuję opisy produktów Allegro: tytuł, lead, parametry, korzyści i FAQ gotowe do wdrożenia w ofercie.',
     h1: 'Opisy produktów Allegro, które zamykają pytania przed zakupem',
     label: 'Opisy produktów Allegro',
     eyebrow: 'Tytuł i opis Allegro',
@@ -264,8 +264,8 @@ const pages = [
   {
     file: 'optymalizacja-ofert-allegro/index.html',
     url: '/optymalizacja-ofert-allegro/',
-    title: 'Optymalizacja oferty Allegro — zdjęcia, tytuł i opis | OfertaStudio.pl',
-    description: 'Optymalizacja oferty Allegro, gdy zdjęcia, tytuł, parametry i opis muszą działać razem. Najpierw diagnoza, potem zakres zmian.',
+    title: 'Optymalizacja oferty Allegro — zdjęcia, tytuł, opis i układ informacji',
+    description: 'Poprawiam ofertę Allegro jako całość: zdjęcia, tytuł, opis, parametry i układ informacji. Najpierw diagnoza, potem zakres i cena.',
     h1: 'Optymalizacja oferty Allegro, gdy zdjęcia, tytuł i opis muszą działać razem',
     label: 'Optymalizacja oferty Allegro',
     eyebrow: 'Pełna poprawa oferty Allegro',
@@ -387,8 +387,8 @@ const pages = [
   {
     file: 'audyt-oferty-allegro/index.html',
     url: '/audyt-oferty-allegro/',
-    title: 'Audyt oferty Allegro — diagnoza i 3 poprawki | OfertaStudio.pl',
-    description: 'Audyt oferty Allegro dla sprzedawców, którzy nie wiedzą, co blokuje ofertę. Wyślij link i otrzymaj 3 konkretne poprawki na start.',
+    title: 'Audyt oferty Allegro — sprawdź, co blokuje decyzję kupującego',
+    description: 'Wyślij link do oferty Allegro i sprawdź, co blokuje decyzję kupującego. Otrzymasz diagnozę startową i 3 konkretne poprawki.',
     h1: 'Audyt oferty Allegro — sprawdź, gdzie kupujący traci zrozumienie',
     label: 'Audyt oferty Allegro',
     eyebrow: 'Mini audyt',
@@ -510,8 +510,8 @@ const pages = [
   {
     file: 'oferty-olx/index.html',
     url: '/oferty-olx/',
-    title: 'Poprawa ogłoszenia OLX — zdjęcia i opis oferty OLX | OfertaStudio.pl',
-    description: 'Poprawa ogłoszenia OLX: konkretny opis, zdjęcia, stan produktu, komplet i warunki odbioru pokazane tak, żeby budować zaufanie przed kontaktem.',
+    title: 'Poprawa ogłoszenia OLX — konkret, zaufanie i lepszy układ informacji',
+    description: 'Poprawiam ogłoszenia OLX pod konkret, zaufanie i czytelny układ informacji: zdjęcia, tytuł, opis, stan, komplet i najważniejsze pytania.',
     h1: 'Poprawa ogłoszenia OLX — konkret, zaufanie i mniej niejasnych pytań',
     label: 'Poprawa ogłoszenia OLX',
     eyebrow: 'OLX',
@@ -640,14 +640,25 @@ const escapeHtml = text => String(text)
 
 function organization() {
   return {
-    '@type': 'Organization',
+    '@type': 'ProfessionalService',
     '@id': ORG,
-    name: 'OfertaStudio.pl',
+    name: 'OfertaStudio',
+    alternateName: 'OfertaStudio.pl',
     url: `${SITE}/`,
-    description: 'Praktyczne studio poprawy ofert Allegro i OLX: zdjęcia, opisy, tytuły, układ informacji i materiały gotowe do wdrożenia.',
+    description: 'Praktyczne studio poprawy ofert Allegro i OLX: zdjęcia, galerie, tytuły, opisy i układ informacji.',
     logo: { '@type': 'ImageObject', url: OG, width: 1200, height: 630 },
     email: 'kontakt@ofertastudio.pl',
     telephone: '+48791162938',
+    founder: { '@type': 'Person', name: 'Piotr' },
+    areaServed: { '@type': 'Country', name: 'Polska' },
+    knowsAbout: [
+      'audyt oferty Allegro',
+      'zdjęcia produktowe Allegro',
+      'opisy produktów Allegro',
+      'optymalizacja oferty Allegro',
+      'poprawa ogłoszenia OLX',
+      'oferty OLX'
+    ],
     address: { '@type': 'PostalAddress', addressCountry: 'PL' }
   };
 }
@@ -656,7 +667,8 @@ function website() {
   return {
     '@type': 'WebSite',
     '@id': WEBSITE,
-    name: 'OfertaStudio.pl',
+    name: 'OfertaStudio',
+    alternateName: 'OfertaStudio.pl',
     url: `${SITE}/`,
     inLanguage: 'pl-PL',
     publisher: { '@id': ORG }
@@ -724,6 +736,18 @@ function schemaFor(page) {
     '@context': 'https://schema.org',
     '@graph': [
       organization(),
+      website(),
+      {
+        '@type': 'WebPage',
+        '@id': `${SITE}${page.url}#webpage`,
+        name: page.title,
+        url: `${SITE}${page.url}`,
+        description: page.description,
+        inLanguage: 'pl-PL',
+        isPartOf: { '@id': WEBSITE },
+        about: { '@id': `${SITE}${page.url}#service` },
+        breadcrumb: { '@id': `${SITE}${page.url}#breadcrumb` }
+      },
       {
         '@type': 'Service',
         '@id': `${SITE}${page.url}#service`,

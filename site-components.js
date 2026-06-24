@@ -29,18 +29,18 @@
   const serviceLinks = [
     ['Zdjęcia produktowe Allegro', '/zdjecia-produktowe-allegro/'],
     ['Opisy produktów Allegro', '/opisy-produktow-allegro/'],
-    ['Poprawa ofert Allegro', '/optymalizacja-ofert-allegro/'],
+    ['Optymalizacja oferty Allegro', '/optymalizacja-ofert-allegro/'],
     ['Audyt oferty Allegro', '/audyt-oferty-allegro/'],
-    ['Oferty OLX', '/oferty-olx/']
+    ['Poprawa ogłoszenia OLX', '/oferty-olx/']
   ];
 
   const breadcrumbLabels = {
     '/realizacje/': 'Realizacje',
     '/zdjecia-produktowe-allegro/': 'Zdjęcia produktowe Allegro',
     '/opisy-produktow-allegro/': 'Opisy produktów Allegro',
-    '/optymalizacja-ofert-allegro/': 'Poprawa ofert Allegro',
+    '/optymalizacja-ofert-allegro/': 'Optymalizacja oferty Allegro',
     '/audyt-oferty-allegro/': 'Audyt oferty Allegro',
-    '/oferty-olx/': 'Oferty OLX',
+    '/oferty-olx/': 'Poprawa ogłoszenia OLX',
     '/polityka-prywatnosci/': 'Polityka prywatności'
   };
 
