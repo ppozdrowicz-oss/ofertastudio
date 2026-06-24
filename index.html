@@ -4995,6 +4995,278 @@ input.cinput,select.cinput,textarea.cinput{
     line-height:1.5;
   }
 }
+
+/* ── MAKER TRUST LAYER ── */
+.maker-trust--expanded{
+  display:grid;
+  grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);
+  gap:clamp(1rem,2vw,1.4rem);
+  align-items:stretch;
+  padding:clamp(1.25rem,3vw,2rem);
+  border-color:var(--brand-border-soft);
+  background:
+    radial-gradient(circle at 7% 0%,rgba(37,99,235,.07),transparent 32%),
+    linear-gradient(145deg,rgba(255,255,255,.94),rgba(248,250,252,.78));
+  box-shadow:0 18px 46px rgba(15,23,42,.08);
+}
+.maker-trust--expanded .maker-bio,
+.maker-specialty,
+.maker-principles,
+.maker-diagnosis{
+  min-width:0;
+}
+.maker-trust--expanded h2{
+  max-width:720px;
+  font-size:clamp(1.8rem,3.1vw,2.55rem);
+  line-height:1.06;
+  letter-spacing:-.04em;
+}
+.maker-trust--expanded h3{
+  margin:0 0 .75rem;
+  color:var(--t1);
+  font-size:clamp(1.05rem,1.5vw,1.22rem);
+  line-height:1.28;
+  letter-spacing:-.018em;
+}
+.maker-trust--expanded p{
+  max-width:none;
+}
+.maker-bio{
+  padding:clamp(.4rem,1vw,.8rem) clamp(.2rem,1vw,.6rem);
+}
+.maker-bio p + p{
+  margin-top:.8rem;
+}
+.maker-proof-strip{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.5rem;
+  margin-top:1.2rem;
+  padding-top:1.1rem;
+  border-top:1px solid var(--bs);
+}
+.maker-proof-strip span{
+  display:inline-flex;
+  align-items:center;
+  min-height:2rem;
+  padding:.38rem .68rem;
+  border:1px solid var(--brand-border-soft);
+  border-radius:var(--radius-pill);
+  background:var(--s1);
+  color:var(--t2);
+  font-size:.74rem;
+  font-weight:800;
+  line-height:1.25;
+}
+.maker-specialty,
+.maker-principles,
+.maker-diagnosis{
+  padding:clamp(1rem,2vw,1.25rem);
+  border:1px solid var(--bs);
+  border-radius:var(--radius-xl);
+  background:rgba(255,255,255,.72);
+  box-shadow:0 10px 28px rgba(15,23,42,.055);
+}
+.maker-specialty{
+  border-color:var(--brand-border-soft);
+  background:linear-gradient(145deg,var(--s1),var(--brand-bg));
+}
+.maker-specialty-list{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:.45rem;
+  margin:1rem 0 0;
+  padding:0;
+  list-style:none;
+}
+.maker-specialty-list li{
+  min-width:0;
+  padding:.55rem .62rem;
+  border:1px solid var(--bs);
+  border-radius:var(--radius-md);
+  background:var(--s1);
+  color:var(--t2);
+  font-size:.78rem;
+  font-weight:750;
+  line-height:1.3;
+}
+.maker-specialty-note{
+  margin-top:1rem;
+  padding-top:1rem;
+  border-top:1px solid var(--bs);
+  color:var(--t3);
+  font-size:.8rem!important;
+  line-height:1.55!important;
+}
+.maker-principles .maker-trust-points{
+  counter-reset:maker-point;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:.65rem;
+  margin:0;
+  padding:0;
+  border:0;
+  list-style:none;
+}
+.maker-principles .maker-trust-points li{
+  counter-increment:maker-point;
+  display:grid;
+  grid-template-columns:2rem minmax(0,1fr);
+  gap:.58rem;
+  align-items:start;
+  min-height:0;
+  padding:.82rem;
+  border:1px solid var(--bs);
+  border-radius:var(--radius-lg);
+  background:var(--s1);
+}
+.maker-principles .maker-trust-points li::before{
+  content:counter(maker-point,decimal-leading-zero);
+}
+.maker-principles .maker-trust-points strong{
+  display:block;
+  grid-column:2;
+  margin-bottom:.18rem;
+  color:var(--t1);
+  font-size:.82rem;
+  line-height:1.3;
+}
+.maker-principles .maker-trust-points span{
+  display:block;
+  grid-column:2;
+  color:var(--t2);
+  font-size:.74rem;
+  font-weight:500;
+  line-height:1.48;
+}
+.maker-diagnosis{
+  position:relative;
+  overflow:hidden;
+  border-color:var(--brand-border-soft);
+}
+.maker-diagnosis::before{
+  content:'';
+  position:absolute;
+  top:-1px;
+  left:18%;
+  right:18%;
+  height:2px;
+  background:linear-gradient(90deg,transparent,var(--brand),transparent);
+  opacity:.7;
+}
+.maker-diagnosis-list{
+  counter-reset:diagnosis-step;
+  display:grid;
+  gap:0;
+  margin:.85rem 0 1rem;
+  padding:0;
+  list-style:none;
+  border-top:1px solid var(--bs);
+}
+.maker-diagnosis-list li{
+  counter-increment:diagnosis-step;
+  display:grid;
+  grid-template-columns:2.2rem minmax(0,1fr);
+  gap:.65rem;
+  padding:.8rem 0;
+  border-bottom:1px solid var(--bs);
+}
+.maker-diagnosis-list li::before{
+  content:counter(diagnosis-step,decimal-leading-zero);
+  display:grid;
+  place-items:center;
+  width:2rem;
+  height:1.6rem;
+  margin-top:.05rem;
+  border:1px solid var(--brand-border-soft);
+  border-radius:var(--radius-pill);
+  background:var(--brand-bg);
+  color:var(--brand);
+  font-family:var(--font-mono);
+  font-size:.58rem;
+  font-weight:900;
+}
+.maker-diagnosis-list strong{
+  display:block;
+  grid-column:2;
+  margin-bottom:.22rem;
+  color:var(--t1);
+  font-size:.85rem;
+  line-height:1.3;
+}
+.maker-diagnosis-list p{
+  grid-column:2;
+  margin:0;
+  color:var(--t2);
+  font-size:.76rem;
+  line-height:1.5;
+}
+.maker-diagnosis-cta{
+  width:100%;
+  justify-content:center;
+}
+[data-theme="dark"] .maker-trust--expanded{
+  background:
+    radial-gradient(circle at 7% 0%,rgba(96,165,250,.08),transparent 32%),
+    linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.025));
+  border-color:var(--bs);
+  box-shadow:0 18px 46px rgba(0,0,0,.28);
+}
+[data-theme="dark"] .maker-specialty,
+[data-theme="dark"] .maker-principles,
+[data-theme="dark"] .maker-diagnosis,
+[data-theme="dark"] .maker-proof-strip span,
+[data-theme="dark"] .maker-specialty-list li,
+[data-theme="dark"] .maker-principles .maker-trust-points li{
+  background:rgba(255,255,255,.025);
+  border-color:var(--bs);
+}
+@media(max-width:1024px){
+  .maker-trust--expanded{
+    grid-template-columns:1fr;
+  }
+  .maker-bio{
+    padding:.2rem 0;
+  }
+}
+@media(max-width:760px){
+  .maker-trust--expanded{
+    gap:.85rem;
+    padding:1rem;
+    border-radius:var(--radius-xl);
+  }
+  .maker-trust--expanded h2{
+    font-size:clamp(1.5rem,7vw,2rem);
+  }
+  .maker-specialty,
+  .maker-principles,
+  .maker-diagnosis{
+    padding:.95rem;
+  }
+  .maker-principles .maker-trust-points,
+  .maker-specialty-list{
+    grid-template-columns:1fr;
+  }
+}
+@media(max-width:420px){
+  .maker-proof-strip{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:.4rem;
+  }
+  .maker-proof-strip span{
+    width:100%;
+  }
+  .maker-diagnosis-list li,
+  .maker-principles .maker-trust-points li{
+    grid-template-columns:1.85rem minmax(0,1fr);
+    gap:.52rem;
+  }
+  .maker-diagnosis-list li::before,
+  .maker-principles .maker-trust-points li::before{
+    width:1.7rem;
+  }
+}
 </style>
 <script src="/analytics.js" defer></script>
 </head>
@@ -5428,21 +5700,63 @@ input.cinput,select.cinput,textarea.cinput{
 
 <!-- ── KTO POPRAWIA OFERTĘ ── -->
 <section class="section section--compact maker-section" aria-labelledby="maker-trust-heading">
-  <div class="maker-trust">
-    <div class="maker-trust-copy">
-      <div class="eyebrow">Praktyczne studio marketplace</div>
-      <h2 id="maker-trust-heading">Kto poprawia Twoją ofertę?</h2>
-      <p>OfertaStudio to praktyczne studio poprawy ofert Allegro i OLX. Zamiast sprzedawać gotowy pakiet na ślepo, najpierw sprawdzam, co w ofercie realnie blokuje zrozumienie produktu: zdjęcie główne, galeria, tytuł, opis, parametry albo układ informacji.</p>
+  <div class="maker-trust maker-trust--expanded">
+    <div class="maker-trust-copy maker-bio">
+      <div class="eyebrow">Kto stoi za OfertaStudio?</div>
+      <h2 id="maker-trust-heading">Za usługą stoi Piotr i praktyczna praca nad ofertami marketplace</h2>
+      <p>Nazywam się Piotr. Pomagam sprzedawcom Allegro i OLX uporządkować oferty produktowe tak, żeby kupujący szybciej rozumiał, co widzi, co dostaje i dlaczego warto wybrać właśnie ten produkt.</p>
+      <p>Nie podchodzę do oferty jak do samego opisu albo samego zdjęcia. Patrzę na całość: miniaturę, galerię, tytuł, parametry, opis, kolejność informacji i to, co klient widzi na telefonie przed podjęciem decyzji.</p>
+      <div class="maker-proof-strip" aria-label="Uczciwe dowody sposobu pracy">
+        <span>Mini audyt przed zakresem</span>
+        <span>Allegro i OLX</span>
+        <span>Materiały do wdrożenia</span>
+      </div>
     </div>
-    <div class="maker-trust-method">
-      <div class="maker-trust-method-label">Zasady współpracy</div>
-      <ul class="maker-trust-points">
-        <li>bez fikcyjnych wyników sprzedaży</li>
-        <li>bez wciskania pełnego zakresu na start</li>
-        <li>z materiałami gotowymi do wdrożenia</li>
-        <li>z naciskiem na to, co kupujący widzi jako pierwsze</li>
+
+    <aside class="maker-specialty" aria-labelledby="maker-specialty-heading">
+      <div class="maker-trust-method-label">Specjalizacja</div>
+      <h3 id="maker-specialty-heading">Najlepiej sprawdzam się przy ofertach, które wymagają doprecyzowania produktu</h3>
+      <ul class="maker-specialty-list">
+        <li>wariant produktu</li>
+        <li>zestaw i zawartość</li>
+        <li>kompatybilność</li>
+        <li>parametry techniczne</li>
+        <li>zastosowanie</li>
+        <li>detal i skala</li>
       </ul>
+      <p class="maker-specialty-note">Najczęstsze kategorie: narzędzia, spawalnictwo, BHP, dom i ogród, akcesoria techniczne i produkty, których nie da się wyjaśnić jednym zdjęciem.</p>
+    </aside>
+
+    <div class="maker-trust-method maker-principles" aria-labelledby="maker-principles-heading">
+      <div class="maker-trust-method-label">Jak pracuję</div>
+      <h3 id="maker-principles-heading">Zasady współpracy bez sztucznego marketingu</h3>
+      <ol class="maker-trust-points">
+        <li><strong>Najpierw diagnoza</strong><span>Nie proponuję zakresu w ciemno. Najpierw sprawdzam, co realnie blokuje odbiór oferty.</span></li>
+        <li><strong>Bez fikcyjnych obietnic</strong><span>Nie obiecuję konkretnych wzrostów sprzedaży. Poprawiam elementy wpływające na zrozumienie i wiarygodność.</span></li>
+        <li><strong>Materiały gotowe do wdrożenia</strong><span>Dostarczam teksty, układ informacji, sugestie zdjęć albo gotowe materiały do wykorzystania w ofercie.</span></li>
+        <li><strong>Zakres i cena przed startem</strong><span>Zanim zaczynam pracę, wiesz, co będzie wykonane, ile to kosztuje i jaki jest cel poprawy.</span></li>
+      </ol>
     </div>
+
+    <aside class="maker-diagnosis" aria-labelledby="maker-diagnosis-heading">
+      <div class="maker-trust-method-label">Przykład mini diagnozy</div>
+      <h3 id="maker-diagnosis-heading">Co możesz otrzymać po wysłaniu linku?</h3>
+      <ol class="maker-diagnosis-list">
+        <li>
+          <strong>Zdjęcie główne</strong>
+          <p>Produkt jest za mały w miniaturze i nie pokazuje zestawu. Kupujący musi wejść w ofertę, żeby zrozumieć, co dostaje.</p>
+        </li>
+        <li>
+          <strong>Galeria</strong>
+          <p>Brakuje zdjęcia detalu, zastosowania i skali. Warto ułożyć zdjęcia w kolejności: produkt → zestaw → detal → użycie → parametr.</p>
+        </li>
+        <li>
+          <strong>Opis</strong>
+          <p>Pierwsze akapity nie mówią, dla kogo jest produkt i czym różni się od podobnych ofert. Najważniejsza przewaga pojawia się za późno.</p>
+        </li>
+      </ol>
+      <a href="#kontakt" class="btn-p maker-diagnosis-cta" data-event="mini_audit_click" data-location="maker_trust" data-package="start" data-interest="Mini audyt — 0 zł" data-message="Chcę wysłać link do oferty i otrzymać mini diagnozę.">Wyślij link do oferty</a>
+    </aside>
   </div>
 </section>
 
