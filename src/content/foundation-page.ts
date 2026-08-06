@@ -1,8 +1,8 @@
 export const foundationPageContent = {
   description:
-    "Paleta, typografia, rytm, komponenty i stany interakcji tworzą jeden system gotowy do budowy globalnego layoutu OfertaStudio.",
-  eyebrow: "OfertaStudio · etap 3 z 14 ukończony",
+    "Globalny nagłówek, menu, breadcrumbs, CTA i stopka korzystają ze wspólnej konfiguracji oraz działają od 320 px.",
+  eyebrow: "OfertaStudio · etap 4 z 14 ukończony",
   nextStep:
-    "Kolejny etap obejmie dostępny nagłówek, megamenu, nawigację mobilną i stopkę. Finalna strona główna nadal pozostaje poza zakresem.",
-  title: "Design system jest gotowy do budowy interfejsu.",
+    "Kolejny etap obejmie kompletną stronę główną. Obecny widok pozostaje technicznym punktem kontroli, a nie finalnym homepage.",
+  title: "Globalna nawigacja i layout są gotowe.",
 } as const;

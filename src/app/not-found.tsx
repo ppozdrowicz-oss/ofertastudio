@@ -2,8 +2,8 @@ import { ArrowLeft } from "lucide-react";
 import type { Metadata } from "next";
 
 import { Container } from "@/components/layout/container";
+import { PageShell } from "@/components/layout/page-shell";
 import { Section } from "@/components/layout/section";
-import { SectionHeading } from "@/components/shared/section-heading";
 import { ButtonLink } from "@/components/ui/button";
 
 export const metadata: Metadata = {
@@ -16,29 +16,22 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <main>
-      <Section
-        aria-labelledby="not-found-title"
-        className="flex min-h-dvh items-center"
-      >
+    <PageShell
+      header={{
+        eyebrow: "Błąd 404",
+        lead: "Adres może być nieprawidłowy albo strona została przeniesiona.",
+        title: "Nie znaleziono tej strony",
+        variant: "compact",
+      }}
+      showGlobalCta={false}
+    >
+      <Section spacing="compact" variant="muted">
         <Container size="text">
-          <SectionHeading
-            description="Adres może być nieprawidłowy albo strona została przeniesiona."
-            eyebrow="Błąd 404"
-            level={1}
-            size="h1"
-            title="Nie znaleziono tej strony."
-            titleId="not-found-title"
-          />
-          <ButtonLink
-            className="mt-8"
-            href="/"
-            leadingIcon={<ArrowLeft aria-hidden="true" />}
-          >
+          <ButtonLink href="/" leadingIcon={<ArrowLeft aria-hidden="true" />}>
             Wróć na stronę główną
           </ButtonLink>
         </Container>
       </Section>
-    </main>
+    </PageShell>
   );
 }

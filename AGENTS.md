@@ -89,6 +89,20 @@ Komponenty `shared` istnieją wyłącznie dla realnych wzorców domenowych, taki
 - Respektuj `prefers-reduced-motion`; ruch nie może być konieczny do zrozumienia treści.
 - Używaj obrazów dekoracyjnych i treściowych zgodnie z ich rolą, z właściwym tekstem alternatywnym.
 
+## Globalny layout i nawigacja
+
+- `src/config/navigation.ts` jest jedynym źródłem pozycji headera, mobile i stopki. Desktop i mobile mają korzystać z tej samej tablicy danych.
+- Każdy nowy link musi wskazywać trasę z centralnego rejestru i przejść `npm run content:check`. Nie dodawaj pustych hrefów, `#` ani pozycji prowadzącej do 404.
+- Menu musi działać myszą, dotykiem i klawiaturą. Zachowuj `Enter`, `Space`, `Escape`, `Tab`, `Shift + Tab`, zamknięcie poza panelem i właściwe przywracanie fokusu.
+- Nie ukrywaj outline. Aktywny stan i stan rozwinięcia nie mogą zależeć wyłącznie od koloru lub ikony.
+- Breadcrumbs zawsze korzystają z centralnych nazw i rodziców w rejestrze stron. Nie twórz etykiet przez zamianę myślników w URL.
+- `SiteHeader` i `SiteFooter` należą wyłącznie do root layoutu. Nie duplikuj ich w route’ach ani sekcjach.
+- Każda nowa strona używa `PageShell` albo równoważnie zapewnia dokładnie jeden `main#main-content`; nie dodawaj drugiego landmarku `main`.
+- `GlobalCta` jest reużywalne i korzysta z identyfikatorów w centralnym systemie CTA. Wyłączaj je tylko przy konflikcie intencji strony.
+- Stopka pobiera dane kontaktowe i sociale wyłącznie z `src/config/contact.ts`; nie pokazuje pustych pól ani fikcyjnych wartości.
+- Client Components ograniczaj do interakcji. Root layout, header shell, PageShell, PageHeader, GlobalCta i footer pozostają serwerowe.
+- Po zmianie nawigacji sprawdź wariant desktopowy i mobilny, aktywną trasę, Escape, focus, brak overflow oraz sekcję globalnego layoutu na `/design-system`.
+
 ## SEO i treść
 
 - `src/config/routes.ts` jest źródłem planowanych adresów, a `src/content/page-registry.ts` ich roli, metadata i statusu. Nie twórz alternatywnego rejestru w komponencie.

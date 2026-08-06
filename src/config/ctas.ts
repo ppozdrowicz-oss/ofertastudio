@@ -1,4 +1,4 @@
-import type { Cta } from "../types/content.ts";
+import type { Cta, CtaId } from "../types/content.ts";
 import { routes } from "./routes.ts";
 
 export const ctas = [
@@ -45,3 +45,13 @@ export const ctas = [
     style: "text",
   },
 ] as const satisfies readonly Cta[];
+
+export function getCta(ctaId: CtaId): Cta {
+  const cta = ctas.find((candidate) => candidate.id === ctaId);
+
+  if (!cta) {
+    throw new Error(`Nieznane CTA: ${ctaId}.`);
+  }
+
+  return cta;
+}

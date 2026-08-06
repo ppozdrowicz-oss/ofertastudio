@@ -229,6 +229,18 @@
   --container-content: 68rem;
   --container-page: 80rem;
   --container-wide: 92rem;
+  --header-height-mobile: 4.25rem;
+  --header-height-desktop: 4.75rem;
+
+  /* Controlled interface layers. */
+  --layer-base: 0;
+  --layer-header: 30;
+  --layer-dropdown: 40;
+  --layer-overlay: 50;
+  --layer-panel: 60;
+  --layer-tooltip: 70;
+  --layer-modal: 80;
+  --layer-skip-link: 90;
 
   /* Shape and elevation. */
   --radius-small: 0.375rem;
@@ -261,6 +273,9 @@
 
   html {
     min-width: 20rem;
+    scroll-padding-top: calc(
+      var(--header-height-mobile) + var(--space-stack-md)
+    );
     scroll-behavior: smooth;
     text-rendering: optimizeLegibility;
   }
@@ -302,6 +317,21 @@
   textarea {
     -webkit-tap-highlight-color: transparent;
   }
+
+  [id] {
+    scroll-margin-top: calc(
+      var(--header-height-mobile) + var(--space-stack-md)
+    );
+  }
+
+  dialog[open] {
+    animation: mobile-navigation-enter var(--duration-normal)
+      var(--ease-standard);
+  }
+
+  dialog[open]::backdrop {
+    animation: overlay-enter var(--duration-normal) var(--ease-standard);
+  }
 }
 
 @layer utilities {
@@ -314,6 +344,42 @@
 
   .measure-copy {
     max-width: var(--measure-copy);
+  }
+}
+
+@keyframes mobile-navigation-enter {
+  from {
+    opacity: 0;
+    transform: translateX(1rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes overlay-enter {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (min-width: 80rem) {
+  html {
+    scroll-padding-top: calc(
+      var(--header-height-desktop) + var(--space-stack-md)
+    );
+  }
+
+  [id] {
+    scroll-margin-top: calc(
+      var(--header-height-desktop) + var(--space-stack-md)
+    );
   }
 }
 

@@ -14,7 +14,8 @@ Lokalny development korzysta z domyślnego Turbopacka. Produkcyjny skrypt używa
 src/
   app/                  # route'y, layout, metadata i pliki specjalne
   components/
-    layout/             # Container, Section i przyszłe elementy ramy strony
+    layout/             # prymitywy i produkcyjna rama globalna strony
+    navigation/         # kontrolowana granica klientowa menu
     sections/           # kompozycje sekcji o znaczeniu dla widoku
     ui/                 # małe prymitywy interfejsu
     shared/             # współdzielone komponenty domenowe i kompozycyjne
@@ -34,7 +35,7 @@ docs/
 scripts/                # lokalne kontrole integralności treści
 ```
 
-Katalog `types` zawiera współdzielone kontrakty domenowe treści, usług, nawigacji i realizacji. Prymitywy współdzielone przez kilka domen znajdują się w `types/core.ts`, co zapobiega cyklicznym zależnościom typów. Katalog `shared` ma realnych konsumentów: zawiera komponenty domenowe i kompozycyjne zbudowane na prymitywach UI. Katalog `hooks` nie istnieje, ponieważ obecny system nie wymaga komponentów klienckich. Pliki `index.ts` tworzymy tylko wtedy, gdy stabilizują publiczny interfejs niewielkiego modułu, a nie jako domyślną warstwę każdego katalogu.
+Katalog `types` zawiera współdzielone kontrakty domenowe treści, usług, nawigacji i realizacji. Prymitywy współdzielone przez kilka domen znajdują się w `types/core.ts`, co zapobiega cyklicznym zależnościom typów. Katalog `shared` ma realnych konsumentów: zawiera komponenty domenowe i kompozycyjne zbudowane na prymitywach UI. Katalog `hooks` nie istnieje, ponieważ logika klientowa ma obecnie jednego konsumenta i pozostaje w `MainNavigation`. Pliki `index.ts` tworzymy tylko wtedy, gdy stabilizują publiczny interfejs niewielkiego modułu, a nie jako domyślną warstwę każdego katalogu.
 
 ## Podział komponentów
 
@@ -48,7 +49,7 @@ Komponenty przyjmują standardowe atrybuty HTML, kiedy ma to sens, zachowują se
 
 ## Server Components i Client Components
 
-Wszystkie komponenty są domyślnie Server Components. Pozwala to ograniczyć JavaScript wysyłany do przeglądarki i utrzymać prosty model renderowania treści.
+Wszystkie komponenty są domyślnie Server Components. Pozwala to ograniczyć JavaScript wysyłany do przeglądarki i utrzymać prosty model renderowania treści. `MainNavigation` jest jedyną jawną granicą klientową: obsługuje `usePathname`, dropdowny, modalne menu mobilne, blokadę scrolla i focus management. `SiteHeader` pozostaje Server Component.
 
 Dyrektywę `"use client"` dodajemy wyłącznie do najniższego komponentu, który potrzebuje:
 
@@ -69,15 +70,17 @@ Podział odpowiedzialności:
 - `src/config/routes.ts` — pojedyncze źródło statycznych adresów i wzorców dynamicznych,
 - `src/config/site.ts` i `contact.ts` — marka, metadata i bezpieczne, niepotwierdzone jeszcze dane firmy,
 - `src/config/ctas.ts` — zamknięty system pięciu CTA,
+- `src/config/layout.ts` — domyślna treść i CTA panelu globalnego,
 - `src/config/navigation.ts` — menu nagłówka, mobile i stopki,
 - `src/content/service-groups.ts` i `services.ts` — hierarchia oferty i relacje,
 - `src/content/page-registry.ts` — planowane strony, intencje, canonicale i statusy,
 - pozostałe moduły `src/content` — segmenty, proces, FAQ, ścieżki, struktury widoków i realizacje,
 - `src/types` — wspólne kontrakty tych danych.
+- `src/lib/route-registry.ts` — serwerowe połączenie rejestru stron z parametrami technicznych tras i breadcrumbs.
 
 Komponent sekcji odpowiada za prezentację, nie za przechowywanie długich bloków copy. Dane muszą mieć stabilne identyfikatory, jeśli będą używane w listach lub linkach. CMS nie jest planowany bez decyzji biznesowej; jego ewentualne wprowadzenie powinno zachować istniejące kontrakty modeli treści.
 
-Integralność sprawdza `npm run content:check`. Skrypt nie zastępuje TypeScriptu: kontroluje relacje runtime, między innymi duplikaty adresów i slugów, istnienie powiązanych usług, prawidłowe CTA, nawigację, rodziców stron i bezpieczne placeholdery kontaktowe.
+Integralność sprawdza `npm run content:check`. Skrypt nie zastępuje TypeScriptu: kontroluje relacje runtime, między innymi duplikaty adresów i slugów, istnienie powiązanych usług, prawidłowe CTA, wdrożenie każdego linku menu i stopki, kompletność grup megamenu, centralne breadcrumbs, rodziców stron i bezpieczne dane kontaktowe.
 
 ## Metadata i SEO
 
@@ -86,21 +89,21 @@ Integralność sprawdza `npm run content:check`. Skrypt nie zastępuje TypeScrip
 - `src/app/robots.ts` publikuje bazowy `robots.txt`.
 - `src/content/page-registry.ts` przechowuje zaakceptowane założenia metadata i canonicali przyszłych podstron.
 - Każda przyszła podstrona statyczna generuje metadata z właściwego wpisu rejestru; `generateMetadata` stosujemy dla danych dynamicznych lub wspólnego, typowanego helpera.
-- Rejestr może zawierać trasę `planned`, która nie ma jeszcze widoku. Nie linkujemy jej w działającym interfejsie, dopóki podstrona nie jest gotowa do publikacji.
+- Status `planned` oznacza brak finalnej treści. Jeśli trasa jest użyta w globalnej nawigacji, wspólny renderer techniczny zapewnia działający, jawnie opisany widok `noindex`; nie publikujemy linków prowadzących do 404.
 - Dane strukturalne pojawią się w etapie 12 i muszą odzwierciedlać widoczną, zweryfikowaną treść.
 
 ## Dodawanie podstron
 
 1. Potwierdź miejsce podstrony w `INFORMATION_ARCHITECTURE.md`, intencję w `SEO_CONTENT_MAP.md` i różnicę wobec stron sąsiednich.
 2. Dodaj lub zaktualizuj trasę, usługę, relacje i wpis w rejestrze; uruchom `npm run content:check`.
-3. Utwórz segment w `src/app` z możliwie cienkim `page.tsx`.
+3. Zastąp widok techniczny dedykowanym segmentem w `src/app` z możliwie cienkim `page.tsx`, gdy finalny zakres strony jest gotowy.
 4. Dodaj typowany model treści w `src/content`, jeśli treść ma więcej niż kilka prostych etykiet.
 5. Zbuduj semantyczne sekcje, wykorzystując istniejące tokeny i prymitywy.
 6. Wygeneruj unikalne metadata z modelu i dodaj właściwe linkowanie wewnętrzne.
 7. Sprawdź widok od 320 px, klawiaturę, focus, hierarchię nagłówków i preferencję ograniczonego ruchu.
 8. Uruchom pełny zestaw kontroli jakości, w tym walidację treści.
 
-Route groups można wprowadzić dopiero, gdy kilka route'ów rzeczywiście współdzieli osobny layout lub organizację. Dynamiczne segmenty wymagają stabilnego źródła slugów i jawnej obsługi braku danych.
+Wspólny `src/app/[...slug]/page.tsx` statycznie renderuje znane adresy przez `generateStaticParams`; nieznany URL przechodzi przez jawne `notFound()` i nadal zwraca 404. Route groups można wprowadzić dopiero, gdy kilka finalnych route'ów rzeczywiście współdzieli osobny layout lub organizację. Dynamiczne realizacje wymagają prawdziwego źródła slugów i jawnej obsługi braku danych.
 
 ## Style i tokeny
 

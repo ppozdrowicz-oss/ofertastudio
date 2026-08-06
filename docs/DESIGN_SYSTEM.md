@@ -2,7 +2,7 @@
 
 ## Status i zakres
 
-Design system w wersji 1.0 jest produkcyjnym fundamentem interfejsu dla etapów 4–14. Obejmuje tokeny, typografię, layout, komponenty, stany interakcji, zasady dostępności i techniczną stronę `/design-system`.
+Design system w wersji 1.1 jest produkcyjnym fundamentem interfejsu dla etapów 4–14. Obejmuje tokeny, typografię, layout, globalną nawigację, komponenty, stany interakcji, zasady dostępności i techniczną stronę `/design-system`.
 
 System jest projektowany jako jasny. Nie zawiera niekompletnego dark mode ani przełącznika motywu. Ciemna powierzchnia `strong` służy wyłącznie do kontrolowanej zmiany rytmu sekcji i paneli CTA.
 
@@ -187,9 +187,15 @@ Nie powstaje osobny grid framework. Używamy CSS Grid i klas Tailwind bez zmiany
 
 - `shadow-surface` — subtelna powierzchnia, używana oszczędnie,
 - `shadow-raised` — karta interaktywna na hover lub focus-within,
-- `shadow-overlay` — przyszły dropdown, megamenu albo dialog.
+- `shadow-overlay` — dropdown, megamenu, mobilny panel albo przyszły dialog.
 
 Standardowa karta opiera się na obramowaniu i nie otrzymuje cienia.
+
+### Warstwy i globalny shell
+
+Globalne komponenty używają semantycznej skali od `--layer-header` i `--layer-dropdown` po `--layer-skip-link`. Sticky header ma stałą wysokość 68 px na mobile i 76 px od 1280 px. Dropdown używa `shadow-overlay`, a modalne menu mobilne korzysta z top layer natywnego `dialog`, nie z przypadkowego z-indexu.
+
+Anchory uwzględniają wysokość headera przez globalne `scroll-padding-top` i `scroll-margin-top`.
 
 ## Ikony
 
@@ -265,7 +271,7 @@ Globalne `prefers-reduced-motion: reduce` skraca animacje i wyłącza płynne pr
 - Kontrolki formularza wspierają etykietę, opis, błąd, `aria-invalid` i `aria-describedby`.
 - Dekoracyjne ikony są ukryte przed technologiami asystującymi.
 - Teksty i kontrolki spełniają przyjęte minima kontrastu.
-- Wszystkie komponenty działają bez myszy i bez JavaScriptu klienckiego.
+- Wszystkie komponenty działają bez myszy. Prymitywy UI nie wymagają JavaScriptu klienckiego; globalna nawigacja używa jednej kontrolowanej granicy klientowej dla stanu, aktywnej trasy, dialogu i zarządzania focusem.
 
 ## Responsywność
 

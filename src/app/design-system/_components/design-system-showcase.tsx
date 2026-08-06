@@ -2,6 +2,9 @@ import { ArrowLeft, ArrowRight, Check, Mail, Search } from "lucide-react";
 import type { ReactNode } from "react";
 
 import { Container } from "@/components/layout/container";
+import { GlobalCta } from "@/components/layout/global-cta";
+import { PageHeader } from "@/components/layout/page-header";
+import { PageShell } from "@/components/layout/page-shell";
 import { Section, type SectionProps } from "@/components/layout/section";
 import { CtaPanel } from "@/components/shared/cta-panel";
 import { FeatureList } from "@/components/shared/feature-list";
@@ -9,7 +12,7 @@ import { ProcessStep } from "@/components/shared/process-step";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { ServiceCard } from "@/components/shared/service-card";
 import { Badge } from "@/components/ui/badge";
-import { Breadcrumb } from "@/components/ui/breadcrumb";
+import { Breadcrumbs } from "@/components/ui/breadcrumb";
 import { Button, ButtonLink } from "@/components/ui/button";
 import {
   Card,
@@ -248,10 +251,10 @@ const showcasedIcons = [
 
 export function DesignSystemShowcase() {
   return (
-    <main>
+    <PageShell showGlobalCta={false}>
       <Section spacing="compact" variant="strong">
         <Container size="wide">
-          <Breadcrumb
+          <Breadcrumbs
             items={[
               { href: "/", label: "Strona techniczna" },
               { label: "Design system" },
@@ -283,6 +286,7 @@ export function DesignSystemShowcase() {
           <nav aria-label="Sekcje design systemu" className="mt-12">
             <ul className="flex flex-wrap gap-x-5 gap-y-3 border-t border-surface-inverse-border pt-6">
               {[
+                ["global-layout", "Globalny layout"],
                 ["colors", "Kolory"],
                 ["typography", "Typografia"],
                 ["layout", "Layout"],
@@ -307,9 +311,87 @@ export function DesignSystemShowcase() {
       </Section>
 
       <ShowcaseSection
+        description="Produkcyjny shell otacza również tę stronę: sticky header znajduje się nad treścią, a prawdziwa stopka pod showcase. Poniższe elementy używają tych samych komponentów co kolejne podstrony."
+        id="global-layout"
+        index={1}
+        title="Global navigation and layout"
+        variant="muted"
+      >
+        <Notice
+          title="Interaktywny komponent jest nad tą sekcją"
+          variant="information"
+        >
+          Na desktopie otwórz „Strony” lub „Sklepy i Shoper”, aby sprawdzić
+          megamenu i Escape. Poniżej 1280 px ten sam header pokazuje mobilny
+          trigger oraz modalne menu z akordeonem.
+        </Notice>
+        <div className="mt-6 overflow-clip rounded-[var(--radius-card)] border border-border bg-background">
+          <PageHeader
+            breadcrumbs={[
+              { href: routes.home, label: "Strona główna" },
+              { href: routes.stores, label: "Sklepy i Shoper" },
+              { label: "Konfiguracja Shopera" },
+            ]}
+            eyebrow="PageHeader · compact"
+            lead="Bazowy nagłówek podstrony łączy centralne breadcrumbs, kontrolowaną miarę tekstu i maksymalnie dwa poziomy działania."
+            primaryAction={
+              <ButtonLink href={routes.contact}>
+                Porozmawiajmy o projekcie
+              </ButtonLink>
+            }
+            secondaryAction={
+              <ButtonLink href={routes.brief} variant="outline">
+                Opisz swoją sytuację
+              </ButtonLink>
+            }
+            title="Konfiguracja Shopera"
+            titleId="showcase-page-header"
+            variant="compact"
+          />
+        </div>
+        <div className="mt-6 overflow-clip rounded-[var(--radius-card)] border border-border">
+          <GlobalCta
+            description="Komponent otrzymuje treść i identyfikatory CTA centralnie, a wybrana strona może go wyłączyć lub nadpisać."
+            eyebrow="GlobalCta · default"
+            title="Jeden następny krok przed stopką"
+            variant="default"
+          />
+        </div>
+        <div className="mt-6 grid gap-4 md:grid-cols-3">
+          <Card>
+            <CardHeader>
+              <CardTitle as="h3">Sticky bez skoku</CardTitle>
+              <CardDescription>
+                Stała wysokość, semantyczna warstwa i scroll padding dla
+                anchorów.
+              </CardDescription>
+            </CardHeader>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle as="h3">Jedno źródło menu</CardTitle>
+              <CardDescription>
+                Desktop, mobile i walidacja korzystają z centralnej
+                konfiguracji.
+              </CardDescription>
+            </CardHeader>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle as="h3">Prawdziwa stopka</CardTitle>
+              <CardDescription>
+                Znajduje się na końcu strony i nie publikuje niepotwierdzonych
+                danych.
+              </CardDescription>
+            </CardHeader>
+          </Card>
+        </div>
+      </ShowcaseSection>
+
+      <ShowcaseSection
         description="Semantyczna paleta opiera się na chłodnych neutralach, kobalcie i jednym kontrolowanym akcencie limonkowym. Komponenty nie korzystają z surowych wartości."
         id="colors"
-        index={1}
+        index={2}
         title="Kolory i powierzchnie"
       >
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -342,7 +424,7 @@ export function DesignSystemShowcase() {
       <ShowcaseSection
         description="Jedna rodzina Inter buduje różnicę przez skalę, rytm i precyzyjny tracking. Rozmiary display i nagłówków są płynne, ale posiadają kontrolowane granice."
         id="typography"
-        index={2}
+        index={3}
         title="Typografia"
         variant="muted"
       >
@@ -368,7 +450,7 @@ export function DesignSystemShowcase() {
       <ShowcaseSection
         description="Rytm bazuje na wielokrotnościach 4 px. Kontenery ograniczają długość linii, a responsywna siatka przechodzi od jednej kolumny treści do 12 kolumn konstrukcyjnych."
         id="layout"
-        index={3}
+        index={4}
         title="Odstępy, kontenery i grid"
       >
         <div className="grid gap-6 lg:grid-cols-2">
@@ -442,7 +524,7 @@ export function DesignSystemShowcase() {
       <ShowcaseSection
         description="Akcje mają jednoznaczną hierarchię, cel minimum 44 px w standardowym rozmiarze i wspólny focus ring. Link pozostaje linkiem, a operacja pozostaje przyciskiem."
         id="actions"
-        index={4}
+        index={5}
         title="Przyciski, badge i linki"
         variant="muted"
       >
@@ -518,7 +600,7 @@ export function DesignSystemShowcase() {
       <ShowcaseSection
         description="Karty są przede wszystkim powierzchnią i obramowaniem. Cień pojawia się dopiero dla elementu interaktywnego lub uniesionego."
         id="cards"
-        index={5}
+        index={6}
         title="Karty, nagłówki i separatory"
       >
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
@@ -567,7 +649,7 @@ export function DesignSystemShowcase() {
       <ShowcaseSection
         description="Kontrolki są natywne, etykietowane i gotowe na jawne relacje aria-describedby. Stan błędu łączy kolor, komunikat i aria-invalid."
         id="forms"
-        index={6}
+        index={7}
         title="Formularze"
         variant="muted"
       >
@@ -669,7 +751,7 @@ export function DesignSystemShowcase() {
       <ShowcaseSection
         description="Komunikat przekazuje sens ikoną, tytułem i tekstem — nigdy wyłącznie kolorem. Breadcrumb zachowuje semantyczną listę i aria-current."
         id="feedback"
-        index={7}
+        index={8}
         title="Komunikaty i nawigacja kontekstowa"
       >
         <div className="grid gap-6 lg:grid-cols-2">
@@ -699,7 +781,7 @@ export function DesignSystemShowcase() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <Breadcrumb
+              <Breadcrumbs
                 items={[
                   { href: "/", label: "Strona główna" },
                   { href: "/sklepy-internetowe", label: "Sklepy i Shoper" },
@@ -725,7 +807,7 @@ export function DesignSystemShowcase() {
       <ShowcaseSection
         description="Lucide pozostaje jedynym źródłem ikon. Rejestr importuje siedem konkretnych symboli odpowiadających modelowi treści, bez dynamicznego ładowania całej biblioteki."
         id="icons"
-        index={8}
+        index={9}
         title="Ikony i listy"
         variant="muted"
       >
@@ -778,7 +860,7 @@ export function DesignSystemShowcase() {
       <ShowcaseSection
         description="Komponenty domenowe prezentują istniejące dane etapu 2. Nie zawierają fikcyjnych metryk, realizacji ani opinii."
         id="domain"
-        index={9}
+        index={10}
         spacing="spacious"
         title="Proces, usługi i CTA"
       >
@@ -841,7 +923,7 @@ export function DesignSystemShowcase() {
       <ShowcaseSection
         description="Przykład składa się do jednej kolumny na małym ekranie, dwóch na tablecie i asymetrycznej siatki 12-kolumnowej na desktopie."
         id="responsive"
-        index={10}
+        index={11}
         title="Responsywne układy"
         variant="muted"
       >
@@ -884,6 +966,6 @@ export function DesignSystemShowcase() {
           </Card>
         </div>
       </ShowcaseSection>
-    </main>
+    </PageShell>
   );
 }

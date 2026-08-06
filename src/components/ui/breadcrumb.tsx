@@ -1,12 +1,7 @@
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 
-import type { SitePath } from "@/types/content";
-
-export type BreadcrumbItem = {
-  label: string;
-  href?: SitePath;
-};
+import type { BreadcrumbItem } from "@/types/navigation";
 
 export type BreadcrumbProps = {
   items: readonly BreadcrumbItem[];
@@ -14,7 +9,7 @@ export type BreadcrumbProps = {
   tone?: "default" | "inverse";
 };
 
-export function Breadcrumb({
+export function Breadcrumbs({
   items,
   label = "Okruszki nawigacyjne",
   tone = "default",

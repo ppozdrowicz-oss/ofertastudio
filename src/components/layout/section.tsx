@@ -14,7 +14,7 @@ const variantClassNames = {
   strong: "bg-surface-inverse text-surface-inverse-foreground",
 } as const;
 
-type SectionElement = "aside" | "div" | "section";
+type SectionElement = "aside" | "div" | "header" | "section";
 
 export type SectionProps = HTMLAttributes<HTMLElement> & {
   as?: SectionElement;

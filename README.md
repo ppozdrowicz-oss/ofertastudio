@@ -2,7 +2,7 @@
 
 Nowa wersja strony usługowej OfertaStudio — butikowego studia sprzedaży internetowej działającego zgodnie z ideą „Od produktu do skutecznej sprzedaży w internecie”. Projekt ma docelowo prezentować ofertę, budować zaufanie i pozyskiwać wartościowe zapytania od firm rozwijających sprzedaż online.
 
-Fundament techniczny, strategia marki, architektura informacji i produkcyjny design system Flat Modern Premium są ukończone. Minimalna strona startowa pozostaje techniczna, a pełny zestaw tokenów i komponentów prezentuje nieindeksowana trasa `/design-system`. Następny etap obejmuje globalny nagłówek, nawigację i stopkę.
+Etapy 1–4 są ukończone: projekt posiada fundament techniczny, strategię marki, architekturę informacji, produkcyjny design system oraz kompletny globalny layout z dostępną nawigacją. Minimalna strona startowa pozostaje techniczna, a pełny zestaw tokenów i komponentów prezentuje nieindeksowana trasa `/design-system`. Następny etap obejmuje finalną stronę główną.
 
 ## Stack
 
@@ -65,6 +65,7 @@ src/
   app/                  # routing, layout, metadata i pliki specjalne App Routera
   components/
     layout/             # prymitywy układu, np. Container i Section
+    navigation/         # interaktywna nawigacja desktopowa i mobilna
     sections/           # kompozycje sekcji stron
     shared/             # reużywalne komponenty domenowe
     ui/                 # małe, wielokrotnego użytku elementy interfejsu
@@ -85,7 +86,7 @@ scripts/
   check-design-system.ts # walidacja komponentów, importów i kontrastu
 ```
 
-Katalog `hooks` należy dodać dopiero wtedy, gdy pojawi się rzeczywista współdzielona logika kliencka. W `shared` umieszczamy wyłącznie wzorce domenowe z realnymi konsumentami. Nie tworzymy pustych warstw ani barrel exports na zapas.
+Interakcje nawigacji są celowo zamknięte w jednym komponencie klienckim zamiast tworzenia katalogu `hooks` dla logiki z jednym konsumentem. W `shared` umieszczamy wyłącznie wzorce domenowe z realnymi konsumentami. Nie tworzymy pustych warstw ani barrel exports na zapas.
 
 ## Zasady dalszego rozwoju
 
@@ -94,6 +95,8 @@ Katalog `hooks` należy dodać dopiero wtedy, gdy pojawi się rzeczywista wspó�
 - Adresy, CTA, nawigacja i dane kontaktowe mają pojedyncze źródła w `src/config`; relacje sprawdza `npm run content:check`.
 - Nie wdrażamy planowanej podstrony bez sprawdzenia jej roli w [`docs/INFORMATION_ARCHITECTURE.md`](docs/INFORMATION_ARCHITECTURE.md) i intencji w [`docs/SEO_CONTENT_MAP.md`](docs/SEO_CONTENT_MAP.md).
 - Nowe podstrony korzystają ze wspólnego layoutu, tokenów i komponentów, ale otrzymują własne semantyczne sekcje i metadata.
+- `PageShell` tworzy główny landmark i globalne CTA; header oraz footer należą wyłącznie do root layoutu.
+- Każda pozycja menu i stopki musi prowadzić do wdrożonej trasy oraz przejść rozszerzony `content:check`.
 - Komponenty mają jedną odpowiedzialność, jawne typy i dostępne zachowanie klawiaturowe.
 - Stylowanie opiera się na tokenach CSS i Tailwind CSS; nie wprowadzamy lokalnych, przypadkowych wartości imitujących osobny design system.
 - Każdą zmianę UI sprawdzamy na `/design-system` i przez `npm run design:check`.

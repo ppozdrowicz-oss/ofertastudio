@@ -6,11 +6,24 @@ const sourceRoot = join(projectRoot, "src");
 const componentsRoot = join(sourceRoot, "components");
 const globalsPath = join(sourceRoot, "styles", "globals.css");
 const errors: string[] = [];
-const approvedClientModules = new Set<string>();
+const approvedClientModules = new Set<string>([
+  "src/components/navigation/main-navigation.tsx",
+]);
 
 const expectedComponentFiles = [
+  "layout/brand-mark.tsx",
   "layout/container.tsx",
+  "layout/global-cta.tsx",
+  "layout/page-header.tsx",
+  "layout/page-shell.tsx",
   "layout/section.tsx",
+  "layout/site-footer.tsx",
+  "layout/site-header.tsx",
+  "layout/skip-link.tsx",
+  "navigation/desktop-navigation.tsx",
+  "navigation/main-navigation.tsx",
+  "navigation/mega-menu.tsx",
+  "navigation/mobile-navigation.tsx",
   "shared/cta-panel.tsx",
   "shared/feature-list.tsx",
   "shared/process-step.tsx",
@@ -218,6 +231,7 @@ function contrastRatio(first: string, second: string): number {
 }
 
 const sourceFiles = collectSourceFiles(sourceRoot);
+const detectedClientModules: string[] = [];
 
 for (const expectedFile of expectedComponentFiles) {
   const filePath = join(componentsRoot, expectedFile);
@@ -244,6 +258,7 @@ for (const file of sourceFiles) {
   );
 
   if (source.trimStart().startsWith('"use client"')) {
+    detectedClientModules.push(relativePath);
     check(
       approvedClientModules.has(relativePath),
       `${relativePath}: Client Component wymaga jawnego dopisania do zatwierdzonej listy.`,
@@ -281,6 +296,56 @@ for (const file of sourceFiles) {
   }
 }
 
+check(
+  detectedClientModules.length === approvedClientModules.size,
+  `Liczba Client Components (${detectedClientModules.length}) nie odpowiada zatwierdzonej liście (${approvedClientModules.size}).`,
+);
+
+const rootLayoutSource = readFileSync(
+  join(sourceRoot, "app", "layout.tsx"),
+  "utf8",
+);
+const pageShellSource = readFileSync(
+  join(componentsRoot, "layout", "page-shell.tsx"),
+  "utf8",
+);
+const desktopNavigationSource = readFileSync(
+  join(componentsRoot, "navigation", "desktop-navigation.tsx"),
+  "utf8",
+);
+const mobileNavigationSource = readFileSync(
+  join(componentsRoot, "navigation", "mobile-navigation.tsx"),
+  "utf8",
+);
+
+check(
+  !rootLayoutSource.trimStart().startsWith('"use client"') &&
+    rootLayoutSource.includes("<SkipLink />") &&
+    rootLayoutSource.includes("<SiteHeader />") &&
+    rootLayoutSource.includes("<SiteFooter />"),
+  "Root layout nie zachowuje serwerowej, kompletnej ramy witryny.",
+);
+check(
+  pageShellSource.includes('id="main-content"') &&
+    pageShellSource.includes("<GlobalCta"),
+  "PageShell nie zapewnia targetu skip linku lub reużywalnego globalnego CTA.",
+);
+check(
+  desktopNavigationSource.includes('event.key !== "Escape"') &&
+    desktopNavigationSource.includes("aria-controls") &&
+    desktopNavigationSource.includes("aria-expanded") &&
+    desktopNavigationSource.includes("hidden xl:block"),
+  "Nawigacja desktopowa nie ma pełnego kontraktu klawiatury, ARIA lub breakpointu.",
+);
+check(
+  mobileNavigationSource.includes("<dialog") &&
+    mobileNavigationSource.includes("onCancel") &&
+    mobileNavigationSource.includes("min-h-12") &&
+    mobileNavigationSource.includes("min-h-11") &&
+    mobileNavigationSource.includes("xl:hidden"),
+  "Nawigacja mobilna nie ma modalnego dialogu, Escape, targetów dotykowych lub właściwego breakpointu.",
+);
+
 const importCycles = findImportCycles(buildImportGraph(sourceFiles));
 for (const cycle of importCycles) {
   errors.push(
@@ -300,6 +365,22 @@ check(
 check(
   /--container-gutter:\s*clamp\(1rem,\s*4vw,\s*2\.5rem\)/.test(globalsSource),
   "Gutter kontenera nie ma zatwierdzonego zakresu responsywnego.",
+);
+check(
+  /--header-height-mobile:\s*4\.25rem/.test(globalsSource) &&
+    /--header-height-desktop:\s*4\.75rem/.test(globalsSource),
+  "Wysokości globalnego nagłówka nie są zdefiniowane semantycznie.",
+);
+check(
+  /--layer-header:\s*30/.test(globalsSource) &&
+    /--layer-dropdown:\s*40/.test(globalsSource) &&
+    /--layer-skip-link:\s*90/.test(globalsSource),
+  "Kontrolowana skala warstw globalnego layoutu jest niekompletna.",
+);
+check(
+  /scroll-padding-top:\s*calc\(/.test(globalsSource) &&
+    /scroll-margin-top:\s*calc\(/.test(globalsSource),
+  "Sticky header nie ma kompletnej obsługi anchorów.",
 );
 const contrastPairs = [
   ["--foreground", "--background", 4.5, "tekst / tło"],

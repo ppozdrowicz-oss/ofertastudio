@@ -3,6 +3,9 @@ import "@/styles/globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
+import { SiteFooter } from "@/components/layout/site-footer";
+import { SiteHeader } from "@/components/layout/site-header";
+import { SkipLink } from "@/components/layout/skip-link";
 import { siteConfig } from "@/config/site";
 
 const inter = Inter({
@@ -53,8 +56,11 @@ type RootLayoutProps = Readonly<{
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html className={inter.variable} lang={siteConfig.language}>
-      <body className="min-h-dvh bg-background font-sans text-foreground antialiased">
+      <body className="flex min-h-dvh flex-col bg-background font-sans text-foreground antialiased">
+        <SkipLink />
+        <SiteHeader />
         {children}
+        <SiteFooter />
       </body>
     </html>
   );

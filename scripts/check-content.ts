@@ -15,6 +15,11 @@ import { processSteps } from "../src/content/process.ts";
 import { projects } from "../src/content/projects.ts";
 import { serviceGroups } from "../src/content/service-groups.ts";
 import { services } from "../src/content/services.ts";
+import { isPathActive } from "../src/lib/navigation-state.ts";
+import {
+  getBreadcrumbItems,
+  renderedSiteHrefs,
+} from "../src/lib/route-registry.ts";
 import type { SitePath } from "../src/types/content.ts";
 import type { NavigationItem } from "../src/types/navigation.ts";
 
@@ -64,38 +69,82 @@ function isCleanStaticPath(href: SitePath): boolean {
 function validateNavigationTree(
   label: string,
   items: readonly NavigationItem[],
-  knownHrefs: ReadonlySet<string>,
+  renderableHrefs: ReadonlySet<string>,
 ): void {
-  const collectedIds: string[] = [];
-
-  function visit(item: NavigationItem): void {
-    collectedIds.push(item.id);
-    check(
-      knownHrefs.has(stripUrlDetails(item.href)),
-      `${label}: element „${item.label}” prowadzi do nieznanego adresu ${item.href}.`,
+  function visitList(
+    sectionLabel: string,
+    sectionItems: readonly NavigationItem[],
+  ): void {
+    checkUnique(
+      `${sectionLabel} — identyfikatory`,
+      sectionItems.map((item) => item.id),
+    );
+    checkUnique(
+      `${sectionLabel} — adresy`,
+      sectionItems.map((item) => item.href),
     );
 
-    if (item.kind === "menu") {
+    for (const item of sectionItems) {
       check(
-        Boolean(item.children?.length),
-        `${label}: menu „${item.label}” nie ma elementów podrzędnych.`,
+        item.href.trim().length > 0 && !item.href.includes("#"),
+        `${sectionLabel}: element „${item.label}” ma pusty adres albo niedozwolony hash.`,
       );
-    }
+      check(
+        renderableHrefs.has(stripUrlDetails(item.href)),
+        `${sectionLabel}: element „${item.label}” prowadzi do niewdrożonego adresu ${item.href}.`,
+      );
 
-    for (const child of item.children ?? []) {
-      visit(child);
+      if (item.kind === "menu") {
+        check(
+          item.children.length > 0,
+          `${sectionLabel}: menu „${item.label}” nie ma elementów podrzędnych.`,
+        );
+        visitList(`${sectionLabel} / ${item.label}`, item.children);
+
+        if (item.presentation === "mega") {
+          check(
+            Boolean(item.groups?.length),
+            `${sectionLabel}: megamenu „${item.label}” nie ma logicznych grup.`,
+          );
+        }
+
+        if (item.groups) {
+          checkUnique(
+            `${sectionLabel} / ${item.label} — grupy`,
+            item.groups.map((group) => group.id),
+          );
+          const childIds = new Set(item.children.map((child) => child.id));
+          const groupedItemIds = item.groups.flatMap((group) => group.itemIds);
+
+          checkUnique(
+            `${sectionLabel} / ${item.label} — przypisanie do grup`,
+            groupedItemIds,
+          );
+
+          for (const groupedItemId of groupedItemIds) {
+            check(
+              childIds.has(groupedItemId),
+              `${sectionLabel}: grupa menu „${item.label}” wskazuje nieznaną pozycję ${groupedItemId}.`,
+            );
+          }
+
+          for (const child of item.children) {
+            check(
+              groupedItemIds.includes(child.id),
+              `${sectionLabel}: pozycja ${child.id} nie jest przypisana do grupy megamenu.`,
+            );
+          }
+        }
+      }
     }
   }
 
-  for (const item of items) {
-    visit(item);
-  }
-
-  checkUnique(`${label} — identyfikatory`, collectedIds);
+  visitList(label, items);
 }
 
 const staticRouteHrefs = Object.values(routes);
 const knownHrefs = new Set<string>(staticRouteHrefs);
+const renderableHrefs = new Set<string>(renderedSiteHrefs);
 const pageIds = new Set(plannedPages.map((page) => page.id));
 const pageHrefs = new Set(plannedPages.map((page) => page.href));
 const ctaIds = new Set(ctas.map((cta) => cta.id));
@@ -139,12 +188,33 @@ checkUnique(
   "Identyfikatory CTA",
   ctas.map((cta) => cta.id),
 );
+checkUnique("Wdrożone adresy", renderedSiteHrefs);
+checkUnique(
+  "Grupy stopki",
+  navigationConfig.footer.map((group) => group.id),
+);
+check(
+  isPathActive(routes.shoperStores, routes.stores),
+  "Podstrona Shopera nie aktywuje nadrzędnego filaru sklepów.",
+);
+check(
+  isPathActive(routes.landingPages, routes.websites),
+  "Landing page nie aktywuje nadrzędnego filaru stron.",
+);
+check(
+  !isPathActive(routes.websites, routes.stores),
+  "Aktywny stan filaru obejmuje niepowiązaną trasę.",
+);
 
 for (const href of staticRouteHrefs) {
   check(isCleanStaticPath(href), `Trasa ma niepoprawny format: ${href}.`);
   check(
     pageHrefs.has(href),
     `Trasa ${href} nie występuje w rejestrze planowanych stron.`,
+  );
+  check(
+    renderableHrefs.has(href),
+    `Trasa ${href} nie ma wdrożonego widoku ani renderera technicznego.`,
   );
 }
 
@@ -190,12 +260,44 @@ for (const page of plannedPages) {
       `Strona ${page.id} używa nieznanego CTA.`,
     );
   }
+
+  try {
+    const breadcrumbs = getBreadcrumbItems(page.href);
+
+    if (page.href === routes.home) {
+      check(
+        breadcrumbs.length === 0,
+        "Strona główna nie powinna posiadać breadcrumbs.",
+      );
+    } else {
+      const currentBreadcrumb = breadcrumbs.at(-1);
+      check(
+        currentBreadcrumb?.label === page.name && !currentBreadcrumb.href,
+        `Breadcrumbs strony ${page.id} nie kończą się centralną etykietą bieżącej strony.`,
+      );
+
+      for (const breadcrumb of breadcrumbs.slice(0, -1)) {
+        check(
+          Boolean(breadcrumb.href && renderableHrefs.has(breadcrumb.href)),
+          `Breadcrumbs strony ${page.id} zawierają niewdrożony adres.`,
+        );
+      }
+    }
+  } catch (error) {
+    errors.push(
+      `Breadcrumbs strony ${page.id}: ${error instanceof Error ? error.message : "nieznany błąd"}`,
+    );
+  }
 }
 
 for (const cta of ctas) {
   check(
-    knownHrefs.has(stripUrlDetails(cta.href)),
-    `CTA ${cta.id} prowadzi do nieznanego adresu ${cta.href}.`,
+    renderableHrefs.has(stripUrlDetails(cta.href)),
+    `CTA ${cta.id} prowadzi do niewdrożonego adresu ${cta.href}.`,
+  );
+  check(
+    cta.href.trim().length > 0 && !cta.href.includes("#"),
+    `CTA ${cta.id} ma pusty lub niedozwolony adres.`,
   );
 }
 
@@ -271,19 +373,23 @@ check(
 validateNavigationTree(
   "Nawigacja desktopowa",
   navigationConfig.header,
-  knownHrefs,
+  renderableHrefs,
 );
 validateNavigationTree(
   "Nawigacja mobilna",
   navigationConfig.mobile,
-  knownHrefs,
+  renderableHrefs,
+);
+check(
+  navigationConfig.mobile === navigationConfig.header,
+  "Nawigacja desktopowa i mobilna nie korzystają z tego samego źródła danych.",
 );
 
 for (const footerGroup of navigationConfig.footer) {
   validateNavigationTree(
     `Stopka: ${footerGroup.label}`,
     footerGroup.items,
-    knownHrefs,
+    renderableHrefs,
   );
 }
 
@@ -455,6 +561,15 @@ check(
   "Adres kontaktu jest niespójny.",
 );
 check(contactConfig.briefHref === routes.brief, "Adres briefu jest niespójny.");
+
+for (const [network, href] of Object.entries(contactConfig.socialProfiles)) {
+  if (href) {
+    check(
+      /^https:\/\//.test(href),
+      `Profil ${network} nie używa bezpiecznego adresu HTTPS.`,
+    );
+  }
+}
 
 if (contactConfig.status === "requires-confirmation") {
   check(

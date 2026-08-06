@@ -6,7 +6,7 @@ Mapa przypisuje każdemu planowanemu adresowi dominującą intencję, rolę i re
 
 Przyjęte zasady są zgodne z kierunkiem oficjalnych materiałów Google: adresy mają być opisowe i logiczne, treść tworzona przede wszystkim dla ludzi, tytuły stron unikalne, a linki wewnętrzne możliwe do odczytania przez roboty i opisane zrozumiałym tekstem. Źródła: [SEO Starter Guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide), [Creating helpful, reliable, people-first content](https://developers.google.com/search/docs/fundamentals/creating-helpful-content), [Link best practices](https://developers.google.com/search/docs/crawling-indexing/links-crawlable).
 
-Status „planowana” oznacza, że adres i model metadata istnieją w rejestrze, ale podstrona nie została jeszcze wdrożona. „Noindex” jest decyzją modelu treści do technicznego wdrożenia w etapie 12.
+Status „planowana” oznacza, że adres i model metadata istnieją w rejestrze, ale finalna treść podstrony nie została jeszcze wdrożona. Od etapu 4 linkowane adresy mają jawny widok techniczny `noindex, follow`, aby nawigacja nie prowadziła do 404. Docelowe decyzje indeksowania i pełne SEO techniczne pozostają zakresem etapu 12.
 
 ## Strony główne i firmowe
 

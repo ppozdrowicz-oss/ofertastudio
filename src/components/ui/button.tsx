@@ -1,8 +1,8 @@
 import { LoaderCircle } from "lucide-react";
 import Link from "next/link";
 import type {
-  ButtonHTMLAttributes,
   ComponentPropsWithoutRef,
+  ComponentPropsWithRef,
   ReactNode,
 } from "react";
 
@@ -55,7 +55,7 @@ export function buttonStyles({
   );
 }
 
-export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
+export type ButtonProps = ComponentPropsWithRef<"button"> &
   SharedButtonProps & {
     loading?: boolean;
   };

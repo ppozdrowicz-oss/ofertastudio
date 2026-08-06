@@ -47,7 +47,7 @@ Rejestr tras w `src/config/routes.ts` jest źródłem adresów, a `src/content/p
 └── polityka-cookies
 ```
 
-Mapa obejmuje 35 adresów statycznych i jeden wzorzec dynamiczny realizacji. Na etapie 2 działa techniczna strona `/` oraz własna strona 404. Pozostałe adresy są kontraktem dla kolejnych etapów; nie utworzono kilkudziesięciu pustych widoków.
+Mapa obejmuje 35 adresów statycznych i jeden wzorzec dynamiczny realizacji. Od etapu 4 każdy statyczny adres używany w nawigacji ma kontrolowany widok techniczny generowany z rejestru. Widoki pozostają `noindex` i nie udają finalnej treści; kolejne etapy zastępują je dedykowanymi stronami.
 
 ## Hierarchia usług
 
@@ -106,7 +106,8 @@ Główny poziom ma sześć pozycji oraz jedno CTA:
    - Strony firmowe,
    - Landing page,
    - Modernizacja strony,
-   - Opieka nad stroną.
+   - Opieka nad stroną,
+   - Audyt strony.
 2. **Sklepy i Shoper** — megamenu:
    - Sklepy internetowe,
    - Sklepy Shoper,
@@ -114,7 +115,7 @@ Główny poziom ma sześć pozycji oraz jedno CTA:
    - Personalizacja szablonu,
    - Rozwój i UX sklepu,
    - Opieka nad sklepem,
-   - Audyt sklepu.
+   - Audyt sklepu Shoper.
 3. **Allegro** — mniejsze submenu:
    - Allegro i marketplace,
    - Tworzenie ofert Allegro,
@@ -139,16 +140,16 @@ Wybrano CTA rozmowy, ponieważ pasuje do projektu, audytu i stałej współpracy
 - Zachowuje tę samą kolejność i te same etykiety co desktop.
 - Pozycje „Strony”, „Sklepy i Shoper”, „Allegro” i „Oferta” rozwijają listy w akordeonie.
 - Kliknięcie etykiety nadrzędnej musi umożliwiać wejście na stronę filaru; kontrolka rozwijająca powinna być oddzielnie dostępna dla klawiatury i czytnika ekranu.
-- Otwarty może być jeden lub więcej paneli — decyzja wizualna należy do etapu 4, ale stan nie może blokować dostępu do linków.
+- Można otworzyć więcej niż jeden panel; stan żadnego z nich nie blokuje wejścia na stronę nadrzędną.
 - CTA „Porozmawiajmy o projekcie” jest widoczne w stałej części panelu albo bezpośrednio po liście głównej, przed linkami prawnymi.
 - Zamknięcie działa przez przycisk, klawisz `Escape` i powrót fokusu do elementu otwierającego.
 - Kontakt i brief są dostępne również jako linki pomocnicze.
 
 ## Stopka
 
-Stopka porządkuje linki w trzech grupach:
+Stopka zachowuje trzy kategorie pojęciowe, ale dzieli obszerną kategorię usług na cztery czytelne kolumny:
 
-- **Usługi:** wszystkie pięć filarów,
+- **Usługi:** strony; sklepy i Shoper; Allegro i produkt; audyty i rozwój,
 - **Studio:** realizacje, oferta, proces, o nas, kontakt i brief,
 - **Informacje prawne:** polityka prywatności i polityka cookies.
 
@@ -163,7 +164,7 @@ Stopka zapewnia alternatywną drogę do filarów, które nie są samodzielnymi p
 - Realizacja: `Strona główna → Realizacje → Nazwa projektu`.
 - Etykiety są nazwami stron, a nie surowymi fragmentami URL.
 - Ostatni element wskazuje bieżącą stronę i nie musi być linkiem.
-- Dane strukturalne breadcrumbs zostaną wdrożone w etapie 12; widoczna nawigacja powstanie wraz z layoutem i podstronami.
+- Widoczne breadcrumbs są wdrożone w etapie 4 z centralnego rejestru. Ich dane strukturalne zostaną dodane w etapie 12.
 
 ## Zależności i linkowanie wewnętrzne
 

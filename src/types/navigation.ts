@@ -1,18 +1,46 @@
 import type { CtaId, SitePath } from "./core.ts";
 
-export type NavigationItem = {
+export type BreadcrumbItem = {
+  label: string;
+  href?: SitePath;
+};
+
+export type NavigationLinkItem = {
   id: string;
   label: string;
   href: SitePath;
   description?: string;
-  kind: "link" | "menu";
-  children?: readonly NavigationItem[];
+  kind: "link";
 };
+
+export type NavigationMenuGroup = {
+  id: string;
+  label: string;
+  itemIds: readonly string[];
+};
+
+export type NavigationMenuItem = {
+  id: string;
+  label: string;
+  href: SitePath;
+  description: string;
+  kind: "menu";
+  align?: "left" | "right";
+  presentation: "dropdown" | "mega";
+  context?: {
+    label: string;
+    description: string;
+  };
+  groups?: readonly NavigationMenuGroup[];
+  children: readonly NavigationLinkItem[];
+};
+
+export type NavigationItem = NavigationLinkItem | NavigationMenuItem;
 
 export type FooterNavigationGroup = {
   id: string;
   label: string;
-  items: readonly NavigationItem[];
+  items: readonly NavigationLinkItem[];
 };
 
 export type NavigationConfig = {
