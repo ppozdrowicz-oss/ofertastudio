@@ -15,6 +15,7 @@
     "lint": "eslint . --max-warnings 0",
     "typecheck": "tsc --noEmit",
     "content:check": "node scripts/check-content.ts",
+    "design:check": "node scripts/check-design-system.ts",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },

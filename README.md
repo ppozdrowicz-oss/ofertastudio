@@ -2,7 +2,7 @@
 
 Nowa wersja strony usługowej OfertaStudio — butikowego studia sprzedaży internetowej działającego zgodnie z ideą „Od produktu do skutecznej sprzedaży w internecie”. Projekt ma docelowo prezentować ofertę, budować zaufanie i pozyskiwać wartościowe zapytania od firm rozwijających sprzedaż online.
 
-Fundament techniczny oraz etap strategii marki, architektury informacji i modelu treści są ukończone. Minimalna strona startowa potwierdza działanie aplikacji; finalny interfejs rozpocznie się od design systemu w etapie 3 opisanym w [`docs/ROADMAP.md`](docs/ROADMAP.md).
+Fundament techniczny, strategia marki, architektura informacji i produkcyjny design system Flat Modern Premium są ukończone. Minimalna strona startowa pozostaje techniczna, a pełny zestaw tokenów i komponentów prezentuje nieindeksowana trasa `/design-system`. Następny etap obejmuje globalny nagłówek, nawigację i stopkę.
 
 ## Stack
 
@@ -43,6 +43,7 @@ Aplikacja będzie dostępna domyślnie pod adresem `http://localhost:3000`.
 | `npm run lint`          | Sprawdza cały projekt przez ESLint i nie dopuszcza ostrzeżeń. |
 | `npm run typecheck`     | Uruchamia TypeScript bez emitowania plików.                   |
 | `npm run content:check` | Sprawdza integralność tras, treści i relacji domenowych.      |
+| `npm run design:check`  | Sprawdza komponenty, importy, tokeny i kontrast kolorów.      |
 | `npm run format`        | Formatuje obsługiwane pliki przez Prettier.                   |
 | `npm run format:check`  | Sprawdza formatowanie bez zapisywania zmian.                  |
 
@@ -53,6 +54,7 @@ npm run format:check
 npm run lint
 npm run typecheck
 npm run content:check
+npm run design:check
 npm run build
 ```
 
@@ -64,6 +66,7 @@ src/
   components/
     layout/             # prymitywy układu, np. Container i Section
     sections/           # kompozycje sekcji stron
+    shared/             # reużywalne komponenty domenowe
     ui/                 # małe, wielokrotnego użytku elementy interfejsu
   config/               # stabilna konfiguracja aplikacji i marki
   content/              # typowana treść niezależna od JSX
@@ -78,10 +81,11 @@ public/
     placeholders/       # wyłącznie kontrolowane zasoby robocze
 docs/                   # strategia marki, IA, konwersja, SEO i dokumentacja techniczna
 scripts/
-  check-content.ts      # lekka walidacja integralności modelu treści
+  check-content.ts      # walidacja integralności modelu treści
+  check-design-system.ts # walidacja komponentów, importów i kontrastu
 ```
 
-Katalogi `hooks` i `shared` należy dodać dopiero wtedy, gdy pojawi się rzeczywista odpowiedzialność, której nie obsługują istniejące moduły. Nie tworzymy pustych warstw ani barrel exports na zapas.
+Katalog `hooks` należy dodać dopiero wtedy, gdy pojawi się rzeczywista współdzielona logika kliencka. W `shared` umieszczamy wyłącznie wzorce domenowe z realnymi konsumentami. Nie tworzymy pustych warstw ani barrel exports na zapas.
 
 ## Zasady dalszego rozwoju
 
@@ -92,6 +96,7 @@ Katalogi `hooks` i `shared` należy dodać dopiero wtedy, gdy pojawi się rzeczy
 - Nowe podstrony korzystają ze wspólnego layoutu, tokenów i komponentów, ale otrzymują własne semantyczne sekcje i metadata.
 - Komponenty mają jedną odpowiedzialność, jawne typy i dostępne zachowanie klawiaturowe.
 - Stylowanie opiera się na tokenach CSS i Tailwind CSS; nie wprowadzamy lokalnych, przypadkowych wartości imitujących osobny design system.
+- Każdą zmianę UI sprawdzamy na `/design-system` i przez `npm run design:check`.
 - Nie dodajemy zależności, klientowego JavaScriptu, abstrakcji ani eksportów zbiorczych bez konkretnej potrzeby.
 - Finalne widoki nie mogą zawierać lorem ipsum, generycznych placeholderów ani niezweryfikowanych obietnic marketingowych.
-- Szczegółowe wytyczne dla kolejnych sesji znajdują się w [`AGENTS.md`](AGENTS.md), decyzje techniczne w [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md), a reguły języka w [`docs/CONTENT_GUIDELINES.md`](docs/CONTENT_GUIDELINES.md).
+- Szczegółowe wytyczne dla kolejnych sesji znajdują się w [`AGENTS.md`](AGENTS.md), decyzje techniczne w [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md), zasady wizualne w [`docs/DESIGN_SYSTEM.md`](docs/DESIGN_SYSTEM.md), a reguły języka w [`docs/CONTENT_GUIDELINES.md`](docs/CONTENT_GUIDELINES.md).

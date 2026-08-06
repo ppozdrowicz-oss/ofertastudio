@@ -1,22 +1,42 @@
-import type { ComponentPropsWithoutRef } from "react";
+import type { HTMLAttributes } from "react";
 
 import { cn } from "@/lib/cn";
 
 const spacingClassNames = {
-  compact: "py-12 sm:py-16",
-  default: "py-16 sm:py-20 lg:py-24",
+  compact: "py-[var(--space-section-sm)]",
+  default: "py-[var(--space-section-md)]",
+  spacious: "py-[var(--space-section-lg)]",
 } as const;
 
-type SectionProps = ComponentPropsWithoutRef<"section"> & {
+const variantClassNames = {
+  default: "bg-background text-foreground",
+  muted: "bg-surface-muted text-foreground",
+  strong: "bg-surface-inverse text-surface-inverse-foreground",
+} as const;
+
+type SectionElement = "aside" | "div" | "section";
+
+export type SectionProps = HTMLAttributes<HTMLElement> & {
+  as?: SectionElement;
   spacing?: keyof typeof spacingClassNames;
+  variant?: keyof typeof variantClassNames;
 };
 
 export function Section({
+  as: Component = "section",
   className,
   spacing = "default",
+  variant = "default",
   ...props
 }: SectionProps) {
   return (
-    <section className={cn(spacingClassNames[spacing], className)} {...props} />
+    <Component
+      className={cn(
+        variantClassNames[variant],
+        spacingClassNames[spacing],
+        className,
+      )}
+      {...props}
+    />
   );
 }

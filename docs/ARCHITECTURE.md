@@ -17,7 +17,7 @@ src/
     layout/             # Container, Section i przyszłe elementy ramy strony
     sections/           # kompozycje sekcji o znaczeniu dla widoku
     ui/                 # małe prymitywy interfejsu
-    shared/             # przyszłe komponenty domenowe używane w wielu miejscach
+    shared/             # współdzielone komponenty domenowe i kompozycyjne
   config/               # konfiguracja serwisu niezależna od konkretnej strony
   content/              # typowane modele i treści widoków
   hooks/                # wyłącznie współdzielone hooki z realnymi konsumentami
@@ -34,11 +34,11 @@ docs/
 scripts/                # lokalne kontrole integralności treści
 ```
 
-Katalog `types` zawiera współdzielone kontrakty domenowe treści, usług, nawigacji i realizacji. Katalogi `shared` i `hooks` nie istnieją, ponieważ nie mają jeszcze realnej odpowiedzialności. Powstaną dopiero wraz z pierwszym potrzebnym modułem. To samo dotyczy plików `index.ts`: tworzymy je tylko wtedy, gdy stabilizują publiczny interfejs niewielkiego modułu, a nie jako domyślną warstwę każdego katalogu.
+Katalog `types` zawiera współdzielone kontrakty domenowe treści, usług, nawigacji i realizacji. Prymitywy współdzielone przez kilka domen znajdują się w `types/core.ts`, co zapobiega cyklicznym zależnościom typów. Katalog `shared` ma realnych konsumentów: zawiera komponenty domenowe i kompozycyjne zbudowane na prymitywach UI. Katalog `hooks` nie istnieje, ponieważ obecny system nie wymaga komponentów klienckich. Pliki `index.ts` tworzymy tylko wtedy, gdy stabilizują publiczny interfejs niewielkiego modułu, a nie jako domyślną warstwę każdego katalogu.
 
 ## Podział komponentów
 
-- **UI** — małe, dostępne elementy z ograniczonym zestawem wariantów, bez wiedzy o konkretnej stronie. Przykład: `LinkButton`.
+- **UI** — małe, dostępne elementy z ograniczonym zestawem wariantów, bez wiedzy o konkretnej stronie. Przykład: `Button` i `ButtonLink` ze wspólnym systemem wariantów.
 - **Layout** — prymitywy kontrolujące szerokość i rytm kompozycji. Przykłady: `Container`, `Section`.
 - **Sections** — semantyczne fragmenty widoku składające UI, layout i treść; mogą znać model konkretnej sekcji.
 - **Shared** — większe elementy domenowe używane na wielu stronach, np. karta realizacji, jeśli pojawi się co najmniej dwóch realnych konsumentów.
@@ -104,9 +104,11 @@ Route groups można wprowadzić dopiero, gdy kilka route'ów rzeczywiście wspó
 
 ## Style i tokeny
 
-`src/styles/globals.css` zawiera neutralne tokeny techniczne: kolory semantyczne, promienie, cień i szerokości kontenerów. `@theme inline` udostępnia je jako narzędzia Tailwind CSS. Finalne wartości zostaną opracowane w etapie 3; komponenty nie powinny zakładać obecnej palety jako identyfikacji marki.
+`src/styles/globals.css` zawiera finalne tokeny Flat Modern Premium: surową paletę, kolory semantyczne, pełną typografię, odstępy, kontenery, promienie, cienie i ruch. `@theme inline` udostępnia je jako narzędzia Tailwind CSS. Komponenty korzystają z tokenów semantycznych i nie zawierają lokalnych kolorów hex.
 
 Preferowana kolejność decyzji stylów to: istniejący komponent → istniejący token → uzasadnione rozszerzenie design systemu → dopiero lokalna wartość wyjątkowa. Nie stosujemy przypadkowych gradientów ani niepowiązanych efektów.
+
+Techniczna trasa `/design-system` prezentuje publiczne warianty komponentów. Ma metadata `noindex, nofollow`, nie znajduje się w nawigacji ani produkcyjnym rejestrze stron. `npm run design:check` sprawdza obecność modułów, brak cykli importów, brak nieuzasadnionych Client Components, typów `any`, stylów inline i kolorów hex w komponentach oraz kontrast zdefiniowanych par.
 
 ## Zależności
 

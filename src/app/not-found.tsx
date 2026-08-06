@@ -3,7 +3,8 @@ import type { Metadata } from "next";
 
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
-import { LinkButton } from "@/components/ui/link-button";
+import { SectionHeading } from "@/components/shared/section-heading";
+import { ButtonLink } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   robots: {
@@ -20,23 +21,22 @@ export default function NotFound() {
         aria-labelledby="not-found-title"
         className="flex min-h-dvh items-center"
       >
-        <Container size="content">
-          <p className="text-sm font-semibold text-muted-foreground">
-            Błąd 404
-          </p>
-          <h1
-            id="not-found-title"
-            className="mt-3 text-3xl font-semibold tracking-[-0.035em] text-balance sm:text-5xl"
+        <Container size="text">
+          <SectionHeading
+            description="Adres może być nieprawidłowy albo strona została przeniesiona."
+            eyebrow="Błąd 404"
+            level={1}
+            size="h1"
+            title="Nie znaleziono tej strony."
+            titleId="not-found-title"
+          />
+          <ButtonLink
+            className="mt-8"
+            href="/"
+            leadingIcon={<ArrowLeft aria-hidden="true" />}
           >
-            Nie znaleziono tej strony.
-          </h1>
-          <p className="mt-5 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg">
-            Adres może być nieprawidłowy albo strona została przeniesiona.
-          </p>
-          <LinkButton className="mt-8" href="/">
-            <ArrowLeft aria-hidden="true" className="size-4" />
             Wróć na stronę główną
-          </LinkButton>
+          </ButtonLink>
         </Container>
       </Section>
     </main>

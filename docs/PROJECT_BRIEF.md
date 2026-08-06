@@ -62,7 +62,7 @@ Problemy, bariery, rezultaty i CTA segmentów są zdefiniowane w [`BRAND_STRATEG
 
 Serwis ma być nowoczesny, minimalistyczny, flat modern i premium, ale nie chłodny ani korporacyjny. Powinien przypominać realizację doświadczonego butikowego studia: precyzyjna typografia, świadoma kompozycja, dużo oddechu, rzeczowe treści i dopracowane detale.
 
-Należy unikać estetyki generycznego SaaS, gotowych sekcji landing page, przypadkowych gradientów, nadmiaru kart, sztucznego 3D oraz dekoracji bez związku z ofertą. Obecne neutralne tokeny są techniczne i nie stanowią finalnej palety marki.
+Należy unikać estetyki generycznego SaaS, gotowych sekcji landing page, przypadkowych gradientów, nadmiaru kart, sztucznego 3D oraz dekoracji bez związku z ofertą. Finalny kierunek Editorial Commerce Precision, paleta i zasady komponentów są opisane w [`DESIGN_SYSTEM.md`](./DESIGN_SYSTEM.md) i [`VISUAL_DIRECTION.md`](./VISUAL_DIRECTION.md).
 
 ## Wstępne założenia konwersji
 

@@ -6,9 +6,9 @@ Roadmapa porządkuje budowę serwisu w 14 kontrolowanych etapach. Zakres następ
 
 2. **Strategia marki i architektura informacji — zakończony** — pozycjonowanie, segmenty, hierarchia usług, mapa serwisu, konwersja, intencje podstron, wytyczne treści i walidowany model danych.
 
-3. **Design system — następny etap** — finalne fundamenty wizualne Flat Modern Premium: typografia, paleta, skala odstępów, siatka, promienie, cienie, stany i kluczowe komponenty.
+3. **Design system — zakończony** — finalne fundamenty Flat Modern Premium: paleta, typografia, spacing, layout, stany, dostępne komponenty, dokumentacja i techniczna strona `/design-system`.
 
-4. **Globalny layout, nawigacja i stopka** — dostępna, responsywna rama całego serwisu, system nawigacji i wspólne punkty kontaktu.
+4. **Globalny layout, nawigacja i stopka — następny etap** — dostępna, responsywna rama serwisu, nagłówek, megamenu, menu mobilne, stopka i wspólne punkty kontaktu.
 
 5. **Strona główna** — pełna narracja wartości, priorytetowe usługi, dowody, proces i ścieżki konwersji.
 

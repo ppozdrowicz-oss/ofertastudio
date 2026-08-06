@@ -40,6 +40,8 @@ Używaj npm i zachowuj `package-lock.json`. Nie wprowadzaj Pages Routera, cięż
 
 Nie twórz pustych katalogów, abstrakcji na zapas ani rozbudowanej sieci `index.ts`. Importuj moduły przez alias `@/*` tam, gdzie poprawia to czytelność.
 
+Komponenty `shared` istnieją wyłącznie dla realnych wzorców domenowych, takich jak `SectionHeading`, `ServiceCard`, `ProcessStep` i `CtaPanel`. Nie przenoś tam elementu używanego tylko przez jeden route.
+
 ## TypeScript
 
 - Zachowuj `strict`, `noUncheckedIndexedAccess`, kontrolę nieużywanych symboli i spójność wielkości nazw plików.
@@ -64,6 +66,19 @@ Nie twórz pustych katalogów, abstrakcji na zapas ani rozbudowanej sieci `index
 - Używaj wspólnych tokenów kontenera, odstępów, promieni, kolorów i cieni.
 - Zachowuj spójność z zatwierdzonym design systemem; nie wprowadzaj lokalnych „mini-palety”, przypadkowych gradientów ani efektów bez uzasadnienia.
 - OfertaStudio ma wyglądać jak butikowe studio cyfrowe, nie jak generyczny SaaS, gotowy motyw lub automatycznie wygenerowany landing page.
+
+## Design system
+
+- `src/styles/globals.css` jest źródłem surowych i semantycznych tokenów koloru, typografii, odstępów, promieni, cieni i ruchu.
+- Wszystkie nowe komponenty muszą korzystać z tokenów oraz istniejącej skali. Nie wpisuj lokalnych kolorów hex ani przypadkowych wartości odstępów w TSX.
+- Nie twórz kopii przycisku, linku, karty, pola formularza, badge’a, Notice ani nagłówka sekcji. Rozszerz istniejący komponent tylko wtedy, gdy wariant opisuje powtarzalną odpowiedzialność.
+- CTA korzystają z `Button`, `ButtonLink` i centralnego modelu w `src/config/ctas.ts`.
+- Każda interakcja otrzymuje widoczny `focus-visible`; nie ukrywaj globalnego focus ringa i nie dopuszczaj do jego obcięcia.
+- Projektuj oraz sprawdzaj od 320 px. Standardowy główny target dotykowy ma minimum około 44 × 44 px.
+- Nie stosuj rozbudowanych gradientów, glassmorphismu, glow, blobów, kul 3D, animowanych siatek ani generycznych efektów kojarzonych z automatycznie generowanym UI.
+- Limonkowy `accent` jest wsparciem, nie kolorem dużego głównego CTA. Powierzchnia `strong` jest kontrolowaną zmianą rytmu, a nie dark mode.
+- Po każdej zmianie UI sprawdź `/design-system` oraz zgodność z `docs/DESIGN_SYSTEM.md`, `docs/COMPONENT_INVENTORY.md` i `docs/VISUAL_DIRECTION.md`.
+- Zmiana publicznego API komponentu wymaga aktualizacji inwentarza. Nowy wariant musi mieć realnego konsumenta i prezentację na `/design-system`.
 
 ## Dostępność
 
@@ -96,7 +111,18 @@ npm run format:check
 npm run lint
 npm run typecheck
 npm run content:check
+npm run design:check
 npm run build
 ```
 
 Napraw wszystkie błędy i ostrzeżenia pochodzące z projektu. Przed zakończeniem sprawdź diff oraz `git status`. Raport końcowy powinien jasno opisać zakres, pliki, decyzje, wyniki kontroli, stan Git i rzeczywiste ryzyka. Nie deklaruj wykonania kontroli, której faktycznie nie uruchomiono.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

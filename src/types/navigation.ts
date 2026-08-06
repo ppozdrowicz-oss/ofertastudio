@@ -1,4 +1,4 @@
-import type { CtaId, SitePath } from "./content.ts";
+import type { CtaId, SitePath } from "./core.ts";
 
 export type NavigationItem = {
   id: string;

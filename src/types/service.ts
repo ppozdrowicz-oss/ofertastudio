@@ -1,4 +1,4 @@
-import type { CtaId, IconName, PageSeo, SitePath } from "./content.ts";
+import type { CtaId, IconName, PageSeo, SitePath } from "./core.ts";
 
 export type ServiceGroupId =
   | "audits-development"
