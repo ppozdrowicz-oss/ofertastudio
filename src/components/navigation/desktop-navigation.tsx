@@ -1,6 +1,6 @@
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
-import { type KeyboardEvent, useRef } from "react";
+import { type FocusEvent, type KeyboardEvent, useRef } from "react";
 
 import { MegaMenu } from "@/components/navigation/mega-menu";
 import { cn } from "@/lib/cn";
@@ -38,16 +38,26 @@ export function DesktopNavigation({
     triggerRefs.current.get(itemId)?.focus();
   }
 
+  function handleDisclosureBlur(
+    event: FocusEvent<HTMLLIElement>,
+    itemId: string,
+  ): void {
+    if (openMenuId !== itemId) {
+      return;
+    }
+
+    const nextTarget = event.relatedTarget;
+
+    if (
+      !(nextTarget instanceof Node) ||
+      !event.currentTarget.contains(nextTarget)
+    ) {
+      onClose();
+    }
+  }
+
   return (
-    <nav
-      aria-label="Główna nawigacja"
-      className="hidden xl:block"
-      onBlur={(event) => {
-        if (!event.currentTarget.contains(event.relatedTarget)) {
-          onClose();
-        }
-      }}
-    >
+    <nav aria-label="Główna nawigacja" className="hidden xl:block">
       <ul className="flex items-center gap-0.5">
         {items.map((item) => {
           const isActive = isPathActive(pathname, item.href);
@@ -80,6 +90,7 @@ export function DesktopNavigation({
             <li
               className="relative"
               key={item.id}
+              onBlur={(event) => handleDisclosureBlur(event, item.id)}
               onKeyDown={(event) => handleEscape(event, item.id)}
             >
               <button

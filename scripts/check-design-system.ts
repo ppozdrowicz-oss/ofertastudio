@@ -309,6 +309,10 @@ const pageShellSource = readFileSync(
   join(componentsRoot, "layout", "page-shell.tsx"),
   "utf8",
 );
+const mainNavigationSource = readFileSync(
+  join(componentsRoot, "navigation", "main-navigation.tsx"),
+  "utf8",
+);
 const desktopNavigationSource = readFileSync(
   join(componentsRoot, "navigation", "desktop-navigation.tsx"),
   "utf8",
@@ -332,10 +336,17 @@ check(
 );
 check(
   desktopNavigationSource.includes('event.key !== "Escape"') &&
+    desktopNavigationSource.includes("onBlur") &&
+    desktopNavigationSource.includes("relatedTarget") &&
     desktopNavigationSource.includes("aria-controls") &&
     desktopNavigationSource.includes("aria-expanded") &&
     desktopNavigationSource.includes("hidden xl:block"),
   "Nawigacja desktopowa nie ma pełnego kontraktu klawiatury, ARIA lub breakpointu.",
+);
+check(
+  mainNavigationSource.includes("key={pathname}") &&
+    mainNavigationSource.includes('document.body.style.overflow = "hidden"'),
+  "Kontroler nawigacji nie resetuje stanu po zmianie trasy lub nie blokuje scrolla otwartego panelu.",
 );
 check(
   mobileNavigationSource.includes("<dialog") &&

@@ -95,9 +95,11 @@ Dropdown udostępnia filary, które nie mieszczą się w głównym poziomie, bez
 - Toggle jest natywnym `button` z `aria-expanded` i `aria-controls`.
 - `Enter` i `Space` korzystają z natywnej aktywacji przycisku.
 - `Tab` i `Shift + Tab` przechodzą przez rzeczywiste linki w kolejności DOM.
+- Przejście fokusu poza aktualny trigger i jego panel zamyka disclosure bez przestawiania fokusu.
 - `Escape` zamyka panel i przywraca fokus na trigger.
 - Kliknięcie poza nawigacją zamyka panel.
 - Kliknięcie linku i zmiana trasy zamykają panel.
+- Kontroler interakcji jest kluczowany bieżącym pathname, więc także nawigacja historią resetuje dropdown, dialog i akordeony zamiast przywracać dawny stan po powrocie do URL.
 - Ukryte menu nie pozostaje w kolejności fokusu, ponieważ jest usuwane z drzewa renderowania.
 - Nie zastosowano ról `menu` i `menuitem`; jest to nawigacja witryny z listami linków, a nie menu aplikacyjne.
 

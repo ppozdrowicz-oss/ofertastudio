@@ -41,6 +41,8 @@ Font, metadata globalne i język pozostają własnością root layoutu. Nie doda
 
 Jedynym plikiem z dyrektywą `"use client"` jest `MainNavigation`. `SiteHeader` izoluje go dodatkowo przez `Suspense`, zgodnie z zachowaniem `usePathname` opisanym w dokumentacji użytej wersji Next.js.
 
+Wewnętrzny kontroler stanu `MainNavigation` jest kluczowany przez aktualny pathname. Zmiana trasy — również przez historię przeglądarki — odmontowuje poprzedni stan dropdownów, dialogu i akordeonów oraz uruchamia cleanup blokady scrolla.
+
 ## Skip link i główna treść
 
 `SkipLink` jest pierwszym interaktywnym elementem `body`. Po focusie pojawia się nad interfejsem i prowadzi do `#main-content`. Każdy route używa `PageShell`, który tworzy dokładnie jeden landmark `main` z tym identyfikatorem oraz `tabIndex={-1}`.

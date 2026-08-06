@@ -16,15 +16,15 @@ import { Button, ButtonLink } from "@/components/ui/button";
 import { getCta } from "@/config/ctas";
 import { navigationConfig } from "@/config/navigation";
 
-export function MainNavigation() {
-  const pathname = usePathname();
-  const [desktopMenuState, setDesktopMenuState] = useState<{
-    itemId: string;
-    pathname: string;
-  } | null>(null);
-  const [mobileOpenPathname, setMobileOpenPathname] = useState<string | null>(
+type NavigationControllerProps = {
+  pathname: string;
+};
+
+function NavigationController({ pathname }: NavigationControllerProps) {
+  const [openDesktopMenuId, setOpenDesktopMenuId] = useState<string | null>(
     null,
   );
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [openMobileSectionIds, setOpenMobileSectionIds] = useState<
     ReadonlySet<string>
   >(new Set());
@@ -34,12 +34,9 @@ export function MainNavigation() {
   const mobileCloseRef = useRef<HTMLButtonElement>(null);
   const headerCta = getCta(navigationConfig.headerCtaId);
   const mobileCta = getCta(navigationConfig.mobileCtaId);
-  const openDesktopMenuId =
-    desktopMenuState?.pathname === pathname ? desktopMenuState.itemId : null;
-  const isMobileOpen = mobileOpenPathname === pathname;
 
   const closeDesktopMenu = useCallback(() => {
-    setDesktopMenuState(null);
+    setOpenDesktopMenuId(null);
   }, []);
 
   const closeMobileMenu = useCallback((restoreFocus = true) => {
@@ -49,7 +46,7 @@ export function MainNavigation() {
       dialog.close();
     }
 
-    setMobileOpenPathname(null);
+    setIsMobileOpen(false);
     setOpenMobileSectionIds(new Set());
 
     if (restoreFocus) {
@@ -164,10 +161,8 @@ export function MainNavigation() {
         items={navigationConfig.header}
         onClose={closeDesktopMenu}
         onToggle={(itemId) => {
-          setDesktopMenuState((current) =>
-            current?.itemId === itemId && current.pathname === pathname
-              ? null
-              : { itemId, pathname },
+          setOpenDesktopMenuId((current) =>
+            current === itemId ? null : itemId,
           );
         }}
         openMenuId={openDesktopMenuId}
@@ -185,7 +180,7 @@ export function MainNavigation() {
         aria-expanded={isMobileOpen}
         aria-label="Otwórz menu"
         className="xl:hidden"
-        onClick={() => setMobileOpenPathname(pathname)}
+        onClick={() => setIsMobileOpen(true)}
         onPointerDown={handleMobileTriggerPointer}
         ref={mobileTriggerRef}
         size="icon"
@@ -206,4 +201,10 @@ export function MainNavigation() {
       />
     </div>
   );
+}
+
+export function MainNavigation() {
+  const pathname = usePathname();
+
+  return <NavigationController key={pathname} pathname={pathname} />;
 }
