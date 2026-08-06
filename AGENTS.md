@@ -7,7 +7,7 @@ Budujemy od zera profesjonalną stronę usługową premium dla OfertaStudio — 
 ## Zakres i katalog roboczy
 
 - Pracuj wyłącznie w `/home/roland/os_new/`.
-- Przed zmianami przeczytaj `README.md`, `docs/PROJECT_BRIEF.md`, `docs/ARCHITECTURE.md` i `docs/ROADMAP.md` oraz sprawdź `git status`.
+- Przed zmianami przeczytaj `README.md`, dokumenty właściwe dla bieżącego zakresu i `docs/ROADMAP.md` oraz sprawdź `git status`. Zmiany treści lub routingu wymagają co najmniej `docs/INFORMATION_ARCHITECTURE.md`, `docs/SEO_CONTENT_MAP.md` i `docs/CONTENT_GUIDELINES.md`.
 - Realizuj tylko zakres bieżącego promptu i etapu. Nie wykonuj przypadkowych refaktorów ani zmian „przy okazji”.
 - Zachowuj istniejące zmiany użytkownika; nie cofaj ich ani nie nadpisuj bez wyraźnej zgody.
 - Nie dodawaj sekretów, danych klienta, cache, artefaktów buildu ani drugiego lockfile.
@@ -32,10 +32,11 @@ Używaj npm i zachowuj `package-lock.json`. Nie wprowadzaj Pages Routera, cięż
 - `src/components/layout`: elementy układu wspólne dla stron.
 - `src/components/sections`: semantyczne kompozycje sekcji.
 - `src/components/shared`: dopiero dla rzeczywiście współdzielonych elementów domenowych.
-- `src/config`: stabilna konfiguracja serwisu.
-- `src/content`: typowane treści i modele danych widoków.
+- `src/config`: pojedyncze źródła tras, CTA, nawigacji, marki i danych kontaktowych.
+- `src/content`: typowane treści, rejestr planowanych stron i modele danych widoków.
 - `src/lib`: małe funkcje bez wiedzy o konkretnym widoku.
-- `src/hooks` i `src/types`: twórz dopiero, gdy mają realnych konsumentów.
+- `src/types`: współdzielone kontrakty domenowe; typy lokalne pozostawiaj przy konsumencie.
+- `src/hooks`: twórz dopiero dla współdzielonych hooków z realnymi konsumentami.
 
 Nie twórz pustych katalogów, abstrakcji na zapas ani rozbudowanej sieci `index.ts`. Importuj moduły przez alias `@/*` tam, gdzie poprawia to czytelność.
 
@@ -75,12 +76,16 @@ Nie twórz pustych katalogów, abstrakcji na zapas ani rozbudowanej sieci `index
 
 ## SEO i treść
 
+- `src/config/routes.ts` jest źródłem planowanych adresów, a `src/content/page-registry.ts` ich roli, metadata i statusu. Nie twórz alternatywnego rejestru w komponencie.
+- Zmiana URL, intencji albo hierarchii wymaga równoczesnej aktualizacji modelu danych i odpowiedniej dokumentacji.
 - Każda indeksowalna podstrona otrzymuje unikalny polski tytuł, opis i canonical, gdy routing zostanie ustalony.
 - Metadata współdzielone opieraj na `src/config/site.ts`; dane stron trzymaj blisko route lub odpowiedniego modelu treści.
 - Używaj jednego głównego `h1`, semantycznych nagłówków i tekstowych linków opisujących cel.
 - Dane strukturalne dodawaj wyłącznie wtedy, gdy odpowiadają widocznej, prawdziwej treści.
 - Nie publikuj niezweryfikowanych wyników, opinii, liczb, realizacji ani gwarancji.
 - Finalne widoki nie mogą zawierać lorem ipsum, generycznych placeholderów, przypadkowych zdjęć ani sztucznie wypełnionej treści.
+- Nie twórz osobnej podstrony tylko dla synonimu frazy. Najpierw sprawdź ryzyko kanibalizacji w `docs/SEO_CONTENT_MAP.md`.
+- Nowa usługa, CTA, relacja lub trasa musi przejść `npm run content:check`.
 
 ## Kontrola jakości i raportowanie
 
@@ -90,6 +95,7 @@ Po każdej zmianie wpływającej na kod lub konfigurację uruchom:
 npm run format:check
 npm run lint
 npm run typecheck
+npm run content:check
 npm run build
 ```
 

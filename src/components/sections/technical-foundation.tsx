@@ -3,6 +3,7 @@ import { CircleCheck } from "lucide-react";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { foundationPageContent } from "@/content/foundation-page";
+import { serviceGroups } from "@/content/service-groups";
 
 export function TechnicalFoundation() {
   return (
@@ -29,15 +30,15 @@ export function TechnicalFoundation() {
           </p>
 
           <ul
-            aria-label="Zakres gotowego fundamentu"
+            aria-label="Główne filary usług OfertaStudio"
             className="mt-8 flex flex-wrap gap-2"
           >
-            {foundationPageContent.statusItems.map((item) => (
+            {serviceGroups.map((group) => (
               <li
-                key={item}
+                key={group.id}
                 className="rounded-full border border-border bg-secondary px-3 py-1.5 text-sm font-medium text-secondary-foreground"
               >
-                {item}
+                {group.name}
               </li>
             ))}
           </ul>

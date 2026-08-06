@@ -15,16 +15,16 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: siteConfig.defaultTitle,
-    template: siteConfig.titleTemplate,
+    default: siteConfig.metadata.defaultTitle,
+    template: siteConfig.metadata.titleTemplate,
   },
-  description: siteConfig.description,
+  description: siteConfig.metadata.description,
   applicationName: siteConfig.name,
   openGraph: {
-    description: siteConfig.description,
+    description: siteConfig.metadata.description,
     locale: siteConfig.locale,
     siteName: siteConfig.name,
-    title: siteConfig.defaultTitle,
+    title: siteConfig.metadata.defaultTitle,
     type: "website",
     url: "/",
   },
@@ -41,8 +41,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    description: siteConfig.description,
-    title: siteConfig.defaultTitle,
+    description: siteConfig.metadata.description,
+    title: siteConfig.metadata.defaultTitle,
   },
 };
 

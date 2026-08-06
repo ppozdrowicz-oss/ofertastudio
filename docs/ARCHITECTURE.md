@@ -31,9 +31,10 @@ public/
     projects/
     placeholders/
 docs/
+scripts/                # lokalne kontrole integralności treści
 ```
 
-Katalogi `shared`, `hooks` i `types` nie istnieją w etapie 1, ponieważ nie mają jeszcze realnej odpowiedzialności. Zostaną utworzone dopiero wraz z pierwszym potrzebnym modułem. To samo dotyczy plików `index.ts`: powstają tylko wtedy, gdy stabilizują publiczny interfejs niewielkiego modułu, a nie jako domyślna warstwa każdego katalogu.
+Katalog `types` zawiera współdzielone kontrakty domenowe treści, usług, nawigacji i realizacji. Katalogi `shared` i `hooks` nie istnieją, ponieważ nie mają jeszcze realnej odpowiedzialności. Powstaną dopiero wraz z pierwszym potrzebnym modułem. To samo dotyczy plików `index.ts`: tworzymy je tylko wtedy, gdy stabilizują publiczny interfejs niewielkiego modułu, a nie jako domyślną warstwę każdego katalogu.
 
 ## Podział komponentów
 
@@ -61,28 +62,43 @@ Nie oznaczamy całych stron ani layoutu jako klientowe dla wygody. Dane i treśc
 
 ## Przechowywanie treści
 
-Stałe treści i modele sekcji trafiają do `src/content` jako typowane moduły TypeScript. Konfiguracja całego serwisu, taka jak nazwa, domena i domyślne metadata, znajduje się w `src/config`.
+Stałe treści i modele sekcji trafiają do `src/content` jako typowane moduły TypeScript. Konfiguracja całego serwisu, taka jak nazwa, domena, trasy, CTA, nawigacja i dane kontaktowe, znajduje się w `src/config`.
+
+Podział odpowiedzialności:
+
+- `src/config/routes.ts` — pojedyncze źródło statycznych adresów i wzorców dynamicznych,
+- `src/config/site.ts` i `contact.ts` — marka, metadata i bezpieczne, niepotwierdzone jeszcze dane firmy,
+- `src/config/ctas.ts` — zamknięty system pięciu CTA,
+- `src/config/navigation.ts` — menu nagłówka, mobile i stopki,
+- `src/content/service-groups.ts` i `services.ts` — hierarchia oferty i relacje,
+- `src/content/page-registry.ts` — planowane strony, intencje, canonicale i statusy,
+- pozostałe moduły `src/content` — segmenty, proces, FAQ, ścieżki, struktury widoków i realizacje,
+- `src/types` — wspólne kontrakty tych danych.
 
 Komponent sekcji odpowiada za prezentację, nie za przechowywanie długich bloków copy. Dane muszą mieć stabilne identyfikatory, jeśli będą używane w listach lub linkach. CMS nie jest planowany bez decyzji biznesowej; jego ewentualne wprowadzenie powinno zachować istniejące kontrakty modeli treści.
+
+Integralność sprawdza `npm run content:check`. Skrypt nie zastępuje TypeScriptu: kontroluje relacje runtime, między innymi duplikaty adresów i slugów, istnienie powiązanych usług, prawidłowe CTA, nawigację, rodziców stron i bezpieczne placeholdery kontaktowe.
 
 ## Metadata i SEO
 
 - `src/config/site.ts` jest źródłem wspólnych wartości marki i domeny.
 - `src/app/layout.tsx` definiuje domyślny tytuł, template, opis, Open Graph, Twitter i dyrektywy robotów.
 - `src/app/robots.ts` publikuje bazowy `robots.txt`.
-- Każda przyszła podstrona statyczna eksportuje własne `metadata`; `generateMetadata` stosujemy tylko dla danych dynamicznych.
-- Po ustaleniu route'ów każda indeksowalna strona otrzyma canonical, unikalny tytuł i opis.
+- `src/content/page-registry.ts` przechowuje zaakceptowane założenia metadata i canonicali przyszłych podstron.
+- Każda przyszła podstrona statyczna generuje metadata z właściwego wpisu rejestru; `generateMetadata` stosujemy dla danych dynamicznych lub wspólnego, typowanego helpera.
+- Rejestr może zawierać trasę `planned`, która nie ma jeszcze widoku. Nie linkujemy jej w działającym interfejsie, dopóki podstrona nie jest gotowa do publikacji.
 - Dane strukturalne pojawią się w etapie 12 i muszą odzwierciedlać widoczną, zweryfikowaną treść.
 
 ## Dodawanie podstron
 
-1. Potwierdź miejsce podstrony w architekturze informacji i jej intencję wyszukiwania.
-2. Utwórz segment w `src/app` z możliwie cienkim `page.tsx`.
-3. Dodaj typowany model treści w `src/content`, jeśli treść ma więcej niż kilka prostych etykiet.
-4. Zbuduj semantyczne sekcje, wykorzystując istniejące tokeny i prymitywy.
-5. Dodaj unikalne metadata oraz właściwe linkowanie wewnętrzne.
-6. Sprawdź widok od 320 px, klawiaturę, focus, hierarchię nagłówków i preferencję ograniczonego ruchu.
-7. Uruchom pełny zestaw kontroli jakości.
+1. Potwierdź miejsce podstrony w `INFORMATION_ARCHITECTURE.md`, intencję w `SEO_CONTENT_MAP.md` i różnicę wobec stron sąsiednich.
+2. Dodaj lub zaktualizuj trasę, usługę, relacje i wpis w rejestrze; uruchom `npm run content:check`.
+3. Utwórz segment w `src/app` z możliwie cienkim `page.tsx`.
+4. Dodaj typowany model treści w `src/content`, jeśli treść ma więcej niż kilka prostych etykiet.
+5. Zbuduj semantyczne sekcje, wykorzystując istniejące tokeny i prymitywy.
+6. Wygeneruj unikalne metadata z modelu i dodaj właściwe linkowanie wewnętrzne.
+7. Sprawdź widok od 320 px, klawiaturę, focus, hierarchię nagłówków i preferencję ograniczonego ruchu.
+8. Uruchom pełny zestaw kontroli jakości, w tym walidację treści.
 
 Route groups można wprowadzić dopiero, gdy kilka route'ów rzeczywiście współdzieli osobny layout lub organizację. Dynamiczne segmenty wymagają stabilnego źródła slugów i jawnej obsługi braku danych.
 

@@ -2,11 +2,11 @@
 
 Roadmapa porządkuje budowę serwisu w 14 kontrolowanych etapach. Zakres następnego etapu rozpoczynamy dopiero po zweryfikowaniu rezultatów poprzedniego; szczegóły mogą zostać doprecyzowane na podstawie decyzji biznesowych, ale kolejność zależności pozostaje obowiązująca.
 
-1. **Fundament techniczny — bieżący etap** — inicjalizacja Next.js, TypeScript, Tailwind CSS, jakości kodu, minimalnego routingu, tokenów technicznych i dokumentacji.
+1. **Fundament techniczny — zakończony** — inicjalizacja Next.js, TypeScript, Tailwind CSS, jakości kodu, minimalnego routingu, tokenów technicznych i dokumentacji.
 
-2. **Strategia marki i architektura informacji** — priorytety odbiorców, pozycjonowanie, komunikaty, mapa serwisu, intencje podstron i model treści.
+2. **Strategia marki i architektura informacji — zakończony** — pozycjonowanie, segmenty, hierarchia usług, mapa serwisu, konwersja, intencje podstron, wytyczne treści i walidowany model danych.
 
-3. **Design system** — finalne fundamenty wizualne: typografia, paleta, skala odstępów, siatka, promienie, cienie, stany i kluczowe komponenty.
+3. **Design system — następny etap** — finalne fundamenty wizualne Flat Modern Premium: typografia, paleta, skala odstępów, siatka, promienie, cienie, stany i kluczowe komponenty.
 
 4. **Globalny layout, nawigacja i stopka** — dostępna, responsywna rama całego serwisu, system nawigacji i wspólne punkty kontaktu.
 

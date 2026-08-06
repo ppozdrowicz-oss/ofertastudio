@@ -2,6 +2,7 @@
   "name": "ofertastudio",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "description": "Nowa strona usługowa premium dla OfertaStudio.",
   "engines": {
     "node": ">=22.0.0",
@@ -13,6 +14,7 @@
     "start": "next start",
     "lint": "eslint . --max-warnings 0",
     "typecheck": "tsc --noEmit",
+    "content:check": "node scripts/check-content.ts",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },

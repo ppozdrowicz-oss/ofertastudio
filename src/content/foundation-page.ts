@@ -1,14 +1,8 @@
 export const foundationPageContent = {
   description:
-    "Nowa aplikacja OfertaStudio ma gotową, sprawdzalną bazę do budowy strategii, treści i warstwy wizualnej.",
-  eyebrow: "OfertaStudio · etap 1 z 14",
+    "OfertaStudio ma zdefiniowane pozycjonowanie, architekturę informacji, ścieżki konwersji oraz typowany model treści gotowy do budowy interfejsu.",
+  eyebrow: "OfertaStudio · etap 2 z 14 ukończony",
   nextStep:
-    "Kolejny etap obejmie strategię marki, architekturę informacji i model treści.",
-  statusItems: [
-    "App Router",
-    "TypeScript strict",
-    "Tailwind CSS 4",
-    "Dostępność i SEO",
-  ],
-  title: "Fundament projektu działa.",
+    "Kolejny etap obejmie kompletny design system Flat Modern Premium. Finalny interfejs strony głównej powstanie później.",
+  title: "Strategia marki i model treści są gotowe.",
 } as const;
