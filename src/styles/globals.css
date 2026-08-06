@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-border: var(--border);
+  --color-foreground: var(--foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-surface: var(--surface);
+  --font-sans: var(--font-inter);
+  --shadow-soft: var(--shadow-elevation-soft);
+}
+
+:root {
+  color-scheme: light;
+
+  --background: oklch(0.982 0.002 95);
+  --foreground: oklch(0.22 0.004 85);
+  --surface: oklch(1 0 0);
+  --border: oklch(0.88 0.005 90);
+  --primary: oklch(0.28 0.006 85);
+  --primary-foreground: oklch(0.985 0.002 95);
+  --secondary: oklch(0.95 0.004 90);
+  --secondary-foreground: oklch(0.3 0.006 85);
+  --muted-foreground: oklch(0.49 0.008 85);
+  --focus-ring: var(--primary);
+
+  --radius-control: 0.625rem;
+  --radius-panel: 1rem;
+  --radius-round: 999px;
+
+  --shadow-elevation-soft:
+    0 1px 2px oklch(0.2 0.01 85 / 0.04), 0 12px 32px oklch(0.2 0.01 85 / 0.06);
+
+  --container-content: 48rem;
+  --container-page: 76rem;
+  --container-wide: 90rem;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    border-color: var(--border);
+  }
+
+  html {
+    min-width: 20rem;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-height: 100dvh;
+  }
+
+  ::selection {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
