@@ -59,6 +59,20 @@ Strona ma kwalifikować potrzeby, budować wiarygodność i prowadzić do rozmow
 - W jednej sekcji pokazujemy jedno CTA główne i najwyżej jedno pomocnicze.
 - Nie tworzymy nowych synonimów CTA w komponentach; zmiana systemu następuje centralnie w `src/config/ctas.ts`.
 
+### Mini Diagnosis na homepage
+
+Rozdział Problem → Diagnosis kończy się niskoprogowym punktem konwersji dla osoby, która widzi objawy, ale nie potrafi jeszcze nazwać właściwej usługi. Wykorzystuje istniejące CTA `free-diagnosis` i prowadzi do `/brief`.
+
+Mini Diagnosis:
+
+- prosi wyłącznie o pokazanie obecnej strony, sklepu albo oferty i opis sytuacji,
+- nie wymaga wybranego pakietu, technicznej specyfikacji ani gotowego budżetu,
+- nie udaje automatycznego audytu i nie generuje fikcyjnego score,
+- jasno komunikuje, że bezpłatny krok służy kwalifikacji potrzeby,
+- nie zawiera atrapy pola URL przed wdrożeniem prawdziwej obsługi formularza.
+
+Globalne CTA pozostaje wyłączone na nieukończonej jeszcze homepage. Mini Diagnosis jest kontekstowym następnym krokiem po rozpoznaniu problemów, a nie finalnym zamknięciem całej strony.
+
 ## Główne ścieżki użytkowników
 
 ### A. Klient potrzebuje strony

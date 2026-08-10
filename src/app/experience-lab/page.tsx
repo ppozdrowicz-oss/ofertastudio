@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import {
   ConversionLandscapeDemo,
   HeroExperienceDemo,
+  ProblemDiagnosisExperienceDemo,
 } from "@/app/experience-lab/_components/conversion-landscape-demo";
 import { ExperienceCanvas } from "@/components/experience/experience-canvas";
 import { Container } from "@/components/layout/container";
@@ -25,7 +26,7 @@ import {
 
 export const metadata: Metadata = {
   description:
-    "Techniczne laboratorium Conversion Landscape, finalnego Hero i systemu ruchu OfertaStudio.",
+    "Techniczne laboratorium Conversion Landscape, finalnego Hero, sekwencji Problem → Diagnosis i systemu ruchu OfertaStudio.",
   robots: {
     follow: false,
     googleBot: {
@@ -77,7 +78,7 @@ export default function ExperienceLabPage() {
         <Container size="wide">
           <SectionHeading
             description="Izolowane środowisko do sprawdzania finalnego Hero, proceduralnego świata, transformacji Chaos → Structure, choreografii kamery, jakości renderowania i eleganckiej degradacji."
-            eyebrow="OfertaStudio · etap 7"
+            eyebrow="OfertaStudio · etap 8"
             level={1}
             size="hero"
             title="The Conversion Landscape"
@@ -114,6 +115,19 @@ export default function ExperienceLabPage() {
           />
           <div className="mt-8">
             <HeroExperienceDemo />
+          </div>
+        </Container>
+      </Section>
+
+      <Section spacing="compact">
+        <Container size="wide">
+          <SectionHeading
+            description="Fragmented, Observe, Diagnose, Prioritize i Structured korzystają z jednego globalnego progressu oraz tej samej instancji Conversion Landscape. Stan końcowy celowo pozostaje pośredni przed transformacją z etapu 9."
+            eyebrow="Problem storytelling"
+            title="Hero → Problem → Diagnosis → Structure"
+          />
+          <div className="mt-8">
+            <ProblemDiagnosisExperienceDemo />
           </div>
         </Container>
       </Section>

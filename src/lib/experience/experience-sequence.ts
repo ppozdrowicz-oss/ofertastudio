@@ -1,1 +1,1 @@
-export type ExperienceSequence = "conversion" | "hero";
+export type ExperienceSequence = "conversion" | "hero" | "homepage";

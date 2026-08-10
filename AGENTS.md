@@ -156,6 +156,18 @@ Komponenty `shared` istnieją wyłącznie dla realnych wzorców domenowych, taki
 - Cinematic motion nie może być scroll-jackingiem. Zachowuj natywny scroll, działające anchory, klawiaturę i rozsądną długość tracku.
 - Po zmianie Hero sprawdź `/`, jego tryb manualny w `/experience-lab`, `docs/HOMEPAGE_HERO.md`, wymagane proporcje, reduced motion, fallback, kontrast, overflow i pełny zestaw kontroli.
 
+## Homepage Problem → Diagnoza
+
+- Treść problemów zawsze istnieje w serwerowym DOM. WebGL obrazuje relacje i zmianę hierarchii, ale nigdy nie jest jedyną reprezentacją problemu.
+- `src/content/home-problem-diagnosis.ts` jest jednym źródłem treści rozdziału i powiązań z domenami sceny. Nie duplikuj danych dla mobile, desktopu, laba ani accessibility.
+- Nie publikuj fikcyjnych wskaźników diagnostycznych i nie udawaj automatycznej analizy bez działającego backendu. Mini diagnoza kieruje do prawdziwej trasy z centralnego systemu CTA.
+- Diagnoza oznacza identyfikację relacji, priorytetu i zakresu, nie gotowe rozwiązanie. Finalna transformacja Before → After należy do etapu 9.
+- Globalny scene progress pozostaje jednym źródłem prawdy. Camera path pozostaje centralny, a progi semantyczne nie mogą być rozsiane po komponentach.
+- Sekwencja musi pozostać poprawna przy powolnym i szybkim scrollu, klawiaturze oraz przeciągnięciu paska przewijania. Nie uzależniaj treści od zatrzymania w konkretnej klatce.
+- Mobile korzysta z naturalnego flow DOM i nie może zależeć od desktopowej sticky choreography. Reduced motion pokazuje stabilny stan diagnozy bez camera travel.
+- Nie dodawaj efektu WebGL bez funkcji narracyjnej. Etap Problem → Diagnoza ponownie wykorzystuje istniejące geometrie, materiały i sygnały zamiast zwiększać koszt sceny.
+- Po zmianie rozdziału sprawdź `/`, tryb Problem → Diagnoza na `/experience-lab`, `docs/HOMEPAGE_PROBLEM_DIAGNOSIS.md`, CTA `/brief`, mobile, fallback, reduced motion, framing oraz pełny zestaw kontroli.
+
 ## Kontrola jakości i raportowanie
 
 Po każdej zmianie wpływającej na kod lub konfigurację uruchom:

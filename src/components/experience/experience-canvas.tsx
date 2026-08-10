@@ -31,6 +31,7 @@ import {
   resolveExperienceQuality,
 } from "@/lib/experience/quality";
 import { getConversionLandscapeInventory } from "@/lib/experience/render-budget";
+import { getHomepageStoryPhase } from "@/lib/experience/scene-timeline";
 
 const LazyExperienceRenderer = dynamic(
   () =>
@@ -89,13 +90,27 @@ export type ExperienceCanvasProps = {
   className?: string;
   enabled?: boolean;
   forceFallback?: boolean;
-  layout?: "hero" | "panel";
+  layout?: "hero" | "panel" | "story";
   mode?: "manual" | "scroll" | "static";
   motionPreference?: "auto" | "reduced";
   progress?: number;
   sequence?: ExperienceSequence;
   showDiagnostics?: boolean;
 };
+
+function writeDomProgress(
+  root: HTMLDivElement,
+  progress: number,
+  sequence: ExperienceSequence,
+): void {
+  root.style.setProperty("--experience-progress", progress.toFixed(4));
+
+  if (sequence === "homepage") {
+    root.dataset.storyState = getHomepageStoryPhase(progress).state;
+  } else {
+    delete root.dataset.storyState;
+  }
+}
 
 export function ExperienceCanvas({
   children,
@@ -217,11 +232,12 @@ function ExperienceCanvasRuntime({
         : clampExperienceProgress(progress);
     targetProgressRef.current = nextProgress;
     dampedProgressRef.current = nextProgress;
-    rootRef.current?.style.setProperty(
-      "--experience-progress",
-      nextProgress.toFixed(4),
-    );
-  }, [effectiveReducedMotion, mode, progress, reducedMotionProgress]);
+    const root = rootRef.current;
+
+    if (root) {
+      writeDomProgress(root, nextProgress, sequence);
+    }
+  }, [effectiveReducedMotion, mode, progress, reducedMotionProgress, sequence]);
 
   useEffect(() => {
     const root = rootRef.current;
@@ -261,10 +277,7 @@ function ExperienceCanvasRuntime({
     if (effectiveReducedMotion) {
       targetProgressRef.current = reducedMotionProgress;
       dampedProgressRef.current = reducedMotionProgress;
-      rootElement.style.setProperty(
-        "--experience-progress",
-        reducedMotionProgress.toFixed(4),
-      );
+      writeDomProgress(rootElement, reducedMotionProgress, sequence);
       return;
     }
 
@@ -281,10 +294,7 @@ function ExperienceCanvasRuntime({
       });
 
       targetProgressRef.current = progress;
-      rootElement.style.setProperty(
-        "--experience-progress",
-        progress.toFixed(4),
-      );
+      writeDomProgress(rootElement, progress, sequence);
 
       if (showDiagnostics) {
         setDiagnosticProgress(Math.round(progress * 100));
@@ -311,7 +321,13 @@ function ExperienceCanvasRuntime({
       window.removeEventListener("resize", scheduleProgressUpdate);
       window.removeEventListener("scroll", scheduleProgressUpdate);
     };
-  }, [effectiveReducedMotion, mode, reducedMotionProgress, showDiagnostics]);
+  }, [
+    effectiveReducedMotion,
+    mode,
+    reducedMotionProgress,
+    sequence,
+    showDiagnostics,
+  ]);
 
   const handleRendererFailure = useCallback(() => {
     setRendererReadyTier(null);
@@ -369,7 +385,9 @@ function ExperienceCanvasRuntime({
         mode === "scroll" &&
           (layout === "hero"
             ? "min-h-[var(--home-hero-track-height)]"
-            : "min-h-[var(--experience-track-height)]"),
+            : layout === "panel"
+              ? "min-h-[var(--experience-track-height)]"
+              : undefined),
         mode !== "scroll" &&
           (layout === "hero"
             ? "min-h-[var(--home-hero-preview-height)]"
@@ -430,7 +448,7 @@ function ExperienceCanvasRuntime({
             </ExperienceBoundary>
           </div>
         )}
-        {children && (
+        {children && layout !== "story" && (
           <div className="pointer-events-none absolute inset-0 z-[var(--layer-experience-content)]">
             <div className="pointer-events-auto h-full">{children}</div>
           </div>
@@ -490,6 +508,11 @@ function ExperienceCanvasRuntime({
           </dl>
         )}
       </div>
+      {children && layout === "story" && (
+        <div className="experience-story__content pointer-events-none relative z-[var(--layer-experience-content)]">
+          <div className="pointer-events-auto">{children}</div>
+        </div>
+      )}
     </div>
   );
 }

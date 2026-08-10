@@ -8,7 +8,7 @@ Budżety w tym dokumencie są limitami projektowymi, nie deklaracją wyników na
 
 ## Strategia ładowania
 
-1. `ExperienceCanvas` renderuje w pierwszym HTML lekki fallback CSS, a `HeroContent` dostarcza pełne copy i CTA bez oczekiwania na renderer.
+1. `ExperienceCanvas` renderuje w pierwszym HTML lekki fallback CSS, a serwerowe `HomeHero` i `HomeProblemDiagnosis` dostarczają pełne copy oraz CTA bez oczekiwania na renderer.
 2. Moduł zawierający `@react-three/fiber` oraz Three.js jest importowany dynamicznie z `ssr: false`.
 3. `IntersectionObserver` montuje renderer dopiero w pobliżu viewportu (`rootMargin: 25%`).
 4. Brak WebGL, jawne wyłączenie lub błąd nie inicjuje sceny.
@@ -83,6 +83,18 @@ Produkcyjny build Next.js 16.3.0 z 10 sierpnia 2026 potwierdził separację chun
 
 To pomiar referencyjny bieżącego builda, a nie gwarancja stałych nazw lub rozmiarów chunków. Ciężki koszt jest odseparowany od SSR treści, ale pozostaje realnym kosztem sieciowym publicznego pierwszego widoku i wymaga dalszego monitorowania.
 
+### Pomiar builda Problem → Diagnoza — etap 8
+
+Produkcyjny build z 10 sierpnia 2026 utrzymał ten sam renderer, geometrie i materiały. Rozdział diagnozy korzysta z istniejących instancji; zmienia wyłącznie ich transformacje, intensywność grida, sygnałów i światła:
+
+- pięć współdzielonych chunków dynamicznej części WebGL ma łącznie 899 793 B bez kompresji i 242 653 B po zagregowanym gzip,
+- klientowa granica homepage obejmująca wspólną oś Hero + Diagnoza ma 17 104 B bez kompresji i 5 653 B gzip,
+- route chunk homepage pozostaje na poziomie 265 B bez kompresji i 208 B gzip; wszystkie nagłówki, problemy i CTA są serwerowe,
+- względem etapu 7 dynamiczny renderer wzrósł o 372 B raw i 1 080 B gzip, a lekka granica klientowa o 3 045 B raw i 1 022 B gzip,
+- scena nadal ma 7 draw calli, 3 geometrie, 6 materiałów, 0 tekstur treściowych i 0 dodatkowych render passów w każdym stanie rozdziału.
+
+Rozmiary są pomiarem artefaktów bieżącego builda, nie stałym budżetem nazw chunków. Niewielki wzrost granicy klientowej wynika z trzeciej centralnej sekwencji, zapisu semantycznego stanu DOM i obsługi layoutu `story`; nie z nowego kosztu GPU.
+
 ## Hero i Core Web Vitals
 
 ### LCP
@@ -91,7 +103,7 @@ Headline, lead i CTA są Server Components i znajdują się w pierwszym HTML. We
 
 ### CLS
 
-Track Hero rezerwuje `132svh` na mobile oraz `140svh` od 768 px. Sticky kadr ma stałą wysokość wynikającą z `svh` i tokenu headera. Fallback, canvas oraz treść są warstwami absolutnymi wewnątrz zarezerwowanego obszaru, dlatego gotowość WebGL nie zmienia layoutu. CTA i competence strip istnieją w SSR.
+Homepage rezerwuje wysokość przez serwerowy flow sekcji i tokeny `--home-hero-track-height`, `--home-problem-intro-height`, `--home-problem-field-height`, `--home-diagnosis-height`, `--home-mini-diagnosis-height` oraz `--home-transformation-handoff-height`. Sticky kadr ma stałą wysokość wynikającą z `svh` i tokenu headera. Fallback i canvas są warstwami absolutnymi, a treść istnieje w SSR, dlatego gotowość WebGL nie zmienia wymiarów Hero, problemów, CTA ani kolejnych sekcji.
 
 ### INP
 
@@ -126,7 +138,7 @@ To limity maksymalne, nie cele do wykorzystania. Współdzielona geometria i mat
 - `PerformanceController` ustawia DPR po utworzeniu renderera i po zmianie jakości.
 - Resize obsługuje R3F; warstwa nadrzędna mierzy tylko progres scrolla.
 - Zmiana viewportu aktualizuje tier bez ręcznego tworzenia kolejnego renderera poza cyklem React.
-- Layout rezerwuje wysokość przez tokeny `--experience-track-height`, `--experience-static-height`, `--home-hero-track-height` i `--home-hero-preview-height`, więc pojawienie się canvasu nie przesuwa treści.
+- Layout rezerwuje wysokość przez tokeny `--experience-track-height`, `--experience-static-height`, `--home-hero-track-height` oraz semantyczne wysokości rozdziału problemowego, więc pojawienie się canvasu nie przesuwa treści.
 
 ## Mobile
 
@@ -136,7 +148,7 @@ Mobile nie jest pomniejszonym desktopem. Strategia obejmuje:
 - DPR maksymalnie 1,25,
 - brak antialiasingu i pointer influence,
 - 24 moduły, 7 poziomów Field, 8 Signals i uproszczony grid,
-- osobne trajektorie kamery `compact` dla Conversion i Hero oraz krótszą głębię,
+- osobne trajektorie kamery `compact` dla Conversion, Hero i homepage oraz krótszą głębię,
 - natywny touch scroll,
 - tę samą treść i CTA w DOM,
 - brak canvasu, jeśli bezpieczny kontekst nie powstanie.
@@ -205,10 +217,11 @@ Treść i akcje znajdują się ponad fallbackiem w DOM. Nie pokazujemy komunikat
 - brak dodatkowych pętli RAF.
 - deterministyczność generatora i unikalność identyfikatorów,
 - limity draw calls, trójkątów, materiałów i tekstur,
-- cztery centralne trajektorie kamery — po `wide` i `compact` dla Conversion oraz Hero — i bezpieczny roll,
-- 81 deterministycznych kombinacji kadru dla dziewięciu viewportów i semantycznych progresów obu sekwencji,
-- serwerowe H1, centralne CTA, wspólny progres CSS/WebGL oraz integrację trybu Hero w laboratorium.
+- sześć centralnych trajektorii kamery — po `wide` i `compact` dla Conversion, Hero oraz homepage — i bezpieczny roll,
+- 162 deterministyczne kombinacje kadru dla dziewięciu viewportów i semantycznych progresów trzech sekwencji,
+- ciągłość Hero → Problem, fragmentację, diagnozę oraz pośredni stan struktury bez resetu sceny,
+- serwerowe H1 i problemy, centralne CTA, wspólny progres CSS/WebGL oraz integrację trybów Hero i Problem → Diagnoza w laboratorium.
 
 Pełna kontrola etapu obejmuje również `format:check`, `lint`, `typecheck`, `content:check`, `design:check`, build produkcyjny, uruchomienie produkcyjnego serwera i HTTP smoke test `/`, `/design-system` oraz `/experience-lab`.
 
-W bieżącym środowisku nie ma zainstalowanego browser runnera ani wykonywalnej przeglądarki, dlatego po etapie 7 nie wykonano świeżego profilu FPS, czasu GPU, konsoli WebGL ani ponownego pomiaru `renderer.info`. Hero nie zmienia konstrukcyjnego budżetu sceny, ale dane runtime z etapu 6 pozostają wyłącznie pomiarem referencyjnym. Przed wdrożeniem wymagany jest profil na reprezentatywnym mobile oraz desktopie; dokument nie deklaruje niezmierzonych wyników.
+W bieżącym środowisku nie ma zainstalowanego browser runnera ani wykonywalnej przeglądarki, dlatego po etapie 8 nie wykonano świeżego profilu FPS, czasu GPU, konsoli WebGL ani ponownego pomiaru `renderer.info`. Rozdział nie zmienia konstrukcyjnego budżetu sceny, ale dane runtime z etapu 6 pozostają wyłącznie pomiarem referencyjnym. Kontrola 162 deterministycznych kadrów jest audytem matematycznego framingu, a nie screenshotem ani profilem GPU. Przed wdrożeniem wymagany jest profil na reprezentatywnym mobile oraz desktopie; dokument nie deklaruje niezmierzonych wyników.

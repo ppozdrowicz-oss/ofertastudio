@@ -42,6 +42,7 @@ Centralne parametry w `src/lib/experience/motion.ts`:
 | `maxFrameDelta`                    |  0,05 s | ogranicza skok po wolnej klatce              |
 | `reducedMotionProgress.conversion` |    0,92 | statyczny kadr uporządkowanego systemu       |
 | `reducedMotionProgress.hero`       |    0,70 | stabilny kadr opening finalnego Hero         |
+| `reducedMotionProgress.homepage`   |    0,86 | stan pośrednio uporządkowany po diagnozie    |
 
 Nie dodajemy lokalnych wartości damping w pojedynczych scenach bez aktualizacji systemu i uzasadnienia.
 
@@ -85,6 +86,20 @@ Sekwencja `hero` ma pięć stanów:
 - `opening` — `0,66–0,86`,
 - `handoff` — `0,86–1`.
 
+Publiczna sekwencja `homepage` łączy Hero i pierwszy rozdział sprzedażowy bez resetu sceny:
+
+- `hero` — `0–0,12`,
+- `problem-intro` — `0,12–0,24`,
+- `fragmented` — `0,24–0,46`,
+- `observe` — `0,46–0,58`,
+- `diagnose` — `0,58–0,72`,
+- `prioritize` — `0,72–0,82`,
+- `structured` — `0,82–0,90`,
+- `mini-diagnosis` — `0,90–0,97`,
+- `handoff` — `0,97–1`.
+
+Rozdział dodaje pola `fragmentationProgress`, `diagnosisProgress`, `diagnosticFocus` i `priorityProgress`. `structureProgress` spada z 1 do kontrolowanego minimum, a po diagnozie wraca wyłącznie do 0,78. Jest to stan zrozumianego problemu, nie finalnej transformacji.
+
 Timeline wylicza również `structureProgress`, `signalProgress`, `focusProgress` i `chaosWeight`. `SceneSequenceController` aktualizuje jeden współdzielony ref przed renderowaniem obiektów. Dzięki temu kamera, moduły, grid, światło i sygnały nie interpretują granic niezależnie. Hero zaczyna przy 86% uporządkowania i przechodzi do 100%, więc nie powtarza pełnego Chaos → Structure.
 
 Transformacja struktury korzysta z okna `0,40–0,90`. Moduły otrzymują małe, deterministyczne opóźnienie zależne od głębokości i kolumny. Smoothstep kontroluje lokalny przebieg, a globalny damping progressu zapewnia fizycznie wiarygodne domknięcie bez dodatkowego spring engine.
@@ -107,6 +122,8 @@ Finalny Hero ma po pięć punktów:
 3. approach,
 4. opening,
 5. handoff.
+
+Centralna ścieżka `homepage` wyprowadza pierwszych pięć klatek z zatwierdzonego Hero i dodaje: `problem-intro`, `fragmented`, `observe`, `diagnose`, `prioritize`, `structured` oraz `transformation-prep`. Dzięki temu przejście nie kopiuje ani nie resetuje danych kamery. Po Hero ruch ma mniejszą amplitudę, stabilniejszy target i analityczny charakter. Osobne warianty `wide` oraz `compact` zachowują tę samą semantykę.
 
 Każdy punkt zawiera:
 
@@ -179,13 +196,13 @@ Ewentualne przyszłe użycie może sterować wyłącznie minimalnym opóźnienie
 - Canvas działa w trybie `demand`,
 - treść nigdy nie jest ukrywana w oczekiwaniu na animację.
 
-Statyczny kadr jest zależny od sekwencji. Laboratorium Conversion Landscape używa progresu `0,92`, a finalny Hero `0,70`. Hero zatrzymuje się w stanie opening: Focus Object i moduły są czytelne, ale kompozycja zachowuje przestrzeń wokół copy. Oba kadry zatrzymują camera travel oraz przepływ markerów, nie wyglądają jak zepsuta scena i nie usuwają geometrii. Jeśli WebGL jest niedostępny, równoważny rytm zachowuje fallback CSS.
+Statyczny kadr jest zależny od sekwencji. Laboratorium Conversion Landscape używa progresu `0,92`, finalny Hero `0,70`, a połączona sekwencja homepage `0,86`. Hero zatrzymuje się w stanie opening, natomiast homepage pokazuje czytelny stan po diagnozie, bez udawania finalnej transformacji. Wszystkie kadry zatrzymują camera travel oraz przepływ markerów, nie wyglądają jak zepsuta scena i nie usuwają geometrii. Jeśli WebGL jest niedostępny, równoważny rytm zachowuje fallback CSS.
 
 ## Synchronizacja DOM i WebGL
 
 DOM jest źródłem znaczenia, a WebGL jego wizualnym wsparciem. Tekst nie czeka na callback z renderera, aby stać się dostępny.
 
-W finalnym Hero `ExperienceCanvas` zapisuje ten sam docelowy semantic progress do refu konsumowanego przez WebGL oraz do lokalnej zmiennej CSS `--experience-progress`. DOM mapuje ją wyłącznie na subtelny handoff copy i wygaszenie scroll cue. Nie istnieje drugi listener, store ani RAF dla animacji DOM. Warstwa WebGL może używać osobnego damped progress, ale źródło intencji scrolla pozostaje jedno.
+W publicznym `HomeStory` `ExperienceCanvas` zapisuje ten sam docelowy semantic progress do refu konsumowanego przez WebGL oraz do lokalnej zmiennej CSS `--experience-progress`. Aktualizuje też semantyczne `data-story-state` bez React state per frame. DOM mapuje progres wyłącznie na subtelny handoff copy, wygaszenie scroll cue i spokojne wejście panelu diagnozy. Nie istnieje drugi listener, store ani RAF dla animacji DOM. Warstwa WebGL może używać osobnego damped progress, ale źródło intencji scrolla pozostaje jedno.
 
 - progi pochodzą z centralnego `scene-timeline.ts`,
 - React state nie jest aktualizowany co klatkę,
@@ -204,6 +221,16 @@ Hero nie ma autoplay intro. Pierwsza klatka jest kompletnym stanem `arrival`, a 
 5. **Handoff (`0,86–1`)** — treść przesuwa się maksymalnie o 12 px, a scena przygotowuje przejście do sekcji problemowej.
 
 DOM pozostaje czytelny w całym zakresie: opacity głównego bloku nie spada poniżej 0,88, a przyciski poniżej 0,82. Nie ma nagłego resetu kamery ani ukrycia elementów przez `display: none`.
+
+## Problem → Diagnosis semantic timeline
+
+Hero kończy się otwartym systemem, a rozdział problemowy wprowadza kontrolowane rozszczelnienie bez teleportu kamery. Trzy grupy parametrów reagują na wspólny progres:
+
+- **fragmented** — część modułów traci rytm, sygnały słabną, a Focus Object przestaje być jednoznaczny,
+- **observe / diagnose / prioritize** — kamera stabilizuje się, kolejne domeny modułów otrzymują przestrzenny focus, grid i relacje odzyskują czytelność,
+- **structured / handoff** — scena osiąga stan pośredni i przygotowuje `transformation-prep` dla etapu 9.
+
+Problem statements pozostają w naturalnym flow. Nie są aktywowane wyłącznie po przekroczeniu precyzyjnego progu, więc szybki scroll, PageDown i przeciągnięcie scrollbara nie omijają treści. Mobile nie korzysta ze sticky kroków przypisanych do pojedynczych problemów. Szczegółowy kontrakt opisuje `HOMEPAGE_PROBLEM_DIAGNOSIS.md`.
 
 ## Pętle i cleanup
 

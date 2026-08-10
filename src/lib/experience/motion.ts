@@ -10,6 +10,7 @@ export const experienceMotion = {
   reducedMotionProgress: {
     conversion: 0.92,
     hero: 0.7,
+    homepage: 0.86,
   },
   scrollDamping: 5.4,
 } as const;

@@ -6,9 +6,14 @@ import { PerspectiveCamera, Vector3 } from "three";
 import {
   conversionCameraPaths,
   heroCameraPaths,
-  sampleConversionCameraPath,
+  homepageCameraPaths,
   sampleExperienceCameraPath,
 } from "../src/lib/experience/camera-path.ts";
+import {
+  diagnosticDomainIds,
+  getDiagnosticDomainIndex,
+} from "../src/lib/experience/diagnosis.ts";
+import type { ExperienceSequence } from "../src/lib/experience/experience-sequence.ts";
 import { dampValue, experienceMotion } from "../src/lib/experience/motion.ts";
 import {
   createSignalConnections,
@@ -31,12 +36,15 @@ import {
 } from "../src/lib/experience/render-budget.ts";
 import { conversionLandscapeConfig } from "../src/lib/experience/scene-config.ts";
 import {
+  type ConversionSceneFrame,
   conversionSceneRanges,
   createExperienceSceneFrame,
   getConversionSceneFrame,
   getHeroScenePhase,
+  getHomepageStoryPhase,
   getStaggeredStructureProgress,
   heroSceneRanges,
+  homepageStoryRanges,
 } from "../src/lib/experience/scene-timeline.ts";
 
 const projectRoot = process.cwd();
@@ -100,6 +108,7 @@ function checkContinuousRanges(
 checkContinuousRanges(experienceSceneRanges, "Narracja globalna");
 checkContinuousRanges(conversionSceneRanges, "Chaos → Structure");
 checkContinuousRanges(heroSceneRanges, "Hero cinematic entry");
+checkContinuousRanges(homepageStoryRanges, "Homepage Problem → Diagnosis");
 
 check(
   getExperienceScenePhase(0).id === "hero" &&
@@ -135,6 +144,44 @@ check(
   createExperienceSceneFrame("hero", 0).structureProgress >= 0.85 &&
     createExperienceSceneFrame("hero", 1).structureProgress === 1,
   "Hero zużywa pełny chaos zamiast rozpoczynać od uporządkowanego świata.",
+);
+check(
+  getHomepageStoryPhase(0).state === "hero" &&
+    getHomepageStoryPhase(0.12).state === "problem-intro" &&
+    getHomepageStoryPhase(0.24).state === "fragmented" &&
+    getHomepageStoryPhase(0.46).state === "observe" &&
+    getHomepageStoryPhase(0.58).state === "diagnose" &&
+    getHomepageStoryPhase(0.72).state === "prioritize" &&
+    getHomepageStoryPhase(0.82).state === "structured" &&
+    getHomepageStoryPhase(0.9).state === "mini-diagnosis" &&
+    getHomepageStoryPhase(0.97).state === "handoff",
+  "Granice rozdziału Problem → Diagnosis nie mapują się na stany semantyczne.",
+);
+const fragmentedHomepageFrame = createExperienceSceneFrame("homepage", 0.46);
+const diagnosedHomepageFrame = createExperienceSceneFrame("homepage", 0.86);
+const heroHandoffFrame = createExperienceSceneFrame("homepage", 0.12);
+const problemEntryFrame = createExperienceSceneFrame("homepage", 0.1201);
+check(
+  Math.abs(
+    heroHandoffFrame.structureProgress - problemEntryFrame.structureProgress,
+  ) < 0.01 &&
+    Math.abs(heroHandoffFrame.focusProgress - problemEntryFrame.focusProgress) <
+      0.01 &&
+    Math.abs(
+      heroHandoffFrame.signalProgress - problemEntryFrame.signalProgress,
+    ) < 0.01,
+  "Hero → Problem powoduje wizualny reset stanu sceny.",
+);
+check(
+  fragmentedHomepageFrame.fragmentationProgress > 0.65 &&
+    fragmentedHomepageFrame.structureProgress < 0.4,
+  "Stan fragmented nie wprowadza kontrolowanego rozszczelnienia systemu.",
+);
+check(
+  diagnosedHomepageFrame.diagnosisProgress > 0.95 &&
+    diagnosedHomepageFrame.structureProgress >= 0.7 &&
+    diagnosedHomepageFrame.structureProgress < 0.85,
+  "Diagnoza nie kończy się czytelnym stanem pośrednim przed transformacją.",
 );
 check(
   clampExperienceProgress(-1) === 0 && clampExperienceProgress(2) === 1,
@@ -220,7 +267,9 @@ check(
   getConversionSceneFrame(experienceMotion.reducedMotionProgress.conversion)
     .state === "structure" &&
     getHeroScenePhase(experienceMotion.reducedMotionProgress.hero).state ===
-      "opening",
+      "opening" &&
+    getHomepageStoryPhase(experienceMotion.reducedMotionProgress.homepage)
+      .state === "structured",
   "Reduced motion nie wskazuje stabilnego, uporządkowanego kadru.",
 );
 
@@ -274,6 +323,31 @@ for (const [composition, keyframes] of Object.entries(heroCameraPaths)) {
   });
 }
 
+for (const [composition, keyframes] of Object.entries(homepageCameraPaths)) {
+  check(
+    keyframes[0]?.at === 0 && keyframes.at(-1)?.at === 1,
+    `Ścieżka homepage ${composition} nie obejmuje progresu 0–1.`,
+  );
+  check(
+    keyframes.map((keyframe) => keyframe.shot).join(",") ===
+      "arrival,recognition,approach,opening,handoff,problem-intro,fragmented,observe,diagnose,prioritize,structured,transformation-prep",
+    `Ścieżka homepage ${composition} nie realizuje pełnej choreografii diagnostycznej.`,
+  );
+  keyframes.forEach((keyframe, index) => {
+    const previous = keyframes[index - 1];
+    if (previous) {
+      check(
+        previous.at < keyframe.at,
+        `Klatki homepage ${composition} nie są uporządkowane.`,
+      );
+    }
+    check(
+      Math.abs(keyframe.roll) <= 0.012,
+      `Roll kamery homepage ${composition}/${keyframe.shot} przekracza bezpieczny limit.`,
+    );
+  });
+}
+
 const deterministicFirst = createSpatialModules({
   columns: highQuality.columns,
   landscapeDepth: highQuality.landscapeDepth,
@@ -292,6 +366,12 @@ check(
   new Set(deterministicFirst.map((module) => module.id)).size ===
     deterministicFirst.length,
   "Proceduralne moduły nie mają unikalnych identyfikatorów.",
+);
+check(
+  diagnosticDomainIds.every((domain) =>
+    deterministicFirst.some((module) => module.diagnosticDomain === domain),
+  ),
+  "Proceduralne moduły nie reprezentują wszystkich domen diagnostycznych.",
 );
 check(
   createSignalConnections(
@@ -328,20 +408,87 @@ type VisualAuditResult = {
 
 function modulePosition(
   module: SpatialModuleData,
-  structureProgress: number,
+  frame: ConversionSceneFrame,
 ): Vector3 {
   const progress = getStaggeredStructureProgress(
-    structureProgress,
+    frame.structureProgress,
     module.transitionOffset,
   );
+  const diagnosticDistance = Math.abs(
+    getDiagnosticDomainIndex(module.diagnosticDomain) - frame.diagnosticFocus,
+  );
+  const diagnosticEmphasis =
+    Math.max(0, 1 - diagnosticDistance) * frame.diagnosisProgress;
   return new Vector3(
     module.chaos.position[0] +
       (module.structure.position[0] - module.chaos.position[0]) * progress,
     module.chaos.position[1] +
-      (module.structure.position[1] - module.chaos.position[1]) * progress,
+      (module.structure.position[1] - module.chaos.position[1]) * progress +
+      diagnosticEmphasis * 0.24,
     module.chaos.position[2] +
       (module.structure.position[2] - module.chaos.position[2]) * progress,
   );
+}
+
+function auditSequenceComposition(
+  width: number,
+  height: number,
+  progress: number,
+  sequence: ExperienceSequence,
+): VisualAuditResult {
+  const quality = resolveExperienceQuality(
+    capabilities({ viewportHeight: height, viewportWidth: width }),
+  );
+  const modules = createSpatialModules({
+    columns: quality.columns,
+    landscapeDepth: quality.landscapeDepth,
+    moduleCount: quality.moduleCount,
+  });
+  const frame = createExperienceSceneFrame(sequence, progress);
+  const sample = sampleExperienceCameraPath(
+    progress,
+    quality.composition,
+    sequence,
+  );
+  const camera = new PerspectiveCamera(sample.fov, width / height, 0.1, 70);
+  camera.position.set(...sample.position);
+  camera.lookAt(new Vector3(...sample.target));
+  camera.rotation.z += sample.roll;
+  camera.updateProjectionMatrix();
+  camera.updateMatrixWorld(true);
+
+  const visibleModules = modules.filter((module) => {
+    const projected = modulePosition(module, frame).project(camera);
+    return (
+      Math.abs(projected.x) <= 1.12 &&
+      Math.abs(projected.y) <= 1.12 &&
+      projected.z >= -1 &&
+      projected.z <= 1
+    );
+  }).length;
+  const focusProgress = frame.focusProgress;
+  const focusPosition = new Vector3(
+    conversionLandscapeConfig.focus.chaosPosition[0] +
+      (conversionLandscapeConfig.focus.structurePosition[0] -
+        conversionLandscapeConfig.focus.chaosPosition[0]) *
+        focusProgress,
+    conversionLandscapeConfig.focus.chaosPosition[1] +
+      (conversionLandscapeConfig.focus.structurePosition[1] -
+        conversionLandscapeConfig.focus.chaosPosition[1]) *
+        focusProgress,
+    conversionLandscapeConfig.focus.chaosPosition[2] +
+      (conversionLandscapeConfig.focus.structurePosition[2] -
+        conversionLandscapeConfig.focus.chaosPosition[2]) *
+        focusProgress,
+  ).project(camera);
+
+  return {
+    anchorX: focusPosition.x,
+    anchorY: focusPosition.y,
+    progress,
+    visibleRatio: visibleModules / Math.max(1, modules.length),
+    width,
+  };
 }
 
 function auditComposition(
@@ -349,57 +496,7 @@ function auditComposition(
   height: number,
   progress: number,
 ): VisualAuditResult {
-  const quality = resolveExperienceQuality(
-    capabilities({ viewportHeight: height, viewportWidth: width }),
-  );
-  const modules = createSpatialModules({
-    columns: quality.columns,
-    landscapeDepth: quality.landscapeDepth,
-    moduleCount: quality.moduleCount,
-  });
-  const frame = getConversionSceneFrame(progress);
-  const sample = sampleConversionCameraPath(progress, quality.composition);
-  const camera = new PerspectiveCamera(sample.fov, width / height, 0.1, 70);
-  camera.position.set(...sample.position);
-  camera.lookAt(new Vector3(...sample.target));
-  camera.rotation.z += sample.roll;
-  camera.updateProjectionMatrix();
-  camera.updateMatrixWorld(true);
-
-  const visibleModules = modules.filter((module) => {
-    const projected = modulePosition(module, frame.structureProgress).project(
-      camera,
-    );
-    return (
-      Math.abs(projected.x) <= 1.12 &&
-      Math.abs(projected.y) <= 1.12 &&
-      projected.z >= -1 &&
-      projected.z <= 1
-    );
-  }).length;
-  const focusProgress = frame.focusProgress;
-  const focusPosition = new Vector3(
-    conversionLandscapeConfig.focus.chaosPosition[0] +
-      (conversionLandscapeConfig.focus.structurePosition[0] -
-        conversionLandscapeConfig.focus.chaosPosition[0]) *
-        focusProgress,
-    conversionLandscapeConfig.focus.chaosPosition[1] +
-      (conversionLandscapeConfig.focus.structurePosition[1] -
-        conversionLandscapeConfig.focus.chaosPosition[1]) *
-        focusProgress,
-    conversionLandscapeConfig.focus.chaosPosition[2] +
-      (conversionLandscapeConfig.focus.structurePosition[2] -
-        conversionLandscapeConfig.focus.chaosPosition[2]) *
-        focusProgress,
-  ).project(camera);
-
-  return {
-    anchorX: focusPosition.x,
-    anchorY: focusPosition.y,
-    progress,
-    visibleRatio: visibleModules / Math.max(1, modules.length),
-    width,
-  };
+  return auditSequenceComposition(width, height, progress, "conversion");
 }
 
 function auditHeroComposition(
@@ -407,61 +504,15 @@ function auditHeroComposition(
   height: number,
   progress: number,
 ): VisualAuditResult {
-  const quality = resolveExperienceQuality(
-    capabilities({ viewportHeight: height, viewportWidth: width }),
-  );
-  const modules = createSpatialModules({
-    columns: quality.columns,
-    landscapeDepth: quality.landscapeDepth,
-    moduleCount: quality.moduleCount,
-  });
-  const frame = createExperienceSceneFrame("hero", progress);
-  const sample = sampleExperienceCameraPath(
-    progress,
-    quality.composition,
-    "hero",
-  );
-  const camera = new PerspectiveCamera(sample.fov, width / height, 0.1, 70);
-  camera.position.set(...sample.position);
-  camera.lookAt(new Vector3(...sample.target));
-  camera.rotation.z += sample.roll;
-  camera.updateProjectionMatrix();
-  camera.updateMatrixWorld(true);
+  return auditSequenceComposition(width, height, progress, "hero");
+}
 
-  const visibleModules = modules.filter((module) => {
-    const projected = modulePosition(module, frame.structureProgress).project(
-      camera,
-    );
-    return (
-      Math.abs(projected.x) <= 1.12 &&
-      Math.abs(projected.y) <= 1.12 &&
-      projected.z >= -1 &&
-      projected.z <= 1
-    );
-  }).length;
-  const focusProgress = frame.focusProgress;
-  const focusPosition = new Vector3(
-    conversionLandscapeConfig.focus.chaosPosition[0] +
-      (conversionLandscapeConfig.focus.structurePosition[0] -
-        conversionLandscapeConfig.focus.chaosPosition[0]) *
-        focusProgress,
-    conversionLandscapeConfig.focus.chaosPosition[1] +
-      (conversionLandscapeConfig.focus.structurePosition[1] -
-        conversionLandscapeConfig.focus.chaosPosition[1]) *
-        focusProgress,
-    conversionLandscapeConfig.focus.chaosPosition[2] +
-      (conversionLandscapeConfig.focus.structurePosition[2] -
-        conversionLandscapeConfig.focus.chaosPosition[2]) *
-        focusProgress,
-  ).project(camera);
-
-  return {
-    anchorX: focusPosition.x,
-    anchorY: focusPosition.y,
-    progress,
-    visibleRatio: visibleModules / Math.max(1, modules.length),
-    width,
-  };
+function auditHomepageComposition(
+  width: number,
+  height: number,
+  progress: number,
+): VisualAuditResult {
+  return auditSequenceComposition(width, height, progress, "homepage");
 }
 
 const auditProgressValues = [0, 0.35, 0.65, 1] as const;
@@ -474,6 +525,14 @@ const heroAuditProgressValues = [0, 0.35, 0.5, 0.7, 1] as const;
 const heroVisualAuditResults = viewportExpectations.flatMap((viewport) =>
   heroAuditProgressValues.map((progress) =>
     auditHeroComposition(viewport.width, viewport.height, progress),
+  ),
+);
+const homepageAuditProgressValues = [
+  0.1, 0.18, 0.35, 0.55, 0.65, 0.77, 0.86, 0.94, 1,
+] as const;
+const homepageVisualAuditResults = viewportExpectations.flatMap((viewport) =>
+  homepageAuditProgressValues.map((progress) =>
+    auditHomepageComposition(viewport.width, viewport.height, progress),
   ),
 );
 
@@ -504,6 +563,17 @@ for (const result of heroVisualAuditResults) {
   );
 }
 
+for (const result of homepageVisualAuditResults) {
+  check(
+    Math.abs(result.anchorX) <= 1.08 && Math.abs(result.anchorY) <= 1.08,
+    `Homepage ${result.width}px @ ${result.progress.toFixed(2)} gubi focus object.`,
+  );
+  check(
+    result.visibleRatio >= 0.14,
+    `Homepage ${result.width}px @ ${result.progress.toFixed(2)} pokazuje zbyt mało modułów (${Math.round(result.visibleRatio * 100)}%).`,
+  );
+}
+
 const canvasSource = source("src/components/experience/experience-canvas.tsx");
 const rendererSource = source(
   "src/components/experience/experience-renderer.tsx",
@@ -514,6 +584,9 @@ const performanceSource = source(
 const cameraSource = source("src/components/experience/camera-rig.tsx");
 const rootLayoutSource = source("src/app/layout.tsx");
 const homePageSource = source("src/app/page.tsx");
+const homeStorySource = source("src/components/home/home-story.tsx");
+const problemFieldSource = source("src/components/home/problem-field.tsx");
+const miniDiagnosisSource = source("src/components/home/mini-diagnosis.tsx");
 const heroContentSource = source("src/components/home/hero-content.tsx");
 const labSource = source("src/app/experience-lab/page.tsx");
 const labControlsSource = source(
@@ -575,12 +648,23 @@ check(
   "CameraRig nie korzysta z centralnej trajektorii.",
 );
 check(
-  homePageSource.includes("<HomeHero") &&
-    homePageSource.includes("<HomeHandoff") &&
+  homePageSource.includes("<HomeStory") &&
     homePageSource.includes("showGlobalCta={false}") &&
+    !homeStorySource.trimStart().startsWith('"use client"') &&
+    homeStorySource.includes('sequence="homepage"') &&
+    homeStorySource.includes("<HomeHero") &&
+    homeStorySource.includes("<HomeProblemDiagnosis") &&
+    (homeStorySource.match(/<ExperienceCanvas/g)?.length ?? 0) === 1 &&
     heroContentSource.includes('headingLevel === 1 ? "h1" : "h2"') &&
     heroContentSource.includes("getCta(homeHeroContent.primaryCtaId)"),
-  "Homepage nie zachowuje serwerowego Hero, pojedynczego h1 lub centralnych CTA.",
+  "Homepage nie zachowuje jednego canvasa, serwerowej treści, pojedynczego h1 lub centralnych CTA.",
+);
+check(
+  problemFieldSource.includes("content.problems.map") &&
+    problemFieldSource.includes("data-scene-domain") &&
+    miniDiagnosisSource.includes("getCta(content.ctaId)") &&
+    miniDiagnosisSource.includes("href={cta.href}"),
+  "Problem Field lub Mini Diagnosis omijają centralny model treści i CTA.",
 );
 check(
   !rootLayoutSource.includes("ExperienceCanvas") &&
@@ -601,7 +685,9 @@ check(
     labControlsSource.includes("motionPreference") &&
     labControlsSource.includes("forceFallback") &&
     labControlsSource.includes('sequence="hero"') &&
-    labControlsSource.includes("data-hero-progress-preset"),
+    labControlsSource.includes("data-hero-progress-preset") &&
+    labControlsSource.includes('sequence="homepage"') &&
+    labControlsSource.includes("data-problem-progress-preset"),
   "Experience lab nie ma deterministycznego sterowania stanem sceny.",
 );
 check(
@@ -627,6 +713,9 @@ const requiredTokens = [
   "--layer-experience-canvas",
   "--layer-experience-content",
   "--home-hero-track-height",
+  "--home-problem-intro-height",
+  "--home-diagnosis-height",
+  "--home-mini-diagnosis-height",
 ] as const;
 
 for (const token of requiredTokens) {
@@ -660,7 +749,7 @@ if (errors.length > 0) {
 } else {
   console.log("Kontrola experience zakończona pomyślnie.");
   console.log(
-    `Sprawdzono: ${experienceSceneRanges.length} zakresów globalnych, ${conversionSceneRanges.length} stanów Conversion Landscape, ${heroSceneRanges.length} stanów Hero, 4 poziomy jakości, ${visualAuditResults.length + heroVisualAuditResults.length} kadrów i ${experienceFiles.length} modułów experience.`,
+    `Sprawdzono: ${experienceSceneRanges.length} zakresów globalnych, ${conversionSceneRanges.length} stanów Conversion Landscape, ${heroSceneRanges.length} stanów Hero, ${homepageStoryRanges.length} stanów homepage, 4 poziomy jakości, ${visualAuditResults.length + heroVisualAuditResults.length + homepageVisualAuditResults.length} kadrów i ${experienceFiles.length} modułów experience.`,
   );
   for (const result of visualAuditResults) {
     console.log(
@@ -670,6 +759,11 @@ if (errors.length > 0) {
   for (const result of heroVisualAuditResults) {
     console.log(
       `- Hero ${result.width}px @ ${result.progress.toFixed(2)}: widoczne moduły ${Math.round(result.visibleRatio * 100)}%, focus (${result.anchorX.toFixed(2)}, ${result.anchorY.toFixed(2)}).`,
+    );
+  }
+  for (const result of homepageVisualAuditResults) {
+    console.log(
+      `- Homepage ${result.width}px @ ${result.progress.toFixed(2)}: widoczne moduły ${Math.round(result.visibleRatio * 100)}%, focus (${result.anchorX.toFixed(2)}, ${result.anchorY.toFixed(2)}).`,
     );
   }
 }

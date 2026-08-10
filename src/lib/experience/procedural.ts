@@ -1,3 +1,4 @@
+import { type DiagnosticDomainId, diagnosticDomainIds } from "./diagnosis.ts";
 import {
   conversionLandscapeConfig,
   type SceneVector3,
@@ -14,6 +15,7 @@ export type SpatialModuleTone = "accent" | "base" | "elevated";
 export type SpatialModuleData = {
   chaos: SpatialTransform;
   depth: number;
+  diagnosticDomain: DiagnosticDomainId;
   id: string;
   importance: number;
   structure: SpatialTransform;
@@ -117,6 +119,8 @@ export function createSpatialModules({
         ],
       },
       depth,
+      diagnosticDomain:
+        diagnosticDomainIds[index % diagnosticDomainIds.length] ?? "website",
       id: `module-${String(index + 1).padStart(2, "0")}`,
       importance,
       structure: {

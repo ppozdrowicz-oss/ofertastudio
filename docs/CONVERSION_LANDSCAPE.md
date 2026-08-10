@@ -45,6 +45,7 @@ Każdy moduł posiada:
 - ważność,
 - wariację,
 - ton `base`, `elevated` albo `accent`,
+- deterministyczną domenę diagnostyczną `shoper`, `mobile`, `product`, `marketplace`, `website` albo `ecosystem`,
 - kontrolowane opóźnienie transformacji.
 
 Wszystkie moduły jednego tieru są renderowane jednym `InstancedMesh`.
@@ -82,7 +83,7 @@ Jedna współdzielona `BoxGeometry` obsługuje Field, Modules, markery i Focus O
 - przerwy w osi centralnej, która pozostawia przestrzeń narracyjną,
 - kolorów wierzchołków przechodzących od `experience.grid` do `experience.gridMinor` wraz z głębią.
 
-Grid ma jeden draw call. Jego opacity rośnie subtelnie wraz ze `structureProgress`, ale pozostaje elementem pomocniczym.
+Grid ma jeden draw call. Jego opacity rośnie subtelnie wraz ze `structureProgress`, a podczas diagnosis odzyskuje niewielką część kontrastu, aby pokazać regułę klasyfikacji. Pozostaje elementem pomocniczym.
 
 ## 10. Materials
 
@@ -107,7 +108,7 @@ Oświetlenie nawiązuje funkcjonalnie do studia produktowego:
 - jedno kierunkowe światło neutralne modeluje powierzchnie,
 - jedno słabsze światło kierunkowe accent podkreśla kierunek transformacji.
 
-Scena nie używa cieni. Nie ma dynamicznych shadow maps ani wielu punktowych źródeł światła. W sekwencji Hero intensywność dwóch świateł kierunkowych reaguje w małym zakresie na `focusProgress`, dzięki czemu dominantę widać wyraźniej podczas approach i opening bez dodatkowego światła ani draw calla.
+Scena nie używa cieni. Nie ma dynamicznych shadow maps ani wielu punktowych źródeł światła. Intensywność dwóch świateł kierunkowych reaguje w małym zakresie na `focusProgress`, `diagnosisProgress` i `priorityProgress`, dzięki czemu dominantę i klasyfikowane obszary widać wyraźniej bez dodatkowego światła ani draw calla.
 
 ## 12. Atmosphere
 
@@ -220,7 +221,30 @@ Kompozycja `wide` przesuwa dominantę na prawą stronę względem serwerowego co
 
 Hero używa własnej pięciofazowej mapy semantycznej, ale tego samego `ExperienceCanvas`, `ExperienceScene`, `CameraRig`, quality systemu, zasobów i pętli R3F. Ten podział pozwala zachować jedną gramatykę oraz różne funkcje narracyjne bez rozrzucania warunków po komponentach geometrii.
 
-## 21. Rozbudowa w etapach 8–10
+## 21. Fragmented i Diagnostic Focus — etap 8
+
+Publiczny rozdział Problem → Diagnosis rozszerza język sceny bez nowej geometrii:
+
+- **fragmented** obniża `structureProgress`, osłabia Signal Field i oddala część modułów od regularnego rytmu,
+- **observe** ustawia spokojniejszy diagnostic pass kamery,
+- **diagnose** przesuwa przestrzenny focus kolejno przez sześć domen modułów,
+- **prioritize** wzmacnia wybrane relacje, grid i światło,
+- **structured** kończy przy `structureProgress = 0.78`, czyli w stanie rozpoznanego problemu, ale przed rozwiązaniem.
+
+`diagnosticFocus` jest ciągłą wartością `0–5`. Moduł należący do aktualnej domeny otrzymuje małe podniesienie i zmianę skali w istniejącym `InstancedMesh`. Nie powstaje osobny mesh, materiał, tekstura ani draw call. Signal Field zwalnia podczas analizy, a marker priorytetu pozostaje częścią tego samego taniego systemu linii.
+
+Fallback CSS pokazuje ten sam sens przez ograniczone przesunięcie wybranych powierzchni oraz wygaszenie i odzyskanie sygnałów. Żadna etykieta problemu nie trafia wyłącznie do canvasu; kompletna lista znajduje się w DOM.
+
+## 22. Intermediate structure
+
+Etap 8 świadomie odróżnia dwa stany:
+
+- `structure = 1.00` w Hero oznacza uporządkowany świat marki,
+- `structure = 0.78` po diagnozie oznacza uporządkowaną wiedzę o problemie.
+
+Druga wartość nie jest wizualnym błędem ani niepełnym domknięciem. Pozostawia widoczne napięcie potrzebne do właściwej transformacji Before → After w etapie 9. Camera path kończy się w `transformation-prep`, bez resetowania Focus Object, światła lub grida.
+
+## 23. Rozbudowa w etapach 9–10
 
 Nowa scena lub reprezentacja filaru powinna:
 
@@ -231,6 +255,6 @@ Nowa scena lub reprezentacja filaru powinna:
 5. zdefiniować budżet High, Medium, Low i fallback przed dodaniem assetu,
 6. mieć osobny kadr compact, jeśli jedna trajektoria nie zachowuje hierarchii,
 7. nie przenosić treści sprzedażowej do canvasu,
-8. przejść audyt semantycznych progresów właściwych dla sekwencji w wymaganych proporcjach,
+8. przejść audyt semantycznych progresów właściwych dla sekwencji w wymaganych proporcjach, w tym zachować handoff z pośredniego stanu diagnozy,
 9. nie dodawać shaderów ani postprocessingu bez wykazanej korzyści i pomiaru,
 10. zostać pokazana w `/experience-lab` przed integracją z publicznym widokiem.

@@ -1,15 +1,11 @@
-import { ExperienceCanvas } from "@/components/experience/experience-canvas";
 import { HeroContent } from "@/components/home/hero-content";
 
 export function HomeHero() {
   return (
-    <ExperienceCanvas
-      className="home-hero-track"
-      layout="hero"
-      mode="scroll"
-      sequence="hero"
-    >
-      <HeroContent />
-    </ExperienceCanvas>
+    <div className="home-hero-track relative" data-home-hero="true">
+      <div className="home-story__sticky-frame">
+        <HeroContent />
+      </div>
+    </div>
   );
 }

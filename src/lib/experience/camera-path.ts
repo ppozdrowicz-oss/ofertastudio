@@ -1,11 +1,21 @@
 import type { ExperienceSequence } from "./experience-sequence.ts";
 import { clampExperienceProgress } from "./progress.ts";
 import type { SceneVector3 } from "./scene-config.ts";
+import { homepageHeroEnd } from "./scene-timeline.ts";
 
 export type CameraComposition = "compact" | "wide";
 export type CameraShot = "approach" | "establishing" | "passage" | "reveal";
 export type HeroCameraShot =
   "arrival" | "recognition" | "approach" | "opening" | "handoff";
+export type HomepageCameraShot =
+  | HeroCameraShot
+  | "problem-intro"
+  | "fragmented"
+  | "observe"
+  | "diagnose"
+  | "prioritize"
+  | "structured"
+  | "transformation-prep";
 
 export type CameraKeyframe<TShot extends string = CameraShot> = {
   at: number;
@@ -191,6 +201,141 @@ export const heroCameraPaths = {
   readonly CameraKeyframe<HeroCameraShot>[]
 >;
 
+function buildHomepageCameraPath(
+  heroPath: readonly CameraKeyframe<HeroCameraShot>[],
+  continuation: readonly CameraKeyframe<HomepageCameraShot>[],
+): readonly CameraKeyframe<HomepageCameraShot>[] {
+  return [
+    ...heroPath.map((keyframe) => ({
+      ...keyframe,
+      at: keyframe.at * homepageHeroEnd,
+    })),
+    ...continuation,
+  ];
+}
+
+export const homepageCameraPaths = {
+  compact: buildHomepageCameraPath(heroCameraPaths.compact, [
+    {
+      at: 0.24,
+      fov: 49,
+      position: [0.5, 5.2, 1.2],
+      roll: 0.003,
+      shot: "problem-intro",
+      target: [0, 1.4, -11.8],
+    },
+    {
+      at: 0.46,
+      fov: 48,
+      position: [-0.8, 4.8, 0],
+      roll: -0.002,
+      shot: "fragmented",
+      target: [-0.4, 0.5, -12.2],
+    },
+    {
+      at: 0.58,
+      fov: 47.5,
+      position: [1, 4.5, -0.5],
+      roll: 0,
+      shot: "observe",
+      target: [0.6, 0.1, -12.6],
+    },
+    {
+      at: 0.72,
+      fov: 49,
+      position: [-0.5, 4.8, 0],
+      roll: 0.002,
+      shot: "diagnose",
+      target: [0, 0.2, -12.5],
+    },
+    {
+      at: 0.82,
+      fov: 49,
+      position: [0, 4.6, -0.8],
+      roll: 0.001,
+      shot: "prioritize",
+      target: [0, -0.3, -13.2],
+    },
+    {
+      at: 0.9,
+      fov: 47.5,
+      position: [0.4, 4.9, -0.4],
+      roll: 0,
+      shot: "structured",
+      target: [0, -0.4, -13.4],
+    },
+    {
+      at: 1,
+      fov: 48,
+      position: [0, 5.1, 0],
+      roll: 0,
+      shot: "transformation-prep",
+      target: [0, -0.45, -13.6],
+    },
+  ]),
+  wide: buildHomepageCameraPath(heroCameraPaths.wide, [
+    {
+      at: 0.24,
+      fov: 39,
+      position: [1.4, 3.25, -3.2],
+      roll: 0.003,
+      shot: "problem-intro",
+      target: [-2.2, -0.5, -12.8],
+    },
+    {
+      at: 0.46,
+      fov: 38.5,
+      position: [0.4, 2.9, -3.7],
+      roll: -0.002,
+      shot: "fragmented",
+      target: [-1.2, -0.52, -13.2],
+    },
+    {
+      at: 0.58,
+      fov: 38,
+      position: [-0.7, 2.75, -4],
+      roll: 0,
+      shot: "observe",
+      target: [0.7, -0.52, -13.6],
+    },
+    {
+      at: 0.72,
+      fov: 37.5,
+      position: [0.65, 2.65, -4.2],
+      roll: 0.002,
+      shot: "diagnose",
+      target: [0.8, -0.56, -14],
+    },
+    {
+      at: 0.82,
+      fov: 37.5,
+      position: [0.2, 2.85, -3.8],
+      roll: 0.001,
+      shot: "prioritize",
+      target: [0, -0.58, -14.2],
+    },
+    {
+      at: 0.9,
+      fov: 38,
+      position: [-0.35, 3.1, -3.4],
+      roll: 0,
+      shot: "structured",
+      target: [0, -0.6, -14.4],
+    },
+    {
+      at: 1,
+      fov: 38.5,
+      position: [0, 3.4, -2.9],
+      roll: 0,
+      shot: "transformation-prep",
+      target: [0, -0.6, -14.6],
+    },
+  ]),
+} as const satisfies Record<
+  CameraComposition,
+  readonly CameraKeyframe<HomepageCameraShot>[]
+>;
+
 function smoothstep(progress: number): number {
   const clamped = clampExperienceProgress(progress);
   return clamped * clamped * (3 - 2 * clamped);
@@ -223,6 +368,11 @@ export function updateExperienceCameraPathSample(
 ): void {
   if (sequence === "hero") {
     updateCameraPathSample(progress, heroCameraPaths[composition], target);
+    return;
+  }
+
+  if (sequence === "homepage") {
+    updateCameraPathSample(progress, homepageCameraPaths[composition], target);
     return;
   }
 

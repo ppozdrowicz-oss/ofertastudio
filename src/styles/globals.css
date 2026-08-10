@@ -271,6 +271,10 @@
   --experience-static-height: clamp(22rem, 70svh, 42rem);
   --home-hero-track-height: 132svh;
   --home-hero-preview-height: clamp(38rem, 78svh, 48rem);
+  --home-problem-intro-height: clamp(34rem, 72svh, 48rem);
+  --home-diagnosis-height: clamp(48rem, 104svh, 64rem);
+  --home-mini-diagnosis-height: clamp(38rem, 72svh, 52rem);
+  --home-transformation-handoff-height: clamp(28rem, 52svh, 40rem);
 
   /* Controlled interface layers. */
   --layer-base: 0;
@@ -397,7 +401,35 @@
     );
   }
 
+  [data-sequence="homepage"] {
+    --hero-handoff-progress: clamp(
+      0,
+      calc((var(--experience-progress, 0) - 0.084) * 27.778),
+      1
+    );
+    --problem-fragmentation-progress: min(
+      clamp(0, calc((var(--experience-progress, 0) - 0.12) * 3.85), 1),
+      clamp(0, calc((0.82 - var(--experience-progress, 0)) * 2.78), 1)
+    );
+    --problem-diagnosis-progress: clamp(
+      0,
+      calc((var(--experience-progress, 0) - 0.52) * 3.85),
+      1
+    );
+  }
+
+  .experience-story__content {
+    margin-top: calc((100svh - var(--header-height-mobile)) * -1);
+  }
+
+  .home-story__sticky-frame {
+    position: sticky;
+    top: var(--header-height-mobile);
+    height: calc(100svh - var(--header-height-mobile));
+  }
+
   .home-hero-track {
+    min-height: var(--home-hero-track-height);
     border-bottom: 1px solid var(--experience-grid);
   }
 
@@ -468,8 +500,87 @@
     );
   }
 
-  .home-handoff {
-    border-top: 1px solid var(--border);
+  .home-problem-diagnosis {
+    position: relative;
+    background: color-mix(
+      in srgb,
+      var(--experience-background) 78%,
+      transparent
+    );
+  }
+
+  .home-problem-intro__scrim {
+    background:
+      linear-gradient(
+        to bottom,
+        color-mix(in srgb, var(--experience-background) 46%, transparent),
+        var(--experience-background) 92%
+      ),
+      linear-gradient(
+        to right,
+        var(--experience-background) 0%,
+        color-mix(in srgb, var(--experience-background) 88%, transparent) 70%,
+        transparent 100%
+      );
+  }
+
+  .home-problem-field {
+    background: linear-gradient(
+      to right,
+      var(--experience-background) 0%,
+      color-mix(in srgb, var(--experience-background) 94%, transparent) 68%,
+      color-mix(in srgb, var(--experience-background) 58%, transparent) 100%
+    );
+  }
+
+  .home-problem-item {
+    background: color-mix(
+      in srgb,
+      var(--experience-background) 72%,
+      transparent
+    );
+  }
+
+  .home-diagnosis {
+    background: linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--experience-background) 82%, transparent),
+      color-mix(in srgb, var(--experience-depth) 74%, transparent)
+    );
+  }
+
+  .home-diagnosis__panel {
+    background: color-mix(in srgb, var(--experience-panel) 92%, transparent);
+    opacity: calc(0.88 + var(--problem-diagnosis-progress, 0) * 0.12);
+    transform: translate3d(
+      0,
+      calc((1 - var(--problem-diagnosis-progress, 0)) * 0.75rem),
+      0
+    );
+  }
+
+  .home-mini-diagnosis {
+    background: color-mix(
+      in srgb,
+      var(--experience-background) 88%,
+      transparent
+    );
+  }
+
+  .home-mini-diagnosis__panel {
+    background: color-mix(
+      in srgb,
+      var(--experience-background) 64%,
+      transparent
+    );
+  }
+
+  .home-transformation-handoff {
+    background: linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--experience-background) 88%, transparent),
+      var(--experience-background)
+    );
   }
 
   .experience-fallback {
@@ -708,6 +819,31 @@
     right: 9%;
     bottom: 13%;
   }
+
+  [data-sequence="homepage"] .experience-fallback__module:nth-child(2),
+  [data-sequence="homepage"] .experience-fallback__module:nth-child(6) {
+    transform: translate3d(
+        calc(var(--problem-fragmentation-progress, 0) * 0.75rem),
+        calc(var(--problem-fragmentation-progress, 0) * -0.5rem),
+        0
+      )
+      rotate(calc(var(--problem-fragmentation-progress, 0) * 4deg)) skewY(-6deg);
+  }
+
+  [data-sequence="homepage"] .experience-fallback__module:nth-child(3),
+  [data-sequence="homepage"] .experience-fallback__module:nth-child(8) {
+    transform: translate3d(
+        calc(var(--problem-fragmentation-progress, 0) * -0.65rem),
+        calc(var(--problem-fragmentation-progress, 0) * 0.4rem),
+        0
+      )
+      rotate(calc(var(--problem-fragmentation-progress, 0) * -3deg))
+      skewY(-6deg);
+  }
+
+  [data-sequence="homepage"] .experience-fallback__signals {
+    opacity: calc(1 - var(--problem-fragmentation-progress, 0) * 0.48);
+  }
 }
 
 @media (min-width: 40rem) {
@@ -749,6 +885,17 @@
   }
 }
 
+@media (min-width: 80rem) {
+  .experience-story__content {
+    margin-top: calc((100svh - var(--header-height-desktop)) * -1);
+  }
+
+  .home-story__sticky-frame {
+    top: var(--header-height-desktop);
+    height: calc(100svh - var(--header-height-desktop));
+  }
+}
+
 @media (max-height: 43.75rem) {
   .home-hero__container {
     padding-top: var(--space-stack-md);
@@ -777,6 +924,11 @@
 [data-motion-reduced="true"] .home-hero__actions,
 [data-motion-reduced="true"] .home-hero__competence,
 [data-motion-reduced="true"] .home-hero__scroll-cue {
+  opacity: 1;
+  transform: none;
+}
+
+[data-motion-reduced="true"] .home-diagnosis__panel {
   opacity: 1;
   transform: none;
 }

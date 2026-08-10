@@ -80,7 +80,9 @@ Nie ma autoplay, animacji liter, ukrywania treści do `ready=true` ani bibliotek
 
 ## 12. Integracja WebGL
 
-`ExperienceCanvas` działa z `layout="hero"` i `sequence="hero"`. Ciężki `ExperienceRenderer` jest importowany dynamicznie z wyłączonym SSR i montowany przez `IntersectionObserver`. Conversion Landscape używa tej samej geometrii, materiałów, quality tiers, sceny i pętli R3F co laboratorium; Hero nie tworzy drugiego canvasu, CameraRig ani progress store.
+Na publicznej stronie `HomeStory` używa `ExperienceCanvas` z `layout="story"` i `sequence="homepage"`. Pierwszy zakres tej sekwencji wyprowadza pięć klatek bezpośrednio z zatwierdzonego camera path Hero. Ciężki `ExperienceRenderer` jest importowany dynamicznie z wyłączonym SSR i montowany przez `IntersectionObserver`. Conversion Landscape używa tej samej geometrii, materiałów, quality tiers, sceny i pętli R3F co laboratorium; Hero i rozdział Problem → Diagnosis mają jeden canvas, CameraRig i progress store.
+
+Izolowany tryb `layout="hero"` oraz `sequence="hero"` pozostaje w `/experience-lab` do deterministycznego audytu samego wejścia. Nie jest drugim publicznym Hero.
 
 Pierwszy render zawiera CSS fallback i całe copy. Po gotowości renderer pojawia się przez krótką zmianę opacity, bez zmiany wymiarów i bez czarnego flasha.
 
@@ -90,11 +92,11 @@ Lista `Strony / Shoper / E-commerce / Allegro / UX/UI / Produkt` komunikuje rzec
 
 ## 14. Handoff
 
-Po Hero pojawia się minimalny, prawdziwy rozdział „Dlaczego to ma znaczenie” z nagłówkiem:
+Po Hero pojawia się finalny Problem Intro z nagłówkiem:
 
-> Dobry produkt może przegrać przez sposób, w jaki został pokazany.
+> Technicznie działa. Ale czy pomaga sprzedawać?
 
-Kamera kończy w otwartym kadrze, copy Hero pozostaje subtelnie obecne, a sekcja DOM kontynuuje problem bez gwałtownego resetu sceny ani `display: none`. Pełne Chaos → Diagnosis powstanie dopiero w etapie 8.
+Kamera kończy cinematic entry w otwartym kadrze, po czym ten sam centralny path przechodzi do bardziej analitycznego ruchu. Sekcja DOM kontynuuje problem bez gwałtownego resetu sceny ani `display: none`. Pełny kontrakt rozdziału opisuje `HOMEPAGE_PROBLEM_DIAGNOSIS.md`.
 
 ## 15. Fallback
 

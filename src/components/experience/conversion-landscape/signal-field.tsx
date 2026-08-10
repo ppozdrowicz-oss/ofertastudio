@@ -108,8 +108,13 @@ export function SignalField({
       );
       const markerProgress = reducedMotion
         ? connection.phase
-        : (connection.phase + scene.progress * 1.35) % 1;
-      const markerScale = Math.max(0.001, scene.signalProgress * 0.72);
+        : (connection.phase +
+            scene.progress * (1.35 - scene.diagnosisProgress * 0.5)) %
+          1;
+      const markerScale = Math.max(
+        0.001,
+        scene.signalProgress * (0.72 + scene.priorityProgress * 0.1),
+      );
 
       linePosition.setXYZ(index * 2, fromX, fromY, fromZ);
       linePosition.setXYZ(index * 2 + 1, toX, toY, toZ);
@@ -131,7 +136,8 @@ export function SignalField({
 
     linePosition.needsUpdate = true;
     markers.instanceMatrix.needsUpdate = true;
-    lineMaterial.opacity = 0.08 + scene.signalProgress * 0.48;
+    lineMaterial.opacity =
+      0.08 + scene.signalProgress * 0.42 + scene.diagnosisProgress * 0.08;
   });
 
   return (

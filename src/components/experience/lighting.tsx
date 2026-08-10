@@ -21,11 +21,13 @@ export function Lighting({ palette, sceneFrameRef }: LightingProps) {
     const scene = sceneFrameRef.current;
 
     if (focusLight) {
-      focusLight.intensity = 2.45 + scene.focusProgress * 0.55;
+      focusLight.intensity =
+        2.45 + scene.focusProgress * 0.45 + scene.diagnosisProgress * 0.18;
     }
 
     if (accentLight) {
-      accentLight.intensity = 0.52 + scene.signalProgress * 0.2;
+      accentLight.intensity =
+        0.52 + scene.signalProgress * 0.16 + scene.priorityProgress * 0.08;
     }
   });
 

@@ -76,25 +76,27 @@ Warstwa „The Conversion Landscape” jest progresywnym rozszerzeniem wybranych
 
 Podział modułów:
 
-- `src/components/experience/experience-canvas.tsx` — produkcyjna granica klientowa, detekcja możliwości, lazy mount, tryby `scroll`/`manual`/`static`, layout `panel`/`hero`, wybór sekwencji, error boundary i fallback,
+- `src/components/experience/experience-canvas.tsx` — produkcyjna granica klientowa, detekcja możliwości, lazy mount, tryby `scroll`/`manual`/`static`, layout `panel`/`hero`/`story`, wybór sekwencji, error boundary i fallback,
 - `experience-renderer.tsx` — `Canvas` R3F i konfiguracja renderera,
 - `experience-scene.tsx` — cienka kompozycja sceny,
 - `camera-rig.tsx` i `scroll-scene-controller.tsx` — ruch kamery i tłumienie progresu,
-- `scene-sequence-controller.tsx` — jedno mapowanie tłumionego progresu na semantykę sekwencji `conversion` albo `hero`,
-- `conversion-landscape/` — gramatyka Field, Modules, Signals i Focus Object współdzielona przez „Chaos → Structure” oraz finalny Hero,
+- `scene-sequence-controller.tsx` — jedno mapowanie tłumionego progresu na semantykę sekwencji `conversion`, `hero` albo `homepage`,
+- `conversion-landscape/` — gramatyka Field, Modules, Signals i Focus Object współdzielona przez „Chaos → Structure”, finalny Hero oraz Problem → Diagnosis,
 - `atmosphere.tsx` i `lighting.tsx` — fog oraz ograniczone oświetlenie studyjne bez cieni,
 - `performance-controller.tsx` — DPR, invalidacja, utrata kontekstu i opcjonalne metryki renderera w labie,
 - `webgl-fallback.tsx` — statyczna, serwerowo widoczna degradacja,
-- `src/lib/experience/camera-path.ts` — jedyne źródło klatek kamery dla sekwencji Conversion i Hero, każdej w kompozycji `wide` oraz `compact`,
-- `scene-timeline.ts`, `scene-config.ts` i `procedural.ts` — semantyczna oś czasu, konfiguracja choreografii i deterministyczne dane sceny,
+- `src/lib/experience/camera-path.ts` — jedyne źródło klatek kamery dla sekwencji Conversion, Hero i połączonej homepage, każdej w kompozycji `wide` oraz `compact`,
+- `scene-timeline.ts`, `scene-config.ts`, `diagnosis.ts` i `procedural.ts` — semantyczna oś czasu, konfiguracja choreografii, domeny diagnostyczne oraz deterministyczne dane sceny,
 - `quality.ts` i `render-budget.ts` — wybór jakości oraz jawny budżet strukturalny renderingu,
 - pozostałe moduły `src/lib/experience` — czyste modele ruchu, progresu i mapowania tokenów.
 
-R3F zarządza jedyną ciągłą pętlą renderowania. Pojedynczy RAF w `ExperienceCanvas` wyłącznie koaleskuje pomiary scrolla. Finalny Hero zapisuje ten sam semantic progress do refu WebGL i lokalnego CSS Custom Property, więc motion DOM nie tworzy drugiego store'a ani listenera. Transformacje instancji są aktualizowane przez refy, bez `setState` w każdej klatce. Wszystkie zasoby utworzone poza JSX mają jawny cleanup. Nie ma Lenisa, własnego smooth-scroll engine, Drei, GSAP, shaderów ani postprocessingu. Szczegóły opisują `INTERACTIVE_EXPERIENCE.md`, `CONVERSION_LANDSCAPE.md`, `HOMEPAGE_HERO.md`, `MOTION_SYSTEM.md` i `WEBGL_PERFORMANCE.md`.
+R3F zarządza jedyną ciągłą pętlą renderowania. Pojedynczy RAF w `ExperienceCanvas` wyłącznie koaleskuje pomiary scrolla. `HomeStory` zapisuje ten sam semantic progress do refu WebGL i lokalnego CSS Custom Property, więc motion DOM nie tworzy drugiego store'a ani listenera. Transformacje instancji są aktualizowane przez refy, bez `setState` w każdej klatce. Wszystkie zasoby utworzone poza JSX mają jawny cleanup. Nie ma Lenisa, własnego smooth-scroll engine, Drei, GSAP, shaderów ani postprocessingu. Szczegóły opisują `INTERACTIVE_EXPERIENCE.md`, `CONVERSION_LANDSCAPE.md`, `HOMEPAGE_HERO.md`, `HOMEPAGE_PROBLEM_DIAGNOSIS.md`, `MOTION_SYSTEM.md` i `WEBGL_PERFORMANCE.md`.
 
-### Homepage Hero
+### Homepage Hero i Problem → Diagnosis
 
-`src/app/page.tsx` pozostaje Server Component i kompozytuje `PageShell`, `HomeHero` oraz minimalny `HomeHandoff`. `HomeHero` przekazuje serwerowy `HeroContent` do klientowego `ExperienceCanvas`; dzieci są renderowane w pierwszym HTML, ponad fallbackiem i canvasem. H1, lead, CTA i competence signal pochodzą z `src/content/home-hero.ts`, a identyfikatory akcji rozwiązują się przez centralny `src/config/ctas.ts`.
+`src/app/page.tsx` pozostaje Server Component i kompozytuje `PageShell` oraz `HomeStory`. `HomeStory` przekazuje serwerowe `HomeHero` i `HomeProblemDiagnosis` do jednego klientowego `ExperienceCanvas`; dzieci są renderowane w pierwszym HTML, ponad fallbackiem i canvasem. H1, lead, CTA i competence signal pochodzą z `src/content/home-hero.ts`. Problem Intro, sześć problemów, trzy kroki diagnozy, Mini Diagnosis i handoff pochodzą z `src/content/home-problem-diagnosis.ts`. Identyfikatory akcji rozwiązują się przez centralny `src/config/ctas.ts`.
+
+Layout `story` utrzymuje jeden sticky kadr WebGL pod naturalnym flow treści. Hero ma własny ograniczony sticky frame, natomiast Problem Field, diagnoza oraz Mini Diagnosis pozostają zwykłym dokumentem; mobile nie zależy od precyzyjnej choreografii sticky. Sekwencja `homepage` łączy zatwierdzony Hero z `fragmented`, `observe`, `diagnose`, `prioritize`, `structured` i `handoff` bez drugiego canvasu.
 
 Hero wyłącza globalny panel CTA na tym etapie, ponieważ nie buduje jeszcze końca kompletnej strony głównej. Header i footer nadal należą wyłącznie do root layoutu. Ciężki renderer pozostaje dynamiczny i nie przenosi route'u ani copy do granicy klientowej.
 
@@ -111,14 +113,15 @@ Podział odpowiedzialności:
 - `src/config/navigation.ts` — menu nagłówka, mobile i stopki,
 - `src/content/service-groups.ts` i `services.ts` — hierarchia oferty i relacje,
 - `src/content/page-registry.ts` — planowane strony, intencje, canonicale i statusy,
-- `src/content/home-hero.ts` — finalne copy Hero, identyfikatory centralnych CTA, competence signal i minimalny handoff,
+- `src/content/home-hero.ts` — finalne copy Hero, identyfikatory centralnych CTA i competence signal,
+- `src/content/home-problem-diagnosis.ts` — typowany Problem Intro, sześć problemów, etapy diagnozy, Mini Diagnosis oraz handoff do transformacji,
 - pozostałe moduły `src/content` — segmenty, proces, FAQ, ścieżki, struktury widoków i realizacje,
 - `src/types` — wspólne kontrakty tych danych.
 - `src/lib/route-registry.ts` — serwerowe połączenie rejestru stron z parametrami technicznych tras i breadcrumbs.
 
 Komponent sekcji odpowiada za prezentację, nie za przechowywanie długich bloków copy. Dane muszą mieć stabilne identyfikatory, jeśli będą używane w listach lub linkach. CMS nie jest planowany bez decyzji biznesowej; jego ewentualne wprowadzenie powinno zachować istniejące kontrakty modeli treści.
 
-Integralność sprawdza `npm run content:check`. Skrypt nie zastępuje TypeScriptu: kontroluje relacje runtime, między innymi duplikaty adresów i slugów, istnienie powiązanych usług, prawidłowe CTA, wdrożenie każdego linku menu i stopki, kompletność grup megamenu, centralne breadcrumbs, rodziców stron i bezpieczne dane kontaktowe.
+Integralność sprawdza `npm run content:check`. Skrypt nie zastępuje TypeScriptu: kontroluje relacje runtime, między innymi duplikaty adresów i slugów, istnienie powiązanych usług, prawidłowe CTA, wdrożenie każdego linku menu i stopki, kompletność grup megamenu, centralne breadcrumbs, rodziców stron, bezpieczne dane kontaktowe oraz kompletność i mapowanie domen Problem Field.
 
 ## Metadata i SEO
 

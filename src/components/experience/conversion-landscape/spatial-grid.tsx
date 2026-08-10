@@ -103,7 +103,9 @@ export function SpatialGrid({
   useFrame(() => {
     if (materialRef.current) {
       materialRef.current.opacity =
-        0.2 + sceneFrameRef.current.structureProgress * 0.28;
+        0.2 +
+        sceneFrameRef.current.structureProgress * 0.24 +
+        sceneFrameRef.current.diagnosisProgress * 0.08;
     }
   });
 

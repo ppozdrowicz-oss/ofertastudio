@@ -16,11 +16,11 @@ Roadmapa porządkuje budowę serwisu w 14 kontrolowanych etapach. Zakres następ
 
 7. **Final homepage hero & cinematic entry — zakończony** — finalny Hero strony głównej, serwerowe copy i CTA, cinematic camera entry, wspólny progres DOM/WebGL, responsive composition, reduced motion, fallback oraz prawdziwy handoff.
 
-8. **Chaos → Diagnosis — następny etap** — problem storytelling i mini diagnosis rozwijające pierwszy handoff bez przebudowy finalnego Hero ani fundamentu Conversion Landscape.
+8. **Problem Storytelling: Chaos → Diagnosis — zakończony** — finalny Problem Intro, editorialny Problem Field, kontrolowany chaos, diagnoza relacji i priorytetów, pośredni stan Structure, Mini Diagnosis oraz ciągły handoff z Hero.
 
-9. **Strony internetowe** — podstrona filaru i usługi obejmujące potrzeby, zakres, sposób pracy, rezultaty i właściwe CTA.
+9. **Transformation Experience: Before → After & Product Presentation Rebuild — następny etap** — właściwa transformacja z rozpoznanego problemu do przeprojektowanego sposobu prezentacji produktu, bez resetu Conversion Landscape.
 
-10. **Sklepy internetowe i Shoper** — oferta wdrożeń sklepów, konfiguracji Shoper, personalizacji szablonów, UX i opieki.
+10. **Usługi: strony, sklepy internetowe i Shoper** — podstrony filarów oraz usługi obejmujące potrzeby, zakres, sposób pracy, rezultaty, konfigurację, personalizację, UX i opiekę.
 
 11. **Allegro, OLX i prezentacja produktów** — usługi optymalizacji marketplace oraz zdjęć, opisów i prezentacji ofert.
 

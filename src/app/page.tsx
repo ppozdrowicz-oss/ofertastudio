@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 
-import { HomeHandoff } from "@/components/home/home-handoff";
-import { HomeHero } from "@/components/home/home-hero";
+import { HomeStory } from "@/components/home/home-story";
 import { PageShell } from "@/components/layout/page-shell";
 
 export const metadata: Metadata = {
@@ -13,8 +12,7 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <PageShell showGlobalCta={false}>
-      <HomeHero />
-      <HomeHandoff />
+      <HomeStory />
     </PageShell>
   );
 }

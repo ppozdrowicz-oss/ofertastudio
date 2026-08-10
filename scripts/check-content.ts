@@ -7,6 +7,7 @@ import { audiences } from "../src/content/audiences.ts";
 import { conversionPaths } from "../src/content/conversion-paths.ts";
 import { faqs } from "../src/content/faqs.ts";
 import { homeHeroContent } from "../src/content/home-hero.ts";
+import { homeProblemDiagnosisContent } from "../src/content/home-problem-diagnosis.ts";
 import { plannedPages } from "../src/content/page-registry.ts";
 import {
   homepageSections,
@@ -16,6 +17,7 @@ import { processSteps } from "../src/content/process.ts";
 import { projects } from "../src/content/projects.ts";
 import { serviceGroups } from "../src/content/service-groups.ts";
 import { services } from "../src/content/services.ts";
+import { diagnosticDomainIds } from "../src/lib/experience/diagnosis.ts";
 import { isPathActive } from "../src/lib/navigation-state.ts";
 import {
   getBreadcrumbItems,
@@ -317,6 +319,61 @@ check(
   "Hero strony głównej nie ma kompletnego komunikatu.",
 );
 checkUnique("Obszary kompetencji Hero", homeHeroContent.competenceAreas);
+
+const homeProblems = homeProblemDiagnosisContent.problemField.problems;
+const homeDiagnosisSteps = homeProblemDiagnosisContent.diagnosis.steps;
+
+check(
+  homeProblems.length >= 5 && homeProblems.length <= 7,
+  "Rozdział problemowy powinien zawierać od 5 do 7 konkretnych problemów.",
+);
+checkUnique(
+  "Identyfikatory problemów homepage",
+  homeProblems.map((problem) => problem.id),
+);
+checkUnique(
+  "Indeksy problemów homepage",
+  homeProblems.map((problem) => problem.index),
+);
+checkUnique(
+  "Domeny diagnostyczne homepage",
+  homeProblems.map((problem) => problem.sceneDomain),
+);
+check(
+  diagnosticDomainIds.every((domain) =>
+    homeProblems.some((problem) => problem.sceneDomain === domain),
+  ),
+  "Problem Field nie mapuje wszystkich domen diagnostycznych sceny.",
+);
+for (const [index, problem] of homeProblems.entries()) {
+  check(
+    problem.index === String(index + 1).padStart(2, "0"),
+    `Problem ${problem.id} ma niespójny indeks.`,
+  );
+  check(
+    problem.title.trim().length > 0 && problem.description.trim().length > 0,
+    `Problem ${problem.id} nie ma kompletnej treści.`,
+  );
+}
+checkUnique(
+  "Identyfikatory kroków diagnozy homepage",
+  homeDiagnosisSteps.map((step) => step.id),
+);
+checkUnique(
+  "Indeksy kroków diagnozy homepage",
+  homeDiagnosisSteps.map((step) => step.index),
+);
+check(
+  ctaIds.has(homeProblemDiagnosisContent.miniDiagnosis.ctaId),
+  "Mini Diagnosis używa nieznanego CTA.",
+);
+check(
+  homeProblemDiagnosisContent.intro.title.trim().length > 0 &&
+    homeProblemDiagnosisContent.diagnosis.title.trim().length > 0 &&
+    homeProblemDiagnosisContent.miniDiagnosis.title.trim().length > 0 &&
+    homeProblemDiagnosisContent.handoff.title.trim().length > 0,
+  "Rozdział Problem → Diagnosis nie ma kompletnej hierarchii komunikatów.",
+);
 
 for (const group of serviceGroups) {
   check(

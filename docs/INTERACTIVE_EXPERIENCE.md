@@ -2,7 +2,7 @@
 
 ## Status i zakres
 
-Etap 5 wprowadził produkcyjny fundament opcjonalnej warstwy WebGL, etap 6 zbudował proceduralny świat i sekwencję Chaos → Structure, a etap 7 podłączył ten sam system do finalnego Hero na `/`. Laboratorium `/experience-lab` pozostaje nieindeksowanym miejscem do deterministycznego testowania obu sekwencji.
+Etap 5 wprowadził produkcyjny fundament opcjonalnej warstwy WebGL, etap 6 zbudował proceduralny świat i sekwencję Chaos → Structure, etap 7 podłączył ten sam system do finalnego Hero, a etap 8 rozszerzył jedną oś homepage o Problem → Diagnoza. Laboratorium `/experience-lab` pozostaje nieindeksowanym miejscem do deterministycznego testowania wszystkich trzech sekwencji.
 
 Warstwa bazuje na Three.js i React Three Fiber. Nie używa modeli zewnętrznych, tekstur, postprocessingu, systemu cząstek, shaderów ani bibliotek smooth scroll. HTML, metadata, nawigacja, CTA i cała treść sprzedażowa pozostają niezależne od canvasu. Pełny język sceny opisuje [CONVERSION_LANDSCAPE.md](./CONVERSION_LANDSCAPE.md), a produkcyjne użycie w otwarciu strony [HOMEPAGE_HERO.md](./HOMEPAGE_HERO.md).
 
@@ -71,8 +71,8 @@ Najważniejsze propsy:
 
 - `enabled` — całkowicie wyłącza warstwę experience i pozostawia ewentualne `children` jako zwykły DOM,
 - `forceFallback` — wymusza statyczny wariant,
-- `layout="panel" | "hero"` — wybiera techniczny panel albo pełną kompozycję bez dublowania canvasu,
-- `sequence="conversion" | "hero"` — wybiera centralny timeline i camera path,
+- `layout="panel" | "hero" | "story"` — wybiera techniczny panel, Hero albo wielosekcyjną kompozycję z jednym sticky canvasem,
+- `sequence="conversion" | "hero" | "homepage"` — wybiera centralny timeline i camera path,
 - `mode="scroll" | "static" | "manual"` — wybiera długi tor narracji, pojedynczy kadr albo sterowanie laboratorium,
 - `progress` — ręczna wartość `0–1` używana tylko w trybie manual,
 - `motionPreference="auto" | "reduced"` — testuje statyczny wariant bez zmiany preferencji systemowej,
@@ -93,7 +93,7 @@ Tłumi zmianę `targetProgressRef` i zapisuje wynik do `dampedProgressRef`. Redu
 
 ### `CameraRig`
 
-Konsumuje centralną trajektorię z `camera-path.ts`. Sekwencja Conversion ma po cztery ujęcia, a Hero po pięć: arrival, recognition, approach, opening oraz handoff. Obie posiadają osobne kompozycje `wide` i `compact`. Rig kontroluje pozycję, cel, FOV i minimalny roll. Pointer influence jest ograniczony przez quality tier, tłumiony i wyłączony dla touch oraz reduced motion.
+Konsumuje centralną trajektorię z `camera-path.ts`. Sekwencja Conversion ma po cztery ujęcia, Hero po pięć, a homepage rozszerza wejście o problem intro, fragmentację, obserwację, diagnozę, priorytetyzację, strukturę pośrednią i przygotowanie transformacji. Każda posiada osobne kompozycje `wide` i `compact`. Rig kontroluje pozycję, cel, FOV i minimalny roll. Pointer influence jest ograniczony przez quality tier, tłumiony i wyłączony dla touch oraz reduced motion.
 
 ### `ConversionLandscape`
 
@@ -101,7 +101,7 @@ Cienka kompozycja proceduralnego świata. Łączy `LandscapeField`, `SpatialGrid
 
 ### `SceneSequenceController`
 
-Tłumaczy damped progress wybranej sekwencji na semantyczne wartości `structureProgress`, `signalProgress`, `focusProgress` i `chaosWeight`. Aktualizuje jeden ref przed renderowaniem obiektów i nie wywołuje React state update na klatkę. Hero startuje od uporządkowanego świata, a laboratorium zachowuje pełne Chaos → Structure.
+Tłumaczy damped progress wybranej sekwencji na semantyczne wartości `structureProgress`, `signalProgress`, `focusProgress`, `chaosWeight`, `fragmentationProgress`, `diagnosisProgress`, `priorityProgress` i `diagnosticFocus`. Aktualizuje jeden ref przed renderowaniem obiektów i nie wywołuje React state update na klatkę. Hero startuje od uporządkowanego świata, homepage przechodzi przez kontrolowaną fragmentację do diagnozy, a laboratorium zachowuje pełne Chaos → Structure.
 
 ### `Atmosphere`, `Lighting`, `PerformanceController`
 
@@ -112,6 +112,8 @@ Małe moduły odpowiedzialne odpowiednio za tło i fog, kontrolowane światło o
 Statyczny, dekoracyjny układ CSS oparty na tych samych tokenach co scena. Jest obecny przed pobraniem renderera, przy braku WebGL, w stanie błędu i po wymuszeniu fallbacku. Nie pokazuje użytkownikowi technicznego komunikatu o braku WebGL.
 
 ## Model scrolla
+
+Poniższa tabela opisuje bazową sekwencję laboratoryjną `conversion`. Produkcyjny homepage korzysta z osobnej, ciągłej osi `homepage`, której zakresy Hero i Problem → Diagnoza są centralnie zdefiniowane w `scene-timeline.ts` i opisane w [HOMEPAGE_PROBLEM_DIAGNOSIS.md](./HOMEPAGE_PROBLEM_DIAGNOSIS.md).
 
 |      Zakres | Identyfikator    | Rola docelowa                            |
 | ----------: | ---------------- | ---------------------------------------- |
@@ -151,7 +153,7 @@ Tier wynika z możliwości, nie z user-agent sniffingu. W przyszłości można d
 Przy `prefers-reduced-motion: reduce`:
 
 - scena otrzymuje tier Low,
-- progres zostaje ustawiony na stabilny kadr `0.92` dla Conversion albo `0.70` dla Hero,
+- progres zostaje ustawiony na stabilny kadr `0.92` dla Conversion, `0.70` dla Hero albo `0.86` dla homepage,
 - travel kamery i pointer influence są wyłączone,
 - Canvas renderuje na żądanie,
 - treść DOM pozostaje bez zmian,
@@ -187,4 +189,4 @@ Nowa scena musi:
 9. przejść `typecheck`, `lint`, `design:check`, `experience:check` i build,
 10. zostać opisana w dokumentacji oraz inwentarzu.
 
-Finalny Hero jest jedynym produkcyjnym użyciem sceny na tym etapie. Sam fakt istnienia laboratorium i wspólnego silnika nie upoważnia do umieszczenia WebGL na wszystkich podstronach.
+Homepage Hero i Problem → Diagnoza są jednym produkcyjnym użyciem sceny oraz jednego canvasu. Sam fakt istnienia laboratorium i wspólnego silnika nie upoważnia do umieszczenia WebGL na wszystkich podstronach.
