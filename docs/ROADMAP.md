@@ -10,22 +10,22 @@ Roadmapa porządkuje budowę serwisu w 14 kontrolowanych etapach. Zakres następ
 
 4. **Globalny layout, nawigacja i stopka — zakończony** — dostępna, responsywna rama serwisu, sticky header, megamenu, modalne menu mobilne, centralne breadcrumbs, globalne CTA, stopka i techniczny routing wszystkich celów linków.
 
-5. **Strona główna — następny etap** — pełna narracja wartości, priorytetowe usługi, dowody, proces i ścieżki konwersji.
+5. **Interactive experience, motion i WebGL — zakończony** — progresywny fundament „The Conversion Landscape”, lazy canvas, CameraRig, scroll model, quality tiers, reduced motion, fallback i laboratorium `/experience-lab`.
 
-6. **Strony internetowe** — podstrona usługi obejmująca potrzeby, zakres, sposób pracy, rezultaty i właściwe CTA.
+6. **Strona główna — następny etap** — pełna narracja wartości, priorytetowe usługi, dowody, proces i ścieżki konwersji z kontrolowaną integracją warstwy experience.
 
-7. **Sklepy internetowe i Shoper** — oferta wdrożeń sklepów, konfiguracji Shoper i personalizacji szablonów.
+7. **Strony internetowe** — podstrona usługi obejmująca potrzeby, zakres, sposób pracy, rezultaty i właściwe CTA.
 
-8. **Allegro, OLX i prezentacja produktów** — usługi optymalizacji marketplace oraz zdjęć, opisów i prezentacji ofert.
+8. **Sklepy internetowe i Shoper** — oferta wdrożeń sklepów, konfiguracji Shoper i personalizacji szablonów.
 
-9. **Realizacje i case studies** — model danych, indeks realizacji i wiarygodne studia przypadków oparte na zatwierdzonych materiałach.
+9. **Allegro, OLX i prezentacja produktów** — usługi optymalizacji marketplace oraz zdjęć, opisów i prezentacji ofert.
 
-10. **Oferta, pakiety i proces współpracy** — uporządkowanie zakresów, modeli rozliczeń, kwalifikacji projektu i kolejnych kroków współpracy.
+10. **Realizacje i case studies** — model danych, indeks realizacji i wiarygodne studia przypadków oparte na zatwierdzonych materiałach.
 
-11. **Formularze i pozyskiwanie leadów** — dostępne formularze, walidacja, obsługa stanów, zgody i bezpieczna ścieżka dostarczenia zapytań.
+11. **Oferta, pakiety i proces współpracy** — uporządkowanie zakresów, modeli rozliczeń, kwalifikacji projektu i kolejnych kroków współpracy.
 
-12. **SEO, dane strukturalne i analityka** — techniczne SEO, sitemap, canonicale, schema.org, plan zdarzeń i zgodna konfiguracja pomiaru.
+12. **Formularze i pozyskiwanie leadów** — dostępne formularze, walidacja, obsługa stanów, zgody i bezpieczna ścieżka dostarczenia zapytań.
 
-13. **Audyt UX, responsywności i dostępności** — testy urządzeń i breakpointów, klawiatury, czytników, kontrastu, ruchu i kluczowych scenariuszy użytkownika.
+13. **SEO, dane strukturalne i analityka** — techniczne SEO, sitemap, canonicale, schema.org, plan zdarzeń i zgodna konfiguracja pomiaru.
 
-14. **Audyt końcowy, testy i przygotowanie produkcyjne** — testy regresji, wydajność, bezpieczeństwo, treści, konfiguracja środowiska i kontrolowana lista gotowości do wdrożenia.
+14. **Audyt UX i przygotowanie produkcyjne** — połączony audyt responsywności, dostępności, WebGL, regresji, wydajności, bezpieczeństwa, treści i konfiguracji wdrożenia.

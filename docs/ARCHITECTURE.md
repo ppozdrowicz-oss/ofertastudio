@@ -2,7 +2,7 @@
 
 ## Stack i założenia bazowe
 
-Projekt jest aplikacją Next.js 16 z App Routerem, Reactem 19 i TypeScriptem w trybie `strict`. Warstwę prezentacji budują Tailwind CSS 4 oraz CSS Custom Properties. ESLint odpowiada za reguły frameworka, TypeScriptu i importów, a Prettier za spójne formatowanie kodu, CSS, JSON i Markdown.
+Projekt jest aplikacją Next.js 16 z App Routerem, Reactem 19 i TypeScriptem w trybie `strict`. Warstwę prezentacji budują Tailwind CSS 4 oraz CSS Custom Properties. Opcjonalną warstwę przestrzenną tworzą Three.js i React Three Fiber. ESLint odpowiada za reguły frameworka, TypeScriptu i importów, a Prettier za spójne formatowanie kodu, CSS, JSON i Markdown.
 
 Aplikacja jest obecnie statycznym serwisem usługowym. Nie ma CMS, bazy danych, uwierzytelniania ani zewnętrznych integracji. Takie elementy mogą zostać dodane dopiero po potwierdzeniu rzeczywistego wymagania biznesowego.
 
@@ -14,6 +14,7 @@ Lokalny development korzysta z domyślnego Turbopacka. Produkcyjny skrypt używa
 src/
   app/                  # route'y, layout, metadata i pliki specjalne
   components/
+    experience/         # izolowana granica WebGL, scena i kontrolery
     layout/             # prymitywy i produkcyjna rama globalna strony
     navigation/         # kontrolowana granica klientowa menu
     sections/           # kompozycje sekcji o znaczeniu dla widoku
@@ -22,7 +23,7 @@ src/
   config/               # konfiguracja serwisu niezależna od konkretnej strony
   content/              # typowane modele i treści widoków
   hooks/                # wyłącznie współdzielone hooki z realnymi konsumentami
-  lib/                  # małe funkcje pomocnicze
+  lib/                  # małe funkcje pomocnicze, w tym czyste modele experience
   styles/               # globalne style i tokeny
   types/                # wyłącznie współdzielone typy domenowe
 public/
@@ -35,7 +36,7 @@ docs/
 scripts/                # lokalne kontrole integralności treści
 ```
 
-Katalog `types` zawiera współdzielone kontrakty domenowe treści, usług, nawigacji i realizacji. Prymitywy współdzielone przez kilka domen znajdują się w `types/core.ts`, co zapobiega cyklicznym zależnościom typów. Katalog `shared` ma realnych konsumentów: zawiera komponenty domenowe i kompozycyjne zbudowane na prymitywach UI. Katalog `hooks` nie istnieje, ponieważ logika klientowa ma obecnie jednego konsumenta i pozostaje w `MainNavigation`. Pliki `index.ts` tworzymy tylko wtedy, gdy stabilizują publiczny interfejs niewielkiego modułu, a nie jako domyślną warstwę każdego katalogu.
+Katalog `types` zawiera współdzielone kontrakty domenowe treści, usług, nawigacji i realizacji. Prymitywy współdzielone przez kilka domen znajdują się w `types/core.ts`, co zapobiega cyklicznym zależnościom typów. Katalog `shared` ma realnych konsumentów: zawiera komponenty domenowe i kompozycyjne zbudowane na prymitywach UI. Katalog `hooks` nie istnieje, ponieważ logika nawigacji i experience pozostaje blisko swoich pojedynczych konsumentów. Pliki `index.ts` tworzymy tylko wtedy, gdy stabilizują publiczny interfejs niewielkiego modułu, a nie jako domyślną warstwę każdego katalogu.
 
 ## Podział komponentów
 
@@ -43,13 +44,19 @@ Katalog `types` zawiera współdzielone kontrakty domenowe treści, usług, nawi
 - **Layout** — prymitywy kontrolujące szerokość i rytm kompozycji. Przykłady: `Container`, `Section`.
 - **Sections** — semantyczne fragmenty widoku składające UI, layout i treść; mogą znać model konkretnej sekcji.
 - **Shared** — większe elementy domenowe używane na wielu stronach, np. karta realizacji, jeśli pojawi się co najmniej dwóch realnych konsumentów.
+- **Experience** — odseparowane elementy progresywnego WebGL: granica canvasu, kamera, kontrolery jakości, atmosfera i procedury sceny. Nie przechowują treści ani routingu.
 - **Route** — plik `page.tsx` kompozytuje sekcje i definiuje sprawy właściwe dla adresu. Nie powinien zawierać rozbudowanej implementacji wizualnej.
 
 Komponenty przyjmują standardowe atrybuty HTML, kiedy ma to sens, zachowują semantykę i nie dublują natywnego elementu bez korzyści. Wspólne warianty powinny wynikać z design systemu, a nie z pojedynczego widoku.
 
 ## Server Components i Client Components
 
-Wszystkie komponenty są domyślnie Server Components. Pozwala to ograniczyć JavaScript wysyłany do przeglądarki i utrzymać prosty model renderowania treści. `MainNavigation` jest jedyną jawną granicą klientową: obsługuje `usePathname`, dropdowny, modalne menu mobilne, blokadę scrolla i focus management. `SiteHeader` pozostaje Server Component.
+Wszystkie komponenty są domyślnie Server Components. Pozwala to ograniczyć JavaScript wysyłany do przeglądarki i utrzymać prosty model renderowania treści. Projekt ma dwie jawne, rozłączne granice klientowe:
+
+- `MainNavigation` obsługuje `usePathname`, dropdowny, modalne menu mobilne, blokadę scrolla i focus management;
+- `ExperienceCanvas` obsługuje możliwości przeglądarki, lazy mount renderera, scroll, pointer i fallback. Ciężki `ExperienceRenderer` jest dodatkowo importowany dynamicznie z wyłączonym SSR.
+
+`SiteHeader`, root layout, `PageShell`, `SiteFooter` oraz route laboratorium pozostają Server Components.
 
 Dyrektywę `"use client"` dodajemy wyłącznie do najniższego komponentu, który potrzebuje:
 
@@ -60,6 +67,23 @@ Dyrektywę `"use client"` dodajemy wyłącznie do najniższego komponentu, któr
 - biblioteki działającej tylko po stronie klienta.
 
 Nie oznaczamy całych stron ani layoutu jako klientowe dla wygody. Dane i treści powinny pozostać po stronie serwera, a do klienta przekazujemy możliwie mały, serializowalny kontrakt.
+
+## Warstwa interactive experience
+
+Warstwa „The Conversion Landscape” jest progresywnym rozszerzeniem wybranych widoków. HTML i SEO nie zależą od WebGL. Jej przepływ to: natywny scroll → progres `0–1` → tłumiony stan sceny → `CameraRig`. Scroll nigdy nie zapisuje bezpośrednio transformacji kamery.
+
+Podział modułów:
+
+- `src/components/experience/experience-canvas.tsx` — jedyna jawna granica klientowa, detekcja możliwości, lazy mount i fallback,
+- `experience-renderer.tsx` — `Canvas` R3F i konfiguracja renderera,
+- `experience-scene.tsx` — cienka kompozycja sceny,
+- `camera-rig.tsx` i `scroll-scene-controller.tsx` — ruch kamery i tłumienie progresu,
+- `prototype-landscape.tsx`, `atmosphere.tsx`, `lighting.tsx` — proceduralny prototyp wizualny,
+- `performance-controller.tsx` — DPR, invalidacja i utrata kontekstu,
+- `webgl-fallback.tsx` — statyczna, serwerowo widoczna degradacja,
+- `src/lib/experience` — czyste modele ruchu, zakresów, jakości i mapowania tokenów.
+
+R3F zarządza jedyną ciągłą pętlą renderowania. Pojedynczy RAF w `ExperienceCanvas` wyłącznie koaleskuje pomiary scrolla. Nie ma Lenisa, własnego smooth-scroll engine, Drei, shaderów ani postprocessingu. Szczegóły opisują `INTERACTIVE_EXPERIENCE.md`, `MOTION_SYSTEM.md` i `WEBGL_PERFORMANCE.md`.
 
 ## Przechowywanie treści
 
@@ -107,13 +131,21 @@ Wspólny `src/app/[...slug]/page.tsx` statycznie renderuje znane adresy przez `g
 
 ## Style i tokeny
 
-`src/styles/globals.css` zawiera finalne tokeny Flat Modern Premium: surową paletę, kolory semantyczne, pełną typografię, odstępy, kontenery, promienie, cienie i ruch. `@theme inline` udostępnia je jako narzędzia Tailwind CSS. Komponenty korzystają z tokenów semantycznych i nie zawierają lokalnych kolorów hex.
+`src/styles/globals.css` zawiera finalne tokeny Flat Modern Premium: surową paletę, kolory semantyczne, pełną typografię, odstępy, kontenery, promienie, cienie i ruch. Zawiera również ograniczony zestaw semantycznych tokenów `--experience-*` oraz warstwy tła, canvasu i treści. `@theme inline` udostępnia potrzebne wartości jako narzędzia Tailwind CSS. Komponenty korzystają z tokenów semantycznych i nie zawierają lokalnych kolorów hex.
 
 Preferowana kolejność decyzji stylów to: istniejący komponent → istniejący token → uzasadnione rozszerzenie design systemu → dopiero lokalna wartość wyjątkowa. Nie stosujemy przypadkowych gradientów ani niepowiązanych efektów.
 
-Techniczna trasa `/design-system` prezentuje publiczne warianty komponentów. Ma metadata `noindex, nofollow`, nie znajduje się w nawigacji ani produkcyjnym rejestrze stron. `npm run design:check` sprawdza obecność modułów, brak cykli importów, brak nieuzasadnionych Client Components, typów `any`, stylów inline i kolorów hex w komponentach oraz kontrast zdefiniowanych par.
+Techniczna trasa `/design-system` prezentuje publiczne warianty komponentów. `/experience-lab` prezentuje lazy WebGL, model scrolla, quality tiers i wymuszony fallback. Obie mają metadata `noindex, nofollow`, nie znajdują się w nawigacji ani produkcyjnym rejestrze stron. `npm run design:check` sprawdza komponenty i tokeny, a `npm run experience:check` zakresy narracji, budżety jakości, progressive enhancement, cleanup oraz izolację WebGL od root layoutu.
 
 ## Zależności
+
+Warstwa experience dodaje trzy jawne pakiety:
+
+- `three` — renderer, geometria, materiały, kamera i matematyka sceny,
+- `@react-three/fiber` — deklaratywna integracja Three.js z Reactem i jedna zarządzana pętla renderowania,
+- `@types/three` — typy deweloperskie wymagane przez Three.js oraz kontrakty R3F.
+
+`@types/three` ma własne zależności deweloperskie obejmujące typy i pakiet kompatybilności Rapier, ale aplikacja nie importuje silnika fizyki i nie trafia on do chunków runtime. Nie dodano Drei, Lenisa, biblioteki animacyjnej, postprocessingu ani shader toolkit.
 
 - Nowa zależność musi rozwiązywać konkretny problem lepiej niż niewielka implementacja lokalna.
 - Przed instalacją sprawdzamy zgodność peer dependencies, wpływ na bundle, aktywność projektu i dostępność.

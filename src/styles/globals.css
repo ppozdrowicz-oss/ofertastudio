@@ -50,6 +50,16 @@
   --color-accent-border: var(--accent-border);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent-surface: var(--accent-surface);
+  --color-experience-background: var(--experience-background);
+  --color-experience-accent: var(--experience-accent);
+  --color-experience-depth: var(--experience-depth);
+  --color-experience-fog: var(--experience-fog);
+  --color-experience-foreground: var(--experience-foreground);
+  --color-experience-grid: var(--experience-grid);
+  --color-experience-light: var(--experience-light);
+  --color-experience-muted: var(--experience-muted);
+  --color-experience-panel: var(--experience-panel);
+  --color-experience-surface: var(--experience-surface);
   --font-sans: var(--font-inter);
   --shadow-overlay: var(--shadow-elevation-overlay);
   --shadow-raised: var(--shadow-elevation-raised);
@@ -153,6 +163,22 @@
   --accent-foreground: var(--lime-950);
   --accent-border: var(--lime-200);
 
+  /* Semantic palette for the optional immersive layer. */
+  --experience-background: var(--surface-inverse);
+  --experience-fog: var(--surface-inverse-muted);
+  --experience-light: var(--cobalt-500);
+  --experience-grid: var(--surface-inverse-border);
+  --experience-depth: var(--cobalt-900);
+  --experience-surface: var(--neutral-150);
+  --experience-accent: var(--accent);
+  --experience-foreground: var(--surface-inverse-foreground);
+  --experience-muted: var(--surface-inverse-muted-foreground);
+  --experience-panel: color-mix(
+    in srgb,
+    var(--experience-background) 88%,
+    transparent
+  );
+
   --success-surface: #e9f8ef;
   --success-foreground: #166534;
   --success-border: #a8ddba;
@@ -231,9 +257,14 @@
   --container-wide: 92rem;
   --header-height-mobile: 4.25rem;
   --header-height-desktop: 4.75rem;
+  --experience-track-height: 240svh;
+  --experience-static-height: clamp(22rem, 70svh, 42rem);
 
   /* Controlled interface layers. */
   --layer-base: 0;
+  --layer-experience-background: 1;
+  --layer-experience-canvas: 2;
+  --layer-experience-content: 3;
   --layer-header: 30;
   --layer-dropdown: 40;
   --layer-overlay: 50;
@@ -344,6 +375,108 @@
 
   .measure-copy {
     max-width: var(--measure-copy);
+  }
+
+  .experience-fallback {
+    overflow: hidden;
+    background-color: var(--experience-background);
+    background-image:
+      radial-gradient(
+        circle at 72% 18%,
+        color-mix(in srgb, var(--experience-light) 18%, transparent),
+        transparent 36%
+      ),
+      linear-gradient(
+        154deg,
+        color-mix(in srgb, var(--experience-depth) 64%, transparent),
+        transparent 58%
+      );
+  }
+
+  .experience-fallback::before {
+    position: absolute;
+    inset: -22% -12%;
+    background-image:
+      linear-gradient(
+        to right,
+        color-mix(in srgb, var(--experience-grid) 56%, transparent) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        color-mix(in srgb, var(--experience-grid) 44%, transparent) 1px,
+        transparent 1px
+      );
+    background-size: 2.5rem 2.5rem;
+    content: "";
+    opacity: 0.52;
+    transform: perspective(28rem) rotateX(58deg) translateY(24%);
+    transform-origin: center;
+  }
+
+  .experience-fallback__modules {
+    position: absolute;
+    inset: 0;
+  }
+
+  .experience-fallback__module {
+    position: absolute;
+    bottom: 16%;
+    width: clamp(1.8rem, 6vw, 4.5rem);
+    border: 1px solid var(--experience-grid);
+    border-radius: var(--radius-small);
+    background: color-mix(
+      in srgb,
+      var(--experience-surface) 82%,
+      var(--experience-depth)
+    );
+    opacity: 0.72;
+    transform: skewY(-8deg);
+  }
+
+  .experience-fallback__module:nth-child(1) {
+    left: 8%;
+    height: 14%;
+  }
+
+  .experience-fallback__module:nth-child(2) {
+    bottom: 24%;
+    left: 19%;
+    height: 24%;
+  }
+
+  .experience-fallback__module:nth-child(3) {
+    left: 32%;
+    height: 34%;
+  }
+
+  .experience-fallback__module:nth-child(4) {
+    bottom: 28%;
+    left: 44%;
+    height: 18%;
+  }
+
+  .experience-fallback__module:nth-child(5) {
+    right: 36%;
+    height: 30%;
+  }
+
+  .experience-fallback__module:nth-child(6) {
+    right: 24%;
+    bottom: 22%;
+    height: 42%;
+  }
+
+  .experience-fallback__module:nth-child(7) {
+    right: 13%;
+    height: 22%;
+  }
+
+  .experience-fallback__module:nth-child(8) {
+    right: 4%;
+    bottom: 30%;
+    height: 14%;
+    background: var(--experience-accent);
   }
 }
 

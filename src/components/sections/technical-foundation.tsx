@@ -20,10 +20,10 @@ export function TechnicalFoundation() {
     >
       <Container size="wide">
         <SectionHeading
-          description="Każdy element niżej korzysta z produkcyjnych komponentów. Otwórz przykładową podstronę, aby sprawdzić aktywny filar i breadcrumbs."
+          description="Globalny layout zachowuje pełną treść i nawigację bez WebGL. Prototyp sceny działa wyłącznie w osobnym, nieindeksowanym laboratorium."
           eyebrow="Punkt kontroli"
           size="h2"
-          title="Warstwa globalna działa jako jeden system"
+          title="DOM i warstwa experience mają osobne odpowiedzialności"
           titleId="foundation-title"
           width="wide"
         />
@@ -32,15 +32,15 @@ export function TechnicalFoundation() {
             <CardContent className="pt-[var(--space-card-padding)]">
               <div className="flex flex-wrap items-center justify-between gap-4">
                 <IconBox icon={LayoutTemplate} size="large" variant="primary" />
-                <Badge variant="success">Etap 4 gotowy</Badge>
+                <Badge variant="success">Etap 5 gotowy</Badge>
               </div>
               <h2 className="mt-8 text-h3 font-semibold">
-                Header, menu, podstrona i stopka
+                Treść, nawigacja i progressive enhancement
               </h2>
               <p className="mt-4 max-w-[var(--measure-copy)] text-body-lg text-muted-foreground">
                 Nawigacja desktopowa i mobilna korzystają z jednego źródła
-                danych, a każda opublikowana pozycja prowadzi do działającej
-                trasy technicznej.
+                danych. Canvas nie blokuje HTML, nie przechwytuje fokusu i
+                degraduje się do statycznej kompozycji bez utraty informacji.
               </p>
               <ButtonLink
                 className="mt-8"

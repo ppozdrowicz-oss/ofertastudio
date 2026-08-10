@@ -22,6 +22,7 @@ Budujemy od zera profesjonalną stronę usługową premium dla OfertaStudio — 
 - ESLint i Prettier,
 - Lucide React dla ikon,
 - `next/font` dla fontów.
+- Three.js i React Three Fiber wyłącznie dla odseparowanej, progresywnej warstwy experience.
 
 Używaj npm i zachowuj `package-lock.json`. Nie wprowadzaj Pages Routera, ciężkich bibliotek UI ani zewnętrznej zależności, jeżeli problem można czytelnie rozwiązać istniejącym stosem.
 
@@ -116,6 +117,23 @@ Komponenty `shared` istnieją wyłącznie dla realnych wzorców domenowych, taki
 - Nie twórz osobnej podstrony tylko dla synonimu frazy. Najpierw sprawdź ryzyko kanibalizacji w `docs/SEO_CONTENT_MAP.md`.
 - Nowa usługa, CTA, relacja lub trasa musi przejść `npm run content:check`.
 
+## Interactive experience i WebGL
+
+- WebGL nigdy nie zawiera jedynej wersji ważnej treści. UI, CTA, nawigacja, semantyka i SEO pozostają w DOM.
+- Nie wolno przenosić root layoutu, `PageShell`, headera, stopki ani route'u tylko po to, aby obsłużyć WebGL, do Client Component. Jawna granica klientowa zaczyna się w `ExperienceCanvas`.
+- Ciężki renderer importuj dynamicznie i montuj dopiero w pobliżu viewportu. Każde użycie musi rezerwować stabilny obszar i pokazywać fallback przed gotowością sceny.
+- Każda scena posiada jawne zachowanie reduced motion, strategię mobile, quality tiers oraz działający wariant bez WebGL.
+- Cały kolor sceny pochodzi z semantycznych tokenów `--experience-*` w `src/styles/globals.css`; nie wpisuj kolorów hex w komponentach, materiałach ani shaderach.
+- Nie dodawaj dużych modeli, tekstur, HDRI, wideo ani innych assetów bez opisanego budżetu rozmiaru, geometrii, pamięci i wariantów jakości.
+- Nie dodawaj bibliotek WebGL, shaderów, particles, postprocessingu, physics ani smooth scroll bez konkretnego konsumenta, analizy wpływu i aktualizacji dokumentacji.
+- R3F zarządza wspólną pętlą renderowania. Nie twórz osobnych ciągłych RAF loops; pojedynczy RAF może wyłącznie koaleskować pomiary zdarzeń i musi mieć cleanup.
+- DPR wybiera centralny model quality tiers. Nie używaj przypadkowych wartości DPR ani user-agent sniffingu.
+- Scroll mapuje się na progres, następnie na tłumiony stan sceny, a dopiero potem na kamerę. Nie przypisuj surowego `scrollY` bezpośrednio do transformacji.
+- Pointer influence ma być mały, ograniczony i wyłączony dla touch oraz reduced motion. Canvas dekoracyjny nie przechwytuje fokusu ani interakcji UI.
+- Nowa scena musi działać bez WebGL i nie może pokazywać użytkownikowi technicznego błędu, jeśli nie ma działania naprawczego.
+- Nie dodawaj efektu tylko dlatego, że jest efektowny. Każda zmiana kamery, światła lub geometrii musi wspierać zrozumienie narracji.
+- Po zmianie experience sprawdź `/experience-lab`, `docs/INTERACTIVE_EXPERIENCE.md`, `docs/MOTION_SYSTEM.md`, `docs/WEBGL_PERFORMANCE.md` i uruchom `npm run experience:check`.
+
 ## Kontrola jakości i raportowanie
 
 Po każdej zmianie wpływającej na kod lub konfigurację uruchom:
@@ -126,6 +144,7 @@ npm run lint
 npm run typecheck
 npm run content:check
 npm run design:check
+npm run experience:check
 npm run build
 ```
 

@@ -2,7 +2,7 @@
 
 ## Status i zakres
 
-Design system w wersji 1.1 jest produkcyjnym fundamentem interfejsu dla etapów 4–14. Obejmuje tokeny, typografię, layout, globalną nawigację, komponenty, stany interakcji, zasady dostępności i techniczną stronę `/design-system`.
+Design system w wersji 1.2 jest produkcyjnym fundamentem interfejsu dla etapów 4–14. Obejmuje tokeny, typografię, layout, globalną nawigację, komponenty, stany interakcji, zasady dostępności i techniczną stronę `/design-system`. Etap 5 dodaje wyłącznie semantyczne tokeny opcjonalnej warstwy experience; nie zmienia głównej palety marki.
 
 System jest projektowany jako jasny. Nie zawiera niekompletnego dark mode ani przełącznika motywu. Ciemna powierzchnia `strong` służy wyłącznie do kontrolowanej zmiany rytmu sekcji i paneli CTA.
 
@@ -66,31 +66,49 @@ Każda funkcja posiada powierzchnię, tekst, obramowanie i mocny akcent:
 
 Kolor nigdy nie jest jedynym nośnikiem informacji. Komunikaty wykorzystują również ikonę, tekst i odpowiednią semantykę.
 
+### Tokeny warstwy experience
+
+| Token                     | Źródło                     | Zastosowanie                |
+| ------------------------- | -------------------------- | --------------------------- |
+| `--experience-background` | `--surface-inverse`        | tło sceny i fallbacku       |
+| `--experience-fog`        | `--surface-inverse-muted`  | atmosfera i dystans         |
+| `--experience-light`      | `--cobalt-500`             | kontrolowane światło główne |
+| `--experience-grid`       | `--surface-inverse-border` | grid i granice modułów      |
+| `--experience-depth`      | `--cobalt-900`             | płaszczyzny głębi           |
+| `--experience-surface`    | `--neutral-150`            | moduły proceduralne         |
+| `--experience-accent`     | `--accent`                 | pojedynczy wskaźnik efektu  |
+
+Komponent WebGL odczytuje wartości przez `getComputedStyle`; nie duplikuje kolorów w TypeScript ani GLSL. `--experience-panel`, `--experience-foreground` i `--experience-muted` zapewniają czytelny DOM nad sceną.
+
 ## Kontrola kontrastu
 
 Kontrast jest obliczany automatycznie przez `npm run design:check` na podstawie rzeczywistych wartości w CSS. Współczynnik dla tekstu wynosi minimum 4,5:1, a dla focus ringów i granic kontrolek minimum 3:1.
 
-| Para                        |   Wynik |
-| --------------------------- | ------: |
-| Tekst podstawowy / tło      | 16,82:1 |
-| Tekst outline / surface     | 17,74:1 |
-| Tekst / muted surface       | 15,92:1 |
-| Tekst wyciszony / tło       |  6,09:1 |
-| Badge neutral / muted       |  5,76:1 |
-| Tekst CTA / primary         |  6,57:1 |
-| Link primary / tło          |  6,23:1 |
-| Tekst / secondary           |  9,58:1 |
-| Tekst / accent surface      | 11,58:1 |
-| Tekst / accent strong       |  6,25:1 |
-| Focus ring / jasne tło      |  4,30:1 |
-| Focus ring / strong         |  3,85:1 |
-| Granica kontrolki / surface |  3,55:1 |
-| Success                     |  6,50:1 |
-| Warning                     |  7,32:1 |
-| Error                       |  8,17:1 |
-| Information                 |  7,93:1 |
-| Tekst podstawowy / strong   | 16,66:1 |
-| Tekst wyciszony / strong    | 10,00:1 |
+| Para                         |   Wynik |
+| ---------------------------- | ------: |
+| Tekst podstawowy / tło       | 16,82:1 |
+| Tekst outline / surface      | 17,74:1 |
+| Tekst / muted surface        | 15,92:1 |
+| Tekst wyciszony / tło        |  6,09:1 |
+| Badge neutral / muted        |  5,76:1 |
+| Tekst CTA / primary          |  6,57:1 |
+| Link primary / tło           |  6,23:1 |
+| Tekst / secondary            |  9,58:1 |
+| Tekst / accent surface       | 11,58:1 |
+| Tekst / accent strong        |  6,25:1 |
+| Focus ring / jasne tło       |  4,30:1 |
+| Focus ring / strong          |  3,85:1 |
+| Granica kontrolki / surface  |  3,55:1 |
+| Success                      |  6,50:1 |
+| Warning                      |  7,32:1 |
+| Error                        |  8,17:1 |
+| Information                  |  7,93:1 |
+| Tekst podstawowy / strong    | 16,66:1 |
+| Tekst wyciszony / strong     | 10,00:1 |
+| Tekst / experience           | 16,66:1 |
+| Tekst wyciszony / experience | 10,00:1 |
+| Akcent / experience          |  8,61:1 |
+| Światło / experience         |  3,85:1 |
 
 ## Typografia
 
@@ -193,7 +211,7 @@ Standardowa karta opiera się na obramowaniu i nie otrzymuje cienia.
 
 ### Warstwy i globalny shell
 
-Globalne komponenty używają semantycznej skali od `--layer-header` i `--layer-dropdown` po `--layer-skip-link`. Sticky header ma stałą wysokość 68 px na mobile i 76 px od 1280 px. Dropdown używa `shadow-overlay`, a modalne menu mobilne korzysta z top layer natywnego `dialog`, nie z przypadkowego z-indexu.
+Globalne komponenty używają semantycznej skali od `--layer-experience-background`, `--layer-experience-canvas` i `--layer-experience-content`, przez `--layer-header` i `--layer-dropdown`, po `--layer-skip-link`. Experience zajmuje poziomy 1–3 we własnym kontekście `isolate`, a header zaczyna się od 30. Sticky header ma stałą wysokość 68 px na mobile i 76 px od 1280 px. Dropdown używa `shadow-overlay`, a modalne menu mobilne korzysta z top layer natywnego `dialog`, nie z przypadkowego z-indexu.
 
 Anchory uwzględniają wysokość headera przez globalne `scroll-padding-top` i `scroll-margin-top`.
 
@@ -257,7 +275,7 @@ Etykieta zawsze wskazuje `id` kontrolki. Błąd jest połączony przez `aria-des
 | `--duration-normal`  |  240 ms | Menu i mała zmiana stanu.           |
 | `--duration-slow`    |  360 ms | Wyjątkowa, większa zmiana układu.   |
 
-Standardowy easing to `cubic-bezier(0.2, 0, 0, 1)`. Karta interaktywna może unieść się o 2 px. Link z kierunkiem przesuwa wyłącznie ikonę o 2 px. Nie stosujemy parallax, automatycznych animacji scroll ani ruchu dekoracyjnego.
+Standardowy easing to `cubic-bezier(0.2, 0, 0, 1)`. Karta interaktywna może unieść się o 2 px. Link z kierunkiem przesuwa wyłącznie ikonę o 2 px. W DOM nie stosujemy ogólnego parallax, automatycznych animacji wszystkich sekcji ani ruchu dekoracyjnego. Izolowana warstwa WebGL może użyć ograniczonej, tłumionej reakcji pointera tylko zgodnie z `MOTION_SYSTEM.md`; dla touch i reduced motion wpływ wynosi zero.
 
 Globalne `prefers-reduced-motion: reduce` skraca animacje i wyłącza płynne przewijanie.
 

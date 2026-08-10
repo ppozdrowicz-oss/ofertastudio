@@ -7,10 +7,21 @@ const componentsRoot = join(sourceRoot, "components");
 const globalsPath = join(sourceRoot, "styles", "globals.css");
 const errors: string[] = [];
 const approvedClientModules = new Set<string>([
+  "src/components/experience/experience-canvas.tsx",
   "src/components/navigation/main-navigation.tsx",
 ]);
 
 const expectedComponentFiles = [
+  "experience/atmosphere.tsx",
+  "experience/camera-rig.tsx",
+  "experience/experience-canvas.tsx",
+  "experience/experience-renderer.tsx",
+  "experience/experience-scene.tsx",
+  "experience/lighting.tsx",
+  "experience/performance-controller.tsx",
+  "experience/prototype-landscape.tsx",
+  "experience/scroll-scene-controller.tsx",
+  "experience/webgl-fallback.tsx",
   "layout/brand-mark.tsx",
   "layout/container.tsx",
   "layout/global-cta.tsx",
@@ -423,6 +434,20 @@ const contrastPairs = [
     4.5,
     "tekst muted / strong",
   ],
+  [
+    "--experience-foreground",
+    "--experience-background",
+    4.5,
+    "tekst / experience",
+  ],
+  [
+    "--experience-muted",
+    "--experience-background",
+    4.5,
+    "tekst muted / experience",
+  ],
+  ["--experience-accent", "--experience-background", 3, "akcent / experience"],
+  ["--experience-light", "--experience-background", 3, "światło / experience"],
 ] as const;
 
 const contrastResults: string[] = [];

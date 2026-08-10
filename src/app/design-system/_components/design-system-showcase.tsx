@@ -321,9 +321,15 @@ export function DesignSystemShowcase() {
           title="Interaktywny komponent jest nad tą sekcją"
           variant="information"
         >
-          Na desktopie otwórz „Strony” lub „Sklepy i Shoper”, aby sprawdzić
-          megamenu i Escape. Poniżej 1280 px ten sam header pokazuje mobilny
-          trigger oraz modalne menu z akordeonem.
+          <p>
+            Na desktopie otwórz „Strony” lub „Sklepy i Shoper”, aby sprawdzić
+            megamenu i Escape. Poniżej 1280 px ten sam header pokazuje mobilny
+            trigger oraz modalne menu z akordeonem.
+          </p>
+          <p className="mt-3">
+            Warstwa motion i WebGL ma osobne, nieindeksowane środowisko:{" "}
+            <TextLink href="/experience-lab">otwórz experience lab</TextLink>.
+          </p>
         </Notice>
         <div className="mt-6 overflow-clip rounded-[var(--radius-card)] border border-border bg-background">
           <PageHeader
