@@ -54,12 +54,17 @@
   --color-experience-accent: var(--experience-accent);
   --color-experience-depth: var(--experience-depth);
   --color-experience-fog: var(--experience-fog);
+  --color-experience-focus: var(--experience-focus);
   --color-experience-foreground: var(--experience-foreground);
   --color-experience-grid: var(--experience-grid);
+  --color-experience-grid-minor: var(--experience-grid-minor);
   --color-experience-light: var(--experience-light);
+  --color-experience-line: var(--experience-line);
   --color-experience-muted: var(--experience-muted);
   --color-experience-panel: var(--experience-panel);
+  --color-experience-signal: var(--experience-signal);
   --color-experience-surface: var(--experience-surface);
+  --color-experience-surface-elevated: var(--experience-surface-elevated);
   --font-sans: var(--font-inter);
   --shadow-overlay: var(--shadow-elevation-overlay);
   --shadow-raised: var(--shadow-elevation-raised);
@@ -168,9 +173,14 @@
   --experience-fog: var(--surface-inverse-muted);
   --experience-light: var(--cobalt-500);
   --experience-grid: var(--surface-inverse-border);
-  --experience-depth: var(--cobalt-900);
+  --experience-grid-minor: var(--surface-inverse-muted);
+  --experience-depth: var(--surface-inverse-muted);
   --experience-surface: var(--neutral-150);
+  --experience-surface-elevated: var(--neutral-300);
   --experience-accent: var(--accent);
+  --experience-focus: var(--neutral-0);
+  --experience-line: var(--cobalt-200);
+  --experience-signal: var(--cobalt-500);
   --experience-foreground: var(--surface-inverse-foreground);
   --experience-muted: var(--surface-inverse-muted-foreground);
   --experience-panel: color-mix(
@@ -382,36 +392,83 @@
     background-color: var(--experience-background);
     background-image:
       radial-gradient(
-        circle at 72% 18%,
-        color-mix(in srgb, var(--experience-light) 18%, transparent),
-        transparent 36%
+        circle at 74% 24%,
+        color-mix(in srgb, var(--experience-light) 16%, transparent),
+        transparent 38%
       ),
       linear-gradient(
-        154deg,
-        color-mix(in srgb, var(--experience-depth) 64%, transparent),
-        transparent 58%
+        150deg,
+        color-mix(in srgb, var(--experience-depth) 58%, transparent),
+        transparent 62%
       );
   }
 
   .experience-fallback::before {
     position: absolute;
-    inset: -22% -12%;
+    inset: -18% -10%;
     background-image:
       linear-gradient(
         to right,
-        color-mix(in srgb, var(--experience-grid) 56%, transparent) 1px,
+        color-mix(in srgb, var(--experience-grid) 48%, transparent) 1px,
         transparent 1px
       ),
       linear-gradient(
         to bottom,
-        color-mix(in srgb, var(--experience-grid) 44%, transparent) 1px,
+        color-mix(in srgb, var(--experience-grid) 34%, transparent) 1px,
         transparent 1px
       );
-    background-size: 2.5rem 2.5rem;
+    background-size: 3rem 3rem;
     content: "";
-    opacity: 0.52;
-    transform: perspective(28rem) rotateX(58deg) translateY(24%);
+    opacity: 0.44;
+    transform: perspective(32rem) rotateX(60deg) translateY(28%);
     transform-origin: center;
+  }
+
+  .experience-fallback__field {
+    position: absolute;
+    right: 4%;
+    bottom: 8%;
+    left: 4%;
+    height: 46%;
+    transform: perspective(38rem) rotateX(58deg);
+    transform-origin: bottom;
+  }
+
+  .experience-fallback__rail {
+    position: absolute;
+    right: 0;
+    left: 0;
+    height: 9%;
+    border: 1px solid var(--experience-grid-minor);
+    background: color-mix(in srgb, var(--experience-depth) 72%, transparent);
+  }
+
+  .experience-fallback__rail:nth-child(1) {
+    bottom: 2%;
+  }
+
+  .experience-fallback__rail:nth-child(2) {
+    right: 7%;
+    bottom: 23%;
+    left: 4%;
+  }
+
+  .experience-fallback__rail:nth-child(3) {
+    right: 2%;
+    bottom: 44%;
+    left: 12%;
+  }
+
+  .experience-fallback__rail:nth-child(4) {
+    right: 16%;
+    bottom: 65%;
+    left: 7%;
+  }
+
+  .experience-fallback__rail:nth-child(5) {
+    right: 10%;
+    bottom: 86%;
+    left: 22%;
   }
 
   .experience-fallback__modules {
@@ -421,8 +478,8 @@
 
   .experience-fallback__module {
     position: absolute;
-    bottom: 16%;
-    width: clamp(1.8rem, 6vw, 4.5rem);
+    bottom: 15%;
+    width: clamp(1.35rem, 4.6vw, 4rem);
     border: 1px solid var(--experience-grid);
     border-radius: var(--radius-small);
     background: color-mix(
@@ -430,8 +487,8 @@
       var(--experience-surface) 82%,
       var(--experience-depth)
     );
-    opacity: 0.72;
-    transform: skewY(-8deg);
+    opacity: 0.7;
+    transform: skewY(-6deg);
   }
 
   .experience-fallback__module:nth-child(1) {
@@ -473,10 +530,93 @@
   }
 
   .experience-fallback__module:nth-child(8) {
-    right: 4%;
+    right: 7%;
     bottom: 30%;
     height: 14%;
+  }
+
+  .experience-fallback__module:nth-child(9) {
+    right: 2%;
+    bottom: 18%;
+    height: 26%;
+  }
+
+  .experience-fallback__module:nth-child(10) {
+    right: 42%;
+    bottom: 38%;
+    width: clamp(0.35rem, 1vw, 0.65rem);
+    height: 28%;
     background: var(--experience-accent);
+  }
+
+  .experience-fallback__signals {
+    position: absolute;
+    inset: 0;
+  }
+
+  .experience-fallback__signal {
+    position: absolute;
+    height: 1px;
+    background: var(--experience-signal);
+    opacity: 0.64;
+    transform-origin: left;
+  }
+
+  .experience-fallback__signal:nth-child(1) {
+    bottom: 33%;
+    left: 19%;
+    width: 26%;
+    transform: rotate(-7deg);
+  }
+
+  .experience-fallback__signal:nth-child(2) {
+    right: 19%;
+    bottom: 39%;
+    width: 22%;
+    transform: rotate(8deg);
+  }
+
+  .experience-fallback__signal:nth-child(3) {
+    right: 35%;
+    bottom: 51%;
+    width: 18%;
+    transform: rotate(-20deg);
+  }
+
+  .experience-fallback__focus {
+    position: absolute;
+    right: 17%;
+    bottom: 17%;
+    width: clamp(5rem, 16vw, 11rem);
+    height: clamp(3.25rem, 10vw, 7rem);
+    border: 1px solid var(--experience-line);
+    border-radius: var(--radius-small);
+    background: color-mix(
+      in srgb,
+      var(--experience-surface-elevated) 28%,
+      var(--experience-depth)
+    );
+    box-shadow: 0 0 0 1px
+      color-mix(in srgb, var(--experience-line) 18%, transparent);
+    transform: perspective(24rem) rotateY(-14deg) skewY(-3deg);
+  }
+
+  .experience-fallback__focus span:first-child {
+    position: absolute;
+    top: 18%;
+    bottom: 18%;
+    left: 12%;
+    width: 7%;
+    background: var(--experience-accent);
+  }
+
+  .experience-fallback__focus span:last-child {
+    position: absolute;
+    top: 23%;
+    right: 12%;
+    bottom: 23%;
+    left: 26%;
+    border: 1px solid var(--experience-grid);
   }
 }
 

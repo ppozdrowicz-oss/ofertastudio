@@ -12,20 +12,20 @@ Roadmapa porządkuje budowę serwisu w 14 kontrolowanych etapach. Zakres następ
 
 5. **Interactive experience, motion i WebGL — zakończony** — progresywny fundament „The Conversion Landscape”, lazy canvas, CameraRig, scroll model, quality tiers, reduced motion, fallback i laboratorium `/experience-lab`.
 
-6. **Strona główna — następny etap** — pełna narracja wartości, priorytetowe usługi, dowody, proces i ścieżki konwersji z kontrolowaną integracją warstwy experience.
+6. **The Conversion Landscape — zakończony** — własny język wizualny WebGL, deterministyczny proceduralny landscape, Field/Modules/Signals/Focus Object, narracja „Chaos → Structure”, centralna choreografia kamery i mierzalne budżety renderingu.
 
-7. **Strony internetowe** — podstrona usługi obejmująca potrzeby, zakres, sposób pracy, rezultaty i właściwe CTA.
+7. **Final homepage hero & cinematic entry — następny etap** — finalny hero strony głównej, właściwe copy, wejście DOM/WebGL i pierwszy produkcyjny fragment narracji oparty na stabilnym Conversion Landscape.
 
-8. **Sklepy internetowe i Shoper** — oferta wdrożeń sklepów, konfiguracji Shoper i personalizacji szablonów.
+8. **Kompletna strona główna** — pełna narracja wartości, priorytetowe usługi, dowody, proces i ścieżki konwersji z kontrolowaną integracją warstwy experience.
 
-9. **Allegro, OLX i prezentacja produktów** — usługi optymalizacji marketplace oraz zdjęć, opisów i prezentacji ofert.
+9. **Strony internetowe** — podstrona filaru i usługi obejmujące potrzeby, zakres, sposób pracy, rezultaty i właściwe CTA.
 
-10. **Realizacje i case studies** — model danych, indeks realizacji i wiarygodne studia przypadków oparte na zatwierdzonych materiałach.
+10. **Sklepy internetowe i Shoper** — oferta wdrożeń sklepów, konfiguracji Shoper, personalizacji szablonów, UX i opieki.
 
-11. **Oferta, pakiety i proces współpracy** — uporządkowanie zakresów, modeli rozliczeń, kwalifikacji projektu i kolejnych kroków współpracy.
+11. **Allegro, OLX i prezentacja produktów** — usługi optymalizacji marketplace oraz zdjęć, opisów i prezentacji ofert.
 
-12. **Formularze i pozyskiwanie leadów** — dostępne formularze, walidacja, obsługa stanów, zgody i bezpieczna ścieżka dostarczenia zapytań.
+12. **Realizacje, oferta i pozyskiwanie leadów** — prawdziwe case studies, zakresy i modele współpracy oraz dostępne formularze z bezpieczną ścieżką zapytania.
 
-13. **SEO, dane strukturalne i analityka** — techniczne SEO, sitemap, canonicale, schema.org, plan zdarzeń i zgodna konfiguracja pomiaru.
+13. **SEO, dane strukturalne, analityka i audyt dostępności** — techniczne SEO, sitemap, canonicale, schema.org, plan zdarzeń, zgodna konfiguracja pomiaru oraz audyt WCAG i responsywności.
 
-14. **Audyt UX i przygotowanie produkcyjne** — połączony audyt responsywności, dostępności, WebGL, regresji, wydajności, bezpieczeństwa, treści i konfiguracji wdrożenia.
+14. **Audyt końcowy i przygotowanie produkcyjne** — regresja UX, WebGL, wydajności, bezpieczeństwa i treści oraz finalna konfiguracja wdrożenia.

@@ -20,7 +20,7 @@ export function TechnicalFoundation() {
     >
       <Container size="wide">
         <SectionHeading
-          description="Globalny layout zachowuje pełną treść i nawigację bez WebGL. Prototyp sceny działa wyłącznie w osobnym, nieindeksowanym laboratorium."
+          description="Globalny layout zachowuje pełną treść i nawigację bez WebGL. Conversion Landscape działa wyłącznie w osobnym, nieindeksowanym laboratorium."
           eyebrow="Punkt kontroli"
           size="h2"
           title="DOM i warstwa experience mają osobne odpowiedzialności"
@@ -32,7 +32,7 @@ export function TechnicalFoundation() {
             <CardContent className="pt-[var(--space-card-padding)]">
               <div className="flex flex-wrap items-center justify-between gap-4">
                 <IconBox icon={LayoutTemplate} size="large" variant="primary" />
-                <Badge variant="success">Etap 5 gotowy</Badge>
+                <Badge variant="success">Etap 6 gotowy</Badge>
               </div>
               <h2 className="mt-8 text-h3 font-semibold">
                 Treść, nawigacja i progressive enhancement
@@ -43,7 +43,7 @@ export function TechnicalFoundation() {
                 degraduje się do statycznej kompozycji bez utraty informacji.
               </p>
               <ButtonLink
-                className="mt-8"
+                className="mt-8 max-w-full text-center whitespace-normal"
                 href={routes.shoperConfiguration}
                 leadingIcon={<Check aria-hidden="true" />}
                 variant="outline"

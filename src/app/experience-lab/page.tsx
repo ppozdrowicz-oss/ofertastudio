@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { ConversionLandscapeDemo } from "@/app/experience-lab/_components/conversion-landscape-demo";
 import { ExperienceCanvas } from "@/components/experience/experience-canvas";
 import { Container } from "@/components/layout/container";
 import { PageShell } from "@/components/layout/page-shell";
@@ -21,7 +22,7 @@ import {
 
 export const metadata: Metadata = {
   description:
-    "Techniczne laboratorium warstwy WebGL i systemu ruchu OfertaStudio.",
+    "Techniczne laboratorium świata Conversion Landscape, proceduralnej sceny i systemu ruchu OfertaStudio.",
   robots: {
     follow: false,
     googleBot: {
@@ -43,14 +44,37 @@ const sceneLabels = {
   transformation: "Transformacja",
 } as const satisfies Record<ExperienceSceneId, string>;
 
+const landscapeGrammar = [
+  {
+    description:
+      "Segmentowane poziomy tworzą skalę, pierwszy plan, środek i kontrolowaną głębię.",
+    name: "Field",
+  },
+  {
+    description:
+      "Instancjonowane bryły reprezentują fragmenty treści i kanałów, które odzyskują rytm.",
+    name: "Modules",
+  },
+  {
+    description:
+      "Tanie linie i markery pokazują relacje oraz przepływ informacji bez chmury cząstek.",
+    name: "Signals",
+  },
+  {
+    description:
+      "Jedna hierarchiczna forma zbiera uwagę kamery i światła w stanie końcowym.",
+    name: "Focus Object",
+  },
+] as const;
+
 export default function ExperienceLabPage() {
   return (
     <PageShell showGlobalCta={false}>
       <Section spacing="compact" variant="strong">
         <Container size="wide">
           <SectionHeading
-            description="Izolowane środowisko do sprawdzania progresywnego WebGL, scroll progress, jakości renderowania i eleganckiej degradacji. To narzędzie techniczne, nie finalne hero strony głównej."
-            eyebrow="OfertaStudio · etap 5"
+            description="Izolowane środowisko do sprawdzania proceduralnego świata, transformacji Chaos → Structure, choreografii kamery, jakości renderowania i eleganckiej degradacji. To narzędzie techniczne, nie finalne hero strony głównej."
+            eyebrow="OfertaStudio · etap 6"
             level={1}
             size="hero"
             title="The Conversion Landscape"
@@ -58,7 +82,7 @@ export default function ExperienceLabPage() {
             width="wide"
           />
           <div className="mt-8 flex flex-wrap gap-3">
-            <Badge variant="accent">WebGL prototype</Badge>
+            <Badge variant="accent">Procedural landscape</Badge>
             <Badge variant="neutral">Noindex</Badge>
             <Badge variant="primary">Progressive enhancement</Badge>
           </div>
@@ -73,28 +97,35 @@ export default function ExperienceLabPage() {
             strona zachowuje sens bez WebGL oraz JavaScriptu.
           </Notice>
           <div className="mt-8">
-            <ExperienceCanvas showDiagnostics>
-              <div className="grid h-full content-start p-[var(--space-card-padding)] sm:p-10 lg:grid-cols-12 lg:p-14">
-                <div className="max-w-[var(--measure-copy)] lg:col-span-7">
-                  <p className="text-overline font-bold tracking-[var(--letter-spacing-overline)] text-experience-muted uppercase">
-                    Prototype scene · data architecture
-                  </p>
-                  <h2 className="mt-4 text-h2 font-semibold text-balance text-experience-foreground">
-                    Od rozproszonych modułów do czytelnego systemu
-                  </h2>
-                  <p className="mt-5 max-w-[var(--measure-narrow)] text-body-lg text-experience-muted">
-                    Przewiń stronę. Kamera podąża za tłumionym stanem sceny, a
-                    nie za surową wartością scrolla. Ruch wskaźnika jest mały,
-                    opcjonalny i nie przechwytuje interakcji.
-                  </p>
-                </div>
-              </div>
-            </ExperienceCanvas>
+            <ConversionLandscapeDemo />
           </div>
         </Container>
       </Section>
 
-      <Section variant="muted">
+      <Section spacing="compact" variant="muted">
+        <Container size="wide">
+          <SectionHeading
+            description="Cztery role mają stałą odpowiedzialność i mogą później reprezentować pięć filarów usług bez zmiany silnika sceny. Diagnostyka canvasu wskazuje również aktywny kadr Compact lub Wide."
+            eyebrow="Visual grammar"
+            title="Jeden język przestrzenny, nie zbiór efektów"
+          />
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {landscapeGrammar.map((item, index) => (
+              <Card className="h-full" key={item.name} variant="bordered">
+                <CardHeader>
+                  <Badge variant={index === 3 ? "accent" : "primary"}>
+                    {String(index + 1).padStart(2, "0")}
+                  </Badge>
+                  <CardTitle>{item.name}</CardTitle>
+                  <CardDescription>{item.description}</CardDescription>
+                </CardHeader>
+              </Card>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      <Section>
         <Container size="wide">
           <SectionHeading
             description="Jeden progres 0–1 jest dzielony na jawne zakresy. Kolejne etapy mogą podmieniać zawartość sceny bez zmiany kontraktu kontrolera scrolla."

@@ -2,7 +2,7 @@
 
 Nowa wersja strony usługowej OfertaStudio — butikowego studia sprzedaży internetowej działającego zgodnie z ideą „Od produktu do skutecznej sprzedaży w internecie”. Projekt ma docelowo prezentować ofertę, budować zaufanie i pozyskiwać wartościowe zapytania od firm rozwijających sprzedaż online.
 
-Etapy 1–5 są ukończone: projekt posiada fundament techniczny, strategię marki, architekturę informacji, produkcyjny design system, kompletny globalny layout oraz izolowany fundament interaktywnej warstwy WebGL. Minimalna strona startowa pozostaje techniczna, komponenty prezentuje nieindeksowana trasa `/design-system`, a progresywne WebGL można bezpiecznie sprawdzać na `/experience-lab`. Następny etap obejmuje finalną stronę główną.
+Etapy 1–6 są ukończone: projekt posiada fundament techniczny, strategię marki, architekturę informacji, produkcyjny design system, kompletny globalny layout, izolowany fundament WebGL oraz rozpoznawalny system przestrzenny „The Conversion Landscape”. Minimalna strona startowa pozostaje techniczna, komponenty prezentuje nieindeksowana trasa `/design-system`, a deterministyczną narrację „Chaos → Structure” można bezpiecznie sprawdzać na `/experience-lab`. Następny etap obejmuje finalny hero strony głównej i cinematic entry.
 
 ## Stack
 
@@ -67,7 +67,7 @@ npm run build
 src/
   app/                  # routing, layout, metadata i pliki specjalne App Routera
   components/
-    experience/         # izolowana scena, kamera i progresywny fallback WebGL
+    experience/         # izolowana scena, Conversion Landscape, kamera i fallback
     layout/             # prymitywy układu, np. Container i Section
     navigation/         # interaktywna nawigacja desktopowa i mobilna
     sections/           # kompozycje sekcji stron
@@ -76,7 +76,7 @@ src/
   config/               # stabilna konfiguracja aplikacji i marki
   content/              # typowana treść niezależna od JSX
   lib/                  # małe, niezależne narzędzia
-    experience/         # czyste modele progresu, ruchu, jakości i palety sceny
+    experience/         # timeline, kamera, procedury, jakość i budżety sceny
   styles/               # globalne style, tokeny i konfiguracja warstwy CSS
   types/                # współdzielone kontrakty domenowe treści i nawigacji
 public/
@@ -106,7 +106,7 @@ Interakcje nawigacji i WebGL mają dwie osobne, możliwie niskie granice kliento
 - Komponenty mają jedną odpowiedzialność, jawne typy i dostępne zachowanie klawiaturowe.
 - Stylowanie opiera się na tokenach CSS i Tailwind CSS; nie wprowadzamy lokalnych, przypadkowych wartości imitujących osobny design system.
 - Każdą zmianę UI sprawdzamy na `/design-system` i przez `npm run design:check`.
-- Nową scenę sprawdzamy na `/experience-lab` i przez `npm run experience:check`; ważna treść zawsze pozostaje w DOM.
+- Nową scenę sprawdzamy na `/experience-lab` i przez `npm run experience:check`; ważna treść zawsze pozostaje w DOM. Dane proceduralne są deterministyczne, kamera ma centralną ścieżkę, a każda scena ma strategię mobile, reduced motion i fallback.
 - Nie dodajemy zależności, klientowego JavaScriptu, abstrakcji ani eksportów zbiorczych bez konkretnej potrzeby.
 - Finalne widoki nie mogą zawierać lorem ipsum, generycznych placeholderów ani niezweryfikowanych obietnic marketingowych.
-- Szczegółowe wytyczne dla kolejnych sesji znajdują się w [`AGENTS.md`](AGENTS.md), decyzje techniczne w [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md), zasady wizualne w [`docs/DESIGN_SYSTEM.md`](docs/DESIGN_SYSTEM.md), a reguły języka w [`docs/CONTENT_GUIDELINES.md`](docs/CONTENT_GUIDELINES.md).
+- Szczegółowe wytyczne dla kolejnych sesji znajdują się w [`AGENTS.md`](AGENTS.md), decyzje techniczne w [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md), gramatyka świata w [`docs/CONVERSION_LANDSCAPE.md`](docs/CONVERSION_LANDSCAPE.md), budżety w [`docs/WEBGL_PERFORMANCE.md`](docs/WEBGL_PERFORMANCE.md), zasady wizualne w [`docs/DESIGN_SYSTEM.md`](docs/DESIGN_SYSTEM.md), a reguły języka w [`docs/CONTENT_GUIDELINES.md`](docs/CONTENT_GUIDELINES.md).

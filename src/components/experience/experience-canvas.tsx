@@ -12,19 +12,24 @@ import {
   useState,
 } from "react";
 
+import type { ExperienceRuntimeMetrics } from "@/components/experience/performance-controller";
 import { WebGLFallback } from "@/components/experience/webgl-fallback";
 import { cn } from "@/lib/cn";
 import {
   experienceMotion,
   type ExperiencePointer,
 } from "@/lib/experience/motion";
-import { normalizeScrollProgress } from "@/lib/experience/progress";
+import {
+  clampExperienceProgress,
+  normalizeScrollProgress,
+} from "@/lib/experience/progress";
 import {
   detectWebGLSupport,
   type ExperienceCapabilities,
   type ExperienceQualityTier,
   resolveExperienceQuality,
 } from "@/lib/experience/quality";
+import { getConversionLandscapeInventory } from "@/lib/experience/render-budget";
 
 const LazyExperienceRenderer = dynamic(
   () =>
@@ -83,7 +88,9 @@ export type ExperienceCanvasProps = {
   className?: string;
   enabled?: boolean;
   forceFallback?: boolean;
-  mode?: "scroll" | "static";
+  mode?: "manual" | "scroll" | "static";
+  motionPreference?: "auto" | "reduced";
+  progress?: number;
   showDiagnostics?: boolean;
 };
 
@@ -118,10 +125,16 @@ function ExperienceCanvasRuntime({
   className,
   forceFallback = false,
   mode = "scroll",
+  motionPreference = "auto",
+  progress = 0,
   showDiagnostics = false,
 }: ExperienceCanvasRuntimeProps) {
   const initialProgress =
-    mode === "static" ? experienceMotion.reducedMotionProgress : 0;
+    mode === "static"
+      ? experienceMotion.reducedMotionProgress
+      : mode === "manual"
+        ? clampExperienceProgress(progress)
+        : 0;
   const rootRef = useRef<HTMLDivElement>(null);
   const targetProgressRef = useRef(initialProgress);
   const dampedProgressRef = useRef(initialProgress);
@@ -131,17 +144,30 @@ function ExperienceCanvasRuntime({
   const [rendererReadyTier, setRendererReadyTier] =
     useState<ExperienceQualityTier | null>(null);
   const [runtimeFailed, setRuntimeFailed] = useState(false);
+  const [runtimeMetrics, setRuntimeMetrics] =
+    useState<ExperienceRuntimeMetrics | null>(null);
   const [diagnosticProgress, setDiagnosticProgress] = useState(
     Math.round(initialProgress * 100),
   );
+  const effectiveReducedMotion =
+    motionPreference === "reduced" || capabilities.reducedMotion;
   const quality = useMemo(
     () =>
       resolveExperienceQuality({
         ...capabilities,
+        reducedMotion: effectiveReducedMotion,
         webgl: capabilities.webgl && !forceFallback && !runtimeFailed,
       }),
-    [capabilities, forceFallback, runtimeFailed],
+    [capabilities, effectiveReducedMotion, forceFallback, runtimeFailed],
   );
+  const renderInventory = useMemo(
+    () => getConversionLandscapeInventory(quality),
+    [quality],
+  );
+  const displayedProgress =
+    mode === "manual"
+      ? Math.round(clampExperienceProgress(progress) * 100)
+      : diagnosticProgress;
 
   useEffect(() => {
     if (forceFallback) {
@@ -178,6 +204,15 @@ function ExperienceCanvasRuntime({
   }, [forceFallback]);
 
   useEffect(() => {
+    if (mode !== "manual") {
+      return;
+    }
+
+    const nextProgress = clampExperienceProgress(progress);
+    targetProgressRef.current = nextProgress;
+  }, [mode, progress]);
+
+  useEffect(() => {
     const root = rootRef.current;
 
     if (!root || forceFallback || !capabilities.webgl) {
@@ -206,7 +241,7 @@ function ExperienceCanvasRuntime({
   useEffect(() => {
     const root = rootRef.current;
 
-    if (!root || mode === "static" || forceFallback || !capabilities.webgl) {
+    if (!root || mode !== "scroll" || forceFallback || !capabilities.webgl) {
       return;
     }
 
@@ -259,6 +294,18 @@ function ExperienceCanvasRuntime({
   const handleRendererReady = useCallback(() => {
     setRendererReadyTier(quality.tier);
   }, [quality.tier]);
+  const handleMetrics = useCallback((metrics: ExperienceRuntimeMetrics) => {
+    setRuntimeMetrics((current) =>
+      current &&
+      current.calls === metrics.calls &&
+      current.geometries === metrics.geometries &&
+      current.programs === metrics.programs &&
+      current.textures === metrics.textures &&
+      current.triangles === metrics.triangles
+        ? current
+        : metrics,
+    );
+  }, []);
 
   function handlePointerMove(event: ReactPointerEvent<HTMLDivElement>): void {
     if (quality.pointerStrength === 0) {
@@ -282,7 +329,7 @@ function ExperienceCanvasRuntime({
   const rendererReady = rendererReadyTier === quality.tier;
   const experienceState = shouldRender
     ? rendererReady
-      ? capabilities.reducedMotion
+      ? effectiveReducedMotion
         ? "static"
         : "active"
       : "loading"
@@ -299,7 +346,9 @@ function ExperienceCanvasRuntime({
       )}
       data-experience-canvas="true"
       data-experience-state={experienceState}
+      data-camera-composition={quality.composition}
       data-quality-tier={quality.tier}
+      data-scene-progress={displayedProgress}
       onPointerLeave={resetPointer}
       onPointerMove={handlePointerMove}
       ref={rootRef}
@@ -330,10 +379,11 @@ function ExperienceCanvasRuntime({
               <LazyExperienceRenderer
                 dampedProgressRef={dampedProgressRef}
                 onContextLost={handleRendererFailure}
+                onMetrics={showDiagnostics ? handleMetrics : undefined}
                 onReady={handleRendererReady}
                 pointerRef={pointerRef}
                 quality={quality}
-                reducedMotion={capabilities.reducedMotion}
+                reducedMotion={effectiveReducedMotion}
                 targetProgressRef={targetProgressRef}
               />
             </ExperienceBoundary>
@@ -360,13 +410,42 @@ function ExperienceCanvasRuntime({
             <div className="flex items-center justify-between gap-4">
               <dt className="text-experience-muted">Ruch</dt>
               <dd className="font-semibold">
-                {capabilities.reducedMotion ? "Ograniczony" : "Pełny"}
+                {effectiveReducedMotion ? "Ograniczony" : "Pełny"}
               </dd>
             </div>
             <div className="flex items-center justify-between gap-4">
-              <dt className="text-experience-muted">Scroll</dt>
-              <dd className="font-semibold">{diagnosticProgress}%</dd>
+              <dt className="text-experience-muted">Progres</dt>
+              <dd className="font-semibold">{displayedProgress}%</dd>
             </div>
+            <div className="flex items-center justify-between gap-4">
+              <dt className="text-experience-muted">Kadr</dt>
+              <dd className="font-semibold">
+                {quality.composition === "compact" ? "Compact" : "Wide"}
+              </dd>
+            </div>
+            <div className="flex items-center justify-between gap-4">
+              <dt className="text-experience-muted">Budżet</dt>
+              <dd className="font-semibold">
+                {renderInventory.drawCalls} DC · {renderInventory.triangles} tri
+              </dd>
+            </div>
+            {runtimeMetrics && (
+              <>
+                <div className="flex items-center justify-between gap-4">
+                  <dt className="text-experience-muted">Renderer</dt>
+                  <dd className="font-semibold">
+                    {runtimeMetrics.calls} DC · {runtimeMetrics.triangles} tri
+                  </dd>
+                </div>
+                <div className="flex items-center justify-between gap-4">
+                  <dt className="text-experience-muted">Zasoby</dt>
+                  <dd className="font-semibold">
+                    {runtimeMetrics.geometries} geo · {runtimeMetrics.textures}{" "}
+                    tex · {runtimeMetrics.programs} prog
+                  </dd>
+                </div>
+              </>
+            )}
           </dl>
         )}
       </div>

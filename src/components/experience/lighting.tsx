@@ -7,17 +7,20 @@ export type LightingProps = {
 export function Lighting({ palette }: LightingProps) {
   return (
     <>
-      <ambientLight color={palette.fog} intensity={1.35} />
-      <directionalLight
+      <hemisphereLight
         color={palette.light}
-        intensity={3.4}
-        position={[5, 8, 5]}
+        groundColor={palette.depth}
+        intensity={1.15}
       />
-      <pointLight
+      <directionalLight
+        color={palette.focus}
+        intensity={2.8}
+        position={[6, 9, 7]}
+      />
+      <directionalLight
         color={palette.accent}
-        distance={18}
-        intensity={2.2}
-        position={[-4, 3, -6]}
+        intensity={0.72}
+        position={[-5, 4, -9]}
       />
     </>
   );

@@ -1,18 +1,25 @@
 import type { RefObject } from "react";
+import { useRef } from "react";
 
 import { Atmosphere } from "@/components/experience/atmosphere";
 import { CameraRig } from "@/components/experience/camera-rig";
+import { ChaosStructureSequence } from "@/components/experience/conversion-landscape/chaos-structure-sequence";
+import { ConversionLandscape } from "@/components/experience/conversion-landscape/conversion-landscape";
 import { Lighting } from "@/components/experience/lighting";
-import { PerformanceController } from "@/components/experience/performance-controller";
-import { PrototypeLandscape } from "@/components/experience/prototype-landscape";
+import {
+  type ExperienceRuntimeMetrics,
+  PerformanceController,
+} from "@/components/experience/performance-controller";
 import { ScrollSceneController } from "@/components/experience/scroll-scene-controller";
 import type { ExperiencePointer } from "@/lib/experience/motion";
 import type { ExperiencePalette } from "@/lib/experience/palette";
 import type { ExperienceQuality } from "@/lib/experience/quality";
+import { createConversionSceneFrame } from "@/lib/experience/scene-timeline";
 
 export type ExperienceSceneProps = {
   dampedProgressRef: RefObject<number>;
   onContextLost: () => void;
+  onMetrics?: (metrics: ExperienceRuntimeMetrics) => void;
   palette: ExperiencePalette;
   pointerRef: RefObject<ExperiencePointer>;
   quality: ExperienceQuality;
@@ -23,16 +30,20 @@ export type ExperienceSceneProps = {
 export function ExperienceScene({
   dampedProgressRef,
   onContextLost,
+  onMetrics,
   palette,
   pointerRef,
   quality,
   reducedMotion,
   targetProgressRef,
 }: ExperienceSceneProps) {
+  const sceneFrameRef = useRef(createConversionSceneFrame(0));
+
   return (
     <>
       <PerformanceController
         onContextLost={onContextLost}
+        onMetrics={onMetrics}
         quality={quality}
         reducedMotion={reducedMotion}
       />
@@ -40,6 +51,10 @@ export function ExperienceScene({
         dampedProgressRef={dampedProgressRef}
         reducedMotion={reducedMotion}
         targetProgressRef={targetProgressRef}
+      />
+      <ChaosStructureSequence
+        progressRef={dampedProgressRef}
+        sceneFrameRef={sceneFrameRef}
       />
       <CameraRig
         dampedProgressRef={dampedProgressRef}
@@ -49,7 +64,12 @@ export function ExperienceScene({
       />
       <Atmosphere palette={palette} quality={quality} />
       <Lighting palette={palette} />
-      <PrototypeLandscape palette={palette} quality={quality} />
+      <ConversionLandscape
+        palette={palette}
+        quality={quality}
+        reducedMotion={reducedMotion}
+        sceneFrameRef={sceneFrameRef}
+      />
     </>
   );
 }

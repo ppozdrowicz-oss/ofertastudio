@@ -40,7 +40,7 @@ Centralne parametry w `src/lib/experience/motion.ts`:
 | `cameraDamping`         |     4,8 | prowadzi pozycję, target, FOV i roll         |
 | `pointerDamping`        |     7,2 | szybko, ale miękko wygasza reakcję wskaźnika |
 | `maxFrameDelta`         |  0,05 s | ogranicza skok po wolnej klatce              |
-| `reducedMotionProgress` |    0,52 | statyczny, czytelny kadr                     |
+| `reducedMotionProgress` |    0,92 | statyczny kadr uporządkowanego systemu       |
 
 Nie dodajemy lokalnych wartości damping w pojedynczych scenach bez aktualizacji systemu i uzasadnienia.
 
@@ -65,9 +65,29 @@ Scroll-driven experience stosuje cztery kroki:
 
 Nie wolno zapisywać `window.scrollY` bezpośrednio do transformacji obiektu lub kamery.
 
+## Semantic scene progress
+
+Globalny progres narracji i lokalny progres Conversion Landscape mają oddzielne odpowiedzialności. `src/lib/experience/progress.ts` opisuje przyszłą narrację całej strony, a `scene-timeline.ts` tłumaczy progres laboratorium na cztery stany:
+
+- `establishing` — `0–0,18`,
+- `chaos` — `0,18–0,42`,
+- `ordering` — `0,42–0,78`,
+- `structure` — `0,78–1`.
+
+Timeline wylicza również `structureProgress`, `signalProgress`, `focusProgress` i `chaosWeight`. `ChaosStructureSequence` aktualizuje jeden współdzielony ref przed renderowaniem obiektów. Dzięki temu kamera, moduły, grid i sygnały nie interpretują granic niezależnie.
+
+Transformacja struktury korzysta z okna `0,40–0,90`. Moduły otrzymują małe, deterministyczne opóźnienie zależne od głębokości i kolumny. Smoothstep kontroluje lokalny przebieg, a globalny damping progressu zapewnia fizycznie wiarygodne domknięcie bez dodatkowego spring engine.
+
 ## Ruch kamery
 
-`CameraRig` interpoluje pomiędzy jawnie zdefiniowanymi punktami. Każdy punkt zawiera:
+`CameraRig` korzysta wyłącznie z centralnych danych `src/lib/experience/camera-path.ts`. Nie przechowuje własnych keyframes. Trajektorie `wide` i `compact` mają po cztery punkty odpowiadające ujęciom:
+
+1. establishing,
+2. approach,
+3. passage,
+4. reveal.
+
+Każdy punkt zawiera:
 
 - `position`,
 - `target`,
@@ -75,7 +95,9 @@ Nie wolno zapisywać `window.scrollY` bezpośrednio do transformacji obiektu lub
 - minimalny `roll`,
 - pozycję `at` w globalnym progresie.
 
-W obrębie segmentu używany jest smoothstep, a końcowy stan jest dodatkowo tłumiony. Kamera nie wykonuje agresywnych orbit, nie przecina geometrii dla efektu i nie zmienia gwałtownie FOV. Ruch ma wspierać przejście od rozproszenia do porządku.
+W obrębie segmentu używany jest smoothstep, a końcowy stan jest dodatkowo tłumiony. Roll nie przekracza `0,02 rad`. Kamera nie wykonuje agresywnych orbit, nie przecina geometrii dla efektu i nie zmienia gwałtownie FOV. Ruch ma wspierać przejście od rozproszenia do porządku.
+
+Kadr `compact` nie jest pomniejszonym desktopem. Ma większy FOV, wyższą pozycję i krótszy passage, aby na wąskim ekranie zachować sylwetkę modułów i Focus Object.
 
 ## Pointer interaction
 
@@ -111,6 +133,20 @@ Niedozwolone bez osobnego uzasadnienia i budżetu:
 - motion blur, ciężki bloom lub depth of field,
 - automatyczne animowanie wszystkich sekcji przy scrollu.
 
+## Interpolacja obiektów
+
+Każdy `SpatialModule` ma stan `chaos` i `structure` zawierający pozycję, rotację oraz skalę. Instancje są aktualizowane bezpośrednio przez `instanceMatrix` w pętli R3F. React nie otrzymuje `setState` na klatkę.
+
+Signal Field interpoluje dwa końce linii z przerwanej do pełnej relacji. Markery poruszają się w funkcji progresu narracji, nie czasu. Po zatrzymaniu scrolla scena nie uruchamia dekoracyjnego ruchu bez końca.
+
+Focus Object korzysta z `focusProgress`, aby przejść od przesuniętej, słabiej czytelnej formy do centralnego obiektu hierarchii.
+
+## Scroll velocity
+
+Etap 6 nie wykorzystuje scroll velocity. Natywny scroll i tłumienie progresu zapewniają wystarczającą fizyczność bez zależności od chwilowych pików wejścia. Jest to świadome ograniczenie: velocity nie wpływa obecnie na kamerę, geometrię ani shader.
+
+Jeśli etap 7 wykaże realną potrzebę, velocity może sterować wyłącznie minimalnym opóźnieniem kamery albo intensywnością Signal Field. Wymaga wtedy jednego centralnego źródła, limitu amplitudy, wygaszenia po zatrzymaniu scrolla oraz wartości zero dla reduced motion. Nie może powodować shake, glitch, deformacji sceny ani motion blur.
+
 ## Reduced motion
 
 `prefers-reduced-motion: reduce` jest nadrzędne wobec ustawień experience:
@@ -122,7 +158,7 @@ Niedozwolone bez osobnego uzasadnienia i budżetu:
 - Canvas działa w trybie `demand`,
 - treść nigdy nie jest ukrywana w oczekiwaniu na animację.
 
-Statyczny kadr nie powinien wyglądać jak zepsuta scena. Musi przedstawiać czytelną kompozycję albo zostać zastąpiony fallbackiem CSS.
+Statyczny kadr wykorzystuje progres `0,92`: pokazuje uporządkowany system, zatrzymuje camera travel oraz czasowy przepływ markerów. Nie wygląda jak zepsuta scena i nie usuwa geometrii. Jeśli WebGL jest niedostępny, równoważny rytm zachowuje fallback CSS.
 
 ## Synchronizacja DOM i WebGL
 

@@ -2,7 +2,7 @@
 
 ## Status i zakres
 
-Design system w wersji 1.2 jest produkcyjnym fundamentem interfejsu dla etapów 4–14. Obejmuje tokeny, typografię, layout, globalną nawigację, komponenty, stany interakcji, zasady dostępności i techniczną stronę `/design-system`. Etap 5 dodaje wyłącznie semantyczne tokeny opcjonalnej warstwy experience; nie zmienia głównej palety marki.
+Design system w wersji 1.3 jest produkcyjnym fundamentem interfejsu dla etapów 4–14. Obejmuje tokeny, typografię, layout, globalną nawigację, komponenty, stany interakcji, zasady dostępności i techniczną stronę `/design-system`. Etapy 5–6 dodają wyłącznie semantyczne role opcjonalnej warstwy experience; nie tworzą równoległej palety ani nie zmieniają głównych kolorów marki.
 
 System jest projektowany jako jasny. Nie zawiera niekompletnego dark mode ani przełącznika motywu. Ciemna powierzchnia `strong` służy wyłącznie do kontrolowanej zmiany rytmu sekcji i paneli CTA.
 
@@ -68,17 +68,22 @@ Kolor nigdy nie jest jedynym nośnikiem informacji. Komunikaty wykorzystują ró
 
 ### Tokeny warstwy experience
 
-| Token                     | Źródło                     | Zastosowanie                |
-| ------------------------- | -------------------------- | --------------------------- |
-| `--experience-background` | `--surface-inverse`        | tło sceny i fallbacku       |
-| `--experience-fog`        | `--surface-inverse-muted`  | atmosfera i dystans         |
-| `--experience-light`      | `--cobalt-500`             | kontrolowane światło główne |
-| `--experience-grid`       | `--surface-inverse-border` | grid i granice modułów      |
-| `--experience-depth`      | `--cobalt-900`             | płaszczyzny głębi           |
-| `--experience-surface`    | `--neutral-150`            | moduły proceduralne         |
-| `--experience-accent`     | `--accent`                 | pojedynczy wskaźnik efektu  |
+| Token                           | Źródło                     | Zastosowanie                            |
+| ------------------------------- | -------------------------- | --------------------------------------- |
+| `--experience-background`       | `--surface-inverse`        | tło sceny i fallbacku                   |
+| `--experience-fog`              | `--surface-inverse-muted`  | atmosfera i dystans                     |
+| `--experience-light`            | `--cobalt-500`             | kontrolowane światło główne             |
+| `--experience-grid`             | `--surface-inverse-border` | główne linie gridu i granice modułów    |
+| `--experience-grid-minor`       | `--surface-inverse-muted`  | linie odległe i wygaszanie głębi        |
+| `--experience-depth`            | `--surface-inverse-muted`  | płaszczyzny głębi                       |
+| `--experience-surface`          | `--neutral-150`            | moduły bazowe                           |
+| `--experience-surface-elevated` | `--neutral-300`            | moduły o wyższej hierarchii             |
+| `--experience-accent`           | `--accent`                 | oszczędny sygnał statusu                |
+| `--experience-focus`            | `--neutral-0`              | powierzchnia Focus Object               |
+| `--experience-line`             | `--cobalt-200`             | precyzyjne krawędzie i separacja planów |
+| `--experience-signal`           | `--cobalt-500`             | przepływ informacji między modułami     |
 
-Komponent WebGL odczytuje wartości przez `getComputedStyle`; nie duplikuje kolorów w TypeScript ani GLSL. `--experience-panel`, `--experience-foreground` i `--experience-muted` zapewniają czytelny DOM nad sceną.
+Komponent WebGL odczytuje wartości przez `getComputedStyle`; nie duplikuje kolorów w TypeScript ani GLSL. `--experience-panel`, `--experience-foreground` i `--experience-muted` zapewniają czytelny DOM nad sceną. Role `accent`, `focus` i `signal` nie są zamienne: pierwsza wskazuje status, druga hierarchię przestrzenną, a trzecia relację.
 
 ## Kontrola kontrastu
 

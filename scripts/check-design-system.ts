@@ -7,6 +7,7 @@ const componentsRoot = join(sourceRoot, "components");
 const globalsPath = join(sourceRoot, "styles", "globals.css");
 const errors: string[] = [];
 const approvedClientModules = new Set<string>([
+  "src/app/experience-lab/_components/conversion-landscape-demo.tsx",
   "src/components/experience/experience-canvas.tsx",
   "src/components/navigation/main-navigation.tsx",
 ]);
@@ -14,12 +15,19 @@ const approvedClientModules = new Set<string>([
 const expectedComponentFiles = [
   "experience/atmosphere.tsx",
   "experience/camera-rig.tsx",
+  "experience/conversion-landscape/chaos-structure-sequence.tsx",
+  "experience/conversion-landscape/conversion-landscape.tsx",
+  "experience/conversion-landscape/focus-object.tsx",
+  "experience/conversion-landscape/landscape-field.tsx",
+  "experience/conversion-landscape/signal-field.tsx",
+  "experience/conversion-landscape/spatial-grid.tsx",
+  "experience/conversion-landscape/spatial-modules.tsx",
+  "experience/conversion-landscape/use-landscape-resources.ts",
   "experience/experience-canvas.tsx",
   "experience/experience-renderer.tsx",
   "experience/experience-scene.tsx",
   "experience/lighting.tsx",
   "experience/performance-controller.tsx",
-  "experience/prototype-landscape.tsx",
   "experience/scroll-scene-controller.tsx",
   "experience/webgl-fallback.tsx",
   "layout/brand-mark.tsx",

@@ -37,6 +37,7 @@ export function GlobalCta({
           eyebrow={eyebrow}
           primaryAction={
             <ButtonLink
+              className="max-w-full text-center whitespace-normal"
               href={primaryCta.href}
               size="large"
               trailingIcon={<ArrowRight aria-hidden="true" />}
@@ -48,6 +49,7 @@ export function GlobalCta({
           secondaryAction={
             secondaryCta ? (
               <ButtonLink
+                className="max-w-full text-center whitespace-normal"
                 href={secondaryCta.href}
                 size="large"
                 variant="outline"

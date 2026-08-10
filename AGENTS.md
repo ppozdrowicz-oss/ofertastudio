@@ -132,7 +132,14 @@ Komponenty `shared` istnieją wyłącznie dla realnych wzorców domenowych, taki
 - Pointer influence ma być mały, ograniczony i wyłączony dla touch oraz reduced motion. Canvas dekoracyjny nie przechwytuje fokusu ani interakcji UI.
 - Nowa scena musi działać bez WebGL i nie może pokazywać użytkownikowi technicznego błędu, jeśli nie ma działania naprawczego.
 - Nie dodawaj efektu tylko dlatego, że jest efektowny. Każda zmiana kamery, światła lub geometrii musi wspierać zrozumienie narracji.
-- Po zmianie experience sprawdź `/experience-lab`, `docs/INTERACTIVE_EXPERIENCE.md`, `docs/MOTION_SYSTEM.md`, `docs/WEBGL_PERFORMANCE.md` i uruchom `npm run experience:check`.
+- Każda scena musi realizować nazwaną funkcję narracyjną. Nie dodawaj geometrii, ruchu, światła ani sygnału wyłącznie jako dekoracji.
+- Procedural randomness musi być deterministyczny. Nie używaj `Math.random()` podczas renderowania; utrzymuj stabilne seedy i dane tworzone poza pętlą klatek.
+- Kamera ma jedno źródło prawdy w `src/lib/experience/camera-path.ts`. Klatki, waypointy i choreography data nie mogą być rozsiane po komponentach.
+- Materiały i geometrie współdziel, gdy pozwala na to ich rola. Każdy ręcznie utworzony zasób Three.js musi mieć jawny lifecycle i cleanup; nie zwiększaj draw calls bez pomiaru oraz uzasadnienia.
+- Każdą kompozycję sprawdzaj co najmniej w wariancie `compact` i `wide` oraz w kilku proporcjach viewportu. Mobile nie jest pomniejszonym kadrem desktopowym.
+- Nie aktualizuj React state w każdej klatce. Transformacje realtime zapisuj przez refy w zarządzanej pętli R3F.
+- Nie dodawaj ciężkiego postprocessingu bez pomiarów sceny bazowej, ustalonego budżetu i wariantu LOW/FALLBACK.
+- Po zmianie experience sprawdź `/experience-lab`, `docs/INTERACTIVE_EXPERIENCE.md`, `docs/CONVERSION_LANDSCAPE.md`, `docs/MOTION_SYSTEM.md`, `docs/WEBGL_PERFORMANCE.md` i uruchom `npm run experience:check`.
 
 ## Kontrola jakości i raportowanie
 

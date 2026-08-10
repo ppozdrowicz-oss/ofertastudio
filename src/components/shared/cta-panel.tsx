@@ -45,7 +45,7 @@ export function CtaPanel({
         className,
       )}
     >
-      <div className="max-w-[var(--measure-copy)]">
+      <div className="max-w-[var(--measure-copy)] min-w-0">
         {eyebrow && (
           <p
             className={cn("text-overline font-bold uppercase", classes.eyebrow)}
@@ -65,7 +65,7 @@ export function CtaPanel({
           {description}
         </p>
       </div>
-      <div className="flex flex-col gap-3 sm:flex-row md:flex-col lg:flex-row">
+      <div className="flex min-w-0 flex-col gap-3 sm:flex-row md:flex-col lg:flex-row">
         {primaryAction}
         {secondaryAction}
       </div>

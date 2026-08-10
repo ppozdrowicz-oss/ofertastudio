@@ -3,9 +3,14 @@ export type ExperiencePalette = {
   background: string;
   depth: string;
   fog: string;
+  focus: string;
   grid: string;
+  gridMinor: string;
   light: string;
+  line: string;
+  signal: string;
   surface: string;
+  surfaceElevated: string;
 };
 
 const experienceColorTokens = {
@@ -13,9 +18,14 @@ const experienceColorTokens = {
   background: "--experience-background",
   depth: "--experience-depth",
   fog: "--experience-fog",
+  focus: "--experience-focus",
   grid: "--experience-grid",
+  gridMinor: "--experience-grid-minor",
   light: "--experience-light",
+  line: "--experience-line",
+  signal: "--experience-signal",
   surface: "--experience-surface",
+  surfaceElevated: "--experience-surface-elevated",
 } as const satisfies Record<keyof ExperiencePalette, `--${string}`>;
 
 export function readExperiencePalette(): ExperiencePalette {
@@ -36,8 +46,13 @@ export function readExperiencePalette(): ExperiencePalette {
     background: readToken(experienceColorTokens.background),
     depth: readToken(experienceColorTokens.depth),
     fog: readToken(experienceColorTokens.fog),
+    focus: readToken(experienceColorTokens.focus),
     grid: readToken(experienceColorTokens.grid),
+    gridMinor: readToken(experienceColorTokens.gridMinor),
     light: readToken(experienceColorTokens.light),
+    line: readToken(experienceColorTokens.line),
+    signal: readToken(experienceColorTokens.signal),
     surface: readToken(experienceColorTokens.surface),
+    surfaceElevated: readToken(experienceColorTokens.surfaceElevated),
   };
 }

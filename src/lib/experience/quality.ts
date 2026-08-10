@@ -1,17 +1,23 @@
+import type { CameraComposition } from "./camera-path.ts";
+
 export type ExperienceQualityTier = "high" | "medium" | "low" | "fallback";
 
 export type ExperienceQuality = {
   antialias: boolean;
   columns: number;
+  composition: CameraComposition;
+  fieldCount: number;
   fogFar: number;
   fogNear: number;
   gridDivisions: number;
+  landscapeDepth: number;
   maxDpr: number;
   minDpr: number;
   moduleCount: number;
   particleBudget: 0;
   pointerStrength: number;
   postprocessing: false;
+  signalCount: number;
   tier: ExperienceQualityTier;
 };
 
@@ -28,57 +34,73 @@ const qualityPresets = {
   fallback: {
     antialias: false,
     columns: 0,
+    composition: "compact",
+    fieldCount: 0,
     fogFar: 0,
     fogNear: 0,
     gridDivisions: 0,
+    landscapeDepth: 0,
     maxDpr: 1,
     minDpr: 1,
     moduleCount: 0,
     particleBudget: 0,
     pointerStrength: 0,
     postprocessing: false,
+    signalCount: 0,
     tier: "fallback",
   },
   high: {
     antialias: true,
     columns: 8,
-    fogFar: 34,
-    fogNear: 11,
-    gridDivisions: 32,
+    composition: "wide",
+    fieldCount: 14,
+    fogFar: 38,
+    fogNear: 12,
+    gridDivisions: 30,
+    landscapeDepth: 20,
     maxDpr: 2,
     minDpr: 1,
     moduleCount: 72,
     particleBudget: 0,
     pointerStrength: 0.28,
     postprocessing: false,
+    signalCount: 24,
     tier: "high",
   },
   low: {
     antialias: false,
     columns: 4,
-    fogFar: 26,
-    fogNear: 8,
-    gridDivisions: 16,
+    composition: "compact",
+    fieldCount: 7,
+    fogFar: 28,
+    fogNear: 9,
+    gridDivisions: 14,
+    landscapeDepth: 12,
     maxDpr: 1.25,
     minDpr: 1,
     moduleCount: 24,
     particleBudget: 0,
     pointerStrength: 0,
     postprocessing: false,
+    signalCount: 8,
     tier: "low",
   },
   medium: {
     antialias: true,
     columns: 6,
-    fogFar: 30,
-    fogNear: 9,
-    gridDivisions: 24,
+    composition: "wide",
+    fieldCount: 10,
+    fogFar: 34,
+    fogNear: 10,
+    gridDivisions: 22,
+    landscapeDepth: 17,
     maxDpr: 1.5,
     minDpr: 1,
     moduleCount: 48,
     particleBudget: 0,
     pointerStrength: 0.18,
     postprocessing: false,
+    signalCount: 16,
     tier: "medium",
   },
 } as const satisfies Record<ExperienceQualityTier, ExperienceQuality>;
@@ -110,6 +132,12 @@ export function resolveExperienceQuality(
 
   return {
     ...preset,
+    composition:
+      capabilities.viewportWidth < 900 ||
+      capabilities.viewportWidth / Math.max(1, capabilities.viewportHeight) <
+        0.92
+        ? "compact"
+        : "wide",
     maxDpr: Math.min(
       preset.maxDpr,
       Math.max(preset.minDpr, capabilities.devicePixelRatio),

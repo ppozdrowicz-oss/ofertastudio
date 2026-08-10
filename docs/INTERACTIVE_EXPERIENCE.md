@@ -2,9 +2,9 @@
 
 ## Status i zakres
 
-Etap 5 wprowadza produkcyjny fundament opcjonalnej warstwy WebGL, a nie finalne hero strony głównej. Implementacja działa wyłącznie w technicznym laboratorium `/experience-lab`, które ma `noindex, nofollow`, nie znajduje się w globalnym menu ani w rejestrze produkcyjnych podstron.
+Etap 5 wprowadził produkcyjny fundament opcjonalnej warstwy WebGL, a etap 6 zbudował na nim proceduralny świat i sekwencję Chaos → Structure. Implementacja nadal działa wyłącznie w technicznym laboratorium `/experience-lab`, które ma `noindex, nofollow`, nie znajduje się w globalnym menu ani w rejestrze produkcyjnych podstron.
 
-Warstwa bazuje na Three.js i React Three Fiber. Nie używa modeli zewnętrznych, tekstur, postprocessingu, systemu cząstek, shaderów ani bibliotek smooth scroll. HTML, metadata, nawigacja, CTA i cała treść sprzedażowa pozostają niezależne od canvasu.
+Warstwa bazuje na Three.js i React Three Fiber. Nie używa modeli zewnętrznych, tekstur, postprocessingu, systemu cząstek, shaderów ani bibliotek smooth scroll. HTML, metadata, nawigacja, CTA i cała treść sprzedażowa pozostają niezależne od canvasu. Pełny język sceny opisuje [CONVERSION_LANDSCAPE.md](./CONVERSION_LANDSCAPE.md).
 
 ## The Conversion Landscape
 
@@ -71,7 +71,9 @@ Najważniejsze propsy:
 
 - `enabled` — całkowicie wyłącza warstwę experience i pozostawia ewentualne `children` jako zwykły DOM,
 - `forceFallback` — wymusza statyczny wariant,
-- `mode="scroll" | "static"` — wybiera długi tor narracji albo pojedynczy kadr,
+- `mode="scroll" | "static" | "manual"` — wybiera długi tor narracji, pojedynczy kadr albo sterowanie laboratorium,
+- `progress` — ręczna wartość `0–1` używana tylko w trybie manual,
+- `motionPreference="auto" | "reduced"` — testuje statyczny wariant bez zmiany preferencji systemowej,
 - `showDiagnostics` — pokazuje techniczne dane wyłącznie w laboratorium,
 - `children` — opcjonalna, semantyczna warstwa DOM.
 
@@ -89,11 +91,15 @@ Tłumi zmianę `targetProgressRef` i zapisuje wynik do `dampedProgressRef`. Redu
 
 ### `CameraRig`
 
-Interpoluje siedem punktów ścieżki kamery. Kontroluje pozycję, cel, FOV i minimalny roll. Pointer influence jest ograniczony przez quality tier, tłumiony i wyłączony dla touch oraz reduced motion.
+Konsumuje centralną trajektorię z `camera-path.ts`. Ścieżki `wide` i `compact` mają po cztery ujęcia: establishing, approach, passage oraz reveal. Rig kontroluje pozycję, cel, FOV i minimalny roll. Pointer influence jest ograniczony przez quality tier, tłumiony i wyłączony dla touch oraz reduced motion.
 
-### `PrototypeLandscape`
+### `ConversionLandscape`
 
-Proceduralna scena weryfikacyjna. Używa jednej `InstancedMesh`, prostej płaszczyzny i grida. Rozmieszczenie jest deterministyczne: bliższe moduły są bardziej nieregularne, dalsze tworzą czytelniejszy system. Nie jest finalnym assetem ani finalnym hero.
+Cienka kompozycja proceduralnego świata. Łączy `LandscapeField`, `SpatialGrid`, `SpatialModules`, `SignalField` i `FocusObject`. Dane generuje deterministycznie na podstawie jednego seeda i aktywnego quality tier. Jedna współdzielona geometria box oraz instancing ograniczają zasoby i draw calls.
+
+### `ChaosStructureSequence`
+
+Tłumaczy damped progress na semantyczne wartości `structureProgress`, `signalProgress`, `focusProgress` i `chaosWeight`. Aktualizuje jeden ref przed renderowaniem obiektów i nie wywołuje React state update na klatkę.
 
 ### `Atmosphere`, `Lighting`, `PerformanceController`
 
@@ -143,13 +149,13 @@ Tier wynika z możliwości, nie z user-agent sniffingu. W przyszłości można d
 Przy `prefers-reduced-motion: reduce`:
 
 - scena otrzymuje tier Low,
-- progres zostaje ustawiony na stabilny kadr `0.52`,
+- progres zostaje ustawiony na stabilny kadr `0.92`,
 - travel kamery i pointer influence są wyłączone,
 - Canvas renderuje na żądanie,
 - treść DOM pozostaje bez zmian,
 - natywny scroll nie jest wygładzany.
 
-Urządzenia dotykowe również nie otrzymują pointer parallax. Mobile zachowuje tę samą semantyczną narrację w DOM, ale ogranicza geometrię, DPR i antialiasing.
+Urządzenia dotykowe również nie otrzymują pointer parallax. Mobile zachowuje tę samą semantyczną narrację w DOM, ale ogranicza geometrię, DPR, antialiasing i głębokość oraz korzysta z osobnej trajektorii `compact`.
 
 ## Warstwy
 

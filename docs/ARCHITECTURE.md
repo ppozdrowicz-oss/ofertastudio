@@ -51,12 +51,12 @@ Komponenty przyjmują standardowe atrybuty HTML, kiedy ma to sens, zachowują se
 
 ## Server Components i Client Components
 
-Wszystkie komponenty są domyślnie Server Components. Pozwala to ograniczyć JavaScript wysyłany do przeglądarki i utrzymać prosty model renderowania treści. Projekt ma dwie jawne, rozłączne granice klientowe:
+Wszystkie komponenty są domyślnie Server Components. Pozwala to ograniczyć JavaScript wysyłany do przeglądarki i utrzymać prosty model renderowania treści. Produkcyjna rama projektu ma dwie jawne, rozłączne granice klientowe:
 
 - `MainNavigation` obsługuje `usePathname`, dropdowny, modalne menu mobilne, blokadę scrolla i focus management;
 - `ExperienceCanvas` obsługuje możliwości przeglądarki, lazy mount renderera, scroll, pointer i fallback. Ciężki `ExperienceRenderer` jest dodatkowo importowany dynamicznie z wyłączonym SSR.
 
-`SiteHeader`, root layout, `PageShell`, `SiteFooter` oraz route laboratorium pozostają Server Components.
+`SiteHeader`, root layout, `PageShell`, `SiteFooter` oraz strona laboratorium pozostają Server Components. Wyłącznie route-local `ConversionLandscapeDemo` jest trzecią, techniczną granicą klientową: przechowuje stan suwaka i przełączników laba, ale nie trafia do produkcyjnych widoków.
 
 Dyrektywę `"use client"` dodajemy wyłącznie do najniższego komponentu, który potrzebuje:
 
@@ -70,20 +70,24 @@ Nie oznaczamy całych stron ani layoutu jako klientowe dla wygody. Dane i treśc
 
 ## Warstwa interactive experience
 
-Warstwa „The Conversion Landscape” jest progresywnym rozszerzeniem wybranych widoków. HTML i SEO nie zależą od WebGL. Jej przepływ to: natywny scroll → progres `0–1` → tłumiony stan sceny → `CameraRig`. Scroll nigdy nie zapisuje bezpośrednio transformacji kamery.
+Warstwa „The Conversion Landscape” jest progresywnym rozszerzeniem wybranych widoków. HTML i SEO nie zależą od WebGL. Jej przepływ to: natywny scroll lub ręczny progres laba → progres `0–1` → tłumiony progres → semantyczny stan sekwencji → docelowe transformacje obiektów i próbka centralnej ścieżki kamery → interpolowany kadr. Scroll nigdy nie zapisuje bezpośrednio transformacji kamery.
 
 Podział modułów:
 
-- `src/components/experience/experience-canvas.tsx` — jedyna jawna granica klientowa, detekcja możliwości, lazy mount i fallback,
+- `src/components/experience/experience-canvas.tsx` — produkcyjna granica klientowa, detekcja możliwości, lazy mount, tryby `scroll`/`manual`/`static`, error boundary i fallback,
 - `experience-renderer.tsx` — `Canvas` R3F i konfiguracja renderera,
 - `experience-scene.tsx` — cienka kompozycja sceny,
 - `camera-rig.tsx` i `scroll-scene-controller.tsx` — ruch kamery i tłumienie progresu,
-- `prototype-landscape.tsx`, `atmosphere.tsx`, `lighting.tsx` — proceduralny prototyp wizualny,
-- `performance-controller.tsx` — DPR, invalidacja i utrata kontekstu,
+- `conversion-landscape/` — gramatyka Field, Modules, Signals i Focus Object oraz sekwencja „Chaos → Structure”,
+- `atmosphere.tsx` i `lighting.tsx` — fog oraz ograniczone oświetlenie studyjne bez cieni,
+- `performance-controller.tsx` — DPR, invalidacja, utrata kontekstu i opcjonalne metryki renderera w labie,
 - `webgl-fallback.tsx` — statyczna, serwerowo widoczna degradacja,
-- `src/lib/experience` — czyste modele ruchu, zakresów, jakości i mapowania tokenów.
+- `src/lib/experience/camera-path.ts` — jedyne źródło klatek kamery dla kompozycji `wide` i `compact`,
+- `scene-timeline.ts`, `scene-config.ts` i `procedural.ts` — semantyczna oś czasu, konfiguracja choreografii i deterministyczne dane sceny,
+- `quality.ts` i `render-budget.ts` — wybór jakości oraz jawny budżet strukturalny renderingu,
+- pozostałe moduły `src/lib/experience` — czyste modele ruchu, progresu i mapowania tokenów.
 
-R3F zarządza jedyną ciągłą pętlą renderowania. Pojedynczy RAF w `ExperienceCanvas` wyłącznie koaleskuje pomiary scrolla. Nie ma Lenisa, własnego smooth-scroll engine, Drei, shaderów ani postprocessingu. Szczegóły opisują `INTERACTIVE_EXPERIENCE.md`, `MOTION_SYSTEM.md` i `WEBGL_PERFORMANCE.md`.
+R3F zarządza jedyną ciągłą pętlą renderowania. Pojedynczy RAF w `ExperienceCanvas` wyłącznie koaleskuje pomiary scrolla. Transformacje instancji są aktualizowane przez refy, bez `setState` w każdej klatce. Wszystkie zasoby utworzone poza JSX mają jawny cleanup. Nie ma Lenisa, własnego smooth-scroll engine, Drei, shaderów ani postprocessingu. Szczegóły opisują `INTERACTIVE_EXPERIENCE.md`, `CONVERSION_LANDSCAPE.md`, `MOTION_SYSTEM.md` i `WEBGL_PERFORMANCE.md`.
 
 ## Przechowywanie treści
 
@@ -135,7 +139,7 @@ Wspólny `src/app/[...slug]/page.tsx` statycznie renderuje znane adresy przez `g
 
 Preferowana kolejność decyzji stylów to: istniejący komponent → istniejący token → uzasadnione rozszerzenie design systemu → dopiero lokalna wartość wyjątkowa. Nie stosujemy przypadkowych gradientów ani niepowiązanych efektów.
 
-Techniczna trasa `/design-system` prezentuje publiczne warianty komponentów. `/experience-lab` prezentuje lazy WebGL, model scrolla, quality tiers i wymuszony fallback. Obie mają metadata `noindex, nofollow`, nie znajdują się w nawigacji ani produkcyjnym rejestrze stron. `npm run design:check` sprawdza komponenty i tokeny, a `npm run experience:check` zakresy narracji, budżety jakości, progressive enhancement, cleanup oraz izolację WebGL od root layoutu.
+Techniczna trasa `/design-system` prezentuje publiczne warianty komponentów. `/experience-lab` prezentuje rzeczywisty Conversion Landscape, ręczny progres, stany Chaos/Structure, ścieżkę kamery, quality tier, reduced motion i wymuszony fallback. Obie mają metadata `noindex, nofollow`, nie znajdują się w nawigacji ani produkcyjnym rejestrze stron. `npm run design:check` sprawdza komponenty i tokeny, a `npm run experience:check` zakresy narracji, deterministyczność, framing 28 kadrów, budżety jakości, progressive enhancement, cleanup oraz izolację WebGL od root layoutu.
 
 ## Zależności
 
@@ -146,6 +150,8 @@ Warstwa experience dodaje trzy jawne pakiety:
 - `@types/three` — typy deweloperskie wymagane przez Three.js oraz kontrakty R3F.
 
 `@types/three` ma własne zależności deweloperskie obejmujące typy i pakiet kompatybilności Rapier, ale aplikacja nie importuje silnika fizyki i nie trafia on do chunków runtime. Nie dodano Drei, Lenisa, biblioteki animacyjnej, postprocessingu ani shader toolkit.
+
+Three.js i `@types/three` są przypięte do `0.182.0`, ponieważ aktualny stabilny React Three Fiber `9.7.0` używa klasy `THREE.Clock`, która od r183 emituje ostrzeżenie deprecacji przy każdym mount. Jest to kontrolowana zgodność stabilnych API, nie ogólne wstrzymanie aktualizacji; wersję należy ponownie podnieść po migracji stabilnego R3F do `THREE.Timer`.
 
 - Nowa zależność musi rozwiązywać konkretny problem lepiej niż niewielka implementacja lokalna.
 - Przed instalacją sprawdzamy zgodność peer dependencies, wpływ na bundle, aktywność projektu i dostępność.

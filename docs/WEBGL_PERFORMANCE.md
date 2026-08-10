@@ -23,8 +23,11 @@ Ciężka część nie może zostać zaimportowana do root layoutu, headera, stop
 | Minimalny DPR          |    1 |      1 |    1 |        — |
 | Maksymalny DPR         |    2 |    1,5 | 1,25 |        — |
 | Moduły instancjonowane |   72 |     48 |   24 |        0 |
+| Poziomy Field          |   14 |     10 |    7 |        0 |
+| Signals                |   24 |     16 |    8 |        0 |
+| Głębokość landscape    |   20 |     17 |   12 |        — |
 | Kolumny                |    8 |      6 |    4 |        — |
-| Podziały grida         |   32 |     24 |   16 |        0 |
+| Podziały grida         |   30 |     22 |   14 |        0 |
 | Antialias              |  tak |    tak |  nie |      nie |
 | Cząstki                |    0 |      0 |    0 |        0 |
 | Postprocessing         |  nie |    nie |  nie |      nie |
@@ -39,19 +42,33 @@ Ciężka część nie może zostać zaimportowana do root layoutu, headera, stop
 
 DPR jest dodatkowo ograniczany przez rzeczywisty `devicePixelRatio`. Nie używamy user-agent sniffingu i nie wpisujemy osobnych arbitralnych DPR w komponentach scen.
 
-## Budżet prototypu
+## Budżet Conversion Landscape
 
-Aktualna scena ma:
+Etap 6 zastępuje testowy grid i płaszczyznę właściwym systemem proceduralnym. Aktualna scena ma:
 
-- jedną instancjonowaną geometrię box zamiast osobnego mesha dla każdego modułu,
-- maksymalnie 72 instancje,
-- jedną płaszczyznę i jeden grid helper,
-- dwa proste źródła kierunkowe/punktowe oraz ambient bez cieni,
+- jedną współdzieloną `BoxGeometry` dla Field, Modules, markerów i Focus Object,
+- jedną lekką geometrię linii dla autorskiego grida,
+- jedną lekką geometrię linii dla Signal Field,
+- sześć materiałów współdzielonych według roli,
+- trzy światła bez cieni,
 - zero tekstur, modeli, cząstek, render targetów i efektów postprocessingu,
-- materiały standardowe bez własnego GLSL,
-- docelowo nie więcej niż pięć podstawowych draw calls dla prototypu.
+- materiały standardowe bez własnego GLSL.
 
-Instancjonowane boxy mają niewielką liczbę trójkątów. Geometryczny język ma wynikać z kompozycji i światła, nie z wysokiego polygon count.
+Statyczny inwentarz maksymalnego aktywnego kadru:
+
+| Tier   | Draw calls | Trójkąty | Instancje | Geometrie | Materiały | Tekstury | Światła | Shadow maps |
+| ------ | ---------: | -------: | --------: | --------: | --------: | -------: | ------: | ----------: |
+| High   |          7 |     1368 |       114 |         3 |         6 |        0 |       3 |           0 |
+| Medium |          7 |      936 |        78 |         3 |         6 |        0 |       3 |           0 |
+| Low    |          7 |      516 |        43 |         3 |         6 |        0 |       3 |           0 |
+
+Wartości wynikają z rzeczywistych liczebności instancji i 12 trójkątów współdzielonego boxa. Linie nie zwiększają licznika trójkątów. Jest to inwentarz konstrukcyjny, nie pomiar czasu GPU. `/experience-lab` pokazuje dodatkowo bieżące `renderer.info.render` oraz `renderer.info.memory`, gdy renderer działa.
+
+Audyt runtime w Chromium dla deterministycznych kadrów potwierdził 7 draw calls oraz odpowiednio 516, 936 i 1368 trójkątów dla Low, Medium i High. `renderer.info` raportował 3 geometrie, 4 skompilowane programy i 1 teksturę wewnętrzną renderera. Sama scena nadal nie ładuje ani nie tworzy żadnej tekstury. Wartości pozostały identyczne po wymuszeniu fallbacku i ponownym montażu canvasu przy szerokościach 390, 768, 1440 i 1920 px; kontekst nie był utracony, a liczba zasobów nie rosła. Jest to kontrola lifecycle i budżetu, nie miarodajny pomiar czasu GPU na urządzeniu użytkownika.
+
+### Zgodność Three.js i React Three Fiber
+
+Three.js jest świadomie przypięte do `0.182.0`, a odpowiadające typy do `0.182.0`. Aktualne stabilne React Three Fiber `9.7.0` nadal tworzy `THREE.Clock`; od Three.js r183 ta klasa emituje ostrzeżenie deprecacji na każdy mount canvasu. Wersja r182 zachowuje wszystkie używane API, spełnia peer dependency R3F (`three >=0.156`) i usuwa ostrzeżenie bez przechodzenia na niestabilny kanał R3F 10. Decyzję należy ponownie zweryfikować, gdy stabilny R3F zastąpi Clock przez Timer.
 
 ### Pomiar builda etapu 5
 
@@ -78,7 +95,7 @@ Każdy nowy zakres musi przed implementacją określić:
 
 Bez osobnej akceptacji jedna scena nie powinna przekraczać:
 
-- 100 instancji w High,
+- 120 instancji w High,
 - 60 instancji w Medium,
 - 30 instancji w Low,
 - 10 podstawowych draw calls,
@@ -102,7 +119,8 @@ Mobile nie jest pomniejszonym desktopem. Strategia obejmuje:
 - tier Low od pierwszego wykrycia możliwości,
 - DPR maksymalnie 1,25,
 - brak antialiasingu i pointer influence,
-- 24 instancje oraz uproszczony grid,
+- 24 moduły, 7 poziomów Field, 8 Signals i uproszczony grid,
+- osobną trajektorię kamery `compact` oraz krótszą głębię,
 - natywny touch scroll,
 - tę samą treść i CTA w DOM,
 - brak canvasu, jeśli bezpieczny kontekst nie powstanie.
@@ -111,7 +129,7 @@ Należy sprawdzać co najmniej 320, 390, 768, 1024, 1280, 1440 i 1920 px. Kluczo
 
 ## Shadery
 
-W etapie 5 shader nie został dodany. Fog, światło i depth tint osiągnięto standardowymi mechanizmami Three.js, więc własny GLSL nie wnosił wystarczającej wartości względem kosztu utrzymania.
+W etapach 5–6 shader nie został dodany. Fog, światło, vertex colors grida i depth tint osiągnięto standardowymi mechanizmami Three.js, więc własny GLSL nie wnosi wystarczającej wartości względem kosztu utrzymania.
 
 Jeżeli później shader stanie się potrzebny:
 
@@ -137,6 +155,7 @@ Jeżeli później shader stanie się potrzebny:
 - Scroll używa jednego RAF do grupowania pomiarów, nie do renderowania.
 - Reduced motion przełącza Canvas na `frameloop="demand"`.
 - Proceduralne obiekty są deterministyczne i memoizowane.
+- Jedna współdzielona geometria i materiały mają jawny cleanup przy unmount; R3F pozostaje właścicielem renderera oraz pętli.
 - Listenery `scroll`, `resize` i `webglcontextlost` oraz obserwatory są usuwane przy unmount.
 - Utrata kontekstu wywołuje fallback; użytkownik nie otrzymuje technicznego komunikatu.
 - Nie przechowujemy WebGL rendererów ani scen w globalnym stanie.
@@ -168,6 +187,10 @@ Treść i akcje znajdują się ponad fallbackiem w DOM. Nie pokazujemy komunikat
 - brak WebGL w root layoucie,
 - noindex laboratorium,
 - brak dodatkowych pętli RAF.
+- deterministyczność generatora i unikalność identyfikatorów,
+- limity draw calls, trójkątów, materiałów i tekstur,
+- dwie centralne trajektorie kamery oraz bezpieczny roll,
+- 28 kombinacji kadru: siedem viewportów i cztery wartości progresu.
 
 Pełna kontrola etapu obejmuje również `format:check`, `lint`, `typecheck`, `content:check`, `design:check`, build produkcyjny, uruchomienie produkcyjnego serwera i HTTP smoke test `/`, `/design-system` oraz `/experience-lab`.
 
