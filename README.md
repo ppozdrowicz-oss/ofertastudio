@@ -2,7 +2,7 @@
 
 Nowa wersja strony usługowej OfertaStudio — butikowego studia sprzedaży internetowej działającego zgodnie z ideą „Od produktu do skutecznej sprzedaży w internecie”. Projekt ma docelowo prezentować ofertę, budować zaufanie i pozyskiwać wartościowe zapytania od firm rozwijających sprzedaż online.
 
-Etapy 1–6 są ukończone: projekt posiada fundament techniczny, strategię marki, architekturę informacji, produkcyjny design system, kompletny globalny layout, izolowany fundament WebGL oraz rozpoznawalny system przestrzenny „The Conversion Landscape”. Minimalna strona startowa pozostaje techniczna, komponenty prezentuje nieindeksowana trasa `/design-system`, a deterministyczną narrację „Chaos → Structure” można bezpiecznie sprawdzać na `/experience-lab`. Następny etap obejmuje finalny hero strony głównej i cinematic entry.
+Etapy 1–7 są ukończone: projekt posiada fundament techniczny, strategię marki, architekturę informacji, produkcyjny design system, kompletny globalny layout, izolowany fundament WebGL, rozpoznawalny system przestrzenny „The Conversion Landscape” oraz finalny Hero strony głównej z cinematic entry. Komponenty prezentuje nieindeksowana trasa `/design-system`, a narrację „Chaos → Structure” i deterministyczne stany Hero można bezpiecznie sprawdzać na `/experience-lab`. Następny etap rozwija problem storytelling „Chaos → Diagnosis” i mini diagnozę.
 
 ## Stack
 
@@ -68,6 +68,7 @@ src/
   app/                  # routing, layout, metadata i pliki specjalne App Routera
   components/
     experience/         # izolowana scena, Conversion Landscape, kamera i fallback
+    home/               # finalne sekcje właściwe stronie głównej
     layout/             # prymitywy układu, np. Container i Section
     navigation/         # interaktywna nawigacja desktopowa i mobilna
     sections/           # kompozycje sekcji stron
@@ -109,4 +110,4 @@ Interakcje nawigacji i WebGL mają dwie osobne, możliwie niskie granice kliento
 - Nową scenę sprawdzamy na `/experience-lab` i przez `npm run experience:check`; ważna treść zawsze pozostaje w DOM. Dane proceduralne są deterministyczne, kamera ma centralną ścieżkę, a każda scena ma strategię mobile, reduced motion i fallback.
 - Nie dodajemy zależności, klientowego JavaScriptu, abstrakcji ani eksportów zbiorczych bez konkretnej potrzeby.
 - Finalne widoki nie mogą zawierać lorem ipsum, generycznych placeholderów ani niezweryfikowanych obietnic marketingowych.
-- Szczegółowe wytyczne dla kolejnych sesji znajdują się w [`AGENTS.md`](AGENTS.md), decyzje techniczne w [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md), gramatyka świata w [`docs/CONVERSION_LANDSCAPE.md`](docs/CONVERSION_LANDSCAPE.md), budżety w [`docs/WEBGL_PERFORMANCE.md`](docs/WEBGL_PERFORMANCE.md), zasady wizualne w [`docs/DESIGN_SYSTEM.md`](docs/DESIGN_SYSTEM.md), a reguły języka w [`docs/CONTENT_GUIDELINES.md`](docs/CONTENT_GUIDELINES.md).
+- Szczegółowe wytyczne dla kolejnych sesji znajdują się w [`AGENTS.md`](AGENTS.md), decyzje techniczne w [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md), reguły finalnego Hero w [`docs/HOMEPAGE_HERO.md`](docs/HOMEPAGE_HERO.md), gramatyka świata w [`docs/CONVERSION_LANDSCAPE.md`](docs/CONVERSION_LANDSCAPE.md), budżety w [`docs/WEBGL_PERFORMANCE.md`](docs/WEBGL_PERFORMANCE.md), zasady wizualne w [`docs/DESIGN_SYSTEM.md`](docs/DESIGN_SYSTEM.md), a reguły języka w [`docs/CONTENT_GUIDELINES.md`](docs/CONTENT_GUIDELINES.md).

@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 
-import { ConversionLandscapeDemo } from "@/app/experience-lab/_components/conversion-landscape-demo";
+import {
+  ConversionLandscapeDemo,
+  HeroExperienceDemo,
+} from "@/app/experience-lab/_components/conversion-landscape-demo";
 import { ExperienceCanvas } from "@/components/experience/experience-canvas";
 import { Container } from "@/components/layout/container";
 import { PageShell } from "@/components/layout/page-shell";
@@ -22,7 +25,7 @@ import {
 
 export const metadata: Metadata = {
   description:
-    "Techniczne laboratorium świata Conversion Landscape, proceduralnej sceny i systemu ruchu OfertaStudio.",
+    "Techniczne laboratorium Conversion Landscape, finalnego Hero i systemu ruchu OfertaStudio.",
   robots: {
     follow: false,
     googleBot: {
@@ -73,8 +76,8 @@ export default function ExperienceLabPage() {
       <Section spacing="compact" variant="strong">
         <Container size="wide">
           <SectionHeading
-            description="Izolowane środowisko do sprawdzania proceduralnego świata, transformacji Chaos → Structure, choreografii kamery, jakości renderowania i eleganckiej degradacji. To narzędzie techniczne, nie finalne hero strony głównej."
-            eyebrow="OfertaStudio · etap 6"
+            description="Izolowane środowisko do sprawdzania finalnego Hero, proceduralnego świata, transformacji Chaos → Structure, choreografii kamery, jakości renderowania i eleganckiej degradacji."
+            eyebrow="OfertaStudio · etap 7"
             level={1}
             size="hero"
             title="The Conversion Landscape"
@@ -103,6 +106,19 @@ export default function ExperienceLabPage() {
       </Section>
 
       <Section spacing="compact" variant="muted">
+        <Container size="wide">
+          <SectionHeading
+            description="Podgląd używa tej samej treści, sekwencji kamery, fallbacku i quality systemu co strona główna. Slider zastępuje scroll wyłącznie w laboratorium."
+            eyebrow="Final homepage Hero"
+            title="Arrival → Recognition → Approach → Opening → Handoff"
+          />
+          <div className="mt-8">
+            <HeroExperienceDemo />
+          </div>
+        </Container>
+      </Section>
+
+      <Section spacing="compact">
         <Container size="wide">
           <SectionHeading
             description="Cztery role mają stałą odpowiedzialność i mogą później reprezentować pięć filarów usług bez zmiany silnika sceny. Diagnostyka canvasu wskazuje również aktywny kadr Compact lub Wide."

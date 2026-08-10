@@ -15,6 +15,7 @@ import {
 import type { ExperienceRuntimeMetrics } from "@/components/experience/performance-controller";
 import { WebGLFallback } from "@/components/experience/webgl-fallback";
 import { cn } from "@/lib/cn";
+import type { ExperienceSequence } from "@/lib/experience/experience-sequence";
 import {
   experienceMotion,
   type ExperiencePointer,
@@ -88,9 +89,11 @@ export type ExperienceCanvasProps = {
   className?: string;
   enabled?: boolean;
   forceFallback?: boolean;
+  layout?: "hero" | "panel";
   mode?: "manual" | "scroll" | "static";
   motionPreference?: "auto" | "reduced";
   progress?: number;
+  sequence?: ExperienceSequence;
   showDiagnostics?: boolean;
 };
 
@@ -124,14 +127,18 @@ function ExperienceCanvasRuntime({
   children,
   className,
   forceFallback = false,
+  layout = "panel",
   mode = "scroll",
   motionPreference = "auto",
   progress = 0,
+  sequence = "conversion",
   showDiagnostics = false,
 }: ExperienceCanvasRuntimeProps) {
+  const reducedMotionProgress =
+    experienceMotion.reducedMotionProgress[sequence];
   const initialProgress =
-    mode === "static"
-      ? experienceMotion.reducedMotionProgress
+    motionPreference === "reduced" || mode === "static"
+      ? reducedMotionProgress
       : mode === "manual"
         ? clampExperienceProgress(progress)
         : 0;
@@ -170,15 +177,11 @@ function ExperienceCanvasRuntime({
       : diagnosticProgress;
 
   useEffect(() => {
-    if (forceFallback) {
-      return;
-    }
-
     const reducedMotionQuery = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     );
     const coarsePointerQuery = window.matchMedia("(pointer: coarse)");
-    const webgl = detectWebGLSupport();
+    const webgl = forceFallback ? false : detectWebGLSupport();
 
     function updateCapabilities(): void {
       setCapabilities({
@@ -204,13 +207,21 @@ function ExperienceCanvasRuntime({
   }, [forceFallback]);
 
   useEffect(() => {
-    if (mode !== "manual") {
+    if (mode === "scroll") {
       return;
     }
 
-    const nextProgress = clampExperienceProgress(progress);
+    const nextProgress =
+      effectiveReducedMotion || mode === "static"
+        ? reducedMotionProgress
+        : clampExperienceProgress(progress);
     targetProgressRef.current = nextProgress;
-  }, [mode, progress]);
+    dampedProgressRef.current = nextProgress;
+    rootRef.current?.style.setProperty(
+      "--experience-progress",
+      nextProgress.toFixed(4),
+    );
+  }, [effectiveReducedMotion, mode, progress, reducedMotionProgress]);
 
   useEffect(() => {
     const root = rootRef.current;
@@ -241,11 +252,22 @@ function ExperienceCanvasRuntime({
   useEffect(() => {
     const root = rootRef.current;
 
-    if (!root || mode !== "scroll" || forceFallback || !capabilities.webgl) {
+    if (!root || mode !== "scroll") {
       return;
     }
 
     const rootElement = root;
+
+    if (effectiveReducedMotion) {
+      targetProgressRef.current = reducedMotionProgress;
+      dampedProgressRef.current = reducedMotionProgress;
+      rootElement.style.setProperty(
+        "--experience-progress",
+        reducedMotionProgress.toFixed(4),
+      );
+      return;
+    }
+
     let frameId = 0;
 
     function updateProgress(): void {
@@ -259,6 +281,10 @@ function ExperienceCanvasRuntime({
       });
 
       targetProgressRef.current = progress;
+      rootElement.style.setProperty(
+        "--experience-progress",
+        progress.toFixed(4),
+      );
 
       if (showDiagnostics) {
         setDiagnosticProgress(Math.round(progress * 100));
@@ -285,7 +311,7 @@ function ExperienceCanvasRuntime({
       window.removeEventListener("resize", scheduleProgressUpdate);
       window.removeEventListener("scroll", scheduleProgressUpdate);
     };
-  }, [capabilities.webgl, forceFallback, mode, showDiagnostics]);
+  }, [effectiveReducedMotion, mode, reducedMotionProgress, showDiagnostics]);
 
   const handleRendererFailure = useCallback(() => {
     setRendererReadyTier(null);
@@ -334,20 +360,29 @@ function ExperienceCanvasRuntime({
         : "active"
       : "loading"
     : "fallback";
-
   return (
     <div
       className={cn(
-        "relative isolate overflow-clip rounded-[var(--radius-panel)] border border-experience-grid bg-experience-background",
-        mode === "scroll"
-          ? "min-h-[var(--experience-track-height)]"
-          : "min-h-[var(--experience-static-height)]",
+        "relative isolate overflow-clip bg-experience-background",
+        layout === "panel" &&
+          "rounded-[var(--radius-panel)] border border-experience-grid",
+        mode === "scroll" &&
+          (layout === "hero"
+            ? "min-h-[var(--home-hero-track-height)]"
+            : "min-h-[var(--experience-track-height)]"),
+        mode !== "scroll" &&
+          (layout === "hero"
+            ? "min-h-[var(--home-hero-preview-height)]"
+            : "min-h-[var(--experience-static-height)]"),
         className,
       )}
       data-experience-canvas="true"
+      data-experience-layout={layout}
       data-experience-state={experienceState}
       data-camera-composition={quality.composition}
+      data-motion-reduced={effectiveReducedMotion ? "true" : "false"}
       data-quality-tier={quality.tier}
+      data-sequence={sequence}
       data-scene-progress={displayedProgress}
       onPointerLeave={resetPointer}
       onPointerMove={handlePointerMove}
@@ -358,7 +393,9 @@ function ExperienceCanvasRuntime({
           "relative overflow-hidden bg-experience-background",
           mode === "scroll"
             ? "sticky top-[var(--header-height-mobile)] h-[calc(100svh-var(--header-height-mobile))] xl:top-[var(--header-height-desktop)] xl:h-[calc(100svh-var(--header-height-desktop))]"
-            : "h-[var(--experience-static-height)]",
+            : layout === "hero"
+              ? "h-[var(--home-hero-preview-height)]"
+              : "h-[var(--experience-static-height)]",
         )}
       >
         <WebGLFallback
@@ -370,10 +407,13 @@ function ExperienceCanvasRuntime({
         {shouldRender && (
           <div
             aria-hidden="true"
-            className="absolute inset-0 z-[var(--layer-experience-canvas)]"
+            className={cn(
+              "transition-interactive absolute inset-0 z-[var(--layer-experience-canvas)]",
+              rendererReady ? "opacity-100" : "opacity-0",
+            )}
           >
             <ExperienceBoundary
-              key={quality.tier}
+              key={`${sequence}:${quality.tier}`}
               onError={handleRendererFailure}
             >
               <LazyExperienceRenderer
@@ -384,6 +424,7 @@ function ExperienceCanvasRuntime({
                 pointerRef={pointerRef}
                 quality={quality}
                 reducedMotion={effectiveReducedMotion}
+                sequence={sequence}
                 targetProgressRef={targetProgressRef}
               />
             </ExperienceBoundary>

@@ -2,9 +2,9 @@
 
 ## Status i zakres
 
-Etap 5 wprowadził produkcyjny fundament opcjonalnej warstwy WebGL, a etap 6 zbudował na nim proceduralny świat i sekwencję Chaos → Structure. Implementacja nadal działa wyłącznie w technicznym laboratorium `/experience-lab`, które ma `noindex, nofollow`, nie znajduje się w globalnym menu ani w rejestrze produkcyjnych podstron.
+Etap 5 wprowadził produkcyjny fundament opcjonalnej warstwy WebGL, etap 6 zbudował proceduralny świat i sekwencję Chaos → Structure, a etap 7 podłączył ten sam system do finalnego Hero na `/`. Laboratorium `/experience-lab` pozostaje nieindeksowanym miejscem do deterministycznego testowania obu sekwencji.
 
-Warstwa bazuje na Three.js i React Three Fiber. Nie używa modeli zewnętrznych, tekstur, postprocessingu, systemu cząstek, shaderów ani bibliotek smooth scroll. HTML, metadata, nawigacja, CTA i cała treść sprzedażowa pozostają niezależne od canvasu. Pełny język sceny opisuje [CONVERSION_LANDSCAPE.md](./CONVERSION_LANDSCAPE.md).
+Warstwa bazuje na Three.js i React Three Fiber. Nie używa modeli zewnętrznych, tekstur, postprocessingu, systemu cząstek, shaderów ani bibliotek smooth scroll. HTML, metadata, nawigacja, CTA i cała treść sprzedażowa pozostają niezależne od canvasu. Pełny język sceny opisuje [CONVERSION_LANDSCAPE.md](./CONVERSION_LANDSCAPE.md), a produkcyjne użycie w otwarciu strony [HOMEPAGE_HERO.md](./HOMEPAGE_HERO.md).
 
 ## The Conversion Landscape
 
@@ -42,11 +42,11 @@ Root layout, `PageShell`, `SiteHeader`, `SiteFooter` i route `/experience-lab` p
 ```text
 natywny scroll
   → normalizeScrollProgress (0–1)
-  → targetProgressRef
+  → targetProgressRef + lokalne --experience-progress dla motion DOM
   → ScrollSceneController + damping
   → dampedProgressRef
-  → CameraRig
-  → pozycja / target / FOV / roll
+  → SceneSequenceController + CameraRig
+  → stan sceny + pozycja / target / FOV / roll
 ```
 
 Odczyt scrolla nie zapisuje bezpośrednio pozycji kamery. Listener jest pasywny, a pomiary są koaleskowane przez pojedynczy `requestAnimationFrame`. Wygładzanie i renderowanie odbywa się we wspólnej pętli R3F.
@@ -71,6 +71,8 @@ Najważniejsze propsy:
 
 - `enabled` — całkowicie wyłącza warstwę experience i pozostawia ewentualne `children` jako zwykły DOM,
 - `forceFallback` — wymusza statyczny wariant,
+- `layout="panel" | "hero"` — wybiera techniczny panel albo pełną kompozycję bez dublowania canvasu,
+- `sequence="conversion" | "hero"` — wybiera centralny timeline i camera path,
 - `mode="scroll" | "static" | "manual"` — wybiera długi tor narracji, pojedynczy kadr albo sterowanie laboratorium,
 - `progress` — ręczna wartość `0–1` używana tylko w trybie manual,
 - `motionPreference="auto" | "reduced"` — testuje statyczny wariant bez zmiany preferencji systemowej,
@@ -91,15 +93,15 @@ Tłumi zmianę `targetProgressRef` i zapisuje wynik do `dampedProgressRef`. Redu
 
 ### `CameraRig`
 
-Konsumuje centralną trajektorię z `camera-path.ts`. Ścieżki `wide` i `compact` mają po cztery ujęcia: establishing, approach, passage oraz reveal. Rig kontroluje pozycję, cel, FOV i minimalny roll. Pointer influence jest ograniczony przez quality tier, tłumiony i wyłączony dla touch oraz reduced motion.
+Konsumuje centralną trajektorię z `camera-path.ts`. Sekwencja Conversion ma po cztery ujęcia, a Hero po pięć: arrival, recognition, approach, opening oraz handoff. Obie posiadają osobne kompozycje `wide` i `compact`. Rig kontroluje pozycję, cel, FOV i minimalny roll. Pointer influence jest ograniczony przez quality tier, tłumiony i wyłączony dla touch oraz reduced motion.
 
 ### `ConversionLandscape`
 
 Cienka kompozycja proceduralnego świata. Łączy `LandscapeField`, `SpatialGrid`, `SpatialModules`, `SignalField` i `FocusObject`. Dane generuje deterministycznie na podstawie jednego seeda i aktywnego quality tier. Jedna współdzielona geometria box oraz instancing ograniczają zasoby i draw calls.
 
-### `ChaosStructureSequence`
+### `SceneSequenceController`
 
-Tłumaczy damped progress na semantyczne wartości `structureProgress`, `signalProgress`, `focusProgress` i `chaosWeight`. Aktualizuje jeden ref przed renderowaniem obiektów i nie wywołuje React state update na klatkę.
+Tłumaczy damped progress wybranej sekwencji na semantyczne wartości `structureProgress`, `signalProgress`, `focusProgress` i `chaosWeight`. Aktualizuje jeden ref przed renderowaniem obiektów i nie wywołuje React state update na klatkę. Hero startuje od uporządkowanego świata, a laboratorium zachowuje pełne Chaos → Structure.
 
 ### `Atmosphere`, `Lighting`, `PerformanceController`
 
@@ -149,7 +151,7 @@ Tier wynika z możliwości, nie z user-agent sniffingu. W przyszłości można d
 Przy `prefers-reduced-motion: reduce`:
 
 - scena otrzymuje tier Low,
-- progres zostaje ustawiony na stabilny kadr `0.92`,
+- progres zostaje ustawiony na stabilny kadr `0.92` dla Conversion albo `0.70` dla Hero,
 - travel kamery i pointer influence są wyłączone,
 - Canvas renderuje na żądanie,
 - treść DOM pozostaje bez zmian,
@@ -185,4 +187,4 @@ Nowa scena musi:
 9. przejść `typecheck`, `lint`, `design:check`, `experience:check` i build,
 10. zostać opisana w dokumentacji oraz inwentarzu.
 
-Finalna integracja ze stroną główną wymaga osobnej decyzji w kolejnym etapie. Sam fakt istnienia laboratorium nie upoważnia do umieszczenia WebGL na wszystkich podstronach.
+Finalny Hero jest jedynym produkcyjnym użyciem sceny na tym etapie. Sam fakt istnienia laboratorium i wspólnego silnika nie upoważnia do umieszczenia WebGL na wszystkich podstronach.

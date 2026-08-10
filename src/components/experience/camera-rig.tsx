@@ -1,12 +1,14 @@
 import { useFrame } from "@react-three/fiber";
 import type { RefObject } from "react";
-import { useRef } from "react";
+import { useMemo, useRef } from "react";
 import { PerspectiveCamera, Vector3 } from "three";
 
 import {
   type MutableCameraPathSample,
-  updateConversionCameraPathSample,
+  sampleExperienceCameraPath,
+  updateExperienceCameraPathSample,
 } from "@/lib/experience/camera-path";
+import type { ExperienceSequence } from "@/lib/experience/experience-sequence";
 import {
   dampValue,
   experienceMotion,
@@ -19,6 +21,7 @@ export type CameraRigProps = {
   pointerRef: RefObject<ExperiencePointer>;
   quality: ExperienceQuality;
   reducedMotion: boolean;
+  sequence: ExperienceSequence;
 };
 
 export function CameraRig({
@@ -26,16 +29,21 @@ export function CameraRig({
   pointerRef,
   quality,
   reducedMotion,
+  sequence,
 }: CameraRigProps) {
+  const initialSample = useMemo(
+    () => sampleExperienceCameraPath(0, quality.composition, sequence),
+    [quality.composition, sequence],
+  );
   const sampleRef = useRef<MutableCameraPathSample>({
-    fov: 43,
-    position: [0, 0, 0],
-    roll: 0,
-    target: [0, 0, 0],
+    fov: initialSample.fov,
+    position: [...initialSample.position],
+    roll: initialSample.roll,
+    target: [...initialSample.target],
   });
-  const smoothedTargetRef = useRef(new Vector3());
+  const smoothedTargetRef = useRef(new Vector3(...initialSample.target));
   const smoothedPointerRef = useRef<ExperiencePointer>({ x: 0, y: 0 });
-  const smoothedRollRef = useRef(0);
+  const smoothedRollRef = useRef(initialSample.roll);
 
   useFrame(({ camera }, delta) => {
     if (!(camera instanceof PerspectiveCamera)) {
@@ -44,9 +52,10 @@ export function CameraRig({
 
     const sample = sampleRef.current;
     const smoothedTarget = smoothedTargetRef.current;
-    updateConversionCameraPathSample(
+    updateExperienceCameraPathSample(
       dampedProgressRef.current,
       quality.composition,
+      sequence,
       sample,
     );
 

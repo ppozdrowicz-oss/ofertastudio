@@ -141,6 +141,21 @@ Komponenty `shared` istnieją wyłącznie dla realnych wzorców domenowych, taki
 - Nie dodawaj ciężkiego postprocessingu bez pomiarów sceny bazowej, ustalonego budżetu i wariantu LOW/FALLBACK.
 - Po zmianie experience sprawdź `/experience-lab`, `docs/INTERACTIVE_EXPERIENCE.md`, `docs/CONVERSION_LANDSCAPE.md`, `docs/MOTION_SYSTEM.md`, `docs/WEBGL_PERFORMANCE.md` i uruchom `npm run experience:check`.
 
+## Homepage Hero
+
+- Hero `h1` zawsze pozostaje w DOM i jest renderowany serwerowo. Nie renderuj headline, leadu ani CTA w canvasie.
+- Hero content nie czeka na gotowość WebGL. Pierwszy HTML zawiera pełne copy, akcje i dopracowany fallback.
+- WebGL nie może blokować LCP ani zmieniać wymiarów Hero po inicjalizacji. Rezerwuj wysokość przed hydratacją i zachowuj dynamiczny import ciężkiego renderera.
+- Hero musi mieć pełny fallback oraz jawny, dopracowany wariant reduced motion; samo wyłączenie wszystkich warstw wizualnych nie jest poprawną degradacją.
+- Mobile może mieć osobną centralną camera composition i inne kadrowanie, ale nie wolno tworzyć drugiego Hero, osobnego mobile H1 ani kopii treści.
+- Camera path ma jedno źródło prawdy w `src/lib/experience/camera-path.ts`. Nie rozrzucaj korekt keyframes po komponentach Hero lub sceny.
+- DOM i WebGL używają jednego semantic progress. Dopuszczalne są różne krzywe mapowania, ale nie drugi listener, store ani niezależna oś scrolla.
+- Header, dropdowny i menu mobilne zawsze pozostają ponad experience layer; canvas nie może blokować fokusu, pointera ani touch scrolla.
+- Finalny Hero nie zawiera fikcyjnych proof metrics, opinii, nagród ani wyników. Sygnały kompetencji muszą być prawdziwymi kategoriami albo zweryfikowanymi danymi.
+- CTA Hero pochodzą z centralnej konfiguracji `src/config/ctas.ts`; nie duplikuj etykiet ani adresów w JSX.
+- Cinematic motion nie może być scroll-jackingiem. Zachowuj natywny scroll, działające anchory, klawiaturę i rozsądną długość tracku.
+- Po zmianie Hero sprawdź `/`, jego tryb manualny w `/experience-lab`, `docs/HOMEPAGE_HERO.md`, wymagane proporcje, reduced motion, fallback, kontrast, overflow i pełny zestaw kontroli.
+
 ## Kontrola jakości i raportowanie
 
 Po każdej zmianie wpływającej na kod lub konfigurację uruchom:

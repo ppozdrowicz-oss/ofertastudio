@@ -1,29 +1,20 @@
-import { ArrowRight } from "lucide-react";
+import type { Metadata } from "next";
 
+import { HomeHandoff } from "@/components/home/home-handoff";
+import { HomeHero } from "@/components/home/home-hero";
 import { PageShell } from "@/components/layout/page-shell";
-import { TechnicalFoundation } from "@/components/sections/technical-foundation";
-import { ButtonLink } from "@/components/ui/button";
-import { foundationPageContent } from "@/content/foundation-page";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default function HomePage() {
   return (
-    <PageShell
-      header={{
-        eyebrow: foundationPageContent.eyebrow,
-        lead: foundationPageContent.description,
-        primaryAction: (
-          <ButtonLink
-            href="/design-system"
-            size="large"
-            trailingIcon={<ArrowRight aria-hidden="true" />}
-          >
-            Otwórz design system
-          </ButtonLink>
-        ),
-        title: foundationPageContent.title,
-      }}
-    >
-      <TechnicalFoundation />
+    <PageShell showGlobalCta={false}>
+      <HomeHero />
+      <HomeHandoff />
     </PageShell>
   );
 }

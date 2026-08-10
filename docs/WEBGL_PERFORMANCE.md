@@ -4,11 +4,11 @@
 
 Warstwa 3D jest progresywnym rozszerzeniem strony usługowej. Nie może opóźniać HTML, nawigacji ani głównego CTA. Jej koszt jest uzasadniony wyłącznie wtedy, gdy wzmacnia narrację „chaos → system → efekt”.
 
-Budżety w tym dokumencie są limitami projektowymi, nie deklaracją wyników na wszystkich urządzeniach. Rzeczywiste pomiary finalnego hero zostaną wykonane po integracji z pełnym widokiem i zatwierdzonymi assetami.
+Budżety w tym dokumencie są limitami projektowymi, nie deklaracją wyników na wszystkich urządzeniach. Finalny Hero wykorzystuje aktualną scenę bez nowych assetów, geometrii i efektów postprocessingu. Czas GPU oraz stabilność FPS nadal wymagają pomiaru na reprezentatywnych urządzeniach, nie tylko w środowisku deweloperskim.
 
 ## Strategia ładowania
 
-1. `ExperienceCanvas` renderuje na serwerze lekki fallback CSS i pełną treść DOM.
+1. `ExperienceCanvas` renderuje w pierwszym HTML lekki fallback CSS, a `HeroContent` dostarcza pełne copy i CTA bez oczekiwania na renderer.
 2. Moduł zawierający `@react-three/fiber` oraz Three.js jest importowany dynamicznie z `ssr: false`.
 3. `IntersectionObserver` montuje renderer dopiero w pobliżu viewportu (`rootMargin: 25%`).
 4. Brak WebGL, jawne wyłączenie lub błąd nie inicjuje sceny.
@@ -70,16 +70,32 @@ Audyt runtime w Chromium dla deterministycznych kadrów potwierdził 7 draw call
 
 Three.js jest świadomie przypięte do `0.182.0`, a odpowiadające typy do `0.182.0`. Aktualne stabilne React Three Fiber `9.7.0` nadal tworzy `THREE.Clock`; od Three.js r183 ta klasa emituje ostrzeżenie deprecacji na każdy mount canvasu. Wersja r182 zachowuje wszystkie używane API, spełnia peer dependency R3F (`three >=0.156`) i usuwa ostrzeżenie bez przechodzenia na niestabilny kanał R3F 10. Decyzję należy ponownie zweryfikować, gdy stabilny R3F zastąpi Clock przez Timer.
 
-### Pomiar builda etapu 5
+### Pomiar builda finalnego Hero — etap 7
 
 Produkcyjny build Next.js 16.3.0 z 10 sierpnia 2026 potwierdził separację chunków:
 
-- HTML `/` i `/design-system` nie preładuje trzech ciężkich chunków zawierających Three.js/R3F,
-- HTML `/experience-lab` również ich nie preładuje; dynamiczny import następuje dopiero po hydratacji i wejściu kontenera w strefę `IntersectionObserver`,
-- trzy współdzielone chunki WebGL mają łącznie 882 276 B bez kompresji i około 232 924 B po zagregowanym gzip,
-- route wrapper `/experience-lab` ma 10 774 B bez kompresji.
+- HTML `/` zawiera H1, lead, oba CTA i fallback, a nie zawiera rendererowego canvasu,
+- HTML `/`, `/design-system` i `/experience-lab` nie preładowuje ciężkich chunków Three.js/R3F; dynamiczny import następuje po hydratacji i wejściu kontenera w strefę `IntersectionObserver`,
+- pięć współdzielonych chunków dynamicznej części WebGL ma łącznie 899 421 B bez kompresji i 241 573 B po zagregowanym gzip,
+- klientowa granica `ExperienceCanvas` ładowana z homepage ma 14 059 B bez kompresji i 4 631 B gzip,
+- własny route chunk homepage ma 265 B bez kompresji i 208 B gzip; treść oraz kompozycja Hero pozostają serwerowe,
+- względem referencyjnego builda etapu 6 dynamiczna część wzrosła o 17 145 B raw i 8 649 B gzip, głównie przez obsługę drugiej sekwencji, ścieżkę kamery i tryb Hero laba.
 
-To pomiar referencyjny bieżącego builda, a nie gwarancja stałych nazw lub rozmiarów chunków. Koszt jest akceptowalny dla izolowanego laboratorium, ale pozostaje realnym budżetem do kontroli przed integracją z publicznym homepage.
+To pomiar referencyjny bieżącego builda, a nie gwarancja stałych nazw lub rozmiarów chunków. Ciężki koszt jest odseparowany od SSR treści, ale pozostaje realnym kosztem sieciowym publicznego pierwszego widoku i wymaga dalszego monitorowania.
+
+## Hero i Core Web Vitals
+
+### LCP
+
+Headline, lead i CTA są Server Components i znajdują się w pierwszym HTML. WebGL nie jest warunkiem ich widoczności. Font jest ładowany przez `next/font`, a fallback i tło mają docelowy kolor przed inicjalizacją renderera. Najbardziej prawdopodobnym kandydatem LCP pozostaje tekst H1 lub jego blok, nie asset 3D; należy to potwierdzić przez pomiar RUM albo Lighthouse w środowisku wdrożeniowym.
+
+### CLS
+
+Track Hero rezerwuje `132svh` na mobile oraz `140svh` od 768 px. Sticky kadr ma stałą wysokość wynikającą z `svh` i tokenu headera. Fallback, canvas oraz treść są warstwami absolutnymi wewnątrz zarezerwowanego obszaru, dlatego gotowość WebGL nie zmienia layoutu. CTA i competence strip istnieją w SSR.
+
+### INP
+
+Canvas ma `pointer-events: none`; wrapper jedynie zapisuje znormalizowany pointer do refu, gdy tier pozwala na interakcję. Nie ma React `setState` na `pointermove`. Scroll listener jest pasywny, a jeden RAF grupuje pomiary. Header, menu, CTA i touch scroll pozostają niezależne od R3F.
 
 ## Budżety dla kolejnych scen
 
@@ -110,7 +126,7 @@ To limity maksymalne, nie cele do wykorzystania. Współdzielona geometria i mat
 - `PerformanceController` ustawia DPR po utworzeniu renderera i po zmianie jakości.
 - Resize obsługuje R3F; warstwa nadrzędna mierzy tylko progres scrolla.
 - Zmiana viewportu aktualizuje tier bez ręcznego tworzenia kolejnego renderera poza cyklem React.
-- Layout rezerwuje wysokość przez tokeny `--experience-track-height` i `--experience-static-height`, więc pojawienie się canvasu nie przesuwa treści.
+- Layout rezerwuje wysokość przez tokeny `--experience-track-height`, `--experience-static-height`, `--home-hero-track-height` i `--home-hero-preview-height`, więc pojawienie się canvasu nie przesuwa treści.
 
 ## Mobile
 
@@ -120,12 +136,12 @@ Mobile nie jest pomniejszonym desktopem. Strategia obejmuje:
 - DPR maksymalnie 1,25,
 - brak antialiasingu i pointer influence,
 - 24 moduły, 7 poziomów Field, 8 Signals i uproszczony grid,
-- osobną trajektorię kamery `compact` oraz krótszą głębię,
+- osobne trajektorie kamery `compact` dla Conversion i Hero oraz krótszą głębię,
 - natywny touch scroll,
 - tę samą treść i CTA w DOM,
 - brak canvasu, jeśli bezpieczny kontekst nie powstanie.
 
-Należy sprawdzać co najmniej 320, 390, 768, 1024, 1280, 1440 i 1920 px. Kluczowe są brak poziomego overflow, stabilny sticky kadr i nieprzykrywanie nawigacji.
+Należy sprawdzać co najmniej 320, 360, 390, 768, 1024, 1280, 1366, 1440 i 1920 px. Kluczowe są brak poziomego overflow, stabilny sticky kadr i nieprzykrywanie nawigacji.
 
 ## Shadery
 
@@ -189,9 +205,10 @@ Treść i akcje znajdują się ponad fallbackiem w DOM. Nie pokazujemy komunikat
 - brak dodatkowych pętli RAF.
 - deterministyczność generatora i unikalność identyfikatorów,
 - limity draw calls, trójkątów, materiałów i tekstur,
-- dwie centralne trajektorie kamery oraz bezpieczny roll,
-- 28 kombinacji kadru: siedem viewportów i cztery wartości progresu.
+- cztery centralne trajektorie kamery — po `wide` i `compact` dla Conversion oraz Hero — i bezpieczny roll,
+- 81 deterministycznych kombinacji kadru dla dziewięciu viewportów i semantycznych progresów obu sekwencji,
+- serwerowe H1, centralne CTA, wspólny progres CSS/WebGL oraz integrację trybu Hero w laboratorium.
 
 Pełna kontrola etapu obejmuje również `format:check`, `lint`, `typecheck`, `content:check`, `design:check`, build produkcyjny, uruchomienie produkcyjnego serwera i HTTP smoke test `/`, `/design-system` oraz `/experience-lab`.
 
-Przed finalną publikacją sceny potrzebny będzie profil rzeczywistych FPS, czasu GPU, pamięci i bundle na reprezentatywnych urządzeniach. Etap fundamentu nie deklaruje niezmierzonych wyników.
+W bieżącym środowisku nie ma zainstalowanego browser runnera ani wykonywalnej przeglądarki, dlatego po etapie 7 nie wykonano świeżego profilu FPS, czasu GPU, konsoli WebGL ani ponownego pomiaru `renderer.info`. Hero nie zmienia konstrukcyjnego budżetu sceny, ale dane runtime z etapu 6 pozostają wyłącznie pomiarem referencyjnym. Przed wdrożeniem wymagany jest profil na reprezentatywnym mobile oraz desktopie; dokument nie deklaruje niezmierzonych wyników.

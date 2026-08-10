@@ -1,3 +1,4 @@
+import type { ExperienceSequence } from "./experience-sequence.ts";
 import { clampExperienceProgress } from "./progress.ts";
 
 export const conversionSceneRanges = [
@@ -9,6 +10,29 @@ export const conversionSceneRanges = [
 
 export type ConversionSceneStateId =
   (typeof conversionSceneRanges)[number]["id"];
+
+export const heroSceneRanges = [
+  { end: 0.2, id: "arrival", start: 0 },
+  { end: 0.42, id: "recognition", start: 0.2 },
+  { end: 0.66, id: "approach", start: 0.42 },
+  { end: 0.86, id: "opening", start: 0.66 },
+  { end: 1, id: "handoff", start: 0.86 },
+] as const;
+
+export type HeroSceneStateId = (typeof heroSceneRanges)[number]["id"];
+
+export type HeroScenePhase = {
+  progress: number;
+  state: HeroSceneStateId;
+  stateProgress: number;
+};
+
+function resolveHeroSceneRange(progress: number) {
+  return (
+    heroSceneRanges.find((candidate) => progress < candidate.end) ??
+    heroSceneRanges[4]
+  );
+}
 
 export type ConversionSceneFrame = {
   chaosWeight: number;
@@ -74,6 +98,60 @@ export function updateConversionSceneFrame(
   target: ConversionSceneFrame,
 ): void {
   writeConversionSceneFrame(progress, target);
+}
+
+export function getHeroScenePhase(progress: number): HeroScenePhase {
+  const clamped = clampExperienceProgress(progress);
+  const range = resolveHeroSceneRange(clamped);
+
+  return {
+    progress: clamped,
+    state: range.id,
+    stateProgress: progressBetween(clamped, range.start, range.end),
+  };
+}
+
+export function updateHeroSceneFrame(
+  progress: number,
+  target: ConversionSceneFrame,
+): void {
+  const clamped = clampExperienceProgress(progress);
+  const structureProgress = 0.86 + smoothstep(clamped) * 0.14;
+  const range = resolveHeroSceneRange(clamped);
+
+  target.chaosWeight = 1 - structureProgress;
+  target.focusProgress = 0.76 + progressBetween(clamped, 0.12, 0.78) * 0.24;
+  target.progress = clamped;
+  target.signalProgress = 0.68 + progressBetween(clamped, 0.16, 0.88) * 0.32;
+  target.state = "structure";
+  target.stateProgress = progressBetween(clamped, range.start, range.end);
+  target.structureProgress = structureProgress;
+}
+
+export function createExperienceSceneFrame(
+  sequence: ExperienceSequence,
+  progress = 0,
+): ConversionSceneFrame {
+  const frame = createConversionSceneFrame(progress);
+
+  if (sequence === "hero") {
+    updateHeroSceneFrame(progress, frame);
+  }
+
+  return frame;
+}
+
+export function updateExperienceSceneFrame(
+  sequence: ExperienceSequence,
+  progress: number,
+  target: ConversionSceneFrame,
+): void {
+  if (sequence === "hero") {
+    updateHeroSceneFrame(progress, target);
+    return;
+  }
+
+  updateConversionSceneFrame(progress, target);
 }
 
 export function getStaggeredStructureProgress(

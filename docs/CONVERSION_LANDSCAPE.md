@@ -8,7 +8,7 @@ Pierwsza wdrożona narracja pokazuje zmianę:
 
 > kontrolowany chaos → porządkowanie → czytelny system
 
-Etap 6 nie jest finalnym hero. Dostarcza rozpoznawalny język sceny, który etap 7 połączy z właściwym otwarciem strony głównej.
+Etap 6 dostarczył rozpoznawalny język sceny. Etap 7 wykorzystuje ten sam system w finalnym Hero: nie tworzy równoległego świata ani nowej sceny, lecz dodaje osobną semantyczną sekwencję i centralną choreografię wejścia.
 
 ## 2. Powiązanie z marką
 
@@ -107,7 +107,7 @@ Oświetlenie nawiązuje funkcjonalnie do studia produktowego:
 - jedno kierunkowe światło neutralne modeluje powierzchnie,
 - jedno słabsze światło kierunkowe accent podkreśla kierunek transformacji.
 
-Scena nie używa cieni. Nie ma dynamicznych shadow maps ani wielu punktowych źródeł światła.
+Scena nie używa cieni. Nie ma dynamicznych shadow maps ani wielu punktowych źródeł światła. W sekwencji Hero intensywność dwóch świateł kierunkowych reaguje w małym zakresie na `focusProgress`, dzięki czemu dominantę widać wyraźniej podczas approach i opening bez dodatkowego światła ani draw calla.
 
 ## 12. Atmosphere
 
@@ -153,7 +153,7 @@ Sekwencja ma cztery ciągłe zakresy:
 
 ## 16. Camera choreography
 
-Kamera ma jedno źródło prawdy w `src/lib/experience/camera-path.ts`. Istnieją dwie trajektorie: `wide` i `compact`. Obie realizują cztery ujęcia:
+Kamera ma jedno źródło prawdy w `src/lib/experience/camera-path.ts`. Każda sekwencja ma trajektorie `wide` i `compact`. Sekwencja `conversion` realizuje cztery ujęcia:
 
 1. `establishing`,
 2. `approach`,
@@ -162,13 +162,15 @@ Kamera ma jedno źródło prawdy w `src/lib/experience/camera-path.ts`. Istniej�
 
 Każda klatka definiuje progres, pozycję, target, FOV i minimalny roll. Segmenty wykorzystują smoothstep, a `CameraRig` dodaje niezależny od FPS damping. Roll nie przekracza `0.02 rad`.
 
-`CameraRig` nie zawiera kopii keyframes. Otrzymuje próbkę z centralnego modelu i dodaje wyłącznie mały, tłumiony wpływ pointera.
+Hero realizuje pięć ujęć: `arrival`, `recognition`, `approach`, `opening` i `handoff`. Jego ścieżka nie nadpisuje ani nie duplikuje ścieżki Chaos → Structure. `CameraRig` wybiera dane na podstawie typowanego identyfikatora sekwencji, nie zawiera kopii keyframes i dodaje wyłącznie mały, tłumiony wpływ pointera.
+
+Hero używa gotowego, uporządkowanego świata. `structureProgress` zaczyna się od `0.86`, Focus Object od `0.76`, a Signals od `0.68`. Wraz ze scrollem wartości dochodzą do jednego; pierwsze wejście buduje pewność i hierarchię zamiast odtwarzać chaos.
 
 ## 17. Mobile adaptation
 
 Mobile używa trajektorii `compact`, mniejszej liczby elementów i krótszej głębi. Finalny kadr nie próbuje kopiować desktopowego passage: pozostaje wcześniej na osi Z, aby jednocześnie zachować widoczne moduły oraz Focus Object.
 
-Programowy audyt kadrowania obejmuje szerokości `320`, `390`, `768`, `1024`, `1280`, `1440` i `1920` dla progresów `0`, `0.35`, `0.65` i `1`. Sprawdza pozycję Focus Object w NDC i minimalny udział widocznych modułów.
+Programowy audyt kadrowania obejmuje szerokości `320`, `360`, `390`, `768`, `1024`, `1280`, `1366`, `1440` i `1920`. Dla Conversion Landscape sprawdza progresy `0`, `0.35`, `0.65` i `1`, a dla Hero `0`, `0.35`, `0.50`, `0.70` i `1`. Waliduje pozycję Focus Object w NDC, minimalny udział widocznych modułów oraz pozostawienie strefy copy na wide i umieszczenie dominanty niżej na compact.
 
 Touch wyłącza pointer influence. WebGL nie jest wyłączany wyłącznie na podstawie szerokości; o degradacji decydują rzeczywiste możliwości i quality tier.
 
@@ -201,11 +203,24 @@ Audyt przeglądarkowy potwierdził 7 draw calls i zgodną liczbę trójkątów w
 
 - Canvas jest dekoracyjny, ma `aria-hidden`, `tabIndex={-1}` i `pointer-events: none`.
 - Ważna treść, nawigacja i CTA pozostają w DOM.
-- Reduced motion ustawia statyczny kadr `0.92`, wyłącza travel oraz pointer i zatrzymuje czasowy przepływ markerów.
+- Reduced motion ustawia statyczny kadr `0.92` dla sekwencji Conversion i `0.70` dla Hero, wyłącza travel oraz pointer i zatrzymuje czasowy przepływ markerów.
 - Brak WebGL, błąd sceny lub utrata kontekstu przywraca dopracowany CSS fallback.
 - Canvas nie przechwytuje scrolla, klawiatury ani fokusu.
 
-## 20. Rozbudowa w etapach 7–10
+## 20. Użycie w finalnym Hero
+
+Finalny Hero korzysta z istniejących ról bez zmiany ich znaczenia:
+
+- **Field** utrzymuje skalę i prowadzi perspektywę pod handoff,
+- **Modules** pokazują już uporządkowane kanały cyfrowego systemu,
+- **Signals** budzą relacje wraz z recognition i approach,
+- **Focus Object** jest jedną dominantą przestrzenną oraz punktem choreografii światła.
+
+Kompozycja `wide` przesuwa dominantę na prawą stronę względem serwerowego copy. Kompozycja `compact` prowadzi ją pod blok treści i ogranicza głębokość. Lokalny scrim DOM chroni kontrast, ale scena jest komponowana tak, aby jasna geometria nie przechodziła pod headline.
+
+Hero używa własnej pięciofazowej mapy semantycznej, ale tego samego `ExperienceCanvas`, `ExperienceScene`, `CameraRig`, quality systemu, zasobów i pętli R3F. Ten podział pozwala zachować jedną gramatykę oraz różne funkcje narracyjne bez rozrzucania warunków po komponentach geometrii.
+
+## 21. Rozbudowa w etapach 8–10
 
 Nowa scena lub reprezentacja filaru powinna:
 
@@ -216,6 +231,6 @@ Nowa scena lub reprezentacja filaru powinna:
 5. zdefiniować budżet High, Medium, Low i fallback przed dodaniem assetu,
 6. mieć osobny kadr compact, jeśli jedna trajektoria nie zachowuje hierarchii,
 7. nie przenosić treści sprzedażowej do canvasu,
-8. przejść audyt progresów `0`, `0.35`, `0.65` i `1` w wymaganych proporcjach,
+8. przejść audyt semantycznych progresów właściwych dla sekwencji w wymaganych proporcjach,
 9. nie dodawać shaderów ani postprocessingu bez wykazanej korzyści i pomiaru,
 10. zostać pokazana w `/experience-lab` przed integracją z publicznym widokiem.

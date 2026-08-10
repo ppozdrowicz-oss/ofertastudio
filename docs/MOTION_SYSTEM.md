@@ -34,13 +34,14 @@ value = current + (target - current) × factor
 
 Centralne parametry w `src/lib/experience/motion.ts`:
 
-| Parametr                | Wartość | Rola                                         |
-| ----------------------- | ------: | -------------------------------------------- |
-| `scrollDamping`         |     5,4 | stabilizuje progres sceny                    |
-| `cameraDamping`         |     4,8 | prowadzi pozycję, target, FOV i roll         |
-| `pointerDamping`        |     7,2 | szybko, ale miękko wygasza reakcję wskaźnika |
-| `maxFrameDelta`         |  0,05 s | ogranicza skok po wolnej klatce              |
-| `reducedMotionProgress` |    0,92 | statyczny kadr uporządkowanego systemu       |
+| Parametr                           | Wartość | Rola                                         |
+| ---------------------------------- | ------: | -------------------------------------------- |
+| `scrollDamping`                    |     5,4 | stabilizuje progres sceny                    |
+| `cameraDamping`                    |     4,8 | prowadzi pozycję, target, FOV i roll         |
+| `pointerDamping`                   |     7,2 | szybko, ale miękko wygasza reakcję wskaźnika |
+| `maxFrameDelta`                    |  0,05 s | ogranicza skok po wolnej klatce              |
+| `reducedMotionProgress.conversion` |    0,92 | statyczny kadr uporządkowanego systemu       |
+| `reducedMotionProgress.hero`       |    0,70 | stabilny kadr opening finalnego Hero         |
 
 Nie dodajemy lokalnych wartości damping w pojedynczych scenach bez aktualizacji systemu i uzasadnienia.
 
@@ -67,25 +68,45 @@ Nie wolno zapisywać `window.scrollY` bezpośrednio do transformacji obiektu lub
 
 ## Semantic scene progress
 
-Globalny progres narracji i lokalny progres Conversion Landscape mają oddzielne odpowiedzialności. `src/lib/experience/progress.ts` opisuje przyszłą narrację całej strony, a `scene-timeline.ts` tłumaczy progres laboratorium na cztery stany:
+Globalny progres narracji i lokalny progres Conversion Landscape mają oddzielne odpowiedzialności. `src/lib/experience/progress.ts` opisuje zakresy całej przyszłej opowieści, a `scene-timeline.ts` tłumaczy jeden progres na semantykę aktywnej sekwencji.
+
+Sekwencja `conversion` używana w laboratorium ma cztery stany:
 
 - `establishing` — `0–0,18`,
 - `chaos` — `0,18–0,42`,
 - `ordering` — `0,42–0,78`,
 - `structure` — `0,78–1`.
 
-Timeline wylicza również `structureProgress`, `signalProgress`, `focusProgress` i `chaosWeight`. `ChaosStructureSequence` aktualizuje jeden współdzielony ref przed renderowaniem obiektów. Dzięki temu kamera, moduły, grid i sygnały nie interpretują granic niezależnie.
+Sekwencja `hero` ma pięć stanów:
+
+- `arrival` — `0–0,20`,
+- `recognition` — `0,20–0,42`,
+- `approach` — `0,42–0,66`,
+- `opening` — `0,66–0,86`,
+- `handoff` — `0,86–1`.
+
+Timeline wylicza również `structureProgress`, `signalProgress`, `focusProgress` i `chaosWeight`. `SceneSequenceController` aktualizuje jeden współdzielony ref przed renderowaniem obiektów. Dzięki temu kamera, moduły, grid, światło i sygnały nie interpretują granic niezależnie. Hero zaczyna przy 86% uporządkowania i przechodzi do 100%, więc nie powtarza pełnego Chaos → Structure.
 
 Transformacja struktury korzysta z okna `0,40–0,90`. Moduły otrzymują małe, deterministyczne opóźnienie zależne od głębokości i kolumny. Smoothstep kontroluje lokalny przebieg, a globalny damping progressu zapewnia fizycznie wiarygodne domknięcie bez dodatkowego spring engine.
 
 ## Ruch kamery
 
-`CameraRig` korzysta wyłącznie z centralnych danych `src/lib/experience/camera-path.ts`. Nie przechowuje własnych keyframes. Trajektorie `wide` i `compact` mają po cztery punkty odpowiadające ujęciom:
+`CameraRig` korzysta wyłącznie z centralnych danych `src/lib/experience/camera-path.ts`. Nie przechowuje własnych keyframes. Każda sekwencja ma trajektorie `wide` i `compact`.
+
+Conversion Landscape ma po cztery punkty:
 
 1. establishing,
 2. approach,
 3. passage,
 4. reveal.
+
+Finalny Hero ma po pięć punktów:
+
+1. arrival,
+2. recognition,
+3. approach,
+4. opening,
+5. handoff.
 
 Każdy punkt zawiera:
 
@@ -95,7 +116,7 @@ Każdy punkt zawiera:
 - minimalny `roll`,
 - pozycję `at` w globalnym progresie.
 
-W obrębie segmentu używany jest smoothstep, a końcowy stan jest dodatkowo tłumiony. Roll nie przekracza `0,02 rad`. Kamera nie wykonuje agresywnych orbit, nie przecina geometrii dla efektu i nie zmienia gwałtownie FOV. Ruch ma wspierać przejście od rozproszenia do porządku.
+W obrębie segmentu używany jest smoothstep, a końcowy stan jest dodatkowo tłumiony. Roll nie przekracza `0,02 rad` dla Conversion Landscape i `0,01 rad` dla Hero. Kamera nie wykonuje agresywnych orbit, nie przecina geometrii dla efektu i nie zmienia gwałtownie FOV. Ruch ma wspierać przejście od rozproszenia do porządku albo, w Hero, spokojne wejście do gotowego systemu.
 
 Kadr `compact` nie jest pomniejszonym desktopem. Ma większy FOV, wyższą pozycję i krótszy passage, aby na wąskim ekranie zachować sylwetkę modułów i Focus Object.
 
@@ -143,9 +164,9 @@ Focus Object korzysta z `focusProgress`, aby przejść od przesuniętej, słabie
 
 ## Scroll velocity
 
-Etap 6 nie wykorzystuje scroll velocity. Natywny scroll i tłumienie progresu zapewniają wystarczającą fizyczność bez zależności od chwilowych pików wejścia. Jest to świadome ograniczenie: velocity nie wpływa obecnie na kamerę, geometrię ani shader.
+System nie wykorzystuje scroll velocity. Audyt finalnego Hero potwierdził, że natywny scroll, semantyczne mapowanie i tłumienie progresu zapewniają wystarczającą fizyczność bez zależności od chwilowych pików wejścia. Velocity nie wpływa na kamerę, geometrię, światło ani shader.
 
-Jeśli etap 7 wykaże realną potrzebę, velocity może sterować wyłącznie minimalnym opóźnieniem kamery albo intensywnością Signal Field. Wymaga wtedy jednego centralnego źródła, limitu amplitudy, wygaszenia po zatrzymaniu scrolla oraz wartości zero dla reduced motion. Nie może powodować shake, glitch, deformacji sceny ani motion blur.
+Ewentualne przyszłe użycie może sterować wyłącznie minimalnym opóźnieniem kamery albo intensywnością Signal Field. Wymaga jednego centralnego źródła, limitu amplitudy, wygaszenia po zatrzymaniu scrolla oraz wartości zero dla reduced motion. Nie może powodować shake, glitch, deformacji sceny ani motion blur.
 
 ## Reduced motion
 
@@ -158,16 +179,31 @@ Jeśli etap 7 wykaże realną potrzebę, velocity może sterować wyłącznie mi
 - Canvas działa w trybie `demand`,
 - treść nigdy nie jest ukrywana w oczekiwaniu na animację.
 
-Statyczny kadr wykorzystuje progres `0,92`: pokazuje uporządkowany system, zatrzymuje camera travel oraz czasowy przepływ markerów. Nie wygląda jak zepsuta scena i nie usuwa geometrii. Jeśli WebGL jest niedostępny, równoważny rytm zachowuje fallback CSS.
+Statyczny kadr jest zależny od sekwencji. Laboratorium Conversion Landscape używa progresu `0,92`, a finalny Hero `0,70`. Hero zatrzymuje się w stanie opening: Focus Object i moduły są czytelne, ale kompozycja zachowuje przestrzeń wokół copy. Oba kadry zatrzymują camera travel oraz przepływ markerów, nie wyglądają jak zepsuta scena i nie usuwają geometrii. Jeśli WebGL jest niedostępny, równoważny rytm zachowuje fallback CSS.
 
 ## Synchronizacja DOM i WebGL
 
-DOM jest źródłem znaczenia, a WebGL jego wizualnym wsparciem. Tekst może wskazywać bieżący etap narracji, ale nie może czekać na callback z renderera, aby stać się dostępny. Jeśli później pojawi się synchronizacja aktywnej sekcji:
+DOM jest źródłem znaczenia, a WebGL jego wizualnym wsparciem. Tekst nie czeka na callback z renderera, aby stać się dostępny.
 
-- progi pochodzą z jednego rejestru zakresów,
-- aktualizacja DOM nie następuje co klatkę,
+W finalnym Hero `ExperienceCanvas` zapisuje ten sam docelowy semantic progress do refu konsumowanego przez WebGL oraz do lokalnej zmiennej CSS `--experience-progress`. DOM mapuje ją wyłącznie na subtelny handoff copy i wygaszenie scroll cue. Nie istnieje drugi listener, store ani RAF dla animacji DOM. Warstwa WebGL może używać osobnego damped progress, ale źródło intencji scrolla pozostaje jedno.
+
+- progi pochodzą z centralnego `scene-timeline.ts`,
+- React state nie jest aktualizowany co klatkę,
 - ARIA live nie ogłasza dekoracyjnego postępu,
-- bez JavaScriptu wszystkie sekcje pozostają czytelne.
+- bez JavaScriptu wszystkie treści i CTA pozostają czytelne,
+- reduced motion zeruje transformacje oraz opacity DOM i ustawia dedykowany statyczny kadr sceny.
+
+## Hero semantic timeline
+
+Hero nie ma autoplay intro. Pierwsza klatka jest kompletnym stanem `arrival`, a kolejne fazy wynikają wyłącznie z natywnego scrolla:
+
+1. **Arrival (`0–0,20`)** — pełna treść, gotowy kadr i widoczny scroll cue.
+2. **Recognition (`0,20–0,42`)** — kamera przybliża hierarchię bez ruszania copy.
+3. **Approach (`0,42–0,66`)** — rośnie czytelność Focus Object oraz połączeń.
+4. **Opening (`0,66–0,86`)** — światło i kadr otwierają system.
+5. **Handoff (`0,86–1`)** — treść przesuwa się maksymalnie o 12 px, a scena przygotowuje przejście do sekcji problemowej.
+
+DOM pozostaje czytelny w całym zakresie: opacity głównego bloku nie spada poniżej 0,88, a przyciski poniżej 0,82. Nie ma nagłego resetu kamery ani ukrycia elementów przez `display: none`.
 
 ## Pętle i cleanup
 

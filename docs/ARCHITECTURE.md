@@ -15,6 +15,7 @@ src/
   app/                  # route'y, layout, metadata i pliki specjalne
   components/
     experience/         # izolowana granica WebGL, scena i kontrolery
+    home/               # sekcje i kompozycje właściwe wyłącznie homepage
     layout/             # prymitywy i produkcyjna rama globalna strony
     navigation/         # kontrolowana granica klientowa menu
     sections/           # kompozycje sekcji o znaczeniu dla widoku
@@ -45,6 +46,7 @@ Katalog `types` zawiera współdzielone kontrakty domenowe treści, usług, nawi
 - **Sections** — semantyczne fragmenty widoku składające UI, layout i treść; mogą znać model konkretnej sekcji.
 - **Shared** — większe elementy domenowe używane na wielu stronach, np. karta realizacji, jeśli pojawi się co najmniej dwóch realnych konsumentów.
 - **Experience** — odseparowane elementy progresywnego WebGL: granica canvasu, kamera, kontrolery jakości, atmosfera i procedury sceny. Nie przechowują treści ani routingu.
+- **Home** — finalne sekcje właściwe wyłącznie stronie głównej. Ich copy pochodzi z typowanych modeli `src/content`, a części znaczeniowe pozostają serwerowe.
 - **Route** — plik `page.tsx` kompozytuje sekcje i definiuje sprawy właściwe dla adresu. Nie powinien zawierać rozbudowanej implementacji wizualnej.
 
 Komponenty przyjmują standardowe atrybuty HTML, kiedy ma to sens, zachowują semantykę i nie dublują natywnego elementu bez korzyści. Wspólne warianty powinny wynikać z design systemu, a nie z pojedynczego widoku.
@@ -56,7 +58,7 @@ Wszystkie komponenty są domyślnie Server Components. Pozwala to ograniczyć Ja
 - `MainNavigation` obsługuje `usePathname`, dropdowny, modalne menu mobilne, blokadę scrolla i focus management;
 - `ExperienceCanvas` obsługuje możliwości przeglądarki, lazy mount renderera, scroll, pointer i fallback. Ciężki `ExperienceRenderer` jest dodatkowo importowany dynamicznie z wyłączonym SSR.
 
-`SiteHeader`, root layout, `PageShell`, `SiteFooter` oraz strona laboratorium pozostają Server Components. Wyłącznie route-local `ConversionLandscapeDemo` jest trzecią, techniczną granicą klientową: przechowuje stan suwaka i przełączników laba, ale nie trafia do produkcyjnych widoków.
+`SiteHeader`, root layout, `PageShell`, `SiteFooter`, `HomeHero`, `HeroContent`, `HomeHandoff` oraz strona laboratorium pozostają Server Components. Wyłącznie route-local moduł kontrolek laboratorium jest trzecią, techniczną granicą klientową: przechowuje stan suwaka i przełączników laba, ale nie trafia do produkcyjnego homepage.
 
 Dyrektywę `"use client"` dodajemy wyłącznie do najniższego komponentu, który potrzebuje:
 
@@ -74,20 +76,27 @@ Warstwa „The Conversion Landscape” jest progresywnym rozszerzeniem wybranych
 
 Podział modułów:
 
-- `src/components/experience/experience-canvas.tsx` — produkcyjna granica klientowa, detekcja możliwości, lazy mount, tryby `scroll`/`manual`/`static`, error boundary i fallback,
+- `src/components/experience/experience-canvas.tsx` — produkcyjna granica klientowa, detekcja możliwości, lazy mount, tryby `scroll`/`manual`/`static`, layout `panel`/`hero`, wybór sekwencji, error boundary i fallback,
 - `experience-renderer.tsx` — `Canvas` R3F i konfiguracja renderera,
 - `experience-scene.tsx` — cienka kompozycja sceny,
 - `camera-rig.tsx` i `scroll-scene-controller.tsx` — ruch kamery i tłumienie progresu,
-- `conversion-landscape/` — gramatyka Field, Modules, Signals i Focus Object oraz sekwencja „Chaos → Structure”,
+- `scene-sequence-controller.tsx` — jedno mapowanie tłumionego progresu na semantykę sekwencji `conversion` albo `hero`,
+- `conversion-landscape/` — gramatyka Field, Modules, Signals i Focus Object współdzielona przez „Chaos → Structure” oraz finalny Hero,
 - `atmosphere.tsx` i `lighting.tsx` — fog oraz ograniczone oświetlenie studyjne bez cieni,
 - `performance-controller.tsx` — DPR, invalidacja, utrata kontekstu i opcjonalne metryki renderera w labie,
 - `webgl-fallback.tsx` — statyczna, serwerowo widoczna degradacja,
-- `src/lib/experience/camera-path.ts` — jedyne źródło klatek kamery dla kompozycji `wide` i `compact`,
+- `src/lib/experience/camera-path.ts` — jedyne źródło klatek kamery dla sekwencji Conversion i Hero, każdej w kompozycji `wide` oraz `compact`,
 - `scene-timeline.ts`, `scene-config.ts` i `procedural.ts` — semantyczna oś czasu, konfiguracja choreografii i deterministyczne dane sceny,
 - `quality.ts` i `render-budget.ts` — wybór jakości oraz jawny budżet strukturalny renderingu,
 - pozostałe moduły `src/lib/experience` — czyste modele ruchu, progresu i mapowania tokenów.
 
-R3F zarządza jedyną ciągłą pętlą renderowania. Pojedynczy RAF w `ExperienceCanvas` wyłącznie koaleskuje pomiary scrolla. Transformacje instancji są aktualizowane przez refy, bez `setState` w każdej klatce. Wszystkie zasoby utworzone poza JSX mają jawny cleanup. Nie ma Lenisa, własnego smooth-scroll engine, Drei, shaderów ani postprocessingu. Szczegóły opisują `INTERACTIVE_EXPERIENCE.md`, `CONVERSION_LANDSCAPE.md`, `MOTION_SYSTEM.md` i `WEBGL_PERFORMANCE.md`.
+R3F zarządza jedyną ciągłą pętlą renderowania. Pojedynczy RAF w `ExperienceCanvas` wyłącznie koaleskuje pomiary scrolla. Finalny Hero zapisuje ten sam semantic progress do refu WebGL i lokalnego CSS Custom Property, więc motion DOM nie tworzy drugiego store'a ani listenera. Transformacje instancji są aktualizowane przez refy, bez `setState` w każdej klatce. Wszystkie zasoby utworzone poza JSX mają jawny cleanup. Nie ma Lenisa, własnego smooth-scroll engine, Drei, GSAP, shaderów ani postprocessingu. Szczegóły opisują `INTERACTIVE_EXPERIENCE.md`, `CONVERSION_LANDSCAPE.md`, `HOMEPAGE_HERO.md`, `MOTION_SYSTEM.md` i `WEBGL_PERFORMANCE.md`.
+
+### Homepage Hero
+
+`src/app/page.tsx` pozostaje Server Component i kompozytuje `PageShell`, `HomeHero` oraz minimalny `HomeHandoff`. `HomeHero` przekazuje serwerowy `HeroContent` do klientowego `ExperienceCanvas`; dzieci są renderowane w pierwszym HTML, ponad fallbackiem i canvasem. H1, lead, CTA i competence signal pochodzą z `src/content/home-hero.ts`, a identyfikatory akcji rozwiązują się przez centralny `src/config/ctas.ts`.
+
+Hero wyłącza globalny panel CTA na tym etapie, ponieważ nie buduje jeszcze końca kompletnej strony głównej. Header i footer nadal należą wyłącznie do root layoutu. Ciężki renderer pozostaje dynamiczny i nie przenosi route'u ani copy do granicy klientowej.
 
 ## Przechowywanie treści
 
@@ -102,6 +111,7 @@ Podział odpowiedzialności:
 - `src/config/navigation.ts` — menu nagłówka, mobile i stopki,
 - `src/content/service-groups.ts` i `services.ts` — hierarchia oferty i relacje,
 - `src/content/page-registry.ts` — planowane strony, intencje, canonicale i statusy,
+- `src/content/home-hero.ts` — finalne copy Hero, identyfikatory centralnych CTA, competence signal i minimalny handoff,
 - pozostałe moduły `src/content` — segmenty, proces, FAQ, ścieżki, struktury widoków i realizacje,
 - `src/types` — wspólne kontrakty tych danych.
 - `src/lib/route-registry.ts` — serwerowe połączenie rejestru stron z parametrami technicznych tras i breadcrumbs.
@@ -139,7 +149,7 @@ Wspólny `src/app/[...slug]/page.tsx` statycznie renderuje znane adresy przez `g
 
 Preferowana kolejność decyzji stylów to: istniejący komponent → istniejący token → uzasadnione rozszerzenie design systemu → dopiero lokalna wartość wyjątkowa. Nie stosujemy przypadkowych gradientów ani niepowiązanych efektów.
 
-Techniczna trasa `/design-system` prezentuje publiczne warianty komponentów. `/experience-lab` prezentuje rzeczywisty Conversion Landscape, ręczny progres, stany Chaos/Structure, ścieżkę kamery, quality tier, reduced motion i wymuszony fallback. Obie mają metadata `noindex, nofollow`, nie znajdują się w nawigacji ani produkcyjnym rejestrze stron. `npm run design:check` sprawdza komponenty i tokeny, a `npm run experience:check` zakresy narracji, deterministyczność, framing 28 kadrów, budżety jakości, progressive enhancement, cleanup oraz izolację WebGL od root layoutu.
+Techniczna trasa `/design-system` prezentuje publiczne warianty komponentów. `/experience-lab` prezentuje rzeczywisty Conversion Landscape oraz ten sam finalny Hero w trybie manualnym: progres, stany, camera path, quality tier, reduced motion i wymuszony fallback. Obie mają metadata `noindex, nofollow`, nie znajdują się w nawigacji ani produkcyjnym rejestrze stron. `npm run design:check` sprawdza komponenty i tokeny, a `npm run experience:check` zakresy obu narracji, deterministyczność, framing 81 kadrów, budżety jakości, SSR Hero, wspólny progres, progressive enhancement, cleanup oraz izolację WebGL od root layoutu.
 
 ## Zależności
 

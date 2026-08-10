@@ -4,7 +4,8 @@ import { useCallback, useMemo } from "react";
 
 import { ExperienceScene } from "@/components/experience/experience-scene";
 import type { ExperienceRuntimeMetrics } from "@/components/experience/performance-controller";
-import { sampleConversionCameraPath } from "@/lib/experience/camera-path";
+import { sampleExperienceCameraPath } from "@/lib/experience/camera-path";
+import type { ExperienceSequence } from "@/lib/experience/experience-sequence";
 import type { ExperiencePointer } from "@/lib/experience/motion";
 import { readExperiencePalette } from "@/lib/experience/palette";
 import type { ExperienceQuality } from "@/lib/experience/quality";
@@ -17,6 +18,7 @@ export type ExperienceRendererProps = {
   pointerRef: RefObject<ExperiencePointer>;
   quality: ExperienceQuality;
   reducedMotion: boolean;
+  sequence: ExperienceSequence;
   targetProgressRef: RefObject<number>;
 };
 
@@ -28,12 +30,13 @@ export function ExperienceRenderer({
   pointerRef,
   quality,
   reducedMotion,
+  sequence,
   targetProgressRef,
 }: ExperienceRendererProps) {
   const palette = useMemo(() => readExperiencePalette(), []);
   const initialCamera = useMemo(
-    () => sampleConversionCameraPath(0, quality.composition),
-    [quality.composition],
+    () => sampleExperienceCameraPath(0, quality.composition, sequence),
+    [quality.composition, sequence],
   );
   const rendererOptions = useMemo(
     () => ({
@@ -82,6 +85,7 @@ export function ExperienceRenderer({
         pointerRef={pointerRef}
         quality={quality}
         reducedMotion={reducedMotion}
+        sequence={sequence}
         targetProgressRef={targetProgressRef}
       />
     </Canvas>

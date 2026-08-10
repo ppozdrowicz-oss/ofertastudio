@@ -5,7 +5,9 @@ import { PerspectiveCamera, Vector3 } from "three";
 
 import {
   conversionCameraPaths,
+  heroCameraPaths,
   sampleConversionCameraPath,
+  sampleExperienceCameraPath,
 } from "../src/lib/experience/camera-path.ts";
 import { dampValue, experienceMotion } from "../src/lib/experience/motion.ts";
 import {
@@ -30,8 +32,11 @@ import {
 import { conversionLandscapeConfig } from "../src/lib/experience/scene-config.ts";
 import {
   conversionSceneRanges,
+  createExperienceSceneFrame,
   getConversionSceneFrame,
+  getHeroScenePhase,
   getStaggeredStructureProgress,
+  heroSceneRanges,
 } from "../src/lib/experience/scene-timeline.ts";
 
 const projectRoot = process.cwd();
@@ -94,6 +99,7 @@ function checkContinuousRanges(
 
 checkContinuousRanges(experienceSceneRanges, "Narracja globalna");
 checkContinuousRanges(conversionSceneRanges, "Chaos → Structure");
+checkContinuousRanges(heroSceneRanges, "Hero cinematic entry");
 
 check(
   getExperienceScenePhase(0).id === "hero" &&
@@ -116,6 +122,19 @@ check(
     getConversionSceneFrame(0.65).structureProgress > 0.4 &&
     getConversionSceneFrame(1).structureProgress === 1,
   "Semantyczna transformacja nie zachowuje kontrolowanego rytmu.",
+);
+check(
+  getHeroScenePhase(0).state === "arrival" &&
+    getHeroScenePhase(0.2).state === "recognition" &&
+    getHeroScenePhase(0.42).state === "approach" &&
+    getHeroScenePhase(0.66).state === "opening" &&
+    getHeroScenePhase(0.86).state === "handoff",
+  "Granice cinematic entry nie mapują się na oczekiwane stany Hero.",
+);
+check(
+  createExperienceSceneFrame("hero", 0).structureProgress >= 0.85 &&
+    createExperienceSceneFrame("hero", 1).structureProgress === 1,
+  "Hero zużywa pełny chaos zamiast rozpoczynać od uporządkowanego świata.",
 );
 check(
   clampExperienceProgress(-1) === 0 && clampExperienceProgress(2) === 1,
@@ -146,10 +165,12 @@ const reducedQuality = resolveExperienceQuality(
 );
 const viewportExpectations = [
   { height: 720, tier: "low", width: 320 },
+  { height: 800, tier: "low", width: 360 },
   { height: 844, tier: "low", width: 390 },
   { height: 1024, tier: "medium", width: 768 },
   { height: 768, tier: "medium", width: 1024 },
   { height: 800, tier: "high", width: 1280 },
+  { height: 768, tier: "high", width: 1366 },
   { height: 900, tier: "high", width: 1440 },
   { height: 1080, tier: "high", width: 1920 },
 ] as const;
@@ -196,8 +217,10 @@ check(
   "Damping kamery przeskakuje do celu lub go przekracza.",
 );
 check(
-  getConversionSceneFrame(experienceMotion.reducedMotionProgress).state ===
-    "structure",
+  getConversionSceneFrame(experienceMotion.reducedMotionProgress.conversion)
+    .state === "structure" &&
+    getHeroScenePhase(experienceMotion.reducedMotionProgress.hero).state ===
+      "opening",
   "Reduced motion nie wskazuje stabilnego, uporządkowanego kadru.",
 );
 
@@ -222,6 +245,31 @@ for (const [composition, keyframes] of Object.entries(conversionCameraPaths)) {
     check(
       Math.abs(keyframe.roll) <= 0.02,
       `Roll kamery ${composition}/${keyframe.shot} przekracza bezpieczny limit.`,
+    );
+  });
+}
+
+for (const [composition, keyframes] of Object.entries(heroCameraPaths)) {
+  check(
+    keyframes[0]?.at === 0 && keyframes.at(-1)?.at === 1,
+    `Ścieżka Hero ${composition} nie obejmuje progresu 0–1.`,
+  );
+  check(
+    keyframes.map((keyframe) => keyframe.shot).join(",") ===
+      "arrival,recognition,approach,opening,handoff",
+    `Ścieżka Hero ${composition} nie realizuje pięciu stanów cinematic entry.`,
+  );
+  keyframes.forEach((keyframe, index) => {
+    const previous = keyframes[index - 1];
+    if (previous) {
+      check(
+        previous.at < keyframe.at,
+        `Klatki Hero ${composition} nie są uporządkowane.`,
+      );
+    }
+    check(
+      Math.abs(keyframe.roll) <= 0.012,
+      `Roll kamery Hero ${composition}/${keyframe.shot} przekracza bezpieczny limit.`,
     );
   });
 }
@@ -354,10 +402,78 @@ function auditComposition(
   };
 }
 
+function auditHeroComposition(
+  width: number,
+  height: number,
+  progress: number,
+): VisualAuditResult {
+  const quality = resolveExperienceQuality(
+    capabilities({ viewportHeight: height, viewportWidth: width }),
+  );
+  const modules = createSpatialModules({
+    columns: quality.columns,
+    landscapeDepth: quality.landscapeDepth,
+    moduleCount: quality.moduleCount,
+  });
+  const frame = createExperienceSceneFrame("hero", progress);
+  const sample = sampleExperienceCameraPath(
+    progress,
+    quality.composition,
+    "hero",
+  );
+  const camera = new PerspectiveCamera(sample.fov, width / height, 0.1, 70);
+  camera.position.set(...sample.position);
+  camera.lookAt(new Vector3(...sample.target));
+  camera.rotation.z += sample.roll;
+  camera.updateProjectionMatrix();
+  camera.updateMatrixWorld(true);
+
+  const visibleModules = modules.filter((module) => {
+    const projected = modulePosition(module, frame.structureProgress).project(
+      camera,
+    );
+    return (
+      Math.abs(projected.x) <= 1.12 &&
+      Math.abs(projected.y) <= 1.12 &&
+      projected.z >= -1 &&
+      projected.z <= 1
+    );
+  }).length;
+  const focusProgress = frame.focusProgress;
+  const focusPosition = new Vector3(
+    conversionLandscapeConfig.focus.chaosPosition[0] +
+      (conversionLandscapeConfig.focus.structurePosition[0] -
+        conversionLandscapeConfig.focus.chaosPosition[0]) *
+        focusProgress,
+    conversionLandscapeConfig.focus.chaosPosition[1] +
+      (conversionLandscapeConfig.focus.structurePosition[1] -
+        conversionLandscapeConfig.focus.chaosPosition[1]) *
+        focusProgress,
+    conversionLandscapeConfig.focus.chaosPosition[2] +
+      (conversionLandscapeConfig.focus.structurePosition[2] -
+        conversionLandscapeConfig.focus.chaosPosition[2]) *
+        focusProgress,
+  ).project(camera);
+
+  return {
+    anchorX: focusPosition.x,
+    anchorY: focusPosition.y,
+    progress,
+    visibleRatio: visibleModules / Math.max(1, modules.length),
+    width,
+  };
+}
+
 const auditProgressValues = [0, 0.35, 0.65, 1] as const;
 const visualAuditResults = viewportExpectations.flatMap((viewport) =>
   auditProgressValues.map((progress) =>
     auditComposition(viewport.width, viewport.height, progress),
+  ),
+);
+const heroAuditProgressValues = [0, 0.35, 0.5, 0.7, 1] as const;
+const heroVisualAuditResults = viewportExpectations.flatMap((viewport) =>
+  heroAuditProgressValues.map((progress) =>
+    auditHeroComposition(viewport.width, viewport.height, progress),
   ),
 );
 
@@ -372,6 +488,22 @@ for (const result of visualAuditResults) {
   );
 }
 
+for (const result of heroVisualAuditResults) {
+  const compact = result.width < 900;
+  check(
+    Math.abs(result.anchorX) <= 1.05 && Math.abs(result.anchorY) <= 1.05,
+    `Hero ${result.width}px @ ${result.progress.toFixed(2)} gubi focus object.`,
+  );
+  check(
+    result.visibleRatio >= 0.18,
+    `Hero ${result.width}px @ ${result.progress.toFixed(2)} pokazuje zbyt mało modułów (${Math.round(result.visibleRatio * 100)}%).`,
+  );
+  check(
+    compact ? result.anchorY <= 0 : result.anchorX >= 0.2,
+    `Hero ${result.width}px @ ${result.progress.toFixed(2)} nie zachowuje bezpiecznej przestrzeni dla copy.`,
+  );
+}
+
 const canvasSource = source("src/components/experience/experience-canvas.tsx");
 const rendererSource = source(
   "src/components/experience/experience-renderer.tsx",
@@ -381,6 +513,8 @@ const performanceSource = source(
 );
 const cameraSource = source("src/components/experience/camera-rig.tsx");
 const rootLayoutSource = source("src/app/layout.tsx");
+const homePageSource = source("src/app/page.tsx");
+const heroContentSource = source("src/components/home/hero-content.tsx");
 const labSource = source("src/app/experience-lab/page.tsx");
 const labControlsSource = source(
   "src/app/experience-lab/_components/conversion-landscape-demo.tsx",
@@ -396,6 +530,12 @@ check(
     canvasSource.includes("dynamic(") &&
     canvasSource.includes("ssr: false"),
   "ExperienceCanvas nie izoluje i nie lazy-loaduje renderera WebGL.",
+);
+check(
+  canvasSource.includes("--experience-progress") &&
+    canvasSource.includes('sequence = "conversion"') &&
+    canvasSource.includes('layout = "panel"'),
+  "ExperienceCanvas nie udostępnia wspólnego semantic progress lub wariantu Hero.",
 );
 check(
   canvasSource.includes("<WebGLFallback") &&
@@ -430,9 +570,17 @@ check(
   "Właściwy element canvas nie ma dekoracyjnej semantyki lub wyłączonych pointer events.",
 );
 check(
-  cameraSource.includes("updateConversionCameraPathSample") &&
+  cameraSource.includes("updateExperienceCameraPathSample") &&
     !cameraSource.includes("CameraKeyframe"),
   "CameraRig nie korzysta z centralnej trajektorii.",
+);
+check(
+  homePageSource.includes("<HomeHero") &&
+    homePageSource.includes("<HomeHandoff") &&
+    homePageSource.includes("showGlobalCta={false}") &&
+    heroContentSource.includes('headingLevel === 1 ? "h1" : "h2"') &&
+    heroContentSource.includes("getCta(homeHeroContent.primaryCtaId)"),
+  "Homepage nie zachowuje serwerowego Hero, pojedynczego h1 lub centralnych CTA.",
 );
 check(
   !rootLayoutSource.includes("ExperienceCanvas") &&
@@ -451,7 +599,9 @@ check(
   labControlsSource.includes('mode="manual"') &&
     labControlsSource.includes("data-progress-preset") &&
     labControlsSource.includes("motionPreference") &&
-    labControlsSource.includes("forceFallback"),
+    labControlsSource.includes("forceFallback") &&
+    labControlsSource.includes('sequence="hero"') &&
+    labControlsSource.includes("data-hero-progress-preset"),
   "Experience lab nie ma deterministycznego sterowania stanem sceny.",
 );
 check(
@@ -476,6 +626,7 @@ const requiredTokens = [
   "--layer-experience-background",
   "--layer-experience-canvas",
   "--layer-experience-content",
+  "--home-hero-track-height",
 ] as const;
 
 for (const token of requiredTokens) {
@@ -509,11 +660,16 @@ if (errors.length > 0) {
 } else {
   console.log("Kontrola experience zakończona pomyślnie.");
   console.log(
-    `Sprawdzono: ${experienceSceneRanges.length} zakresów globalnych, ${conversionSceneRanges.length} stanów Conversion Landscape, 4 poziomy jakości, ${visualAuditResults.length} kadrów i ${experienceFiles.length} modułów experience.`,
+    `Sprawdzono: ${experienceSceneRanges.length} zakresów globalnych, ${conversionSceneRanges.length} stanów Conversion Landscape, ${heroSceneRanges.length} stanów Hero, 4 poziomy jakości, ${visualAuditResults.length + heroVisualAuditResults.length} kadrów i ${experienceFiles.length} modułów experience.`,
   );
   for (const result of visualAuditResults) {
     console.log(
       `- ${result.width}px @ ${result.progress.toFixed(2)}: widoczne moduły ${Math.round(result.visibleRatio * 100)}%, focus (${result.anchorX.toFixed(2)}, ${result.anchorY.toFixed(2)}).`,
+    );
+  }
+  for (const result of heroVisualAuditResults) {
+    console.log(
+      `- Hero ${result.width}px @ ${result.progress.toFixed(2)}: widoczne moduły ${Math.round(result.visibleRatio * 100)}%, focus (${result.anchorX.toFixed(2)}, ${result.anchorY.toFixed(2)}).`,
     );
   }
 }

@@ -14,9 +14,9 @@ Roadmapa porządkuje budowę serwisu w 14 kontrolowanych etapach. Zakres następ
 
 6. **The Conversion Landscape — zakończony** — własny język wizualny WebGL, deterministyczny proceduralny landscape, Field/Modules/Signals/Focus Object, narracja „Chaos → Structure”, centralna choreografia kamery i mierzalne budżety renderingu.
 
-7. **Final homepage hero & cinematic entry — następny etap** — finalny hero strony głównej, właściwe copy, wejście DOM/WebGL i pierwszy produkcyjny fragment narracji oparty na stabilnym Conversion Landscape.
+7. **Final homepage hero & cinematic entry — zakończony** — finalny Hero strony głównej, serwerowe copy i CTA, cinematic camera entry, wspólny progres DOM/WebGL, responsive composition, reduced motion, fallback oraz prawdziwy handoff.
 
-8. **Kompletna strona główna** — pełna narracja wartości, priorytetowe usługi, dowody, proces i ścieżki konwersji z kontrolowaną integracją warstwy experience.
+8. **Chaos → Diagnosis — następny etap** — problem storytelling i mini diagnosis rozwijające pierwszy handoff bez przebudowy finalnego Hero ani fundamentu Conversion Landscape.
 
 9. **Strony internetowe** — podstrona filaru i usługi obejmujące potrzeby, zakres, sposób pracy, rezultaty i właściwe CTA.
 

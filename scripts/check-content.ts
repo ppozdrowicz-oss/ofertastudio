@@ -6,6 +6,7 @@ import { siteConfig } from "../src/config/site.ts";
 import { audiences } from "../src/content/audiences.ts";
 import { conversionPaths } from "../src/content/conversion-paths.ts";
 import { faqs } from "../src/content/faqs.ts";
+import { homeHeroContent } from "../src/content/home-hero.ts";
 import { plannedPages } from "../src/content/page-registry.ts";
 import {
   homepageSections,
@@ -300,6 +301,22 @@ for (const cta of ctas) {
     `CTA ${cta.id} ma pusty lub niedozwolony adres.`,
   );
 }
+
+check(
+  ctaIds.has(homeHeroContent.primaryCtaId) &&
+    ctaIds.has(homeHeroContent.secondaryCtaId),
+  "Hero strony głównej używa nieznanego CTA.",
+);
+checkUnique("CTA Hero strony głównej", [
+  homeHeroContent.primaryCtaId,
+  homeHeroContent.secondaryCtaId,
+]);
+check(
+  homeHeroContent.headline.trim().length > 0 &&
+    homeHeroContent.lead.trim().length > 0,
+  "Hero strony głównej nie ma kompletnego komunikatu.",
+);
+checkUnique("Obszary kompetencji Hero", homeHeroContent.competenceAreas);
 
 for (const group of serviceGroups) {
   check(
