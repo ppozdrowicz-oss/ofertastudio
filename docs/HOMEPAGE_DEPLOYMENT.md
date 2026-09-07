@@ -6,7 +6,7 @@ Na zlecenie właściciela projekt z PR #4 zostaje udostępniony jako strona gł�
 
 Ręcznie napisane źródła strony znajdują się w `public/ofertastudio`: `index.html`, `styles.css`, `app.js`, `assets/favicon.svg` i `assets/bottle.webp`. Katalog został przeniesiony z `designs/ofertastudio`; nie jest kopią ani wynikiem kompilacji.
 
-`next.config.ts` używa `beforeFiles` do przepisania wyłącznie `/` na `/ofertastudio/index.html`, z zachowaniem głównego adresu w przeglądarce. Pozostałe trasy nadal obsługuje Next.js. Pełny HTML ma własny header, footer i jeden `main#main-content`; nie jest osadzany w iframe ani dublowany wewnątrz layoutu React.
+`netlify.toml` używa wymuszonej reguły 200 wyłącznie dla `/`, wskazującej `/ofertastudio/index.html`. Dokument jest serwowany bezpośrednio przez CDN, przed obsługą tras Next.js, z zachowaniem głównego adresu w przeglądarce. `next.config.ts` zawiera równoważną regułę `beforeFiles` dla uruchomienia lokalnego. Próba użycia samego rewrite Next.js na podglądzie Netlify zwracała 404, dlatego wdrożenie korzysta z jawnej reguły CDN. Pozostałe trasy nadal obsługuje Next.js. Pełny HTML ma własny header, footer i jeden `main#main-content`; nie jest osadzany w iframe ani dublowany wewnątrz layoutu React.
 
 Zasoby używają ścieżek `/ofertastudio/...`. Canonical i Open Graph URL wskazują `https://ofertastudio.pl/`. Strona główna jest indeksowalna; istniejące techniczne podstrony zachowują swoje metadata.
 
@@ -28,7 +28,7 @@ python3 -m http.server 8080 --directory public
 
 W tym wariancie otwórz `http://localhost:8080/ofertastudio/index.html`.
 
-Domena jest obsługiwana przez istniejący projekt Netlify `tiny-paletas-35daca`, powiązany z tym repozytorium. Zachowano `netlify.toml`, komendę `npm run build`, katalog `.next`, plugin Next.js i przypięte zależności. Publikację uruchamia aktualizacja gałęzi produkcyjnej `main`.
+Domena jest obsługiwana przez istniejący projekt Netlify `tiny-paletas-35daca`, powiązany z tym repozytorium. Zachowano istniejące ustawienia budowania w `netlify.toml`, komendę `npm run build`, katalog `.next`, plugin Next.js i przypięte zależności. Publikację uruchamia aktualizacja gałęzi produkcyjnej `main`.
 
 Przed scaleniem należy sprawdzić zestaw kontroli repozytorium, odpowiedź `/`, komplet zasobów i brak regresji podstron na wdrożeniu podglądowym. Po scaleniu należy potwierdzić nową treść i zasoby pod domeną produkcyjną. Wyniki są zapisane w pull requeście.
 

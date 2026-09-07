@@ -6,7 +6,7 @@ Etapy 1–8 są ukończone: projekt posiada fundament techniczny, strategię mar
 
 ## Aktualna strona główna
 
-Nowy projekt jest publikowany pod `https://ofertastudio.pl/` z ręcznie napisanych źródeł w `public/ofertastudio`. Reguła `beforeFiles` w `next.config.ts` obsługuje wyłącznie `/`. Podstrony i laboratoria nadal korzystają z aplikacji Next.js. Szczegóły uruchomienia, wdrażania i ograniczenia formularza opisuje [HOMEPAGE_DEPLOYMENT.md](docs/HOMEPAGE_DEPLOYMENT.md).
+Nowy projekt jest publikowany pod `https://ofertastudio.pl/` z ręcznie napisanych źródeł w `public/ofertastudio`. Dokładna reguła 200 w `netlify.toml` obsługuje `/`; `next.config.ts` zapewnia odpowiednik dla uruchomienia lokalnego. Podstrony i laboratoria nadal korzystają z aplikacji Next.js. Szczegóły uruchomienia, wdrażania i ograniczenia formularza opisuje [HOMEPAGE_DEPLOYMENT.md](docs/HOMEPAGE_DEPLOYMENT.md).
 
 ## Stack
 
