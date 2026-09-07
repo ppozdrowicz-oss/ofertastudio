@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import { routes } from "@/config/routes";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/cn";
@@ -18,7 +16,7 @@ export function BrandMark({
   const isInverse = tone === "inverse";
 
   return (
-    <Link
+    <a
       aria-label="OfertaStudio — strona główna"
       className={cn(
         "transition-interactive inline-flex min-h-11 min-w-0 items-center gap-3 rounded-[var(--radius-small)]",
@@ -53,6 +51,6 @@ export function BrandMark({
           </span>
         )}
       </span>
-    </Link>
+    </a>
   );
 }

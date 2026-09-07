@@ -4,6 +4,10 @@ Nowa wersja strony usługowej OfertaStudio — butikowego studia sprzedaży inte
 
 Etapy 1–8 są ukończone: projekt posiada fundament techniczny, strategię marki, architekturę informacji, produkcyjny design system, kompletny globalny layout, izolowany fundament WebGL, rozpoznawalny system przestrzenny „The Conversion Landscape”, finalny Hero oraz rozdział Problem → Chaos → Diagnoza z niskoprogowym CTA. Komponenty prezentuje nieindeksowana trasa `/design-system`, a deterministyczne stany sceny, Hero i diagnozy można bezpiecznie sprawdzać na `/experience-lab`. Następny etap rozwija transformację Before → After i przebudowę prezentacji produktu.
 
+## Aktualna strona główna
+
+Nowy projekt jest publikowany pod `https://ofertastudio.pl/` z ręcznie napisanych źródeł w `public/ofertastudio`. Reguła `beforeFiles` w `next.config.ts` obsługuje wyłącznie `/`. Podstrony i laboratoria nadal korzystają z aplikacji Next.js. Szczegóły uruchomienia, wdrażania i ograniczenia formularza opisuje [HOMEPAGE_DEPLOYMENT.md](docs/HOMEPAGE_DEPLOYMENT.md).
+
 ## Stack
 
 - Next.js 16 z App Routerem i domyślnymi Server Components,

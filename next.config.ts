@@ -1,5 +1,7 @@
 import type { NextConfig } from "next";
 
+import { routes } from "./src/config/routes.ts";
+
 const nextConfig: NextConfig = {
   experimental: {
     useTypeScriptCli: false,
@@ -7,6 +9,15 @@ const nextConfig: NextConfig = {
   },
   poweredByHeader: false,
   reactStrictMode: true,
+  rewrites() {
+    return {
+      beforeFiles: [
+        { source: routes.home, destination: "/ofertastudio/index.html" },
+      ],
+      afterFiles: [],
+      fallback: [],
+    };
+  },
 };
 
 export default nextConfig;

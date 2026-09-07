@@ -9,7 +9,11 @@
       name="description"
       content="Mało kliknięć lub wejścia bez zamówień? Poprawiamy zdjęcia, opisy i oferty Allegro oraz OLX. Tworzymy też strony i sklepy. Zacznij od bezpłatnej oceny."
     />
-    <meta name="robots" content="noindex,nofollow" />
+    <link rel="canonical" href="https://ofertastudio.pl/" />
+    <meta property="og:url" content="https://ofertastudio.pl/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pl_PL" />
+    <meta name="robots" content="index,follow" />
     <meta
       property="og:title"
       content="OfertaStudio — pokaż wartość swojego produktu"
@@ -18,9 +22,13 @@
       property="og:description"
       content="Od pierwszej miniatury po cały sklep. Sprawdź, co warto poprawić w prezentacji Twojego produktu."
     />
-    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="./styles.css" />
-    <script src="./app.js" defer></script>
+    <link
+      rel="icon"
+      href="/ofertastudio/assets/favicon.svg"
+      type="image/svg+xml"
+    />
+    <link rel="stylesheet" href="/ofertastudio/styles.css" />
+    <script src="/ofertastudio/app.js" defer></script>
   </head>
   <body>
     <svg
@@ -82,10 +90,13 @@
         </symbol>
       </defs>
     </svg>
-    <a href="#main" class="skip-link">Przejdź do treści</a>
+    <a href="#main-content" class="skip-link">Przejdź do treści</a>
     <header class="header">
       <div class="nav-shell container">
-        <a class="brand" href="#" aria-label="OfertaStudio — początek strony"
+        <a
+          class="brand"
+          href="#main-content"
+          aria-label="OfertaStudio — początek strony"
           ><span class="brand-symbol" aria-hidden="true"
             ><span></span><span></span></span
           >oferta<span class="brand-light">studio</span
@@ -119,7 +130,7 @@
         ><a href="#o-nas">O nas</a><a href="#kontakt">Pokaż swoją ofertę</a>
       </nav>
     </header>
-    <main id="main">
+    <main id="main-content">
       <section class="hero container" aria-labelledby="hero-title">
         <div class="hero-copy">
           <p class="eyebrow">
@@ -152,7 +163,7 @@
         <div class="hero-art" aria-label="Przykład prezentacji produktu">
           <div class="hero-image-wrap">
             <img
-              src="./assets/bottle.webp"
+              src="/ofertastudio/assets/bottle.webp"
               width="1254"
               height="1254"
               fetchpriority="high"
@@ -175,7 +186,7 @@
             <div class="before-mini-top"><span>PRZED</span><span>↗</span></div>
             <div class="mini-photo">
               <img
-                src="./assets/bottle.webp"
+                src="/ofertastudio/assets/bottle.webp"
                 alt=""
                 width="1254"
                 height="1254"
@@ -381,7 +392,7 @@
             <div class="comparison" style="--split: 48%">
               <div class="comparison-after">
                 <img
-                  src="./assets/bottle.webp"
+                  src="/ofertastudio/assets/bottle.webp"
                   loading="lazy"
                   width="1254"
                   height="1254"
@@ -391,7 +402,7 @@
               <div class="comparison-before">
                 <div class="before-canvas">
                   <img
-                    src="./assets/bottle.webp"
+                    src="/ofertastudio/assets/bottle.webp"
                     loading="lazy"
                     width="1254"
                     height="1254"
@@ -991,7 +1002,10 @@
     <footer class="footer">
       <div class="footer-top container">
         <div>
-          <a class="brand" href="#" aria-label="OfertaStudio — początek strony"
+          <a
+            class="brand"
+            href="#main-content"
+            aria-label="OfertaStudio — początek strony"
             ><span class="brand-symbol" aria-hidden="true"
               ><span></span><span></span></span
             >oferta<span class="brand-light">studio</span
