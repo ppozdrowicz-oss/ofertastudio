@@ -17,7 +17,7 @@ export function BrandMark({
 
   return (
     <a
-      aria-label="OfertaStudio — strona główna"
+      aria-label="ofertastudio.pl — strona główna"
       className={cn(
         "transition-interactive inline-flex min-h-11 min-w-0 items-center gap-3 rounded-[var(--radius-small)]",
         isInverse ? "text-surface-inverse-foreground" : "text-foreground",
@@ -33,9 +33,9 @@ export function BrandMark({
       </span>
       <span className="min-w-0">
         <span className="block text-h4 leading-none font-semibold tracking-[-0.025em]">
-          Oferta
+          oferta
           <span className={isInverse ? "text-accent" : "text-primary"}>
-            Studio
+            studio.pl
           </span>
         </span>
         {showDescriptor && (
