@@ -1,5 +1,9 @@
 # Architektura informacji OfertaStudio
 
+## Aktualizacja strony głównej — 7 września 2026
+
+Na prośbę właściciela `/` udostępnia przygotowany projekt skupiony na problemach klienta, z sekcjami usług, procesu, pakietów, checklisty i FAQ. Adres i rola strony głównej pozostają w centralnym rejestrze. Formularz jest jawnie demonstracyjny. Pozostałe planowane podstrony i etapy zachowują swój zakres. Szczegóły techniczne: [HOMEPAGE_DEPLOYMENT.md](HOMEPAGE_DEPLOYMENT.md).
+
 ## Cel i zasada organizacji
 
 Architektura prowadzi użytkownika od sytuacji biznesowej do właściwego zakresu, dowodu i następnego kroku. Pięć filarów obejmuje cały katalog kompetencji, ale tylko trzy najbardziej rozpoznawalne obszary są eksponowane bezpośrednio w głównym menu. Pozostałe pozostają łatwo dostępne przez „Ofertę”, stronę główną, stopkę i linkowanie kontekstowe.

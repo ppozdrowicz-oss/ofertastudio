@@ -1,5 +1,9 @@
 # Mapa SEO i treści OfertaStudio
 
+## Aktualizacja strony głównej — 7 września 2026
+
+Na prośbę właściciela `/` udostępnia przygotowany projekt skupiony na problemach klienta, z sekcjami usług, procesu, pakietów, checklisty i FAQ. Adres i rola strony głównej pozostają w centralnym rejestrze. Formularz jest jawnie demonstracyjny. Pozostałe planowane podstrony i etapy zachowują swój zakres. Szczegóły techniczne: [HOMEPAGE_DEPLOYMENT.md](HOMEPAGE_DEPLOYMENT.md).
+
 ## Zakres i zasady
 
 Mapa przypisuje każdemu planowanemu adresowi dominującą intencję, rolę i relacje. Nie jest badaniem wolumenów ani gwarancją widoczności. Frazy należy zweryfikować przed pisaniem finalnego copy za pomocą danych rynkowych, a po publikacji — danych z Google Search Console.

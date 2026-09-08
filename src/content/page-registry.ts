@@ -13,9 +13,9 @@ const corePages = [
     status: "ready",
     primaryCtaId: "project-conversation",
     seo: {
-      title: "OfertaStudio — strony, sklepy i skuteczna sprzedaż online",
+      title: "OfertaStudio — dobry produkt zasługuje na dobrą ofertę",
       description:
-        "Butikowe studio łączące strategię, treść, design i technologię dla stron, sklepów i ofert sprzedażowych.",
+        "Mało kliknięć lub wejścia bez zamówień? Poprawiamy zdjęcia, opisy i oferty Allegro oraz OLX. Tworzymy też strony i sklepy. Zacznij od bezpłatnej oceny.",
       primaryKeyword: "studio sprzedaży internetowej",
       intent: "commercial",
       supportingKeywords: [

@@ -127,3 +127,7 @@
 - finalny logotyp — wymaga zatwierdzonej identyfikacji marki; obecnie używany jest tekstowy `BrandMark`.
 
 Nie tworzymy tych plików do czasu pojawienia się prawdziwych danych lub widoku.
+
+## Powrót do statycznej strony głównej
+
+`BrandMark`, `Breadcrumbs` i `ButtonLink` używają natywnego linku dla centralnej trasy `/`, aby otworzyć pełny dokument strony głównej. Publiczne propsy oraz klasy wizualne pozostają bez zmian. Przykłady powrotu są obecne na `/design-system`; pozostałe trasy korzystają z `next/link`. Szczegóły: [HOMEPAGE_DEPLOYMENT.md](HOMEPAGE_DEPLOYMENT.md).

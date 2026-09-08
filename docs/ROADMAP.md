@@ -1,5 +1,9 @@
 # Roadmapa projektu OfertaStudio
 
+## Aktualizacja strony głównej — 7 września 2026
+
+Na prośbę właściciela `/` udostępnia przygotowany projekt skupiony na problemach klienta, z sekcjami usług, procesu, pakietów, checklisty i FAQ. Adres i rola strony głównej pozostają w centralnym rejestrze. Formularz jest jawnie demonstracyjny. Pozostałe planowane podstrony i etapy zachowują swój zakres. Szczegóły techniczne: [HOMEPAGE_DEPLOYMENT.md](HOMEPAGE_DEPLOYMENT.md).
+
 Roadmapa porządkuje budowę serwisu w 14 kontrolowanych etapach. Zakres następnego etapu rozpoczynamy dopiero po zweryfikowaniu rezultatów poprzedniego; szczegóły mogą zostać doprecyzowane na podstawie decyzji biznesowych, ale kolejność zależności pozostaje obowiązująca.
 
 1. **Fundament techniczny — zakończony** — inicjalizacja Next.js, TypeScript, Tailwind CSS, jakości kodu, minimalnego routingu, tokenów technicznych i dokumentacji.

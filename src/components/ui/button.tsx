@@ -6,6 +6,7 @@ import type {
   ReactNode,
 } from "react";
 
+import { routes } from "@/config/routes";
 import { cn } from "@/lib/cn";
 
 const variantClassNames = {
@@ -105,6 +106,27 @@ export function ButtonLink({
   variant,
   ...props
 }: ButtonLinkProps) {
+  if (props.href === routes.home) {
+    // The homepage is a complete HTML document, outside React navigation.
+    const anchorProps = { ...props, href: routes.home };
+    delete anchorProps.as;
+    delete anchorProps.prefetch;
+    delete anchorProps.replace;
+    delete anchorProps.scroll;
+    delete anchorProps.shallow;
+    delete anchorProps.locale;
+    delete anchorProps.onNavigate;
+    return (
+      <a
+        className={buttonStyles({ className, fullWidth, size, variant })}
+        {...anchorProps}
+      >
+        {leadingIcon}
+        <span>{children}</span>
+        {trailingIcon}
+      </a>
+    );
+  }
   return (
     <Link
       className={buttonStyles({ className, fullWidth, size, variant })}

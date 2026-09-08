@@ -1,6 +1,7 @@
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 
+import { routes } from "@/config/routes";
 import type { BreadcrumbItem } from "@/types/navigation";
 
 export type BreadcrumbProps = {
@@ -21,6 +22,7 @@ export function Breadcrumbs({
       <ol className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1 text-body-sm">
         {items.map((item, index) => {
           const isCurrent = index === items.length - 1;
+          const BreadcrumbLink = item.href === routes.home ? "a" : Link;
 
           return (
             <li
@@ -49,7 +51,7 @@ export function Breadcrumbs({
                   {item.label}
                 </span>
               ) : (
-                <Link
+                <BreadcrumbLink
                   className={
                     isInverse
                       ? "transition-interactive rounded-[var(--radius-small)] text-surface-inverse-muted-foreground underline decoration-transparent underline-offset-4 hover:text-surface-inverse-foreground hover:decoration-surface-inverse-muted-foreground"
@@ -58,7 +60,7 @@ export function Breadcrumbs({
                   href={item.href}
                 >
                   {item.label}
-                </Link>
+                </BreadcrumbLink>
               )}
             </li>
           );
