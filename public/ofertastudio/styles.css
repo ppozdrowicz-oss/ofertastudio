@@ -545,28 +545,26 @@ p {
 }
 .channels {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  min-width: 0;
   gap: 58px;
+  row-gap: 16px;
+}
+.channel-logo {
+  height: auto;
+  flex-shrink: 0;
+  object-fit: contain;
 }
 .channel-allegro {
-  font-size: 29px;
-  font-weight: 500;
-  letter-spacing: -1.5px;
+  width: 112px;
 }
 .channel-olx {
-  font-size: 29px;
-  font-weight: 800;
-  letter-spacing: -2px;
+  width: 96px;
 }
 .channel-shoper {
-  font-weight: 600;
-  font-size: 27px;
-  letter-spacing: -1.3px;
-}
-.tiny-mark {
-  font-size: 21px;
-  margin-left: 3px;
+  width: 112px;
 }
 .channel-own {
   display: flex;
@@ -2074,13 +2072,13 @@ body:has(dialog[open]) .mobile-sticky {
     justify-content: space-between;
   }
   .channel-allegro {
-    font-size: 25px;
+    width: 88px;
   }
   .channel-olx {
-    font-size: 25px;
+    width: 76px;
   }
   .channel-shoper {
-    font-size: 24px;
+    width: 88px;
   }
   .channel-own {
     font-size: 16px;
@@ -2089,9 +2087,6 @@ body:has(dialog[open]) .mobile-sticky {
   .channel-own svg {
     width: 20px;
     height: 20px;
-  }
-  .tiny-mark {
-    font-size: 18px;
   }
   .section {
     padding: 62px 0;
@@ -2611,22 +2606,6 @@ body:has(dialog[open]) .mobile-sticky {
   .card-bottom > span {
     font-size: 12px;
   }
-  .channel-own {
-    font-size: 14px;
-  }
-  .channel-own svg {
-    width: 17px;
-  }
-  .channels {
-    gap: 8px;
-  }
-  .channel-allegro,
-  .channel-olx {
-    font-size: 23px;
-  }
-  .channel-shoper {
-    font-size: 21px;
-  }
   .price-card {
     padding: 23px;
   }
@@ -2733,6 +2712,22 @@ body:has(dialog[open]) .mobile-sticky {
   }
 }
 @media (max-width: 480px) {
+  .channels {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-items: center;
+    gap: 16px 24px;
+  }
+  .channel-allegro,
+  .channel-shoper {
+    width: 112px;
+  }
+  .channel-olx {
+    width: 96px;
+  }
+  .channel-own {
+    font-size: 18px;
+  }
   .problem-grid {
     grid-template-columns: 1fr;
   }
