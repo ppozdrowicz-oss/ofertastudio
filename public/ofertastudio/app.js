@@ -175,7 +175,21 @@ toggle.addEventListener("click", () => {
 });
 $$("a", mobileNav).forEach((link) => link.addEventListener("click", closeMenu));
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") closeMenu();
+  if (event.key === "Escape" && !mobileNav.hidden) {
+    closeMenu();
+    toggle.focus();
+  }
+});
+document.addEventListener("click", (event) => {
+  if (!mobileNav.hidden && !event.target.closest(".header")) closeMenu();
+});
+const compactNavigation = window.matchMedia("(max-width: 1100px)");
+compactNavigation.addEventListener("change", (event) => {
+  if (!event.matches) {
+    const menuHasFocus = mobileNav.contains(document.activeElement);
+    closeMenu();
+    if (menuHasFocus) $(".desktop-nav a").focus();
+  }
 });
 const compare = $(".compare-range");
 compare.addEventListener("input", () => {

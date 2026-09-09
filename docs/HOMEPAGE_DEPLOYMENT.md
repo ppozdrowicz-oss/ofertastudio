@@ -45,3 +45,13 @@ Po wdrożeniu sprawdź, czy Netlify usunął atrybut `data-netlify` z publiczneg
 Ceny i zakresy pochodzą z przygotowanego projektu. Wymagają potwierdzenia aktualności oraz informacji netto/brutto przed uruchomieniem sprzedaży. Zdjęcie butelki jest wygenerowanym przykładem pokazowym. Porównanie dotyczy skali i kadru tego samego materiału; nie przedstawia wyników klienta.
 
 Strona korzysta z lokalnych zasobów, bez zewnętrznych fontów, analityki i skryptów. Istniejący system komponentów i WebGL jest nadal dostępny na podstronach oraz w laboratoriach. Przeniesienie statycznego projektu do komponentów React jest niezależne od publikacji pod domeną.
+
+## Typografia, nagłówek i stopka — 9 września 2026
+
+Statyczna strona główna zachowuje zieloną identyfikację. Korzysta z lokalnego Inter Variable (osie `wght` i `opsz`, WOFF2, około 344 KiB) z preload i `font-display: swap`. Źródło: https://github.com/rsms/inter/blob/master/docs/font-files/InterVariable.woff2; licencja SIL OFL jest dołączona w `public/ofertastudio/assets/fonts/Inter-LICENSE.txt`. Font nie wymaga połączenia przeglądarki z Google Fonts. Szeryfowe wyróżnienia nadal korzystają z systemowej Georgii w kursywie.
+
+Tekst podstawowy ma 16 px, informacje pomocnicze 14 px, a drobne oznaczenia 12 px. Rzeczywiste wagi fontu, optical sizing, mocniejszy kontrast i spokojniejszy tracking poprawiają czytelność. Nie wymuszamy wygładzania ani sztucznego pogrubienia. „UHD” opisuje oczekiwaną jakość wizualną, nie rozdzielczość fontu; końcowy raster zależy od ekranu, systemu i powiększenia. Po pierwszym pobraniu fontu może wystąpić niewielka zmiana metryk względem Arialu.
+
+Header zawiera znak ofertastudio.pl, opis specjalizacji, dotychczasową nawigację i CTA. Poniżej 1100 px używa menu mobilnego, zamykanego też przez Escape i kliknięcie poza nagłówkiem. Stopka ma ciemną powierzchnię, semantyczne grupy linków i zatwierdzony adres `pozdrowicz@gmail.com`. Układ przechodzi od trzech kolumn linków do dwóch i jednej. Na wąskich telefonach karty problemów oraz procesu mają jedną kolumnę, a cena pozostaje w normalnym przepływie.
+
+Redakcja dotyczy pierwszego ekranu, usług, procesu, studia i kontaktu. Zachowano ceny, zakresy, logotypy platform i działającą integrację Netlify Forms. Nagłówek i stopka statycznego dokumentu są niezależne od komponentów Next.js opisanych w systemie projektowym.
