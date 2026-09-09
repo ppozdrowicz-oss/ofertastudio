@@ -958,7 +958,22 @@
               ></span
             >
           </div>
-          <form id="contact-form" novalidate>
+          <form
+            id="contact-form"
+            name="kontakt"
+            method="POST"
+            action="/ofertastudio/index.html"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+          >
+            <input type="hidden" name="form-name" value="kontakt" />
+            <input type="hidden" name="package" id="package-input" value="" />
+            <p hidden>
+              <label
+                >Nie wypełniaj tego pola:
+                <input name="bot-field" tabindex="-1" autocomplete="off"
+              /></label>
+            </p>
             <div class="form-heading">
               <span>Opowiedz nam o swoim produkcie</span
               ><svg><use href="#up-right" /></svg>
@@ -1025,12 +1040,11 @@
             <p class="form-privacy">
               Szczegóły wykorzystania danych:
               <button type="button" class="inline-button" data-dialog="privacy">
-                Polityka prywatności</button
+                Informacje o danych</button
               >.
             </p>
-            <p class="demo-note">
-              Podgląd projektu — formularz nie wysyła zgłoszeń.
-            </p>
+            <p id="form-status" class="form-status" role="status"></p>
+            <p id="form-error" class="field-error" role="alert"></p>
           </form>
         </div>
       </section>
@@ -1072,7 +1086,7 @@
       <div class="footer-bottom container">
         <span>© 2026 OfertaStudio</span><span>Dobry produkt. Dobra oferta.</span
         ><button type="button" class="inline-button" data-dialog="privacy">
-          Polityka prywatności
+          Informacje o danych
         </button>
       </div>
     </footer>
@@ -1124,16 +1138,19 @@
           <svg><use href="#close" /></svg>
         </button>
       </div>
-      <h2 id="privacy-title">Twoje dane w tym podglądzie</h2>
+      <h2 id="privacy-title">Twoje dane w formularzu</h2>
       <p>
-        Formularz służy prezentacji projektu. Wpisane informacje nie są wysyłane
-        ani zapisywane. Znikają po odświeżeniu strony.
+        Przesłany adres e-mail, link, opis problemu i wybrany pakiet służą
+        obsłudze Twojego zapytania przez OfertaStudio. Podaj tylko informacje
+        potrzebne do rozmowy o ofercie.
       </p>
       <p>
-        Strona nie korzysta z narzędzi analitycznych ani reklamowych. Przed
-        uruchomieniem obsługi zapytań zostanie dodana polityka prywatności z
-        danymi administratora i informacjami o przetwarzaniu.
+        Zgłoszenie jest przesyłane do Netlify Forms i zapisywane w panelu
+        obsługi strony. Do korespondencji korzystamy z Gmaila. W sprawach swoich
+        danych napisz na
+        <a href="mailto:pozdrowicz@gmail.com">pozdrowicz@gmail.com</a>.
       </p>
+      <p>Strona nie korzysta z narzędzi analitycznych ani reklamowych.</p>
       <button class="button close-dialog">
         Rozumiem <svg><use href="#check" /></svg>
       </button>
@@ -1144,7 +1161,7 @@
       aria-labelledby="form-dialog-title"
     >
       <div class="modal-top">
-        <span class="eyebrow">PODGLĄD FORMULARZA</span
+        <span class="eyebrow">WIADOMOŚĆ WYSŁANA</span
         ><button
           class="icon-button close-dialog"
           aria-label="Zamknij podsumowanie"
@@ -1155,10 +1172,9 @@
       <span class="success-icon"
         ><svg><use href="#check" /></svg
       ></span>
-      <h2 id="form-dialog-title">Wszystko gotowe<br />do rozmowy.</h2>
+      <h2 id="form-dialog-title">Dziękujemy<br />za wiadomość.</h2>
       <p>
-        Formularz jest poprawnie wypełniony. To podgląd projektu — Twoje
-        zgłoszenie nie zostało wysłane.
+        Twoje zgłoszenie zostało przyjęte. Odpowiemy na podany adres e-mail.
       </p>
       <div id="form-summary" class="form-summary"></div>
       <button class="button close-dialog">

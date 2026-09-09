@@ -34,7 +34,13 @@ Przed scaleniem należy sprawdzić zestaw kontroli repozytorium, odpowiedź `/`,
 
 ## Stan funkcji i treści
 
-Formularz pozostaje demonstracyjny: waliduje pola i pokazuje podsumowanie, ale nie zapisuje ani nie wysyła danych. Ta informacja jest widoczna na stronie. Nie skonfigurowano skrzynki odbiorczej ani backendu, ponieważ w centralnych danych kontaktowych brak zatwierdzonych danych firmy.
+Formularz `kontakt` korzysta z Netlify Forms. Definicja z `data-netlify="true"` znajduje się w statycznym `public/ofertastudio/index.html`; żądanie POST trafia bezpośrednio na `/ofertastudio/index.html`, zgodnie z wymaganiami adaptera Next.js. Nie wymaga dodatkowej kopii formularza ani własnego backendu.
+
+Zgłoszenie zawiera `form-name`, `url`, `problem`, `message`, `email`, `package` oraz pułapkę antyspamową `bot-field`. Pole `email` umożliwia Netlify ustawienie Reply-To na adres klienta. Kod zachowuje walidację, blokuje ponowną wysyłkę podczas żądania, obsługuje błędy HTTP i limit 20 sekund. Podsumowanie pojawia się po odpowiedzi 2xx. Przy błędzie dane pozostają w formularzu; nie ma automatycznych ponowień. Bez JavaScript działa natywny POST i wymóg podania e-maila.
+
+Wykrywanie formularzy jest włączone w panelu (potwierdzone zrzutem właściciela 9 września 2026). Odbiorcę powiadomień konfiguruje się w Netlify: Project configuration → Notifications → Emails and webhooks → Form submission notifications. Dla `New form submission` należy zapisać `pozdrowicz@gmail.com`, z wyborem `kontakt` lub `Any form`. Adres wpisany w kodzie jako kontakt pomocniczy nie konfiguruje powiadomień. Dostarczenie do Gmaila wymaga osobnego potwierdzenia testowym zgłoszeniem i sprawdzeniem skrzynki.
+
+Po wdrożeniu sprawdź, czy Netlify usunął atrybut `data-netlify` z publicznego HTML i zachował pole `form-name`. Następnie wyślij testowe zgłoszenie, sprawdź Forms → kontakt oraz skrzynkę Gmail (także Spam). Zrzut lub status HTTP sam w sobie nie potwierdza dostarczenia e-maila. Komunikat o danych opisuje faktyczny przepływ przez Netlify i Gmail; pełne dane formalne administratora nadal wymagają uzupełnienia w odrębnym zakresie.
 
 Ceny i zakresy pochodzą z przygotowanego projektu. Wymagają potwierdzenia aktualności oraz informacji netto/brutto przed uruchomieniem sprzedaży. Zdjęcie butelki jest wygenerowanym przykładem pokazowym. Porównanie dotyczy skali i kadru tego samego materiału; nie przedstawia wyników klienta.
 

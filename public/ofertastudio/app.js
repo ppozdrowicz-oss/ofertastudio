@@ -199,6 +199,7 @@ $$("[data-package]").forEach((link) =>
     $("span", packageBox).textContent =
       "Interesuje Cię: " + link.dataset.package;
     packageBox.dataset.package = link.dataset.package;
+    $("#package-input").value = link.dataset.package;
     const mapping = {
       TEKST: "Wejścia bez zamówień",
       FOTO: "Zdjęcia nie pokazują jakości",
@@ -213,6 +214,7 @@ $$("[data-package]").forEach((link) =>
 $("button", packageBox).addEventListener("click", () => {
   packageBox.hidden = true;
   delete packageBox.dataset.package;
+  $("#package-input").value = "";
 });
 $("#copy-checklist").addEventListener("click", async () => {
   const text =
@@ -242,12 +244,19 @@ $("#copy-checklist").addEventListener("click", async () => {
   }
 });
 const form = $("#contact-form");
+form.noValidate = true;
+let submitting = false;
 const setError = (input, id, message) => {
   input.setAttribute("aria-invalid", String(!!message));
   $(id).textContent = message;
 };
-form.addEventListener("submit", (event) => {
+form.addEventListener("submit", async (event) => {
   event.preventDefault();
+  if (submitting) return;
+  const status = $("#form-status"),
+    error = $("#form-error");
+  status.textContent = "";
+  error.textContent = "";
   const url = $("#offer-url"),
     message = $("#message"),
     email = $("#email");
@@ -281,6 +290,51 @@ form.addEventListener("submit", (event) => {
       .focus();
     return;
   }
+  const data = new FormData(form);
+  data.set("email", email.value.trim());
+  data.set("url", url.value.trim());
+  data.set("message", message.value.trim());
+  data.set(
+    "package",
+    packageBox.hidden ? "" : packageBox.dataset.package || "",
+  );
+  const controls = $$("input, textarea, select, button", form);
+  const disabledStates = controls.map((control) => control.disabled);
+  const submitButton = $(".submit-button", form);
+  const buttonLabel = submitButton.firstChild.textContent;
+  submitting = true;
+  controls.forEach((control) => {
+    control.disabled = true;
+  });
+  form.setAttribute("aria-busy", "true");
+  submitButton.firstChild.textContent = "Wysyłanie… ";
+  status.textContent = "Wysyłamy Twoją wiadomość…";
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 20000);
+  let accepted = false;
+  try {
+    const response = await fetch(form.action, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(data).toString(),
+      signal: controller.signal,
+    });
+    if (!response.ok) throw new Error("Form submission failed");
+    accepted = true;
+  } catch {
+    error.textContent =
+      "Nie udało się potwierdzić wysłania wiadomości. Twoje dane pozostają w formularzu. Spróbuj ponownie lub napisz na pozdrowicz@gmail.com.";
+  } finally {
+    clearTimeout(timeout);
+    controls.forEach((control, index) => {
+      control.disabled = disabledStates[index];
+    });
+    form.removeAttribute("aria-busy");
+    submitButton.firstChild.textContent = buttonLabel;
+    status.textContent = "";
+    submitting = false;
+  }
+  if (!accepted) return;
   const summary = $("#form-summary");
   summary.replaceChildren();
   const add = (label, value) => {
@@ -291,10 +345,13 @@ form.addEventListener("submit", (event) => {
     p.append(b, document.createTextNode(value));
     summary.append(p);
   };
-  add("Wybrana sytuacja", $("#problem-select").value || "Do omówienia");
-  if (!packageBox.hidden) add("Pakiet", packageBox.dataset.package);
-  add("E-mail", email.value.trim());
-  add("Oferta / strona", url.value.trim());
+  add("Wybrana sytuacja", data.get("problem") || "Do omówienia");
+  add("Pakiet", data.get("package"));
+  add("E-mail", data.get("email"));
+  add("Oferta / strona", data.get("url"));
+  form.reset();
+  packageBox.hidden = true;
+  delete packageBox.dataset.package;
   openModal($("#form-dialog"));
 });
 $$("input,textarea", form).forEach((input) =>

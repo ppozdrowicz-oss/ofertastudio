@@ -1433,13 +1433,18 @@ summary svg {
   text-align: center;
   margin: 13px 0 0;
 }
-.demo-note {
-  font-size: 12px;
+.form-status {
+  font-size: 14px;
   text-align: center;
-  color: #6c7f70;
-  border-top: 1px solid #e7ebe5;
-  padding-top: 10px;
+  color: var(--muted);
   margin: 10px 0 0;
+}
+.form-status:empty {
+  display: none;
+}
+.submit-button:disabled {
+  opacity: 0.7;
+  cursor: wait;
 }
 .chosen-package {
   align-items: center;
@@ -2674,7 +2679,6 @@ body:has(dialog[open]) .mobile-sticky {
 .comparison-note,
 .pricing-note,
 .form-privacy,
-.demo-note,
 .footer-bottom {
   font-size: 12px;
 }
