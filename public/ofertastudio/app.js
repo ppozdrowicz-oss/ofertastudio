@@ -337,7 +337,7 @@ form.addEventListener("submit", async (event) => {
     accepted = true;
   } catch {
     error.textContent =
-      "Nie udało się potwierdzić wysłania wiadomości. Twoje dane pozostają w formularzu. Spróbuj ponownie lub napisz na pozdrowicz@gmail.com.";
+      "Nie udało się potwierdzić wysłania wiadomości. Twoje dane pozostają w formularzu. Spróbuj ponownie za chwilę.";
   } finally {
     clearTimeout(timeout);
     controls.forEach((control, index) => {

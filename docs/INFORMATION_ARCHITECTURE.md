@@ -2,7 +2,13 @@
 
 ## Aktualizacja strony głównej — 7 września 2026
 
-Na prośbę właściciela `/` udostępnia przygotowany projekt skupiony na problemach klienta, z sekcjami usług, procesu, pakietów, checklisty i FAQ. Adres i rola strony głównej pozostają w centralnym rejestrze. Formularz jest jawnie demonstracyjny. Pozostałe planowane podstrony i etapy zachowują swój zakres. Szczegóły techniczne: [HOMEPAGE_DEPLOYMENT.md](HOMEPAGE_DEPLOYMENT.md).
+Na prośbę właściciela `/` udostępnia przygotowany projekt skupiony na problemach klienta, z sekcjami usług, procesu, pakietów, checklisty i FAQ. Adres i rola strony głównej pozostają w centralnym rejestrze. Formularz kontaktowy jest połączony z Netlify Forms. Pozostałe planowane podstrony i etapy zachowują swój zakres. Szczegóły techniczne: [HOMEPAGE_DEPLOYMENT.md](HOMEPAGE_DEPLOYMENT.md).
+
+## Aktualizacja sekcji Shoper — 12 września 2026
+
+Na stronie głównej pomiędzy przeglądem usług a procesem współpracy działa sekcja `#shoper`. Wprowadza pełną usługę tworzenia i przebudowy sklepów, porządkuje zakres wdrożenia oraz pomaga rozpoznać, czy projekt dotyczy nowego sklepu, istniejącego szablonu, konfiguracji interfejsu czy uporządkowania kodu. Linki z nagłówka, menu mobilnego, przeglądu usług i stopki tworzą bezpośrednią ścieżkę do sekcji.
+
+Sekcja ma rolę skróconej prezentacji kompetencji na stronie głównej. Planowana podstrona `/sklepy-internetowe/sklepy-shoper` zachowuje rolę szczegółowego opisu usługi i nie została zastąpiona przez kotwicę.
 
 ## Cel i zasada organizacji
 
