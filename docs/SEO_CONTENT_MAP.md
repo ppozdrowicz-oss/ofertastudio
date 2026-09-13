@@ -1,5 +1,9 @@
 # Mapa SEO i treści OfertaStudio
 
+## Skrócenie strony głównej — 13 września 2026
+
+Skrócono copy strony głównej, zachowując konkretne usługi zdjęć i opisów, stron internetowych oraz sklepów Shoper. Usługa Shoper jest opisana w trzech grupach: wygląd, obsługa klienta i wdrożenie. Jeden H1, canonical oraz intencje przyszłych podstron pozostają zachowane. Przykład przed/po nadal jest jawnie pokazowy, bez deklaracji wyników klienta.
+
 ## Aktualizacja strony głównej — 7 września 2026
 
 Na prośbę właściciela `/` udostępnia przygotowany projekt skupiony na problemach klienta, z sekcjami usług, procesu, pakietów, checklisty i FAQ. Adres i rola strony głównej pozostają w centralnym rejestrze. Formularz kontaktowy jest połączony z Netlify Forms. Pozostałe planowane podstrony i etapy zachowują swój zakres. Szczegóły techniczne: [HOMEPAGE_DEPLOYMENT.md](HOMEPAGE_DEPLOYMENT.md).

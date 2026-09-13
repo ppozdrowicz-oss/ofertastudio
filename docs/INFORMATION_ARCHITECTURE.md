@@ -1,5 +1,9 @@
 # Architektura informacji OfertaStudio
 
+## Skrócenie strony głównej — 13 września 2026
+
+Strona główna prowadzi od krótkiej propozycji wartości przez trzy korzyści, przykład przed/po, usługi i Shoper do warunków współpracy, cen, FAQ i kontaktu. Osobną sekcję studia połączono z procesem, usunięto checklistę oraz modale pośredniczące przed formularzem. Kotwica `#o-nas` zachowuje cel w opisie procesu; nawigacja i stopka wskazują istniejące sekcje.
+
 ## Aktualizacja strony głównej — 7 września 2026
 
 Na prośbę właściciela `/` udostępnia przygotowany projekt skupiony na problemach klienta, z sekcjami usług, procesu, pakietów, checklisty i FAQ. Adres i rola strony głównej pozostają w centralnym rejestrze. Formularz kontaktowy jest połączony z Netlify Forms. Pozostałe planowane podstrony i etapy zachowują swój zakres. Szczegóły techniczne: [HOMEPAGE_DEPLOYMENT.md](HOMEPAGE_DEPLOYMENT.md).

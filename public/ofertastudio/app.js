@@ -1,105 +1,6 @@
 "use strict";
-const problemData = {
-  clicks: {
-    label: "PIERWSZE WRAŻENIE",
-    title: "Wyświetlenia są. Co z kliknięciami?",
-    intro: "Przyjrzyjmy się temu, co klient widzi, zanim otworzy Twoją ofertę.",
-    checks: [
-      "Czy produkt jest czytelny na małej miniaturze?",
-      "Czy tytuł od razu wyjaśnia, co sprzedajesz?",
-      "Jak oferta wygląda na tle podobnych produktów?",
-      "Czy cena i warunki dostawy mogą wpływać na wybór?",
-    ],
-    solution:
-      "Możemy poprawić kadr, tło i skalę produktu oraz uporządkować tytuł.",
-    note: "Jeśli masz statystyki wyświetleń i kliknięć, wykorzystamy je do dokładniejszej oceny.",
-    choice: "Mało kliknięć",
-  },
-  sales: {
-    label: "SIŁA OFERTY",
-    title: "Kliknięcie to dopiero początek.",
-    intro:
-      "Sprawdźmy, czy oferta daje klientowi informacje potrzebne do decyzji.",
-    checks: [
-      "Czy wiadomo, do czego produkt służy i komu się przyda?",
-      "Czy łatwo znaleźć wymiary, zgodność i zawartość zestawu?",
-      "Czy galeria odpowiada na najważniejsze pytania?",
-      "Czy zdjęcia i opis tworzą spójną całość?",
-    ],
-    solution:
-      "Możemy przebudować galerię, wyeksponować korzyści i uporządkować treść oferty.",
-    note: "Bierzemy też pod uwagę cenę, dostawę i dostępność. Sama prezentacja nie wyjaśnia każdego problemu ze sprzedażą.",
-    choice: "Wejścia bez zamówień",
-  },
-  photos: {
-    label: "PREZENTACJA PRODUKTU",
-    title: "Pokaż jakość, którą masz.",
-    intro:
-      "Na żywo widać detale, proporcje i wykonanie. Pomóżmy klientowi zobaczyć je także na zdjęciach.",
-    checks: [
-      "Czy światło i kolor wiernie pokazują produkt?",
-      "Czy kadr i skala eksponują istotne detale?",
-      "Czy zdjęcia przedstawiają właściwy wariant i wyposażenie?",
-      "Co można przygotować z dostępnych materiałów?",
-    ],
-    solution:
-      "Retusz, zdjęcie główne i spójna galeria, która wyraźnie pokazuje produkt oraz jego rzeczywiste właściwości.",
-    note: "Jeśli materiał wymaga dodatkowych ujęć, powiemy Ci, czego potrzebujemy.",
-    choice: "Zdjęcia nie pokazują jakości",
-  },
-  competition: {
-    label: "POWÓD DO WYBORU",
-    title: "Daj klientowi konkretny powód.",
-    intro:
-      "Podobna cena i podobny produkt? Poszukajmy rzeczywistej różnicy, którą warto pokazać.",
-    checks: [
-      "Które cechy mają znaczenie dla Twojego klienta?",
-      "Co wyróżnia zastosowanie, materiał lub wyposażenie?",
-      "Czy korzyści są konkretne i łatwe do zauważenia?",
-      "Jak te same kwestie komunikuje konkurencja?",
-    ],
-    solution:
-      "Możemy uporządkować argumenty i pokazać je w zdjęciach, infografikach oraz treści.",
-    note: "Porównania opieramy na informacjach, które można potwierdzić.",
-    choice: "Chcę lepiej pokazać zalety produktu",
-  },
-  time: {
-    label: "TWÓJ CZAS",
-    title: "Kolejne oferty? Zleć je nam.",
-    intro:
-      "Zdjęcia, parametry i opisy mogą powstawać według wspólnego, ustalonego standardu.",
-    checks: [
-      "Jakie materiały już masz?",
-      "Co powtarza się w Twoim katalogu?",
-      "Które produkty potrzebują indywidualnego podejścia?",
-      "Ile ofert chcesz przygotowywać i w jakim rytmie?",
-    ],
-    solution:
-      "Wzorcowa oferta, spójny standard galerii i treści oraz opracowanie kolejnych produktów w uzgodnionym zakresie.",
-    note: "Możliwość publikacji i potrzebny dostęp do platformy ustalamy osobno.",
-    choice: "Potrzebuję pomocy przy wielu ofertach",
-  },
-  website: {
-    label: "CAŁY PROJEKT",
-    title: "Zbudujmy miejsce dla Twojej oferty.",
-    intro:
-      "Nowa strona, własny sklep albo uporządkowanie Shopera. Zaczynamy od celu Twojego biznesu.",
-    checks: [
-      "Co klient ma zrobić: poznać ofertę, napisać czy kupić?",
-      "Jakie treści i materiały już są gotowe?",
-      "Jakich funkcji potrzebujesz na start?",
-      "Co działa w obecnym rozwiązaniu, a co wymaga zmiany?",
-    ],
-    solution:
-      "Strona internetowa, landing page, sklep lub pomoc w konfiguracji Shopera. Zakres dopasowany do projektu.",
-    note: "Nie potrzebujesz gotowej specyfikacji. Krótki opis pomysłu wystarczy do pierwszej rozmowy.",
-    choice: "Strona, sklep lub Shoper",
-  },
-};
 const $ = (s, scope = document) => scope.querySelector(s);
 const $$ = (s, scope = document) => [...scope.querySelectorAll(s)];
-const problemDialog = $("#problem-dialog");
-let activeProblem = null;
 const openModal = (dialog) => {
   dialog.showModal();
   document.body.classList.add("modal-open");
@@ -129,37 +30,6 @@ $$("[data-dialog]").forEach((button) =>
     openModal($("#" + button.dataset.dialog + "-dialog")),
   ),
 );
-$$("[data-problem]").forEach((button) =>
-  button.addEventListener("click", () => {
-    activeProblem = problemData[button.dataset.problem];
-    $("#problem-dialog-eyebrow").textContent = activeProblem.label;
-    $("#problem-dialog-title").textContent = activeProblem.title;
-    $("#problem-dialog-intro").textContent = activeProblem.intro;
-    $("#problem-dialog-checks").replaceChildren(
-      ...activeProblem.checks.map((text) => {
-        const li = document.createElement("li");
-        li.textContent = text;
-        return li;
-      }),
-    );
-    $("#problem-dialog-solution").textContent = activeProblem.solution;
-    $("#problem-dialog-note").textContent = activeProblem.note;
-    $("#problem-dialog-cta").firstChild.textContent =
-      button.dataset.problem === "website"
-        ? "Opisz swój projekt "
-        : "Pokaż swoją ofertę ";
-    openModal(problemDialog);
-  }),
-);
-$("#problem-dialog-cta").addEventListener("click", () => {
-  $("#problem-select").value = activeProblem.choice;
-  problemDialog.close();
-  $("#kontakt").scrollIntoView({
-    behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
-      ? "instant"
-      : "smooth",
-  });
-});
 const toggle = $(".menu-toggle"),
   mobileNav = $("#mobile-nav");
 const closeMenu = () => {
@@ -229,33 +99,6 @@ $("button", packageBox).addEventListener("click", () => {
   packageBox.hidden = true;
   delete packageBox.dataset.package;
   $("#package-input").value = "";
-});
-$("#copy-checklist").addEventListener("click", async () => {
-  const text =
-    "Checklista dobrej oferty — OfertaStudio\n\n" +
-    $$(".checklist li")
-      .map((li) =>
-        li.textContent
-          .replace(/^\s*\d+\s*/, "")
-          .replace(/\s+/g, " ")
-          .trim(),
-      )
-      .map((text, i) => `${i + 1}. ${text}`)
-      .join("\n");
-  try {
-    await navigator.clipboard.writeText(text);
-    $("#copy-message").textContent =
-      "Checklista skopiowana. Wklej ją do notatek lub wiadomości.";
-    $("#copy-checklist").firstChild.textContent = "Skopiowano ";
-  } catch {
-    $("#copy-message").textContent =
-      "Zaznacz tekst checklisty i skopiuj go ręcznie.";
-    const range = document.createRange();
-    range.selectNodeContents($(".checklist"));
-    const selection = window.getSelection();
-    selection.removeAllRanges();
-    selection.addRange(range);
-  }
 });
 const form = $("#contact-form");
 form.noValidate = true;

@@ -1,5 +1,9 @@
 # Roadmapa projektu OfertaStudio
 
+## Skrócenie strony głównej — 13 września 2026
+
+Na prośbę właściciela skondensowano stronę główną wokół jasnej oferty, wiarygodności i prostego kontaktu. Rozbudowany opis Shoper zastąpił krótki zakres, a powtarzające się sekcje zostały połączone. Ceny i integracja Netlify Forms pozostają zachowane. To redakcja obecnej strony głównej, bez rozszerzania zakresu planowanych podstron.
+
 ## Aktualizacja strony głównej — 7 września 2026
 
 Na prośbę właściciela `/` udostępnia przygotowany projekt skupiony na problemach klienta, z sekcjami usług, procesu, pakietów, checklisty i FAQ. Adres i rola strony głównej pozostają w centralnym rejestrze. Od 9 września 2026 formularz jest połączony z Netlify Forms; odbiorcę powiadomień ustawia się w panelu Netlify. 9 września dopracowano typografię z lokalnym Inter Variable, nagłówek, stopkę i treść strony głównej. Właściciel potwierdził działanie formularza. 12 września strona główna otrzymała pełną sekcję tworzenia i przebudowy sklepów Shoper z zakresem wdrożenia, scenariuszami klientów i CTA do formularza. Pozostałe planowane podstrony i etapy zachowują swój zakres. Szczegóły techniczne: [HOMEPAGE_DEPLOYMENT.md](HOMEPAGE_DEPLOYMENT.md).
