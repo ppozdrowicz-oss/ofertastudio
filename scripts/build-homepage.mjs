@@ -13,10 +13,17 @@ const lines =
   '<span class="visual-line"></span><span class="visual-line short"></span>';
 const windowTop = '<div class="visual-window-top"><i></i><i></i><i></i></div>';
 // Explanatory illustrations, never client work or invented metrics.
-function visual(kind) {
+function visual(kind, problem) {
   switch (kind) {
     case "attention":
-      return `<div class="visual-listings">${[0, 1, 2].map((n) => `<div class="visual-listing ${n === 1 ? "is-focus" : ""}">${photo()}${lines}</div>`).join("")}</div><span class="visual-caption">Którą ofertę zauważysz?</span>`;
+      return `<div class="attention-listings">${Object.entries(problem.images)
+        .map(
+          ([role, img]) =>
+            `<div class="attention-listing attention-${role}"><img src="${e(img.src)}" width="${img.width}" height="${img.height}" loading="lazy" decoding="async" alt="${e(img.alt)}" draggable="false" /><div aria-hidden="true">${lines}</div></div>`,
+        )
+        .join(
+          "",
+        )}</div><span class="visual-caption">${e(problem.visualQuestion)}</span>`;
     case "photos":
       return `<div class="visual-photo-pair"><div>${photo("small-product")}<span>Produkt ginie w kadrze</span></div><div>${photo()}<span>Jakość staje się widoczna</span></div></div>`;
     case "decision":
@@ -45,8 +52,8 @@ function slides() {
       (
         p,
       ) => `<article class="problem-slide" id="${p.id}" data-problem="${p.id}" role="group" aria-roledescription="slajd" aria-label="${Number(p.number)} z ${problems.length}: ${e(p.title)}">
-    <div class="slide-copy"><p class="slide-meta"><span>${p.number} / ${problems.length}</span><span>${e(p.category)}</span></p><h3>${e(p.title)}</h3><p class="slide-symptom">${e(p.symptom)}</p></div>
-    <div class="problem-visual visual-${p.visual}" aria-hidden="true">${visual(p.visual)}</div>
+    <div class="slide-copy"><p class="slide-meta"><span>${p.number} / ${problems.length}</span><span>${e(p.category)}</span></p><h3>${e(p.title)}</h3><p class="slide-symptom">${e(p.symptom)}</p>${p.microDiagnosis ? `<p class="slide-microdiagnosis">${e(p.microDiagnosis)}</p>` : ""}</div>
+    <div class="problem-visual visual-${p.visual}" ${p.images ? "" : 'aria-hidden="true"'}>${visual(p.visual, p)}</div>
     <a class="slide-cta text-link" href="#kontakt" data-detail="${p.id}">Zobacz, gdzie może być problem ${arrow}</a>
     </article>`,
     )

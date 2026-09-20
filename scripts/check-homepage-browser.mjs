@@ -87,6 +87,28 @@ try {
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.locator(".problem-track").focus();
     await page.keyboard.press("Home");
+    const first = page.locator("#malo-klikniec");
+    await first.scrollIntoViewIfNeeded();
+    await first.locator("img").evaluateAll(async (images) => {
+      await Promise.all(images.map((img) => img.decode()));
+    });
+    assert.equal(await first.locator(".slide-microdiagnosis").count(), 1);
+    assert.equal(await first.locator("img").count(), 3);
+    const imageState = await first.locator("img").evaluateAll((images) =>
+      images.map((img) => ({
+        loaded: img.complete && img.naturalWidth > 0,
+        alt: img.alt,
+        width: img.getBoundingClientRect().width,
+        height: img.getBoundingClientRect().height,
+        hidden: !!img.closest('[aria-hidden="true"]'),
+      })),
+    );
+    assert(imageState.every((img) => img.loaded && img.alt && !img.hidden));
+    assert(
+      imageState[1].width * imageState[1].height >
+        imageState[0].width * imageState[0].height * 2,
+    );
+    await first.screenshot({ path: `${shots}/problem-01-${width}.png` });
     for (let i = 0; i < 10; i++) {
       if (i) await page.keyboard.press("ArrowRight");
       const g = await page.evaluate(() => {

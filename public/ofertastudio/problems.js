@@ -28,6 +28,29 @@ export const problems = [
       "Produkt łatwiej zauważyć i rozpoznać. Klient szybciej widzi powód, żeby otworzyć ofertę.",
     cta: "Pokaż swoją ofertę",
     visual: "attention",
+    microDiagnosis:
+      "Pierwsza decyzja zapada jeszcze na liście wyników. Jeśli oferta nie zatrzyma uwagi tutaj, klient może nawet nie zobaczyć tego, co masz do pokazania dalej.",
+    visualQuestion: "Którą ofertę otworzysz?",
+    images: {
+      before: {
+        src: "/ofertastudio/assets/problem-01-before.webp",
+        width: 960,
+        height: 723,
+        alt: "Zegarek pokazany na poduszce w mniej czytelnej prezentacji produktowej.",
+      },
+      main: {
+        src: "/ofertastudio/assets/problem-01-main.webp",
+        width: 960,
+        height: 960,
+        alt: "Ten sam zegarek pokazany na jasnym tle, z wyraźnie wyeksponowanym produktem.",
+      },
+      detail: {
+        src: "/ofertastudio/assets/problem-01-detail.webp",
+        width: 960,
+        height: 960,
+        alt: "Zbliżenie na błękitną tarczę i detale wykończenia zegarka.",
+      },
+    },
   },
   {
     id: "slabe-zdjecia",
