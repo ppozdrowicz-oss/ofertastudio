@@ -1,5 +1,9 @@
 # Strona główna — wdrożenie OfertaStudio.pl
 
+## Problem Explorer — wrzesień 2026
+
+Strona główna prowadzi od sytuacji klienta przez karuzelę 10 problemów i dopasowaną diagnozę do przykładu przed/po, zakresu, procesu, cen i kontaktu. Zachowuje zieloną identyfikację, lokalny font, oficjalne logotypy platform, ceny i Netlify Forms. Przywrócono checklistę oraz osobną sekcję studia. Szczegóły implementacji i testów: [HOMEPAGE_EXPLORER.md](HOMEPAGE_EXPLORER.md).
+
 ## Skrócenie strony głównej — 13 września 2026
 
 Treść skrócono do trzech zadań: ułatwienia działania, wyjaśnienia oferty i budowania wiarygodności. Strona pokazuje trzy grupy usług, krótki zakres Shoper, trzy etapy współpracy, istniejące ceny oraz cztery odpowiedzi FAQ. Usunięto powtarzającą się sekcję studia, checklistę i pośrednie modale problemów. Formularz zachowuje pola i obsługę Netlify Forms; CTA z pierwszego ekranu prowadzi bezpośrednio do kontaktu. Kotwica `#o-nas` wskazuje opis studia przy procesie. Menu mobilne działa do tego samego breakpointu 1100 px co przycisk menu.

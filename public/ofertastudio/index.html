@@ -11,16 +11,24 @@
     />
     <link rel="canonical" href="https://ofertastudio.pl/" />
     <meta property="og:url" content="https://ofertastudio.pl/" />
+    <meta
+      property="og:image"
+      content="https://ofertastudio.pl/ofertastudio/assets/bottle.webp"
+    />
+    <meta
+      property="og:image:alt"
+      content="Przykład pokazowy prezentacji produktu — OfertaStudio"
+    />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pl_PL" />
     <meta name="robots" content="index,follow" />
     <meta
       property="og:title"
-      content="OfertaStudio — pokaż wartość swojego produktu"
+      content="OfertaStudio — znajdź to, co blokuje Twoją ofertę"
     />
     <meta
       property="og:description"
-      content="Od prezentacji produktu po profesjonalny sklep Shoper. Zobacz, co możemy zaprojektować, przebudować i wdrożyć."
+      content="Mało kliknięć, wejścia bez sprzedaży, problemy ze sklepem? Rozpoznaj swoją sytuację i zobacz, od czego warto zacząć."
     />
     <link
       rel="icon"
@@ -35,7 +43,8 @@
       crossorigin
     />
     <link rel="stylesheet" href="/ofertastudio/styles.css" />
-    <script src="/ofertastudio/app.js" defer></script>
+    <link rel="stylesheet" href="/ofertastudio/explorer.css" />
+    <script type="module" src="/ofertastudio/app.js"></script>
   </head>
   <body>
     <svg
@@ -130,12 +139,12 @@
           ></a
         >
         <nav class="desktop-nav" aria-label="Nawigacja główna">
-          <a href="#pomoc">Usługi</a><a href="#przed-po">Przed i po</a
-          ><a href="#shoper">Shoper</a><a href="#cennik">Cennik</a
+          <a href="#problemy">Twój problem</a><a href="#przed-po">Przed i po</a
+          ><a href="#sklepy-shoper">Shoper</a><a href="#cennik">Cennik</a
           ><a href="#proces">Jak pracujemy</a>
         </nav>
         <a class="button button-small nav-cta" href="#kontakt"
-          >Omów projekt <svg><use href="#up-right" /></svg
+          >Pokaż swoją ofertę <svg><use href="#up-right" /></svg
         ></a>
         <button
           class="menu-toggle icon-button"
@@ -152,10 +161,10 @@
         hidden
         aria-label="Nawigacja mobilna"
       >
-        <a href="#pomoc">Usługi</a><a href="#przed-po">Przed i po</a
-        ><a href="#shoper">Shoper</a><a href="#cennik">Cennik</a
+        <a href="#problemy">Twój problem</a><a href="#przed-po">Przed i po</a
+        ><a href="#sklepy-shoper">Shoper</a><a href="#cennik">Cennik</a
         ><a href="#proces">Jak pracujemy</a
-        ><a href="#kontakt">Porozmawiajmy o projekcie</a>
+        ><a href="#kontakt">Pokaż swoją ofertę</a>
       </nav>
     </header>
     <main id="main-content">
@@ -165,29 +174,28 @@
             <span class="mini-line"></span> OFERTY · STRONY · SKLEPY
           </p>
           <h1 id="hero-title">
-            Pokaż wartość.<br /><span class="serif">Ułatw decyzję.</span>
+            Sprzedajesz online,<br />ale coś
+            <span class="serif">nie działa?</span>
           </h1>
           <p class="hero-intro">
-            Niech klient rozumie, co oferujesz, dlaczego warto Ci zaufać i jak
-            zrobić kolejny krok.
+            Masz produkt. My usuwamy to, co stoi między nim a sprzedażą.
           </p>
           <p class="hero-description">
-            Dopracowujemy zdjęcia i opisy. Projektujemy strony i sklepy Shoper.
-            Dla firm sprzedających na Allegro, OLX i we własnym sklepie.
+            Mało kliknięć? Wejścia bez zamówień? A może brakuje Ci czasu?
+            Rozpoznaj swoją sytuację. Wskażemy, od czego warto zacząć.
           </p>
           <div class="hero-actions">
-            <a class="button" href="#kontakt"
-              >Porozmawiajmy o projekcie
-              <svg aria-hidden="true"><use href="#arrow" /></svg
-            ></a>
-            <a class="text-link" href="#cennik"
-              >Zobacz zakres i ceny
+            <a class="button" href="#problemy"
+              >Znajdź swój problem
+              <svg aria-hidden="true"><use href="#arrow" /></svg></a
+            ><a class="text-link" href="#przed-po"
+              >Zobacz różnicę
               <svg aria-hidden="true"><use href="#up-right" /></svg
             ></a>
           </div>
           <p class="hero-note">
-            <svg aria-hidden="true"><use href="#check" /></svg> Wstępna ocena
-            jednej oferty — bezpłatnie.
+            <svg aria-hidden="true"><use href="#check" /></svg>Nie musisz
+            wiedzieć, czego potrzebujesz. Od tego zaczniemy.
           </p>
         </div>
         <div class="hero-art" aria-label="Przykład prezentacji produktu">
@@ -276,65 +284,649 @@
         <div class="container">
           <div class="section-heading">
             <div>
-              <p class="eyebrow">01 / TO MA DZIAŁAĆ</p>
+              <p class="eyebrow">01 / ZACZNIJMY OD CIEBIE</p>
               <h2 id="problems-title">
-                Trzy rzeczy, które<br /><span class="serif"
-                  >ma robić Twoja oferta.</span
-                >
+                Z czym dziś <span class="serif">się mierzysz?</span>
               </h2>
             </div>
+            <p>
+              Przewiń problemy. Gdy trafisz na swój, pokażemy Ci, gdzie może
+              leżeć przyczyna i od czego warto zacząć.
+            </p>
           </div>
-          <div class="problem-grid">
-            <a class="problem-card" href="#kontakt">
-              <span class="problem-top"
-                ><span class="tile-icon"
-                  ><svg aria-hidden="true"><use href="#cursor" /></svg></span
-                ><span class="card-index">01</span></span
+          <div
+            class="problem-explorer"
+            role="region"
+            aria-roledescription="karuzela"
+            aria-label="Znajdź swój problem"
+          >
+            <p id="carousel-help" class="sr-only">
+              Przesuwaj karty lub użyj strzałek w lewo i w prawo. Home wybiera
+              pierwszy, a End ostatni problem.
+            </p>
+            <div
+              class="problem-track"
+              tabindex="0"
+              aria-label="Problemy sprzedawców"
+              aria-describedby="carousel-help"
+            >
+              <!-- generated:slides -->
+              <article
+                class="problem-slide"
+                id="malo-klikniec"
+                data-problem="malo-klikniec"
+                role="group"
+                aria-roledescription="slajd"
+                aria-label="1 z 10: Moje oferty nie przyciągają uwagi."
               >
-              <h3>Prowadzić do działania</h3>
-              <p>
-                Czytelny kolejny krok: zapytanie, kontakt lub zakup. Bez
-                szukania, gdzie kliknąć.
-              </p>
-              <span class="card-bottom"
-                ><span>OD WEJŚCIA DO KONTAKTU</span
-                ><svg aria-hidden="true"><use href="#up-right" /></svg
-              ></span>
-            </a>
-            <a class="problem-card" href="#pomoc">
-              <span class="problem-top"
-                ><span class="tile-icon"
-                  ><svg aria-hidden="true"><use href="#bag" /></svg></span
-                ><span class="card-index">02</span></span
+                <div class="slide-copy">
+                  <p class="slide-meta">
+                    <span>01 / 10</span><span>PIERWSZE WRAŻENIE</span>
+                  </p>
+                  <h3>Moje oferty nie przyciągają uwagi.</h3>
+                  <p class="slide-symptom">
+                    Wyświetlenia są. Kliknięć zdecydowanie mniej.
+                  </p>
+                </div>
+                <div class="problem-visual visual-attention" aria-hidden="true">
+                  <div class="visual-listings">
+                    <div class="visual-listing">
+                      <img
+                        class=""
+                        src="/ofertastudio/assets/bottle.webp"
+                        width="1254"
+                        height="1254"
+                        loading="lazy"
+                        alt=""
+                        draggable="false"
+                      /><span class="visual-line"></span
+                      ><span class="visual-line short"></span>
+                    </div>
+                    <div class="visual-listing is-focus">
+                      <img
+                        class=""
+                        src="/ofertastudio/assets/bottle.webp"
+                        width="1254"
+                        height="1254"
+                        loading="lazy"
+                        alt=""
+                        draggable="false"
+                      /><span class="visual-line"></span
+                      ><span class="visual-line short"></span>
+                    </div>
+                    <div class="visual-listing">
+                      <img
+                        class=""
+                        src="/ofertastudio/assets/bottle.webp"
+                        width="1254"
+                        height="1254"
+                        loading="lazy"
+                        alt=""
+                        draggable="false"
+                      /><span class="visual-line"></span
+                      ><span class="visual-line short"></span>
+                    </div>
+                  </div>
+                  <span class="visual-caption">Którą ofertę zauważysz?</span>
+                </div>
+                <a
+                  class="slide-cta text-link"
+                  href="#kontakt"
+                  data-detail="malo-klikniec"
+                  >Zobacz, gdzie może być problem
+                  <svg aria-hidden="true"><use href="#arrow" /></svg
+                ></a>
+              </article>
+              <article
+                class="problem-slide"
+                id="slabe-zdjecia"
+                data-problem="slabe-zdjecia"
+                role="group"
+                aria-roledescription="slajd"
+                aria-label="2 z 10: Zdjęcia wyglądają gorzej niż u konkurencji."
               >
-              <h3>Wyjaśniać, co oferujesz</h3>
-              <p>
-                Zakres, korzyści i warunki w jednym miejscu. Mniej pytań o
-                podstawy.
-              </p>
-              <span class="card-bottom"
-                ><span>JASNA OFERTA</span
-                ><svg aria-hidden="true"><use href="#up-right" /></svg
-              ></span>
-            </a>
-            <a class="problem-card problem-card-green" href="#przed-po">
-              <span class="problem-top"
-                ><span class="tile-icon"
-                  ><svg aria-hidden="true">
-                    <use href="#badge-check" /></svg></span
-                ><span class="card-index">03</span></span
+                <div class="slide-copy">
+                  <p class="slide-meta">
+                    <span>02 / 10</span><span>PREZENTACJA PRODUKTU</span>
+                  </p>
+                  <h3>Zdjęcia wyglądają gorzej niż u konkurencji.</h3>
+                  <p class="slide-symptom">
+                    Produkt jest dobry, ale w internecie tego nie widać.
+                  </p>
+                </div>
+                <div class="problem-visual visual-photos" aria-hidden="true">
+                  <div class="visual-photo-pair">
+                    <div>
+                      <img
+                        class="small-product"
+                        src="/ofertastudio/assets/bottle.webp"
+                        width="1254"
+                        height="1254"
+                        loading="lazy"
+                        alt=""
+                        draggable="false"
+                      /><span>Produkt ginie w kadrze</span>
+                    </div>
+                    <div>
+                      <img
+                        class=""
+                        src="/ofertastudio/assets/bottle.webp"
+                        width="1254"
+                        height="1254"
+                        loading="lazy"
+                        alt=""
+                        draggable="false"
+                      /><span>Jakość staje się widoczna</span>
+                    </div>
+                  </div>
+                </div>
+                <a
+                  class="slide-cta text-link"
+                  href="#kontakt"
+                  data-detail="slabe-zdjecia"
+                  >Zobacz, gdzie może być problem
+                  <svg aria-hidden="true"><use href="#arrow" /></svg
+                ></a>
+              </article>
+              <article
+                class="problem-slide"
+                id="wejscia-bez-sprzedazy"
+                data-problem="wejscia-bez-sprzedazy"
+                role="group"
+                aria-roledescription="slajd"
+                aria-label="3 z 10: Mam wejścia, ale mało sprzedaży."
               >
-              <h3>Budować wiarygodność</h3>
-              <p>
-                Spójne zdjęcia, konkretne argumenty i dopracowany wygląd. Od
-                pierwszego spojrzenia.
-              </p>
-              <span class="card-bottom"
-                ><span>POWÓD DO ZAUFANIA</span
-                ><svg aria-hidden="true"><use href="#up-right" /></svg
-              ></span>
-            </a>
+                <div class="slide-copy">
+                  <p class="slide-meta">
+                    <span>03 / 10</span><span>DECYZJA ZAKUPOWA</span>
+                  </p>
+                  <h3>Mam wejścia, ale mało sprzedaży.</h3>
+                  <p class="slide-symptom">
+                    Klient wchodzi, ogląda i odchodzi.
+                  </p>
+                </div>
+                <div class="problem-visual visual-decision" aria-hidden="true">
+                  <div class="visual-decision">
+                    <img
+                      class=""
+                      src="/ofertastudio/assets/bottle.webp"
+                      width="1254"
+                      height="1254"
+                      loading="lazy"
+                      alt=""
+                      draggable="false"
+                    />
+                    <div>
+                      <span class="visual-kicker">PRZED DECYZJĄ</span
+                      ><strong>Czy to produkt dla mnie?</strong
+                      ><span>Co go wyróżnia?</span
+                      ><span>Który wariant wybrać?</span
+                      ><span>Co dostanę w zestawie?</span>
+                    </div>
+                  </div>
+                </div>
+                <a
+                  class="slide-cta text-link"
+                  href="#kontakt"
+                  data-detail="wejscia-bez-sprzedazy"
+                  >Zobacz, gdzie może być problem
+                  <svg aria-hidden="true"><use href="#arrow" /></svg
+                ></a>
+              </article>
+              <article
+                class="problem-slide"
+                id="brak-czasu"
+                data-problem="brak-czasu"
+                role="group"
+                aria-roledescription="slajd"
+                aria-label="4 z 10: Nie mam czasu przygotowywać ofert."
+              >
+                <div class="slide-copy">
+                  <p class="slide-meta">
+                    <span>04 / 10</span><span>CZAS</span>
+                  </p>
+                  <h3>Nie mam czasu przygotowywać ofert.</h3>
+                  <p class="slide-symptom">
+                    Każdy nowy produkt oznacza kolejne godziny pracy.
+                  </p>
+                </div>
+                <div class="problem-visual visual-time" aria-hidden="true">
+                  <div class="visual-queue">
+                    <div>
+                      <span>DO PRZYGOTOWANIA</span
+                      ><strong>Kolejny produkt.</strong>
+                    </div>
+                    <div><span>01</span><b>Zdjęcia</b><span>○</span></div>
+                    <div>
+                      <span>02</span><b>Opis i parametry</b><span>○</span>
+                    </div>
+                    <div><span>03</span><b>Galeria</b><span>○</span></div>
+                    <div><span>04</span><b>Publikacja</b><span>○</span></div>
+                  </div>
+                </div>
+                <a
+                  class="slide-cta text-link"
+                  href="#kontakt"
+                  data-detail="brak-czasu"
+                  >Zobacz, gdzie może być problem
+                  <svg aria-hidden="true"><use href="#arrow" /></svg
+                ></a>
+              </article>
+              <article
+                class="problem-slide"
+                id="start-allegro"
+                data-problem="start-allegro"
+                role="group"
+                aria-roledescription="slajd"
+                aria-label="5 z 10: Chcę zacząć sprzedawać na Allegro."
+              >
+                <div class="slide-copy">
+                  <p class="slide-meta">
+                    <span>05 / 10</span><span>START NA ALLEGRO</span>
+                  </p>
+                  <h3>Chcę zacząć sprzedawać na Allegro.</h3>
+                  <p class="slide-symptom">
+                    Mam produkt, ale nie wiem, jak dobrze zacząć.
+                  </p>
+                </div>
+                <div class="problem-visual visual-allegro" aria-hidden="true">
+                  <div class="visual-window">
+                    <div class="visual-window-top"><i></i><i></i><i></i></div>
+                    <div class="visual-allegro">
+                      <img
+                        src="/ofertastudio/assets/allegro.svg"
+                        width="90"
+                        height="30"
+                        loading="lazy"
+                        alt=""
+                      /><span>Twoja pierwsza oferta</span>
+                    </div>
+                    <div class="visual-product">
+                      <img
+                        class=""
+                        src="/ofertastudio/assets/bottle.webp"
+                        width="1254"
+                        height="1254"
+                        loading="lazy"
+                        alt=""
+                        draggable="false"
+                      />
+                      <div>
+                        <strong>Zacznij od produktu.</strong>
+                        <p>Zdjęcia. Tytuł. Parametry.</p>
+                        <span class="visual-line"></span
+                        ><span class="visual-line short"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <a
+                  class="slide-cta text-link"
+                  href="#kontakt"
+                  data-detail="start-allegro"
+                  >Zobacz, gdzie może być problem
+                  <svg aria-hidden="true"><use href="#arrow" /></svg
+                ></a>
+              </article>
+              <article
+                class="problem-slide"
+                id="shoper"
+                data-problem="shoper"
+                role="group"
+                aria-roledescription="slajd"
+                aria-label="6 z 10: Mam Shopera, ale potrzebuję pomocy."
+              >
+                <div class="slide-copy">
+                  <p class="slide-meta">
+                    <span>06 / 10</span><span>SHOPER</span>
+                  </p>
+                  <h3>Mam Shopera, ale potrzebuję pomocy.</h3>
+                  <p class="slide-symptom">
+                    Sklep działa, ale nie wygląda i nie działa tak, jak
+                    powinien.
+                  </p>
+                </div>
+                <div class="problem-visual visual-shoper" aria-hidden="true">
+                  <div class="visual-window">
+                    <div class="visual-window-top"><i></i><i></i><i></i></div>
+                    <div class="visual-allegro">
+                      <img
+                        src="/ofertastudio/assets/shoper.svg"
+                        width="82"
+                        height="24"
+                        loading="lazy"
+                        alt=""
+                      /><span>Sklep po Twojemu</span>
+                    </div>
+                    <div class="visual-shop-banner">
+                      <strong>Twoja marka.<br />Twój charakter.</strong
+                      ><img
+                        class=""
+                        src="/ofertastudio/assets/bottle.webp"
+                        width="1254"
+                        height="1254"
+                        loading="lazy"
+                        alt=""
+                        draggable="false"
+                      />
+                    </div>
+                    <div class="visual-tags">
+                      <span>Menu</span><span>Kategorie</span><span>Koszyk</span>
+                    </div>
+                  </div>
+                </div>
+                <a
+                  class="slide-cta text-link"
+                  href="#kontakt"
+                  data-detail="shoper"
+                  >Zobacz, gdzie może być problem
+                  <svg aria-hidden="true"><use href="#arrow" /></svg
+                ></a>
+              </article>
+              <article
+                class="problem-slide"
+                id="wlasny-sklep"
+                data-problem="wlasny-sklep"
+                role="group"
+                aria-roledescription="slajd"
+                aria-label="7 z 10: Mam produkty, ale nie mam własnego sklepu."
+              >
+                <div class="slide-copy">
+                  <p class="slide-meta">
+                    <span>07 / 10</span><span>WŁASNY KANAŁ</span>
+                  </p>
+                  <h3>Mam produkty, ale nie mam własnego sklepu.</h3>
+                  <p class="slide-symptom">
+                    Nie chcę opierać całej sprzedaży wyłącznie na marketplace.
+                  </p>
+                </div>
+                <div class="problem-visual visual-store" aria-hidden="true">
+                  <div class="visual-own-store">
+                    <span class="visual-domain">twojamarka.pl</span>
+                    <div>
+                      <img
+                        class=""
+                        src="/ofertastudio/assets/bottle.webp"
+                        width="1254"
+                        height="1254"
+                        loading="lazy"
+                        alt=""
+                        draggable="false"
+                      /><strong>Własne miejsce.<br />Pełna oferta.</strong>
+                    </div>
+                    <span class="visual-stamp">TWOJA MARKA W CENTRUM</span>
+                  </div>
+                </div>
+                <a
+                  class="slide-cta text-link"
+                  href="#kontakt"
+                  data-detail="wlasny-sklep"
+                  >Zobacz, gdzie może być problem
+                  <svg aria-hidden="true"><use href="#arrow" /></svg
+                ></a>
+              </article>
+              <article
+                class="problem-slide"
+                id="slaba-strona"
+                data-problem="slaba-strona"
+                role="group"
+                aria-roledescription="slajd"
+                aria-label="8 z 10: Moja strona nie budzi zaufania."
+              >
+                <div class="slide-copy">
+                  <p class="slide-meta">
+                    <span>08 / 10</span><span>STRONA INTERNETOWA</span>
+                  </p>
+                  <h3>Moja strona nie budzi zaufania.</h3>
+                  <p class="slide-symptom">
+                    Firma jest lepsza niż jej obecna strona.
+                  </p>
+                </div>
+                <div class="problem-visual visual-website" aria-hidden="true">
+                  <div class="visual-window">
+                    <div class="visual-window-top"><i></i><i></i><i></i></div>
+                    <div class="visual-page">
+                      <span class="visual-kicker">STRONA TWOJEJ FIRMY</span
+                      ><strong
+                        >Wiadomo, co robisz.<br />Widać, dlaczego warto.</strong
+                      ><span class="visual-line"></span
+                      ><span class="visual-line short"></span
+                      ><span class="visual-faux-button"
+                        >Prosta droga do kontaktu
+                        <svg aria-hidden="true"><use href="#arrow" /></svg
+                      ></span>
+                    </div>
+                  </div>
+                </div>
+                <a
+                  class="slide-cta text-link"
+                  href="#kontakt"
+                  data-detail="slaba-strona"
+                  >Zobacz, gdzie może być problem
+                  <svg aria-hidden="true"><use href="#arrow" /></svg
+                ></a>
+              </article>
+              <article
+                class="problem-slide"
+                id="niespojna-sprzedaz"
+                data-problem="niespojna-sprzedaz"
+                role="group"
+                aria-roledescription="slajd"
+                aria-label="9 z 10: Moja sprzedaż online wygląda niespójnie."
+              >
+                <div class="slide-copy">
+                  <p class="slide-meta">
+                    <span>09 / 10</span><span>SPÓJNOŚĆ MARKI</span>
+                  </p>
+                  <h3>Moja sprzedaż online wygląda niespójnie.</h3>
+                  <p class="slide-symptom">
+                    Allegro, sklep i strona wyglądają jak trzy różne firmy.
+                  </p>
+                </div>
+                <div
+                  class="problem-visual visual-consistency"
+                  aria-hidden="true"
+                >
+                  <div class="visual-channels">
+                    <div class="visual-channel channel-0">
+                      <span>Allegro</span
+                      ><img
+                        class=""
+                        src="/ofertastudio/assets/bottle.webp"
+                        width="1254"
+                        height="1254"
+                        loading="lazy"
+                        alt=""
+                        draggable="false"
+                      /><span class="visual-line"></span
+                      ><span class="visual-line short"></span>
+                    </div>
+                    <div class="visual-channel channel-1">
+                      <span>Sklep</span
+                      ><img
+                        class=""
+                        src="/ofertastudio/assets/bottle.webp"
+                        width="1254"
+                        height="1254"
+                        loading="lazy"
+                        alt=""
+                        draggable="false"
+                      /><span class="visual-line"></span
+                      ><span class="visual-line short"></span>
+                    </div>
+                    <div class="visual-channel channel-2">
+                      <span>Strona</span
+                      ><img
+                        class=""
+                        src="/ofertastudio/assets/bottle.webp"
+                        width="1254"
+                        height="1254"
+                        loading="lazy"
+                        alt=""
+                        draggable="false"
+                      /><span class="visual-line"></span
+                      ><span class="visual-line short"></span>
+                    </div>
+                  </div>
+                  <span class="visual-caption">Trzy kanały. Jedna marka.</span>
+                </div>
+                <a
+                  class="slide-cta text-link"
+                  href="#kontakt"
+                  data-detail="niespojna-sprzedaz"
+                  >Zobacz, gdzie może być problem
+                  <svg aria-hidden="true"><use href="#arrow" /></svg
+                ></a>
+              </article>
+              <article
+                class="problem-slide"
+                id="diagnoza"
+                data-problem="diagnoza"
+                role="group"
+                aria-roledescription="slajd"
+                aria-label="10 z 10: Nie wiem, co właściwie jest nie tak."
+              >
+                <div class="slide-copy">
+                  <p class="slide-meta">
+                    <span>10 / 10</span><span>DIAGNOZA</span>
+                  </p>
+                  <h3>Nie wiem, co właściwie jest nie tak.</h3>
+                  <p class="slide-symptom">
+                    Czuję, że coś nie działa, ale nie wiem, od czego zacząć.
+                  </p>
+                </div>
+                <div class="problem-visual visual-diagnosis" aria-hidden="true">
+                  <div class="visual-diagnosis">
+                    <span>Zdjęcia?</span><span>Treść?</span
+                    ><strong>Od czego<br />zacząć?</strong
+                    ><span>Nawigacja?</span><span>Cała oferta?</span>
+                  </div>
+                  <span class="visual-caption"
+                    >Najpierw pytania. Potem kierunek.</span
+                  >
+                </div>
+                <a
+                  class="slide-cta text-link"
+                  href="#kontakt"
+                  data-detail="diagnoza"
+                  >Zobacz, gdzie może być problem
+                  <svg aria-hidden="true"><use href="#arrow" /></svg
+                ></a>
+              </article>
+              <!-- /generated:slides -->
+            </div>
+            <div class="explorer-controls" hidden>
+              <span class="explorer-count" aria-hidden="true">01 / 10</span>
+              <div
+                class="explorer-progress"
+                role="progressbar"
+                aria-label="Pozycja problemu"
+                aria-valuemin="1"
+                aria-valuemax="10"
+                aria-valuenow="1"
+              >
+                <span></span>
+              </div>
+              <span class="explorer-hint"
+                >Przesuń, by rozpoznać swój problem</span
+              ><button
+                class="icon-button previous-problem"
+                type="button"
+                aria-label="Poprzedni problem"
+                aria-controls="problem-detail"
+              >
+                <svg aria-hidden="true"><use href="#arrow" /></svg></button
+              ><button
+                class="icon-button next-problem"
+                type="button"
+                aria-label="Następny problem"
+                aria-controls="problem-detail"
+              >
+                <svg aria-hidden="true"><use href="#arrow" /></svg>
+              </button>
+            </div>
+            <p
+              class="sr-only"
+              id="problem-announcement"
+              aria-live="polite"
+              aria-atomic="true"
+            ></p>
           </div>
+          <section
+            class="problem-detail"
+            id="problem-detail"
+            aria-labelledby="diagnosis-title"
+          >
+            <!-- generated:detail -->
+            <div class="diagnosis-intro">
+              <p class="eyebrow">TWÓJ PROBLEM / 01</p>
+              <h3 id="diagnosis-title" tabindex="-1">
+                Moje oferty nie przyciągają uwagi.
+              </h3>
+              <p>
+                Pierwsza decyzja zapada jeszcze na liście wyników. Sprawdźmy,
+                czy od razu widać, co sprzedajesz i dlaczego warto zajrzeć do
+                oferty.
+              </p>
+            </div>
+            <div class="diagnosis-columns">
+              <div>
+                <h4><span>01</span> Co może być przyczyną?</h4>
+                <ul>
+                  <li>Produkt ginie w miniaturze.</li>
+                  <li>Tytuł nie mówi jasno, co wyróżnia ofertę.</li>
+                  <li>Prezentacja nie pasuje do tego, czego szuka klient.</li>
+                </ul>
+              </div>
+              <div>
+                <h4><span>02</span> Co sprawdzimy?</h4>
+                <ul>
+                  <li>Miniatura i kadr</li>
+                  <li>Czytelność tytułu</li>
+                  <li>Widok na telefonie</li>
+                  <li>Kontekst ofert konkurencji</li>
+                </ul>
+              </div>
+              <div>
+                <h4><span>03</span> Co możemy zrobić?</h4>
+                <ul>
+                  <li>Poprawić kadr i skalę produktu.</li>
+                  <li>Uporządkować tytuł i najważniejsze informacje.</li>
+                  <li>Dopasować prezentację do kanału sprzedaży.</li>
+                </ul>
+                <p class="diagnosis-note">
+                  Zakres dobieramy po ocenie. Nie zakładamy, że potrzebujesz
+                  wszystkiego.
+                </p>
+              </div>
+            </div>
+            <div class="diagnosis-result">
+              <div>
+                <p class="eyebrow">JAK POWINIEN WYGLĄDAĆ REZULTAT?</p>
+                <p>
+                  Produkt łatwiej zauważyć i rozpoznać. Klient szybciej widzi
+                  powód, żeby otworzyć ofertę.
+                </p>
+              </div>
+              <div class="diagnosis-action">
+                <a
+                  class="button"
+                  href="#kontakt"
+                  data-problem-contact="malo-klikniec"
+                  >Pokaż swoją ofertę<svg aria-hidden="true">
+                    <use href="#arrow" /></svg></a
+                ><small>Wstępna ocena jednej oferty: 0 zł</small>
+              </div>
+            </div>
+            <!-- /generated:detail -->
+          </section>
+          <noscript
+            ><p>
+              Przesuwaj karty, aby poznać problemy. Indywidualny kierunek zmian
+              omówimy po otrzymaniu Twojej wiadomości.
+              <a href="#kontakt">Pokaż swoją ofertę.</a>
+            </p></noscript
+          >
         </div>
       </section>
 
@@ -347,17 +939,15 @@
           <div class="proof-copy">
             <p class="eyebrow">02 / ZOBACZ RÓŻNICĘ</p>
             <h2 id="proof-title">
-              Ten sam produkt.<br /><span class="serif"
-                >Czytelniej pokazany.</span
-              >
+              Zobacz zmianę zamiast <span class="serif">czytać o zmianie.</span>
             </h2>
             <p class="section-lead">Dobry kadr pomaga zauważyć to, co ważne.</p>
             <p>Przesuń suwak i porównaj skalę oraz widoczność detali.</p>
             <a
               class="text-link"
               href="#kontakt"
-              data-choice="Zdjęcia nie pokazują jakości"
-              >Porozmawiajmy o projekcie
+              data-problem-contact="slabe-zdjecia"
+              >Pokaż swoją ofertę
               <svg aria-hidden="true"><use href="#up-right" /></svg
             ></a>
           </div>
@@ -412,6 +1002,9 @@
         </div>
       </section>
 
+      <!-- generated:stories -->
+
+      <!-- /generated:stories -->
       <section
         class="section services-section"
         id="pomoc"
@@ -420,9 +1013,9 @@
         <div class="container">
           <div class="section-heading">
             <div>
-              <p class="eyebrow">03 / CO ROBIMY</p>
+              <p class="eyebrow">03 / ROZWIĄZANIE DOBRANE DO PROBLEMU</p>
               <h2 id="services-title">
-                Od jednej oferty<br /><span class="serif">po cały sklep.</span>
+                Problemy są różne.<br /><span class="serif">Zakres też.</span>
               </h2>
             </div>
           </div>
@@ -439,7 +1032,7 @@
             <a
               href="#kontakt"
               class="service-row"
-              data-choice="Strona, sklep lub Shoper"
+              data-problem-contact="slaba-strona"
               ><span class="service-num">02</span>
               <h3>Strony internetowe</h3>
               <p>
@@ -448,7 +1041,7 @@
               </p>
               <svg aria-hidden="true"><use href="#up-right" /></svg
             ></a>
-            <a href="#shoper" class="service-row"
+            <a href="#sklepy-shoper" class="service-row"
               ><span class="service-num">03</span>
               <h3>Sklepy Shoper</h3>
               <p>
@@ -463,7 +1056,7 @@
 
       <section
         class="shoper-section"
-        id="shoper"
+        id="sklepy-shoper"
         aria-labelledby="shoper-title"
       >
         <div class="container">
@@ -522,11 +1115,8 @@
               <strong>Wycena indywidualna.</strong> Po poznaniu sklepu,
               potrzebnych funkcji i zakresu zmian.
             </p>
-            <a
-              class="button"
-              href="#kontakt"
-              data-choice="Strona, sklep lub Shoper"
-              >Porozmawiajmy o projekcie
+            <a class="button" href="#kontakt" data-problem-contact="shoper"
+              >Pokaż swoją ofertę
               <svg aria-hidden="true"><use href="#arrow" /></svg
             ></a>
           </div>
@@ -539,7 +1129,7 @@
         aria-labelledby="process-title"
       >
         <div class="container">
-          <div class="process-heading" id="o-nas">
+          <div class="process-heading">
             <p class="eyebrow">05 / JAK PRACUJEMY</p>
             <h2 id="process-title">
               Konkretne ustalenia.<br /><span class="serif"
@@ -554,19 +1144,28 @@
           <div class="process-grid">
             <article>
               <span class="step-number">01</span>
-              <h3>Opisz potrzebę</h3>
-              <p>Wyślij link lub kilka zdań o projekcie.</p>
+              <h3>Pokaż nam problem</h3>
+              <p>Wyślij link lub krótko opisz sytuację.</p>
             </article>
             <article>
               <span class="step-number">02</span>
-              <h3>Poznaj zakres i cenę</h3>
-              <p>Przed startem ustalamy koszt, termin i poprawki.</p>
+              <h3>Wskażemy, co najbardziej blokuje ofertę</h3>
+              <p>Sprawdzimy materiały i ustalimy priorytet zmian.</p>
             </article>
             <article>
               <span class="step-number">03</span>
-              <h3>Odbierz gotową pracę</h3>
+              <h3>Ustalimy zakres</h3>
               <p>
-                Materiały do publikacji lub wdrożenie w uzgodnionym zakresie.
+                Dobierzemy potrzebne prace. Przed startem poznasz koszt, termin
+                i zakres poprawek.
+              </p>
+            </article>
+            <article>
+              <span class="step-number">04</span>
+              <h3>Przygotujemy rozwiązanie</h3>
+              <p>
+                Zdjęcia, treści, oferta, strona lub sklep — w zależności od
+                problemu.
               </p>
             </article>
           </div>
@@ -583,12 +1182,13 @@
             <div>
               <p class="eyebrow">06 / ZAKRES NA TWOJĄ MIARĘ</p>
               <h2 id="pricing-title">
-                Wybierz <span class="serif">zakres.</span>
+                Nie każdy problem wymaga
+                <span class="serif">pełnej przebudowy.</span>
               </h2>
             </div>
             <p>
-              Możesz zacząć od jednego elementu. Ostateczny zakres i cenę
-              potwierdzimy przed startem.
+              Najpierw sprawdzamy, co warto zmienić. Dopiero potem dobieramy
+              zakres. Ostateczną cenę potwierdzimy przed startem.
             </p>
           </div>
           <div class="free-start">
@@ -602,7 +1202,7 @@
             </div>
             <span class="free-price">0 <small>zł</small></span
             ><a class="text-link" href="#kontakt" data-package="START"
-              >Omów projekt <svg><use href="#arrow" /></svg
+              >Pokaż swoją ofertę <svg><use href="#arrow" /></svg
             ></a>
           </div>
           <div class="pricing-grid">
@@ -682,7 +1282,7 @@
                   podstawie uzgodnionych materiałów.
                 </p>
                 <a class="text-link" href="#kontakt" data-package="STUDIO"
-                  >Omów projekt <svg><use href="#arrow" /></svg
+                  >Pokaż swoją ofertę <svg><use href="#arrow" /></svg
                 ></a>
               </article>
               <article>
@@ -708,7 +1308,7 @@
                 <a
                   class="text-link"
                   href="#kontakt"
-                  data-choice="Strona, sklep lub Shoper"
+                  data-problem-contact="shoper"
                   >Opisz swój pomysł <svg><use href="#arrow" /></svg
                 ></a>
               </article>
@@ -718,6 +1318,75 @@
             Ceny orientacyjne. Ostateczna cena i zakres prac są potwierdzane w
             indywidualnej wycenie przed rozpoczęciem zlecenia.
           </p>
+        </div>
+      </section>
+
+      <section
+        class="knowledge-section"
+        id="checklista"
+        aria-labelledby="checklist-title"
+      >
+        <div class="knowledge-grid container">
+          <div>
+            <p class="eyebrow">DO WYKORZYSTANIA OD RAZU</p>
+            <h2 id="checklist-title">
+              Spójrz na ofertę <span class="serif">oczami klienta.</span>
+            </h2>
+            <p>
+              Pięć pytań przed publikacją. Wyślij je osobie, która odpowiada u
+              Ciebie za sprzedaż online.
+            </p>
+            <button class="button" type="button" id="copy-checklist" hidden>
+              Skopiuj checklistę
+              <svg aria-hidden="true"><use href="#copy" /></svg>
+            </button>
+            <p class="copy-message" id="copy-status" role="status"></p>
+          </div>
+          <ol class="checklist">
+            <li><span>01</span>Czy od razu wiadomo, co sprzedaję?</li>
+            <li><span>02</span>Czy zdjęcia pokazują jakość i ważne detale?</li>
+            <li>
+              <span>03</span>Czy klient znajdzie parametry, warianty i
+              zastosowanie?
+            </li>
+            <li>
+              <span>04</span>Czy widać konkretny powód, żeby wybrać ten produkt?
+            </li>
+            <li><span>05</span>Czy wiadomo, jak kupić lub się skontaktować?</li>
+          </ol>
+        </div>
+      </section>
+      <section
+        class="section studio-section"
+        id="o-nas"
+        aria-labelledby="studio-title"
+      >
+        <div class="studio-grid container">
+          <div>
+            <p class="eyebrow">BUTIKOWE STUDIO SPRZEDAŻY ONLINE</p>
+            <h2 id="studio-title">
+              Uważnie przyglądamy się <span class="serif">Twojej ofercie.</span>
+            </h2>
+          </div>
+          <div>
+            <p class="studio-lead">
+              Za dobrym projektem stoi zrozumienie produktu i firmy.
+            </p>
+            <p>
+              W OfertaStudio łączymy projektowanie, treści i wdrożenie. Każdą
+              zmianę odnosimy do tego, czego potrzebuje klient, żeby zrozumieć
+              ofertę i podjąć decyzję.
+            </p>
+            <p>
+              Pracujemy na Twoich materiałach i rzeczywistych zaletach produktu.
+              Zamiast dokładać przypadkowe poprawki, ustalamy kierunek, który
+              pozwoli rozwijać ofertę dalej.
+            </p>
+            <a class="text-link" href="#kontakt"
+              >Pokaż swoją ofertę
+              <svg aria-hidden="true"><use href="#arrow" /></svg
+            ></a>
+          </div>
         </div>
       </section>
 
@@ -794,8 +1463,8 @@
               Co chcesz<br /><span class="serif">poprawić?</span>
             </h2>
             <p>
-              Wyślij link lub opisz projekt. Otrzymasz propozycję zakresu i
-              wycenę. Wstępna ocena jednej oferty jest bezpłatna.
+              Wyślij link lub krótko opisz sytuację. Zaczniemy od sprawdzenia,
+              co warto poprawić. Wstępna ocena jednej oferty jest bezpłatna.
             </p>
             <div class="contact-reassurance">
               <svg aria-hidden="true"><use href="#check" /></svg
@@ -811,6 +1480,7 @@
             netlify-honeypot="bot-field"
           >
             <input type="hidden" name="form-name" value="kontakt" />
+            <input type="hidden" name="problem-id" id="problem-id" value="" />
             <input type="hidden" name="package" id="package-input" value="" />
             <p hidden>
               <label
@@ -821,6 +1491,16 @@
             <div class="form-heading">
               <span>Opisz swoją potrzebę</span
               ><svg><use href="#up-right" /></svg>
+            </div>
+            <div id="chosen-problem" class="chosen-problem" hidden>
+              <p class="eyebrow">WYBRANY PROBLEM</p>
+              <p>
+                <svg aria-hidden="true"><use href="#check" /></svg
+                ><strong></strong>
+              </p>
+              <button type="button" class="inline-button" id="change-problem">
+                Zmień problem
+              </button>
             </div>
             <div id="chosen-package" class="chosen-package" hidden>
               <span></span
@@ -840,17 +1520,72 @@
                 aria-describedby="url-error"
               /><span class="field-error" id="url-error"></span>
             </div>
-            <div class="form-field">
-              <label for="problem-select">W czym mamy Ci pomóc?</label
+            <div class="form-field" id="problem-field">
+              <label for="problem-select">Co chcesz poprawić?</label
               ><select name="problem" id="problem-select">
+                <!-- generated:options -->
                 <option value="">Wybierz sytuację</option>
-                <option>Mało kliknięć</option>
-                <option>Wejścia bez zamówień</option>
-                <option>Zdjęcia nie pokazują jakości</option>
-                <option>Chcę lepiej pokazać zalety produktu</option>
-                <option>Potrzebuję pomocy przy wielu ofertach</option>
-                <option>Strona, sklep lub Shoper</option>
-                <option>Nie wiem / inny problem</option>
+                <option
+                  value="Moje oferty nie przyciągają uwagi."
+                  data-problem-id="malo-klikniec"
+                >
+                  Moje oferty nie przyciągają uwagi.
+                </option>
+                <option
+                  value="Zdjęcia wyglądają gorzej niż u konkurencji."
+                  data-problem-id="slabe-zdjecia"
+                >
+                  Zdjęcia wyglądają gorzej niż u konkurencji.
+                </option>
+                <option
+                  value="Mam wejścia, ale mało sprzedaży."
+                  data-problem-id="wejscia-bez-sprzedazy"
+                >
+                  Mam wejścia, ale mało sprzedaży.
+                </option>
+                <option
+                  value="Nie mam czasu przygotowywać ofert."
+                  data-problem-id="brak-czasu"
+                >
+                  Nie mam czasu przygotowywać ofert.
+                </option>
+                <option
+                  value="Chcę zacząć sprzedawać na Allegro."
+                  data-problem-id="start-allegro"
+                >
+                  Chcę zacząć sprzedawać na Allegro.
+                </option>
+                <option
+                  value="Mam Shopera, ale potrzebuję pomocy."
+                  data-problem-id="shoper"
+                >
+                  Mam Shopera, ale potrzebuję pomocy.
+                </option>
+                <option
+                  value="Mam produkty, ale nie mam własnego sklepu."
+                  data-problem-id="wlasny-sklep"
+                >
+                  Mam produkty, ale nie mam własnego sklepu.
+                </option>
+                <option
+                  value="Moja strona nie budzi zaufania."
+                  data-problem-id="slaba-strona"
+                >
+                  Moja strona nie budzi zaufania.
+                </option>
+                <option
+                  value="Moja sprzedaż online wygląda niespójnie."
+                  data-problem-id="niespojna-sprzedaz"
+                >
+                  Moja sprzedaż online wygląda niespójnie.
+                </option>
+                <option
+                  value="Nie wiem, co właściwie jest nie tak."
+                  data-problem-id="diagnoza"
+                >
+                  Nie wiem, co właściwie jest nie tak.
+                </option>
+                <!-- /generated:options -->
               </select>
             </div>
             <div class="form-field">
@@ -921,7 +1656,7 @@
             <h2>W czym pomagamy</h2>
             <a href="#pomoc">Zdjęcia i opisy</a
             ><a href="#pomoc">Oferty Allegro i OLX</a
-            ><a href="#shoper">Sklepy Shoper</a>
+            ><a href="#sklepy-shoper">Sklepy Shoper</a>
           </div>
           <div>
             <h2>Przed współpracą</h2>
@@ -944,7 +1679,7 @@
     <div class="mobile-sticky" aria-label="Szybki kontakt">
       <span>Od czego zacząć?</span
       ><a href="#kontakt" class="button button-small"
-        >Omów projekt <svg><use href="#arrow" /></svg
+        >Pokaż swoją ofertę <svg><use href="#arrow" /></svg
       ></a>
     </div>
 

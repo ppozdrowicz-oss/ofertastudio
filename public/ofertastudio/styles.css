@@ -601,38 +601,6 @@ p {
 .problems-section {
   padding-bottom: 85px;
 }
-.problem-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-}
-.problem-card {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  background: #f7f8f6;
-  border: 1px solid transparent;
-  border-radius: var(--radius);
-  padding: 26px 27px 20px;
-  min-width: 0;
-  transition:
-    transform 0.22s,
-    background 0.22s,
-    border-color 0.22s,
-    box-shadow 0.22s;
-}
-.problem-card:hover {
-  transform: translateY(-5px);
-  border-color: #bdd2c6;
-  background: #f0f5f1;
-  box-shadow: 0 12px 28px #1438270b;
-}
-.problem-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 23px;
-}
 .tile-icon {
   width: 46px;
   height: 46px;
@@ -641,65 +609,6 @@ p {
   border: 1px solid #dee6df;
   border-radius: 12px;
   background: #fff;
-}
-.card-index {
-  font-size: 12px;
-  color: #87968c;
-  align-self: flex-start;
-  padding-top: 3px;
-}
-.problem-card h3 {
-  font-size: 23px;
-  line-height: 1.24;
-  letter-spacing: -0.035em;
-  margin-bottom: 13px;
-}
-.problem-card p {
-  font-size: 14px;
-  color: var(--muted);
-  line-height: 1.65;
-  margin-bottom: 27px;
-}
-.card-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-top: 1px solid #e1e7e0;
-  padding-top: 16px;
-  margin-top: auto;
-  gap: 10px;
-}
-.card-bottom > span {
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  color: #5c7166;
-}
-.card-bottom > svg {
-  width: 19px;
-  height: 19px;
-}
-.problem-card-green {
-  background: var(--green);
-  color: white;
-}
-.problem-card-green:hover {
-  background: var(--green-hover);
-  border-color: var(--green);
-}
-.problem-card-green .tile-icon {
-  border-color: #ffffff30;
-  background: #ffffff0c;
-}
-.problem-card-green p,
-.problem-card-green .card-index {
-  color: #cfddd3;
-}
-.problem-card-green .card-bottom {
-  border-color: #ffffff25;
-}
-.problem-card-green .card-bottom > span {
-  color: #d9edb0;
 }
 .under-grid {
   display: flex;
@@ -1250,26 +1159,6 @@ summary svg {
   letter-spacing: 0;
   flex-shrink: 0;
 }
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 110px;
-  align-items: start;
-}
-.about-copy > p {
-  color: var(--muted);
-  font-size: 16px;
-}
-.about-copy .about-lead {
-  font-size: 25px;
-  line-height: 1.45;
-  letter-spacing: -0.035em;
-  color: var(--ink);
-  margin-bottom: 22px;
-}
-.about-copy .text-link {
-  margin-top: 6px;
-}
 .faq-section {
   padding-top: 0;
 }
@@ -1647,14 +1536,7 @@ body:has(dialog[open]) .mobile-sticky {
   .proof-grid {
     gap: 55px;
   }
-  .problem-card {
-    padding: 24px 22px 19px;
-  }
-  .problem-card h3 {
-    font-size: 21px;
-  }
   .knowledge-grid,
-  .about-grid,
   .contact-grid {
     gap: 65px;
   }
@@ -1760,24 +1642,6 @@ body:has(dialog[open]) .mobile-sticky {
   h2 {
     font-size: 41px;
   }
-  .problem-grid {
-    gap: 14px;
-  }
-  .problem-card {
-    padding: 21px 18px 17px;
-  }
-  .problem-card h3 {
-    font-size: 19px;
-  }
-  .problem-card p {
-    font-size: 13px;
-  }
-  .card-bottom > span {
-    font-size: 12px;
-  }
-  .problem-card p br {
-    display: none;
-  }
   .proof-grid {
     gap: 40px;
     grid-template-columns: 1fr 1fr;
@@ -1851,12 +1715,6 @@ body:has(dialog[open]) .mobile-sticky {
   .checklist li {
     font-size: 16px;
     gap: 18px;
-  }
-  .about-grid {
-    gap: 50px;
-  }
-  .about-copy .about-lead {
-    font-size: 22px;
   }
   .faq-grid {
     gap: 44px;
@@ -2066,17 +1924,6 @@ body:has(dialog[open]) .mobile-sticky {
   .section-heading > p br {
     display: none;
   }
-  .problem-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-  .problem-card {
-    padding: 18px 16px 15px;
-    border-radius: 12px;
-  }
-  .problem-top {
-    margin-bottom: 22px;
-  }
   .tile-icon {
     width: 38px;
     height: 38px;
@@ -2085,32 +1932,6 @@ body:has(dialog[open]) .mobile-sticky {
   .tile-icon svg {
     height: 21px;
     width: 21px;
-  }
-  .problem-card h3 {
-    font-size: 18px;
-    letter-spacing: -0.035em;
-    line-height: 1.2;
-    margin-bottom: 12px;
-  }
-  .problem-card p {
-    font-size: 13px;
-    line-height: 1.6;
-    margin-bottom: 18px;
-  }
-  .card-bottom {
-    padding-top: 13px;
-  }
-  .card-bottom > span {
-    font-size: 12px;
-    letter-spacing: 0.05em;
-    line-height: 1.4;
-  }
-  .card-bottom > svg {
-    width: 16px;
-    height: 16px;
-  }
-  .card-index {
-    font-size: 12px;
   }
   .under-grid {
     flex-direction: column;
@@ -2359,19 +2180,6 @@ body:has(dialog[open]) .mobile-sticky {
     padding: 17px 0;
     gap: 21px;
   }
-  .about-grid {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-  .about-copy .about-lead {
-    font-size: 23px;
-  }
-  .about-copy > p {
-    font-size: 16px;
-  }
-  .about-copy .text-link {
-    font-size: 14px;
-  }
   .faq-section {
     padding-top: 0;
   }
@@ -2508,18 +2316,6 @@ body:has(dialog[open]) .mobile-sticky {
     font-size: 13px;
     gap: 6px;
   }
-  .problem-card {
-    padding: 16px 13px 13px;
-  }
-  .problem-card h3 {
-    font-size: 17px;
-  }
-  .problem-card p {
-    font-size: 12px;
-  }
-  .card-bottom > span {
-    font-size: 12px;
-  }
   .price-card {
     padding: 23px;
   }
@@ -2554,7 +2350,6 @@ body:has(dialog[open]) .mobile-sticky {
 
 /* Readability across devices; compact metadata remains secondary. */
 .hero-description,
-.problem-card p,
 .service-row p,
 .process-grid p,
 .price-description,
@@ -2563,16 +2358,9 @@ body:has(dialog[open]) .mobile-sticky {
 .faq-list details > p {
   font-size: 16px;
 }
-.problem-card p {
-  font-size: 15px;
-}
 .process-grid p,
 .price-description {
   font-size: 15px;
-}
-.card-bottom > span {
-  font-size: 12px;
-  letter-spacing: 0.03em;
 }
 .form-field label,
 .hero-note,
@@ -2588,17 +2376,6 @@ body:has(dialog[open]) .mobile-sticky {
   }
 }
 @media (max-width: 720px) {
-  .problem-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-  .problem-card p {
-    font-size: 14px;
-  }
-  .card-bottom > span {
-    font-size: 12px;
-    letter-spacing: 0;
-  }
-
   .hero-note {
     font-size: 12px;
   }
@@ -2622,33 +2399,6 @@ body:has(dialog[open]) .mobile-sticky {
   }
   .channel-own {
     font-size: 18px;
-  }
-  .problem-grid {
-    grid-template-columns: 1fr;
-  }
-  .problem-card {
-    padding: 22px;
-  }
-  .problem-top {
-    margin-bottom: 17px;
-  }
-  .problem-card h3 {
-    font-size: 23px;
-    margin-bottom: 10px;
-  }
-  .problem-card p {
-    font-size: 16px;
-    margin-bottom: 18px;
-  }
-  .card-bottom > span {
-    font-size: 12px;
-  }
-  .card-index {
-    font-size: 12px;
-  }
-  .problem-top .tile-icon {
-    height: 40px;
-    width: 40px;
   }
   .price-description {
     font-size: 14px;
@@ -2727,7 +2477,6 @@ p {
 .proof-points p,
 .free-start p,
 .process-heading > p:last-child,
-.problem-card p,
 .process-grid p,
 .service-row p,
 .price-description,
@@ -2744,14 +2493,6 @@ p {
 .form-field select {
   font-size: var(--text-body);
   line-height: 1.7;
-}
-.problem-card h3 {
-  font-size: clamp(1.25rem, 1.9vw, 1.5rem);
-  line-height: 1.3;
-  letter-spacing: -0.025em;
-}
-.problem-grid {
-  align-items: stretch;
 }
 .hero-actions {
   flex-wrap: wrap;
@@ -2953,15 +2694,8 @@ p {
   }
 }
 @media (max-width: 540px) {
-  .problem-grid,
   .process-grid {
     grid-template-columns: 1fr;
-  }
-  .problem-card {
-    padding: 24px;
-  }
-  .problem-card h3 {
-    font-size: 1.375rem;
   }
 }
 @media (max-width: 380px) {
@@ -3103,8 +2837,7 @@ p {
   }
   .shoper-heading,
   .shoper-scope-grid,
-  .process-grid,
-  .problem-grid {
+  .process-grid {
     grid-template-columns: 1fr;
   }
   .shoper-heading {
@@ -3129,12 +2862,6 @@ p {
   }
   .process-grid {
     gap: 24px;
-  }
-  .problem-card {
-    padding: 24px;
-  }
-  .problem-card p {
-    margin-bottom: 20px;
   }
   .problems-section {
     padding-bottom: 48px;

@@ -18,7 +18,10 @@
     "design:check": "node scripts/check-design-system.ts",
     "experience:check": "node scripts/check-experience.ts",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "homepage:generate": "node scripts/build-homepage.mjs",
+    "homepage:check": "node scripts/build-homepage.mjs --check",
+    "prebuild": "npm run homepage:generate"
   },
   "dependencies": {
     "@react-three/fiber": "9.7.0",

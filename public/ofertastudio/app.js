@@ -1,4 +1,4 @@
-"use strict";
+import { chooseProblem, getChosenProblem, trackEvent } from "./explorer.js";
 const $ = (s, scope = document) => scope.querySelector(s);
 const $$ = (s, scope = document) => [...scope.querySelectorAll(s)];
 const openModal = (dialog) => {
@@ -72,11 +72,6 @@ compare.addEventListener("input", () => {
   );
 });
 const packageBox = $("#chosen-package");
-$$("[data-choice]").forEach((link) =>
-  link.addEventListener("click", () => {
-    $("#problem-select").value = link.dataset.choice;
-  }),
-);
 $$("[data-package]").forEach((link) =>
   link.addEventListener("click", () => {
     packageBox.hidden = false;
@@ -84,15 +79,6 @@ $$("[data-package]").forEach((link) =>
       "Interesuje Cię: " + link.dataset.package;
     packageBox.dataset.package = link.dataset.package;
     $("#package-input").value = link.dataset.package;
-    const mapping = {
-      TEKST: "Wejścia bez zamówień",
-      FOTO: "Zdjęcia nie pokazują jakości",
-      "OFERTA PRO": "Wejścia bez zamówień",
-      STUDIO: "Wejścia bez zamówień",
-      ABONAMENT: "Potrzebuję pomocy przy wielu ofertach",
-      START: "Nie wiem / inny problem",
-    };
-    $("#problem-select").value = mapping[link.dataset.package] || "";
   }),
 );
 $("button", packageBox).addEventListener("click", () => {
@@ -102,6 +88,11 @@ $("button", packageBox).addEventListener("click", () => {
 });
 const form = $("#contact-form");
 form.noValidate = true;
+form.addEventListener(
+  "focusin",
+  () => trackEvent("form_start", getChosenProblem()),
+  { once: true },
+);
 let submitting = false;
 const setError = (input, id, message) => {
   input.setAttribute("aria-invalid", String(!!message));
@@ -192,6 +183,7 @@ form.addEventListener("submit", async (event) => {
     submitting = false;
   }
   if (!accepted) return;
+  trackEvent("form_submit", getChosenProblem());
   const summary = $("#form-summary");
   summary.replaceChildren();
   const add = (label, value) => {
@@ -207,6 +199,7 @@ form.addEventListener("submit", async (event) => {
   add("E-mail", data.get("email"));
   add("Oferta / strona", data.get("url"));
   form.reset();
+  chooseProblem(null);
   packageBox.hidden = true;
   delete packageBox.dataset.package;
   openModal($("#form-dialog"));

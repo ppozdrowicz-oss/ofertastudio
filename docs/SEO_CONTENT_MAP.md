@@ -129,3 +129,9 @@ Przed wdrożeniem każdej strony należy potwierdzić:
 - co najmniej dwa logiczne linki kontekstowe, jeśli architektura je przewiduje,
 - właściwe CTA i status indeksowania,
 - brak niepotwierdzonych wyników, opinii i danych firmy.
+
+## Problemy na stronie głównej — wrzesień 2026
+
+Dziesięć scenariuszy otrzymuje adresy kotwicowe z identyfikatorów `public/ofertastudio/problems.js`. `#shoper` wskazuje scenariusz problemu; opis usługi przeniesiono do `#sklepy-shoper`. Pozostałe linki w nawigacji zaktualizowano. Canonical pozostaje `https://ofertastudio.pl/` i nie zmienia się przy przełączaniu karuzeli. Nagłówki i treść kart istnieją w statycznym HTML, a Open Graph ma lokalny obraz i opis.
+
+Identyfikatory mogą później stać się slugami `/problemy/{id}`. Te trasy nie są teraz publikowane ani dodawane do sitemap. Przed ich utworzeniem trzeba nadać każdej odrębną intencję, pełną treść oraz relację do istniejących usług i audytów w centralnym rejestrze. Nie tworzymy pustych stron ani duplikatów usług.

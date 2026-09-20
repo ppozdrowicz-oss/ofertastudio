@@ -1,5 +1,9 @@
 # Roadmapa projektu OfertaStudio
 
+## Problem Explorer — wrzesień 2026
+
+Strona główna prowadzi od sytuacji klienta przez karuzelę 10 problemów i dopasowaną diagnozę do przykładu przed/po, zakresu, procesu, cen i kontaktu. Zachowuje zieloną identyfikację, lokalny font, oficjalne logotypy platform, ceny i Netlify Forms. Przywrócono checklistę oraz osobną sekcję studia. Szczegóły implementacji i testów: [HOMEPAGE_EXPLORER.md](HOMEPAGE_EXPLORER.md).
+
 ## Skrócenie strony głównej — 13 września 2026
 
 Na prośbę właściciela skondensowano stronę główną wokół jasnej oferty, wiarygodności i prostego kontaktu. Rozbudowany opis Shoper zastąpił krótki zakres, a powtarzające się sekcje zostały połączone. Ceny i integracja Netlify Forms pozostają zachowane. To redakcja obecnej strony głównej, bez rozszerzania zakresu planowanych podstron.

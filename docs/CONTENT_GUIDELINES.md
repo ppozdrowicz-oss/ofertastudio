@@ -148,3 +148,7 @@ Nie używamy również tekstów brzmiących jak instrukcja generatora: potrójny
 - Czy linki mają opisowe etykiety i prowadzą do właściwego następnego kroku?
 - Czy treść jest zrozumiała bez znajomości żargonu?
 - Czy metadata oraz kanoniczny adres odpowiadają mapie treści?
+
+## CTA statycznej strony głównej — wrzesień 2026
+
+Zgodnie z briefem Problem Explorer główne CTA brzmi „Pokaż swoją ofertę” lub kontekstowo „Pokaż, co nie działa”. Hero prowadzi przez „Znajdź swój problem”; „Zobacz różnicę” kieruje do pokazu przed/po. CTA slajdu otwiera diagnozę, a dopiero CTA diagnozy prowadzi do formularza. Pozostałe, planowane podstrony zachowują centralną konfigurację CTA.
