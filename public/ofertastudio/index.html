@@ -484,26 +484,96 @@
                   <p class="slide-symptom">
                     Klient wchodzi, ogląda i odchodzi.
                   </p>
+                  <p class="slide-microdiagnosis">
+                    Wejście do oferty to dopiero początek. Jeśli klient nie
+                    rozumie, czym produkt się wyróżnia, jak działa albo czy
+                    odpowiada jego potrzebom, decyzja się zatrzymuje.
+                  </p>
                 </div>
-                <div class="problem-visual visual-decision" aria-hidden="true">
-                  <div class="visual-decision">
-                    <img
-                      class=""
-                      src="/ofertastudio/assets/bottle.webp"
-                      width="1254"
-                      height="1254"
-                      loading="lazy"
-                      alt=""
-                      draggable="false"
-                    />
-                    <div>
-                      <span class="visual-kicker">PRZED DECYZJĄ</span
-                      ><strong>Czy to produkt dla mnie?</strong
-                      ><span>Co go wyróżnia?</span
-                      ><span>Który wariant wybrać?</span
-                      ><span>Co dostanę w zestawie?</span>
-                    </div>
+                <div class="problem-visual visual-decision">
+                  <div class="decision-scene">
+                    <figure class="decision-product decision-main">
+                      <img
+                        src="/ofertastudio/assets/problem-03-main.webp"
+                        width="1120"
+                        height="840"
+                        loading="lazy"
+                        decoding="async"
+                        alt="Przyłbica spawalnicza z systemem nawiewowym pokazana jako kompletny produkt."
+                        draggable="false"
+                      />
+                      <figcaption>System ochrony — co wybieram?</figcaption>
+                    </figure>
+                    <figure class="decision-product decision-filter">
+                      <img
+                        src="/ofertastudio/assets/problem-03-filter.webp"
+                        width="800"
+                        height="600"
+                        loading="lazy"
+                        decoding="async"
+                        alt="Zbliżenie na filtr automatyczny przyłbicy spawalniczej."
+                        draggable="false"
+                      />
+                      <figcaption>Co go wyróżnia?</figcaption>
+                    </figure>
+                    <figure class="decision-product decision-airflow">
+                      <img
+                        src="/ofertastudio/assets/problem-03-airflow.webp"
+                        width="800"
+                        height="600"
+                        loading="lazy"
+                        decoding="async"
+                        alt="Zbliżenie na moduł nawiewowy i panel sterowania systemu ochronnego."
+                        draggable="false"
+                      />
+                      <figcaption>Jak to działa?</figcaption>
+                    </figure>
                   </div>
+                  <ol class="decision-questions" aria-label="Pytania klienta">
+                    <li>
+                      <span aria-hidden="true">01</span>Dlaczego właśnie ten?
+                    </li>
+                    <li><span aria-hidden="true">02</span>Co go wyróżnia?</li>
+                    <li>
+                      <span aria-hidden="true">03</span>Czy to produkt dla mnie?
+                    </li>
+                    <li>
+                      <span aria-hidden="true">04</span>Czy rozumiem, co kupuję?
+                    </li>
+                  </ol>
+                  <ol
+                    class="decision-flow"
+                    aria-label="Ścieżka decyzji zakupowej"
+                  >
+                    <li
+                      class="decision-step-complete"
+                      aria-label="WEJŚCIE: Etap zakończony"
+                    >
+                      <span aria-hidden="true">✓</span><b>WEJŚCIE</b>
+                    </li>
+                    <li
+                      class="decision-step-uncertain"
+                      aria-label="ZROZUMIENIE: Wątpliwości klienta"
+                    >
+                      <span aria-hidden="true">?</span><b>ZROZUMIENIE</b>
+                    </li>
+                    <li
+                      class="decision-step-uncertain"
+                      aria-label="WYBÓR: Wątpliwości klienta"
+                    >
+                      <span aria-hidden="true">?</span><b>WYBÓR</b>
+                    </li>
+                    <li
+                      class="decision-step-pending"
+                      aria-label="ZAKUP: Etap jeszcze nieosiągnięty"
+                    >
+                      <span aria-hidden="true">○</span><b>ZAKUP</b>
+                    </li>
+                  </ol>
+                  <p class="visual-caption">
+                    Im więcej klient musi się domyślać, tym trudniej podjąć
+                    decyzję.
+                  </p>
                 </div>
                 <a
                   class="slide-cta text-link"

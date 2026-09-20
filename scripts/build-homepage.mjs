@@ -34,7 +34,14 @@ function visual(kind, problem) {
           "",
         )}</div><div class="visual-caption"><strong>${e(problem.visualCaption)}</strong><span>${e(problem.visualSubcaption)}</span></div>`;
     case "decision":
-      return `<div class="visual-decision">${photo()}<div><span class="visual-kicker">PRZED DECYZJĄ</span><strong>Czy to produkt dla mnie?</strong><span>Co go wyróżnia?</span><span>Który wariant wybrać?</span><span>Co dostanę w zestawie?</span></div></div>`;
+      return `<div class="decision-scene">${Object.entries(problem.images)
+        .map(
+          ([role, img]) =>
+            `<figure class="decision-product decision-${role}"><img src="${e(img.src)}" width="${img.width}" height="${img.height}" loading="lazy" decoding="async" alt="${e(img.alt)}" draggable="false" /><figcaption>${e(img.label)}</figcaption></figure>`,
+        )
+        .join(
+          "",
+        )}</div><ol class="decision-questions" aria-label="Pytania klienta">${problem.decisionQuestions.map((q, i) => `<li><span aria-hidden="true">0${i + 1}</span>${e(q)}</li>`).join("")}</ol><ol class="decision-flow" aria-label="Ścieżka decyzji zakupowej">${problem.decisionSteps.map((step) => `<li class="decision-step-${step.state}" aria-label="${e(step.label)}: ${e(step.description)}"><span aria-hidden="true">${e(step.mark)}</span><b>${e(step.label)}</b></li>`).join("")}</ol><p class="visual-caption">${e(problem.visualCaption)}</p>`;
     case "time":
       return `<div class="visual-queue"><div><span>DO PRZYGOTOWANIA</span><strong>Kolejny produkt.</strong></div>${["Zdjęcia", "Opis i parametry", "Galeria", "Publikacja"].map((s, i) => `<div><span>0${i + 1}</span><b>${s}</b><span>○</span></div>`).join("")}</div>`;
     case "allegro":

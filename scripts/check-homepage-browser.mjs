@@ -82,47 +82,53 @@ try {
     [],
   );
   record("static HTML, 10 slides, Netlify schema, anchors");
-  const imagePage = await context.newPage();
-  let releaseImages;
-  const imageGate = new Promise((resolve) => {
-    releaseImages = resolve;
-  });
-  await imagePage.route("**/problem-02-*.webp", async (route) => {
-    await imageGate;
-    await route.continue();
-  });
-  await imagePage.emulateMedia({ reducedMotion: "reduce" });
-  await imagePage.goto(`${base}/#slabe-zdjecia`, {
-    waitUntil: "domcontentloaded",
-  });
-  await imagePage.evaluate(() => document.fonts.ready);
-  await imagePage.waitForFunction(() =>
-    document.querySelector("#slabe-zdjecia").classList.contains("is-active"),
-  );
-  const imageBounds = () =>
-    imagePage.locator("#slabe-zdjecia img").evaluateAll((images) =>
-      images.map((img) => {
-        const r = img.getBoundingClientRect();
-        const parent = img.closest(".problem-slide").getBoundingClientRect();
-        return [r.x - parent.x, r.y - parent.y, r.width, r.height];
-      }),
+  for (const [assetNumber, problemId] of [
+    ["02", "slabe-zdjecia"],
+    ["03", "wejscia-bez-sprzedazy"],
+  ]) {
+    const imagePage = await context.newPage();
+    let releaseImages;
+    const imageGate = new Promise((resolve) => {
+      releaseImages = resolve;
+    });
+    await imagePage.route(`**/problem-${assetNumber}-*.webp`, async (route) => {
+      await imageGate;
+      await route.continue();
+    });
+    await imagePage.emulateMedia({ reducedMotion: "reduce" });
+    await imagePage.goto(`${base}/#${problemId}`, {
+      waitUntil: "domcontentloaded",
+    });
+    await imagePage.evaluate(() => document.fonts.ready);
+    await imagePage.waitForFunction(
+      (id) => document.getElementById(id).classList.contains("is-active"),
+      problemId,
     );
-  const reservedBounds = await imageBounds();
-  releaseImages();
-  await imagePage.locator("#slabe-zdjecia img").evaluateAll(async (images) => {
-    await Promise.all(images.map((img) => img.decode()));
-  });
-  assert.deepEqual(await imageBounds(), reservedBounds);
-  await imagePage.locator("#slabe-zdjecia .slide-cta").click();
-  assert.equal(new URL(imagePage.url()).hash, "#slabe-zdjecia");
-  assert.equal(
-    await imagePage.locator("#problem-detail").getAttribute("data-problem"),
-    "slabe-zdjecia",
-  );
-  await imagePage.close();
-  record(
-    "slide 02: delayed images cause no layout shift; CTA and diagnosis hash",
-  );
+    const imageBounds = () =>
+      imagePage.locator(`#${problemId} img`).evaluateAll((images) =>
+        images.map((img) => {
+          const r = img.getBoundingClientRect();
+          const parent = img.closest(".problem-slide").getBoundingClientRect();
+          return [r.x - parent.x, r.y - parent.y, r.width, r.height];
+        }),
+      );
+    const reservedBounds = await imageBounds();
+    releaseImages();
+    await imagePage.locator(`#${problemId} img`).evaluateAll(async (images) => {
+      await Promise.all(images.map((img) => img.decode()));
+    });
+    assert.deepEqual(await imageBounds(), reservedBounds);
+    await imagePage.locator(`#${problemId} .slide-cta`).click();
+    assert.equal(new URL(imagePage.url()).hash, `#${problemId}`);
+    assert.equal(
+      await imagePage.locator("#problem-detail").getAttribute("data-problem"),
+      problemId,
+    );
+    await imagePage.close();
+    record(
+      `slide ${assetNumber}: delayed images cause no layout shift; CTA and diagnosis hash`,
+    );
+  }
   for (const width of [320, 360, 390, 430, 768, 1024, 1280, 1440, 1920]) {
     await page.setViewportSize({ width, height: 1000 });
     await page.emulateMedia({ reducedMotion: "reduce" });
@@ -186,6 +192,53 @@ try {
         await second.screenshot({ path: `${shots}/problem-02-${width}.png` });
         await page.locator(".problem-track").focus();
       }
+      if (i === 2) {
+        const third = page.locator("#wejscia-bez-sprzedazy");
+        await third.evaluate((el) =>
+          window.scrollTo({
+            top: window.scrollY + el.getBoundingClientRect().top - 120,
+            behavior: "instant",
+          }),
+        );
+        await third.locator("img").evaluateAll(async (images) => {
+          await Promise.all(images.map((img) => img.decode()));
+        });
+        const images = await third.locator("img").evaluateAll((nodes) =>
+          nodes.map((img) => ({
+            src: img.getAttribute("src"),
+            alt: img.alt,
+            loaded: img.complete && img.naturalWidth > 0,
+            fit: getComputedStyle(img).objectFit,
+            area: img.clientWidth * img.clientHeight,
+            hidden: !!img.closest('[aria-hidden="true"]'),
+          })),
+        );
+        assert.deepEqual(
+          images.map((img) => img.src),
+          ["main", "filter", "airflow"].map(
+            (role) => `/ofertastudio/assets/problem-03-${role}.webp`,
+          ),
+        );
+        assert(
+          images.every(
+            (img) =>
+              img.loaded && img.alt && img.fit === "contain" && !img.hidden,
+          ),
+        );
+        assert(images[0].area > images[1].area * 2);
+        assert.equal(await third.locator(".decision-questions li").count(), 4);
+        assert.equal(await third.locator(".decision-flow li").count(), 4);
+      }
+      await page.waitForFunction(() => {
+        const slide = document.querySelector(".problem-slide.is-active");
+        const track = document.querySelector(".problem-track");
+        return (
+          Math.abs(
+            slide.getBoundingClientRect().left -
+              track.getBoundingClientRect().left,
+          ) < 2
+        );
+      });
       const g = await page.evaluate(() => {
         const a = document.querySelector(".problem-slide.is-active"),
           t = document.querySelector(".problem-track"),
@@ -210,6 +263,15 @@ try {
           !g.visual,
         `${width}px slide ${i}: ${JSON.stringify(g)}`,
       );
+      // Capture after geometry checks: Chromium may adjust scroll while capturing a tall element.
+      if (i === 2) {
+        await page
+          .locator("#wejscia-bez-sprzedazy")
+          .screenshot({ path: `${shots}/problem-03-${width}.png` });
+        await page
+          .locator(".problem-track")
+          .evaluate((el) => el.focus({ preventScroll: true }));
+      }
     }
     record(`${width}px: all 10 slides, snap, bounds, no overflow`);
   }

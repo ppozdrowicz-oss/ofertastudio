@@ -156,35 +156,10 @@
   border: 1px solid var(--line);
   border-radius: 8px;
 }
-.visual-decision {
-  display: grid;
-  grid-template-columns: 0.8fr 1fr;
-  gap: 20px;
-  align-items: center;
-}
-.visual-decision > img {
-  height: 210px;
-  width: 100%;
-  border-radius: 8px;
-}
-.visual-decision strong {
-  display: block;
-  font-size: 24px;
-  line-height: 1.2;
-  letter-spacing: -0.035em;
-  margin-block: 12px;
-}
 .visual-kicker {
   font-size: 10px;
   letter-spacing: 0.08em;
   color: var(--green);
-}
-.visual-decision div > span:not(:first-child) {
-  display: block;
-  font-size: 12px;
-  border-top: 1px solid var(--line);
-  padding-top: 10px;
-  margin-top: 10px;
 }
 .visual-queue {
   background: var(--paper);
@@ -605,15 +580,6 @@
     min-height: 250px;
     height: auto;
   }
-  .visual-decision {
-    gap: 10px;
-  }
-  .visual-decision strong {
-    font-size: 20px;
-  }
-  .visual-decision > img {
-    height: 160px;
-  }
   .visual-shop-banner strong,
   .visual-own-store strong {
     font-size: 18px;
@@ -698,9 +664,6 @@
   }
   .slide-cta svg {
     width: 20px;
-  }
-  .visual-decision strong {
-    font-size: 22px;
   }
   .visual-queue {
     padding: 18px;
@@ -1127,5 +1090,225 @@
     grid-column: 2;
     grid-row: 2;
     margin: 0;
+  }
+}
+
+/* Problem 03: questions between product interest and purchase. */
+#wejscia-bez-sprzedazy {
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  grid-template-rows: 1fr auto;
+  align-self: flex-start;
+  column-gap: 28px;
+  min-height: 620px;
+}
+#wejscia-bez-sprzedazy .slide-copy {
+  align-self: center;
+}
+#wejscia-bez-sprzedazy .slide-meta {
+  margin-bottom: 28px;
+}
+#wejscia-bez-sprzedazy .slide-symptom {
+  margin-bottom: 20px;
+}
+#wejscia-bez-sprzedazy .slide-microdiagnosis {
+  margin: 0;
+  max-width: 42ch;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.65;
+}
+#wejscia-bez-sprzedazy .visual-decision {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+#wejscia-bez-sprzedazy .visual-caption {
+  margin: 0;
+  max-width: 42ch;
+  align-self: center;
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 600;
+  color: var(--ink);
+}
+.decision-scene {
+  display: grid;
+  grid-template-columns: minmax(0, 2.1fr) minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+}
+.decision-product {
+  margin: 0;
+  padding: 8px;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+.decision-product img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  border-radius: 10px;
+}
+.decision-product figcaption {
+  padding: 10px 2px 4px;
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+.decision-main {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  padding: 12px;
+  box-shadow: 0 12px 30px rgb(23 43 37 / 7%);
+}
+.decision-main figcaption {
+  color: var(--ink);
+  font-size: 12px;
+  border-top: 1px solid var(--line);
+  margin-top: 12px;
+}
+.decision-filter {
+  grid-column: 2;
+  grid-row: 1;
+}
+.decision-airflow {
+  grid-column: 2;
+  grid-row: 2;
+}
+.decision-questions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 20px;
+  width: 100%;
+}
+.decision-questions li {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 8px;
+}
+.decision-questions li > span {
+  color: var(--green);
+  font-size: 10px;
+}
+.decision-flow {
+  list-style: none;
+  margin: 0;
+  padding: 14px 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+  border-block: 1px solid var(--line);
+}
+.decision-flow li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+.decision-flow li + li::before {
+  content: "→";
+  position: absolute;
+  left: -12px;
+  top: 4px;
+  color: var(--muted);
+  font-size: 12px;
+}
+.decision-flow li > span {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+.decision-flow b {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.015em;
+}
+.decision-flow .decision-step-complete > span {
+  background: var(--green);
+  color: var(--paper);
+  border-color: var(--green);
+}
+.decision-flow .decision-step-uncertain > span {
+  background: var(--lime);
+  color: var(--ink);
+  border-color: var(--green);
+}
+.decision-step-pending {
+  color: var(--muted);
+}
+@media (max-width: 900px) {
+  #wejscia-bez-sprzedazy {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+  #wejscia-bez-sprzedazy .slide-copy {
+    align-self: start;
+    max-width: 460px;
+  }
+  #wejscia-bez-sprzedazy .visual-decision {
+    width: 100%;
+    max-width: 540px;
+    margin-top: 24px;
+    min-height: 0;
+  }
+}
+@media (max-width: 720px) {
+  #wejscia-bez-sprzedazy .slide-microdiagnosis {
+    font-size: 14px;
+  }
+  .decision-scene {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .decision-main {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+  .decision-filter {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .decision-airflow {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  .decision-questions {
+    gap: 12px;
+  }
+  .decision-flow {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding-block: 16px;
+  }
+  .decision-flow li {
+    flex-direction: row;
+    gap: 12px;
+  }
+  .decision-flow li + li::before {
+    content: "↓";
+    left: 9px;
+    top: -17px;
+  }
+  .decision-flow b {
+    font-size: 11px;
   }
 }

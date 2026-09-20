@@ -138,6 +138,65 @@ export const problems = [
       "Klient szybciej rozumie produkt, łatwiej znajduje istotne informacje i otrzymuje wyraźniejszy powód do wyboru.",
     cta: "Pokaż swoją ofertę",
     visual: "decision",
+    microDiagnosis:
+      "Wejście do oferty to dopiero początek. Jeśli klient nie rozumie, czym produkt się wyróżnia, jak działa albo czy odpowiada jego potrzebom, decyzja się zatrzymuje.",
+    visualCaption:
+      "Im więcej klient musi się domyślać, tym trudniej podjąć decyzję.",
+    decisionQuestions: [
+      "Dlaczego właśnie ten?",
+      "Co go wyróżnia?",
+      "Czy to produkt dla mnie?",
+      "Czy rozumiem, co kupuję?",
+    ],
+    decisionSteps: [
+      {
+        label: "WEJŚCIE",
+        state: "complete",
+        mark: "✓",
+        description: "Etap zakończony",
+      },
+      {
+        label: "ZROZUMIENIE",
+        state: "uncertain",
+        mark: "?",
+        description: "Wątpliwości klienta",
+      },
+      {
+        label: "WYBÓR",
+        state: "uncertain",
+        mark: "?",
+        description: "Wątpliwości klienta",
+      },
+      {
+        label: "ZAKUP",
+        state: "pending",
+        mark: "○",
+        description: "Etap jeszcze nieosiągnięty",
+      },
+    ],
+    images: {
+      main: {
+        src: "/ofertastudio/assets/problem-03-main.webp",
+        width: 1120,
+        height: 840,
+        alt: "Przyłbica spawalnicza z systemem nawiewowym pokazana jako kompletny produkt.",
+        label: "System ochrony — co wybieram?",
+      },
+      filter: {
+        src: "/ofertastudio/assets/problem-03-filter.webp",
+        width: 800,
+        height: 600,
+        alt: "Zbliżenie na filtr automatyczny przyłbicy spawalniczej.",
+        label: "Co go wyróżnia?",
+      },
+      airflow: {
+        src: "/ofertastudio/assets/problem-03-airflow.webp",
+        width: 800,
+        height: 600,
+        alt: "Zbliżenie na moduł nawiewowy i panel sterowania systemu ochronnego.",
+        label: "Jak to działa?",
+      },
+    },
   },
   {
     id: "brak-czasu",
