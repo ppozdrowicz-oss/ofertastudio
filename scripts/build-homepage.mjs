@@ -25,7 +25,14 @@ function visual(kind, problem) {
           "",
         )}</div><div class="visual-caption"><strong>${e(problem.visualLead)}</strong><span>${e(problem.visualQuestion)}</span></div>`;
     case "photos":
-      return `<div class="visual-photo-pair"><div>${photo("small-product")}<span>Produkt ginie w kadrze</span></div><div>${photo()}<span>Jakość staje się widoczna</span></div></div>`;
+      return `<div class="photo-scene">${Object.entries(problem.images)
+        .map(
+          ([role, img]) =>
+            `<figure class="photo-panel photo-panel-${role}"><img src="${e(img.src)}" width="${img.width}" height="${img.height}" loading="lazy" decoding="async" alt="${e(img.alt)}" draggable="false" /><figcaption>${e(img.label)}</figcaption></figure>`,
+        )
+        .join(
+          "",
+        )}</div><div class="visual-caption"><strong>${e(problem.visualCaption)}</strong><span>${e(problem.visualSubcaption)}</span></div>`;
     case "decision":
       return `<div class="visual-decision">${photo()}<div><span class="visual-kicker">PRZED DECYZJĄ</span><strong>Czy to produkt dla mnie?</strong><span>Co go wyróżnia?</span><span>Który wariant wybrać?</span><span>Co dostanę w zestawie?</span></div></div>`;
     case "time":

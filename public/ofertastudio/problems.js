@@ -81,6 +81,33 @@ export const problems = [
       "Klient wyraźniej widzi jakość, szczegóły i zastosowanie. Zdjęcia pomagają ocenić produkt przed zakupem.",
     cta: "Pokaż swoją ofertę",
     visual: "photos",
+    microDiagnosis:
+      "Klient nie może obejrzeć produktu na żywo. Zdjęcia muszą pokazać jakość, detale i sposób odbioru produktu — inaczej oferta traci swoją siłę.",
+    visualCaption: "Klient może ocenić tylko to, co mu pokażesz.",
+    visualSubcaption: "Jakość. Detal. Kontekst.",
+    images: {
+      main: {
+        src: "/ofertastudio/assets/problem-02-main.webp",
+        width: 960,
+        height: 960,
+        alt: "Flakon perfum pokazany na czystym zdjęciu produktowym.",
+        label: "PRODUKT",
+      },
+      detail: {
+        src: "/ofertastudio/assets/problem-02-detail.webp",
+        width: 960,
+        height: 960,
+        alt: "Zbliżenie na flakon perfum pokazujące detale wykończenia.",
+        label: "DETAL",
+      },
+      usage: {
+        src: "/ofertastudio/assets/problem-02-usage.webp",
+        width: 450,
+        height: 450,
+        alt: "Flakon perfum trzymany w dłoni, pokazujący kontekst i skalę produktu.",
+        label: "KONTEKST",
+      },
+    },
   },
   {
     id: "wejscia-bez-sprzedazy",

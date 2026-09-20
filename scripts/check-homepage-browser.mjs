@@ -82,6 +82,47 @@ try {
     [],
   );
   record("static HTML, 10 slides, Netlify schema, anchors");
+  const imagePage = await context.newPage();
+  let releaseImages;
+  const imageGate = new Promise((resolve) => {
+    releaseImages = resolve;
+  });
+  await imagePage.route("**/problem-02-*.webp", async (route) => {
+    await imageGate;
+    await route.continue();
+  });
+  await imagePage.emulateMedia({ reducedMotion: "reduce" });
+  await imagePage.goto(`${base}/#slabe-zdjecia`, {
+    waitUntil: "domcontentloaded",
+  });
+  await imagePage.evaluate(() => document.fonts.ready);
+  await imagePage.waitForFunction(() =>
+    document.querySelector("#slabe-zdjecia").classList.contains("is-active"),
+  );
+  const imageBounds = () =>
+    imagePage.locator("#slabe-zdjecia img").evaluateAll((images) =>
+      images.map((img) => {
+        const r = img.getBoundingClientRect();
+        const parent = img.closest(".problem-slide").getBoundingClientRect();
+        return [r.x - parent.x, r.y - parent.y, r.width, r.height];
+      }),
+    );
+  const reservedBounds = await imageBounds();
+  releaseImages();
+  await imagePage.locator("#slabe-zdjecia img").evaluateAll(async (images) => {
+    await Promise.all(images.map((img) => img.decode()));
+  });
+  assert.deepEqual(await imageBounds(), reservedBounds);
+  await imagePage.locator("#slabe-zdjecia .slide-cta").click();
+  assert.equal(new URL(imagePage.url()).hash, "#slabe-zdjecia");
+  assert.equal(
+    await imagePage.locator("#problem-detail").getAttribute("data-problem"),
+    "slabe-zdjecia",
+  );
+  await imagePage.close();
+  record(
+    "slide 02: delayed images cause no layout shift; CTA and diagnosis hash",
+  );
   for (const width of [320, 360, 390, 430, 768, 1024, 1280, 1440, 1920]) {
     await page.setViewportSize({ width, height: 1000 });
     await page.emulateMedia({ reducedMotion: "reduce" });
@@ -111,6 +152,40 @@ try {
     await first.screenshot({ path: `${shots}/problem-01-${width}.png` });
     for (let i = 0; i < 10; i++) {
       if (i) await page.keyboard.press("ArrowRight");
+      if (i === 1) {
+        const second = page.locator("#slabe-zdjecia");
+        await second.scrollIntoViewIfNeeded();
+        await second.locator("img").evaluateAll(async (images) => {
+          await Promise.all(images.map((img) => img.decode()));
+        });
+        const photos = await second.locator("img").evaluateAll((images) =>
+          images.map((img) => ({
+            loaded: img.complete && img.naturalWidth > 0,
+            src: img.getAttribute("src"),
+            alt: img.alt,
+            fit: getComputedStyle(img).objectFit,
+            area: img.clientWidth * img.clientHeight,
+            hidden: !!img.closest('[aria-hidden="true"]'),
+          })),
+        );
+        assert.equal(photos.length, 3);
+        assert(
+          photos.every(
+            (img) =>
+              img.loaded && img.alt && !img.hidden && img.fit === "contain",
+          ),
+        );
+        assert.deepEqual(
+          photos.map((img) => img.src),
+          ["main", "detail", "usage"].map(
+            (role) => `/ofertastudio/assets/problem-02-${role}.webp`,
+          ),
+        );
+        assert(photos[0].area > photos[1].area * 2);
+        assert.equal(await second.locator(".slide-microdiagnosis").count(), 1);
+        await second.screenshot({ path: `${shots}/problem-02-${width}.png` });
+        await page.locator(".problem-track").focus();
+      }
       const g = await page.evaluate(() => {
         const a = document.querySelector(".problem-slide.is-active"),
           t = document.querySelector(".problem-track"),
