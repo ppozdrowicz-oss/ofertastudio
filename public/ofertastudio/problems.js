@@ -30,6 +30,7 @@ export const problems = [
     visual: "attention",
     microDiagnosis:
       "Pierwsza decyzja zapada jeszcze na liście wyników. Jeśli oferta nie zatrzyma uwagi tutaj, klient może nawet nie zobaczyć tego, co masz do pokazania dalej.",
+    visualLead: "Klient wybiera wzrokiem w ułamku sekundy.",
     visualQuestion: "Którą ofertę otworzysz?",
     images: {
       before: {

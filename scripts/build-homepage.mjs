@@ -23,7 +23,7 @@ function visual(kind, problem) {
         )
         .join(
           "",
-        )}</div><span class="visual-caption">${e(problem.visualQuestion)}</span>`;
+        )}</div><div class="visual-caption"><strong>${e(problem.visualLead)}</strong><span>${e(problem.visualQuestion)}</span></div>`;
     case "photos":
       return `<div class="visual-photo-pair"><div>${photo("small-product")}<span>Produkt ginie w kadrze</span></div><div>${photo()}<span>Jakość staje się widoczna</span></div></div>`;
     case "decision":
