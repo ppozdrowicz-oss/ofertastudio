@@ -273,6 +273,15 @@ try {
           .evaluate((el) => el.focus({ preventScroll: true }));
       }
     }
+    const leadSlideHeights = await page
+      .locator("#malo-klikniec, #slabe-zdjecia, #wejscia-bez-sprzedazy")
+      .evaluateAll((slides) =>
+        slides.map((slide) => Math.round(slide.getBoundingClientRect().height)),
+      );
+    assert(
+      Math.max(...leadSlideHeights) - Math.min(...leadSlideHeights) <= 1,
+      `${width}px leading slide heights: ${leadSlideHeights.join(", ")}`,
+    );
     record(`${width}px: all 10 slides, snap, bounds, no overflow`);
   }
   await page.setViewportSize({ width: 1440, height: 1000 });

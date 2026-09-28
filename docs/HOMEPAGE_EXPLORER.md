@@ -28,6 +28,8 @@ Karuzela nie ma autoplay ani zależności. Karty mają scroll snap; desktop poka
 
 Ruch przycisków trwa 500 ms. Reduced motion wyłącza animację przewijania i paska postępu. Resize zachowuje aktywny problem. Zmiana hasha, bezpośrednie wejście oraz historia przeglądarki odtwarzają właściwy stan. `#shoper` należy do problemu; zakres usługi ma `#sklepy-shoper`.
 
+Pierwsze trzy rozbudowane slajdy korzystają ze wspólnej wysokości na każdym breakpoincie. Wariant „Mam wejścia, ale mało sprzedaży” mieści trzy zdjęcia produktu w zwartej, warstwowej galerii, a poniżej zachowuje cztery pytania klienta, pełną ścieżkę decyzji i wniosek. Test przeglądarkowy kontroluje równość wysokości z dokładnością do jednego piksela od 320 do 1920 px.
+
 ## Formularz
 
 Pola Netlify zachowane: `form-name`, `url`, `problem`, `message`, `email`, `package`, `bot-field`. Dodano statyczne pole ukryte `problem-id`, aby wykrywanie formularzy widziało je podczas deployu. `problem` zawiera czytelny tytuł, `problem-id` stabilny identyfikator. Wybranie scenariusza pokazuje jego nazwę i ukrywa powtórne pytanie. „Zmień problem” przywraca select i focus. Kliknięcie pakietu nie nadpisuje rozpoznanego problemu. Błąd POST zachowuje dane; potwierdzony sukces resetuje wybór. Nie zmieniano prywatnego odbiorcy powiadomień ani nie publikowano jego adresu.
