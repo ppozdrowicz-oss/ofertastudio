@@ -1,7 +1,8 @@
-.next
 node_modules
-out
-build
-coverage
+.next
+public/media/studies
 package-lock.json
 next-env.d.ts
+playwright-report
+test-results
+qa/screenshots

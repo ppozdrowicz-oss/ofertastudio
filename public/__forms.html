@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <meta name="ofertastudio-static-form-definition" content="true" />
+    <title>Definicja formularza OfertaStudio</title>
+  </head>
+  <body>
+    <!-- Static discovery contract for Netlify's Next.js runtime. Field names must match src/lib/contact.ts. -->
+    <form
+      name="product-enquiry"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="website"
+      hidden
+    >
+      <input type="hidden" name="form-name" value="product-enquiry" />
+      <input name="name" type="text" /><input name="email" type="email" /><textarea
+        name="message"
+      ></textarea
+      ><input name="productLink" type="url" /><input name="website" type="text" />
+    </form>
+  </body>
+</html>

@@ -1,0 +1,71 @@
+# OfertaStudio — implementation report
+
+## BUILT
+
+Independent greenfield application in `/home/roland/ofertastudio-next/studio`, created from an empty directory with its own Git repository. Next.js 16.4, React 19.3 and TypeScript 6.0. The existing `/home/roland/ofertastudio` project and production site were not used or modified.
+
+The application implements a complete Polish homepage, privacy preview, custom 404, a Netlify enquiry integration, SEO files and an original set of explicitly labelled replaceable product maquettes. No testimonials, client brands, revenue figures or case results were invented.
+
+## PROJECT STRUCTURE
+
+Page assembly in `src/app/page.tsx` exposes the story: Hero → Comparison → StudioSequence → Portfolio → Capabilities → Process/Offer → Contact. Layout, static sections, interactive experiences, form logic and content each have their own directory. `src/content/media.ts` is the central image contract; `src/content/site.ts` contains the business-facing content and configuration.
+
+## VISUAL SYSTEM
+
+White canvas, near-black `#20231d`, restrained neutral text, subtle rules and small olive accents. Bricolage Grotesque forms the display hierarchy; Manrope handles body and interface copy. Serif italics are limited to the precision and contact moments. Fluid gutters, responsive headline sizes and asymmetric editorial pairings replace repetitive feature cards. The drawings are neutral material/composition studies, not substitutes presented as genuine photography.
+
+## SIGNATURE EXPERIENCES
+
+1. Overscale perfume opening, composed with the headline on one shared studio canvas.
+2. Registered sneaker comparison controlled by mouse, touch or keyboard; a single precise dividing line.
+3. Five-stage perfume story on native desktop scroll, adapted to explicit stage buttons on mobile and for reduced motion. The large watch composition is the precision anchor within the editorial portfolio.
+
+## PRODUCT CATEGORY STRATEGY
+
+Ten distinct product worlds: perfume, serum, sneaker, watch, headphones, leather bag, olive oil, candle, power tool and packaging with product. Their arrangement changes scale and rhythm. The power tool is one small part of the broader product shelf; it does not define the brand.
+
+## RESPONSIVE
+
+Eight checked widths: 375, 390, 430, 768, 1024, 1280, 1440 and 1920 px. Desktop uses the full canvas, a sticky native-scroll studio and asymmetric paired imagery. Tablet has its own bottle positioning. Mobile stacks the hero deliberately, uses a full-width comparison, shortened product rows, a nonsticky selectable studio and single-column form. Horizontal overflow checks pass.
+
+## PERFORMANCE
+
+Static prerendering, server components where interaction is unnecessary, small client islands, reserved image dimensions, responsive `sizes`, hero preload, lazy below-fold imagery, self-hosted variable fonts and no motion/UI framework. Final raster delivery supports AVIF/WebP. The generated HTML references about 187.5 KiB gzip of initial JavaScript; this is a local file measurement, not a Core Web Vitals score.
+
+## ACCESSIBILITY
+
+Semantic landmarks and heading hierarchy, skip link, native labelled controls, visible focus, mobile focus containment/Escape, pointer and keyboard comparison, reduced-motion composition, linked validation messages, first-invalid-field focus, pending/error/success states and retained inputs on failure. Desktop/mobile axe scans report zero violations in the tested rule groups. Full certification and physical-device assistive-technology testing are not claimed.
+
+## SEO
+
+Polish title/description, canonical strategy, OpenGraph and Twitter metadata, generated social PNG, favicon, robots, sitemap and truthful Organization JSON-LD. Previews are `noindex, nofollow`; indexing is intentionally a later launch configuration. The privacy placeholder stays excluded from indexing.
+
+## QA
+
+Lint, strict type checking, 16 logic/DOM tests, 15 browser tests, production build and built-HTML smoke checks pass. Real screenshots were reviewed and informed revisions. Production dependency audit: zero findings. Full audit: five development-only package findings from an upstream `braces` vulnerability; see `QA.md` for exact scope and commands.
+
+## ASSET GAPS
+
+Fifteen files: five matched perfume stages; sneaker before/after; watch; serum; headphones; leather bag; olive oil; candle; power tool; packaging set. `ASSETS.md` gives every filename, target size, aspect ratio, background, transparency preference, mobile framing and pairing requirement. Actual contact/legal details and the final privacy notice are also missing. No final photographs were supplied.
+
+## FILES CREATED
+
+The key entry points are `src/app/page.tsx`, `src/app/globals.css`, `src/content/media.ts`, `src/content/site.ts`, the components in `src/components/`, `src/lib/contact.ts`, `public/__forms.html`, `netlify.toml`, `playwright.config.ts`, `tests/`, `scripts/check-build.mjs`, `README.md`, `ASSETS.md` and `QA.md`. `AGENTS.md` is generated by the installed Next.js version and is retained in Git.
+
+## GIT
+
+The independent repository uses branch `main`. Checkpoints cover scaffolding, visual/content foundation, core narrative and Netlify form, responsive/keyboard polish, and QA/documentation. No remote was configured; no push or deployment was performed. Secrets, environment files, builds, dependencies and screenshot output are ignored.
+
+## RUN
+
+```bash
+cd /home/roland/ofertastudio-next/studio
+npm ci
+npm run dev
+```
+
+Open `http://localhost:3000`. For production preview run `npm run build` followed by `npm start`. For verification run `npm run check`, `npm run test:build`, then `npm run test:e2e`.
+
+## RELEASE STATE
+
+Implemented and locally tested; **not yet a public-production release**. Final product photography, verified business/privacy information, real Netlify form delivery and explicit deployment authorization remain. The Netlify integration is prepared; no claim is made that an undeployed form has delivered real messages.
