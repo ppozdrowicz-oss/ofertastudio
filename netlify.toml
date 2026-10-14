@@ -1,15 +1,22 @@
 [build]
+  base = "."
   command = "npm run build"
   publish = ".next"
 
 [build.environment]
   NODE_VERSION = "22"
+  NEXT_TELEMETRY_DISABLED = "1"
 
-[[redirects]]
-  from = "/"
-  to = "/ofertastudio/index.html"
-  status = 200
-  force = true
+[[headers]]
+  for = "/__forms.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
 
+# Explicit framework integration also covers source-archive staging builds.
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+# Use the existing OfertaStudio Netlify site, linked to the repository's main branch.
+# Enable form detection in that site's dashboard.
+# Set CONTACT_FORM_ENABLED=true only after legal/contact details are complete.
+# No legacy homepage rewrites: Next.js serves the application directly at /.
